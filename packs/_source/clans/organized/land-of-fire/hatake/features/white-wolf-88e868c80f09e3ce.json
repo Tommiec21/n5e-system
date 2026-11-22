@@ -9,7 +9,8 @@
   "flags": {
     "n5e": {
       "clanPackage": "hatake",
-      "sourceLine": 901
+      "sourceLine": 901,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -42,6 +43,80 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5evNY2v7RjPlTXR",
+        "type": "effect",
+        "label": "White Wolf",
+        "effect": {
+          "name": "White Wolf",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "amp": "white-wolf"
+        },
+        "text": "Bonus action, 1 minute, once per long rest.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5e6gQBy4Gw5cTXG",
+        "type": "roll",
+        "label": "Two Steps Ahead: White Chakra",
+        "roll": {
+          "formula": "",
+          "note": "Start of each of your turns (or 1 Command Die instead)."
+        },
+        "cost": {
+          "pool": "whiteChakra",
+          "amount": 2,
+          "gain": true
+        }
+      },
+      {
+        "id": "n5eJJs72cXkC5BcL",
+        "type": "roll",
+        "label": "Limit Break (White Chakra)",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn: an extra action; not again until the end of your next turn."
+        },
+        "cost": {
+          "pool": "whiteChakra",
+          "amount": 3
+        }
+      },
+      {
+        "id": "n5el2VWhpL331ezG",
+        "type": "roll",
+        "label": "Limit Break (Command Dice)",
+        "roll": {
+          "formula": "",
+          "note": "As above."
+        },
+        "cost": {
+          "pool": "commandDice",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5eQELS6ZSybzkaF",
+        "type": "roll",
+        "label": "No Casualties",
+        "roll": {
+          "formula": "@level",
+          "note": "Reaction, an ally within 30 feet takes damage: reduce it by [Weapon Damage] + your level; your weapon lands by the ally."
+        },
+        "activation": "reaction"
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "lr",
+      "recharge": "",
+      "staminaEligible": false
+    }
   }
 }

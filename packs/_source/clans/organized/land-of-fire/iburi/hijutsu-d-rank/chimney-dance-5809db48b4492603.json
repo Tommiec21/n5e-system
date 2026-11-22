@@ -17,6 +17,14 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu, Fire Release",
         "components": "CM, M, W (Any)"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Smoke Style",
+        "appliesTo": {
+          "namePrefix": "Chimney Dance"
+        },
+        "note": "In your Smoke Style stance: your attacks of opportunity have advantage."
       }
     }
   },
@@ -110,7 +118,33 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5evbbV0pgqhdTkg",
+        "type": "effect",
+        "label": "Chimney Dance",
+        "effect": {
+          "name": "Chimney Dance",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.damage.weapon",
+              "value": "1d8",
+              "mode": 2
+            },
+            {
+              "key": "n5e.damage.unarmed",
+              "value": "1d8",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Bonus action, concentration: your weapon or unarmed damage becomes poison or fire, +1d8 (+1d8 at B and at S). A critical hit: 1 rank of Envenomed or Blinded until the end of its next turn.",
+        "activation": "bonus"
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

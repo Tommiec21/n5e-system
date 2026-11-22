@@ -17,7 +17,283 @@
         "cost": "5 Chakra or 3 Calories",
         "keywords": "Hijutsu, Taijutsu, Clash",
         "components": "HS, CM, M"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its upcast says above C-Rank (it's D-Rank)."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5egfJGedFuH27GP",
+              "type": "attack",
+              "label": "Human Boulder",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Move into its space: [Unarmed Damage] + 2d12, without your ability modifier (B-Rank: piercing, with it); it's moved 5 feet.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (1d12)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eDrOPQWDziYVFH",
+              "type": "save",
+              "label": "Human Boulder: in your path",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                }
+              ],
+              "text": "Each creature you pass through, once. Failure: the damage; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (1d12)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5egfJGedFuH27GP",
+              "type": "attack",
+              "label": "Human Boulder",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Move into its space: [Unarmed Damage] + 2d12, without your ability modifier (B-Rank: piercing, with it); it's moved 5 feet.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (2d12)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eDrOPQWDziYVFH",
+              "type": "save",
+              "label": "Human Boulder: in your path",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                }
+              ],
+              "text": "Each creature you pass through, once. Failure: the damage; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (2d12)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5egfJGedFuH27GP",
+              "type": "attack",
+              "label": "Human Boulder",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Move into its space: [Unarmed Damage] + 2d12, without your ability modifier (B-Rank: piercing, with it); it's moved 5 feet.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (3d12)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eDrOPQWDziYVFH",
+              "type": "save",
+              "label": "Human Boulder: in your path",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                }
+              ],
+              "text": "Each creature you pass through, once. Failure: the damage; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (3d12)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5egfJGedFuH27GP",
+              "type": "attack",
+              "label": "Human Boulder",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Move into its space: [Unarmed Damage] + 2d12, without your ability modifier (B-Rank: piercing, with it); it's moved 5 feet.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (4d12)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eDrOPQWDziYVFH",
+              "type": "save",
+              "label": "Human Boulder: in your path",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                }
+              ],
+              "text": "Each creature you pass through, once. Failure: the damage; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (4d12)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Pay with Calories (3)",
+          "appliesTo": {
+            "namePrefix": "Human Boulder"
+          },
+          "note": "Cast it for 3 Calories instead of chakra (its upcast may add Calories: spend them by hand).",
+          "costDelta": "zero",
+          "cost": {
+            "pool": "calories",
+            "amount": 3
+          }
+        },
+        {
+          "label": "Expansion Crash",
+          "appliesTo": {
+            "namePrefix": "Human Boulder"
+          },
+          "note": "In your Expansion Technique stance: a critical hit, or failing by 5: Staggered."
+        }
+      ]
     }
   },
   "ownership": {
@@ -108,7 +384,67 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5egfJGedFuH27GP",
+        "type": "attack",
+        "label": "Human Boulder",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Move into its space: [Unarmed Damage] + 2d12, without your ability modifier (B-Rank: piercing, with it); it's moved 5 feet.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d12",
+              "type": "bludgeoning"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eDrOPQWDziYVFH",
+        "type": "save",
+        "label": "Human Boulder: in your path",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "staggered",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Staggered"
+          }
+        ],
+        "text": "Each creature you pass through, once. Failure: the damage; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d12",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

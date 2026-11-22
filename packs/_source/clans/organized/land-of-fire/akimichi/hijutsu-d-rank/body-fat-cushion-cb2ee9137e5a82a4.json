@@ -17,7 +17,29 @@
         "cost": "4 Chakra or 2 Calories",
         "keywords": "Hijutsu, Ninjutsu",
         "components": "CM"
-      }
+      },
+      "reviewed": true,
+      "castOptions": [
+        {
+          "label": "Pay with Calories (2)",
+          "appliesTo": {
+            "namePrefix": "Body Fat Cushion"
+          },
+          "note": "Cast it for 2 Calories instead of chakra (its upcast may add Calories: spend them by hand).",
+          "costDelta": "zero",
+          "cost": {
+            "pool": "calories",
+            "amount": 2
+          }
+        },
+        {
+          "label": "Expansion Crash",
+          "appliesTo": {
+            "namePrefix": "Body Fat Cushion"
+          },
+          "note": "In your Expansion Technique stance: allies in a 10-foot radius get it until the end of the turn."
+        }
+      ]
     }
   },
   "ownership": {
@@ -107,7 +129,38 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e2Mwu0IwTtATTD",
+        "type": "effect",
+        "label": "Body Fat Cushion",
+        "effect": {
+          "name": "Body Fat Cushion",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.immune",
+              "value": "bludgeoning",
+              "mode": 2
+            },
+            {
+              "key": "n5e.immune",
+              "value": "earth",
+              "mode": 2
+            },
+            {
+              "key": "n5e.immune",
+              "value": "cold",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Reaction, until the start of your next turn: immunity to bludgeoning, earth and cold; resistance to all others but mental, lightning and piercing (add them).",
+        "activation": "reaction"
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

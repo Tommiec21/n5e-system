@@ -17,7 +17,8 @@
         "cost": "16 Chakra",
         "keywords": "Hijutsu, Main Branch, Taijutsu",
         "components": "CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -108,7 +109,41 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eyoHRFSOlYDpCA",
+        "type": "effect",
+        "label": "Lion Palm",
+        "effect": {
+          "name": "Lion Palm",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "[Main Branch] Bonus action, Byakugan and Gentle Fist: no upkeep; Gentle Fist and melee Hyūga Hijutsu use d10s for chakra damage.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5eWSajFM1aFp03W",
+        "type": "attack",
+        "label": "Lion missile",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "In place of an Attack action or Hyūga Hijutsu attack: a creature you can see within 30 feet.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d10 + max(@abilities.str.mod, @abilities.dex.mod, @abilities.con.mod, @abilities.int.mod, @abilities.wis.mod, @abilities.cha.mod)",
+              "type": "force"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

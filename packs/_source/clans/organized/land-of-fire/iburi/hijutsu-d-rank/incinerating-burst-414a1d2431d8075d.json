@@ -17,6 +17,317 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu, Fire Release, Combo, Chain",
         "components": "CM, M, W (Any Melee)"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "It has no cost increase in its upcast."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5e6e11ZFJFMahie",
+              "type": "attack",
+              "label": "Incinerating Burst (Ninjutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Move half your speed next to a hostile creature. Beating AC by 5: one more attack on another creature (up to twice); Chain 2: no need to beat it by 5. Chain 1: after a hit, move half your speed without provoking. B-Rank: a Reaction for an attack of opportunity.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d12) + (1d12)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eHxxRFNWqAsddl",
+              "type": "attack",
+              "label": "Incinerating Burst (Taijutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "[Unarmed Damage] or [Weapon Damage] + 1d12 fire.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d12) + (1d12)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eJRk988BKUL5hp",
+              "type": "save",
+              "label": "Incinerating Burst: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "Failure: Burned.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5e6e11ZFJFMahie",
+              "type": "attack",
+              "label": "Incinerating Burst (Ninjutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Move half your speed next to a hostile creature. Beating AC by 5: one more attack on another creature (up to twice); Chain 2: no need to beat it by 5. Chain 1: after a hit, move half your speed without provoking. B-Rank: a Reaction for an attack of opportunity.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d12) + (2d12)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eHxxRFNWqAsddl",
+              "type": "attack",
+              "label": "Incinerating Burst (Taijutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "[Unarmed Damage] or [Weapon Damage] + 1d12 fire.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d12) + (2d12)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eJRk988BKUL5hp",
+              "type": "save",
+              "label": "Incinerating Burst: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "Failure: Burned.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e6e11ZFJFMahie",
+              "type": "attack",
+              "label": "Incinerating Burst (Ninjutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Move half your speed next to a hostile creature. Beating AC by 5: one more attack on another creature (up to twice); Chain 2: no need to beat it by 5. Chain 1: after a hit, move half your speed without provoking. B-Rank: a Reaction for an attack of opportunity.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d12) + (3d12)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eHxxRFNWqAsddl",
+              "type": "attack",
+              "label": "Incinerating Burst (Taijutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "[Unarmed Damage] or [Weapon Damage] + 1d12 fire.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d12) + (3d12)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eJRk988BKUL5hp",
+              "type": "save",
+              "label": "Incinerating Burst: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "Failure: Burned.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e6e11ZFJFMahie",
+              "type": "attack",
+              "label": "Incinerating Burst (Ninjutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Move half your speed next to a hostile creature. Beating AC by 5: one more attack on another creature (up to twice); Chain 2: no need to beat it by 5. Chain 1: after a hit, move half your speed without provoking. B-Rank: a Reaction for an attack of opportunity.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d12) + (4d12)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eHxxRFNWqAsddl",
+              "type": "attack",
+              "label": "Incinerating Burst (Taijutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "[Unarmed Damage] or [Weapon Damage] + 1d12 fire.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d12) + (4d12)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eJRk988BKUL5hp",
+              "type": "save",
+              "label": "Incinerating Burst: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "Failure: Burned.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -112,7 +423,81 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e6e11ZFJFMahie",
+        "type": "attack",
+        "label": "Incinerating Burst (Ninjutsu)",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Move half your speed next to a hostile creature. Beating AC by 5: one more attack on another creature (up to twice); Chain 2: no need to beat it by 5. Chain 1: after a hit, move half your speed without provoking. B-Rank: a Reaction for an attack of opportunity.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d12",
+              "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eHxxRFNWqAsddl",
+        "type": "attack",
+        "label": "Incinerating Burst (Taijutsu)",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "[Unarmed Damage] or [Weapon Damage] + 1d12 fire.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d12",
+              "type": "fire"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eJRk988BKUL5hp",
+        "type": "save",
+        "label": "Incinerating Burst: on a hit",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Burned"
+          }
+        ],
+        "text": "Failure: Burned.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

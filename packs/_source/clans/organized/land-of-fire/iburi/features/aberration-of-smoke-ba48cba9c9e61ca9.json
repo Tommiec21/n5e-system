@@ -9,7 +9,8 @@
   "flags": {
     "n5e": {
       "clanPackage": "iburi",
-      "sourceLine": 1141
+      "sourceLine": 1141,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -42,6 +43,28 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eLviBPZXNoS9FG",
+        "type": "effect",
+        "label": "Aberration of Smoke",
+        "effect": {
+          "name": "Aberration of Smoke",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.traits.speed.fly",
+              "value": "20",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Action, 1 minute (then 10 minutes before again): fly 20 feet, fit through any gap smoke could; resistance to all damage but vulnerability to wind; no HS jutsu, Taijutsu or Bukijutsu. End it free where you fit; trapped, 4d6 bludgeoning each turn.",
+        "activation": "action"
+      }
+    ]
   }
 }

@@ -9,7 +9,15 @@
   "flags": {
     "n5e": {
       "clanPackage": "akimichi",
-      "sourceLine": 721
+      "sourceLine": 721,
+      "textFrom": "akimichi-expansion-technique (King Q-E9)",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Expansion Technique Taijutsu stance (its text is Expansion Technique's, as King Q-E9): [Unarmed Damage] d8; Akimichi Hijutsu gain Expansion Crash (cast dialog options); melee attacks gain Reach (+1 rank if they had it; +2 at 7th, +3 at 15th); an opportunity attack's damage forces the save below. At 7th, without Extra Attack, the Attack action attacks twice."
+        }
+      ]
     }
   },
   "ownership": {
@@ -17,7 +25,7 @@
   },
   "system": {
     "identifier": "akimichi-stance-expansion-technique",
-    "description": "<p>15th Level Clan Feature</p>\n<p>As your mother or father always told you, for an Akimichi, size matters. Your weight is a weapon.</p>\n<p>When you move 5 or more feet as part of casting an Akimichi Hijutsu, while you are in your Expansion Technique stance, you can choose to spend 10 feet of your movement to perform a short bounce and come crashing down into the ground. All creatures within 10 feet of you, must make a Strength saving throw vs your highest jutsu save DC. On a failed save, they are knocked prone, take bludgeoning damage equal to one of the listed damage pools or none on a successful save.</p>\n<p>You can spend your Bonus action to warn all of your allies to Jump when you land, allowing them to be immune to this features effects. Once you use Seismic step you cannot do so again until the end of your next turn.</p>\n<p>Three times your [Unarmed Damage]</p>\n<p>Three times your [Weapon Damage]</p>",
+    "description": "<p>Your clans unique fighting style of magnified size and weight taken hold in the heat of combat. While in combat, you can throw your snacks away and enter the Expansion Technique stance. A unique fighting style honed and taught by the Akimichi clan.</p>\n<p>As a Bonus action, you can enter your Expansion Technique stance. This is treated as a Taijutsu stance for you. While in this stance you gain the following benefits:</p>\n<p>Your [Unarmed Damage] die becomes a d8.</p>\n<p>You gain the Expansion Crash benefit from Akimichi clan Hijutsu you cast.</p>\n<p>Your melee attacks gain the Reach property if it didn’t already. If it did, increase the ranks of Reach by +1. This increases to +2 at 7th and +3 at 15th levels.</p>\n<p>When you deal damage with an opportunity attack, the affected creature must make a Strength saving throw vs your highest save DC, being knocked prone and Dazed on a failed save.</p>\n<p>Beginning at 7th level, if you do not have the Extra Attack class feature, you can attack twice while in this stance when you take the Attack action.</p>",
     "source": {
       "book": "Tsunade's Studies Compendium",
       "page": "",
@@ -29,6 +37,42 @@
     ],
     "clan": "akimichi",
     "featureType": "passive",
-    "requirement": "Akimichi clan"
+    "requirement": "Akimichi clan",
+    "activities": [
+      {
+        "id": "n5erzb5BA625jKQT",
+        "type": "save",
+        "label": "Opportunity attack: crash",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          },
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "Your opportunity attack deals damage. Failure: Prone and Dazed.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "unarmedDie": "1d8"
   }
 }

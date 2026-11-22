@@ -17,6 +17,130 @@
         "cost": "10 Chakra",
         "keywords": "Hijutsu, Taijutsu",
         "components": "CM, M"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5ePjmJsz6uSiaUe",
+              "type": "attack",
+              "label": "Gentle Palm Flux",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Move and attack a different hostile creature each time until your movement is spent (the last at 0 movement: advantage).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (1d8)",
+                    "type": "chakra"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ecAUspI8DY22W3",
+              "type": "save",
+              "label": "Eight Trigram: distortion",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "hyuga-network-distortion",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Network Distortion"
+                }
+              ],
+              "text": "Each creature hit. Failure: 2 ranks of Network Distortion; failing by 5: +10 feet of movement for you.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ePjmJsz6uSiaUe",
+              "type": "attack",
+              "label": "Gentle Palm Flux",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Move and attack a different hostile creature each time until your movement is spent (the last at 0 movement: advantage).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (2d8)",
+                    "type": "chakra"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ecAUspI8DY22W3",
+              "type": "save",
+              "label": "Eight Trigram: distortion",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "hyuga-network-distortion",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Network Distortion"
+                }
+              ],
+              "text": "Each creature hit. Failure: 2 ranks of Network Distortion; failing by 5: +10 feet of movement for you.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Eight Trigram",
+        "appliesTo": {
+          "namePrefix": "Gentle Palm Flux"
+        },
+        "note": "In your Gentle Fist stance: creatures hit save against Network Distortion."
       }
     }
   },
@@ -107,7 +231,62 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ePjmJsz6uSiaUe",
+        "type": "attack",
+        "label": "Gentle Palm Flux",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Move and attack a different hostile creature each time until your movement is spent (the last at 0 movement: advantage).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "chakra"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5ecAUspI8DY22W3",
+        "type": "save",
+        "label": "Eight Trigram: distortion",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "hyuga-network-distortion",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Network Distortion"
+          }
+        ],
+        "text": "Each creature hit. Failure: 2 ranks of Network Distortion; failing by 5: +10 feet of movement for you.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

@@ -17,6 +17,14 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Taijutsu, Clash, Barrier",
         "components": "CM, M"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Eight Trigram",
+        "appliesTo": {
+          "namePrefix": "Palm Rotation"
+        },
+        "note": "In your Gentle Fist stance: 6 DR for the duration."
       }
     }
   },
@@ -109,7 +117,53 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eD3eqi8PSpFAU2",
+        "type": "effect",
+        "label": "Palm Rotation",
+        "effect": {
+          "name": "Palm Rotation",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "4",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Reaction: +4 AC (against the trigger too) and advantage on Strength and Dexterity saves against jutsu until the start of your next turn.",
+        "activation": "reaction"
+      },
+      {
+        "id": "n5erAlOBouQSXn6U",
+        "type": "save",
+        "label": "Palm Rotation: push",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Creatures within 5 feet. Failure: the damage and pushed 5 feet.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d8",
+              "type": "force"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

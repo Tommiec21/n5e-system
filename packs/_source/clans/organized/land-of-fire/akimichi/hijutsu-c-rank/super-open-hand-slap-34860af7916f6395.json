@@ -17,7 +17,273 @@
         "cost": "9 Chakra or 5 Calories",
         "keywords": "Hijutsu, Taijutsu, Clash",
         "components": "CM, M"
-      }
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eDkPHbBfSf1JKc",
+              "type": "attack",
+              "label": "Super Open Hand Slap",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (1d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ez0FRkzFh9Y4eC",
+              "type": "save",
+              "label": "Slap: shockwave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Hit or miss, creatures but the target within 10 feet of it. Failure: the damage; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (1d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eQKfUgtwDBVX60",
+              "type": "save",
+              "label": "Expansion Crash: target",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "On a hit. Failure: pushed 20 feet and Dazed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eDkPHbBfSf1JKc",
+              "type": "attack",
+              "label": "Super Open Hand Slap",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (2d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ez0FRkzFh9Y4eC",
+              "type": "save",
+              "label": "Slap: shockwave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Hit or miss, creatures but the target within 10 feet of it. Failure: the damage; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (2d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eQKfUgtwDBVX60",
+              "type": "save",
+              "label": "Expansion Crash: target",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "On a hit. Failure: pushed 20 feet and Dazed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eDkPHbBfSf1JKc",
+              "type": "attack",
+              "label": "Super Open Hand Slap",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (3d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ez0FRkzFh9Y4eC",
+              "type": "save",
+              "label": "Slap: shockwave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Hit or miss, creatures but the target within 10 feet of it. Failure: the damage; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (3d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eQKfUgtwDBVX60",
+              "type": "save",
+              "label": "Expansion Crash: target",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "On a hit. Failure: pushed 20 feet and Dazed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Pay with Calories (5)",
+          "appliesTo": {
+            "namePrefix": "Super Open Hand Slap"
+          },
+          "note": "Cast it for 5 Calories instead of chakra (its upcast may add Calories: spend them by hand).",
+          "costDelta": "zero",
+          "cost": {
+            "pool": "calories",
+            "amount": 5
+          }
+        },
+        {
+          "label": "Expansion Crash",
+          "appliesTo": {
+            "namePrefix": "Super Open Hand Slap"
+          },
+          "note": "In your Expansion Technique stance: on a hit, the target saves Dexterity: pushed 20 feet and Dazed on a failure."
+        }
+      ]
     }
   },
   "ownership": {
@@ -108,7 +374,86 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eDkPHbBfSf1JKc",
+        "type": "attack",
+        "label": "Super Open Hand Slap",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "bludgeoning"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5ez0FRkzFh9Y4eC",
+        "type": "save",
+        "label": "Slap: shockwave",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Hit or miss, creatures but the target within 10 feet of it. Failure: the damage; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eQKfUgtwDBVX60",
+        "type": "save",
+        "label": "Expansion Crash: target",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "On a hit. Failure: pushed 20 feet and Dazed.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

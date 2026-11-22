@@ -1,0 +1,1673 @@
+{
+  "clan": "akimichi",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "akimichi-ballistic-element-wheel": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e61EBv2k6QVCP5",
+          "type": "roll",
+          "label": "Ballistic Element Wheel",
+          "roll": {
+            "formula": "1d20 + max(@abilities.str.mod, @abilities.con.mod)",
+            "note": "With an Akimichi Hijutsu's melee attack on a creature under (or clashing with) a nature release jutsu: a Strength or Constitution check against its jutsu save DC; success dispels it (the oldest or highest rank of several)."
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Pay with Calories (1)",
+          "appliesTo": {
+            "namePrefix": "Ballistic Element Wheel"
+          },
+          "note": "Cast it for 1 Calories instead of chakra (its upcast may add Calories: spend them by hand).",
+          "costDelta": "zero",
+          "cost": {
+            "pool": "calories",
+            "amount": 1
+          }
+        },
+        {
+          "label": "Expansion Crash",
+          "appliesTo": {
+            "namePrefix": "Ballistic Element Wheel"
+          },
+          "note": "In your Expansion Technique stance: add your proficiency bonus to the check."
+        }
+      ]
+    },
+    "akimichi-body-fat-cushion": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e2Mwu0IwTtATTD",
+          "type": "effect",
+          "label": "Body Fat Cushion",
+          "effect": {
+            "name": "Body Fat Cushion",
+            "target": "self",
+            "changes": [
+              {
+                "key": "n5e.immune",
+                "value": "bludgeoning",
+                "mode": 2
+              },
+              {
+                "key": "n5e.immune",
+                "value": "earth",
+                "mode": 2
+              },
+              {
+                "key": "n5e.immune",
+                "value": "cold",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Reaction, until the start of your next turn: immunity to bludgeoning, earth and cold; resistance to all others but mental, lightning and piercing (add them).",
+          "activation": "reaction"
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Pay with Calories (2)",
+          "appliesTo": {
+            "namePrefix": "Body Fat Cushion"
+          },
+          "note": "Cast it for 2 Calories instead of chakra (its upcast may add Calories: spend them by hand).",
+          "costDelta": "zero",
+          "cost": {
+            "pool": "calories",
+            "amount": 2
+          }
+        },
+        {
+          "label": "Expansion Crash",
+          "appliesTo": {
+            "namePrefix": "Body Fat Cushion"
+          },
+          "note": "In your Expansion Technique stance: allies in a 10-foot radius get it until the end of the turn."
+        }
+      ]
+    },
+    "akimichi-butterfly-bullet-bomb": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5etHFxT9unViEFf",
+          "type": "attack",
+          "label": "Butterfly Bullet Bomb",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Needs Butterfly Mode or Caloric Ignition.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "7d12",
+                "type": "bludgeoning"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5e5e0mNOwDfXsZh",
+          "type": "save",
+          "label": "Butterfly Bullet Bomb: cone",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            }
+          ],
+          "text": "A 30-foot cone from the target. Failure: half the damage dealt, pushed 20 feet and Staggered.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eHVLeBLIXw8BiV",
+          "type": "roll",
+          "label": "Expansion Crash: Calories",
+          "roll": {
+            "formula": "",
+            "note": "Spend any Calories: 2 (+2 damage per Calorie), 4 (advantage), 6 (the target saves Strength or Stunned), 8 (saves at disadvantage), 10 (failures Stunned; no Calories until a long rest)."
+          },
+          "cost": {
+            "pool": "calories",
+            "choose": true
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "S": [
+              {
+                "id": "n5etHFxT9unViEFf",
+                "type": "attack",
+                "label": "Butterfly Bullet Bomb",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Needs Butterfly Mode or Caloric Ignition.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(7d12) + (1d12)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5e5e0mNOwDfXsZh",
+                "type": "save",
+                "label": "Butterfly Bullet Bomb: cone",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "A 30-foot cone from the target. Failure: half the damage dealt, pushed 20 feet and Staggered.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eHVLeBLIXw8BiV",
+                "type": "roll",
+                "label": "Expansion Crash: Calories",
+                "roll": {
+                  "formula": "",
+                  "note": "Spend any Calories: 2 (+2 damage per Calorie), 4 (advantage), 6 (the target saves Strength or Stunned), 8 (saves at disadvantage), 10 (failures Stunned; no Calories until a long rest)."
+                },
+                "cost": {
+                  "pool": "calories",
+                  "choose": true
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "akimichi-butterfly-mode": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eOl8B9ECWoCTQF",
+          "type": "effect",
+          "label": "Butterfly Mode",
+          "effect": {
+            "name": "Butterfly Mode",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action (or with entering your stance or Caloric Ignition), 1 minute, once per rest: two of Everburn Engine (1 Calorie at the start of each turn), Unfurled Strength ([Unarmed Damage] 2dX), Hulking Beauty (Shove, Grapple or Trip deal [Unarmed]+[Unarmed] or [Weapon]+[Unarmed]), Overstimulated Network (cast non-Akimichi jutsu for Calories: D 2 ... S 6).",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5ev0vXatSILWApL",
+          "type": "roll",
+          "label": "Everburn Engine",
+          "roll": {
+            "formula": "",
+            "note": "Start of each of your turns."
+          },
+          "cost": {
+            "pool": "calories",
+            "amount": 1,
+            "gain": true
+          }
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "rest",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      }
+    },
+    "akimichi-caloric-arts": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZR8rI7R227Vg0",
+          "type": "roll",
+          "label": "Fat Burner",
+          "roll": {
+            "formula": "",
+            "note": "An Action HS jutsu cast as a Bonus action: by rank (D/C 2, B/A 3, S 4)."
+          },
+          "cost": {
+            "pool": "calories",
+            "choose": true
+          }
+        },
+        {
+          "id": "n5etsejvjHBWdjYU",
+          "type": "heal",
+          "label": "Caloric Burst",
+          "heal": {
+            "formula": "1d10 + @abilities.con.mod",
+            "pool": "hp"
+          },
+          "text": "Bonus action, up to 3 Calories: roll that many Hit Dice (not spent) + your Constitution modifier (your Hit Die: adjust the die).",
+          "activation": "bonus",
+          "cost": {
+            "pool": "calories",
+            "choose": true
+          }
+        },
+        {
+          "id": "n5eu3wFlu3ogOYbs",
+          "type": "effect",
+          "label": "Caloric Ignition",
+          "effect": {
+            "name": "Caloric Ignition",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "caloric-ignition"
+          },
+          "text": "Bonus action, 2 Calories and an Akimichi food pill: 1 minute, then 10 minutes to recover.",
+          "activation": "bonus",
+          "cost": {
+            "pool": "calories",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5esRNWrDM5c0vrq",
+          "type": "heal",
+          "label": "Fat Rolls",
+          "heal": {
+            "formula": "4",
+            "pool": "tempHp"
+          },
+          "text": "Reaction to damage, up to 4 Calories: 4 temporary hit points per Calorie (multiply it).",
+          "activation": "reaction",
+          "cost": {
+            "pool": "calories",
+            "choose": true
+          }
+        },
+        {
+          "id": "n5eOgLYy4xG1t3JT",
+          "type": "roll",
+          "label": "Insular Fat",
+          "roll": {
+            "formula": "",
+            "note": "Saving against a Physical condition: advantage."
+          },
+          "cost": {
+            "pool": "calories",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5ewrbEwzeTFyTNR",
+          "type": "roll",
+          "label": "Metabolic Manipulation",
+          "roll": {
+            "formula": "",
+            "note": "Start of your turn: one Physical condition without [Persist] drops a rank."
+          },
+          "cost": {
+            "pool": "calories",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5eEaU45eUrg2BeP",
+          "type": "roll",
+          "label": "Retaliating Knuckle Sandwich",
+          "roll": {
+            "formula": "",
+            "note": "In melee reach of a hostile creature that damages an ally: an attack of opportunity at no reaction cost."
+          },
+          "cost": {
+            "pool": "calories",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5enrzsrwBbYfPoY",
+          "type": "save",
+          "label": "Rolling Shoulders",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "Moving, 10 feet of movement: push through an enemy's space (once per turn per creature). Failure: pushed 10 feet and Prone.",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "calories",
+            "amount": 2
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "calories",
+          "label": "Calories",
+          "value": 0,
+          "max": "1 + @prof",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "rest",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Calories: 1 + proficiency bonus (the pool), back on a rest. Two Caloric Arts (two more at 11th); spend Calories on them or on Hijutsu. Insular Fat also treats Elemental conditions as Physical for you. (Its copy of Caloric Ignition's Amp is removed, as King Q-E12.)"
+        }
+      ]
+    },
+    "akimichi-caloric-recharge": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e4c9BSoJ6LTxqB",
+          "type": "heal",
+          "label": "Caloric Recharge",
+          "heal": {
+            "formula": "1d8 + 1",
+            "pool": "hp"
+          },
+          "text": "Bonus action, up to 10 Calories: per Calorie (+2 per rank above B; roll once per Calorie).",
+          "activation": "bonus",
+          "cost": {
+            "pool": "calories",
+            "choose": true
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Expansion Crash",
+          "appliesTo": {
+            "namePrefix": "Caloric Recharge"
+          },
+          "note": "In your stance: heal a willing creature you can reach instead (1 Action)."
+        }
+      ]
+    },
+    "akimichi-empty-crash": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eHPInSUBDvNwBC",
+          "type": "attack",
+          "label": "Empty Crash",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "bludgeoning"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eHPInSUBDvNwBC",
+                "type": "attack",
+                "label": "Empty Crash",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (1d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eHPInSUBDvNwBC",
+                "type": "attack",
+                "label": "Empty Crash",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (2d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eHPInSUBDvNwBC",
+                "type": "attack",
+                "label": "Empty Crash",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (3d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eHPInSUBDvNwBC",
+                "type": "attack",
+                "label": "Empty Crash",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (4d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Pay with Calories (2)",
+          "appliesTo": {
+            "namePrefix": "Empty Crash"
+          },
+          "note": "Cast it for 2 Calories instead of chakra (its upcast may add Calories: spend them by hand).",
+          "costDelta": "zero",
+          "cost": {
+            "pool": "calories",
+            "amount": 2
+          }
+        },
+        {
+          "label": "Expansion Crash",
+          "appliesTo": {
+            "namePrefix": "Empty Crash"
+          },
+          "note": "In your Expansion Technique stance: a 30-foot cube by you or the target becomes difficult terrain."
+        }
+      ]
+    },
+    "akimichi-expansion-technique": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus action, in combat: enter the Expansion Technique stance (the clan's stance item)."
+        }
+      ]
+    },
+    "akimichi-full-body-expansion": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eHACyI0v1YFWTC",
+          "type": "effect",
+          "label": "Full-Body Expansion",
+          "effect": {
+            "name": "Full-Body Expansion",
+            "target": "self",
+            "changes": [
+              {
+                "key": "n5e.damage.unarmed",
+                "value": "1d6",
+                "mode": 2
+              },
+              {
+                "key": "n5e.damage.weapon",
+                "value": "1d6",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Concentration: Large (A-Rank: Huge, 2d6); advantage on Strength checks and saves; unarmed and weapon damage +1d6."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Pay with Calories (4)",
+          "appliesTo": {
+            "namePrefix": "Full-Body-Expansion"
+          },
+          "note": "Cast it for 4 Calories instead of chakra (its upcast may add Calories: spend them by hand).",
+          "costDelta": "zero",
+          "cost": {
+            "pool": "calories",
+            "amount": 4
+          }
+        },
+        {
+          "label": "Expansion Crash",
+          "appliesTo": {
+            "namePrefix": "Full-Body-Expansion"
+          },
+          "note": "In your Expansion Technique stance: unarmed and weapon damage die +1 step."
+        }
+      ]
+    },
+    "akimichi-human-boulder": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5egfJGedFuH27GP",
+          "type": "attack",
+          "label": "Human Boulder",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Move into its space: [Unarmed Damage] + 2d12, without your ability modifier (B-Rank: piercing, with it); it's moved 5 feet.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d12",
+                "type": "bludgeoning"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eDrOPQWDziYVFH",
+          "type": "save",
+          "label": "Human Boulder: in your path",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            }
+          ],
+          "text": "Each creature you pass through, once. Failure: the damage; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d12",
+                "type": "bludgeoning"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its upcast says above C-Rank (it's D-Rank)."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5egfJGedFuH27GP",
+                "type": "attack",
+                "label": "Human Boulder",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Move into its space: [Unarmed Damage] + 2d12, without your ability modifier (B-Rank: piercing, with it); it's moved 5 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (1d12)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eDrOPQWDziYVFH",
+                "type": "save",
+                "label": "Human Boulder: in your path",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "Each creature you pass through, once. Failure: the damage; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (1d12)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5egfJGedFuH27GP",
+                "type": "attack",
+                "label": "Human Boulder",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Move into its space: [Unarmed Damage] + 2d12, without your ability modifier (B-Rank: piercing, with it); it's moved 5 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (2d12)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eDrOPQWDziYVFH",
+                "type": "save",
+                "label": "Human Boulder: in your path",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "Each creature you pass through, once. Failure: the damage; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (2d12)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5egfJGedFuH27GP",
+                "type": "attack",
+                "label": "Human Boulder",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Move into its space: [Unarmed Damage] + 2d12, without your ability modifier (B-Rank: piercing, with it); it's moved 5 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (3d12)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eDrOPQWDziYVFH",
+                "type": "save",
+                "label": "Human Boulder: in your path",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "Each creature you pass through, once. Failure: the damage; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (3d12)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5egfJGedFuH27GP",
+                "type": "attack",
+                "label": "Human Boulder",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Move into its space: [Unarmed Damage] + 2d12, without your ability modifier (B-Rank: piercing, with it); it's moved 5 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (4d12)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eDrOPQWDziYVFH",
+                "type": "save",
+                "label": "Human Boulder: in your path",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "Each creature you pass through, once. Failure: the damage; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (4d12)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Pay with Calories (3)",
+          "appliesTo": {
+            "namePrefix": "Human Boulder"
+          },
+          "note": "Cast it for 3 Calories instead of chakra (its upcast may add Calories: spend them by hand).",
+          "costDelta": "zero",
+          "cost": {
+            "pool": "calories",
+            "amount": 3
+          }
+        },
+        {
+          "label": "Expansion Crash",
+          "appliesTo": {
+            "namePrefix": "Human Boulder"
+          },
+          "note": "In your Expansion Technique stance: a critical hit, or failing by 5: Staggered."
+        }
+      ]
+    },
+    "akimichi-human-bullet-yo-yo": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezWZ06LORiWMk5",
+          "type": "roll",
+          "label": "Human Bullet Yo-Yo",
+          "roll": {
+            "formula": "",
+            "note": "With Human Boulder: one or two allies spend their Reaction, each picking one (two if they know Shadow Possession, Mind Body Transfer or Mind Detection): Target (advantage), Bounce Back (two targets), Fling (+30 movement), Bowl Over (+1 save per creature). Expansion Crash: Human Boulder's Calories are refunded (once per 10 minutes)."
+          }
+        }
+      ]
+    },
+    "akimichi-lunch-breaks": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eg6PFt6jHMjeUd",
+          "type": "heal",
+          "label": "Lunch Break",
+          "heal": {
+            "formula": "lvl(7:3d6,11:4d6,15:5d6)",
+            "pool": "hp"
+          },
+          "text": "10 minutes, once per rest: you and every ally who joins."
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "rest",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      }
+    },
+    "akimichi-multi-size-arm-missile": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e4FdTRU6n7Pk13",
+          "type": "save",
+          "label": "Multi-Size Arm Missile",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            },
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            },
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            }
+          ],
+          "text": "A 30-foot line (Expansion Crash: a 30-foot cone). Failure: [Unarmed Damage] + 2d8, Bruised, pushed 10 feet and Prone (A-Rank: Staggered); success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d8",
+                "type": "bludgeoning"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5e4FdTRU6n7Pk13",
+                "type": "save",
+                "label": "Multi-Size Arm Missile",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  },
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "A 30-foot line (Expansion Crash: a 30-foot cone). Failure: [Unarmed Damage] + 2d8, Bruised, pushed 10 feet and Prone (A-Rank: Staggered); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (1d8)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5e4FdTRU6n7Pk13",
+                "type": "save",
+                "label": "Multi-Size Arm Missile",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  },
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "A 30-foot line (Expansion Crash: a 30-foot cone). Failure: [Unarmed Damage] + 2d8, Bruised, pushed 10 feet and Prone (A-Rank: Staggered); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (2d8)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e4FdTRU6n7Pk13",
+                "type": "save",
+                "label": "Multi-Size Arm Missile",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  },
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "A 30-foot line (Expansion Crash: a 30-foot cone). Failure: [Unarmed Damage] + 2d8, Bruised, pushed 10 feet and Prone (A-Rank: Staggered); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (3d8)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Pay with Calories (4)",
+          "appliesTo": {
+            "namePrefix": "Multi-Size Arm Missile"
+          },
+          "note": "Cast it for 4 Calories instead of chakra (its upcast may add Calories: spend them by hand).",
+          "costDelta": "zero",
+          "cost": {
+            "pool": "calories",
+            "amount": 4
+          }
+        },
+        {
+          "label": "Expansion Crash",
+          "appliesTo": {
+            "namePrefix": "Multi-Size Arm Missile"
+          },
+          "note": "In your Expansion Technique stance: Self (30-foot cone)."
+        }
+      ]
+    },
+    "akimichi-seismic-bounce": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eCWXveeAu3KiTU",
+          "type": "save",
+          "label": "Seismic Bounce",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "In your stance, moving 5+ feet while casting an Akimichi Hijutsu, 10 feet of movement: creatures within 10 feet (allies you warn with your Bonus action are immune). Failure: Prone and three times your [Unarmed] or [Weapon Damage] bludgeoning. Then not until the end of your next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "akimichi-stance-expansion-technique": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5erzb5BA625jKQT",
+          "type": "save",
+          "label": "Opportunity attack: crash",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            },
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            }
+          ],
+          "text": "Your opportunity attack deals damage. Failure: Prone and Dazed.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "system": {
+        "unarmedDie": "1d8"
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Expansion Technique Taijutsu stance (its text is Expansion Technique's, as King Q-E9): [Unarmed Damage] d8; Akimichi Hijutsu gain Expansion Crash (cast dialog options); melee attacks gain Reach (+1 rank if they had it; +2 at 7th, +3 at 15th); an opportunity attack's damage forces the save below. At 7th, without Extra Attack, the Attack action attacks twice."
+        }
+      ]
+    },
+    "akimichi-super-open-hand-slap": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eDkPHbBfSf1JKc",
+          "type": "attack",
+          "label": "Super Open Hand Slap",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d8",
+                "type": "bludgeoning"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5ez0FRkzFh9Y4eC",
+          "type": "save",
+          "label": "Slap: shockwave",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Hit or miss, creatures but the target within 10 feet of it. Failure: the damage; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d8",
+                "type": "bludgeoning"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eQKfUgtwDBVX60",
+          "type": "save",
+          "label": "Expansion Crash: target",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            }
+          ],
+          "text": "On a hit. Failure: pushed 20 feet and Dazed.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eDkPHbBfSf1JKc",
+                "type": "attack",
+                "label": "Super Open Hand Slap",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (1d8)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5ez0FRkzFh9Y4eC",
+                "type": "save",
+                "label": "Slap: shockwave",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Hit or miss, creatures but the target within 10 feet of it. Failure: the damage; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (1d8)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eQKfUgtwDBVX60",
+                "type": "save",
+                "label": "Expansion Crash: target",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  }
+                ],
+                "text": "On a hit. Failure: pushed 20 feet and Dazed.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eDkPHbBfSf1JKc",
+                "type": "attack",
+                "label": "Super Open Hand Slap",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (2d8)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5ez0FRkzFh9Y4eC",
+                "type": "save",
+                "label": "Slap: shockwave",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Hit or miss, creatures but the target within 10 feet of it. Failure: the damage; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (2d8)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eQKfUgtwDBVX60",
+                "type": "save",
+                "label": "Expansion Crash: target",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  }
+                ],
+                "text": "On a hit. Failure: pushed 20 feet and Dazed.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eDkPHbBfSf1JKc",
+                "type": "attack",
+                "label": "Super Open Hand Slap",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (3d8)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5ez0FRkzFh9Y4eC",
+                "type": "save",
+                "label": "Slap: shockwave",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Hit or miss, creatures but the target within 10 feet of it. Failure: the damage; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (3d8)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eQKfUgtwDBVX60",
+                "type": "save",
+                "label": "Expansion Crash: target",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  }
+                ],
+                "text": "On a hit. Failure: pushed 20 feet and Dazed.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Pay with Calories (5)",
+          "appliesTo": {
+            "namePrefix": "Super Open Hand Slap"
+          },
+          "note": "Cast it for 5 Calories instead of chakra (its upcast may add Calories: spend them by hand).",
+          "costDelta": "zero",
+          "cost": {
+            "pool": "calories",
+            "amount": 5
+          }
+        },
+        {
+          "label": "Expansion Crash",
+          "appliesTo": {
+            "namePrefix": "Super Open Hand Slap"
+          },
+          "note": "In your Expansion Technique stance: on a hit, the target saves Dexterity: pushed 20 feet and Dazed on a failure."
+        }
+      ]
+    }
+  }
+}

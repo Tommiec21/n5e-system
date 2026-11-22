@@ -17,6 +17,303 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Taijutsu",
         "components": "CM, M"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eC1QaKmS9Q8k8e",
+              "type": "attack",
+              "label": "64 Palms",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "One attack roll against each creature you choose in your unarmed reach: [Unarmed Damage] + 3d8 chakra; half the chakra also as force. B-Rank: a second attack; struck twice: Disrupt / Block III.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (1d8)",
+                    "type": "chakra"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5e9kRNlYoSIqbXl",
+              "type": "save",
+              "label": "Eight Trigram: Disrupt / Block",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "hyuga-network-distortion",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Network Distortion"
+                },
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Failure, pick: Disrupt (2 ranks of Network Distortion) or Block (2 ranks of Weakened).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eLseK436MHrpxp",
+              "type": "save",
+              "label": "Eight Trigram: Disrupt / Block III (struck twice, B-Rank)",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "hyuga-network-distortion",
+                  "kind": "condition",
+                  "ranks": 3,
+                  "label": "Network Distortion"
+                },
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 3,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Failure, pick: Disrupt (3 ranks of Network Distortion) or Block (3 ranks of Weakened).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eC1QaKmS9Q8k8e",
+              "type": "attack",
+              "label": "64 Palms",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "One attack roll against each creature you choose in your unarmed reach: [Unarmed Damage] + 3d8 chakra; half the chakra also as force. B-Rank: a second attack; struck twice: Disrupt / Block III.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (2d8)",
+                    "type": "chakra"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5e9kRNlYoSIqbXl",
+              "type": "save",
+              "label": "Eight Trigram: Disrupt / Block",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "hyuga-network-distortion",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Network Distortion"
+                },
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Failure, pick: Disrupt (2 ranks of Network Distortion) or Block (2 ranks of Weakened).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eLseK436MHrpxp",
+              "type": "save",
+              "label": "Eight Trigram: Disrupt / Block III (struck twice, B-Rank)",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "hyuga-network-distortion",
+                  "kind": "condition",
+                  "ranks": 3,
+                  "label": "Network Distortion"
+                },
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 3,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Failure, pick: Disrupt (3 ranks of Network Distortion) or Block (3 ranks of Weakened).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eC1QaKmS9Q8k8e",
+              "type": "attack",
+              "label": "64 Palms",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "One attack roll against each creature you choose in your unarmed reach: [Unarmed Damage] + 3d8 chakra; half the chakra also as force. B-Rank: a second attack; struck twice: Disrupt / Block III.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (3d8)",
+                    "type": "chakra"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5e9kRNlYoSIqbXl",
+              "type": "save",
+              "label": "Eight Trigram: Disrupt / Block",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "hyuga-network-distortion",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Network Distortion"
+                },
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Failure, pick: Disrupt (2 ranks of Network Distortion) or Block (2 ranks of Weakened).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eLseK436MHrpxp",
+              "type": "save",
+              "label": "Eight Trigram: Disrupt / Block III (struck twice, B-Rank)",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "hyuga-network-distortion",
+                  "kind": "condition",
+                  "ranks": 3,
+                  "label": "Network Distortion"
+                },
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 3,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Failure, pick: Disrupt (3 ranks of Network Distortion) or Block (3 ranks of Weakened).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Eight Trigram",
+        "appliesTo": {
+          "namePrefix": "8-Trigrams 64 Palms"
+        },
+        "note": "In your Gentle Fist stance: the Disrupt / Block save."
       }
     }
   },
@@ -107,7 +404,101 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eC1QaKmS9Q8k8e",
+        "type": "attack",
+        "label": "64 Palms",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "One attack roll against each creature you choose in your unarmed reach: [Unarmed Damage] + 3d8 chakra; half the chakra also as force. B-Rank: a second attack; struck twice: Disrupt / Block III.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "chakra"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5e9kRNlYoSIqbXl",
+        "type": "save",
+        "label": "Eight Trigram: Disrupt / Block",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "hyuga-network-distortion",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Network Distortion"
+          },
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Weakened"
+          }
+        ],
+        "text": "Failure, pick: Disrupt (2 ranks of Network Distortion) or Block (2 ranks of Weakened).",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eLseK436MHrpxp",
+        "type": "save",
+        "label": "Eight Trigram: Disrupt / Block III (struck twice, B-Rank)",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "hyuga-network-distortion",
+            "kind": "condition",
+            "ranks": 3,
+            "label": "Network Distortion"
+          },
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 3,
+            "label": "Weakened"
+          }
+        ],
+        "text": "Failure, pick: Disrupt (3 ranks of Network Distortion) or Block (3 ranks of Weakened).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

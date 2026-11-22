@@ -119,6 +119,19 @@ Review tables: `docs/clans/jinzo-automation.md`, `jugo-automation.md`, `kashu-au
 - **Past rulings applied:** copied Amp text removed from Synthetic Battle Aura and Web Walker (Q-E12).
 - **King's Q-E17 and Q-E18 (in this release):** Hydration's other triggers regain 1; Vesper's duplicate "Claws of the Night" stance is deleted (its level-7 grant removed; Umbral Monarch's Beast Claws points at Claws of Night).
 
+## E6 Land of Fire I (0.84.0-alpha.1)
+
+Review tables: `docs/clans/aburame-automation.md`, `akimichi-automation.md`, `hatake-automation.md`, `hyuga-automation.md`, `iburi-automation.md`, `inuzuka-automation.md`, `kurama-automation.md` (143 items: 109 partly automated, 34 notes only).
+
+- **Aburame:** the Swarm Chakra stance; each Hijutsu's "Swarm active" as a cast dialog option; Kikaichu Swarm attacks; Festering Brood; Grand Veil's Plague Swarm and Queen's Call; Beetles and Mosquitoes; every Hijutsu.
+- **Akimichi:** Calories (pool) with every Caloric Art; the Expansion Technique stance; each Hijutsu's "Pay with Calories" (cost zero, spends Calories) and Expansion Crash as cast dialog options; Lunch Breaks; Butterfly Mode; Seismic Bounce; every Hijutsu.
+- **Hatake:** White Chakra and Command Dice (pools) with every White Wolf Art, Pack Tactic and spend; the White Wolf Amp; Captain, Hatake.
+- **Hyūga:** the Byakugan; the Gentle Fist stance; each Hijutsu's Eight Trigram as a cast dialog option with the Disrupt / Block saves; every Dogma; the Eight Trigrams features; Heavenly Technique; every Hijutsu.
+- **Iburi:** the Smoke Style stance with Dancing Cinder, Fume Brawler, Cinder Bow and Smoke Chains; Smoke Style cast dialog options; Will-O-Wisps; Aberration of Smoke; Ashen Monarch; Black Lung; every Hijutsu.
+- **Inuzuka:** the Four-Legs stance; the Feral Amps; each Tag-Team Hijutsu's Nin-Dog effect as a cast dialog option; Two-Headed Wolf; every Hijutsu. The Nin-Dog and Two-Headed Wolf stat blocks are held (H6, H7).
+- **Kurama:** Oni-Coils (pool); every Onijutsu as a cast dialog option on your Genjutsu (The Pain Is Real on damaging Action Ninjutsu, Taijutsu and Bukijutsu); Illusion Made Manifest; Well Rested; Inner Self. The Dream Walker's stat block is held (H8).
+- **Past rulings applied:** copied Amp text removed from Caloric Arts, Last to Move Loses, Savage Attacker and Déjà vu (Q-E12); the Akimichi, Hyūga and Inuzuka stance items hold their stance's own text (Q-E9).
+
 ## Questions for King (nothing waits on them)
 
 - **Q-E5 Missing Bakuton Hijutsu:** answered (King 2026-11-21): their own items. Explosion Release: Clay Centipede and Chain Reaction Blitz are B-Rank Hijutsu (split out of Absolute Death Bombing's text, added to the clan's Hijutsu list; 0.79.1-alpha.1).
@@ -140,6 +153,8 @@ Review tables: `docs/clans/jinzo-automation.md`, `jugo-automation.md`, `kashu-au
 - **Q-E18 Vesper's two stance items:** answered (King 2026-11-21): "Yes." "Claws of the Night" is deleted (0.83.0-alpha.1).
 - **Q-E19 Jinzo Bio-Pet:** answered (King 2026-11-22): "Hold them." Listed under Held stat blocks below.
 
+- **Q-E20 Aburame Parasitic Giant Insect:** "The affected creature takes 10d12 poison and chakra damage." Is that 10d12 poison plus 10d12 chakra, or one 10d12 roll dealt as both (or split)? The button rolls 10d12 poison for now.
+
 ## Held stat blocks (King 2026-11-22: "Hold them... I need to keep them together so I can give you the correct stat blocks.")
 
 Each is a note on its item until King gives its stat block; then it becomes a summon under Class & Clan Summons.
@@ -151,8 +166,11 @@ Each is a note on its item until King gives its stat block; then it becomes a su
 | H3 | Broodling | Tsuchigumo | Brood Mother's Hatching Brood (King of the Brood); Spider Art: Rain of Spiders | No stat block (the Brood Mother's is complete and built) | 0.83.0 (same as H1) |
 | H4 | Bio-Amphibian | Jinzo | Bio-Bonded Pet | A stat block, traits and attacks (Tongue Lash, Oil Spit, Sticky Ground, Oil Burst), filed as option items under I've Become, Me | Q-E19 (0.83.0) |
 | H5 | Bio-Serpent | Jinzo | Bio-Bonded Pet | A stat block and traits filed under I've Become, Me; its Bite has no numbers | Q-E19 (0.83.0) |
+| H6 | Nin-Dog | Inuzuka | Beast Master (and every Tag-Team Hijutsu) | A stat block in Savage Attacker's text, with blank save bonuses; breeds and traits in Beast Master and Nin-Dog Traits | 0.84.0 |
+| H7 | Two-Headed Wolf | Inuzuka | Two-Headed Wolf | A stat block in its text; Intelligence, Wisdom and Charisma blank (Shared Mind) | 0.84.0 |
+| H8 | Dream Walker | Kurama | Dream Walker (and Lucid Dreams, Inner Self) | A stat block in its text with five types; save bonuses blank | 0.84.0 |
 
-Not held (built from complete stat blocks): Clay Spider, Bird, Centipede and Dragon (Bakuton); Blood Dragon (Chinoike); Steam Imp (Hozuki); Doki (Bandaged), (Claw) and (Club) (Kashu); Crystal Rabbit, Deer and Dragon (Shoton); Brood Mother (Tsuchigumo). Clans not built yet name stat blocks too (checked when their batch comes): Two-Headed Wolf (Inuzuka), Dream Walker, Inner Self, Wood Dragon (Land of Fire), Star Beast (Kujaku).
+Not held (built from complete stat blocks): Clay Spider, Bird, Centipede and Dragon (Bakuton); Blood Dragon (Chinoike); Steam Imp (Hozuki); Doki (Bandaged), (Claw) and (Club) (Kashu); Crystal Rabbit, Deer and Dragon (Shoton); Brood Mother (Tsuchigumo). Clans not built yet name stat blocks too (checked when their batch comes): Wood Dragon (Senju), Star Beast (Kujaku).
 
 ## Text issues (for the errata list)
 
@@ -178,6 +196,13 @@ Not held (built from complete stat blocks): Clay Spider, Bird, Centipede and Dra
 - Kashu: the three Doki stat blocks sit in Chains of Fantasia's text; Doki AC "+1 at 7th and 15th levels" (+1 each, or once?); Resonance Crown calls a melody "Overturn Burst" in Subsonic Pressure; Harmonic Songs have no option items (all in the feature).
 - Shoton: Crystal Prison "encasing a creature you touch within" (leftover); Crystal Dragon CHA +5 with save −5; Gods Crossing upcast "If this jutsu is cast at B-Rank or higher, you can cross".
 - Tsuchigumo: Master Silk Weaver holds the Brood Mother's stat block; Broodlings have no stat block; Web Walker held Arachnid's Amp (removed); Spiders Thread "even though full cover, though attacks through full cover at made".
+- Aburame: Festering Brood's parenthesis never closes; Insect Sphere "entrap creatures in a select creature"; Parasitic Insect Cloud "poisoned" (Envenomed?); Parasitic Giant Insect "than has", "pours"; Larva holds the Infested condition text.
+- Akimichi: the stance item held Seismic Bounce's text (fixed, Q-E9 ruling); Caloric Arts held Caloric Ignition's Amp (removed); Human Boulder's upcast says above C-Rank (it's D-Rank); Butterfly Bullet Bomb "Staggard".
+- Hatake: Last to Move Loses held White Wolf's Amp (removed); In/famous is printed inside Leaders Aura's option.
+- Hyūga: the stance item held Heavenly Technique's text (fixed, Q-E9 ruling); Grid Palm's upcast says above D-Rank (it's C-Rank); Gentle End "server internal damage"; 64 Palms "vs the AC the result against".
+- Iburi: Smoke Style "impossible to impossible to"; Chimney Dance "of the same time"; Incinerating Burst has no cost increase; Smoke Dragon's range is a 90-foot line, its text 60; Orbital Drop "uch" and an unfinished last sentence; Body Oxidation "you entire their body".
+- Inuzuka: the stance item held Beast Human Clone's text (fixed, Q-E9 ruling); Savage Attacker held Feral's Amp (removed) and the Nin-Dog's stat block (H6).
+- Kurama: Déjà vu held Well Rested's Amp (removed); Lucid Dreams: Elemental's Lightning Rope has no rank; Dream Walker's text lists the stat block before the feature.
 
 ## Progress log
 
@@ -193,3 +218,4 @@ Not held (built from complete stat blocks): Clay Spider, Bird, Centipede and Dra
 - 2026-11-21 King: "Q17. 1. Q18. Yes. Next batch." Claude: Hydration +1, duplicate Vesper stance deleted; E5 Land of Sound built (174 items), seven summons (Doki x3, Crystal Rabbit, Deer, Dragon, Brood Mother), rest "empty"; published 0.83.0-alpha.1. Q-E19 asked (checked earlier specs first).
 - 2026-11-22 King: "Hold them. Review the record to make sure all held stat blocks are there." Claude: Q-E19 held; scanned every clan item for stat block references; Held stat blocks table H1–H5 added.
 - 2026-11-22 Claude: published 0.83.1-alpha.1 (held notes point at H1–H5).
+- 2026-11-22 King: "Next batch" Claude: E6 Land of Fire I built (143 items); Nin-Dog, Two-Headed Wolf and Dream Walker added to the held stat blocks (H6–H8); Q-E9 and Q-E12 rulings applied; published 0.84.0-alpha.1. Q-E20 asked (checked earlier specs first).

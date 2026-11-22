@@ -201,3 +201,21 @@ test("STD6e E5 Land of Sound: every Jinzo, Jūgo, Kashu, Shoton and Tsuchigumo i
   const src = (await import("node:fs")).readFileSync(new URL("../module/rules/rest.mjs", import.meta.url), "utf8");
   assert.match(src, /r\.amount === "empty" \) v = 0/);
 });
+
+test("STD6e E6 Land of Fire I: every Aburame, Akimichi, Hatake, Hyūga, Iburi, Inuzuka and Kurama item reviewed", () => {
+  for ( const clan of ["aburame", "akimichi", "hatake", "hyuga", "iburi", "inuzuka", "kurama"] ) {
+    const t = clanTables().find(x => x.clan === clan);
+    assert.ok(t, clan);
+    for ( const id of Object.keys(t.features) ) assert.equal(item(clan, id).flags.n5e.reviewed, true, `${clan} ${id}`);
+  }
+  const pool = (clan, id, p) => item(clan, id).system.resourcePools.find(x => x.id === p);
+  assert.equal(pool("akimichi", "akimichi-caloric-arts", "calories").max, "1 + @prof");
+  assert.equal(pool("hatake", "hatake-pack-leader", "commandDice").recovery[0].on, "lr");
+  assert.equal(pool("kurama", "kurama-onijutsu", "oniCoils").max, "1 + @prof");
+  const pay = item("akimichi", "akimichi-empty-crash").flags.n5e.castOptions.find(o => o.label.startsWith("Pay with Calories"));
+  assert.equal(pay.costDelta, "zero");
+  assert.equal(item("kurama", "kurama-onijutsu-will-breaker").flags.n5e.castOption.appliesTo.discipline, "gen");
+  assert.equal(item("hyuga", "hyuga-stance-gentle-fist").system.unarmedDie, "1d8");
+  assert.match(item("inuzuka", "inuzuka-stance-four-legs").system.description, /drop down on all fours/);
+  assert.doesNotMatch(item("hatake", "hatake-last-to-move-loses").system.description, /#### White Wolf/);
+});

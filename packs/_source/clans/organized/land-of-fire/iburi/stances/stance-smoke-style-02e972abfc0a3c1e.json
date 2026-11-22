@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "iburi",
-      "sourceLine": 1104
+      "sourceLine": 1104,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Smoke Style chakra stance: alongside a Taijutsu or Bukijutsu stance; +5 speed (+10 at 7th, +15 at 15th; the variant effects add it). At 7th, without Extra Attack, the Attack action attacks twice. Iburi Hijutsu with a Smoke Style line have it as a cast dialog option."
+        }
+      ]
     }
   },
   "ownership": {
@@ -29,6 +36,86 @@
     ],
     "clan": "iburi",
     "featureType": "passive",
-    "requirement": "Iburi clan"
+    "requirement": "Iburi clan",
+    "activities": [
+      {
+        "id": "n5e6kCfshNm6VyF2",
+        "type": "effect",
+        "label": "Dancing Cinder",
+        "effect": {
+          "name": "Dancing Cinder",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "lvl(1:5,7:10,15:15)",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "Variant (swap as a Bonus action): the Cinder Bow; once per round an attack of opportunity without your reaction; creatures moving within 10 feet provoke.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5eTChKUn0mHE5Ra",
+        "type": "attack",
+        "label": "Cinder Bow",
+        "attack": {
+          "discipline": "highest",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "A Longbow with a d12 fire die using your Hijutsu Flexibility ability. Beating AC by 5, once per turn: a rank of Dazzled.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d12 + max(@abilities.con.mod, @abilities.int.mod)",
+              "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eCDZzWmbeZZHHO",
+        "type": "effect",
+        "label": "Fume Brawler",
+        "effect": {
+          "name": "Fume Brawler",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "lvl(1:5,7:10,15:15)",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "Variant: Smoke Chains; once per round Dash or Disengage free on your turn; a Fire jutsu or a passed Strength or Dexterity save lets you smoke-step 15 feet (opportunity attacks at disadvantage).",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5eRu59KSpMPhGxK",
+        "type": "attack",
+        "label": "Smoke Chains",
+        "attack": {
+          "discipline": "highest",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "A Whip with a d10 fire die using your Hijutsu Flexibility ability. Beating AC by 5, once per turn: a rank of Envenomed.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d10 + max(@abilities.con.mod, @abilities.int.mod)",
+              "type": "fire"
+            }
+          ]
+        }
+      }
+    ]
   }
 }

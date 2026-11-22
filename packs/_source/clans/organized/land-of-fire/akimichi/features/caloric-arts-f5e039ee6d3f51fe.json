@@ -9,7 +9,15 @@
   "flags": {
     "n5e": {
       "clanPackage": "akimichi",
-      "sourceLine": 688
+      "sourceLine": 688,
+      "ampCopyRemoved": "Caloric Ignition (King Q-E12)",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Calories: 1 + proficiency bonus (the pool), back on a rest. Two Caloric Arts (two more at 11th); spend Calories on them or on Hijutsu. Insular Fat also treats Elemental conditions as Physical for you. (Its copy of Caloric Ignition's Amp is removed, as King Q-E12.)"
+        }
+      ]
     }
   },
   "ownership": {
@@ -17,7 +25,7 @@
   },
   "system": {
     "identifier": "akimichi-caloric-arts",
-    "description": "<p>3rd Level Clan Feature</p>\n<p>Beginning at 3rd level you gain access to a reserve of energy called Calories that when spent enable you to perform a series of special abilities and techniques unique to you and your clansmen. You have a number of Calories equal to 1 + your proficiency bonus. As you spend calories, you become thinner and less plump, losing fat from around your body. You regain spent calories when you complete a rest.</p>\n<p>You can spend these Calories on your chosen Caloric Arts or Hijutsu you know. You gain 2 Caloric Arts when you gain this feature and an additional 2 at 11th level.</p>\n<p>Fat Burner</p>\n<p>When you cast a jutsu as an Action, that requires hand signs, you can spend Calories to augment that jutsu, allowing you to cast it faster than normal, allowing you to cast it as a Bonus action based on its rank.  (D-Rank/C-Rank: 2, B-Rank/A-Rank: 3, S-Rank: 4)</p>\n<p>Caloric Burst</p>\n<p>As a bonus action, you can spend up to 3 Calories to roll a number of Hit die, equal to the number of calories spent. You regain hit points equal to the result + your constitution modifier. This does not spend your rolled hit die.</p>\n<p>Caloric Ignition</p>\n<p>As a Bonus action, you can spend 2 Calories and consume an Akimichi food pill to enter your Caloric Ignition state. You remain in this state for 1 minute after which, you require 10 minutes to recover before you can reuse it.</p>\n<p>Fat Rolls</p>\n<p>| #### Caloric Ignition / Battle Amp / While in this state, you gain the following benefits; / Your Unarmed Damage die increase in size by 1 step to a max of d12. / You have a rank of Mastery on Strength based skill and ability checks. / While standing on the ground, you have advantage on checks and saves to resist being moved, knocked prone, grappled, restrained or Exhausted. |</p>\n<p>As a reaction, when you take damage, you can spend up to 4 Calories to redirect your fat to the impacted area, gaining +4 temporary hit points for each calorie spent.</p>\n<p>Insular Fat</p>\n<p>Elemental conditions are treated as Physical conditions for you. Also, when you would make a saving throw to resist gaining a Physical condition, you can spend 2 Calories to make the saving throw at advantage.</p>\n<p>Metabolic Manipulation</p>\n<p>At the beginning of your turns, you can spend 2 Calories to reduce the rank of one Physical condition you have by one, that doesn’t have the [Persist] tag.</p>\n<p>Retaliating Knuckle Sandwich</p>\n<p>While you are within melee range of a hostile creature and they deal damage to an allied creature you can spend 1 Calorie to make an attack of opportunity against them at no reaction cost.</p>\n<p>Rolling Shoulders</p>\n<p>While moving, you can spend 2 Calories and 10 feet of your remaining movement to push through an enemies space. If you do, they must make a Dexterity saving throw vs your highest Jutsu save DC, being pushed 10 feet and knocked prone. You can only affect a creature with this effect once per turn.</p>",
+    "description": "<p>3rd Level Clan Feature</p>\n<p>Beginning at 3rd level you gain access to a reserve of energy called Calories that when spent enable you to perform a series of special abilities and techniques unique to you and your clansmen. You have a number of Calories equal to 1 + your proficiency bonus. As you spend calories, you become thinner and less plump, losing fat from around your body. You regain spent calories when you complete a rest.</p>\n<p>You can spend these Calories on your chosen Caloric Arts or Hijutsu you know. You gain 2 Caloric Arts when you gain this feature and an additional 2 at 11th level.</p>\n<p>Fat Burner</p>\n<p>When you cast a jutsu as an Action, that requires hand signs, you can spend Calories to augment that jutsu, allowing you to cast it faster than normal, allowing you to cast it as a Bonus action based on its rank.  (D-Rank/C-Rank: 2, B-Rank/A-Rank: 3, S-Rank: 4)</p>\n<p>Caloric Burst</p>\n<p>As a bonus action, you can spend up to 3 Calories to roll a number of Hit die, equal to the number of calories spent. You regain hit points equal to the result + your constitution modifier. This does not spend your rolled hit die.</p>\n<p>Caloric Ignition</p>\n<p>As a Bonus action, you can spend 2 Calories and consume an Akimichi food pill to enter your Caloric Ignition state. You remain in this state for 1 minute after which, you require 10 minutes to recover before you can reuse it.</p>\n<p>Fat Rolls</p>\n<p>As a reaction, when you take damage, you can spend up to 4 Calories to redirect your fat to the impacted area, gaining +4 temporary hit points for each calorie spent.</p>\n<p>Insular Fat</p>\n<p>Elemental conditions are treated as Physical conditions for you. Also, when you would make a saving throw to resist gaining a Physical condition, you can spend 2 Calories to make the saving throw at advantage.</p>\n<p>Metabolic Manipulation</p>\n<p>At the beginning of your turns, you can spend 2 Calories to reduce the rank of one Physical condition you have by one, that doesn’t have the [Persist] tag.</p>\n<p>Retaliating Knuckle Sandwich</p>\n<p>While you are within melee range of a hostile creature and they deal damage to an allied creature you can spend 1 Calorie to make an attack of opportunity against them at no reaction cost.</p>\n<p>Rolling Shoulders</p>\n<p>While moving, you can spend 2 Calories and 10 feet of your remaining movement to push through an enemies space. If you do, they must make a Dexterity saving throw vs your highest Jutsu save DC, being pushed 10 feet and knocked prone. You can only affect a creature with this effect once per turn.</p>",
     "source": {
       "book": "Tsunade's Studies Compendium",
       "page": "",
@@ -47,8 +55,11 @@
       {
         "id": "calories",
         "label": "Calories",
+        "value": 0,
         "max": "1 + @prof",
         "die": "",
+        "steps": [],
+        "step": 0,
         "recovery": [
           {
             "on": "rest",
@@ -56,9 +67,141 @@
             "formula": "",
             "requires": ""
           }
+        ]
+      }
+    ],
+    "activities": [
+      {
+        "id": "n5eZR8rI7R227Vg0",
+        "type": "roll",
+        "label": "Fat Burner",
+        "roll": {
+          "formula": "",
+          "note": "An Action HS jutsu cast as a Bonus action: by rank (D/C 2, B/A 3, S 4)."
+        },
+        "cost": {
+          "pool": "calories",
+          "choose": true
+        }
+      },
+      {
+        "id": "n5etsejvjHBWdjYU",
+        "type": "heal",
+        "label": "Caloric Burst",
+        "heal": {
+          "formula": "1d10 + @abilities.con.mod",
+          "pool": "hp"
+        },
+        "text": "Bonus action, up to 3 Calories: roll that many Hit Dice (not spent) + your Constitution modifier (your Hit Die: adjust the die).",
+        "activation": "bonus",
+        "cost": {
+          "pool": "calories",
+          "choose": true
+        }
+      },
+      {
+        "id": "n5eu3wFlu3ogOYbs",
+        "type": "effect",
+        "label": "Caloric Ignition",
+        "effect": {
+          "name": "Caloric Ignition",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "amp": "caloric-ignition"
+        },
+        "text": "Bonus action, 2 Calories and an Akimichi food pill: 1 minute, then 10 minutes to recover.",
+        "activation": "bonus",
+        "cost": {
+          "pool": "calories",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5esRNWrDM5c0vrq",
+        "type": "heal",
+        "label": "Fat Rolls",
+        "heal": {
+          "formula": "4",
+          "pool": "tempHp"
+        },
+        "text": "Reaction to damage, up to 4 Calories: 4 temporary hit points per Calorie (multiply it).",
+        "activation": "reaction",
+        "cost": {
+          "pool": "calories",
+          "choose": true
+        }
+      },
+      {
+        "id": "n5eOgLYy4xG1t3JT",
+        "type": "roll",
+        "label": "Insular Fat",
+        "roll": {
+          "formula": "",
+          "note": "Saving against a Physical condition: advantage."
+        },
+        "cost": {
+          "pool": "calories",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5ewrbEwzeTFyTNR",
+        "type": "roll",
+        "label": "Metabolic Manipulation",
+        "roll": {
+          "formula": "",
+          "note": "Start of your turn: one Physical condition without [Persist] drops a rank."
+        },
+        "cost": {
+          "pool": "calories",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5eEaU45eUrg2BeP",
+        "type": "roll",
+        "label": "Retaliating Knuckle Sandwich",
+        "roll": {
+          "formula": "",
+          "note": "In melee reach of a hostile creature that damages an ally: an attack of opportunity at no reaction cost."
+        },
+        "cost": {
+          "pool": "calories",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5enrzsrwBbYfPoY",
+        "type": "save",
+        "label": "Rolling Shoulders",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
         ],
-        "castsJutsu": false,
-        "countsAsChakraSpend": false
+        "text": "Moving, 10 feet of movement: push through an enemy's space (once per turn per creature). Failure: pushed 10 feet and Prone.",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "calories",
+          "amount": 2
+        }
       }
     ]
   }

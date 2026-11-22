@@ -9,7 +9,8 @@
   "flags": {
     "n5e": {
       "clanPackage": "aburame",
-      "sourceLine": 579
+      "sourceLine": 579,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -42,6 +43,36 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eEuC4Fb3nCVLvZ",
+        "type": "save",
+        "label": "Festering Brood",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "aburame-infested",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Infested"
+          }
+        ],
+        "text": "Once per turn, your jutsu damages a creature (if the jutsu has a save, use that result). Failure: Infested.",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

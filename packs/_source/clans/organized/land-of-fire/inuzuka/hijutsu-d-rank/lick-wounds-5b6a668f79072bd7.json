@@ -17,6 +17,14 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Medical, Tag-Team",
         "components": "CM, M"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Tag-Team (Nin-Dog)",
+        "appliesTo": {
+          "namePrefix": "Lick Wounds"
+        },
+        "note": "Your Nin-Dog synchronizes (spending a jutsu slot or its reaction): the Nin-Dog regains 2d10."
       }
     }
   },
@@ -110,7 +118,18 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e5MCM04Sg4o1Td",
+        "type": "heal",
+        "label": "Lick Wounds",
+        "heal": {
+          "formula": "2d10",
+          "pool": "hp"
+        },
+        "text": "Up to 2 Hit Dice (+1 at B, +2 at S): per die, roll two of your Hit Die size (adjust the dice). C-Rank: the Nin-Dog can lick an adjacent ally instead."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

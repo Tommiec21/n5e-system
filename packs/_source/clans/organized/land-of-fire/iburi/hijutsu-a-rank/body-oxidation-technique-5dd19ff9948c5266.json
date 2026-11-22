@@ -17,7 +17,8 @@
         "cost": "Special (20 Chakra)",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile, Inhaled), Fuinjutsu, Fire Release, Stable",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -113,7 +114,35 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5emH0YrePZSxl7d",
+        "type": "save",
+        "label": "Body Oxidation",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "incapacitated",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Incapacitated"
+          }
+        ],
+        "text": "A creature within 30 feet. Failure: you enter it (Incapacitated, can't move); you act through its body; harm to you hits it; its damage makes it resave and you take half as necrotic. It resaves at the start of each of its turns.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

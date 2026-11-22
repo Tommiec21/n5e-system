@@ -17,6 +17,79 @@
         "cost": "12 Chakra",
         "keywords": "Hijutsu, Ninjutsu",
         "components": "HS"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5e4U9Csx7sFZdHj",
+              "type": "save",
+              "label": "Parasitic Insect Cloud",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "A 15-foot cube within 60 feet; creatures in its path and starting their turn in it (a Bonus action moves it 30 feet). Failure: \"poisoned\" (Envenomed?) and the damage.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d8) + (1d8)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e4U9Csx7sFZdHj",
+              "type": "save",
+              "label": "Parasitic Insect Cloud",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "A 15-foot cube within 60 feet; creatures in its path and starting their turn in it (a Bonus action moves it 30 feet). Failure: \"poisoned\" (Envenomed?) and the damage.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d8) + (2d8)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -107,7 +180,40 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e4U9Csx7sFZdHj",
+        "type": "save",
+        "label": "Parasitic Insect Cloud",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "envenomed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Envenomed"
+          }
+        ],
+        "text": "A 15-foot cube within 60 feet; creatures in its path and starting their turn in it (a Bonus action moves it 30 feet). Failure: \"poisoned\" (Envenomed?) and the damage.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d8",
+              "type": "poison"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

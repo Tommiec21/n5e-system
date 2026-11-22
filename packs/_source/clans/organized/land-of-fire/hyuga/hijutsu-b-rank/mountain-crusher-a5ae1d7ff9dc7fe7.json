@@ -17,6 +17,86 @@
         "cost": "12 Chakra",
         "keywords": "Hijutsu, Side Branch, Ninjutsu, Taijutsu, Clash",
         "components": "CM, M"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eQ6NQn1AcjDPHM",
+              "type": "save",
+              "label": "Mountain Crusher",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "[Side Branch] A 30-foot cone (+5 per rank). Failure: the damage, pushed 15 feet, no reaction until its turn (Eight Trigram: 2 ranks of Weakened); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (1d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eQ6NQn1AcjDPHM",
+              "type": "save",
+              "label": "Mountain Crusher",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "[Side Branch] A 30-foot cone (+5 per rank). Failure: the damage, pushed 15 feet, no reaction until its turn (Eight Trigram: 2 ranks of Weakened); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (2d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Eight Trigram",
+        "appliesTo": {
+          "namePrefix": "Mountain Crusher"
+        },
+        "note": "In your Gentle Fist stance: failed creatures gain 2 ranks of Weakened."
       }
     }
   },
@@ -110,7 +190,40 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eQ6NQn1AcjDPHM",
+        "type": "save",
+        "label": "Mountain Crusher",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Weakened"
+          }
+        ],
+        "text": "[Side Branch] A 30-foot cone (+5 per rank). Failure: the damage, pushed 15 feet, no reaction until its turn (Eight Trigram: 2 ranks of Weakened); success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": "force"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

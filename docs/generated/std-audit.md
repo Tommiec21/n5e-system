@@ -83,7 +83,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 | --- | --- | --- | --- | --- | --- | --- |
 | amps | 282 | 0 | 0 | 271 | 268 | 0 |
 | backgrounds | 64 | 0 | 0 | 0 | 0 | 0 |
-| clans | 1714 | 488 | 4 | 410 | 410 | 0 |
+| clans | 1714 | 586 | 6 | 477 | 477 | 0 |
 | classes | 49 | 0 | 0 | 0 | 0 | 0 |
 | conditions | 59 | 0 | 0 | 58 | 52 | 0 |
 | equipment | 66 | 7 | 0 | 0 | 0 | 0 |
@@ -100,13 +100,13 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 | Pack | Amp card | Amp: no type | Starts an Amp | Candidate | Not an Amp | Stance |
 | --- | --- | --- | --- | --- | --- | --- |
 | amps | 124 | 158 | 0 | 0 | 0 | 0 |
-| clans | 0 | 0 | 28 | 61 | 0 | 25 |
+| clans | 0 | 0 | 33 | 57 | 0 | 25 |
 | features | 0 | 0 | 23 | 25 | 0 | 0 |
 | jutsu | 0 | 0 | 49 | 0 | 0 | 0 |
 | stances | 0 | 0 | 0 | 0 | 0 | 24 |
-| **Total** | **124** | **158** | **100** | **86** | **0** | **49** |
+| **Total** | **124** | **158** | **105** | **82** | **0** | **49** |
 
-### clans: 61 candidates
+### clans: 57 candidates
 
 - **Crystal Form**: Lasting bonus: "…you can spend 2 Hardness to infuse the summoned creature with your Crystal Weapon, causing…"
 - **Crystals, Gems and Jewels**: Lasting bonus: "…your Crystal Weapon, gain temporary hit points…"
@@ -114,8 +114,6 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 - **Advanced Transformations**: Its text names a Battle Amp.
 - **Magma Domain**: Lasting bonus: "…you gain resistance…"
 - **Scorched Foundation**: Its text names a Battle Amp.
-- **Déjà vu**: Its text names a Will Amp.
-- **Savage Attacker**: Its text names a Battle Amp.
 - **Two-Headed Wolf**: Lasting bonus: "…you gain an additional…"
 - **Heir of the Mist**: Its text names a Battle Amp.
 - **Mistborn Infiltrator**: Lasting bonus: "…You gain an additional…"
@@ -135,7 +133,6 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 - **Stellar Convergence**: Lasting bonus: "…You provide a bonus to…"
 - **Controlled Demolition**: Its text names a Battle Amp.
 - **Explosive Art!**: Its text names a Battle Amp.
-- **Last to Move, loses**: Its text names a Battle Amp.
 - **Blank Canvas**: Lasting bonus: "…You gain an additional…"
 - **Secret Pages**: Its text names a Battle Amp.
 - **Blood of the Swift: Speed Burst**: Lasting bonus: "…your turn, you can spend 3 Speed Seals to gain an additional…"
@@ -143,7 +140,6 @@ A scan for lasting bonuses (King: a bonus to a statistic, ability or action last
 - **Nocturnal Dominion**: Its text names a Battle Amp.
 - **Heavenly Technique**: Lasting bonus: "…you would deal Force damage as a result of the target having 0 chakra, you instead simply …"
 - **Visions of what will be**: Its text names a Battle Amp.
-- **Caloric Arts**: Its text names a Battle Amp.
 - **The Looking Glass**: Lasting bonus: "…you have immunity to…"
 - **Akimichi: Latent Food Pill I**: Lasting bonus: "…you do, you lose 2 calories and gain a +4…"
 - **Chinoike: Latent Ketsuryūgan**: Lasting bonus: "…you have advantage on…"

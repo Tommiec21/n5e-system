@@ -1,0 +1,2194 @@
+{
+  "clan": "hyuga",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "hyuga-8-trigrams-128-palms": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eKI7A5Qv4WBSSz",
+          "type": "attack",
+          "label": "128 Palms",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 3
+          },
+          "text": "Needs 64 Palms. Three attacks, each against every creature you choose within 10 feet: [Unarmed Damage] + 5d8 chakra; half the chakra also as force.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d8",
+                "type": "chakra"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "3"
+          }
+        },
+        {
+          "id": "n5eEGB6PBSPTINq2",
+          "type": "save",
+          "label": "Eight Trigram: Disrupt / Block",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "hyuga-network-distortion",
+              "kind": "condition",
+              "ranks": 4,
+              "label": "Network Distortion"
+            },
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 4,
+              "label": "Weakened"
+            }
+          ],
+          "text": "Failure, pick: Disrupt (4 ranks of Network Distortion) or Block (4 ranks of Weakened).",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eOejSbsAFj9zme",
+          "type": "save",
+          "label": "Eight Trigram: Disrupt / Block V (S-Rank)",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "hyuga-network-distortion",
+              "kind": "condition",
+              "ranks": 5,
+              "label": "Network Distortion"
+            },
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 5,
+              "label": "Weakened"
+            }
+          ],
+          "text": "Failure, pick: Disrupt (5 ranks of Network Distortion) or Block (5 ranks of Weakened).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Side Branch]"
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "S": [
+              {
+                "id": "n5eKI7A5Qv4WBSSz",
+                "type": "attack",
+                "label": "128 Palms",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 3
+                },
+                "text": "Needs 64 Palms. Three attacks, each against every creature you choose within 10 feet: [Unarmed Damage] + 5d8 chakra; half the chakra also as force.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (1d8)",
+                      "type": "chakra"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "3"
+                }
+              },
+              {
+                "id": "n5eEGB6PBSPTINq2",
+                "type": "save",
+                "label": "Eight Trigram: Disrupt / Block",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "hyuga-network-distortion",
+                    "kind": "condition",
+                    "ranks": 4,
+                    "label": "Network Distortion"
+                  },
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 4,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "Failure, pick: Disrupt (4 ranks of Network Distortion) or Block (4 ranks of Weakened).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eOejSbsAFj9zme",
+                "type": "save",
+                "label": "Eight Trigram: Disrupt / Block V (S-Rank)",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "hyuga-network-distortion",
+                    "kind": "condition",
+                    "ranks": 5,
+                    "label": "Network Distortion"
+                  },
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 5,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "Failure, pick: Disrupt (5 ranks of Network Distortion) or Block (5 ranks of Weakened).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Eight Trigram",
+          "appliesTo": {
+            "namePrefix": "8-Trigrams 128 Palms"
+          },
+          "note": "In your Gentle Fist stance: the Disrupt / Block save."
+        }
+      ]
+    },
+    "hyuga-8-trigrams-64-palms": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eC1QaKmS9Q8k8e",
+          "type": "attack",
+          "label": "64 Palms",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "One attack roll against each creature you choose in your unarmed reach: [Unarmed Damage] + 3d8 chakra; half the chakra also as force. B-Rank: a second attack; struck twice: Disrupt / Block III.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "chakra"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5e9kRNlYoSIqbXl",
+          "type": "save",
+          "label": "Eight Trigram: Disrupt / Block",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "hyuga-network-distortion",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Network Distortion"
+            },
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Weakened"
+            }
+          ],
+          "text": "Failure, pick: Disrupt (2 ranks of Network Distortion) or Block (2 ranks of Weakened).",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eLseK436MHrpxp",
+          "type": "save",
+          "label": "Eight Trigram: Disrupt / Block III (struck twice, B-Rank)",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "hyuga-network-distortion",
+              "kind": "condition",
+              "ranks": 3,
+              "label": "Network Distortion"
+            },
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 3,
+              "label": "Weakened"
+            }
+          ],
+          "text": "Failure, pick: Disrupt (3 ranks of Network Distortion) or Block (3 ranks of Weakened).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eC1QaKmS9Q8k8e",
+                "type": "attack",
+                "label": "64 Palms",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "One attack roll against each creature you choose in your unarmed reach: [Unarmed Damage] + 3d8 chakra; half the chakra also as force. B-Rank: a second attack; struck twice: Disrupt / Block III.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (1d8)",
+                      "type": "chakra"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5e9kRNlYoSIqbXl",
+                "type": "save",
+                "label": "Eight Trigram: Disrupt / Block",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "hyuga-network-distortion",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Network Distortion"
+                  },
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "Failure, pick: Disrupt (2 ranks of Network Distortion) or Block (2 ranks of Weakened).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eLseK436MHrpxp",
+                "type": "save",
+                "label": "Eight Trigram: Disrupt / Block III (struck twice, B-Rank)",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "hyuga-network-distortion",
+                    "kind": "condition",
+                    "ranks": 3,
+                    "label": "Network Distortion"
+                  },
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 3,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "Failure, pick: Disrupt (3 ranks of Network Distortion) or Block (3 ranks of Weakened).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eC1QaKmS9Q8k8e",
+                "type": "attack",
+                "label": "64 Palms",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "One attack roll against each creature you choose in your unarmed reach: [Unarmed Damage] + 3d8 chakra; half the chakra also as force. B-Rank: a second attack; struck twice: Disrupt / Block III.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (2d8)",
+                      "type": "chakra"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5e9kRNlYoSIqbXl",
+                "type": "save",
+                "label": "Eight Trigram: Disrupt / Block",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "hyuga-network-distortion",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Network Distortion"
+                  },
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "Failure, pick: Disrupt (2 ranks of Network Distortion) or Block (2 ranks of Weakened).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eLseK436MHrpxp",
+                "type": "save",
+                "label": "Eight Trigram: Disrupt / Block III (struck twice, B-Rank)",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "hyuga-network-distortion",
+                    "kind": "condition",
+                    "ranks": 3,
+                    "label": "Network Distortion"
+                  },
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 3,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "Failure, pick: Disrupt (3 ranks of Network Distortion) or Block (3 ranks of Weakened).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eC1QaKmS9Q8k8e",
+                "type": "attack",
+                "label": "64 Palms",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "One attack roll against each creature you choose in your unarmed reach: [Unarmed Damage] + 3d8 chakra; half the chakra also as force. B-Rank: a second attack; struck twice: Disrupt / Block III.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (3d8)",
+                      "type": "chakra"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5e9kRNlYoSIqbXl",
+                "type": "save",
+                "label": "Eight Trigram: Disrupt / Block",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "hyuga-network-distortion",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Network Distortion"
+                  },
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "Failure, pick: Disrupt (2 ranks of Network Distortion) or Block (2 ranks of Weakened).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eLseK436MHrpxp",
+                "type": "save",
+                "label": "Eight Trigram: Disrupt / Block III (struck twice, B-Rank)",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "hyuga-network-distortion",
+                    "kind": "condition",
+                    "ranks": 3,
+                    "label": "Network Distortion"
+                  },
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 3,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "Failure, pick: Disrupt (3 ranks of Network Distortion) or Block (3 ranks of Weakened).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Eight Trigram",
+          "appliesTo": {
+            "namePrefix": "8-Trigrams 64 Palms"
+          },
+          "note": "In your Gentle Fist stance: the Disrupt / Block save."
+        }
+      ]
+    },
+    "hyuga-8-trigrams-64-palms-defense": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5evz5s0iTTlS1cH",
+          "type": "save",
+          "label": "Offensive",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "hyuga-network-distortion",
+              "kind": "condition",
+              "ranks": 3,
+              "label": "Network Distortion"
+            }
+          ],
+          "text": "[Main Branch] Action: creatures you choose in your unarmed reach (Eight Trigram: up to this jutsu's ability modifier within 30 feet, +3 ranks of Network Distortion on a failure). [Unarmed Damage] + 4d8 force and pushed 5 feet.",
+          "activation": "action",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d8",
+                "type": "force"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eDHoIi2b6fgBuv",
+          "type": "effect",
+          "label": "Defensive",
+          "effect": {
+            "name": "64 Palms Defense",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "4",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Reaction to damage: +4 AC until the start of your next turn; a Clash adds 1d6. Eight Trigram: twice your [Unarmed Damage] as temporary hit points.",
+          "activation": "reaction"
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5evz5s0iTTlS1cH",
+                "type": "save",
+                "label": "Offensive",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "hyuga-network-distortion",
+                    "kind": "condition",
+                    "ranks": 3,
+                    "label": "Network Distortion"
+                  }
+                ],
+                "text": "[Main Branch] Action: creatures you choose in your unarmed reach (Eight Trigram: up to this jutsu's ability modifier within 30 feet, +3 ranks of Network Distortion on a failure). [Unarmed Damage] + 4d8 force and pushed 5 feet.",
+                "activation": "action",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (1d8)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eDHoIi2b6fgBuv",
+                "type": "effect",
+                "label": "Defensive",
+                "effect": {
+                  "name": "64 Palms Defense",
+                  "target": "self",
+                  "changes": [
+                    {
+                      "key": "system.bonuses.ac",
+                      "value": "4",
+                      "mode": 2
+                    }
+                  ],
+                  "expires": "turnStart",
+                  "seconds": 0
+                },
+                "text": "Reaction to damage: +4 AC until the start of your next turn; a Clash adds 1d6. Eight Trigram: twice your [Unarmed Damage] as temporary hit points.",
+                "activation": "reaction"
+              }
+            ],
+            "S": [
+              {
+                "id": "n5evz5s0iTTlS1cH",
+                "type": "save",
+                "label": "Offensive",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "hyuga-network-distortion",
+                    "kind": "condition",
+                    "ranks": 3,
+                    "label": "Network Distortion"
+                  }
+                ],
+                "text": "[Main Branch] Action: creatures you choose in your unarmed reach (Eight Trigram: up to this jutsu's ability modifier within 30 feet, +3 ranks of Network Distortion on a failure). [Unarmed Damage] + 4d8 force and pushed 5 feet.",
+                "activation": "action",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (2d8)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eDHoIi2b6fgBuv",
+                "type": "effect",
+                "label": "Defensive",
+                "effect": {
+                  "name": "64 Palms Defense",
+                  "target": "self",
+                  "changes": [
+                    {
+                      "key": "system.bonuses.ac",
+                      "value": "4",
+                      "mode": 2
+                    }
+                  ],
+                  "expires": "turnStart",
+                  "seconds": 0
+                },
+                "text": "Reaction to damage: +4 AC until the start of your next turn; a Clash adds 1d6. Eight Trigram: twice your [Unarmed Damage] as temporary hit points.",
+                "activation": "reaction"
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Eight Trigram",
+          "appliesTo": {
+            "namePrefix": "8-Trigrams 64 Palms Defense"
+          },
+          "note": "In your Gentle Fist stance: Offensive: 30 feet and Network Distortion; Defensive: temporary hit points."
+        }
+      ]
+    },
+    "hyuga-8-trigrams-grid-palm": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e61IriUuCzUHUp",
+          "type": "save",
+          "label": "Grid Palm",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            }
+          ],
+          "text": "Creatures you choose in a 15-foot radius on you. Failure: Restrained (resave at the end of its turns).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its upcast says above D-Rank (it's C-Rank)."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Eight Trigram",
+          "appliesTo": {
+            "namePrefix": "8-Trigrams Grid Palm"
+          },
+          "note": "In your Gentle Fist stance: failed creatures can't cast HS jutsu of this rank or lower for the duration."
+        }
+      ]
+    },
+    "hyuga-bloodline-of-the-elite": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Hyūga Dogmas (+1 at 11th): the option items."
+        }
+      ]
+    },
+    "hyuga-bloodline-of-the-elite-cold-calculations": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eVrRnc2PfuodnX",
+          "type": "roll",
+          "label": "Cold Calculus",
+          "roll": {
+            "formula": "",
+            "note": "A special action in place of the Action or Reaction a Hyūga Hijutsu needs; back on a long rest."
+          }
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "lr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      }
+    },
+    "hyuga-bloodline-of-the-elite-combat-insight": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus action, a creature you can see: Identify (Ninjutsu, Genjutsu or Taijutsu/Bukijutsu) vs its Level DC; success: learn one matching special action or ability."
+        }
+      ]
+    },
+    "hyuga-bloodline-of-the-elite-illusion-fist": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "In Gentle Fist: melee Genjutsu attacks in place of unarmed attacks, dealing psychic. Hyūga Hijutsu cast with Wisdom can deal psychic (still counting as chakra or necrotic for Hyūga features)."
+        }
+      ]
+    },
+    "hyuga-bloodline-of-the-elite-predictive-perception": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e31eNyVABwFgDr",
+          "type": "roll",
+          "label": "Predictive Perception",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, an attack on you at advantage: it rolls at disadvantage instead, and your AC gains a rank of Mastery against it."
+          },
+          "activation": "reaction"
+        }
+      ]
+    },
+    "hyuga-bloodline-of-the-elite-sensory-type": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eEc2CJJqhUVjRG",
+          "type": "effect",
+          "label": "Perimeter Sweep",
+          "effect": {
+            "name": "Perimeter Sweep",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 600
+          },
+          "text": "Action, exploring with the Byakugan: for 10 minutes you and allies with you gain a rank of Mastery on the next save against a triggered trap.",
+          "activation": "action"
+        }
+      ]
+    },
+    "hyuga-bloodline-of-the-elite-tenketsu-needle": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eH8G48WECJ7ZOg",
+          "type": "damage",
+          "label": "Tenketsu Needle",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(3:2,11:4)",
+                "type": "chakra"
+              }
+            ]
+          },
+          "text": "Once per turn, chakra damage to a creature with Sealed or Network Distortion.",
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "hyuga-bloodline-of-the-elite-wisdom-of-the-court": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Use Wisdom in place of Charisma for Persuasion and Intimidation."
+        }
+      ]
+    },
+    "hyuga-byakugan": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eE0pj7U7eoW5CM",
+          "type": "effect",
+          "label": "Byakugan",
+          "effect": {
+            "name": "Byakugan",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 600
+          },
+          "text": "Bonus action, up to 10 minutes, then 10 minutes of non-use. Chakra Sight 120 feet out of combat, 60 in combat (500 and 120 at 11th); the Search action sees through 1 foot (5 feet at 7th); 360° vision: creatures can't hide from you unless heavily obscured or behind total cover.",
+          "activation": "bonus"
+        }
+      ]
+    },
+    "hyuga-eight-trigrams-gentle-end": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eLyBUr8lTdN8FX",
+          "type": "save",
+          "label": "Gentle End",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "[Side Branch] The Attack action's [Unarmed Damage] on a creature with Sealed or Network Distortion: dispel all their ranks (−1 to the save per 2 ranks). Failure: 1d6 necrotic and 1d6 chakra per rank dispelled (roll once per rank). Then not until the end of your next turn.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d6",
+                "type": "necrotic"
+              },
+              {
+                "formula": "1d6",
+                "type": "chakra"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "hyuga-eight-trigrams-internal-assault": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5evpAkNhCEhDMOX",
+          "type": "save",
+          "label": "Internal Assault",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "hyuga-network-distortion",
+              "kind": "condition",
+              "ranks": 3,
+              "label": "Network Distortion"
+            }
+          ],
+          "text": "[Side Branch] Your necrotic or Medical jutsu: once per casting, an affected creature casting a CM jutsu. Failure: 3 ranks of Network Distortion.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "hyuga-eight-trigrams-palm-bottom": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e1qnTysqqf7gZk",
+          "type": "save",
+          "label": "Palm Bottom",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            }
+          ],
+          "text": "[Main Branch] The Attack action's [Unarmed Damage] on a creature with Sealed or Network Distortion: dispel all their ranks (−1 to the save per 2 ranks). Failure: Staggered. Then not until the end of your next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "hyuga-eight-trigrams-sealing-technique": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eBgk5qT0yMkSGP",
+          "type": "save",
+          "label": "Sealing Technique",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "hyuga-network-distortion",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Network Distortion"
+            }
+          ],
+          "text": "[Main Branch] Your chakra-damage or Fuinjutsu jutsu: once per casting, an affected creature casting a CM jutsu. Failure: its casting is Interrupted and a rank of Network Distortion.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "hyuga-gentle-counter": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eLS8G52KhbhrBH",
+          "type": "roll",
+          "label": "Gentle Counter",
+          "roll": {
+            "formula": "1d8",
+            "note": "In Gentle Fist, Reaction to a melee hit: reduce the damage by 1d8 + your unarmed attack bonus (+1d8 per rank)."
+          },
+          "activation": "reaction"
+        }
+      ]
+    },
+    "hyuga-gentle-fist": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Learn the Gentle Fist Taijutsu stance (the clan's stance item)."
+        }
+      ]
+    },
+    "hyuga-gentle-palm-flux": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ePjmJsz6uSiaUe",
+          "type": "attack",
+          "label": "Gentle Palm Flux",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Move and attack a different hostile creature each time until your movement is spent (the last at 0 movement: advantage).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d8",
+                "type": "chakra"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5ecAUspI8DY22W3",
+          "type": "save",
+          "label": "Eight Trigram: distortion",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "hyuga-network-distortion",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Network Distortion"
+            }
+          ],
+          "text": "Each creature hit. Failure: 2 ranks of Network Distortion; failing by 5: +10 feet of movement for you.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5ePjmJsz6uSiaUe",
+                "type": "attack",
+                "label": "Gentle Palm Flux",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Move and attack a different hostile creature each time until your movement is spent (the last at 0 movement: advantage).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (1d8)",
+                      "type": "chakra"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5ecAUspI8DY22W3",
+                "type": "save",
+                "label": "Eight Trigram: distortion",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "hyuga-network-distortion",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Network Distortion"
+                  }
+                ],
+                "text": "Each creature hit. Failure: 2 ranks of Network Distortion; failing by 5: +10 feet of movement for you.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5ePjmJsz6uSiaUe",
+                "type": "attack",
+                "label": "Gentle Palm Flux",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Move and attack a different hostile creature each time until your movement is spent (the last at 0 movement: advantage).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (2d8)",
+                      "type": "chakra"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5ecAUspI8DY22W3",
+                "type": "save",
+                "label": "Eight Trigram: distortion",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "hyuga-network-distortion",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Network Distortion"
+                  }
+                ],
+                "text": "Each creature hit. Failure: 2 ranks of Network Distortion; failing by 5: +10 feet of movement for you.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Eight Trigram",
+          "appliesTo": {
+            "namePrefix": "Gentle Palm Flux"
+          },
+          "note": "In your Gentle Fist stance: creatures hit save against Network Distortion."
+        }
+      ]
+    },
+    "hyuga-gentle-reprieve": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5euGTFozXQWcAjN",
+          "type": "roll",
+          "label": "Gentle Reprieve",
+          "roll": {
+            "formula": "",
+            "note": "In Gentle Fist, an ally you touch. Action: it spends up to 2 Chakra Dice (+1 per rank), recovering the result + your Wisdom modifier. Bonus action: its next jutsu costs 2 less (B: 3, S: 5; not you)."
+          }
+        }
+      ]
+    },
+    "hyuga-giant-palm-rotation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eNqEGysjWndbEQ",
+          "type": "effect",
+          "label": "Giant Palm Rotation",
+          "effect": {
+            "name": "Giant Palm Rotation",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "4",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "[Main Branch] Reaction: you and creatures you choose within 10 feet, until the start of your next turn: +4 AC (no other reaction AC bonuses), advantage on Strength and Dexterity saves against jutsu.",
+          "activation": "reaction"
+        },
+        {
+          "id": "n5eO3A8dGMTNYy08",
+          "type": "save",
+          "label": "Giant Palm Rotation: push",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Hostile creatures within 10 feet. Failure: the damage and pushed 10 feet.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d8",
+                "type": "force"
+              }
+            ]
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Eight Trigram",
+          "appliesTo": {
+            "namePrefix": "Giant Palm Rotation"
+          },
+          "note": "In your Gentle Fist stance: everyone it protects reduces hostile damage by 6."
+        }
+      ]
+    },
+    "hyuga-heavenly-technique": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5el9j4sAfu8taUi",
+          "type": "effect",
+          "label": "Heavenly Technique",
+          "effect": {
+            "name": "Heavenly Technique",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "1 minute, once per rest: your chakra damage ignores DR; unarmed chakra damage deals the same again as necrotic (a 0-chakra target: double the necrotic instead of force); each hit that turn with chakra or necrotic raises the target's next jutsu cost by 2."
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "rest",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      }
+    },
+    "hyuga-lion-palm": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eyoHRFSOlYDpCA",
+          "type": "effect",
+          "label": "Lion Palm",
+          "effect": {
+            "name": "Lion Palm",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "[Main Branch] Bonus action, Byakugan and Gentle Fist: no upkeep; Gentle Fist and melee Hyūga Hijutsu use d10s for chakra damage.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eWSajFM1aFp03W",
+          "type": "attack",
+          "label": "Lion missile",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "In place of an Attack action or Hyūga Hijutsu attack: a creature you can see within 30 feet.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d10 + max(@abilities.str.mod, @abilities.dex.mod, @abilities.con.mod, @abilities.int.mod, @abilities.wis.mod, @abilities.cha.mod)",
+                "type": "force"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "hyuga-mountain-crusher": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQ6NQn1AcjDPHM",
+          "type": "save",
+          "label": "Mountain Crusher",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Weakened"
+            }
+          ],
+          "text": "[Side Branch] A 30-foot cone (+5 per rank). Failure: the damage, pushed 15 feet, no reaction until its turn (Eight Trigram: 2 ranks of Weakened); success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d6",
+                "type": "force"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5eQ6NQn1AcjDPHM",
+                "type": "save",
+                "label": "Mountain Crusher",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "[Side Branch] A 30-foot cone (+5 per rank). Failure: the damage, pushed 15 feet, no reaction until its turn (Eight Trigram: 2 ranks of Weakened); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d6) + (1d6)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eQ6NQn1AcjDPHM",
+                "type": "save",
+                "label": "Mountain Crusher",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "[Side Branch] A 30-foot cone (+5 per rank). Failure: the damage, pushed 15 feet, no reaction until its turn (Eight Trigram: 2 ranks of Weakened); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d6) + (2d6)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Eight Trigram",
+          "appliesTo": {
+            "namePrefix": "Mountain Crusher"
+          },
+          "note": "In your Gentle Fist stance: failed creatures gain 2 ranks of Weakened."
+        }
+      ]
+    },
+    "hyuga-one-body-blow": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5elNCK1r6SWZpHy",
+          "type": "save",
+          "label": "One-Body Blow",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "[Side Branch] Reaction: first end your Grappled, Restrained and Prone; creatures you choose within 10 feet. Failure: Prone and no chakra molding until the end of your next turn.",
+          "activation": "reaction",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5edRAnFVmsHngq0",
+          "type": "damage",
+          "label": "Eight Trigram: damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d8",
+                "type": "force"
+              }
+            ]
+          },
+          "text": "Failed creatures (half on a success)."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Eight Trigram",
+          "appliesTo": {
+            "namePrefix": "One-Body Blow"
+          },
+          "note": "In your Gentle Fist stance: the force damage."
+        }
+      ]
+    },
+    "hyuga-palm-rotation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eD3eqi8PSpFAU2",
+          "type": "effect",
+          "label": "Palm Rotation",
+          "effect": {
+            "name": "Palm Rotation",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "4",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Reaction: +4 AC (against the trigger too) and advantage on Strength and Dexterity saves against jutsu until the start of your next turn.",
+          "activation": "reaction"
+        },
+        {
+          "id": "n5erAlOBouQSXn6U",
+          "type": "save",
+          "label": "Palm Rotation: push",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Creatures within 5 feet. Failure: the damage and pushed 5 feet.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d8",
+                "type": "force"
+              }
+            ]
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Eight Trigram",
+          "appliesTo": {
+            "namePrefix": "Palm Rotation"
+          },
+          "note": "In your Gentle Fist stance: 6 DR for the duration."
+        }
+      ]
+    },
+    "hyuga-palm-strike": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eSnLW6XiFY7jI9",
+          "type": "damage",
+          "label": "Palm Strike",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "chakra"
+              }
+            ]
+          },
+          "text": "Once per turn, with your [Unarmed Damage]."
+        },
+        {
+          "id": "n5ebS33DXFuslHCB",
+          "type": "save",
+          "label": "Eight Trigram: Disrupt / Block",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "hyuga-network-distortion",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Network Distortion"
+            },
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            }
+          ],
+          "text": "Failure, pick: Disrupt (1 rank of Network Distortion) or Block (1 rank of Weakened).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "B-Rank: Disrupt gives 2 ranks."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eSnLW6XiFY7jI9",
+                "type": "damage",
+                "label": "Palm Strike",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (1d8)",
+                      "type": "chakra"
+                    }
+                  ]
+                },
+                "text": "Once per turn, with your [Unarmed Damage]."
+              },
+              {
+                "id": "n5ebS33DXFuslHCB",
+                "type": "save",
+                "label": "Eight Trigram: Disrupt / Block",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "hyuga-network-distortion",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Network Distortion"
+                  },
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "Failure, pick: Disrupt (1 rank of Network Distortion) or Block (1 rank of Weakened).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eSnLW6XiFY7jI9",
+                "type": "damage",
+                "label": "Palm Strike",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (2d8)",
+                      "type": "chakra"
+                    }
+                  ]
+                },
+                "text": "Once per turn, with your [Unarmed Damage]."
+              },
+              {
+                "id": "n5ebS33DXFuslHCB",
+                "type": "save",
+                "label": "Eight Trigram: Disrupt / Block",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "hyuga-network-distortion",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Network Distortion"
+                  },
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "Failure, pick: Disrupt (1 rank of Network Distortion) or Block (1 rank of Weakened).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eSnLW6XiFY7jI9",
+                "type": "damage",
+                "label": "Palm Strike",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (3d8)",
+                      "type": "chakra"
+                    }
+                  ]
+                },
+                "text": "Once per turn, with your [Unarmed Damage]."
+              },
+              {
+                "id": "n5ebS33DXFuslHCB",
+                "type": "save",
+                "label": "Eight Trigram: Disrupt / Block",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "hyuga-network-distortion",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Network Distortion"
+                  },
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "Failure, pick: Disrupt (1 rank of Network Distortion) or Block (1 rank of Weakened).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eSnLW6XiFY7jI9",
+                "type": "damage",
+                "label": "Palm Strike",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (4d8)",
+                      "type": "chakra"
+                    }
+                  ]
+                },
+                "text": "Once per turn, with your [Unarmed Damage]."
+              },
+              {
+                "id": "n5ebS33DXFuslHCB",
+                "type": "save",
+                "label": "Eight Trigram: Disrupt / Block",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "hyuga-network-distortion",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Network Distortion"
+                  },
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "Failure, pick: Disrupt (1 rank of Network Distortion) or Block (1 rank of Weakened).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Eight Trigram",
+          "appliesTo": {
+            "namePrefix": "Palm Strike"
+          },
+          "note": "In your Gentle Fist stance: the Disrupt / Block save."
+        }
+      ]
+    },
+    "hyuga-stance-gentle-fist": {
+      "status": "partial",
+      "system": {
+        "unarmedDie": "1d8",
+        "unarmedType": "chakra"
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Gentle Fist Taijutsu stance (its text is Gentle Fist's, as King Q-E9): unarmed attacks and [Unarmed Damage] use your Hijutsu Flexibility ability; [Unarmed Damage] d8 (2d8 at 11th), chakra or necrotic (pick when you roll); your Hijutsu gain Eight Trigram (cast dialog options). 7th: chakra damage to a creature at 0 chakra deals double as force to its hit points; without Extra Attack, the Attack action attacks twice. Set the 2d8 at 11th on the sheet."
+        }
+      ]
+    },
+    "hyuga-vacuum-palm": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eapJibGbmmEqxq",
+          "type": "attack",
+          "label": "Vacuum Palm",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "force"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eIIkSVQzMmWS4Q",
+          "type": "save",
+          "label": "Vacuum Palm: B-Rank",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Failure: can't mold chakra until the start of its next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eapJibGbmmEqxq",
+                "type": "attack",
+                "label": "Vacuum Palm",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (1d6)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eIIkSVQzMmWS4Q",
+                "type": "save",
+                "label": "Vacuum Palm: B-Rank",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Failure: can't mold chakra until the start of its next turn.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eapJibGbmmEqxq",
+                "type": "attack",
+                "label": "Vacuum Palm",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (2d6)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eIIkSVQzMmWS4Q",
+                "type": "save",
+                "label": "Vacuum Palm: B-Rank",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Failure: can't mold chakra until the start of its next turn.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eapJibGbmmEqxq",
+                "type": "attack",
+                "label": "Vacuum Palm",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (3d6)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eIIkSVQzMmWS4Q",
+                "type": "save",
+                "label": "Vacuum Palm: B-Rank",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Failure: can't mold chakra until the start of its next turn.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eapJibGbmmEqxq",
+                "type": "attack",
+                "label": "Vacuum Palm",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (4d6)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eIIkSVQzMmWS4Q",
+                "type": "save",
+                "label": "Vacuum Palm: B-Rank",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Failure: can't mold chakra until the start of its next turn.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Eight Trigram",
+          "appliesTo": {
+            "namePrefix": "Vacuum Palm"
+          },
+          "note": "In your Gentle Fist stance: the attack has advantage unless the target has Chakra Sight or Sensing."
+        }
+      ]
+    }
+  }
+}

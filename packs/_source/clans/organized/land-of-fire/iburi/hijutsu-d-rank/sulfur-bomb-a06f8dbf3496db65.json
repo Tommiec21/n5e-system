@@ -17,6 +17,203 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fire Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5ezGfR6N9BtvyxL",
+              "type": "save",
+              "label": "Sulfur Bomb",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 15-foot radius within 60 feet. Failure: the damage and Prone; success: half. The smoke stays 1 minute (heavily obscured; you see through it); 10 minutes at B, or dispersed free.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (1d8)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5etPAv2LNfs8IMT",
+              "type": "damage",
+              "label": "Sulfur Bomb: end of turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d8",
+                    "type": "poison"
+                  }
+                ]
+              },
+              "text": "A creature ending its turn in the smoke."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5ezGfR6N9BtvyxL",
+              "type": "save",
+              "label": "Sulfur Bomb",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 15-foot radius within 60 feet. Failure: the damage and Prone; success: half. The smoke stays 1 minute (heavily obscured; you see through it); 10 minutes at B, or dispersed free.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (2d8)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5etPAv2LNfs8IMT",
+              "type": "damage",
+              "label": "Sulfur Bomb: end of turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d8",
+                    "type": "poison"
+                  }
+                ]
+              },
+              "text": "A creature ending its turn in the smoke."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ezGfR6N9BtvyxL",
+              "type": "save",
+              "label": "Sulfur Bomb",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 15-foot radius within 60 feet. Failure: the damage and Prone; success: half. The smoke stays 1 minute (heavily obscured; you see through it); 10 minutes at B, or dispersed free.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (3d8)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5etPAv2LNfs8IMT",
+              "type": "damage",
+              "label": "Sulfur Bomb: end of turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d8",
+                    "type": "poison"
+                  }
+                ]
+              },
+              "text": "A creature ending its turn in the smoke."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ezGfR6N9BtvyxL",
+              "type": "save",
+              "label": "Sulfur Bomb",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 15-foot radius within 60 feet. Failure: the damage and Prone; success: half. The smoke stays 1 minute (heavily obscured; you see through it); 10 minutes at B, or dispersed free.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (4d8)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5etPAv2LNfs8IMT",
+              "type": "damage",
+              "label": "Sulfur Bomb: end of turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d8",
+                    "type": "poison"
+                  }
+                ]
+              },
+              "text": "A creature ending its turn in the smoke."
+            }
+          ]
+        }
       }
     }
   },
@@ -108,7 +305,54 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ezGfR6N9BtvyxL",
+        "type": "save",
+        "label": "Sulfur Bomb",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "A 15-foot radius within 60 feet. Failure: the damage and Prone; success: half. The smoke stays 1 minute (heavily obscured; you see through it); 10 minutes at B, or dispersed free.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5etPAv2LNfs8IMT",
+        "type": "damage",
+        "label": "Sulfur Bomb: end of turn",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d8",
+              "type": "poison"
+            }
+          ]
+        },
+        "text": "A creature ending its turn in the smoke."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

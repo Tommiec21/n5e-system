@@ -1,3 +1,18 @@
+## 0.84.0-alpha.1 — Clans as data: E6 Land of Fire I (Aburame, Akimichi, Hatake, Hyūga, Iburi, Inuzuka, Kurama)
+
+King 2026-11-22: "Next batch"
+
+- **143 clan items reviewed:** see `docs/clans/`.
+- **Aburame:** Swarm Chakra stance and "Swarm active" cast dialog options; Kikaichu Swarm; Festering Brood; Grand Veil.
+- **Akimichi:** Calories and every Caloric Art; Expansion Technique stance; "Pay with Calories" and Expansion Crash cast dialog options; Butterfly Mode; Seismic Bounce.
+- **Hatake:** White Chakra and Command Dice with every art, tactic and spend; White Wolf.
+- **Hyūga:** Byakugan; Gentle Fist stance; Eight Trigram cast dialog options with Disrupt / Block; every Dogma; Heavenly Technique.
+- **Iburi:** Smoke Style with Cinder Bow and Smoke Chains; Will-O-Wisps; Aberration of Smoke; Ashen Monarch; Black Lung.
+- **Inuzuka:** Four-Legs stance; Feral; Tag-Team cast dialog options; Two-Headed Wolf.
+- **Kurama:** Oni-Coils and every Onijutsu as a Genjutsu cast dialog option; Illusion Made Manifest; Well Rested; Inner Self.
+- **Held stat blocks H6–H8:** Nin-Dog, Two-Headed Wolf, Dream Walker (incomplete stat blocks; King gives them together).
+- Question Q-E20 (Parasitic Giant Insect's damage) in `docs/STD6e_SPEC.md`; nothing waits on it.
+
 ## 0.83.1-alpha.1 — Held stat blocks recorded (Q-E19)
 
 King 2026-11-22: "Hold them. Review the record to make sure all held stat blocks are there."

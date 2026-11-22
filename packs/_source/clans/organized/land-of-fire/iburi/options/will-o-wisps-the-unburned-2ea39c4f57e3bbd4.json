@@ -5,12 +5,52 @@
   "name": "Will-O-Wisps: The Unburned",
   "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
   "folder": "a92f61db07ef81d6",
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5eCsqzVYSTYOmaY",
+      "name": "The Unburned",
+      "type": "generic",
+      "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "n5e.resist",
+          "value": "fire",
+          "mode": 2,
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!2ea39c4f57e3bbd4.n5eCsqzVYSTYOmaY"
+    }
+  ],
   "flags": {
     "n5e": {
       "clanPackage": "iburi",
       "sourceLine": 1131,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Advantage against extreme heat; 11th: immunity to Burned."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +85,18 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e8GgjnDceELmar",
+        "type": "roll",
+        "label": "Siphon heat (7th)",
+        "roll": {
+          "formula": "1d20 + max(@mod.nin, @mod.tai, @mod.gen)",
+          "note": "Bonus action, an ally within 15 feet with Burned: a check with your highest jutsu ability modifier vs the lower of the condition's DC or its save DC; success ends it (Mastery at 11th, two at 15th)."
+        },
+        "activation": "bonus"
+      }
+    ]
   }
 }

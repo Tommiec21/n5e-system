@@ -17,6 +17,14 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fire Release",
         "components": "CM"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Smoke Style",
+        "appliesTo": {
+          "namePrefix": "Fume Substitution"
+        },
+        "note": "In your Smoke Style stance: move up to 10 feet each time an attack misses you."
       }
     }
   },
@@ -108,7 +116,61 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e5ZjaFxe9R4T1g",
+        "type": "effect",
+        "label": "Fume Substitution",
+        "effect": {
+          "name": "Fume Substitution",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "4",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Reaction: +4 AC against the trigger and every attack until the start of your next turn.",
+        "activation": "reaction"
+      },
+      {
+        "id": "n5eWUfglo59YAeD0",
+        "type": "save",
+        "label": "Fume Substitution: missed",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          },
+          {
+            "key": "envenomed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Envenomed"
+          }
+        ],
+        "text": "Each attacker that misses. Failure: a rank of Dazzled or Envenomed (your choice).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

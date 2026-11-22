@@ -17,6 +17,14 @@
         "cost": "6 Chakra",
         "keywords": "Hijutsu, Side Branch, Taijutsu",
         "components": "CM"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Eight Trigram",
+        "appliesTo": {
+          "namePrefix": "One-Body Blow"
+        },
+        "note": "In your Gentle Fist stance: the force damage."
       }
     }
   },
@@ -108,7 +116,50 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5elNCK1r6SWZpHy",
+        "type": "save",
+        "label": "One-Body Blow",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "[Side Branch] Reaction: first end your Grappled, Restrained and Prone; creatures you choose within 10 feet. Failure: Prone and no chakra molding until the end of your next turn.",
+        "activation": "reaction",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5edRAnFVmsHngq0",
+        "type": "damage",
+        "label": "Eight Trigram: damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "force"
+            }
+          ]
+        },
+        "text": "Failed creatures (half on a success)."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

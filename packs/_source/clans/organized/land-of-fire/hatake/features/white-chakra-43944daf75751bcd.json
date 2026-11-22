@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "hatake",
-      "sourceLine": 819
+      "sourceLine": 819,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "White Chakra: 1 + proficiency bonus (the pool), back on a rest. One White Wolf Art at creation (+1 at 7th and 15th)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -47,8 +54,11 @@
       {
         "id": "whiteChakra",
         "label": "White Chakra",
+        "value": 0,
         "max": "1 + @prof",
         "die": "",
+        "steps": [],
+        "step": 0,
         "recovery": [
           {
             "on": "rest",
@@ -56,9 +66,103 @@
             "formula": "",
             "requires": ""
           }
-        ],
-        "castsJutsu": false,
-        "countsAsChakraSpend": false
+        ]
+      }
+    ],
+    "activities": [
+      {
+        "id": "n5eMuQRr4EUyHqUU",
+        "type": "roll",
+        "label": "Area Scanning",
+        "roll": {
+          "formula": "",
+          "note": "Touching a surface: you know where every creature on it within 120 feet is (1 minute of focus, or an Action for 1 White Chakra)."
+        },
+        "activation": "action",
+        "cost": {
+          "pool": "whiteChakra",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5e2HEFmbho04J1V",
+        "type": "roll",
+        "label": "Jutsu Overcharge",
+        "roll": {
+          "formula": "",
+          "note": "Casting a CM jutsu: one benefit by its keyword (Earth construct +4 hit points per rank; Wind Swirl; Fire +1 per die up to +10; Water a source of water; Lightning Overcharge; Medical temporary hit points by rank; Taijutsu Combo or Finisher (+2 dice); Bukijutsu any chain rank effect; Genjutsu critical thresholds 2 easier)."
+        },
+        "cost": {
+          "pool": "whiteChakra",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5eAhXaBP4rEiz5f",
+        "type": "effect",
+        "label": "Silver Weapon",
+        "effect": {
+          "name": "Silver Weapon",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "A weapon you're proficient with, 1 minute: Chakra Edge (your Passive Affinity's damage type; Medical: poison), Flashing Parry, Wolves Prey (marked until the end of your next turn: a rank of Mastery to damage against it; two at 11th).",
+        "cost": {
+          "pool": "whiteChakra",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5ewiM88AxvC0Nco",
+        "type": "roll",
+        "label": "Flashing Parry",
+        "roll": {
+          "formula": "",
+          "note": "Silver Weapon, Reaction to a melee hit: reduce it by [Weapon Damage] + [Weapon Damage], then move 10 feet without provoking."
+        },
+        "activation": "reaction"
+      },
+      {
+        "id": "n5ecsN3dVF5nVt4r",
+        "type": "roll",
+        "label": "Martial Reversal",
+        "roll": {
+          "formula": "",
+          "note": "Reaction, a Taijutsu or Bukijutsu damages you: cast a Taijutsu or Bukijutsu of that rank or lower at the attacker."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "whiteChakra",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5edIGNHJ9kkdq8S",
+        "type": "roll",
+        "label": "Swift Cast",
+        "roll": {
+          "formula": "",
+          "note": "An Action HS jutsu as a Bonus action (that jutsu: once per rest)."
+        },
+        "cost": {
+          "pool": "whiteChakra",
+          "amount": 3
+        }
+      },
+      {
+        "id": "n5eRaEwd6uDc2zWT",
+        "type": "roll",
+        "label": "Pale Perception",
+        "roll": {
+          "formula": "",
+          "note": "A hostile creature casts a jutsu: Read the Enemy or Identify at no reaction cost (once before your next turn)."
+        },
+        "cost": {
+          "pool": "whiteChakra",
+          "amount": 1
+        }
       }
     ]
   }

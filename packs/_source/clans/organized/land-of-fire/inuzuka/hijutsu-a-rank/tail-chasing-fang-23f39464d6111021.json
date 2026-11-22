@@ -17,7 +17,8 @@
         "cost": "18 Chakra",
         "keywords": "Hijutsu, Taijutsu",
         "components": "M"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -107,7 +108,37 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ef7KhoBtaBzlvm",
+        "type": "save",
+        "label": "Tail Chasing Fang",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Needs Two-Headed Wolf: creatures you choose in a 40-foot radius. Failure: your Bite + 3d8 slashing and 3d8 piercing, and −4 AC and DR until the start of your next turn; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "slashing"
+            },
+            {
+              "formula": "3d8",
+              "type": "piercing"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

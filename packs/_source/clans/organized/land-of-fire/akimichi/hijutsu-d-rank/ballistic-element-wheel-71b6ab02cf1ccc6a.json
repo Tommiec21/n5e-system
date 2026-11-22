@@ -17,7 +17,29 @@
         "cost": "3 Chakra or 1 Calories",
         "keywords": "Hijutsu, Taijutsu, Ninjutsu",
         "components": "CM"
-      }
+      },
+      "reviewed": true,
+      "castOptions": [
+        {
+          "label": "Pay with Calories (1)",
+          "appliesTo": {
+            "namePrefix": "Ballistic Element Wheel"
+          },
+          "note": "Cast it for 1 Calories instead of chakra (its upcast may add Calories: spend them by hand).",
+          "costDelta": "zero",
+          "cost": {
+            "pool": "calories",
+            "amount": 1
+          }
+        },
+        {
+          "label": "Expansion Crash",
+          "appliesTo": {
+            "namePrefix": "Ballistic Element Wheel"
+          },
+          "note": "In your Expansion Technique stance: add your proficiency bonus to the check."
+        }
+      ]
     }
   },
   "ownership": {
@@ -108,7 +130,17 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e61EBv2k6QVCP5",
+        "type": "roll",
+        "label": "Ballistic Element Wheel",
+        "roll": {
+          "formula": "1d20 + max(@abilities.str.mod, @abilities.con.mod)",
+          "note": "With an Akimichi Hijutsu's melee attack on a creature under (or clashing with) a nature release jutsu: a Strength or Constitution check against its jutsu save DC; success dispels it (the oldest or highest rank of several)."
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

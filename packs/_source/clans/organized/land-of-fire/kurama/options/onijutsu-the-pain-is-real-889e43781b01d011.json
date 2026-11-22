@@ -10,7 +10,31 @@
     "n5e": {
       "clanPackage": "kurama",
       "sourceLine": 1475,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Pain Is Real: a damaging Action Ninjutsu, Taijutsu or Bukijutsu becomes a Genjutsu (loses those keywords, gains Genjutsu and Tactile)."
+        }
+      ],
+      "castOption": {
+        "label": "Onijutsu: The Pain Is Real (2 Oni-Coils)",
+        "appliesTo": {
+          "keywords": [
+            "ninjutsu",
+            "taijutsu",
+            "bukijutsu"
+          ],
+          "activation": "action",
+          "requiresDamage": true
+        },
+        "cost": {
+          "pool": "oniCoils",
+          "amount": 2
+        },
+        "note": "It becomes a Genjutsu with Tactile (it loses its Ninjutsu, Taijutsu or Bukijutsu keywords)."
+      }
     }
   },
   "ownership": {

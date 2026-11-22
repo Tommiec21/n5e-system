@@ -17,6 +17,210 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu",
         "components": "HS"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eLICoUE7HSmfsT",
+              "type": "attack",
+              "label": "Parasitic Destruction",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Ignores cover; poison or chakra. Swarm active: a second attack (same creature: +1 rank of Infested).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eJYdIXHzcQI4Zz",
+              "type": "save",
+              "label": "Parasitic Destruction: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "aburame-infested",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Infested"
+                }
+              ],
+              "text": "Failure: a rank of Infested.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eLICoUE7HSmfsT",
+              "type": "attack",
+              "label": "Parasitic Destruction",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Ignores cover; poison or chakra. Swarm active: a second attack (same creature: +1 rank of Infested).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eJYdIXHzcQI4Zz",
+              "type": "save",
+              "label": "Parasitic Destruction: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "aburame-infested",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Infested"
+                }
+              ],
+              "text": "Failure: a rank of Infested.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eLICoUE7HSmfsT",
+              "type": "attack",
+              "label": "Parasitic Destruction",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Ignores cover; poison or chakra. Swarm active: a second attack (same creature: +1 rank of Infested).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (3d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eJYdIXHzcQI4Zz",
+              "type": "save",
+              "label": "Parasitic Destruction: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "aburame-infested",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Infested"
+                }
+              ],
+              "text": "Failure: a rank of Infested.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eLICoUE7HSmfsT",
+              "type": "attack",
+              "label": "Parasitic Destruction",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Ignores cover; poison or chakra. Swarm active: a second attack (same creature: +1 rank of Infested).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (4d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eJYdIXHzcQI4Zz",
+              "type": "save",
+              "label": "Parasitic Destruction: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "aburame-infested",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Infested"
+                }
+              ],
+              "text": "Failure: a rank of Infested.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Swarm active",
+        "appliesTo": {
+          "namePrefix": "Parasitic Destruction"
+        },
+        "note": "With your Swarm released: a second attack at the same or another creature (the same: +1 rank of Infested)."
       }
     }
   },
@@ -107,7 +311,54 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eLICoUE7HSmfsT",
+        "type": "attack",
+        "label": "Parasitic Destruction",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "Ignores cover; poison or chakra. Swarm active: a second attack (same creature: +1 rank of Infested).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "poison"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eJYdIXHzcQI4Zz",
+        "type": "save",
+        "label": "Parasitic Destruction: on a hit",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "aburame-infested",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Infested"
+          }
+        ],
+        "text": "Failure: a rank of Infested.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "aburame",
-      "sourceLine": 572
+      "sourceLine": 572,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The text's melee line says 2d6 and the growth says the die becomes 1d8, 1d10, 1d12: the melee button grows both dice."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,46 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e1tmtHfTkWRp84",
+        "type": "attack",
+        "label": "Kikaichu Swarm: melee",
+        "attack": {
+          "discipline": "highest",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "In place of Attack action attacks (two at 7th without Extra Attack); poison or chakra. A 6+ on a die: temporary chakra equal to the damage. A critical hit: 1 rank of Infested. Counts as a D-Rank Hijutsu.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(3:2d6,7:2d8,11:2d10,15:2d12) + max(@mod.nin, @mod.tai, @mod.gen)",
+              "type": "poison"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eT0pQvws70ektq",
+        "type": "attack",
+        "label": "Kikaichu Swarm: ranged",
+        "attack": {
+          "discipline": "highest",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "60 feet; poison or chakra. A 6+ on the die: temporary chakra equal to the damage. A critical hit: 1 rank of Infested.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(3:1d6,7:1d8,11:1d10,15:1d12) + max(@mod.nin, @mod.tai, @mod.gen)",
+              "type": "poison"
+            }
+          ]
+        }
+      }
+    ]
   }
 }

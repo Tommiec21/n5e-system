@@ -17,6 +17,14 @@
         "cost": "Special",
         "keywords": "Hijutsu, Ninjutsu, Medical",
         "components": "CM"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Expansion Crash",
+        "appliesTo": {
+          "namePrefix": "Caloric Recharge"
+        },
+        "note": "In your stance: heal a willing creature you can reach instead (1 Action)."
       }
     }
   },
@@ -108,7 +116,23 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e4c9BSoJ6LTxqB",
+        "type": "heal",
+        "label": "Caloric Recharge",
+        "heal": {
+          "formula": "1d8 + 1",
+          "pool": "hp"
+        },
+        "text": "Bonus action, up to 10 Calories: per Calorie (+2 per rank above B; roll once per Calorie).",
+        "activation": "bonus",
+        "cost": {
+          "pool": "calories",
+          "choose": true
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

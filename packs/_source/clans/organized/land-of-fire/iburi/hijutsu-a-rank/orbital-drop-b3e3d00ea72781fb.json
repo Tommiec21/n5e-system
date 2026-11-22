@@ -17,7 +17,8 @@
         "cost": "20 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fire Release",
         "components": "CM, M"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -108,7 +109,46 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5elWsu13HTah2Iz",
+        "type": "save",
+        "label": "Orbital Drop",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Burned"
+          },
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          }
+        ],
+        "text": "Move your speed, then a 60-foot radius at a point within 60 feet. Failure: the damage, 2 ranks of Burned and Blinded for 1 minute (a Bonus action and a Constitution save ends it); success: half. The area becomes difficult terrain.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "7d10",
+              "type": "fire"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

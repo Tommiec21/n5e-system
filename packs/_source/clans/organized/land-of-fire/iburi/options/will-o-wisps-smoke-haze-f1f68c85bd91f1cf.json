@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "iburi",
       "sourceLine": 1127,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,36 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5egeZvA4tWsddu1",
+        "type": "save",
+        "label": "Smoke Haze",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          }
+        ],
+        "text": "Once per turn, a Fire jutsu that attacks: creatures within 5 feet of the target(s). Failure: 1 rank of Dazzled (2 at 7th, 3 at 15th).",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

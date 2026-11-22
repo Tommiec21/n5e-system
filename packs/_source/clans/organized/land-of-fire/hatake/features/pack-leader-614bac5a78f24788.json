@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "hatake",
-      "sourceLine": 850
+      "sourceLine": 850,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Command Dice: d20s equal to your highest ability modifier (the pool), back on a long rest. One Pack Tactic at creation (+1 at 7th and 15th): the option items."
+        }
+      ]
     }
   },
   "ownership": {
@@ -47,8 +54,11 @@
       {
         "id": "commandDice",
         "label": "Command Dice",
-        "max": "max(0,@abilities.str.mod,@abilities.dex.mod,@abilities.con.mod,@abilities.int.mod,@abilities.wis.mod,@abilities.cha.mod)",
-        "die": "d20",
+        "value": 0,
+        "max": "max(@abilities.str.mod, @abilities.dex.mod, @abilities.con.mod, @abilities.int.mod, @abilities.wis.mod, @abilities.cha.mod)",
+        "die": "",
+        "steps": [],
+        "step": 0,
         "recovery": [
           {
             "on": "lr",
@@ -57,6 +67,21 @@
             "requires": ""
           }
         ]
+      }
+    ],
+    "activities": [
+      {
+        "id": "n5eEfDhOh8XSAWGR",
+        "type": "roll",
+        "label": "Roll a Command Die",
+        "roll": {
+          "formula": "1d20",
+          "note": "A d20 from your pool."
+        },
+        "cost": {
+          "pool": "commandDice",
+          "amount": 1
+        }
       }
     ]
   }
