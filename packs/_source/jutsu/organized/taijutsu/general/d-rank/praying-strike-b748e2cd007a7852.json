@@ -85,11 +85,11 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eDNKbTBRWEy2X3",
         "type": "attack",
-        "label": "Attack",
+        "label": "Praying Strike",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
@@ -103,17 +103,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5esfIX9rhILsl2w",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "stunned",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Stunned"
-          }
-        ],
+        "label": "Praying Strike: Stunned",
         "save": {
           "abilities": [
             "con"
@@ -122,10 +114,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "stunned",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Stunned"
+          }
+        ],
+        "text": "On a hit. Failure: Stunned until the end of the turn.",
         "damage": {
           "parts": []
         }
@@ -217,11 +216,11 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5eDNKbTBRWEy2X3",
               "type": "attack",
-              "label": "Attack",
+              "label": "Praying Strike",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
@@ -235,17 +234,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5esfIX9rhILsl2w",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "stunned",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Stunned"
-                }
-              ],
+              "label": "Praying Strike: Stunned",
               "save": {
                 "abilities": [
                   "con"
@@ -254,10 +245,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "stunned",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Stunned"
+                }
+              ],
+              "text": "On a hit. Failure: Stunned until the end of the turn.",
               "damage": {
                 "parts": []
               }
@@ -265,11 +263,11 @@
           ],
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5eDNKbTBRWEy2X3",
               "type": "attack",
-              "label": "Attack",
+              "label": "Praying Strike",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
@@ -278,22 +276,18 @@
                   {
                     "formula": "(1d4) + (2d4)",
                     "type": "bludgeoning"
+                  },
+                  {
+                    "formula": "@unarmed",
+                    "type": "bludgeoning"
                   }
                 ]
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5esfIX9rhILsl2w",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "stunned",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Stunned"
-                }
-              ],
+              "label": "Praying Strike: Stunned",
               "save": {
                 "abilities": [
                   "con"
@@ -302,10 +296,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "stunned",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Stunned"
+                }
+              ],
+              "text": "On a hit. Failure: Stunned until the end of the turn.",
               "damage": {
                 "parts": []
               }
@@ -313,11 +314,11 @@
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eDNKbTBRWEy2X3",
               "type": "attack",
-              "label": "Attack",
+              "label": "Praying Strike",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
@@ -326,22 +327,18 @@
                   {
                     "formula": "(1d4) + (3d4)",
                     "type": "bludgeoning"
+                  },
+                  {
+                    "formula": "@unarmed",
+                    "type": "bludgeoning"
                   }
                 ]
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5esfIX9rhILsl2w",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "stunned",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Stunned"
-                }
-              ],
+              "label": "Praying Strike: Stunned",
               "save": {
                 "abilities": [
                   "con"
@@ -350,10 +347,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "stunned",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Stunned"
+                }
+              ],
+              "text": "On a hit. Failure: Stunned until the end of the turn.",
               "damage": {
                 "parts": []
               }
@@ -361,11 +365,11 @@
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eDNKbTBRWEy2X3",
               "type": "attack",
-              "label": "Attack",
+              "label": "Praying Strike",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
@@ -374,22 +378,18 @@
                   {
                     "formula": "(1d4) + (4d4)",
                     "type": "bludgeoning"
+                  },
+                  {
+                    "formula": "@unarmed",
+                    "type": "bludgeoning"
                   }
                 ]
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5esfIX9rhILsl2w",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "stunned",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Stunned"
-                }
-              ],
+              "label": "Praying Strike: Stunned",
               "save": {
                 "abilities": [
                   "con"
@@ -398,10 +398,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "stunned",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Stunned"
+                }
+              ],
+              "text": "On a hit. Failure: Stunned until the end of the turn.",
               "damage": {
                 "parts": []
               }
@@ -409,7 +416,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

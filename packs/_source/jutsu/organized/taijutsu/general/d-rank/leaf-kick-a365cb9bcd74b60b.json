@@ -86,30 +86,30 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ehorbbRDQiGG24",
         "type": "attack",
-        "label": "Attack",
+        "label": "Leaf Kick",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
         "damage": {
           "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "1d12",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eLt3QAIFXFExRl",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "slowed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Slowed"
-          }
-        ],
+        "label": "Leaf Kick: Slowed",
         "save": {
           "abilities": [
             "str"
@@ -118,34 +118,67 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "slowed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Slowed"
+          }
+        ],
+        "text": "On a hit. Failure: Slowed until the end of its next turn.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "finisher-parsed1",
-        "type": "damage",
-        "label": "Finisher: Damage",
+        "id": "n5ept1Mhma2oAOkD",
+        "type": "attack",
+        "label": "Finisher: Leaf Kick",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
         "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed + 3d12",
-              "type": "bludgeoning"
-            }
-          ]
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "3d12",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "1d12",
-        "roll": {
-          "formula": "1d12",
-          "note": "On a hit you deal your Unarmed damage + 1d12 and the target must make a Strength saving throw. On a failed save they gain 1 rank of Slowed until the end of their next turn."
+        "id": "n5eCdYN3bZCpEAht",
+        "type": "save",
+        "label": "Finisher: Prone",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Failure: Prone; a 10-foot cube from you becomes difficult terrain.",
+        "damage": {
+          "parts": []
         }
       }
     ],
@@ -238,9 +271,403 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5ehorbbRDQiGG24",
+              "type": "attack",
+              "label": "Leaf Kick",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "1d12 + 1d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eLt3QAIFXFExRl",
+              "type": "save",
+              "label": "Leaf Kick: Slowed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "slowed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Slowed"
+                }
+              ],
+              "text": "On a hit. Failure: Slowed until the end of its next turn.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ept1Mhma2oAOkD",
+              "type": "attack",
+              "label": "Finisher: Leaf Kick",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d12 + 1d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eCdYN3bZCpEAht",
+              "type": "save",
+              "label": "Finisher: Prone",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Failure: Prone; a 10-foot cube from you becomes difficult terrain.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5ehorbbRDQiGG24",
+              "type": "attack",
+              "label": "Leaf Kick",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "1d12 + 2d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eLt3QAIFXFExRl",
+              "type": "save",
+              "label": "Leaf Kick: Slowed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "slowed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Slowed"
+                }
+              ],
+              "text": "On a hit. Failure: Slowed until the end of its next turn.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ept1Mhma2oAOkD",
+              "type": "attack",
+              "label": "Finisher: Leaf Kick",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d12 + 2d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eCdYN3bZCpEAht",
+              "type": "save",
+              "label": "Finisher: Prone",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Failure: Prone; a 10-foot cube from you becomes difficult terrain.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ehorbbRDQiGG24",
+              "type": "attack",
+              "label": "Leaf Kick",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "1d12 + 3d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eLt3QAIFXFExRl",
+              "type": "save",
+              "label": "Leaf Kick: Slowed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "slowed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Slowed"
+                }
+              ],
+              "text": "On a hit. Failure: Slowed until the end of its next turn.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ept1Mhma2oAOkD",
+              "type": "attack",
+              "label": "Finisher: Leaf Kick",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d12 + 3d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eCdYN3bZCpEAht",
+              "type": "save",
+              "label": "Finisher: Prone",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Failure: Prone; a 10-foot cube from you becomes difficult terrain.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ehorbbRDQiGG24",
+              "type": "attack",
+              "label": "Leaf Kick",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "1d12 + 4d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eLt3QAIFXFExRl",
+              "type": "save",
+              "label": "Leaf Kick: Slowed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "slowed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Slowed"
+                }
+              ],
+              "text": "On a hit. Failure: Slowed until the end of its next turn.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ept1Mhma2oAOkD",
+              "type": "attack",
+              "label": "Finisher: Leaf Kick",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d12 + 4d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eCdYN3bZCpEAht",
+              "type": "save",
+              "label": "Finisher: Prone",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Failure: Prone; a 10-foot cube from you becomes difficult terrain.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

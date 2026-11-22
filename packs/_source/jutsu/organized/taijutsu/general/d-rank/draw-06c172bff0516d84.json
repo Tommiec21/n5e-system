@@ -84,16 +84,34 @@
     },
     "activities": [
       {
-        "id": "parsed1",
-        "type": "damage",
-        "label": "Damage",
+        "id": "n5eF2zVSsvpcWxD9",
+        "type": "roll",
+        "label": "Draw: dodge",
+        "roll": {
+          "formula": "1d20 + @abilities.dex.mod",
+          "note": "Reaction, an attack's damage: move 10 feet away; your Dexterity save against the attack roll; success: it misses. Then move 20 feet toward it and attack."
+        }
+      },
+      {
+        "id": "n5eu22NdNvsaDuCQ",
+        "type": "attack",
+        "label": "Draw: counter",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "[Unarmed damage] + 2 [Unarmed damage die] (+1 die per rank).",
         "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed",
-              "type": "bludgeoning"
-            }
-          ]
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "@wdie + @wdie",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       }
     ],
@@ -180,70 +198,16 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {
-          "C": [
-            {
-              "id": "parsed1",
-              "type": "damage",
-              "label": "Damage",
-              "damage": {
-                "parts": [
-                  {
-                    "formula": "(@unarmed) + (1)",
-                    "type": "bludgeoning"
-                  }
-                ]
-              }
-            }
-          ],
-          "B": [
-            {
-              "id": "parsed1",
-              "type": "damage",
-              "label": "Damage",
-              "damage": {
-                "parts": [
-                  {
-                    "formula": "(@unarmed) + (2)",
-                    "type": "bludgeoning"
-                  }
-                ]
-              }
-            }
-          ],
-          "A": [
-            {
-              "id": "parsed1",
-              "type": "damage",
-              "label": "Damage",
-              "damage": {
-                "parts": [
-                  {
-                    "formula": "(@unarmed) + (3)",
-                    "type": "bludgeoning"
-                  }
-                ]
-              }
-            }
-          ],
-          "S": [
-            {
-              "id": "parsed1",
-              "type": "damage",
-              "label": "Damage",
-              "damage": {
-                "parts": [
-                  {
-                    "formula": "(@unarmed) + (4)",
-                    "type": "bludgeoning"
-                  }
-                ]
-              }
-            }
-          ]
-        },
+        "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The counter's extra unarmed dice: the button adds two unarmed dice; add one more per rank above D by hand. Proficiency in Dexterity saves isn't added to the dodge roll: add it if you have it."
+        }
+      ]
     }
   },
   "folder": "b31b1b0d97c02089"

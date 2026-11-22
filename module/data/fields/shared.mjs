@@ -272,6 +272,8 @@ export function activityFields() {
       ampType: str(),                    // makes it an Amp (battle|reflex|fortitude|will|clan)
       limit: str(),                      // ENG1a mark: at most this many (formula) from one caster; the oldest ends
       condition: str(),                  // CCOND1: apply this class or clan condition card instead
+      // STD6f F-D3: conditions and states put on the targets with no save (workflow/trackers.mjs inflictOn).
+      inflicts: arr(obj({ key: str(), kind: str({ initial: "condition" }), ranks: int(1, { min: 0 }), label: str() })),
       amp: str(),                        // AMP1a: start this Amp card instead (workflow/amp-cards.mjs)
       // ENG1d: an aura {radius, who, includeSelf, effect: {name, changes, rules, state}} (rules/auras.mjs)
       aura: new (F().ObjectField)(),

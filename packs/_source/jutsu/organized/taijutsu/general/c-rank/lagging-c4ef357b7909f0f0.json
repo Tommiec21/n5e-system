@@ -85,11 +85,11 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e4HPQYicvvxqq4",
         "type": "attack",
-        "label": "Attack",
+        "label": "Lagging",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
@@ -106,10 +106,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eDTI96lwyEVckH",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Lagging: delay",
         "save": {
           "abilities": [
             "str"
@@ -118,21 +117,21 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "On a hit. Failure: until the end of its next turn, an Action activity rolls a d20; 11+ (B 9+, A 7+, S 5+) delays it to its next turn; then it ends.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll2",
+        "id": "n5ew54vC93Va99gF",
         "type": "roll",
-        "label": "d20",
+        "label": "Delay roll (its d20)",
         "roll": {
-          "formula": "d20",
-          "note": "On a failed save, until the end of their next turn, If the affected creature attempts any activity that requires an action they must roll a d20. On a roll of 11 or more, their action is delayed until their next turn, in which they spend their next action to complete this original activity. Regardless of the result, this jutsu then immediately ends."
+          "formula": "1d20",
+          "note": "11+ delays (B 9+, A 7+, S 5+)."
         }
       }
     ],
@@ -215,7 +214,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "aee26bc2434fe738"

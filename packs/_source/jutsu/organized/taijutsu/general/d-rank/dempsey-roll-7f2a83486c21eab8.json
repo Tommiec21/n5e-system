@@ -84,16 +84,38 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eqa56ehN5wBHYT",
+        "type": "effect",
+        "label": "Dempsey Roll",
+        "effect": {
+          "name": "Dempsey Roll",
+          "target": "self",
+          "changes": [],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Reaction, until the start of your next turn: each melee attack on you, spend 4 chakra for +2 AC (+1 at B-Rank) against it and one unarmed attack back."
+      },
+      {
+        "id": "n5egbKFQYNPopBYd",
         "type": "attack",
-        "label": "Attack",
+        "label": "Counter (4 chakra)",
         "attack": {
-          "discipline": "",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Spend 4 chakra (by hand): +2 AC against the trigger, then this attack.",
         "damage": {
           "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       }
     ],
@@ -163,7 +185,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": true
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

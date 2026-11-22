@@ -86,36 +86,31 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eWKonbr8svHsQ3",
         "type": "attack",
-        "label": "Attack",
+        "label": "Elementania",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Only a target you can Finisher from a Combo. Pick an element.",
         "damage": {
           "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "3d12",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eSVPej2HYXfz7e",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "burned",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Burned"
-          },
-          {
-            "key": "dazed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Dazed"
-          }
-        ],
+        "label": "Earth",
         "save": {
           "abilities": [
             "dex"
@@ -124,39 +119,91 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Creatures within 10 feet of the target.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5erJZgdvqiZTLK8",
+        "type": "save",
+        "label": "Wind",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Failure: thrown 15 × Taijutsu modifier feet; hitting a surface: 2d6 per 15 feet left.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "3d12",
-        "roll": {
-          "formula": "3d12",
-          "note": "Make a melee taijutsu attack, dealing your [Unarmed damage] + 3d12. Your attack gains the following benefits based on the elemental affinity you wished to imitate (Pick one when you cast this jutsu)"
+        "id": "n5epoLEL1LIFIiDX",
+        "type": "save",
+        "label": "Fire",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Burned"
+          }
+        ],
+        "text": "The attack's damage is fire. Failure: 1 Burned.",
+        "damage": {
+          "parts": []
         }
       },
       {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "3d6",
-        "roll": {
-          "formula": "3d6",
-          "note": "All creatures within 10 feet of the original target must make a Dexterity saving throw, taking 3d6 bludgeoning damage from the erupting earth."
-        }
-      },
-      {
-        "id": "sourceRoll4",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "They take 2d6 bludgeoning damage for every 15 feet that they were unable to be moved."
+        "id": "n5e34q2M4hWvioON",
+        "type": "save",
+        "label": "Lightning",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "Creatures (not you) within 30 feet of the target. Failure: Dazed.",
+        "damage": {
+          "parts": []
         }
       }
     ],
@@ -251,7 +298,14 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Water: reroll 1s and 2s on the attack's damage (by hand)."
+        }
+      ]
     }
   },
   "folder": "aee26bc2434fe738"

@@ -85,13 +85,13 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eOqIRwReEBpThT",
         "type": "attack",
-        "label": "Attack",
+        "label": "Whirlwind Death Drop",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
         "damage": {
           "parts": []
@@ -102,39 +102,34 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "2"
         }
       },
       {
-        "id": "finisher-parsed1",
+        "id": "n5eGN46sELLxUnGZ",
         "type": "attack",
-        "label": "Finisher: Attack",
+        "label": "Finisher: Whirlwind Death Drop",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 3
         },
         "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed + 2d8",
-              "type": "bludgeoning"
-            }
-          ]
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "2d8",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "3"
         }
       },
       {
-        "id": "finisher-parsed2",
+        "id": "n5eCO8Kt5qxthp7Q",
         "type": "save",
-        "label": "Finisher: Save",
-        "inflicts": [
-          {
-            "key": "stunned",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Stunned"
-          }
-        ],
+        "label": "Finisher: Stunned",
         "save": {
           "abilities": [
             "con"
@@ -143,10 +138,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "stunned",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Stunned"
+          }
+        ],
+        "text": "Hit twice or more. Failure: Stunned until the start of its next turn.",
         "damage": {
           "parts": []
         }
@@ -247,9 +249,224 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eOqIRwReEBpThT",
+              "type": "attack",
+              "label": "Whirlwind Death Drop",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d8 + 1d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eGN46sELLxUnGZ",
+              "type": "attack",
+              "label": "Finisher: Whirlwind Death Drop",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d8 + 1d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "3"
+              }
+            },
+            {
+              "id": "n5eCO8Kt5qxthp7Q",
+              "type": "save",
+              "label": "Finisher: Stunned",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "stunned",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Stunned"
+                }
+              ],
+              "text": "Hit twice or more. Failure: Stunned until the start of its next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eOqIRwReEBpThT",
+              "type": "attack",
+              "label": "Whirlwind Death Drop",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d8 + 2d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eGN46sELLxUnGZ",
+              "type": "attack",
+              "label": "Finisher: Whirlwind Death Drop",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d8 + 2d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "3"
+              }
+            },
+            {
+              "id": "n5eCO8Kt5qxthp7Q",
+              "type": "save",
+              "label": "Finisher: Stunned",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "stunned",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Stunned"
+                }
+              ],
+              "text": "Hit twice or more. Failure: Stunned until the start of its next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eOqIRwReEBpThT",
+              "type": "attack",
+              "label": "Whirlwind Death Drop",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d8 + 3d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eGN46sELLxUnGZ",
+              "type": "attack",
+              "label": "Finisher: Whirlwind Death Drop",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d8 + 3d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "3"
+              }
+            },
+            {
+              "id": "n5eCO8Kt5qxthp7Q",
+              "type": "save",
+              "label": "Finisher: Stunned",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "stunned",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Stunned"
+                }
+              ],
+              "text": "Hit twice or more. Failure: Stunned until the start of its next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "aee26bc2434fe738"

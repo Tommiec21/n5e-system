@@ -84,10 +84,28 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5eWpRikthuUzFZq",
+        "type": "effect",
+        "label": "Brace",
+        "effect": {
+          "name": "Brace",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.save.str",
+              "value": "2",
+              "mode": 2
+            },
+            {
+              "key": "n5e.save.con",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 0
+        },
+        "text": "Reaction, forced to make a Strength or Constitution save: +2 (B-Rank +4, S-Rank +6)."
       }
     ],
     "featureType": "active",
@@ -154,9 +172,115 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eWpRikthuUzFZq",
+              "type": "effect",
+              "label": "Brace",
+              "effect": {
+                "name": "Brace",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.save.str",
+                    "value": "2",
+                    "mode": 2
+                  },
+                  {
+                    "key": "n5e.save.con",
+                    "value": "2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "Reaction, forced to make a Strength or Constitution save: +2 (B-Rank +4, S-Rank +6)."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eWpRikthuUzFZq",
+              "type": "effect",
+              "label": "Brace",
+              "effect": {
+                "name": "Brace",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.save.str",
+                    "value": "4",
+                    "mode": 2
+                  },
+                  {
+                    "key": "n5e.save.con",
+                    "value": "4",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "Reaction, forced to make a Strength or Constitution save: +2 (B-Rank +4, S-Rank +6)."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eWpRikthuUzFZq",
+              "type": "effect",
+              "label": "Brace",
+              "effect": {
+                "name": "Brace",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.save.str",
+                    "value": "4",
+                    "mode": 2
+                  },
+                  {
+                    "key": "n5e.save.con",
+                    "value": "4",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "Reaction, forced to make a Strength or Constitution save: +2 (B-Rank +4, S-Rank +6)."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eWpRikthuUzFZq",
+              "type": "effect",
+              "label": "Brace",
+              "effect": {
+                "name": "Brace",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.save.str",
+                    "value": "6",
+                    "mode": 2
+                  },
+                  {
+                    "key": "n5e.save.con",
+                    "value": "6",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "Reaction, forced to make a Strength or Constitution save: +2 (B-Rank +4, S-Rank +6)."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

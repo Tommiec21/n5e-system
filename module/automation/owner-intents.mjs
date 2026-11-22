@@ -9,7 +9,7 @@
  */
 import { canModify } from "./authority.mjs";
 
-export const INTENT_TYPES = Object.freeze(["summonAllied", "dismissAllied", "spendRations", "reactionDecision", "transferItem", "cardResult", "learnEntry", "dispelJutsu", "transferRyo", "lootTake", "lootBuy", "lootSell", "socialResult", "applyCondition", "applyAmp"]);
+export const INTENT_TYPES = Object.freeze(["summonAllied", "dismissAllied", "spendRations", "reactionDecision", "transferItem", "cardResult", "learnEntry", "dispelJutsu", "transferRyo", "lootTake", "lootBuy", "lootSell", "socialResult", "applyCondition", "applyAmp", "inflictConditions"]);
 
 const handlers = new Map();
 const processed = new Set();
@@ -72,6 +72,18 @@ export function validateIntent(type, data = {}) {
       if ( typeof data.key !== "string" || !/^[a-zA-Z][a-zA-Z0-9_-]{0,63}$/.test(data.key) || !isUuid(data.targetUuid)
         || !Number.isSafeInteger(ranks) || ranks < 1 || ranks > 20 ) throw new Error("Invalid condition request.");
       return { key: data.key, targetUuid: data.targetUuid, ranks };
+    }
+    case "inflictConditions": {
+      // STD6f F-D3: conditions and states an effect activity puts on a creature with no save.
+      const list = Array.isArray(data.inflicts) ? data.inflicts : [];
+      if ( !isUuid(data.targetUuid) || !list.length || list.length > 8 ) throw new Error("Invalid condition request.");
+      const inflicts = list.map(i => {
+        const ranks = Number(i?.ranks ?? 1);
+        if ( typeof i?.key !== "string" || !/^[a-zA-Z][a-zA-Z0-9_-]{0,63}$/.test(i.key) || !["condition", "state"].includes(i.kind)
+          || !Number.isSafeInteger(ranks) || ranks < 1 || ranks > 20 ) throw new Error("Invalid condition request.");
+        return { key: i.key, kind: i.kind, ranks };
+      });
+      return { targetUuid: data.targetUuid, inflicts };
     }
     case "applyAmp": {
       if ( typeof data.key !== "string" || !/^[a-zA-Z][a-zA-Z0-9_-]{0,63}$/.test(data.key) || !isUuid(data.targetUuid) ) throw new Error("Invalid Amp request.");

@@ -1018,3 +1018,9 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 - Pool recovery `empty` on rests (0.83.0-alpha.1): a short or long rest recovery with amount `empty` resets the pool to 0 (`rules/rest.mjs`).
 
 - Damage part `alsoAs` (0.84.1-alpha.1): `{formula, type, alsoAs}` deals the rolled result as `type` and the same amount again as `alsoAs` (King Q-E20).
+
+### Jutsu tables and no-save conditions (STD6f)
+
+- `content/automation/jutsu/<discipline>-<section>.json`: `{section: "taijutsu/general", ranks: ["E", "D", "C"], features: {<identifier>: entry}}`, the same entry keys as the class and clan tables; applied to the section's jutsu of those ranks. A jutsu's per-rank buttons are `flags.n5e.jutsuBookImport.activitiesByRank`.
+- An effect activity's `effect.inflicts`: `[{key, kind: "condition" | "state", ranks, label}]` put on the targets with no save (`workflow/trackers.mjs inflictOn`; owner intent `inflictConditions` for creatures the user doesn't own).
+- A heal's formula may use `@unarmed` (the caster's current [Unarmed damage]).

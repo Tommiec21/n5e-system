@@ -85,38 +85,47 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5erJU8oCbO9yd5y",
+        "type": "effect",
+        "label": "Mirage Blitz: +3 AC",
+        "effect": {
+          "name": "Mirage Blitz",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "3",
+              "mode": 2
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 0
+        },
+        "text": "Reaction to melee damage: +3 AC against it."
+      },
+      {
+        "id": "n5eKkn6FOHWs7bS4",
         "type": "attack",
-        "label": "Attack",
+        "label": "Mirage Blitz",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Against the trigger: twice your [Unarmed damage]; pushed 15 feet.",
         "damage": {
-          "parts": []
-        },
-        "strike": {
-          "kind": "unarmed",
-          "extraDice": "",
-          "dieSteps": 0,
-          "pierce": 0,
-          "maximize": false,
-          "attacks": "1"
+          "parts": [
+            {
+              "formula": "2 * (@unarmed)",
+              "type": "bludgeoning"
+            }
+          ]
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5e76Az5iXKqhDyC",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "prone",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Prone"
-          }
-        ],
+        "label": "Mirage Blitz: Prone",
         "save": {
           "abilities": [
             "str"
@@ -125,10 +134,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "On a hit. Failure: Prone.",
         "damage": {
           "parts": []
         }
@@ -205,7 +221,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

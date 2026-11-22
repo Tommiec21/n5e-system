@@ -85,13 +85,13 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e837z4lc4LGGxS",
         "type": "attack",
-        "label": "Attack",
+        "label": "Serpent Fang Double",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
         "damage": {
           "parts": []
@@ -102,13 +102,23 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "2"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5e2JA7p5pZQfVOz",
         "type": "save",
-        "label": "Save",
+        "label": "Serpent Fang: Weakened",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "weakened",
@@ -117,6 +127,15 @@
             "label": "Weakened"
           }
         ],
+        "text": "Hit at least once. Failure: 1 Weakened.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5ecyWCawvloCx3V",
+        "type": "save",
+        "label": "Finisher: Weakened",
         "save": {
           "abilities": [
             "con"
@@ -125,18 +144,8 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
-        "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "finisher-parsed1",
-        "type": "save",
-        "label": "Finisher: Save",
         "inflicts": [
           {
             "key": "weakened",
@@ -145,18 +154,7 @@
             "label": "Weakened"
           }
         ],
-        "save": {
-          "abilities": [
-            "con"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Finisher, hit twice. Failure: 2 Weakened.",
         "damage": {
           "parts": []
         }
@@ -248,30 +246,40 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5e837z4lc4LGGxS",
               "type": "attack",
-              "label": "Attack",
+              "label": "Serpent Fang Double",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(1d8) + (1d8)",
+                "extraDice": "1d8 + 1d8",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5e2JA7p5pZQfVOz",
               "type": "save",
-              "label": "Save",
+              "label": "Serpent Fang: Weakened",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "weakened",
@@ -280,6 +288,15 @@
                   "label": "Weakened"
                 }
               ],
+              "text": "Hit at least once. Failure: 1 Weakened.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ecyWCawvloCx3V",
+              "type": "save",
+              "label": "Finisher: Weakened",
               "save": {
                 "abilities": [
                   "con"
@@ -288,18 +305,8 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
-              "damage": {
-                "parts": []
-              }
-            },
-            {
-              "id": "finisher-parsed1",
-              "type": "save",
-              "label": "Finisher: Save",
               "inflicts": [
                 {
                   "key": "weakened",
@@ -308,18 +315,7 @@
                   "label": "Weakened"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "con"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "Finisher, hit twice. Failure: 2 Weakened.",
               "damage": {
                 "parts": []
               }
@@ -327,30 +323,40 @@
           ],
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5e837z4lc4LGGxS",
               "type": "attack",
-              "label": "Attack",
+              "label": "Serpent Fang Double",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(1d8) + (2d8)",
+                "extraDice": "1d8 + 2d8",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5e2JA7p5pZQfVOz",
               "type": "save",
-              "label": "Save",
+              "label": "Serpent Fang: Weakened",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "weakened",
@@ -359,6 +365,15 @@
                   "label": "Weakened"
                 }
               ],
+              "text": "Hit at least once. Failure: 1 Weakened.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ecyWCawvloCx3V",
+              "type": "save",
+              "label": "Finisher: Weakened",
               "save": {
                 "abilities": [
                   "con"
@@ -367,18 +382,8 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
-              "damage": {
-                "parts": []
-              }
-            },
-            {
-              "id": "finisher-parsed1",
-              "type": "save",
-              "label": "Finisher: Save",
               "inflicts": [
                 {
                   "key": "weakened",
@@ -387,18 +392,7 @@
                   "label": "Weakened"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "con"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "Finisher, hit twice. Failure: 2 Weakened.",
               "damage": {
                 "parts": []
               }
@@ -406,30 +400,40 @@
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5e837z4lc4LGGxS",
               "type": "attack",
-              "label": "Attack",
+              "label": "Serpent Fang Double",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(1d8) + (3d8)",
+                "extraDice": "1d8 + 3d8",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5e2JA7p5pZQfVOz",
               "type": "save",
-              "label": "Save",
+              "label": "Serpent Fang: Weakened",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "weakened",
@@ -438,6 +442,15 @@
                   "label": "Weakened"
                 }
               ],
+              "text": "Hit at least once. Failure: 1 Weakened.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ecyWCawvloCx3V",
+              "type": "save",
+              "label": "Finisher: Weakened",
               "save": {
                 "abilities": [
                   "con"
@@ -446,18 +459,8 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
-              "damage": {
-                "parts": []
-              }
-            },
-            {
-              "id": "finisher-parsed1",
-              "type": "save",
-              "label": "Finisher: Save",
               "inflicts": [
                 {
                   "key": "weakened",
@@ -466,18 +469,7 @@
                   "label": "Weakened"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "con"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "Finisher, hit twice. Failure: 2 Weakened.",
               "damage": {
                 "parts": []
               }
@@ -485,30 +477,40 @@
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5e837z4lc4LGGxS",
               "type": "attack",
-              "label": "Attack",
+              "label": "Serpent Fang Double",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(1d8) + (4d8)",
+                "extraDice": "1d8 + 4d8",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5e2JA7p5pZQfVOz",
               "type": "save",
-              "label": "Save",
+              "label": "Serpent Fang: Weakened",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "weakened",
@@ -517,6 +519,15 @@
                   "label": "Weakened"
                 }
               ],
+              "text": "Hit at least once. Failure: 1 Weakened.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ecyWCawvloCx3V",
+              "type": "save",
+              "label": "Finisher: Weakened",
               "save": {
                 "abilities": [
                   "con"
@@ -525,18 +536,8 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
-              "damage": {
-                "parts": []
-              }
-            },
-            {
-              "id": "finisher-parsed1",
-              "type": "save",
-              "label": "Finisher: Save",
               "inflicts": [
                 {
                   "key": "weakened",
@@ -545,18 +546,7 @@
                   "label": "Weakened"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "con"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "Finisher, hit twice. Failure: 2 Weakened.",
               "damage": {
                 "parts": []
               }
@@ -564,7 +554,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "finisher-parsed1",
+        "id": "n5eYExT3Y7KFL87k",
         "type": "attack",
-        "label": "Finisher: Attack",
+        "label": "Finisher: Falcon Drop",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Finisher only; an airborne or falling target. On a hit: Prone, Weakened and Bruised (the effect button).",
         "damage": {
           "parts": [
             {
@@ -101,6 +102,39 @@
             }
           ]
         }
+      },
+      {
+        "id": "n5eKiDR4RcS0DXbo",
+        "type": "effect",
+        "label": "Prone, Weakened, Bruised",
+        "effect": {
+          "name": "Falcon Drop",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            },
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            },
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            }
+          ]
+        },
+        "text": "On a hit."
       }
     ],
     "featureType": "active",
@@ -180,9 +214,173 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eYExT3Y7KFL87k",
+              "type": "attack",
+              "label": "Finisher: Falcon Drop",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Finisher only; an airborne or falling target. On a hit: Prone, Weakened and Bruised (the effect button).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d12) + (1d12)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eKiDR4RcS0DXbo",
+              "type": "effect",
+              "label": "Prone, Weakened, Bruised",
+              "effect": {
+                "name": "Falcon Drop",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ]
+              },
+              "text": "On a hit."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eYExT3Y7KFL87k",
+              "type": "attack",
+              "label": "Finisher: Falcon Drop",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Finisher only; an airborne or falling target. On a hit: Prone, Weakened and Bruised (the effect button).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d12) + (2d12)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eKiDR4RcS0DXbo",
+              "type": "effect",
+              "label": "Prone, Weakened, Bruised",
+              "effect": {
+                "name": "Falcon Drop",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ]
+              },
+              "text": "On a hit."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eYExT3Y7KFL87k",
+              "type": "attack",
+              "label": "Finisher: Falcon Drop",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Finisher only; an airborne or falling target. On a hit: Prone, Weakened and Bruised (the effect button).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d12) + (3d12)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eKiDR4RcS0DXbo",
+              "type": "effect",
+              "label": "Prone, Weakened, Bruised",
+              "effect": {
+                "name": "Falcon Drop",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ]
+              },
+              "text": "On a hit."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "aee26bc2434fe738"

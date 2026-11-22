@@ -84,17 +84,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5efsuFh8xsYITg1",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "prone",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Prone"
-          }
-        ],
+        "label": "Early Sacrifice: throw",
         "save": {
           "abilities": [
             "str"
@@ -103,10 +95,37 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Reaction, a melee attack misses you. Failure: thrown 30 feet; hitting a surface: falling damage.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5ey4UKj4RHgvXZg",
+        "type": "save",
+        "label": "Early Sacrifice: landing",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "A thrown target. Failure: Prone.",
         "damage": {
           "parts": []
         }
@@ -176,7 +195,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "aee26bc2434fe738"

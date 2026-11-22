@@ -106,7 +106,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `commands.mjs` | 23 | GM-local extension boundary, never a socket endpoint or authorization from a claimed user ID. | `coordinateCommand` |
 | `effect-services.mjs` | 158 |  | `registerAppearanceProvider`, `refreshEffectAppearances`, `approveEffectMacros`, `emitEffectEvent`, `registerEffectServices` |
 | `history.mjs` | 24 | Explicit GM reconciliation/archive. | `requestHistory`, `archiveRequestHistory` |
-| `owner-intents.mjs` | 184 | Owner intents: the few N5e actions a player starts that must finish on the GM's client (Allied NPC placement, party rations, reaction decisions on GM-authore... | `INTENT_TYPES`, `registerIntentHandler`, `validateIntent`, `processIntent`, `submitIntent`, `pruneIntentResults`, `newIntents`, `registerOwnerIntents`, `clearStaleIntents` |
+| `owner-intents.mjs` | 196 | Owner intents: the few N5e actions a player starts that must finish on the GM's client (Allied NPC placement, party rations, reaction decisions on GM-authore... | `INTENT_TYPES`, `registerIntentHandler`, `validateIntent`, `processIntent`, `submitIntent`, `pruneIntentResults`, `newIntents`, `registerOwnerIntents`, `clearStaleIntents` |
 | `receipts.mjs` | 72 | Durable, serialized GM receipts. | `requestFingerprint`, `createReceiptCoordinator` |
 
 ## module/canvas
@@ -343,7 +343,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `action-card.mjs` | 616 | Single action card (Foundry side; CARD1, King 2026-11-14). | `actionCardOn`, `addAreaTargets`, `cardFlag`, `cardOfLinked`, `recordLinked`, `receiveCardResult`, `syncCards`, `immuneTargets`, `renderActionCard`, `pendingSaveActors`, `postEffectSummary`, `onActionCardClick`, `registerActionCardHooks` |
 | `action-effects.mjs` | 25 | Action effects on cards (STD2; rules/action-effects.mjs). | `consumedOn`, `cardActionContext` |
-| `activity-buttons.mjs` | 566 | Chat card buttons for activities, and what happens when they're clicked. | `damageButtons`, `applyButtons`, `activityButtons`, `onActivityClick`, `highestDiscipline`, `payPoolCost` |
+| `activity-buttons.mjs` | 567 | Chat card buttons for activities, and what happens when they're clicked. | `damageButtons`, `applyButtons`, `activityButtons`, `onActivityClick`, `highestDiscipline`, `payPoolCost` |
 | `activity-execution.mjs` | 52 | Serialize actor activities and enforce declared turn limits before any resource is spent. | `executeActivity` |
 | `allied.mjs` | 156 | Allied NPCs (King 2026-11-13): summons, clones and companions from jutsu or class features. | `canSummonAllied`, `alliedTokenData`, `summonerLook`, `rowPositions`, `placeAllied`, `summonAllied`, `removeAllied`, `dismissAllied`, `deleteSummonTokens`, `registerAlliedIntents` |
 | `ammo.mjs` | 40 | Ammunition Die (KB 03): d8 > d6 > d4 > 1 > 0. | `stepAmmo`, `rollAmmo` |
@@ -362,7 +362,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `clash.mjs` | 222 | Jutsu Clash workflow (CLASH1). | `clashButton`, `clashRank`, `startClash`, `renderClash`, `rollClash`, `decideClash`, `dispelSide`, `endEffectsOf`, `applyClashLoss`, `registerClashHooks` |
 | `commands.mjs` | 31 | Shared execution boundary for actor mutations. | `withActorLock`, `withActorLocks`, `activityTurnStamp`, `resourceChange` |
 | `concentration.mjs` | 109 | Concentration lifecycle (CONC1; rules/concentration.mjs). | `breakConcentration`, `dropLostReadied`, `checkConcentration`, `expireReadied`, `releaseReadied`, `postReadyCard`, `onRenderReadyCard`, `registerConcentrationHooks` |
-| `condition-cards.mjs` | 174 | Condition cards, Foundry side (CCOND1; docs/CCOND1_SPEC.md). | `CONDITION_PACK`, `registerCard`, `loadConditionCards`, `keyForCard`, `applierFor`, `applyConditionCard`, `placeCondition`, `endConditionsOf`, `registerConditionCards` |
+| `condition-cards.mjs` | 182 | Condition cards, Foundry side (CCOND1; docs/CCOND1_SPEC.md). | `CONDITION_PACK`, `registerCard`, `loadConditionCards`, `keyForCard`, `applierFor`, `applyConditionCard`, `placeCondition`, `endConditionsOf`, `registerConditionCards` |
 | `conditions.mjs` | 103 | Condition lifecycle (Foundry side); rules in rules/condition-lifecycle.mjs. | `postConditionDamage`, `processConditionTurnEnd`, `tryEndCondition` |
 | `coordinated-damage.mjs` | 38 | Persistent per-target damage commands with extensible, revalidated reaction adapters. | `coordinateDamage` |
 | `crafting.mjs` | 72 | Crafting (PRESTD1 Part D; King Q-PF4/Q-P7: PF2e emulation, numbers editable in the settings). | `craftSettings`, `promptCraft`, `craft` |
@@ -390,7 +390,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `skill-actions.mjs` | 176 | Skill actions against one target (SKILL1). | `holdsOn`, `prepareSkillAction`, `resolveSkillAction`, `onContestClick`, `onSkillApplyClick`, `onSkillReleaseClick`, `onMoveForHolds` |
 | `social.mjs` | 235 | Social encounters (PRESTD1 Part F, SOCIAL1; the Bingo Book). | `startSocialEncounter`, `onSocialClick`, `receiveSocial`, `onSocialGMClick`, `registerSocial` |
 | `table-options.mjs` | 81 | PRESTD1 A-ii (King 2026-11-15): optional table rules that act on tokens and the combat tracker. | `registerTableOptions` |
-| `trackers.mjs` | 474 | Phase 6 trackers (Foundry side); rules in rules/trackers.mjs. | `syncFurious`, `changeFury`, `onWeaponDamage`, `placeMarks`, `trackerButtons`, `onTrackerClick`, `openGate`, `openNextGate`, `closeGates`, `onTokenMove`, `trackersTurnEnd`, `rollResave`, `applyActivityEffect`, `expireSourceEffects` |
+| `trackers.mjs` | 495 | Phase 6 trackers (Foundry side); rules in rules/trackers.mjs. | `syncFurious`, `changeFury`, `onWeaponDamage`, `placeMarks`, `trackerButtons`, `onTrackerClick`, `openGate`, `openNextGate`, `closeGates`, `onTokenMove`, `trackersTurnEnd`, `rollResave`, `inflictOn`, `applyActivityEffect`, `expireSourceEffects` |
 | `transfer.mjs` | 204 | Item transfer between actors (Foundry side; FIN1). | `moveItem`, `transferItem`, `receiveTransfer`, `transferFromDrop`, `transferRyo`, `receiveRyo`, `promptGiveRyo`, `registerTransfer` |
 | `triggers.mjs` | 78 | Firing trigger elements (STD4; rules/triggers.mjs). | `fireTriggers` |
 | `turn.mjs` | 162 | Turn start (Foundry side). | `turnStartPipeline`, `endConcentration`, `turnEndPipeline`, `combatEndPipeline`, `registerTurnHooks`, `onRenderTurnCard` |

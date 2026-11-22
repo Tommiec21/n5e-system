@@ -50,14 +50,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ecEq8Zq1VjM5fh",
         "type": "attack",
-        "label": "Attack",
+        "label": "Butterfly Kick",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Every creature you choose adjacent to you.",
         "damage": {
           "parts": []
         },
@@ -71,17 +72,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5ez2bFWdCqMImR5",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "concussed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Concussed"
-          }
-        ],
+        "label": "Butterfly Kick: Concussed",
         "save": {
           "abilities": [
             "str"
@@ -90,18 +83,35 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "concussed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Concussed"
+          }
+        ],
+        "text": "Creatures hit. Failure: 1 Concussed (+1 at B-Rank).",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "finisher-parsed1",
+        "id": "n5eub5xvibLnJ5IC",
         "type": "save",
-        "label": "Finisher: Save",
+        "label": "Finisher: Butterfly Kick",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "concussed",
@@ -116,18 +126,7 @@
             "label": "Prone"
           }
         ],
-        "save": {
-          "abilities": [
-            "str"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Finisher: a 15-foot cube from you. Failure: 1 Concussed and Prone; success: half. Then move 15 feet without provoking.",
         "damage": {
           "parts": [
             {
@@ -288,9 +287,373 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5ecEq8Zq1VjM5fh",
+              "type": "attack",
+              "label": "Butterfly Kick",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Every creature you choose adjacent to you.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d6 + 1d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ez2bFWdCqMImR5",
+              "type": "save",
+              "label": "Butterfly Kick: Concussed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Concussed"
+                }
+              ],
+              "text": "Creatures hit. Failure: 1 Concussed (+1 at B-Rank).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eub5xvibLnJ5IC",
+              "type": "save",
+              "label": "Finisher: Butterfly Kick",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Concussed"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Finisher: a 15-foot cube from you. Failure: 1 Concussed and Prone; success: half. Then move 15 feet without provoking.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@unarmed + 4d6 + 1d8",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5ecEq8Zq1VjM5fh",
+              "type": "attack",
+              "label": "Butterfly Kick",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Every creature you choose adjacent to you.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d6 + 1d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ez2bFWdCqMImR5",
+              "type": "save",
+              "label": "Butterfly Kick: Concussed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Concussed"
+                }
+              ],
+              "text": "Creatures hit. Failure: 1 Concussed (+1 at B-Rank).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eub5xvibLnJ5IC",
+              "type": "save",
+              "label": "Finisher: Butterfly Kick",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Concussed"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Finisher: a 15-foot cube from you. Failure: 1 Concussed and Prone; success: half. Then move 15 feet without provoking.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@unarmed + 4d6 + 1d8",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ecEq8Zq1VjM5fh",
+              "type": "attack",
+              "label": "Butterfly Kick",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Every creature you choose adjacent to you.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d6 + 2d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ez2bFWdCqMImR5",
+              "type": "save",
+              "label": "Butterfly Kick: Concussed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Concussed"
+                }
+              ],
+              "text": "Creatures hit. Failure: 1 Concussed (+1 at B-Rank).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eub5xvibLnJ5IC",
+              "type": "save",
+              "label": "Finisher: Butterfly Kick",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Concussed"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Finisher: a 15-foot cube from you. Failure: 1 Concussed and Prone; success: half. Then move 15 feet without provoking.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@unarmed + 4d6 + 2d8",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ecEq8Zq1VjM5fh",
+              "type": "attack",
+              "label": "Butterfly Kick",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Every creature you choose adjacent to you.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d6 + 2d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ez2bFWdCqMImR5",
+              "type": "save",
+              "label": "Butterfly Kick: Concussed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Concussed"
+                }
+              ],
+              "text": "Creatures hit. Failure: 1 Concussed (+1 at B-Rank).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eub5xvibLnJ5IC",
+              "type": "save",
+              "label": "Finisher: Butterfly Kick",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Concussed"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Finisher: a 15-foot cube from you. Failure: 1 Concussed and Prone; success: half. Then move 15 feet without provoking.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@unarmed + 4d6 + 2d8",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "C- and A-Rank add 2d4 or 1d8 (the buttons add 1d8); B-Rank +1 attack or Concussed rank; S-Rank: no jutsu bonuses to their AC or Strength saves."
+        }
+      ]
     }
   },
   "folder": "b31b1b0d97c02089"

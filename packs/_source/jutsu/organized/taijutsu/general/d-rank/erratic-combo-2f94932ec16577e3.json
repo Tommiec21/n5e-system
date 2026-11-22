@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eGYHLPbZUfVCXe",
         "type": "attack",
-        "label": "Attack",
+        "label": "Erratic Combo",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
+        "text": "Drunken Fist stance only. +1 AC per hit until the start of your next turn (the effect button).",
         "damage": {
           "parts": [
             {
@@ -101,6 +102,25 @@
             }
           ]
         }
+      },
+      {
+        "id": "n5eTg4alIYycMOpt",
+        "type": "effect",
+        "label": "Erratic Combo: +1 AC per hit",
+        "effect": {
+          "name": "Erratic Combo",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "1",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Apply once per hit."
       }
     ],
     "featureType": "active",
@@ -183,14 +203,15 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5eGYHLPbZUfVCXe",
               "type": "attack",
-              "label": "Attack",
+              "label": "Erratic Combo",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
+              "text": "Drunken Fist stance only. +1 AC per hit until the start of your next turn (the effect button).",
               "damage": {
                 "parts": [
                   {
@@ -199,18 +220,38 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5eTg4alIYycMOpt",
+              "type": "effect",
+              "label": "Erratic Combo: +1 AC per hit",
+              "effect": {
+                "name": "Erratic Combo",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "1",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Apply once per hit."
             }
           ],
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5eGYHLPbZUfVCXe",
               "type": "attack",
-              "label": "Attack",
+              "label": "Erratic Combo",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
+              "text": "Drunken Fist stance only. +1 AC per hit until the start of your next turn (the effect button).",
               "damage": {
                 "parts": [
                   {
@@ -219,18 +260,38 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5eTg4alIYycMOpt",
+              "type": "effect",
+              "label": "Erratic Combo: +1 AC per hit",
+              "effect": {
+                "name": "Erratic Combo",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "1",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Apply once per hit."
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eGYHLPbZUfVCXe",
               "type": "attack",
-              "label": "Attack",
+              "label": "Erratic Combo",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
+              "text": "Drunken Fist stance only. +1 AC per hit until the start of your next turn (the effect button).",
               "damage": {
                 "parts": [
                   {
@@ -239,18 +300,38 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5eTg4alIYycMOpt",
+              "type": "effect",
+              "label": "Erratic Combo: +1 AC per hit",
+              "effect": {
+                "name": "Erratic Combo",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "1",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Apply once per hit."
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eGYHLPbZUfVCXe",
               "type": "attack",
-              "label": "Attack",
+              "label": "Erratic Combo",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
+              "text": "Drunken Fist stance only. +1 AC per hit until the start of your next turn (the effect button).",
               "damage": {
                 "parts": [
                   {
@@ -259,11 +340,31 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5eTg4alIYycMOpt",
+              "type": "effect",
+              "label": "Erratic Combo: +1 AC per hit",
+              "effect": {
+                "name": "Erratic Combo",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "1",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Apply once per hit."
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

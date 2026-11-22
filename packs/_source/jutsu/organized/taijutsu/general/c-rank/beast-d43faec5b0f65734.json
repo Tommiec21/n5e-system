@@ -85,9 +85,19 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e6nH35i7sEGWqw",
         "type": "save",
-        "label": "Save",
+        "label": "Beast",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "bruised",
@@ -102,6 +112,20 @@
             "label": "Prone"
           }
         ],
+        "text": "A 15-foot cone. Failure: Bruised and Prone; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "@unarmed + 2d8",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eKXBZ2yl0xKFXy",
+        "type": "save",
+        "label": "Finisher: Beast",
         "save": {
           "abilities": [
             "str"
@@ -109,11 +133,24 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          },
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Finisher: a 30-foot cone. Failure: Bruised, pushed 20 feet and Prone (failing by 5+: loses all temporary hit points); success: half.",
         "damage": {
           "parts": [
             {
@@ -210,9 +247,19 @@
         "activitiesByRank": {
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5e6nH35i7sEGWqw",
               "type": "save",
-              "label": "Save",
+              "label": "Beast",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "bruised",
@@ -227,6 +274,20 @@
                   "label": "Prone"
                 }
               ],
+              "text": "A 15-foot cone. Failure: Bruised and Prone; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed + 2d8) + (1d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eKXBZ2yl0xKFXy",
+              "type": "save",
+              "label": "Finisher: Beast",
               "save": {
                 "abilities": [
                   "str"
@@ -234,11 +295,24 @@
                 "dc": {
                   "source": "discipline"
                 },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
+                "onSuccess": "half",
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Finisher: a 30-foot cone. Failure: Bruised, pushed 20 feet and Prone (failing by 5+: loses all temporary hit points); success: half.",
               "damage": {
                 "parts": [
                   {
@@ -251,9 +325,19 @@
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5e6nH35i7sEGWqw",
               "type": "save",
-              "label": "Save",
+              "label": "Beast",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "bruised",
@@ -268,6 +352,20 @@
                   "label": "Prone"
                 }
               ],
+              "text": "A 15-foot cone. Failure: Bruised and Prone; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed + 2d8) + (2d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eKXBZ2yl0xKFXy",
+              "type": "save",
+              "label": "Finisher: Beast",
               "save": {
                 "abilities": [
                   "str"
@@ -275,11 +373,24 @@
                 "dc": {
                   "source": "discipline"
                 },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
+                "onSuccess": "half",
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Finisher: a 30-foot cone. Failure: Bruised, pushed 20 feet and Prone (failing by 5+: loses all temporary hit points); success: half.",
               "damage": {
                 "parts": [
                   {
@@ -292,9 +403,19 @@
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5e6nH35i7sEGWqw",
               "type": "save",
-              "label": "Save",
+              "label": "Beast",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "bruised",
@@ -309,6 +430,20 @@
                   "label": "Prone"
                 }
               ],
+              "text": "A 15-foot cone. Failure: Bruised and Prone; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed + 2d8) + (3d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eKXBZ2yl0xKFXy",
+              "type": "save",
+              "label": "Finisher: Beast",
               "save": {
                 "abilities": [
                   "str"
@@ -316,11 +451,24 @@
                 "dc": {
                   "source": "discipline"
                 },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
+                "onSuccess": "half",
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Finisher: a 30-foot cone. Failure: Bruised, pushed 20 feet and Prone (failing by 5+: loses all temporary hit points); success: half.",
               "damage": {
                 "parts": [
                   {
@@ -333,7 +481,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "aee26bc2434fe738"

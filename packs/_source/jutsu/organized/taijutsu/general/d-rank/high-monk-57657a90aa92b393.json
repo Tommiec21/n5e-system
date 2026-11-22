@@ -85,13 +85,13 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e2liQzpXHjvNnA",
         "type": "attack",
-        "label": "Attack",
+        "label": "High Monk",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
         "damage": {
           "parts": []
@@ -102,21 +102,35 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "2"
         }
       },
       {
-        "id": "finisher-parsed1",
+        "id": "n5eXAYH1QR4Z2mD9",
+        "type": "attack",
+        "label": "Finisher: High Monk",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 2
+        },
+        "text": "Finisher: leap back 15 feet (+10 per rank) without provoking.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "3d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "2"
+        }
+      },
+      {
+        "id": "n5eEtuEOHQ7psVq2",
         "type": "save",
-        "label": "Finisher: Save",
-        "inflicts": [
-          {
-            "key": "shaken",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Shaken"
-          }
-        ],
+        "label": "Finisher: Shaken",
         "save": {
           "abilities": [
             "con"
@@ -125,17 +139,19 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "shaken",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shaken"
+          }
+        ],
+        "text": "Failure: Shaken.",
         "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed + 3d6",
-              "type": "bludgeoning"
-            }
-          ]
+          "parts": []
         }
       }
     ],
@@ -234,9 +250,299 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5e2liQzpXHjvNnA",
+              "type": "attack",
+              "label": "High Monk",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "1d6 + 1d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eXAYH1QR4Z2mD9",
+              "type": "attack",
+              "label": "Finisher: High Monk",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Finisher: leap back 15 feet (+10 per rank) without provoking.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d6 + 1d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eEtuEOHQ7psVq2",
+              "type": "save",
+              "label": "Finisher: Shaken",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "Failure: Shaken.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5e2liQzpXHjvNnA",
+              "type": "attack",
+              "label": "High Monk",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "1d6 + 2d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eXAYH1QR4Z2mD9",
+              "type": "attack",
+              "label": "Finisher: High Monk",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Finisher: leap back 15 feet (+10 per rank) without provoking.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d6 + 2d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eEtuEOHQ7psVq2",
+              "type": "save",
+              "label": "Finisher: Shaken",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "Failure: Shaken.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e2liQzpXHjvNnA",
+              "type": "attack",
+              "label": "High Monk",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "1d6 + 3d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eXAYH1QR4Z2mD9",
+              "type": "attack",
+              "label": "Finisher: High Monk",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Finisher: leap back 15 feet (+10 per rank) without provoking.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d6 + 3d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eEtuEOHQ7psVq2",
+              "type": "save",
+              "label": "Finisher: Shaken",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "Failure: Shaken.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e2liQzpXHjvNnA",
+              "type": "attack",
+              "label": "High Monk",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "1d6 + 4d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eXAYH1QR4Z2mD9",
+              "type": "attack",
+              "label": "Finisher: High Monk",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Finisher: leap back 15 feet (+10 per rank) without provoking.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d6 + 4d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eEtuEOHQ7psVq2",
+              "type": "save",
+              "label": "Finisher: Shaken",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "Failure: Shaken.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

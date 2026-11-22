@@ -86,14 +86,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eW1srjfbp7jVtL",
         "type": "attack",
-        "label": "Attack",
+        "label": "Dragon Palm Strike",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "On a hit: pushed 10 feet (+5 per rank).",
         "damage": {
           "parts": []
         },
@@ -107,16 +108,25 @@
         }
       },
       {
-        "id": "finisher-parsed1",
-        "type": "damage",
-        "label": "Finisher: Damage",
+        "id": "n5ez1LST6p7CjVpK",
+        "type": "attack",
+        "label": "Finisher: Dragon Palm Strike",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Finisher: pushed 20 feet (+5 per rank); hitting a surface: falling damage per 10 feet left.",
         "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed + 3d12",
-              "type": "bludgeoning"
-            }
-          ]
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "3d12",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       }
     ],
@@ -215,9 +225,195 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eW1srjfbp7jVtL",
+              "type": "attack",
+              "label": "Dragon Palm Strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "On a hit: pushed 10 feet (+5 per rank).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "1d12 + 1d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ez1LST6p7CjVpK",
+              "type": "attack",
+              "label": "Finisher: Dragon Palm Strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Finisher: pushed 20 feet (+5 per rank); hitting a surface: falling damage per 10 feet left.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d12 + 1d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eW1srjfbp7jVtL",
+              "type": "attack",
+              "label": "Dragon Palm Strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "On a hit: pushed 10 feet (+5 per rank).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "1d12 + 2d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ez1LST6p7CjVpK",
+              "type": "attack",
+              "label": "Finisher: Dragon Palm Strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Finisher: pushed 20 feet (+5 per rank); hitting a surface: falling damage per 10 feet left.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d12 + 2d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eW1srjfbp7jVtL",
+              "type": "attack",
+              "label": "Dragon Palm Strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "On a hit: pushed 10 feet (+5 per rank).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "1d12 + 3d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ez1LST6p7CjVpK",
+              "type": "attack",
+              "label": "Finisher: Dragon Palm Strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Finisher: pushed 20 feet (+5 per rank); hitting a surface: falling damage per 10 feet left.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d12 + 3d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eW1srjfbp7jVtL",
+              "type": "attack",
+              "label": "Dragon Palm Strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "On a hit: pushed 10 feet (+5 per rank).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "1d12 + 4d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ez1LST6p7CjVpK",
+              "type": "attack",
+              "label": "Finisher: Dragon Palm Strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Finisher: pushed 20 feet (+5 per rank); hitting a surface: falling damage per 10 feet left.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d12 + 4d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

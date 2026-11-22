@@ -85,11 +85,11 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ekvkGDcgFXG9kz",
         "type": "attack",
-        "label": "Attack",
+        "label": "Fist Slam",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
@@ -103,17 +103,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eRYXAGm1I1b2Q5",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "dazed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Dazed"
-          }
-        ],
+        "label": "Fist Slam: Dazed",
         "save": {
           "abilities": [
             "str"
@@ -122,25 +114,67 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "On a hit. Failure: driven 10 feet into the ground, Dazed.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "finisher-parsed1",
-        "type": "damage",
-        "label": "Finisher: Damage",
+        "id": "n5e0IaZBxfJBuVKz",
+        "type": "attack",
+        "label": "Finisher: Fist Slam",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
         "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed + 6d6",
-              "type": "bludgeoning"
-            }
-          ]
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "6d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eVR4QON5xRXK5L",
+        "type": "save",
+        "label": "Finisher: Dazed or Stunned",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "Failure: Dazed; failing by 5+: Stunned until the end of its next turn instead.",
+        "damage": {
+          "parts": []
         }
       }
     ],
@@ -233,9 +267,296 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5ekvkGDcgFXG9kz",
+              "type": "attack",
+              "label": "Fist Slam",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (1d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eRYXAGm1I1b2Q5",
+              "type": "save",
+              "label": "Fist Slam: Dazed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "On a hit. Failure: driven 10 feet into the ground, Dazed.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e0IaZBxfJBuVKz",
+              "type": "attack",
+              "label": "Finisher: Fist Slam",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "6d6 + 1d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eVR4QON5xRXK5L",
+              "type": "save",
+              "label": "Finisher: Dazed or Stunned",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "Failure: Dazed; failing by 5+: Stunned until the end of its next turn instead.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ekvkGDcgFXG9kz",
+              "type": "attack",
+              "label": "Fist Slam",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (2d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eRYXAGm1I1b2Q5",
+              "type": "save",
+              "label": "Fist Slam: Dazed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "On a hit. Failure: driven 10 feet into the ground, Dazed.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e0IaZBxfJBuVKz",
+              "type": "attack",
+              "label": "Finisher: Fist Slam",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "6d6 + 2d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eVR4QON5xRXK5L",
+              "type": "save",
+              "label": "Finisher: Dazed or Stunned",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "Failure: Dazed; failing by 5+: Stunned until the end of its next turn instead.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ekvkGDcgFXG9kz",
+              "type": "attack",
+              "label": "Fist Slam",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (3d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eRYXAGm1I1b2Q5",
+              "type": "save",
+              "label": "Fist Slam: Dazed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "On a hit. Failure: driven 10 feet into the ground, Dazed.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e0IaZBxfJBuVKz",
+              "type": "attack",
+              "label": "Finisher: Fist Slam",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "6d6 + 3d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eVR4QON5xRXK5L",
+              "type": "save",
+              "label": "Finisher: Dazed or Stunned",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "Failure: Dazed; failing by 5+: Stunned until the end of its next turn instead.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "aee26bc2434fe738"

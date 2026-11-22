@@ -134,9 +134,16 @@
             "changes": [],
             "expires": "",
             "seconds": 0,
-            "condition": "burned"
+            "inflicts": [
+              {
+                "key": "burned",
+                "kind": "condition",
+                "ranks": 2,
+                "label": "Burned"
+              }
+            ]
           },
-          "text": "Failed creatures: 2 ranks (arrival) or 3 (trap): apply again."
+          "text": "Failed creatures: 2 ranks (arrival; a trap gives 3: add 1 more)."
         }
       ]
     },
@@ -492,9 +499,16 @@
             "changes": [],
             "expires": "",
             "seconds": 0,
-            "condition": "bleed"
+            "inflicts": [
+              {
+                "key": "bleed",
+                "kind": "condition",
+                "ranks": 3,
+                "label": "Bleed"
+              }
+            ]
           },
-          "text": "3 ranks (Explosive: also 3 Burned): apply three times."
+          "text": "3 ranks (Explosive Veil: also 3 Burned)."
         }
       ],
       "flags": {
@@ -530,9 +544,16 @@
                   "changes": [],
                   "expires": "",
                   "seconds": 0,
-                  "condition": "bleed"
+                  "inflicts": [
+                    {
+                      "key": "bleed",
+                      "kind": "condition",
+                      "ranks": 3,
+                      "label": "Bleed"
+                    }
+                  ]
                 },
-                "text": "3 ranks (Explosive: also 3 Burned): apply three times."
+                "text": "3 ranks (Explosive Veil: also 3 Burned)."
               }
             ],
             "S": [
@@ -565,9 +586,16 @@
                   "changes": [],
                   "expires": "",
                   "seconds": 0,
-                  "condition": "bleed"
+                  "inflicts": [
+                    {
+                      "key": "bleed",
+                      "kind": "condition",
+                      "ranks": 3,
+                      "label": "Bleed"
+                    }
+                  ]
                 },
-                "text": "3 ranks (Explosive: also 3 Burned): apply three times."
+                "text": "3 ranks (Explosive Veil: also 3 Burned)."
               }
             ]
           }
@@ -2072,7 +2100,14 @@
             "changes": [],
             "expires": "",
             "seconds": 0,
-            "condition": "bleed"
+            "inflicts": [
+              {
+                "key": "bleed",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Bleed"
+              }
+            ]
           },
           "text": "Serrated: a hostile creature moving 10+ feet in it gains 1 Bleed."
         },
@@ -2099,7 +2134,14 @@
             "changes": [],
             "expires": "",
             "seconds": 0,
-            "condition": "sealed"
+            "inflicts": [
+              {
+                "key": "sealed",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Sealed"
+              }
+            ]
           },
           "text": "Binding: starting its turn concentrating: 1 Sealed."
         }

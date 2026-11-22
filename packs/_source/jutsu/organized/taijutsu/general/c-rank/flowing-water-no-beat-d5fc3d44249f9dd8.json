@@ -85,30 +85,23 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5exvtmIL4WEBDgT",
         "type": "attack",
-        "label": "Attack",
+        "label": "Flowing Water: No Beat",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
+        "text": "No damage. One creature; each hit after the first: −1 on its save (Finisher −2).",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eyiCUZTeM03bTf",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "exhaustion",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Exhaustion"
-          }
-        ],
+        "label": "No Beat: Exhaustion",
         "save": {
           "abilities": [
             "con"
@@ -117,10 +110,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "exhaustion",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Exhaustion"
+          }
+        ],
+        "text": "After the attacks (apply the penalty by hand). Failure: 1 Exhaustion (6 at most from this jutsu).",
         "damage": {
           "parts": []
         }
@@ -190,9 +190,140 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5exvtmIL4WEBDgT",
+              "type": "attack",
+              "label": "Flowing Water: No Beat",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "text": "No damage. One creature; each hit after the first: −1 on its save (Finisher −2).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eyiCUZTeM03bTf",
+              "type": "save",
+              "label": "No Beat: Exhaustion",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "exhaustion",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Exhaustion"
+                }
+              ],
+              "text": "After the attacks (apply the penalty by hand). Failure: 1 Exhaustion (6 at most from this jutsu).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5exvtmIL4WEBDgT",
+              "type": "attack",
+              "label": "Flowing Water: No Beat",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 4
+              },
+              "text": "No damage. One creature; each hit after the first: −1 on its save (Finisher −2).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eyiCUZTeM03bTf",
+              "type": "save",
+              "label": "No Beat: Exhaustion",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "exhaustion",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Exhaustion"
+                }
+              ],
+              "text": "After the attacks (apply the penalty by hand). Failure: 1 Exhaustion (6 at most from this jutsu).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5exvtmIL4WEBDgT",
+              "type": "attack",
+              "label": "Flowing Water: No Beat",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 5
+              },
+              "text": "No damage. One creature; each hit after the first: −1 on its save (Finisher −2).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eyiCUZTeM03bTf",
+              "type": "save",
+              "label": "No Beat: Exhaustion",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "exhaustion",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Exhaustion"
+                }
+              ],
+              "text": "After the attacks (apply the penalty by hand). Failure: 1 Exhaustion (6 at most from this jutsu).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "aee26bc2434fe738"

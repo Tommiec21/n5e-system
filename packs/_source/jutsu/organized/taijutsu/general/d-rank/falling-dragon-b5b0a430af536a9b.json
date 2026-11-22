@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e9NohAv7e7JYll",
         "type": "attack",
-        "label": "Attack",
+        "label": "Falling Dragon",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "An airborne or falling target. On a hit: it crashes down Prone.",
         "damage": {
           "parts": [
             {
@@ -103,20 +104,44 @@
         }
       },
       {
-        "id": "finisher-parsed1",
-        "type": "damage",
-        "label": "Finisher: Damage",
+        "id": "n5e7GWXqdAa2fgJB",
+        "type": "attack",
+        "label": "Finisher: Falling Dragon",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Finisher: [Unarmed damage] + 3d6; it lands Prone, then the stomp.",
         "damage": {
           "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "3d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       },
       {
-        "id": "sourceRoll4",
-        "type": "roll",
-        "label": "Finisher: 2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "On a hit, you deal 2d6 bludgeoning damage."
+        "id": "n5exCzcood8r3oqW",
+        "type": "attack",
+        "label": "Finisher: Stomp",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "A second attack against the Prone creature.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "bludgeoning"
+            }
+          ]
         }
       }
     ],
@@ -218,14 +243,15 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5e9NohAv7e7JYll",
               "type": "attack",
-              "label": "Attack",
+              "label": "Falling Dragon",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "An airborne or falling target. On a hit: it crashes down Prone.",
               "damage": {
                 "parts": [
                   {
@@ -236,33 +262,58 @@
               }
             },
             {
-              "id": "finisher-parsed1",
-              "type": "damage",
-              "label": "Finisher: Damage",
+              "id": "n5e7GWXqdAa2fgJB",
+              "type": "attack",
+              "label": "Finisher: Falling Dragon",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Finisher: [Unarmed damage] + 3d6; it lands Prone, then the stomp.",
               "damage": {
                 "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d6 + 1d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
               }
             },
             {
-              "id": "sourceRoll4",
-              "type": "roll",
-              "label": "Finisher: 2d6",
-              "roll": {
-                "formula": "2d6",
-                "note": "On a hit, you deal 2d6 bludgeoning damage."
+              "id": "n5exCzcood8r3oqW",
+              "type": "attack",
+              "label": "Finisher: Stomp",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "A second attack against the Prone creature.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
               }
             }
           ],
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5e9NohAv7e7JYll",
               "type": "attack",
-              "label": "Attack",
+              "label": "Falling Dragon",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "An airborne or falling target. On a hit: it crashes down Prone.",
               "damage": {
                 "parts": [
                   {
@@ -273,33 +324,58 @@
               }
             },
             {
-              "id": "finisher-parsed1",
-              "type": "damage",
-              "label": "Finisher: Damage",
+              "id": "n5e7GWXqdAa2fgJB",
+              "type": "attack",
+              "label": "Finisher: Falling Dragon",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Finisher: [Unarmed damage] + 3d6; it lands Prone, then the stomp.",
               "damage": {
                 "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d6 + 2d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
               }
             },
             {
-              "id": "sourceRoll4",
-              "type": "roll",
-              "label": "Finisher: 2d6",
-              "roll": {
-                "formula": "2d6",
-                "note": "On a hit, you deal 2d6 bludgeoning damage."
+              "id": "n5exCzcood8r3oqW",
+              "type": "attack",
+              "label": "Finisher: Stomp",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "A second attack against the Prone creature.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
               }
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5e9NohAv7e7JYll",
               "type": "attack",
-              "label": "Attack",
+              "label": "Falling Dragon",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "An airborne or falling target. On a hit: it crashes down Prone.",
               "damage": {
                 "parts": [
                   {
@@ -310,33 +386,58 @@
               }
             },
             {
-              "id": "finisher-parsed1",
-              "type": "damage",
-              "label": "Finisher: Damage",
+              "id": "n5e7GWXqdAa2fgJB",
+              "type": "attack",
+              "label": "Finisher: Falling Dragon",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Finisher: [Unarmed damage] + 3d6; it lands Prone, then the stomp.",
               "damage": {
                 "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d6 + 3d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
               }
             },
             {
-              "id": "sourceRoll4",
-              "type": "roll",
-              "label": "Finisher: 2d6",
-              "roll": {
-                "formula": "2d6",
-                "note": "On a hit, you deal 2d6 bludgeoning damage."
+              "id": "n5exCzcood8r3oqW",
+              "type": "attack",
+              "label": "Finisher: Stomp",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "A second attack against the Prone creature.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (3d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
               }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5e9NohAv7e7JYll",
               "type": "attack",
-              "label": "Attack",
+              "label": "Falling Dragon",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "An airborne or falling target. On a hit: it crashes down Prone.",
               "damage": {
                 "parts": [
                   {
@@ -347,26 +448,51 @@
               }
             },
             {
-              "id": "finisher-parsed1",
-              "type": "damage",
-              "label": "Finisher: Damage",
+              "id": "n5e7GWXqdAa2fgJB",
+              "type": "attack",
+              "label": "Finisher: Falling Dragon",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Finisher: [Unarmed damage] + 3d6; it lands Prone, then the stomp.",
               "damage": {
                 "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d6 + 4d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
               }
             },
             {
-              "id": "sourceRoll4",
-              "type": "roll",
-              "label": "Finisher: 2d6",
-              "roll": {
-                "formula": "2d6",
-                "note": "On a hit, you deal 2d6 bludgeoning damage."
+              "id": "n5exCzcood8r3oqW",
+              "type": "attack",
+              "label": "Finisher: Stomp",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "A second attack against the Prone creature.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (4d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

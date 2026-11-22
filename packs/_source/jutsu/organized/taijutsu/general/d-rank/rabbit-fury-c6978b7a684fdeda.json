@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e8j6gSQbj7Cqb8",
         "type": "attack",
-        "label": "Attack",
+        "label": "Rabbit Fury",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
+        "text": "Move your speed through hostile spaces (each space of a large creature counts once); against every hostile creature you pass.",
         "damage": {
           "parts": []
         },
@@ -102,21 +103,13 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "2"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5e8waSZvWKwOInn",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "prone",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Prone"
-          }
-        ],
+        "label": "Rabbit Fury: Prone",
         "save": {
           "abilities": [
             "dex"
@@ -125,10 +118,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Hit twice or more. Failure: Prone.",
         "damage": {
           "parts": []
         }
@@ -220,38 +220,31 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5e8j6gSQbj7Cqb8",
               "type": "attack",
-              "label": "Attack",
+              "label": "Rabbit Fury",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
+              "text": "Move your speed through hostile spaces (each space of a large creature counts once); against every hostile creature you pass.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(1d4) + (1d4)",
+                "extraDice": "1d4 + 1d4",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5e8waSZvWKwOInn",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "prone",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Prone"
-                }
-              ],
+              "label": "Rabbit Fury: Prone",
               "save": {
                 "abilities": [
                   "dex"
@@ -260,10 +253,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Hit twice or more. Failure: Prone.",
               "damage": {
                 "parts": []
               }
@@ -271,38 +271,31 @@
           ],
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5e8j6gSQbj7Cqb8",
               "type": "attack",
-              "label": "Attack",
+              "label": "Rabbit Fury",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
+              "text": "Move your speed through hostile spaces (each space of a large creature counts once); against every hostile creature you pass.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(1d4) + (2d4)",
+                "extraDice": "1d4 + 2d4",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5e8waSZvWKwOInn",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "prone",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Prone"
-                }
-              ],
+              "label": "Rabbit Fury: Prone",
               "save": {
                 "abilities": [
                   "dex"
@@ -311,10 +304,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Hit twice or more. Failure: Prone.",
               "damage": {
                 "parts": []
               }
@@ -322,38 +322,31 @@
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5e8j6gSQbj7Cqb8",
               "type": "attack",
-              "label": "Attack",
+              "label": "Rabbit Fury",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
+              "text": "Move your speed through hostile spaces (each space of a large creature counts once); against every hostile creature you pass.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(1d4) + (3d4)",
+                "extraDice": "1d4 + 3d4",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5e8waSZvWKwOInn",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "prone",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Prone"
-                }
-              ],
+              "label": "Rabbit Fury: Prone",
               "save": {
                 "abilities": [
                   "dex"
@@ -362,10 +355,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Hit twice or more. Failure: Prone.",
               "damage": {
                 "parts": []
               }
@@ -373,38 +373,31 @@
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5e8j6gSQbj7Cqb8",
               "type": "attack",
-              "label": "Attack",
+              "label": "Rabbit Fury",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
+              "text": "Move your speed through hostile spaces (each space of a large creature counts once); against every hostile creature you pass.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(1d4) + (4d4)",
+                "extraDice": "1d4 + 4d4",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5e8waSZvWKwOInn",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "prone",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Prone"
-                }
-              ],
+              "label": "Rabbit Fury: Prone",
               "save": {
                 "abilities": [
                   "dex"
@@ -413,10 +406,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Hit twice or more. Failure: Prone.",
               "damage": {
                 "parts": []
               }
@@ -424,7 +424,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

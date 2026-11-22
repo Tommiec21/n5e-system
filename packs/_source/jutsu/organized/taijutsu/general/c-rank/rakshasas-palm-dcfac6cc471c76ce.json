@@ -86,11 +86,11 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eZh0jEJThET3zQ",
         "type": "attack",
-        "label": "Attack",
+        "label": "Rakshasa’s Palm",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
@@ -107,17 +107,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eqcTr63yQvMCmo",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "dazed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Dazed"
-          }
-        ],
+        "label": "Rakshasa’s Palm: Dazed",
         "save": {
           "abilities": [
             "con"
@@ -126,30 +118,41 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "On a hit. Failure: Dazed until the end of its next turn (B-Rank: also Bruised).",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "finisher-parsed1",
+        "id": "n5edekEZLa5WA5te",
         "type": "attack",
-        "label": "Finisher: Attack",
+        "label": "Finisher: Rakshasa’s Palm",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Finisher: Barriers and intercepting structures are vulnerable to it.",
         "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed + 10d4",
-              "type": "bludgeoning"
-            }
-          ]
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "10d4",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       }
     ],
@@ -248,9 +251,251 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eZh0jEJThET3zQ",
+              "type": "attack",
+              "label": "Rakshasa’s Palm",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "6d4 + 2d4",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eqcTr63yQvMCmo",
+              "type": "save",
+              "label": "Rakshasa’s Palm: Dazed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "On a hit. Failure: Dazed until the end of its next turn (B-Rank: also Bruised).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5edekEZLa5WA5te",
+              "type": "attack",
+              "label": "Finisher: Rakshasa’s Palm",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Finisher: Barriers and intercepting structures are vulnerable to it.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "10d4 + 2d4",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eZh0jEJThET3zQ",
+              "type": "attack",
+              "label": "Rakshasa’s Palm",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "6d4 + 4d4",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eqcTr63yQvMCmo",
+              "type": "save",
+              "label": "Rakshasa’s Palm: Dazed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "On a hit. Failure: Dazed until the end of its next turn (B-Rank: also Bruised).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5edekEZLa5WA5te",
+              "type": "attack",
+              "label": "Finisher: Rakshasa’s Palm",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Finisher: Barriers and intercepting structures are vulnerable to it.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "10d4 + 4d4",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eZh0jEJThET3zQ",
+              "type": "attack",
+              "label": "Rakshasa’s Palm",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "6d4 + 6d4",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eqcTr63yQvMCmo",
+              "type": "save",
+              "label": "Rakshasa’s Palm: Dazed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "On a hit. Failure: Dazed until the end of its next turn (B-Rank: also Bruised).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5edekEZLa5WA5te",
+              "type": "attack",
+              "label": "Finisher: Rakshasa’s Palm",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Finisher: Barriers and intercepting structures are vulnerable to it.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "10d4 + 6d4",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "A-Rank: add your unarmed damage die to Clash checks; S-Rank: winning a Clash Stuns the loser until the end of its next turn."
+        }
+      ]
     }
   },
   "folder": "aee26bc2434fe738"

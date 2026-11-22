@@ -84,10 +84,32 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5egLes8ArVvtSoU",
+        "type": "damage",
+        "label": "Slam",
+        "damage": {
+          "parts": [
+            {
+              "formula": "@unarmed",
+              "type": "bludgeoning"
+            }
+          ]
+        },
+        "text": "A successful grapple check (or already grappling): dash and slam; the grapple ends."
+      },
+      {
+        "id": "n5esLlOqO1EwNuvS",
+        "type": "damage",
+        "label": "Slam (water)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2 * (@unarmed)",
+              "type": "bludgeoning"
+            }
+          ]
+        },
+        "text": "On or under water: advantage on the check; dive twice your speed."
       }
     ],
     "featureType": "active",
@@ -154,7 +176,14 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Make the grapple check from the sheet."
+        }
+      ]
     }
   },
   "folder": "b31b1b0d97c02089"

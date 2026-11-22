@@ -95,7 +95,8 @@ test("compendium jutsu: what a failed save inflicts", () => {
   const get = n => fs.readdirSync(SRC, { recursive: true }).filter(f => f.endsWith(".json") && !path.basename(f).startsWith("_folder")).map(f => JSON.parse(fs.readFileSync(path.join(SRC, f), "utf8"))).find(d => d.name === n);
   const save = n => effectiveActivities(get(n)).find(a => a.type === "save");
   assert.deepEqual(save("Butterfly Kick").inflicts.map(i => [i.key, i.ranks]), [["concussed", 1]]);
-  const finisher = effectiveActivities(get("Butterfly Kick")).find(a => a.type === "save" && a.id.startsWith("finisher-"));
+  // STD6f F1: the reviewed table's Finisher button is labelled "Finisher: …".
+  const finisher = effectiveActivities(get("Butterfly Kick")).find(a => a.type === "save" && a.label.startsWith("Finisher:"));
   assert.ok(finisher, "Finisher retains its own save activity");
   assert.deepEqual(finisher.inflicts.map(i => [i.key, i.ranks]), [["concussed", 1], ["prone", 1]]);
   assert.deepEqual(save("Snake Constricting Grip").inflicts.map(i => i.key), ["restrained"]);

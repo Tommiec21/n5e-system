@@ -32,6 +32,9 @@ const FEATURES = path.join(ROOT, "packs/_source/features");
 // STD6e: clan tables (content/automation/clans/<clan>.json) over the clans pack.
 const CLAN_TABLES = path.join(TABLES, "clans");
 const CLANS = path.join(ROOT, "packs/_source/clans");
+// STD6f: jutsu tables (content/automation/jutsu/<discipline>-<section>.json) over the jutsu pack, for the ranks done.
+const JUTSU_TABLES = path.join(TABLES, "jutsu");
+const JUTSU = path.join(ROOT, "packs/_source/jutsu/organized");
 const STATUSES = ["automated", "partial", "note", "none"];
 
 const walk = dir => fs.readdirSync(dir, { withFileTypes: true }).flatMap(d => (d.isDirectory() ? walk(path.join(dir, d.name))
@@ -77,9 +80,29 @@ export function clanItems(clan) {
   return out;
 }
 
-/** Every table with its items: class tables over their features, clan tables over their clan's items. */
+/** STD6f: the jutsu tables ({section: "taijutsu/general", ranks: ["E", "D", "C"], features}). */
+export function jutsuTables() {
+  if ( !fs.existsSync(JUTSU_TABLES) ) return [];
+  return fs.readdirSync(JUTSU_TABLES).filter(f => f.endsWith(".json")).map(f => ({ file: `jutsu/${f}`, ...JSON.parse(fs.readFileSync(path.join(JUTSU_TABLES, f), "utf8")) }));
+}
+
+/** A section's jutsu of the given ranks: Map identifier → {file, doc}. */
+export function sectionJutsu(section, ranks = []) {
+  const out = new Map();
+  const dir = path.join(JUTSU, section);
+  if ( !fs.existsSync(dir) ) return out;
+  for ( const file of walk(dir) ) {
+    const doc = JSON.parse(fs.readFileSync(file, "utf8"));
+    if ( doc.type !== "jutsu" || !ranks.includes(doc.system?.rank) ) continue;
+    out.set(doc.system.identifier, { file, doc });
+  }
+  return out;
+}
+
+/** Every table with its items: class tables over their features, clan tables over their clan's items, jutsu tables over their section. */
 const allTables = () => [...automationTables().map(t => ({ t, items: () => classFeatures(t.class), what: t.class })),
-  ...clanTables().map(t => ({ t, items: () => clanItems(t.clan), what: t.clan }))];
+  ...clanTables().map(t => ({ t, items: () => clanItems(t.clan), what: t.clan })),
+  ...jutsuTables().map(t => ({ t, items: () => sectionJutsu(t.section, t.ranks), what: t.section }))];
 
 /** The feature document an entry produces. */
 export function appliedDoc(doc, entry) {
@@ -179,5 +202,6 @@ if ( import.meta.url === `file://${process.argv[1]}` ) {
   if ( problems.length || (check && changed.length) ) process.exit(1);
   const n = automationTables().reduce((t, x) => t + Object.keys(x.features ?? {}).length, 0);
   const c = clanTables().reduce((t, x) => t + Object.keys(x.features ?? {}).length, 0);
-  console.log(`✓ class automation: ${automationTables().length} classes, ${n} features; ${clanTables().length} clans, ${c} items${check ? "" : `, ${changed.length} files written`}`);
+  const j = jutsuTables().reduce((t, x) => t + Object.keys(x.features ?? {}).length, 0);
+  console.log(`✓ class automation: ${automationTables().length} classes, ${n} features; ${clanTables().length} clans, ${c} items; ${jutsuTables().length} jutsu sections, ${j} jutsu${check ? "" : `, ${changed.length} files written`}`);
 }

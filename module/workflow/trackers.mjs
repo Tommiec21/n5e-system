@@ -345,6 +345,15 @@ const evalNumber = expr => {
  * @param {Item|null} [o.item]    source item (image, origin, description)
  * @param {number|null} [o.poolRoll]  the pool die rolled when paying the activity's cost
  */
+/** STD6f F-D3: put conditions (with ranks) and states on a creature this client owns. */
+export async function inflictOn(actor, inflicts = []) {
+  for ( const i of inflicts ) {
+    if ( i.kind === "state" ) await actor.toggleStatusEffect(i.key, { active: true });
+    else await actor.addCondition(i.key, Number(i.ranks) || 1);
+  }
+  return true;
+}
+
 export async function applyActivityEffect(actor, eff, { label = "Effect", item = null, poolRoll = null, targetActors = null, rank = "" } = {}) {
   // STD6d: class table values (@scale.medicalNin.channeledHealing) resolve from the caster's roll data.
   const rollData = actor.getRollData?.() ?? {};
@@ -363,6 +372,18 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
   if ( !targets.length ) {
     ui.notifications.info("Target the creatures first (T over a token).");
     return null;
+  }
+  // STD6f F-D3: conditions and states with no save ({inflicts: [{key, kind, ranks, label}]}): put on each
+  // target, through the GM's client for a creature this user doesn't own (no approval step).
+  if ( eff.inflicts?.length ) {
+    const { submitIntent } = await import("../automation/owner-intents.mjs");
+    for ( const t of targets ) {
+      if ( t.isOwner ) await inflictOn(t, eff.inflicts);
+      else await submitIntent(actor, "inflictConditions", { targetUuid: t.uuid, inflicts: eff.inflicts });
+    }
+    if ( !eff.condition && !eff.amp && !(eff.changes ?? []).length && !eff.expires && !eff.state && !eff.rules?.length && !eff.tempHp ) {
+      return say(actor, `<b>${esc(eff.name || label)}</b>: ${esc(eff.inflicts.map(i => i.label || i.key).join(", "))} on ${esc(targets.map(t => t.name).join(", "))}`);
+    }
   }
   // CCOND1: an effect activity naming a condition card ({condition: key}) applies that condition
   // instead (owner warning, GM relay for creatures this user doesn't own, ends with the applier).

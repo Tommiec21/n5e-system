@@ -1,3 +1,13 @@
+## 0.87.0-alpha.1 — STD6f F1 Taijutsu I
+
+King 2026-11-22: "QJ1. Yes. QJ2. Fix/Finish the rest. Next Batch". The STD6f spec is approved (docs/STD6f_SPEC.md). 91 E- to C-Rank Taijutsu reviewed (85 partly automated, 6 notes only); review table docs/jutsu/taijutsu-general-automation.md.
+
+- **Jutsu tables:** `content/automation/jutsu/<discipline>-<section>.json`, applied by `tools/content/apply-automation.mjs` for the ranks done; `npm run check` fails on a missing or unapplied entry.
+- **Taijutsu I:** every attack's number of attacks and [Unarmed damage] plus dice; Finisher versions as their own buttons; saves with what a failure inflicts; per-rank buttons with upcast dice, die steps and extra attacks; self bonuses as effects; the importer's correct buttons kept (King Q-J2).
+- **No-save conditions (F-D3):** an effect button's `inflicts` puts conditions and states on its targets ("knocked Prone", "Bruised and Staggered"), through the GM's client for creatures you don't own.
+- **[Unarmed damage] in healing (F-D4):** Iron Guard's temporary hit points.
+- **Fix:** four Shikigami effect buttons (Craft II Burned, Bleeding Edge, Sealed Page, Paper Chakram's Bleed) now apply their conditions.
+
 ## 0.86.0-alpha.1 — STD6e E8 Minor Lands
 
 King 2026-11-22: "Next Batch". 114 clan items reviewed (106 partly automated, 8 notes only). Spec: docs/STD6e_SPEC.md (E8). Every clan in STD6e is now done (Clan Feats, Latents and Non-Clan wait for King's overhaul).

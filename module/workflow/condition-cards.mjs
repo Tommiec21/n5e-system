@@ -146,6 +146,14 @@ export function registerConditionCards() {
     void applyConditionCard(token.actor, key, { applier: applierFor() }).catch(e => ui.notifications.warn(e.message));
     return false;
   });
+  // STD6f F-D3: an effect activity's conditions and states with no save, on a creature the user doesn't own.
+  registerIntentHandler("inflictConditions", async (actor, data) => {
+    const doc = await fromUuid(data.targetUuid);
+    const target = doc?.actor ?? doc;
+    if ( !(target instanceof Actor) ) throw new Error("That creature no longer exists.");
+    const { inflictOn } = await import("./trackers.mjs");
+    return inflictOn(target, data.inflicts);
+  });
   registerIntentHandler("applyCondition", async (actor, data) => {
     const doc = await fromUuid(data.targetUuid);
     const target = doc?.actor ?? doc;

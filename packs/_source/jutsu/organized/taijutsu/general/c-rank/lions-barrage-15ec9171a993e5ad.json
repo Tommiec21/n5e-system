@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5et0qvXHRxH4As4",
         "type": "attack",
-        "label": "Attack",
+        "label": "Lions Barrage",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
+        "text": "30 feet. Both hit: Dazed (the effect button).",
         "damage": {
           "parts": []
         },
@@ -102,23 +103,73 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "2"
         }
       },
       {
-        "id": "finisher-parsed1",
-        "type": "attack",
-        "label": "Finisher: Attack",
-        "attack": {
-          "discipline": "tai",
-          "range": "melee",
-          "count": 1
-        },
-        "damage": {
-          "parts": [
+        "id": "n5eHFULZncbTlHIL",
+        "type": "effect",
+        "label": "Both hit: Dazed",
+        "effect": {
+          "name": "Dazed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
             {
-              "formula": "@unarmed + 2d10",
-              "type": "bludgeoning"
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eDG2sIG7PMvD2s",
+        "type": "attack",
+        "label": "Finisher: Lions Barrage",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 3
+        },
+        "text": "Finisher: a falling target. All three hit: Bruised and Staggered.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "2d10",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "3"
+        }
+      },
+      {
+        "id": "n5eYZMBEDXP2QySF",
+        "type": "effect",
+        "label": "Finisher, all hit: Bruised and Staggered",
+        "effect": {
+          "name": "Lions Barrage",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            },
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
             }
           ]
         }
@@ -219,9 +270,287 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5et0qvXHRxH4As4",
+              "type": "attack",
+              "label": "Lions Barrage",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "30 feet. Both hit: Dazed (the effect button).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "1d10 + 1d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eHFULZncbTlHIL",
+              "type": "effect",
+              "label": "Both hit: Dazed",
+              "effect": {
+                "name": "Dazed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eDG2sIG7PMvD2s",
+              "type": "attack",
+              "label": "Finisher: Lions Barrage",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "text": "Finisher: a falling target. All three hit: Bruised and Staggered.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d10 + 1d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "3"
+              }
+            },
+            {
+              "id": "n5eYZMBEDXP2QySF",
+              "type": "effect",
+              "label": "Finisher, all hit: Bruised and Staggered",
+              "effect": {
+                "name": "Lions Barrage",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5et0qvXHRxH4As4",
+              "type": "attack",
+              "label": "Lions Barrage",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "30 feet. Both hit: Dazed (the effect button).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "1d10 + 2d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eHFULZncbTlHIL",
+              "type": "effect",
+              "label": "Both hit: Dazed",
+              "effect": {
+                "name": "Dazed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eDG2sIG7PMvD2s",
+              "type": "attack",
+              "label": "Finisher: Lions Barrage",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "text": "Finisher: a falling target. All three hit: Bruised and Staggered.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d10 + 2d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "3"
+              }
+            },
+            {
+              "id": "n5eYZMBEDXP2QySF",
+              "type": "effect",
+              "label": "Finisher, all hit: Bruised and Staggered",
+              "effect": {
+                "name": "Lions Barrage",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5et0qvXHRxH4As4",
+              "type": "attack",
+              "label": "Lions Barrage",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "30 feet. Both hit: Dazed (the effect button).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "1d10 + 3d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eHFULZncbTlHIL",
+              "type": "effect",
+              "label": "Both hit: Dazed",
+              "effect": {
+                "name": "Dazed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eDG2sIG7PMvD2s",
+              "type": "attack",
+              "label": "Finisher: Lions Barrage",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "text": "Finisher: a falling target. All three hit: Bruised and Staggered.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d10 + 3d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "3"
+              }
+            },
+            {
+              "id": "n5eYZMBEDXP2QySF",
+              "type": "effect",
+              "label": "Finisher, all hit: Bruised and Staggered",
+              "effect": {
+                "name": "Lions Barrage",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "aee26bc2434fe738"

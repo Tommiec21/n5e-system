@@ -85,11 +85,11 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ekq9cREbtvfL1h",
         "type": "attack",
-        "label": "Attack",
+        "label": "Avalanche Dance",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
@@ -106,17 +106,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5e7bvSpkLUydhHH",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "bruised",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bruised"
-          }
-        ],
+        "label": "Avalanche Dance: Bruised",
         "save": {
           "abilities": [
             "str"
@@ -125,10 +117,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "On a hit. Failure: Bruised.",
         "damage": {
           "parts": []
         }
@@ -226,11 +225,11 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5ekq9cREbtvfL1h",
               "type": "attack",
-              "label": "Attack",
+              "label": "Avalanche Dance",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
@@ -239,7 +238,7 @@
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(1d6) + (1d6)",
+                "extraDice": "1d6 + 1d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -247,17 +246,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5e7bvSpkLUydhHH",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "bruised",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bruised"
-                }
-              ],
+              "label": "Avalanche Dance: Bruised",
               "save": {
                 "abilities": [
                   "str"
@@ -266,10 +257,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "On a hit. Failure: Bruised.",
               "damage": {
                 "parts": []
               }
@@ -277,38 +275,30 @@
           ],
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5ekq9cREbtvfL1h",
               "type": "attack",
-              "label": "Attack",
+              "label": "Avalanche Dance",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(1d6) + (2d6)",
+                "extraDice": "1d6 + 2d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5e7bvSpkLUydhHH",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "bruised",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bruised"
-                }
-              ],
+              "label": "Avalanche Dance: Bruised",
               "save": {
                 "abilities": [
                   "str"
@@ -317,10 +307,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "On a hit. Failure: Bruised.",
               "damage": {
                 "parts": []
               }
@@ -328,38 +325,30 @@
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5ekq9cREbtvfL1h",
               "type": "attack",
-              "label": "Attack",
+              "label": "Avalanche Dance",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(1d6) + (3d6)",
+                "extraDice": "1d6 + 3d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5e7bvSpkLUydhHH",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "bruised",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bruised"
-                }
-              ],
+              "label": "Avalanche Dance: Bruised",
               "save": {
                 "abilities": [
                   "str"
@@ -368,10 +357,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "On a hit. Failure: Bruised.",
               "damage": {
                 "parts": []
               }
@@ -379,38 +375,30 @@
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5ekq9cREbtvfL1h",
               "type": "attack",
-              "label": "Attack",
+              "label": "Avalanche Dance",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(1d6) + (4d6)",
+                "extraDice": "1d6 + 4d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5e7bvSpkLUydhHH",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "bruised",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bruised"
-                }
-              ],
+              "label": "Avalanche Dance: Bruised",
               "save": {
                 "abilities": [
                   "str"
@@ -419,10 +407,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "On a hit. Failure: Bruised.",
               "damage": {
                 "parts": []
               }
@@ -430,7 +425,14 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "S-Rank: the extra dice become d8s (roll by hand)."
+        }
+      ]
     }
   },
   "folder": "b31b1b0d97c02089"

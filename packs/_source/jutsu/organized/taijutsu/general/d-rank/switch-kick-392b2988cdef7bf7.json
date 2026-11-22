@@ -85,21 +85,25 @@
     },
     "activities": [
       {
-        "id": "finisher-parsed1",
+        "id": "n5eFCFPsI8wFSkxN",
         "type": "attack",
-        "label": "Finisher: Attack",
+        "label": "Switch Kick",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
+        "text": "You need a Bonus action or Reaction free. A hit: spend it to give an ally an extra reaction for a 1-Action Finisher.",
         "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed",
-              "type": "bludgeoning"
-            }
-          ]
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "2"
         }
       }
     ],
@@ -176,7 +180,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

@@ -505,7 +505,8 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       const healCtx = caster ? cardActionContext(message?.id, caster) : { extra: [] };
       const healShape = caster ? contextualRoll(caster, healSpec, null, healCtx.extra) : { maximizeDice: 0, minimumDie: 0, rerollBelow: 0 };
       const healMods = caster ? contextualModifiers(caster, healSpec, null, healCtx.extra) : { bonus: 0 };
-      let healFormula = shapeDice(level(d.formula), { maximize: healShape.maximizeDice, minimum: healShape.minimumDie, rerollBelow: healShape.rerollBelow });
+      // STD6f: "[Unarmed damage]" in a heal (Iron Guard's temporary hit points) is the caster's current unarmed damage.
+      let healFormula = shapeDice(level(d.formula).replace(/@unarmed/g, () => `(${unarmedFormula(caster)})`), { maximize: healShape.maximizeDice, minimum: healShape.minimumDie, rerollBelow: healShape.rerollBelow });
       if ( healMods.bonus ) healFormula = `${healFormula} ${healMods.bonus < 0 ? "-" : "+"} ${Math.abs(healMods.bonus)}`;
       for ( const p of healMods.parts ?? [] ) if ( p.dice ) healFormula = `${healFormula} ${p.dice.startsWith("-") ? `- ${p.dice.slice(1)}` : `+ ${p.dice.replace(/^\+/, "")}`}`;
       const rolled = await rollFormula(caster, healFormula, { title: `${caster?.name ?? ""}: ${d.label || "Healing"}`, ...healSpec });

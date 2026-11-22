@@ -1,6 +1,6 @@
 # STD6f function spec: jutsu as data
 
-Status: **Proposed 2026-11-22. Waiting on King's approval and Q-J1–Q-J2. Nothing built.**
+Status: **Approved by King 2026-11-22 (Q-J1 yes; Q-J2 fix and finish). F1 Taijutsu I built (0.87.0-alpha.1). Next: F2 Taijutsu II.**
 
 Plan: `docs/STD_SPEC.md` (STD6f: "Every jutsu's riders as Active Effects and elements, emitted by an upgraded importer where the pattern is regular; a review table per section for King"). Same method as the clan pass (`docs/STD6e_SPEC.md`).
 
@@ -73,13 +73,30 @@ Plan: `docs/STD_SPEC.md` (STD6f: "Every jutsu's riders as Active Effects and ele
 | --- | --- | --- |
 | F-D1 | Jutsu tables | `content/automation/jutsu/<discipline>-<section>.json` over the section's folder in the jutsu pack; review tables `docs/jutsu/`. |
 | F-D2 | Fury tracker from data | A jutsu or stance that gains or spends Fury says so in its data (`flags.n5e.trackers: ["fury"]`); the tracker's name-and-text test is removed from `view-models/combat.mjs`. |
-| F-D3 | More as needed | Anything a section needs that the engine can't do yet is listed here before it's built. |
+| F-D3 | Conditions with no save | An effect button's `inflicts` (`[{key, kind, ranks}]`) puts conditions and states on its targets with no save ("knocked Prone", "Bruised and Staggered"); for a creature you don't own it goes through the GM's client with no approval step (owner intent `inflictConditions`). Built in F1. |
+| F-D4 | [Unarmed damage] in healing | A heal's formula can use `@unarmed` (Iron Guard's temporary hit points: twice your [Unarmed damage] + your level). Built in F1. |
+| F-D5 | More as needed | Anything a section needs that the engine can't do yet is listed here before it's built. |
 
-## Questions for King
+## King's answers (2026-11-22)
 
-- **Q-J1:** Are the batches and their order right (F1 Taijutsu first, then Bukijutsu, Ninjutsu, Genjutsu)? Or another order?
-- **Q-J2:** The importer already made 1,514 buttons. Keep each one that's correct and fix or finish the rest (the review table still lists every jutsu), or rebuild every jutsu's buttons from its text, like the clans?
+- **Q-J1:** yes: the batches and order as proposed.
+- **Q-J2:** keep the importer's correct buttons; fix and finish the rest.
+
+## F1 Taijutsu I (0.87.0-alpha.1)
+
+Review table: `docs/jutsu/taijutsu-general-automation.md` (91 jutsu: 85 partly automated, 6 notes only). Table: `content/automation/jutsu/taijutsu-general.json` (ranks E, D, C).
+
+- **Kept** (Q-J2): the Beast Fist Amps and Royal Flush's Amp; the importer's buttons were right.
+- **Fixed and finished:** every attack's number of attacks and its [Unarmed damage] plus dice; saves with what a failure inflicts; Finisher versions as their own buttons ("Finisher: …"); Combo, stance and target requirements in the button text; per-rank buttons with the upcast dice, die steps (Bolting Blossom, Straight Impact) and extra attacks (Noble Impact, Avalanche Dance, Flowing Water: No Beat, Prideful Assault); no-save conditions as effect buttons (F-D3); self bonuses as effects (Brace, Mirage Blitz, Iron Guard, Erratic Combo, Heat Up, Welter Move, Safety Release).
+- **Notes only:** Howling Knuckle, Combat Clone, Evening Heavenly Crush, Fierce Snake, Late Death, Phantom Mobility (movement and action-economy rules the table runs).
+- Also fixed in this release: four Shikigami effect buttons pointed at core conditions as if they were condition cards (Craft II Burned, Bleeding Edge, Sealed Page, Paper Chakram's Bleed); they now use F-D3.
+
+## Text issues found in F1
+
+- Already on the errata list: Fury Kick ("1d4 or 1d6"), Butterfly Kick ("2d4 or 1d8"), Iron Strike and Dragon Tail Foot (+1d8 on d6 dice) upcasts; Cyclone Surge's Mobility "keyword"; Royal Flush (C-Rank) upcast "above D-Rank"; Seikuken Goitsu "Tin and Tang" and Exposed (not a condition); Late Death "fails 0 death saving throws"; Leaf Sky Breaker's two Finisher grants; Whirlwind Snap's "triggering creature"; Moonlight High and Pressure Point Barrage have no upcast; Leaf Kick "1 rank of Slowed"; Dempsey Roll's trigger; Friction "can make spend"; Fist Slam "10-feet- into"; Draw "As a as a reaction".
+- New: Swallow Dance, Break Spiral and Scattering Wave have no success result; Prideful Assault holds a "Character Art / Credits" line; Clawing Swift Fang "You a dash"; Feather Combo "attacks targeting."; Heavy Jolt "of your of your"; Leaf Hurricane "pushed 30 away" and Twin Heavenly Swallow "pushed 20 away" (feet); Grass Palm's save has no "on a failed save".
 
 ## Progress log
 
 - 2026-11-22 King: "Next batch" (after STD6e E8). Claude: spec proposed from a survey of the jutsu pack. Nothing built.
+- 2026-11-22 King: "QJ1. Yes. QJ2. Fix/Finish the rest. Next Batch". Claude: F1 Taijutsu I built (91 jutsu); F-D3 (no-save conditions) and F-D4 ([Unarmed damage] in healing); published 0.87.0-alpha.1.

@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eQshFh4UN9eKaH",
         "type": "attack",
-        "label": "Attack",
+        "label": "Moonlight High",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
+        "text": "You moved 15+ feet toward the target first. Both hit: knocked back 20 feet and the save.",
         "damage": {
           "parts": []
         },
@@ -102,21 +103,13 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "2"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5esITdnOzvdcnlw",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "confused",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Confused"
-          }
-        ],
+        "label": "Moonlight High: Confused",
         "save": {
           "abilities": [
             "con"
@@ -125,10 +118,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "confused",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Confused"
+          }
+        ],
+        "text": "Both hit. Failure: Confused.",
         "damage": {
           "parts": []
         }
@@ -211,7 +211,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

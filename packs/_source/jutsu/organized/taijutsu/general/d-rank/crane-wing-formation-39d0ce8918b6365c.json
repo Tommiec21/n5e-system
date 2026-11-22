@@ -84,14 +84,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eMp3CTHEfiA3DV",
         "type": "attack",
-        "label": "Attack",
+        "label": "Crane Wing Formation",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "On a hit: Prone and grappled (as many as your hands; +1 target at C-Rank).",
         "damage": {
           "parts": []
         },
@@ -105,10 +106,36 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eLZDe1amSvtxcX",
+        "type": "effect",
+        "label": "Prone and grappled",
+        "effect": {
+          "name": "Crane Wing",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            },
+            {
+              "key": "grappled",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Grappled"
+            }
+          ]
+        },
+        "text": "On a hit."
+      },
+      {
+        "id": "n5eDrY6t48by9eEb",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Escape (its Action)",
         "save": {
           "abilities": [
             "str"
@@ -117,12 +144,31 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Its Action. Failure: you may make an unarmed attack dealing twice your [Unarmed damage].",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5e9zuIeEdPHKUIB",
+        "type": "attack",
+        "label": "Punish (twice Unarmed damage)",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "It failed to escape.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2 * (@unarmed)",
+              "type": "bludgeoning"
+            }
+          ]
         }
       }
     ],
@@ -199,7 +245,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

@@ -94,7 +94,11 @@ test("source-clear upcasting selects ranked damage without mutating the base or 
   const whip = byName("Fire Release: Flame Whip"), base = effectiveActivities(whip), raised = effectiveActivities(whip, { rank: "C" });
   assert.equal(base[0].damage.parts[0].formula, "2d10+2"); assert.match(raised[0].damage.parts[0].formula, /1d10\+1/);
   assert.equal(whip.system.activities[0].damage.parts[0].formula, "2d10+2");
-  assert.equal(Object.keys(byName("Leaf Hurricane").flags.n5e.jutsuBookImport.activitiesByRank).length, 0, "ambiguous rider growth remains manual");
+  // STD6f F1: Leaf Hurricane is reviewed; its table gives each rank its dice, the Finisher's too, kept apart.
+  const leaf = byName("Leaf Hurricane").flags.n5e.jutsuBookImport.activitiesByRank;
+  assert.deepEqual(Object.keys(leaf), ["B", "A", "S"]);
+  assert.equal(leaf.B.find(a => a.label === "Leaf Hurricane").damage.parts[0].formula, "(@unarmed + 2d6) + (1d6)");
+  assert.equal(leaf.B.find(a => a.label === "Finisher: Leaf Hurricane").damage.parts[0].formula, "(@unarmed + 4d6) + (1d6)");
 });
 
 test("fixed special costs charge the printed amount; unresolved/scheduled costs cannot cast as free", () => {
