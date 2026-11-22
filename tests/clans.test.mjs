@@ -45,7 +45,16 @@ test("every source level-feature heading is present with the full body and the s
       const doc = docs.find(d => d.type === "feat" && d.flags?.n5e?.clanPackage === byName(clan.name).system.identifier && d.flags.n5e.sourceLine === at + 1 && d.system.category === "clanFeature");
       assert.ok(doc, `${clan.name}: ${source[at]}`);
       const body = b.lines.filter(s => !/^\[\/?BOX\]$/.test(s.trim())).join("\n");
-      assert.equal(norm(doc.system.description), norm(body), doc.name);
+      // King Q-E12: a copied Amp table was removed from the text (the Amp card holds it); the rest is unchanged.
+      if ( doc.flags.n5e.ampCopyRemoved ) {
+        // Every paragraph left is in the source, and only the copied Amp paragraph is gone.
+        const paras = doc.system.description.split(/<\/p>/).map(norm).filter(Boolean);
+        for ( const p of paras ) assert.ok(norm(body).includes(p), `${doc.name}: ${p.slice(0, 40)}`);
+        const ampName = norm(doc.flags.n5e.ampCopyRemoved.replace(/\s*\(.*$/, ""));
+        assert.ok(!norm(doc.system.description).includes(`${ampName}${norm("Fortitude Amp")}`) && !norm(doc.system.description).includes(`${ampName}${norm("Battle Amp")}`), doc.name);
+        assert.ok(norm(body).length - paras.join("").length < 1600, `${doc.name}: only the Amp copy is gone`);
+      }
+      else assert.equal(norm(doc.system.description), norm(body), doc.name);
       assert.ok(byName(clan.name).system.advancement.some(a => a.type === "feature" && a.level === Number(level[1]) && a.uuids.includes(doc.uuid)), doc.name);
       count++;
     }

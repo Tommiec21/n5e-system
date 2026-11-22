@@ -154,3 +154,11 @@ test("STD6e E3: combat recovery honors the pool's amount (Jiton +1 a turn; Stell
   assert.deepEqual(combatRecoveryPlan(actor, ["turn"]).update, { "system.resources.magnetic.value": 2, "system.resources.martial.value": 2 });
   assert.deepEqual(combatRecoveryPlan(actor, ["encounter"]).update, { "system.resources.stellar.value": 0 });
 });
+
+test("King Q-E12 and Q-E16: copied Amp text removed; Crimson Weaponry's ammunition die", () => {
+  assert.doesNotMatch(item("chinoike", "chinoike-crimson-architect").system.description, /#### Crimson Pact/);
+  assert.doesNotMatch(item("keton", "keton-stellar-convergence-aphelion-the-mirror").system.description, /#### Event Horizon/);
+  assert.doesNotMatch(item("keton", "keton-stellar-convergence").system.description, /#### Event Horizon/);
+  assert.match(item("chinoike", "chinoike-crimson-pact").system.description, /#### Crimson Pact/, "the Pact keeps its own");
+  assert.match(item("chinoike", "chinoike-crimson-weaponry").flags.n5e.automation?.rules?.[0]?.text ?? JSON.stringify(item("chinoike", "chinoike-crimson-weaponry").flags), /doesn't drop a step on a 1 or 2/);
+});
