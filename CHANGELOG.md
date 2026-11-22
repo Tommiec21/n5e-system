@@ -1,3 +1,10 @@
+## 0.83.1-alpha.1 — Held stat blocks recorded (Q-E19)
+
+King 2026-11-22: "Hold them. Review the record to make sure all held stat blocks are there."
+
+- **Held stat blocks table** in `docs/STD6e_SPEC.md` (H1–H5): Storm Snake (Ranton), Neon Antivirus (Genwa), Broodling (Tsuchigumo), Bio-Amphibian and Bio-Serpent (Jinzo).
+- Each held item's note says it's held for King's stat block, with its H number.
+
 ## 0.83.0-alpha.1 — Clans as data: E5 Land of Sound (Jinzo, Jūgo, Kashu, Shoton, Tsuchigumo)
 
 King 2026-11-21: "Q17. 1. Q18. Yes. Next batch."

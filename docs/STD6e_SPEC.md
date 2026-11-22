@@ -132,13 +132,27 @@ Review tables: `docs/clans/jinzo-automation.md`, `jugo-automation.md`, `kashu-au
 
 - **Q-E12 Stray Amp text:** answered (King 2026-11-21): "Remove the copy." Crimson Architect no longer holds Crimson Pact's Amp; Aphelion – The Mirror and Stellar Convergence no longer hold Event Horizon's (0.81.1-alpha.1).
 - **Q-E13 Aphelion – The Mirror:** its text gives no Stellar Charge cost (every other Constellation has one). What does it cost? King asked for the full text (posted 2026-11-21); waiting on his answer.
-- **Q-E14 Storm Release: Snake Chains:** "The Storm Snake has the listed statistics" but no stat block is in the text. What are its statistics? (Then it becomes a summon like the Blood Dragon.) King 2026-11-21: "Hold off on this."
+- **Q-E14 Storm Release: Snake Chains:** "The Storm Snake has the listed statistics" but no stat block is in the text. What are its statistics? (Then it becomes a summon like the Blood Dragon.) King 2026-11-21: "Hold off on this." Listed under Held stat blocks below.
 - **Q-E15 Plasma Release: Light Binding Step:** asked in error: King already answered this as Q-F14 (docs/AMP1F_SPEC.md, 2026-11-21): the reaction line is a mistake and isn't there. The note says so (0.81.1-alpha.1).
 - **Q-E16 Crimson Weaponry:** answered (King 2026-11-21): rolling a 1 or 2 doesn't reduce the ammunition die by one step (the note says so; 0.81.1-alpha.1).
 
 - **Q-E17 Hozuki Hydration:** answered (King 2026-11-21): "1." Each non-rest trigger regains 1 Hydration (0.83.0-alpha.1).
 - **Q-E18 Vesper's two stance items:** answered (King 2026-11-21): "Yes." "Claws of the Night" is deleted (0.83.0-alpha.1).
-- **Q-E19 Jinzo Bio-Pet:** its stat blocks (Bio-Amphibian, Bio-Serpent, their traits and attacks) are filed as five option items under I've Become, Me, and the Bio-Serpent's Bite has no numbers. Build the Bio-Pets as summons (and what is the Bite), or hold them like the Storm Snakes?
+- **Q-E19 Jinzo Bio-Pet:** answered (King 2026-11-22): "Hold them." Listed under Held stat blocks below.
+
+## Held stat blocks (King 2026-11-22: "Hold them... I need to keep them together so I can give you the correct stat blocks.")
+
+Each is a note on its item until King gives its stat block; then it becomes a summon under Class & Clan Summons.
+
+| # | Creature | Clan | Item(s) that summon it | What the text has | Held since |
+|---|---|---|---|---|---|
+| H1 | Storm Snake | Ranton | Storm Release: Snake Chains (B-Rank Hijutsu) | No stat block ("has the listed statistics", none listed) | Q-E14 (0.81.1) |
+| H2 | Neon Antivirus | Genwa | Data Release: Antivirus (Hijutsu; Angel and Demon Link versions) | No stat block | 0.82.0 (same as H1) |
+| H3 | Broodling | Tsuchigumo | Brood Mother's Hatching Brood (King of the Brood); Spider Art: Rain of Spiders | No stat block (the Brood Mother's is complete and built) | 0.83.0 (same as H1) |
+| H4 | Bio-Amphibian | Jinzo | Bio-Bonded Pet | A stat block, traits and attacks (Tongue Lash, Oil Spit, Sticky Ground, Oil Burst), filed as option items under I've Become, Me | Q-E19 (0.83.0) |
+| H5 | Bio-Serpent | Jinzo | Bio-Bonded Pet | A stat block and traits filed under I've Become, Me; its Bite has no numbers | Q-E19 (0.83.0) |
+
+Not held (built from complete stat blocks): Clay Spider, Bird, Centipede and Dragon (Bakuton); Blood Dragon (Chinoike); Steam Imp (Hozuki); Doki (Bandaged), (Claw) and (Club) (Kashu); Crystal Rabbit, Deer and Dragon (Shoton); Brood Mother (Tsuchigumo). Clans not built yet name stat blocks too (checked when their batch comes): Two-Headed Wolf (Inuzuka), Dream Walker, Inner Self, Wood Dragon (Land of Fire), Star Beast (Kujaku).
 
 ## Text issues (for the errata list)
 
@@ -177,3 +191,5 @@ Review tables: `docs/clans/jinzo-automation.md`, `jugo-automation.md`, `kashu-au
 - 2026-11-21 King: "Q12. Remove the copy. Q13. Post the full effect text. Q14. Hold off on this. Q15. post the full effect text. Q16. That means rolling a 1 or 2 doesn't reduce the ammunition die by one step." Claude: Amp copies removed, Crimson Weaponry note; full Aphelion and Light Binding Step text posted; published 0.81.1-alpha.1.
 - 2026-11-21 King: "Next batch." Claude: E4 Land of Water built (151 items), the Steam Imp summon; earlier rulings Q-E9 and Q-E12 applied without asking; published 0.82.0-alpha.1. Q-E17 and Q-E18 asked (checked earlier specs first); nothing waits on them.
 - 2026-11-21 King: "Q17. 1. Q18. Yes. Next batch." Claude: Hydration +1, duplicate Vesper stance deleted; E5 Land of Sound built (174 items), seven summons (Doki x3, Crystal Rabbit, Deer, Dragon, Brood Mother), rest "empty"; published 0.83.0-alpha.1. Q-E19 asked (checked earlier specs first).
+- 2026-11-22 King: "Hold them. Review the record to make sure all held stat blocks are there." Claude: Q-E19 held; scanned every clan item for stat block references; Held stat blocks table H1–H5 added.
+- 2026-11-22 Claude: published 0.83.1-alpha.1 (held notes point at H1–H5).

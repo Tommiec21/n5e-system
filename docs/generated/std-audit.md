@@ -91,7 +91,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 | features | 700 | 411 | 43 | 372 | 360 | 11 |
 | jutsu | 968 | 968 | 0 | 1 | 0 | 0 |
 | stances | 24 | 16 | 15 | 24 | 24 | 0 |
-| summons | 18 | 0 | 0 | 0 | 0 | 0 |
+| summons | 17 | 0 | 0 | 0 | 0 | 0 |
 
 ## 4. Amps (AMP1b)
 
