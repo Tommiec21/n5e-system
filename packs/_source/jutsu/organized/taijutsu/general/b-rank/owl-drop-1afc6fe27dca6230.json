@@ -84,30 +84,43 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ePOHecBNF7yY6w",
         "type": "attack",
-        "label": "Attack",
+        "label": "Owl Drop",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "You must be hidden from the target. On a hit: grappled.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eEbed3WDh1XgWc",
+        "type": "effect",
+        "label": "On a hit: grappled",
+        "effect": {
+          "name": "Grappled",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "grappled",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Grappled"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eCXti18SX4Lzhb",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "unconscious",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Unconscious"
-          }
-        ],
+        "label": "Owl Drop: knocked out",
         "save": {
           "abilities": [
             "con"
@@ -116,10 +129,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "unconscious",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Unconscious"
+          }
+        ],
+        "text": "Failure: unconscious for 10 minutes, or until moved, touched, damaged or in a jutsu's area.",
         "damage": {
           "parts": []
         }
@@ -189,7 +209,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "64b78902f2631880"

@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5exnpwuyHFDn9N6",
         "type": "attack",
-        "label": "Attack",
+        "label": "Full House",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Action or Reaction, airborne and falling 30+ feet: move 30 feet to the target.",
         "damage": {
           "parts": []
         },
@@ -106,10 +107,30 @@
         }
       },
       {
-        "id": "finisher-parsed1",
+        "id": "n5ev6I5eMTPAvDpQ",
+        "type": "attack",
+        "label": "Finisher: Full House",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "6d8",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5er1Tt0Y6t4DRTP",
         "type": "save",
-        "label": "Finisher: Save",
-        "inflicts": [],
+        "label": "Finisher: shockwave",
         "save": {
           "abilities": [
             "str"
@@ -118,17 +139,12 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Creatures within 10 feet of the target. Failure: thrown 10 feet.",
         "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed + 6d8",
-              "type": "bludgeoning"
-            }
-          ]
+          "parts": []
         }
       }
     ],
@@ -223,7 +239,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "64b78902f2631880"

@@ -85,28 +85,52 @@
     },
     "activities": [
       {
-        "id": "finisher-parsed1",
+        "id": "n5eVxtgBHTJ6AlR3",
         "type": "attack",
-        "label": "Finisher: Attack",
+        "label": "Finisher: Titan Break",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
+        "text": "Finisher only (the text's own Finisher line: three attacks; use the second button).",
         "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed + 3d8",
-              "type": "bludgeoning"
-            }
-          ]
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "3d8",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "2"
         }
       },
       {
-        "id": "finisher-parsed2",
+        "id": "n5e6fxCbfeu3qDcy",
+        "type": "attack",
+        "label": "Finisher: Titan Break (three)",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 3
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "3d8",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "3"
+        }
+      },
+      {
+        "id": "n5eAc02XzAhFudDB",
         "type": "save",
-        "label": "Finisher: Save",
-        "inflicts": [],
+        "label": "Per hit: −1d4",
         "save": {
           "abilities": [
             "str"
@@ -115,21 +139,12 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Once per hit. Failure: −1d4 on its melee attacks and Strength or Dexterity checks until the end of your next turn.",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "1d4",
-        "roll": {
-          "formula": "1d4",
-          "note": "On each failed save, the target creature suffers a 1d4 penalty to their melee attacks, and skill checks that use Strength or Dexterity until the end of your next turn."
         }
       }
     ],
@@ -222,9 +237,141 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eVxtgBHTJ6AlR3",
+              "type": "attack",
+              "label": "Finisher: Titan Break",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Finisher only (the text's own Finisher line: three attacks; use the second button).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d8 + 1d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5e6fxCbfeu3qDcy",
+              "type": "attack",
+              "label": "Finisher: Titan Break (three)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d8 + 1d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "3"
+              }
+            },
+            {
+              "id": "n5eAc02XzAhFudDB",
+              "type": "save",
+              "label": "Per hit: −1d4",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Once per hit. Failure: −1d4 on its melee attacks and Strength or Dexterity checks until the end of your next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eVxtgBHTJ6AlR3",
+              "type": "attack",
+              "label": "Finisher: Titan Break",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Finisher only (the text's own Finisher line: three attacks; use the second button).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d8 + 2d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5e6fxCbfeu3qDcy",
+              "type": "attack",
+              "label": "Finisher: Titan Break (three)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d8 + 2d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "3"
+              }
+            },
+            {
+              "id": "n5eAc02XzAhFudDB",
+              "type": "save",
+              "label": "Per hit: −1d4",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Once per hit. Failure: −1d4 on its melee attacks and Strength or Dexterity checks until the end of your next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "64b78902f2631880"

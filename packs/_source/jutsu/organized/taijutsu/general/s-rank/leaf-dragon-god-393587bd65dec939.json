@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eeNlSOsFbIUCcp",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Leaf Dragon God",
         "save": {
           "abilities": [
             "str"
@@ -97,31 +96,43 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "Move 120 feet; creatures you pass within 5 feet. Failure: pulled along and dropped 5 feet ahead of you, plus twice the falling damage; success: half.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "12d8",
+              "type": "bludgeoning"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "12d8",
-        "roll": {
-          "formula": "12d8",
-          "note": "All creatures who you pass within 5 feet of, must make a Strength saving throw being pulled into the tornado and thrown to the end of it landing 5 feet in front of where ever you end your movement, taking 12d8 bludgeoning damage and taking additional damage as if they were falling. On a successful save they only take half damage. Creatures take twice the amount of falling damage as a result of this jutsu."
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "6d8",
-        "roll": {
-          "formula": "6d8",
-          "note": "Creatures who fail the Strength saving throw must also succeed a constitution saving throw being slashed by the debris this Taijutsu picks up taking 6d8 slashing damage on a failed save or half as much on a successful save."
+        "id": "n5eyu9fiV8Db6rDk",
+        "type": "save",
+        "label": "Debris",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Those that failed. Success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d8",
+              "type": "slashing"
+            }
+          ]
         }
       }
     ],
@@ -204,7 +215,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "49c20138df26d73f"

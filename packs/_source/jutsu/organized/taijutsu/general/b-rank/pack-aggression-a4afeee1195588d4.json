@@ -85,13 +85,35 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e2BCxYvNvu5zwV",
         "type": "attack",
-        "label": "Attack",
+        "label": "Pack Aggression",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
+        },
+        "text": "Each hit: +1 critical range on your next attack of this jutsu.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "2d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "2"
+        }
+      },
+      {
+        "id": "n5e1hWqHPsfxk1xB",
+        "type": "attack",
+        "label": "Finisher: Pack Aggression",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 3
         },
         "damage": {
           "parts": []
@@ -102,20 +124,7 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
-        }
-      },
-      {
-        "id": "finisher-parsed1",
-        "type": "attack",
-        "label": "Finisher: Attack",
-        "attack": {
-          "discipline": "tai",
-          "range": "melee",
-          "count": 1
-        },
-        "damage": {
-          "parts": []
+          "attacks": "3"
         }
       }
     ],
@@ -205,79 +214,98 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5e2BCxYvNvu5zwV",
               "type": "attack",
-              "label": "Attack",
+              "label": "Pack Aggression",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
+              },
+              "text": "Each hit: +1 critical range on your next attack of this jutsu.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d6 + 1d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5e1hWqHPsfxk1xB",
+              "type": "attack",
+              "label": "Finisher: Pack Aggression",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
               },
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(2d6) + (1d6)",
+                "extraDice": "2d6 + 1d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
-              }
-            },
-            {
-              "id": "finisher-parsed1",
-              "type": "attack",
-              "label": "Finisher: Attack",
-              "attack": {
-                "discipline": "tai",
-                "range": "melee",
-                "count": 1
-              },
-              "damage": {
-                "parts": []
+                "attacks": "3"
               }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5e2BCxYvNvu5zwV",
               "type": "attack",
-              "label": "Attack",
+              "label": "Pack Aggression",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
+              },
+              "text": "Each hit: +1 critical range on your next attack of this jutsu.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d6 + 2d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5e1hWqHPsfxk1xB",
+              "type": "attack",
+              "label": "Finisher: Pack Aggression",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
               },
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(2d6) + (2d6)",
+                "extraDice": "2d6 + 2d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
-              }
-            },
-            {
-              "id": "finisher-parsed1",
-              "type": "attack",
-              "label": "Finisher: Attack",
-              "attack": {
-                "discipline": "tai",
-                "range": "melee",
-                "count": 1
-              },
-              "damage": {
-                "parts": []
+                "attacks": "3"
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "64b78902f2631880"

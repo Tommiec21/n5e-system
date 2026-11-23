@@ -84,10 +84,91 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5elf3HHrlN9Vubz",
+        "type": "attack",
+        "label": "Supreme Pacification",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "One creature. On a hit: grappled and restrained (its reaction: an opposed Athletics check breaks free). No HS, Help or Strength or Dexterity checks; it can't speak.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5ejbrv93FXZEobR",
+        "type": "effect",
+        "label": "On a hit: grappled and restrained",
+        "effect": {
+          "name": "Grappled, Restrained",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "grappled",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Grappled"
+            },
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eDbogAD1ePFHOw",
+        "type": "save",
+        "label": "Escape (its Action)",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Success: free.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eYc9kebDKHmEzf",
+        "type": "save",
+        "label": "After 5 rounds",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "unconscious",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Unconscious"
+          }
+        ],
+        "text": "Start of each of its turns. Failure: unconscious.",
+        "damage": {
+          "parts": []
+        }
       }
     ],
     "featureType": "active",
@@ -154,7 +235,14 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "While you hold it: half speed, no Dash, no HS, no concentration on Ninjutsu or Genjutsu."
+        }
+      ]
     }
   },
   "folder": "ee1379d61e3505ec"

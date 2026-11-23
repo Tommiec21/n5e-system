@@ -1,6 +1,6 @@
 # STD6f function spec: jutsu as data
 
-Status: **Approved by King 2026-11-22 (Q-J1 yes; Q-J2 fix and finish). F1 Taijutsu I built (0.87.0-alpha.1). Next: F2 Taijutsu II.**
+Status: **Approved by King 2026-11-22 (Q-J1 yes; Q-J2 fix and finish). F1 Taijutsu I (0.87.0-alpha.1) and F2 Taijutsu II (0.88.0-alpha.1) built: Taijutsu is done. Next: F3 Bukijutsu I.**
 
 Plan: `docs/STD_SPEC.md` (STD6f: "Every jutsu's riders as Active Effects and elements, emitted by an upgraded importer where the pattern is regular; a review table per section for King"). Same method as the clan pass (`docs/STD6e_SPEC.md`).
 
@@ -96,7 +96,21 @@ Review table: `docs/jutsu/taijutsu-general-automation.md` (91 jutsu: 85 partly a
 - Already on the errata list: Fury Kick ("1d4 or 1d6"), Butterfly Kick ("2d4 or 1d8"), Iron Strike and Dragon Tail Foot (+1d8 on d6 dice) upcasts; Cyclone Surge's Mobility "keyword"; Royal Flush (C-Rank) upcast "above D-Rank"; Seikuken Goitsu "Tin and Tang" and Exposed (not a condition); Late Death "fails 0 death saving throws"; Leaf Sky Breaker's two Finisher grants; Whirlwind Snap's "triggering creature"; Moonlight High and Pressure Point Barrage have no upcast; Leaf Kick "1 rank of Slowed"; Dempsey Roll's trigger; Friction "can make spend"; Fist Slam "10-feet- into"; Draw "As a as a reaction".
 - New: Swallow Dance, Break Spiral and Scattering Wave have no success result; Prideful Assault holds a "Character Art / Credits" line; Clawing Swift Fang "You a dash"; Feather Combo "attacks targeting."; Heavy Jolt "of your of your"; Leaf Hurricane "pushed 30 away" and Twin Heavenly Swallow "pushed 20 away" (feet); Grass Palm's save has no "on a failed save".
 
+## F2 Taijutsu II (0.88.0-alpha.1)
+
+Review table: `docs/jutsu/taijutsu-general-automation.md`, now the whole section (146 jutsu: 133 partly automated, 13 notes only); F2 adds the 55 B- to S-Rank jutsu (48 partly automated, 7 notes only).
+
+- **Kept** (Q-J2): the Magnum Knuckle, Supreme Violence and Tiger Lily Amps.
+- **Fixed and finished:** as F1: attacks with their number and dice, Finisher buttons, saves with what they inflict, per-rank dice and extra attacks (King's Fang, Leaf Hurricane Bullet, Predators Fang), no-save conditions (Maximum Entry's Bruised, Quaking Leg's Weakened, Owl Drop's grapple, Supreme Pacification, Violent Strangling's Exhaustion, Final Lotus's Prone); Still Earth: Reverb's buffs as an effect; Daytime Tiger's bludgeoning and force on one attack.
+- **Notes only:** After Image Technique, Amphibious Gout, Combo Break, Combo Extender, Blue Rose, Red Lotus, White Lily (actions, reactions and Finisher targeting the table runs).
+- **No new holds:** no Taijutsu summons a creature.
+
+## Text issues found in F2
+
+- Asakujaku: Morning Peacock gives no damage type; Titan Break "you instead my three"; Dragon Crush "a part of casting" (As a part); Breaker Fist "they are shaken as become Staggered"; Heavenly Foot of Pain's Finisher deals "half damage" of an unstated roll, with its upcast run into the same paragraph; Rabbit Boss Stomp's Finisher ends "and." and its upcast says "1d8 or 1d12"; Leaf Earth Crush and Passionate Dancing Leaf "All creature in in range"; Steel Knuckle "Make a two" and "feed"; Cherry Blossom Impact's save has no "on a failed save"; Night Guy "they take deal"; Supreme Pacification "Strength of Dexterity"; Unpredictable Blows "resist being Physical conditions"; World Breaker's Finisher "until the end of their turns"; Leaf Earth Crush and World Breaker have no success result.
+
 ## Progress log
 
 - 2026-11-22 King: "Next batch" (after STD6e E8). Claude: spec proposed from a survey of the jutsu pack. Nothing built.
 - 2026-11-22 King: "QJ1. Yes. QJ2. Fix/Finish the rest. Next Batch". Claude: F1 Taijutsu I built (91 jutsu); F-D3 (no-save conditions) and F-D4 ([Unarmed damage] in healing); published 0.87.0-alpha.1.
+- 2026-11-22 King: "Next batch." Claude: F2 Taijutsu II built (55 jutsu): Taijutsu complete; published 0.88.0-alpha.1. No new questions.

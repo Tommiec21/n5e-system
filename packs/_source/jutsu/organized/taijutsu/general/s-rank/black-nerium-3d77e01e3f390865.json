@@ -86,28 +86,23 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5euYeNuPLxircyO",
         "type": "attack",
-        "label": "Attack",
+        "label": "Black Nerium",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "On a hit: 1 minute of saves.",
         "damage": {
-          "parts": [
-            {
-              "formula": "5d6",
-              "type": "necrotic"
-            }
-          ]
+          "parts": []
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5egWb0HDKyWrq01",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Start of its turn",
         "save": {
           "abilities": [
             "con"
@@ -116,12 +111,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Each failure: a cumulative −1 to its Strength, Dexterity and Constitution checks, attacks and saves (by hand) and the damage (can't be reduced or resisted). Ten failures: it dies. An S-Rank Medical jutsu that ends conditions or heals ends it.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "necrotic"
+            }
+          ]
         }
       }
     ],
@@ -196,7 +196,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "49c20138df26d73f"

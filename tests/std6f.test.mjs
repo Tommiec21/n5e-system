@@ -59,3 +59,24 @@ test("STD6f F-D3: an effect's conditions and states with no save (inflicts)", as
   const drop = jutsu("taijutsu/general", "falcon-drop").system.activities.find(a => a.type === "effect");
   assert.deepEqual(drop.effect.inflicts.map(i => i.key), ["prone", "weakened", "bruised"]);
 });
+
+test("STD6f F2 Taijutsu II: every B- to S-Rank Taijutsu reviewed; the whole section is done", () => {
+  const t = table("taijutsu/general");
+  assert.deepEqual(t.ranks, ["E", "D", "C", "B", "A", "S"]);
+  const items = sectionJutsu("taijutsu/general", ["B", "A", "S"]);
+  assert.equal(items.size, 55);
+  for ( const [id, { doc }] of items ) assert.equal(doc.flags.n5e.reviewed, true, id);
+  assert.equal(Object.keys(t.features).length, 146);
+  // King's Fang: +1 attack at S-Rank, base and Finisher.
+  const kf = jutsu("taijutsu/general", "kings-fang").flags.n5e.jutsuBookImport.activitiesByRank;
+  assert.equal(kf.A.find(a => a.label === "King’s Fang").attack.count, 2);
+  assert.equal(kf.S.find(a => a.label === "Finisher: King’s Fang").attack.count, 3);
+  // Daytime Tiger: two damage types on one attack.
+  const dt = jutsu("taijutsu/general", "daytime-tiger").system.activities[0];
+  assert.deepEqual(dt.damage.parts.map(p => p.type), ["bludgeoning", "force"]);
+  // No-save conditions (F-D3) on Violent Strangling.
+  const vs = jutsu("taijutsu/general", "violent-strangling").system.activities.find(a => a.label === "On a hit");
+  assert.deepEqual(vs.effect.inflicts.map(i => i.key), ["grappled", "restrained", "exhaustion"]);
+  // Kept Amps (King Q-J2).
+  assert.equal(jutsu("taijutsu/general", "tiger-lily").system.activities[0].effect.amp, "jutsu-tiger-lily");
+});

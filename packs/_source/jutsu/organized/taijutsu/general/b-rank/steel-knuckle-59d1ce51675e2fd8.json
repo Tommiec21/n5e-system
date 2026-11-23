@@ -85,10 +85,30 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e2lo7TvJ4YukHY",
+        "type": "attack",
+        "label": "Steel Knuckle",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 2
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "3d12",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "2"
+        }
+      },
+      {
+        "id": "n5e0r8QmcZh6CQEc",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Knockback",
         "save": {
           "abilities": [
             "str"
@@ -97,31 +117,27 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "On a hit. Failure: knocked back 10 × Strength modifier feet; you may follow that far.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "3d12",
-        "roll": {
-          "formula": "3d12",
-          "note": "On a hit, you deal your [Unarmed damage] + 3d12 and force the target to make a Strength saving throw. On a failed save, you knock them back a number of feed equal to 10 x your strength ability modifier."
-        }
-      },
-      {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "4d6",
-        "roll": {
-          "formula": "4d6",
-          "note": "If they strike a solid surface that’s less than 5 feet thick, they tear through it if they have at least 10 or more feet remaining to be knocked back, taking 4d6 bludgeoning damage for each surface they go through."
-        }
+        "id": "n5ePS4VyFIZLaoJc",
+        "type": "damage",
+        "label": "Through a surface",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "bludgeoning"
+            }
+          ]
+        },
+        "text": "Per surface under 5 feet thick it breaks with 10+ feet left."
       }
     ],
     "featureType": "active",
@@ -220,9 +236,125 @@
           "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically.",
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5e2lo7TvJ4YukHY",
+              "type": "attack",
+              "label": "Steel Knuckle",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d12 + 1d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5e0r8QmcZh6CQEc",
+              "type": "save",
+              "label": "Knockback",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit. Failure: knocked back 10 × Strength modifier feet; you may follow that far.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ePS4VyFIZLaoJc",
+              "type": "damage",
+              "label": "Through a surface",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "text": "Per surface under 5 feet thick it breaks with 10+ feet left."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e2lo7TvJ4YukHY",
+              "type": "attack",
+              "label": "Steel Knuckle",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d12 + 2d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5e0r8QmcZh6CQEc",
+              "type": "save",
+              "label": "Knockback",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit. Failure: knocked back 10 × Strength modifier feet; you may follow that far.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ePS4VyFIZLaoJc",
+              "type": "damage",
+              "label": "Through a surface",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "text": "Per surface under 5 feet thick it breaks with 10+ feet left."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "64b78902f2631880"

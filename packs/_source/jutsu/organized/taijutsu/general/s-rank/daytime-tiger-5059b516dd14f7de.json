@@ -87,10 +87,32 @@
     },
     "activities": [
       {
-        "id": "finisher-parsed1",
+        "id": "n5eCVAooWaPyjnHX",
+        "type": "attack",
+        "label": "Finisher: Daytime Tiger",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "Finisher only; 6th Gate. 30 feet.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "10d12",
+              "type": "bludgeoning"
+            },
+            {
+              "formula": "10d12",
+              "type": "force"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eJLHVId3FNVuCk",
         "type": "save",
-        "label": "Finisher: Save",
-        "inflicts": [],
+        "label": "Finisher: vortex",
         "save": {
           "abilities": [
             "dex"
@@ -98,31 +120,18 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "Creatures within 30 feet of the target. Success: half.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "10d12",
-        "roll": {
-          "formula": "10d12",
-          "note": "On a hit the target takes 10d12 bludgeoning and 10d12 force damage. Each creature within 30 feet around the target creature must make a Dexterity saving throw. A target takes 10d10 Force damage on a failed save, or half on a successful one."
-        }
-      },
-      {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "10d10",
-        "roll": {
-          "formula": "10d10",
-          "note": "A target takes 10d10 Force damage on a failed save, or half on a successful one."
+          "parts": [
+            {
+              "formula": "10d10",
+              "type": "force"
+            }
+          ]
         }
       }
     ],
@@ -211,7 +220,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "49c20138df26d73f"

@@ -86,36 +86,9 @@
     },
     "activities": [
       {
-        "id": "finisher-parsed1",
-        "type": "attack",
-        "label": "Finisher: Attack",
-        "attack": {
-          "discipline": "tai",
-          "range": "melee",
-          "count": 1
-        },
-        "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "finisher-parsed2",
+        "id": "n5eMHhKEzEoxdwrp",
         "type": "save",
-        "label": "Finisher: Save",
-        "inflicts": [
-          {
-            "key": "burned",
-            "kind": "condition",
-            "ranks": 2,
-            "label": "Burned"
-          },
-          {
-            "key": "bruised",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bruised"
-          }
-        ],
+        "label": "Finisher: path",
         "save": {
           "abilities": [
             "dex"
@@ -123,31 +96,74 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Burned"
+          }
+        ],
+        "text": "Finisher only: move to a space in range through creatures; those you choose that you pass. Failure: 2 Burned; success: half and nothing else.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5elOK4oMCDGGgcn",
+        "type": "attack",
+        "label": "Finisher: Leaf Hot Wind",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Ending within 5 feet of a hostile creature: [Unarmed damage] + 7d10 fire.",
         "damage": {
           "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "7d10",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "3d6",
-        "roll": {
-          "formula": "3d6",
-          "note": "All creatures of your choice who you would pass through on your way to the location must make a Dexterity saving throw taking 3d6 Fire damage and gaining 2 ranks of the Burned condition on a failed save or only half damage and no further effects on a successful save."
-        }
-      },
-      {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "7d10",
-        "roll": {
-          "formula": "7d10",
-          "note": "If you end your movement within 5 feet of a hostile creature, make a Taijutsu attack against target one creature, dealing your [Unarmed damage] + 7d10 Fire damage. The target must make a Strength saving throw becoming Bruised on a failed save."
+        "id": "n5e3RQ8s16hZlcCT",
+        "type": "save",
+        "label": "Finisher: Bruised",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "On a hit. Failure: Bruised.",
+        "damage": {
+          "parts": []
         }
       }
     ],
@@ -240,9 +256,183 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eMHhKEzEoxdwrp",
+              "type": "save",
+              "label": "Finisher: path",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Burned"
+                }
+              ],
+              "text": "Finisher only: move to a space in range through creatures; those you choose that you pass. Failure: 2 Burned; success: half and nothing else.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5elOK4oMCDGGgcn",
+              "type": "attack",
+              "label": "Finisher: Leaf Hot Wind",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Ending within 5 feet of a hostile creature: [Unarmed damage] + 7d10 fire.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "7d10 + 1d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5e3RQ8s16hZlcCT",
+              "type": "save",
+              "label": "Finisher: Bruised",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "On a hit. Failure: Bruised.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eMHhKEzEoxdwrp",
+              "type": "save",
+              "label": "Finisher: path",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Burned"
+                }
+              ],
+              "text": "Finisher only: move to a space in range through creatures; those you choose that you pass. Failure: 2 Burned; success: half and nothing else.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5elOK4oMCDGGgcn",
+              "type": "attack",
+              "label": "Finisher: Leaf Hot Wind",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Ending within 5 feet of a hostile creature: [Unarmed damage] + 7d10 fire.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "7d10 + 2d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5e3RQ8s16hZlcCT",
+              "type": "save",
+              "label": "Finisher: Bruised",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "On a hit. Failure: Bruised.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The attack's damage is fire: the button uses your [Unarmed damage] type (change it by hand)."
+        }
+      ]
     }
   },
   "folder": "64b78902f2631880"

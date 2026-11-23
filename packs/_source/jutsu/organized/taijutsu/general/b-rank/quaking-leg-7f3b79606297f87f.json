@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ewsYVc7RT5oAJI",
         "type": "attack",
-        "label": "Attack",
+        "label": "Quaking Leg",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Bonus action. On a hit: 2 Weakened; no reactions until the end of the turn.",
         "damage": {
           "parts": []
         },
@@ -103,6 +104,26 @@
           "pierce": 0,
           "maximize": false,
           "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eqGbDxzFD38UcS",
+        "type": "effect",
+        "label": "On a hit: Weakened",
+        "effect": {
+          "name": "Weakened",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Weakened"
+            }
+          ]
         }
       }
     ],
@@ -177,7 +198,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "64b78902f2631880"

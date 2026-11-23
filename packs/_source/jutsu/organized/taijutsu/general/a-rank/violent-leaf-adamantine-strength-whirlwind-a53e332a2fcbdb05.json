@@ -85,23 +85,28 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eWnKkH8NFODosQ",
         "type": "attack",
-        "label": "Attack",
+        "label": "Violent Leaf Whirlwind",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "When you first enter the 4th Gate or higher: move 30 feet to a hostile creature; five times your [Unarmed damage].",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "5 * (@unarmed)",
+              "type": "bludgeoning"
+            }
+          ]
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eGNpdVfvx2n7GA",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Thrown back",
         "save": {
           "abilities": [
             "str"
@@ -110,22 +115,27 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "On a hit. Failure: thrown back 20 × Strength modifier feet.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "6d6",
-        "roll": {
-          "formula": "6d6",
-          "note": "If they strike a solid surface that’s less than 5 feet thick, they tear through it if they have at least 10 or more feet remaining to be knocked back, taking 6d6 bludgeoning damage for each surface they go through."
-        }
+        "id": "n5en2zZMFKHGrkHq",
+        "type": "damage",
+        "label": "Through a surface",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": "bludgeoning"
+            }
+          ]
+        },
+        "text": "Per surface under 5 feet thick it breaks with 10+ feet left."
       }
     ],
     "featureType": "active",
@@ -207,7 +217,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ee1379d61e3505ec"

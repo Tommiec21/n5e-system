@@ -85,11 +85,11 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eC0n42QNyNdRP6",
         "type": "attack",
-        "label": "Attack",
+        "label": "Heavenly Foot of Pain",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
@@ -103,10 +103,9 @@
         }
       },
       {
-        "id": "finisher-parsed1",
+        "id": "n5eOyQk5tdgSW5Di",
         "type": "save",
-        "label": "Finisher: Save",
-        "inflicts": [],
+        "label": "Finisher: shockwave",
         "save": {
           "abilities": [
             "dex"
@@ -115,22 +114,27 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Finisher: everything within 30 feet of the target (not you). Failure: half the attack's damage (roll it by hand, or the button below); a Barrier takes it all as if vulnerable.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "Finisher: 1d10",
-        "roll": {
-          "formula": "1d10",
-          "note": "At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the damage by 1d10."
-        }
+        "id": "n5eHpJKgcAerO0GX",
+        "type": "damage",
+        "label": "Finisher: shockwave damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "floor(7d10 / 2)",
+              "type": "bludgeoning"
+            }
+          ]
+        },
+        "text": "Half of a 7d10 roll (better: half of the attack's own roll)."
       }
     ],
     "featureType": "active",
@@ -213,11 +217,11 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eC0n42QNyNdRP6",
               "type": "attack",
-              "label": "Attack",
+              "label": "Heavenly Foot of Pain",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
@@ -231,10 +235,9 @@
               }
             },
             {
-              "id": "finisher-parsed1",
+              "id": "n5eOyQk5tdgSW5Di",
               "type": "save",
-              "label": "Finisher: Save",
-              "inflicts": [],
+              "label": "Finisher: shockwave",
               "save": {
                 "abilities": [
                   "dex"
@@ -243,31 +246,36 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Finisher: everything within 30 feet of the target (not you). Failure: half the attack's damage (roll it by hand, or the button below); a Barrier takes it all as if vulnerable.",
               "damage": {
                 "parts": []
               }
             },
             {
-              "id": "sourceRoll2",
-              "type": "roll",
-              "label": "Finisher: 1d10",
-              "roll": {
-                "formula": "1d10",
-                "note": "At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the damage by 1d10."
-              }
+              "id": "n5eHpJKgcAerO0GX",
+              "type": "damage",
+              "label": "Finisher: shockwave damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "floor(7d10 / 2)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "text": "Half of a 7d10 roll (better: half of the attack's own roll)."
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eC0n42QNyNdRP6",
               "type": "attack",
-              "label": "Attack",
+              "label": "Heavenly Foot of Pain",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
@@ -281,10 +289,9 @@
               }
             },
             {
-              "id": "finisher-parsed1",
+              "id": "n5eOyQk5tdgSW5Di",
               "type": "save",
-              "label": "Finisher: Save",
-              "inflicts": [],
+              "label": "Finisher: shockwave",
               "save": {
                 "abilities": [
                   "dex"
@@ -293,27 +300,33 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Finisher: everything within 30 feet of the target (not you). Failure: half the attack's damage (roll it by hand, or the button below); a Barrier takes it all as if vulnerable.",
               "damage": {
                 "parts": []
               }
             },
             {
-              "id": "sourceRoll2",
-              "type": "roll",
-              "label": "Finisher: 1d10",
-              "roll": {
-                "formula": "1d10",
-                "note": "At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the damage by 1d10."
-              }
+              "id": "n5eHpJKgcAerO0GX",
+              "type": "damage",
+              "label": "Finisher: shockwave damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "floor(7d10 / 2)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "text": "Half of a 7d10 roll (better: half of the attack's own roll)."
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "64b78902f2631880"

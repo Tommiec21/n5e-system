@@ -1,3 +1,10 @@
+## 0.88.0-alpha.1 — STD6f F2 Taijutsu II
+
+King 2026-11-22: "Next batch." 55 B- to S-Rank Taijutsu reviewed (48 partly automated, 7 notes only); the whole Taijutsu section is now done (146 jutsu). Review table docs/jutsu/taijutsu-general-automation.md; spec docs/STD6f_SPEC.md (F2).
+
+- **Taijutsu II:** attacks with their number and dice; Finisher versions as their own buttons; saves with what a failure inflicts; per-rank dice and extra attacks; no-save conditions (Maximum Entry, Quaking Leg, Owl Drop, Supreme Pacification, Violent Strangling, Final Lotus); Still Earth: Reverb's buffs; Daytime Tiger's two damage types.
+- **Kept** (King Q-J2): the Magnum Knuckle, Supreme Violence and Tiger Lily Amps.
+
 ## 0.87.0-alpha.1 — STD6f F1 Taijutsu I
 
 King 2026-11-22: "QJ1. Yes. QJ2. Fix/Finish the rest. Next Batch". The STD6f spec is approved (docs/STD6f_SPEC.md). 91 E- to C-Rank Taijutsu reviewed (85 partly automated, 6 notes only); review table docs/jutsu/taijutsu-general-automation.md.

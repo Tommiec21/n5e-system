@@ -86,14 +86,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e5EJhyaUHpCLi4",
         "type": "attack",
-        "label": "Attack",
+        "label": "One Man Front Lotus",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "1st Gate or higher.",
         "damage": {
           "parts": []
         },
@@ -107,10 +108,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eHelnoSZCy8ov9",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Knockback",
         "save": {
           "abilities": [
             "str"
@@ -119,36 +119,49 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Creatures within 10 feet of the target. Failure: thrown 10 feet.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "finisher-parsed1",
+        "id": "n5euSGvVWUQ6sbkx",
         "type": "attack",
-        "label": "Finisher: Attack",
+        "label": "Finisher: One Man Front Lotus",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
         "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed + 8d6",
-              "type": "bludgeoning"
-            }
-          ]
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "8d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       },
       {
-        "id": "finisher-parsed2",
+        "id": "n5evweNDDbfoUso2",
         "type": "save",
-        "label": "Finisher: Save",
+        "label": "Finisher: Dazed, Prone",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "dazed",
@@ -163,18 +176,7 @@
             "label": "Prone"
           }
         ],
-        "save": {
-          "abilities": [
-            "str"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Creatures within 10 feet of the target. Failure: knocked back 20 feet, Dazed and Prone.",
         "damage": {
           "parts": []
         }
@@ -275,9 +277,207 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5e5EJhyaUHpCLi4",
+              "type": "attack",
+              "label": "One Man Front Lotus",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "1st Gate or higher.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "5d6 + 1d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eHelnoSZCy8ov9",
+              "type": "save",
+              "label": "Knockback",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Creatures within 10 feet of the target. Failure: thrown 10 feet.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5euSGvVWUQ6sbkx",
+              "type": "attack",
+              "label": "Finisher: One Man Front Lotus",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "8d6 + 1d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5evweNDDbfoUso2",
+              "type": "save",
+              "label": "Finisher: Dazed, Prone",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Creatures within 10 feet of the target. Failure: knocked back 20 feet, Dazed and Prone.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e5EJhyaUHpCLi4",
+              "type": "attack",
+              "label": "One Man Front Lotus",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "1st Gate or higher.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "5d6 + 2d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eHelnoSZCy8ov9",
+              "type": "save",
+              "label": "Knockback",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Creatures within 10 feet of the target. Failure: thrown 10 feet.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5euSGvVWUQ6sbkx",
+              "type": "attack",
+              "label": "Finisher: One Man Front Lotus",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "8d6 + 2d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5evweNDDbfoUso2",
+              "type": "save",
+              "label": "Finisher: Dazed, Prone",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Creatures within 10 feet of the target. Failure: knocked back 20 feet, Dazed and Prone.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "64b78902f2631880"

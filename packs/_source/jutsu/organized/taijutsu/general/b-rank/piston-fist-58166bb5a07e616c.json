@@ -86,11 +86,11 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eM3CADQDBxmSGG",
         "type": "attack",
-        "label": "Attack",
+        "label": "Piston Fist",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
@@ -107,22 +107,45 @@
         }
       },
       {
-        "id": "finisher-parsed1",
+        "id": "n5e9Jx8L1nlIytIv",
         "type": "attack",
-        "label": "Finisher: Attack",
+        "label": "Finisher: Piston Fist",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Finisher: +2 critical range (the effect, before the attack).",
         "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed + 9d4",
-              "type": "bludgeoning"
-            }
-          ]
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "9d4",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
+      },
+      {
+        "id": "n5e2dTAABsIFCDgR",
+        "type": "effect",
+        "label": "Finisher: +2 critical range",
+        "effect": {
+          "name": "Piston Fist",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.critRange.tai",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 0
+        },
+        "text": "For this attack."
       }
     ],
     "featureType": "active",
@@ -220,9 +243,139 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eM3CADQDBxmSGG",
+              "type": "attack",
+              "label": "Piston Fist",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "6d4 + 2d4",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5e9Jx8L1nlIytIv",
+              "type": "attack",
+              "label": "Finisher: Piston Fist",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Finisher: +2 critical range (the effect, before the attack).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "9d4 + 2d4",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5e2dTAABsIFCDgR",
+              "type": "effect",
+              "label": "Finisher: +2 critical range",
+              "effect": {
+                "name": "Piston Fist",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.critRange.tai",
+                    "value": "2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "For this attack."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eM3CADQDBxmSGG",
+              "type": "attack",
+              "label": "Piston Fist",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "6d4 + 4d4",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5e9Jx8L1nlIytIv",
+              "type": "attack",
+              "label": "Finisher: Piston Fist",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Finisher: +2 critical range (the effect, before the attack).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "9d4 + 4d4",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5e2dTAABsIFCDgR",
+              "type": "effect",
+              "label": "Finisher: +2 critical range",
+              "effect": {
+                "name": "Piston Fist",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.critRange.tai",
+                    "value": "2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "For this attack."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "64b78902f2631880"

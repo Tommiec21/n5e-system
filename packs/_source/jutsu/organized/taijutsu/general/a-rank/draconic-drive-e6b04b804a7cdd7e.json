@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e85hHiGy4NmMfY",
         "type": "attack",
-        "label": "Attack",
+        "label": "Draconic Drive",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "3rd Gate or higher. Hit or miss: the shockwave.",
         "damage": {
           "parts": []
         },
@@ -106,17 +107,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5ehCx1ftYWR7Ka6",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "dazed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Dazed"
-          }
-        ],
+        "label": "Shockwave",
         "save": {
           "abilities": [
             "dex"
@@ -125,12 +118,24 @@
             "source": "discipline"
           },
           "onSuccess": "half",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "A 20-foot radius from the target's space (not you). Failure: Dazed for 1 minute; success: half.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": "bludgeoning"
+            }
+          ]
         }
       }
     ],
@@ -217,7 +222,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ee1379d61e3505ec"

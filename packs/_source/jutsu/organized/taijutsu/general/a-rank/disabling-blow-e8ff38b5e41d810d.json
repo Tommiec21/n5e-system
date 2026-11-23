@@ -84,38 +84,28 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ed3FNkWtuu3aBe",
         "type": "attack",
-        "label": "Attack",
+        "label": "Disabling Blow",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Each creature you choose within 5 feet: twice your [Unarmed damage] and half speed.",
         "damage": {
-          "parts": []
-        },
-        "strike": {
-          "kind": "unarmed",
-          "extraDice": "",
-          "dieSteps": 0,
-          "pierce": 0,
-          "maximize": false,
-          "attacks": "1"
+          "parts": [
+            {
+              "formula": "2 * (@unarmed)",
+              "type": "bludgeoning"
+            }
+          ]
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5ejDjMlwYPKdweh",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "weakened",
-            "kind": "condition",
-            "ranks": 2,
-            "label": "Weakened"
-          }
-        ],
+        "label": "Disabling Blow: Weakened",
         "save": {
           "abilities": [
             "con"
@@ -124,10 +114,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Weakened"
+          }
+        ],
+        "text": "Each one hit. Failure: 2 Weakened, no reactions against you (resave at the end of each of its turns for the reactions).",
         "damage": {
           "parts": []
         }
@@ -204,7 +201,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ee1379d61e3505ec"

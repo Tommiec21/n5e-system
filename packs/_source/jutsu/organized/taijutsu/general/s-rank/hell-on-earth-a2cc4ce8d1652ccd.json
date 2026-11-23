@@ -85,23 +85,28 @@
     },
     "activities": [
       {
-        "id": "finisher-parsed1",
+        "id": "n5en7cLG56VxC6Xl",
         "type": "attack",
-        "label": "Finisher: Attack",
+        "label": "Finisher: Hell On Earth",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Finisher only; a Prone target.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "8d12 + 30",
+              "type": "bludgeoning"
+            }
+          ]
         }
       },
       {
-        "id": "finisher-parsed2",
+        "id": "n5eVB7hDYHpxMiNH",
         "type": "save",
-        "label": "Finisher: Save",
-        "inflicts": [],
+        "label": "Finisher: fissure",
         "save": {
           "abilities": [
             "dex"
@@ -109,31 +114,18 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "Hit or miss: everyone within 60 feet but you and the target. Success: half.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "8d12 +30",
-        "roll": {
-          "formula": "8d12+30",
-          "note": "On a hit, you deal 8d12 +30 bludgeoning damage."
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "8d8 + 15",
-        "roll": {
-          "formula": "8d8+15",
-          "note": "Regardless of a hit or miss, all creatures, excluding you and the original target, must make a dexterity saving throw taking 8d8 + 15 bludgeoning damage on a failed save, or half as much on a success."
+          "parts": [
+            {
+              "formula": "8d8 + 15",
+              "type": "bludgeoning"
+            }
+          ]
         }
       }
     ],
@@ -216,7 +208,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "49c20138df26d73f"

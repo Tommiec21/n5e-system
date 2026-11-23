@@ -85,11 +85,11 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eBkSZOU9Cw2jCX",
         "type": "attack",
-        "label": "Attack",
+        "label": "Real Impact",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
@@ -106,10 +106,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eUsnnRzlnnjAHv",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Thrown up",
         "save": {
           "abilities": [
             "str"
@@ -118,18 +117,37 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "You and creatures adjacent to you (the target too). Failure: thrown 30 feet up, airborne. Others (not the target) can be hit by allies' Finishers within 30 feet of you at any range, as a reaction.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "finisher-parsed1",
-        "type": "damage",
-        "label": "Finisher: Damage",
+        "id": "n5eRWB1k1AiSDU5R",
+        "type": "save",
+        "label": "Finisher: the target",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 5,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Finisher, the target fails. 5 Bleed.",
         "damage": {
           "parts": [
             {
@@ -225,7 +243,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ee1379d61e3505ec"
