@@ -84,17 +84,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e6Wg6MW1gfkyCw",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "prone",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Prone"
-          }
-        ],
+        "label": "Oppressive Aura",
         "save": {
           "abilities": [
             "str"
@@ -103,10 +95,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Concentration: creatures within 10 feet when cast. Failure: Prone and can't stand inside the aura; resave at the start of its turn; leaving the aura ends it; immune until the end of its next turn after.",
         "damage": {
           "parts": []
         }
@@ -176,7 +175,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5eDpY0QdrV0NfEW"

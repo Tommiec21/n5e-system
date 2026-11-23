@@ -85,9 +85,19 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ep7yIofSB77w9E",
         "type": "save",
-        "label": "Save",
+        "label": "Mobility Bind",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "restrained",
@@ -102,18 +112,7 @@
             "label": "Sealed"
           }
         ],
-        "save": {
-          "abilities": [
-            "cha"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Concentration: a creature within 30 feet (+1 per rank). Failure: Restrained and 1 Sealed; resave at the end of each of its turns. B-Rank: as a reaction to a Mobility jutsu (one creature; ends at the end of its turn).",
         "damage": {
           "parts": []
         }
@@ -185,7 +184,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5eDpY0QdrV0NfEW"

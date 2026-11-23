@@ -84,9 +84,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e4m4u3z0eqZ295",
         "type": "damage",
-        "label": "Damage",
+        "label": "Necrotic: you",
         "damage": {
           "parts": [
             {
@@ -94,16 +94,8 @@
               "type": "necrotic"
             }
           ]
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "2d8",
-        "roll": {
-          "formula": "2d8",
-          "note": "At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and the necrotic damage you take by 2d8."
-        }
+        },
+        "text": "Yourself; it can't be reduced. A creature you can reach regains twice the damage (apply it by hand)."
       }
     ],
     "featureType": "active",
@@ -183,9 +175,43 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5e4m4u3z0eqZ295",
+              "type": "damage",
+              "label": "Necrotic: you",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (2d8)",
+                    "type": "necrotic"
+                  }
+                ]
+              },
+              "text": "Yourself; it can't be reduced. A creature you can reach regains twice the damage (apply it by hand)."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e4m4u3z0eqZ295",
+              "type": "damage",
+              "label": "Necrotic: you",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (4d8)",
+                    "type": "necrotic"
+                  }
+                ]
+              },
+              "text": "Yourself; it can't be reduced. A creature you can reach regains twice the damage (apply it by hand)."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c568998800eeab7a"

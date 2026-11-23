@@ -1,0 +1,287 @@
+{
+  "_id": "n5esutJFDbErOZZN",
+  "_key": "!actors!n5esutJFDbErOZZN",
+  "name": "Inanimate Puppet",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Non-Elemental: Sealing Art: Inanimate Puppet (C-Rank)",
+      "summonRole": "Inanimate Puppet",
+      "biography": "<p><em>Sealing Art: Inanimate Puppet (C-Rank) (Non-Elemental Ninjutsu).</em> It uses your Ninjutsu attack bonus and save DC. You command it as a Bonus Action; it can take reactions it's able to, such as opportunity attacks.</p><p><strong>Medium Construct.</strong> <strong>Armor Class</strong> 15 + 2 for every rank above C-Rank · <strong>Hit Points</strong> 20 + 10 for every rank above C-Rank · <strong>Speed</strong> 30 ft..</p><p><strong>Abilities</strong> STR +4 (save +2), DEX +2 (save +1), CON +4 (save +2), INT −5 (save −5), WIS +0 (save +0), CHA −5 (save −5). <strong>Damage Immunities</strong> Necrotic, Poison. <strong>Damage Resistances</strong> Bludgeoning. <strong>Damage Vulnerabilities</strong> Lightning. <strong>Condition Immunities</strong> Charmed, Exhaustion, Stunned, Envenomed. <strong>Senses</strong> passive Perception 10.</p><p><strong>Linked to you when summoned:</strong> AC and hit points by the rank you cast the jutsu at, and your Ninjutsu attack bonus and save DC.</p>"
+    },
+    "abilities": {
+      "str": {
+        "value": 18
+      },
+      "dex": {
+        "value": 14
+      },
+      "con": {
+        "value": 18
+      },
+      "int": {
+        "value": 0
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 0
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 15,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "medium",
+      "resist": [
+        "bludgeoning"
+      ],
+      "immune": [
+        "necrotic",
+        "poison"
+      ],
+      "vuln": [
+        "lightning"
+      ],
+      "conditionImmune": [
+        "charmed",
+        "exhaustion",
+        "envenomed"
+      ],
+      "stateImmune": [
+        "stunned"
+      ],
+      "dr": 0,
+      "speed": {
+        "walk": 30,
+        "climb": 0,
+        "swim": 0,
+        "fly": 0,
+        "burrow": 0,
+        "hover": false
+      },
+      "senses": {}
+    },
+    "hpMax": 20,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5e9XJdlTz3a7OT6",
+      "_key": "!actors.items!n5esutJFDbErOZZN.n5e9XJdlTz3a7OT6",
+      "name": "Unnatural Fortitude",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Inanimate Puppet makes Constitution saving throws at advantage.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.92.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5e76eRAATLrShiq",
+      "_key": "!actors.items!n5esutJFDbErOZZN.n5e76eRAATLrShiq",
+      "name": "Slam",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Multiattack.</em> The Inanimate Puppet can attack a number of times equal to the jutsu's rank with its Slam attack. <em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 1d8 + 4 bludgeoning damage.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5ebSzmmmIzHejJQ",
+            "type": "attack",
+            "label": "Slam",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 1,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "1d8 + 4",
+                  "type": "bludgeoning"
+                }
+              ]
+            },
+            "text": "Multiattack: as many Slams as the jutsu's rank (set the number of attacks)."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.92.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5e8Fd1C5bm0nYBR",
+      "_key": "!actors.items!n5esutJFDbErOZZN.n5e8Fd1C5bm0nYBR",
+      "name": "SMASH (2 Charges)",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Inanimate Puppet slams the ground. All creatures within 10 feet of it must make a Dexterity saving throw. On a failed save, they take 3d8 bludgeoning damage and are knocked Prone and Dazed until the end of their next turn.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5e0hD9leDFmRsDq",
+            "type": "save",
+            "label": "SMASH",
+            "save": {
+              "abilities": [
+                "dex"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "3d8",
+                  "type": "bludgeoning"
+                }
+              ]
+            },
+            "inflicts": [
+              {
+                "key": "prone",
+                "kind": "state",
+                "ranks": 1,
+                "label": "Prone"
+              },
+              {
+                "key": "dazed",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Dazed"
+              }
+            ],
+            "text": "2 charges."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.92.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5eYZQzrhbOq1gNa",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "attributes.ac.flat": "15 + 2 * max(0, @rankValue - 2)",
+        "hpMax": "20 + 10 * max(0, @rankValue - 2)",
+        "bonuses.saveDC.nin": "@dc.nin - 8 - @prof",
+        "bonuses.attack.nin": "@attack.nin - @prof"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Inanimate Puppet",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.92.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

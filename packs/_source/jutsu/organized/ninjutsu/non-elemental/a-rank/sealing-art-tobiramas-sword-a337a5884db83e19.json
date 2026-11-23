@@ -85,19 +85,60 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eaofxsuBAJ5AyR",
         "type": "attack",
-        "label": "Attack",
+        "label": "Tobirama's Sword",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Concentration: a creature within 5 feet of the sword; a Bonus Action moves it 60 feet and repeats it.",
         "damage": {
           "parts": [
             {
               "formula": "10d6",
               "type": "force"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eIbx8IaxIsevRV",
+        "type": "effect",
+        "label": "On a hit: Sealed",
+        "effect": {
+          "name": "On a hit: Sealed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "sealed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Sealed"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ePnC24OgGlPG5G",
+        "type": "effect",
+        "label": "Critical hit: 5 Sealed",
+        "effect": {
+          "name": "Critical hit: 5 Sealed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "sealed",
+              "kind": "condition",
+              "ranks": 5,
+              "label": "Sealed"
             }
           ]
         }
@@ -174,7 +215,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "cd82d923ec5480f5"

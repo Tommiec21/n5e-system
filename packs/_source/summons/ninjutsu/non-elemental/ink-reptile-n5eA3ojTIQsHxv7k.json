@@ -1,0 +1,338 @@
+{
+  "_id": "n5eA3ojTIQsHxv7k",
+  "_key": "!actors!n5eA3ojTIQsHxv7k",
+  "name": "Ink Reptile",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Non-Elemental: Beast Imitating Art: Reptile (D-Rank)",
+      "summonRole": "Ink Reptile",
+      "biography": "<p><em>Beast Imitating Art: Reptile (D-Rank) (Non-Elemental Ninjutsu).</em> It uses your Ninjutsu attack bonus and save DC. You command it as a Bonus Action; it can take reactions it's able to, such as opportunity attacks.</p><p><strong>Medium Construct.</strong> <strong>Armor Class</strong> 13 + 2 for every rank above D-Rank · <strong>Hit Points</strong> 20 + 6 for every rank above D-Rank · <strong>Speed</strong> 30 ft..</p><p><strong>Abilities</strong> STR +4 (save +2), DEX +2 (save +1), CON +4 (save +2), INT −5 (save −5), WIS +2 (save +1), CHA −5 (save −5). <strong>Condition Immunities</strong> All Mental and Sensory, Incapacitated. <strong>Senses</strong> Darkvision 30 ft., passive Perception 10.</p><p><strong>Linked to you when summoned:</strong> AC and hit points by the rank you cast the jutsu at, and your Ninjutsu attack bonus and save DC.</p>"
+    },
+    "abilities": {
+      "str": {
+        "value": 18
+      },
+      "dex": {
+        "value": 14
+      },
+      "con": {
+        "value": 18
+      },
+      "int": {
+        "value": 0
+      },
+      "wis": {
+        "value": 14
+      },
+      "cha": {
+        "value": 0
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 13,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "medium",
+      "resist": [],
+      "immune": [],
+      "vuln": [],
+      "conditionImmune": [
+        "berserk",
+        "charmed",
+        "confused",
+        "demoralized",
+        "shaken",
+        "blinded",
+        "dazzled",
+        "deafened"
+      ],
+      "stateImmune": [
+        "incapacitated"
+      ],
+      "dr": 0,
+      "speed": {
+        "walk": 30,
+        "climb": 0,
+        "swim": 0,
+        "fly": 0,
+        "burrow": 0,
+        "hover": false
+      },
+      "senses": {
+        "darkvision": 30
+      }
+    },
+    "hpMax": 20,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5esE5lveJ6lg42x",
+      "_key": "!actors.items!n5eA3ojTIQsHxv7k.n5esE5lveJ6lg42x",
+      "name": "Inky Body",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Ink Reptile leaves an ink blotch on anything it hits. The blotch is noticeable and can't be removed without a deep cleaning lasting at least 1 hour.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.92.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5e6prht6IfJPqZb",
+      "_key": "!actors.items!n5eA3ojTIQsHxv7k.n5e6prht6IfJPqZb",
+      "name": "Tackle",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 1d8 + 4 bludgeoning damage.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eJwoQ5KaiH4KhE",
+            "type": "attack",
+            "label": "Tackle",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 1,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "1d8 + 4",
+                  "type": "bludgeoning"
+                }
+              ]
+            }
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.92.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eZ0CJVczDR7Lfk",
+      "_key": "!actors.items!n5eA3ojTIQsHxv7k.n5eZ0CJVczDR7Lfk",
+      "name": "Stampede",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Reptile rushes forward at its full speed in a straight line. All creatures it passes through must make a Dexterity saving throw, taking 2d8 bludgeoning damage and being knocked Prone on a failed save, or half as much on a success. A Demoralized creature whose space it crosses makes the save at disadvantage.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5ekNzL4JR1mxk64",
+            "type": "save",
+            "label": "Stampede",
+            "save": {
+              "abilities": [
+                "dex"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "half",
+              "resave": false
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "2d8",
+                  "type": "bludgeoning"
+                }
+              ]
+            },
+            "inflicts": [
+              {
+                "key": "prone",
+                "kind": "state",
+                "ranks": 1,
+                "label": "Prone"
+              }
+            ]
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.92.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eyNFk25bzxzndC",
+      "_key": "!actors.items!n5eA3ojTIQsHxv7k.n5eyNFk25bzxzndC",
+      "name": "Inky Screech (2 Charges)",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>All creatures but its summoner within 20 feet of it must make a Constitution saving throw, gaining a rank of Demoralized on a failure. A Prone creature makes the save at disadvantage.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5ebrSBZT1mAmnLH",
+            "type": "save",
+            "label": "Inky Screech",
+            "save": {
+              "abilities": [
+                "con"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "inflicts": [
+              {
+                "key": "demoralized",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Demoralized"
+              }
+            ],
+            "text": "2 charges. Prone creatures at disadvantage."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.92.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5eYZQzrhbOq1gNa",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "attributes.ac.flat": "13 + 2 * max(0, @rankValue - 1)",
+        "hpMax": "20 + 6 * max(0, @rankValue - 1)",
+        "bonuses.saveDC.nin": "@dc.nin - 8 - @prof",
+        "bonuses.attack.nin": "@attack.nin - @prof"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Ink Reptile",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.92.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

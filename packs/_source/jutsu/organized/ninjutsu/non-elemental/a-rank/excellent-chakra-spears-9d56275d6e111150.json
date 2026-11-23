@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e4Hb4CzIxx92Zb",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Excellent Chakra Spears",
         "save": {
           "abilities": [
             "dex"
@@ -96,22 +95,18 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "A 60-foot cone. Success: half. The text names no damage type (set it).",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "9d6",
-        "roll": {
-          "formula": "9d6",
-          "note": "All creatures in a 60-foot cone originating from you, must make a Dexterity Saving throw, taking 9d6 damage on a failed save or half as much on a successful one."
+          "parts": [
+            {
+              "formula": "9d6",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -186,7 +181,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "cd82d923ec5480f5"

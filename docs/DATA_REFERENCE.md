@@ -1036,3 +1036,7 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 ### Tracker users (STD6f F-D2)
 
 - `flags.n5e.trackers`: tracker keys an item uses (`["fury"]`). The Fury tracker shows when Fury > 0, the Fury maximum is raised, or an owned item lists `"fury"`.
+
+### Non-Elemental summons (STD6f F6)
+
+- Summons compendium, folder Ninjutsu > Non-Elemental: Ink Bat/Snake, Ink Reptile, Ink Predator, Inanimate Puppet, Ink Oni, Clone. Links: `attributes.ac.flat` and `hpMax` from `@rankValue` (the rank the jutsu was cast at), `bonuses.attack.nin` and `bonuses.saveDC.nin` from yours; the Clone links like the Bunshin (AC your Ninjutsu save DC).

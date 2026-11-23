@@ -1,3 +1,11 @@
+## 0.92.0-alpha.1 — STD6f F6 Non-Elemental Ninjutsu; Non-Elemental summons
+
+King 2026-11-23: "Next batch." Non-Elemental Ninjutsu (86) reviewed at every rank (43 partly automated, 43 notes only). Review table docs/jutsu/ninjutsu-non-elemental-automation.md; spec docs/STD6f_SPEC.md (F6).
+
+- **Summons:** Ink Bat/Snake, Ink Reptile, Ink Predator, Inanimate Puppet, Ink Oni and the shared Clone, from the source book's Summon Stat Blocks (Summons compendium: Ninjutsu > Non-Elemental). AC and hit points grow by the rank cast; they use your Ninjutsu attack bonus and save DC. The jutsu's buttons place them.
+- **Fixed buttons:** Sealing Art: Reject, Curse of the Prey, Banishing Seal, Hex and Void applied the wrong conditions.
+- **Non-Elemental:** attacks, saves and upcasts (Arms of Buddha, Body Flicker, Chakra Shield, Substitution Technique, Crown of Shining Stars and others); the Bestial Art: Hunter and Gift of the Apex Amps kept.
+
 ## 0.91.0-alpha.1 — STD6f F5 Bukijutsu III; Fury from data
 
 King 2026-11-23: "Next batch." Bukijutsu Power (30) and Ammunition (53) reviewed at every rank (74 partly automated, 9 notes only); Bukijutsu is done. Review tables docs/jutsu/bukijutsu-power-automation.md and bukijutsu-ammunition-automation.md; spec docs/STD6f_SPEC.md (F5).

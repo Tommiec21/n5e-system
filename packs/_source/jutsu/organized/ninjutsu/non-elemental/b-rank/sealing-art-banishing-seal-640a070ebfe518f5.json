@@ -85,23 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ey8M5GPhErUv5P",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "incapacitated",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Incapacitated"
-          },
-          {
-            "key": "sealed",
-            "kind": "condition",
-            "ranks": 2,
-            "label": "Sealed"
-          }
-        ],
+        "label": "Banishing Seal",
         "save": {
           "abilities": [
             "cha"
@@ -110,13 +96,41 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "incapacitated",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Incapacitated"
+          }
+        ],
+        "text": "Concentration: a creature within 60 feet (+1 per rank). Failure: banished: Incapacitated and unaware.",
         "damage": {
           "parts": []
         }
+      },
+      {
+        "id": "n5eZSljPB746AZM9",
+        "type": "effect",
+        "label": "Returns: 2 Sealed",
+        "effect": {
+          "name": "Returns: 2 Sealed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "sealed",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Sealed"
+            }
+          ]
+        },
+        "text": "When the jutsu ends, in the space it left."
       }
     ],
     "featureType": "active",
@@ -185,7 +199,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c568998800eeab7a"

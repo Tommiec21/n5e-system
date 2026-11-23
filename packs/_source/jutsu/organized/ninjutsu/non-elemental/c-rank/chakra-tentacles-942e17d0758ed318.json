@@ -84,17 +84,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eP0Mb9qJtC0dwD",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "restrained",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Restrained"
-          }
-        ],
+        "label": "Chakra Tentacles",
         "save": {
           "abilities": [
             "str"
@@ -103,21 +95,37 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "Concentration: a 20-foot cube within 90 feet (+5 feet per rank); entering for the first time or starting a turn there. Failure: the damage and Restrained; its Action: resave to free itself.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "bludgeoning"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "3d6",
-        "roll": {
-          "formula": "3d6",
-          "note": "On a failed save they take 3d6 bludgeoning damage and are Restrained for the duration. A creature Restrained by this jutsu takes 3d6 bludgeoning damage at the beginning of each of its turns. A creature Restrained by this jutsu can use its action to remake it’s saving throw. On a success, it free’s itself."
+        "id": "n5eoKkIwjEwRl0E7",
+        "type": "damage",
+        "label": "Restrained: start of its turn",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "bludgeoning"
+            }
+          ]
         }
       }
     ],
@@ -205,9 +213,152 @@
           "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically.",
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eP0Mb9qJtC0dwD",
+              "type": "save",
+              "label": "Chakra Tentacles",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "Concentration: a 20-foot cube within 90 feet (+5 feet per rank); entering for the first time or starting a turn there. Failure: the damage and Restrained; its Action: resave to free itself.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eoKkIwjEwRl0E7",
+              "type": "damage",
+              "label": "Restrained: start of its turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eP0Mb9qJtC0dwD",
+              "type": "save",
+              "label": "Chakra Tentacles",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "Concentration: a 20-foot cube within 90 feet (+5 feet per rank); entering for the first time or starting a turn there. Failure: the damage and Restrained; its Action: resave to free itself.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eoKkIwjEwRl0E7",
+              "type": "damage",
+              "label": "Restrained: start of its turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eP0Mb9qJtC0dwD",
+              "type": "save",
+              "label": "Chakra Tentacles",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "Concentration: a 20-foot cube within 90 feet (+5 feet per rank); entering for the first time or starting a turn there. Failure: the damage and Restrained; its Action: resave to free itself.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (3d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eoKkIwjEwRl0E7",
+              "type": "damage",
+              "label": "Restrained: start of its turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (3d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "cfa6ae1d0e387079"

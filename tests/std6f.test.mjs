@@ -166,3 +166,40 @@ test("STD6f F5 Bukijutsu III: Power and Ammunition reviewed; Fury users tagged (
   assert.equal(jutsu("bukijutsu/ammunition", "tendon-shot").flags.n5e.jutsuBookImport.activitiesByRank.S.find(a => a.type === "roll").roll.formula, "1d8 + 1");
   assert.deepEqual(jutsu("bukijutsu/ammunition", "rundas-ammo").system.activities, []);
 });
+
+test("STD6f F6 Non-Elemental: every jutsu reviewed; its summons are built from the Summon Stat Blocks and linked by rank", async () => {
+  const section = "ninjutsu/non-elemental";
+  const t = table(section);
+  const items = sectionJutsu(section, t.ranks);
+  assert.equal(items.size, 86);
+  for ( const [id, { doc }] of items ) {
+    assert.ok(t.features[id], id);
+    assert.equal(doc.flags.n5e.reviewed, true, id);
+  }
+  assert.deepEqual(tableProblems().filter(p => p.startsWith("jutsu/")), []);
+  const { SUMMONS } = await import("../tools/content/build-summons.mjs");
+  const { linkValue, summonerData } = await import("../module/rules/summoner-links.mjs");
+  const byId = Object.fromEntries(Object.values(SUMMONS).filter(d => d?.type === "npc").map(d => [d._id, d]));
+  // Each summoning jutsu points at its NPC.
+  for ( const [id, name, count] of [["beast-imitating-art-bat-snake", "Ink Bat/Snake", 1], ["beast-imitating-art-reptile", "Ink Reptile", 1],
+    ["beast-imitating-art-predator", "Ink Predator", 1], ["sealing-art-inanimate-puppet", "Inanimate Puppet", 1], ["beast-imitating-art-oni-twins", "Ink Oni", 2], ["shadow-clone-technique", "Clone", 1]] ) {
+    const s = jutsu(section, id).system.activities.find(a => a.type === "summon");
+    assert.equal(byId[s.summon.uuid.split(".").pop()]?.name, name, id);
+    assert.equal(s.summon.count, count, id);
+  }
+  // AC and hit points by the rank cast: Ink Predator (C-Rank jutsu; its block counts from D-Rank) at B-Rank.
+  const pred = SUMMONS.inkPredator.flags.n5e.fromSummoner;
+  const atB = { ...summonerData({ prof: 3, level: 7 }), rankValue: 3 };
+  assert.equal(linkValue(pred["attributes.ac.flat"], atB), 18);
+  assert.equal(linkValue(pred.hpMax, atB), 50);
+  assert.equal(SUMMONS.inkOni.system.traits.dr, 6);
+  assert.deepEqual(SUMMONS.inanimatePuppet.system.traits.vuln, ["lightning"]);
+  assert.equal(SUMMONS.clone.flags.n5e.fromSummoner["attributes.ac.flat"], "@dc.nin");
+  // Oni Twins: a third Oni at S-Rank.
+  assert.equal(jutsu(section, "beast-imitating-art-oni-twins").flags.n5e.jutsuBookImport.activitiesByRank.S[0].summon.count, 3);
+  // Arms of Buddha: +1d8 at C, a second attack at B, Fists of Peace at A, +1d8 more at S.
+  const buddha = jutsu(section, "arms-of-buddha").flags.n5e.jutsuBookImport.activitiesByRank;
+  assert.deepEqual(["C", "B", "A", "S"].map(r => [buddha[r][0].damage.parts[0].formula, buddha[r][0].attack.count, buddha[r].length]),
+    [["5d8", 1, 1], ["5d8", 2, 1], ["5d8", 2, 2], ["6d8", 2, 2]]);
+  assert.deepEqual(jutsu(section, "chakra-hands").system.activities, []);
+});

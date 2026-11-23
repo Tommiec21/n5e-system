@@ -10,7 +10,7 @@
  * Sources: the Bunshin stat block (Scout-Nin Training Doc, Superior Clones); the Void Soul stat
  * block and rules (Superior Heart and Void Heart Mask, the imported Scout-Nin features); the
  * Duplicity (Beguiling Duplicity) and the Phantasm stat block (Phantasm, Illusionist) from the
- * imported Genjutsu Specialist features.
+ * imported Genjutsu Specialist features. Non-Elemental Ninjutsu summons and the Clone: the Summon Stat Blocks section (STD6f F6).
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -475,8 +475,125 @@ const kujakuBeast = actor("kujaku-beast", "Kujaku Beast", hoshi._id, {
     [act("kujaku-beast", "Meteor Breath", "save", { save: { abilities: ["con"], dc: { source: "nin" }, onSuccess: "half", resave: false }, damage: { parts: [{ formula: "9d6", type: "force" }] }, inflicts: [{ key: "weakened", kind: "condition", ranks: 2, label: "Weakened" }], text: "15th level. Failing by 5 or more: 1 rank of Star Sickness for 1 minute." })])
 ], { "details.level": "@level", "attributes.ac.flat": "12 + 2 * max(0, @rankValue - 1)", hpMax: "20 + 15 * max(0, @rankValue - 1)", "bonuses.saveDC.nin": "@dc.nin - 8 - @prof", "bonuses.attack.nin": "@attack.nin - @prof" }, "icons/svg/mystery-man-black.svg");
 
+
 /* -------------------------------------------- */
-export const SUMMONS = { bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, folders: [scout, cloning, voidHeart, genjutsu, beguiler, illusionist, bakuton, chinoike, hozuki, kashu, shoton, tsuchigumo, hoshi] };
+/*  Non-Elemental Ninjutsu summons (STD6f F6)   */
+/* -------------------------------------------- */
+// Source: the Summon Stat Blocks section (Non-Elemental Summons). Each uses your Ninjutsu attack bonus
+// and save DC; AC and hit points grow by the rank you cast the jutsu at.
+const ninjutsu = folder("Ninjutsu", null, "ninjutsu");
+const nonElemental = folder("Non-Elemental", ninjutsu._id, "ninjutsu/non-elemental");
+const MENTAL = ["berserk", "charmed", "confused", "demoralized", "shaken"];
+const SENSORY = ["blinded", "dazzled", "deafened"];
+const NIN = { "bonuses.saveDC.nin": "@dc.nin - 8 - @prof", "bonuses.attack.nin": "@attack.nin - @prof" };
+const mods = m => Object.fromEntries(ABILITIES.map((k, i) => [k, { value: 10 + 2 * m[i] }]));
+const statLine = (m, sv) => ABILITIES.map((k, i) => `${k.toUpperCase()} ${m[i] >= 0 ? "+" : "−"}${Math.abs(m[i])} (save ${sv[i] >= 0 ? "+" : "−"}${Math.abs(sv[i])})`).join(", ");
+const inf = (key, kind = "condition", ranks = 1) => ({ key, kind, ranks, label: key[0].toUpperCase() + key.slice(1) });
+const ninSave = (seed, label, ab, extra = {}) => act(seed, label, "save", { save: { abilities: [ab], dc: { source: "nin" }, onSuccess: extra.half ? "half" : "none", resave: false },
+  ...(extra.damage ? { damage: { parts: extra.damage } } : {}), ...(extra.inflicts ? { inflicts: extra.inflicts } : {}), ...(extra.text ? { text: extra.text } : {}) });
+const ninAtk = (seed, label, formula, type, count = 1, text) => act(seed, label, "attack", { attack: { discipline: "nin", range: "melee", count, bonus: "0" },
+  damage: { parts: [{ formula, type }] }, ...(text ? { text } : {}) });
+const rankUp = (base, per, from) => `${base} + ${per} * max(0, @rankValue - ${from})`;
+function inkSummon(seed, name, { jutsu, size = "medium", ac, hp, speed, fly = 0, m, sv, senses = { darkvision: 30 }, resist = [], immune = [], vuln = [], condImmune = [], stateImmune = [], dr = 0, extraBio = "" }, items) {
+  const a = actor(seed, name, nonElemental._id, {
+    details: { build: "character", level: 1, template: "summon", creatureType: "construct", blurb: `Non-Elemental: ${jutsu}`, summonRole: name,
+      biography: html(`<p><em>${jutsu} (Non-Elemental Ninjutsu).</em> It uses your Ninjutsu attack bonus and save DC. You command it as a Bonus Action; it can take reactions it's able to, such as opportunity attacks.</p>`,
+        `<p><strong>${size[0].toUpperCase() + size.slice(1)} Construct.</strong> <strong>Armor Class</strong> ${ac[0]} + ${ac[1]} for every rank above ${"EDCBAS"[ac[2]]}-Rank${dr ? `, DR ${dr}` : ""} · <strong>Hit Points</strong> ${hp[0]} + ${hp[1]} for every rank above ${"EDCBAS"[hp[2]]}-Rank · <strong>Speed</strong> ${speed} ft.${fly ? `, ${fly} ft. fly` : ""}.</p>`,
+        `<p><strong>Abilities</strong> ${statLine(m, sv)}.${extraBio}</p>`,
+        "<p><strong>Linked to you when summoned:</strong> AC and hit points by the rank you cast the jutsu at, and your Ninjutsu attack bonus and save DC.</p>") },
+    abilities: mods(m),
+    attributes: { ac: { calc: "flat", flat: ac[0], formula: "" }, init: { bonus: "" } },
+    traits: { size, resist, immune, vuln, conditionImmune: condImmune, stateImmune, dr,
+      speed: { walk: speed, climb: 0, swim: 0, fly, burrow: 0, hover: false }, senses },
+    hpMax: hp[0], cpMax: 0, diesAtZero: true
+  }, items, { "details.level": "@level", "attributes.ac.flat": rankUp(ac[0], ac[1], ac[2]), hpMax: rankUp(hp[0], hp[1], hp[2]), ...NIN }, "icons/svg/mystery-man-black.svg");
+  return a;
+}
+const INKY = n => html(`The ${n} leaves an ink blotch on anything it hits. The blotch is noticeable and can't be removed without a deep cleaning lasting at least 1 hour.`);
+const inkBat = inkSummon("ink-bat-snake", "Ink Bat/Snake", { jutsu: "Beast Imitating Art: Bat/Snake (D-Rank)", ac: [12, 2, 1], hp: [15, 8, 1], speed: 30, fly: 30,
+  m: [3, 2, 2, -5, 0, 5], sv: [1, 1, 1, -5, 0, -5], condImmune: [...MENTAL, ...SENSORY], stateImmune: ["incapacitated"],
+  extraBio: " <strong>Condition Immunities</strong> All Mental and Sensory, Incapacitated. <strong>Senses</strong> Darkvision 30 ft., passive Perception 10." }, id => [
+  item(id, "Inky Body", "npcTraits", INKY("Ink Bat/Snake")),
+  item(id, "Bite", "npcStrikes", html("<em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 1d6 + 3 piercing damage."),
+    [ninAtk("ink-bat", "Bite", "1d6 + 3", "piercing")]),
+  item(id, "Face Wrap", "npcAbilities", html("The Bat/Snake wraps around the head of a creature within 5 feet of it, forcing that creature to make a Dexterity saving throw. On a failed save, they become Blinded. They can remake the save at the end of each of their turns. The Bat/Snake can't use Body Wrap while it has something Face Wrapped."),
+    [ninSave("ink-bat", "Face Wrap", "dex", { inflicts: [inf("blinded")], text: "Resave at the end of each of its turns." })]),
+  item(id, "Body Wrap", "npcAbilities", html("The Bat/Snake wraps around the body of a creature within 5 feet of it, forcing that creature to make a Strength saving throw. On a failed save, they become Restrained. If the target has another creature adjacent to it, it can try to Restrain them both, but they make their saves at disadvantage. They can remake the save at the end of each of their turns. The Bat/Snake can't use Face Wrap while it has something Body Wrapped."),
+    [ninSave("ink-bat", "Body Wrap", "str", { inflicts: [inf("restrained", "state")], text: "Resave at the end of each of its turns." })])
+]);
+const inkReptile = inkSummon("ink-reptile", "Ink Reptile", { jutsu: "Beast Imitating Art: Reptile (D-Rank)", ac: [13, 2, 1], hp: [20, 6, 1], speed: 30,
+  m: [4, 2, 4, -5, 2, -5], sv: [2, 1, 2, -5, 1, -5], condImmune: [...MENTAL, ...SENSORY], stateImmune: ["incapacitated"],
+  extraBio: " <strong>Condition Immunities</strong> All Mental and Sensory, Incapacitated. <strong>Senses</strong> Darkvision 30 ft., passive Perception 10." }, id => [
+  item(id, "Inky Body", "npcTraits", INKY("Ink Reptile")),
+  item(id, "Tackle", "npcStrikes", html("<em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 1d8 + 4 bludgeoning damage."),
+    [ninAtk("ink-reptile", "Tackle", "1d8 + 4", "bludgeoning")]),
+  item(id, "Stampede", "npcAbilities", html("The Reptile rushes forward at its full speed in a straight line. All creatures it passes through must make a Dexterity saving throw, taking 2d8 bludgeoning damage and being knocked Prone on a failed save, or half as much on a success. A Demoralized creature whose space it crosses makes the save at disadvantage."),
+    [ninSave("ink-reptile", "Stampede", "dex", { half: true, damage: [{ formula: "2d8", type: "bludgeoning" }], inflicts: [inf("prone", "state")] })]),
+  item(id, "Inky Screech (2 Charges)", "npcAbilities", html("All creatures but its summoner within 20 feet of it must make a Constitution saving throw, gaining a rank of Demoralized on a failure. A Prone creature makes the save at disadvantage."),
+    [ninSave("ink-reptile", "Inky Screech", "con", { inflicts: [inf("demoralized")], text: "2 charges. Prone creatures at disadvantage." })])
+]);
+const inanimatePuppet = inkSummon("inanimate-puppet", "Inanimate Puppet", { jutsu: "Sealing Art: Inanimate Puppet (C-Rank)", ac: [15, 2, 2], hp: [20, 10, 2], speed: 30,
+  m: [4, 2, 4, -5, 0, -5], sv: [2, 1, 2, -5, 0, -5], senses: {}, resist: ["bludgeoning"], immune: ["necrotic", "poison"], vuln: ["lightning"],
+  condImmune: ["charmed", "exhaustion", "envenomed"], stateImmune: ["stunned"],
+  extraBio: " <strong>Damage Immunities</strong> Necrotic, Poison. <strong>Damage Resistances</strong> Bludgeoning. <strong>Damage Vulnerabilities</strong> Lightning. <strong>Condition Immunities</strong> Charmed, Exhaustion, Stunned, Envenomed. <strong>Senses</strong> passive Perception 10." }, id => [
+  item(id, "Unnatural Fortitude", "npcTraits", html("The Inanimate Puppet makes Constitution saving throws at advantage.")),
+  item(id, "Slam", "npcStrikes", html("<em>Multiattack.</em> The Inanimate Puppet can attack a number of times equal to the jutsu's rank with its Slam attack. <em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 1d8 + 4 bludgeoning damage."),
+    [ninAtk("inanimate-puppet", "Slam", "1d8 + 4", "bludgeoning", 1, "Multiattack: as many Slams as the jutsu's rank (set the number of attacks).")]),
+  item(id, "SMASH (2 Charges)", "npcAbilities", html("The Inanimate Puppet slams the ground. All creatures within 10 feet of it must make a Dexterity saving throw. On a failed save, they take 3d8 bludgeoning damage and are knocked Prone and Dazed until the end of their next turn."),
+    [ninSave("inanimate-puppet", "SMASH", "dex", { damage: [{ formula: "3d8", type: "bludgeoning" }], inflicts: [inf("prone", "state"), inf("dazed")], text: "2 charges." })])
+]);
+const inkPredator = inkSummon("ink-predator", "Ink Predator", { jutsu: "Beast Imitating Art: Predator (C-Rank)", ac: [14, 2, 1], hp: [30, 10, 1], speed: 40,
+  m: [4, 4, 3, -5, 0, -5], sv: [2, 2, 1, -5, 0, -5], condImmune: [...MENTAL, ...SENSORY], stateImmune: ["incapacitated"],
+  extraBio: " <strong>Condition Immunities</strong> All Mental and Sensory, Incapacitated. <strong>Senses</strong> Darkvision 30 ft., passive Perception 10." }, id => [
+  item(id, "Inky Weapons", "npcTraits", html("The Ink Predator's attacks have a +2 bonus to their critical threat range.")),
+  item(id, "Rend", "npcStrikes", html("<em>Multiattack.</em> The Ink Predator attacks twice with its Rend. <em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 1d12 + 4 slashing damage. If B-Rank or higher, a creature who takes damage from this attack must make a Constitution saving throw, gaining 1 rank of Bleed."),
+    [ninAtk("ink-predator", "Rend", "1d12 + 4", "slashing", 2, "+2 critical range (Inky Weapons)."),
+     ninSave("ink-predator", "Rend: Bleed (B-Rank+)", "con", { inflicts: [inf("bleed")], text: "B-Rank or higher, damaged by Rend." })]),
+  item(id, "Body Block", "npcAbilities", html("As a reaction, the Ink Predator may interpose an attack targeting an allied creature within 30 feet of it. The triggering attack is treated as if it targeted the Ink Predator."), [], { activation: "reaction" }),
+  item(id, "Maul (2 Charges)", "npcAbilities", html("As a bonus action, the Ink Predator enters a pouncing stance targeting a creature within 15 feet of it and leaps to maul it. Until the end of this turn, its Rend attacks against that creature are made at advantage."), [], { activation: "bonus" }),
+  item(id, "Roar (2 Charges, B-Rank+)", "npcAbilities", html("As a bonus action, the Ink Predator roars. All creatures of your choice within 15 feet of it must make a Charisma saving throw. On a failed save, they gain 2 ranks of Fear."),
+    [ninSave("ink-predator", "Roar", "cha", { text: "B-Rank or higher. Failure: 2 ranks of \"Fear\" (not a condition in the rules: apply by hand)." })])
+]);
+const inkOni = inkSummon("ink-oni", "Ink Oni", { jutsu: "Beast Imitating Art: Oni Twins (A-Rank)", size: "large", ac: [16, 2, 3], hp: [40, 15, 3], speed: 45, dr: 6,
+  m: [7, 2, 6, -5, 0, -5], sv: [7, 1, 6, -5, 0, -5], condImmune: ["charmed", "chilled", "exhaustion", "envenomed"], stateImmune: ["stunned"],
+  extraBio: " <strong>Condition Immunities</strong> Charmed, Chilled, Exhaustion, Stunned, Envenomed. <strong>Senses</strong> Darkvision 30 ft., passive Perception 10." }, id => [
+  item(id, "Guard", "npcAbilities", html("As a reaction, the Ink Oni raises its guard protecting all creatures within 5 feet of it. Until the beginning of your next turn, all attacks that would target a creature within 5 feet of the Oni instead target the Oni."), [], { activation: "reaction" }),
+  item(id, "Maul", "npcStrikes", html("<em>Multiattack.</em> The Ink Oni attacks twice with its Mauls. <em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 2d10 + 7 bludgeoning damage. A creature who takes damage from this attack twice must make a Constitution saving throw, being Dazed until the end of its next turn."),
+    [ninAtk("ink-oni", "Maul", "2d10 + 7", "bludgeoning", 2),
+     ninSave("ink-oni", "Maul: Dazed", "con", { inflicts: [inf("dazed")], text: "Damaged by both Mauls." })]),
+  item(id, "Twin Oni Slam (2 Charges)", "npcAbilities", html("As an action, the Ink Oni may withhold its action. If both Ink Oni withhold their action, on the following turn you may command them to perform a Twin Oni Slam on a creature they are both within 10 feet of. Each Oni makes 2 Maul attacks at advantage. Each successful hit increases the damage by 1d10.")),
+  item(id, "Oni Focus (2 Charges)", "npcAbilities", html("As a bonus action, the Oni focuses. Until the end of your turn, its next Maul attack scores a critical hit on a roll of 19 or 20."), [], { activation: "bonus" })
+]);
+inkOni.prototypeToken.width = inkOni.prototypeToken.height = 2;
+
+// The Clone stat block (Summon Stat Blocks): every Clone jutsu uses it, with the adjustments its jutsu lists.
+const cloneLinks = { ...bunshinLinks };
+const clone = actor("clone", "Clone", nonElemental._id, {
+  details: { build: "character", level: 1, template: "clone", creatureType: "construct", blurb: "Clone jutsu (Shadow Clone Technique and the release Clones)", summonRole: "Clone",
+    biography: html("<p><em>Clone</em> (the Clone keyword: Shadow Clone Technique; Earth, Explosive, Water and Lightning Clones). You command a clone by spending your Action or Bonus Action as its jutsu says.</p>",
+      "<p><strong>Medium Construct.</strong> <strong>Armor Class</strong> your Ninjutsu save DC, DR 6 · <strong>Hit Points</strong> 1 · <strong>Jutsu Slots</strong> 2 · <strong>Speed</strong> 30 ft. <strong>Abilities</strong> none (−). <strong>Senses</strong> the same special senses as its caster.</p>",
+      "<p><strong>Clone adjustments.</strong> Shadow Clone Technique: at B-Rank or S-Rank, +1 Jutsu Slot; at A-Rank it can cast A-Rank jutsu; out of combat, clones can travel up to 1 mile from their caster. Earth Clone: 20 hit points; immune to Genjutsu, psychic and poison damage; resists bludgeoning, earth and cold; vulnerable to lightning; two Clone Strikes; Earth Release jutsu only. Explosive Clone: no Clone Strike; Fire Release jutsu only; detonates at 0 hit points (see the jutsu). Water Clone: Water Release Ninjutsu only; can concentrate on its jutsu (one clone at a time). Lightning Clone: Lightning Release Ninjutsu only; immune to Genjutsu, psychic and poison damage; speed equal to its summoner's or 50, whichever is higher; discharges at 0 hit points (see the jutsu).</p>",
+      "<p><strong>Linked to you when summoned:</strong> its level, AC, attack bonuses, save DCs, skills and senses are set from yours.</p>") },
+  abilities: Object.fromEntries(ABILITIES.map(k => [k, { value: 10 }])),
+  attributes: { ac: { calc: "flat", flat: 10, formula: "" }, init: { bonus: "" } },
+  traits: { size: "medium", dr: 6, speed: { walk: 30, climb: 0, swim: 0, fly: 0, burrow: 0, hover: false } },
+  hpMax: 1, cpMax: 0, diesAtZero: true
+}, id => [
+  item(id, "Unison Command", "npcTraits", html("When more than one Clone is attacking or targeting the same target, you don't make multiple attacks and the target doesn't make multiple saving throws; consolidate them into a single attack roll or saving throw. Increase Clone Strike's or Clone Cast's damage by +2 for each Clone beyond the first.")),
+  item(id, "Placement", "npcTraits", html("Clones can never be more than 60 feet away from you, otherwise they are dispelled.")),
+  item(id, "Combat Synergy", "npcTraits", html("It uses its summoner's attack bonuses and save DCs for jutsu it casts, and its summoner's skill bonuses for skill-based actions.")),
+  item(id, "Part of a Whole", "npcTraits", html("Clones can only make one attack per command, even if a jutsu normally allows more.")),
+  item(id, "Fractional Strength", "npcTraits", html("Damage a clone deals with a jutsu it casts always defaults to an amount based on the jutsu's rank (D-Rank: 2d6, C-Rank: 3d6, B-Rank: 4d6, A-Rank: 5d6). If the jutsu affects an area, reduce the number of damage dice by 1.")),
+  item(id, "Limitations", "npcTraits", html("Clones can't cast jutsu with the Clone, Fuinjutsu or Combination keyword, concentrate on jutsu they cast, inflict conditions under the Death, Dying or Disabled category, or force a creature to make more than 1 saving throw per round.")),
+  item(id, "Clone Strike", "npcStrikes", html("<em>Melee or Ranged Weapon Attack:</em> your attack bonus with the clone's weapon to hit, reach (the weapon's range), one creature. <em>Hit:</em> 1d6 + your Ninjutsu modifier damage (the weapon's damage type)."),
+    [act("clone", "Clone Strike", "attack", { attack: { discipline: "tai", range: "melee", count: 1, bonus: "0" }, damage: { parts: [{ formula: "1d6", type: "" }] }, text: "Add your Ninjutsu modifier to the damage; Unison Command: +2 per clone beyond the first." })]),
+  item(id, "Clone Cast", "npcAbilities", html("The Clone casts a jutsu on its summoner's known list of one rank lower than the rank of the jutsu used to summon it. The jutsu can't be greater than B-Rank. Damage follows Fractional Strength."),
+    [["D", "2d6"], ["C", "3d6"], ["B", "4d6"], ["A", "5d6"]].map(([r, f]) =>
+      act("clone-cast", `${r}-Rank damage`, "damage", { damage: { parts: [{ formula: f, type: "" }] }, text: `The jutsu's damage at ${r}-Rank (an area: one die fewer).` })))
+], cloneLinks, "icons/svg/mystery-man.svg");
+
+/* -------------------------------------------- */
+export const SUMMONS = { bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone, folders: [scout, cloning, voidHeart, genjutsu, beguiler, illusionist, bakuton, chinoike, hozuki, kashu, shoton, tsuchigumo, hoshi, ninjutsu, nonElemental] };
 
 if ( import.meta.url === `file://${process.argv[1]}` ) {
   fs.rmSync(OUT, { recursive: true, force: true });
@@ -509,5 +626,8 @@ if ( import.meta.url === `file://${process.argv[1]}` ) {
   write(`tsuchigumo/brood-mother-${broodMother._id}.json`, broodMother);
   write("hoshi/_folder.json", hoshi);
   write(`hoshi/kujaku-beast-${kujakuBeast._id}.json`, kujakuBeast);
-  console.log(`✓ summons: 18 NPCs (${[bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast].map(d => `${d.name} ${d._id}`).join(", ")})`);
+  write("ninjutsu/_folder.json", ninjutsu);
+  write("ninjutsu/non-elemental/_folder.json", nonElemental);
+  for ( const d of [inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone] ) write(`ninjutsu/non-elemental/${d.name.toLowerCase().replace(/[^a-z]+/g, "-").replace(/-$/, "")}-${d._id}.json`, d);
+  console.log(`✓ summons: 24 NPCs (${[bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone].map(d => `${d.name} ${d._id}`).join(", ")})`);
 }

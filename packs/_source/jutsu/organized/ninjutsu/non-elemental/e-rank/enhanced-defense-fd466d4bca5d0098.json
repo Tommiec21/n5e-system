@@ -84,10 +84,33 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5e1kNArQBXkY8K3",
+        "type": "effect",
+        "label": "Enhanced Defense",
+        "effect": {
+          "name": "Enhanced Defense",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.resist",
+              "value": "bludgeoning",
+              "mode": 2
+            },
+            {
+              "key": "n5e.resist",
+              "value": "piercing",
+              "mode": 2
+            },
+            {
+              "key": "n5e.resist",
+              "value": "slashing",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Resistance to bludgeoning, piercing and slashing until the start of your next turn."
       }
     ],
     "featureType": "active",
@@ -154,7 +177,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "7bf15eaadf34d99f"

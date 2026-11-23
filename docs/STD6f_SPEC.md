@@ -1,6 +1,6 @@
 # STD6f function spec: jutsu as data
 
-Status: **Approved by King 2026-11-22 (Q-J1 yes; Q-J2 fix and finish). F1 Taijutsu I (0.87.0-alpha.1) and F2 Taijutsu II (0.88.0-alpha.1) built: Taijutsu is done. F3 Bukijutsu I (0.89.0-alpha.1) F4 Bukijutsu II (0.90.0-alpha.1) and F5 Bukijutsu III (0.91.0-alpha.1) built: Bukijutsu is done. Next: F6 Non-Elemental.**
+Status: **Approved by King 2026-11-22 (Q-J1 yes; Q-J2 fix and finish). F1 Taijutsu I (0.87.0-alpha.1) and F2 Taijutsu II (0.88.0-alpha.1) built: Taijutsu is done. F3 Bukijutsu I (0.89.0-alpha.1) F4 Bukijutsu II (0.90.0-alpha.1) and F5 Bukijutsu III (0.91.0-alpha.1) built: Bukijutsu is done. F6 Non-Elemental (0.92.0-alpha.1) built. Next: F7 Medical.**
 
 Plan: `docs/STD_SPEC.md` (STD6f: "Every jutsu's riders as Active Effects and elements, emitted by an upgraded importer where the pattern is regular; a review table per section for King"). Same method as the clan pass (`docs/STD6e_SPEC.md`).
 
@@ -189,6 +189,41 @@ Review tables: `docs/jutsu/bukijutsu-power-automation.md` (30 jutsu: 28 partly a
 - Scattershot: "fide spread", "Justus"; "6dx".
 - Ullr Ammo's Skadi Marked box is on Fangs of Python, not Ullr Ammo.
 
+## F6 Ninjutsu I: Non-Elemental (0.92.0-alpha.1)
+
+Review table: `docs/jutsu/ninjutsu-non-elemental-automation.md` (86 jutsu: 43 partly automated, 43 notes only). Table: `content/automation/jutsu/ninjutsu-non-elemental.json`.
+
+- **Summons built** (`tools/content/build-summons.mjs`, folder Ninjutsu > Non-Elemental), from the Summon Stat Blocks section of the source book: Ink Bat/Snake, Ink Reptile, Ink Predator, Inanimate Puppet, Ink Oni and the shared **Clone** (every Clone jutsu; the Earth, Explosive, Water and Lightning Clone adjustments are on its sheet for F8–F10). Each uses your Ninjutsu attack bonus and save DC; AC and hit points grow by the rank you cast the jutsu at. The jutsu's buttons place them (Oni Twins: two, three at S-Rank).
+- **Kept** (Q-J2): the Bestial Art: Hunter and Sealing Art: Gift of the Apex Amps (Hunter's loose 2d8 damage button removed; Gift of the Apex's Bull's Rush and Cat's Pounce rebuilt with their ability modifiers and saves).
+- **Fixed:** buttons that applied the wrong thing: Sealing Art: Reject (the held object is Sealed, not the creature), Curse of the Prey (no Prone), Banishing Seal (2 Sealed when it returns, not on the failed save), Hex (counts as 1 Sealed; not a real Sealed), Sealing Art: Void (the Charisma save pulls; the damage and Restrained are for being inside).
+- **Upcasts:** Arms of Buddha (+1d8 at C, a second attack at B, Fists of Peace at A, +1d8 more at S), Body Flicker's speed, Chakra Shield's temporary hit points, Chakra Skin's temporary hit points, Crown of Shining Stars' strike, Thunderous Screech's Dazed, Fracturing Splinter's Sealed, Splinter's 2 Sealed, Substitution Technique's AC and paper tag, Sealing Weapon's riders, Lion Mane's Bleed.
+- **Notes only:** utility, sensory, travel and ritual jutsu (43), including the Flying Thunder God jutsu and Summoning Technique (Sage Beasts: the Summoning section, not this table).
+- **By hand:** Chakra Skin's AC formula, Rasengan's nature release options, Life Transference's healing (twice the damage), the Clone's Ninjutsu modifier on Clone Strike, the Inanimate Puppet's number of Slams (the jutsu's rank).
+- **No new holds:** every summon's stat block is complete.
+
+## Text issues found in F6
+
+- Ink Predator: Roar gives "2 ranks of Fear" (no such condition; built without a condition).
+- Ink Predator and Beast Imitating Art: Predator (C-Rank): the stat block grows "for every rank above D-Rank"; Ink Oni (A-Rank jutsu) grows "above B-Rank". Built as written.
+- Ink Bat/Snake: CHA modifier +5 with a −5 save (likely −5). Built as written.
+- Ink Bat/Snake: "the Rodent can attempt to Restrain them both".
+- Ink Reptile: Stampede "or half as much on a failed save"; Inky Screech "excluding its summoning".
+- Ink Oni: Maul has no attack bonus in the block (the jutsu: your Ninjutsu attack bonus).
+- Summon stat blocks: "Construct, unaligned" (5e leftover); saves listed lower than the modifiers.
+- Beast Imitating Art: Reptile: "The Ink Bat/Snake uses…"; "Pidgeon".
+- Excellent Chakra Spears: "9d6 damage" with no damage type.
+- Shadow Shuriken Technique (D-Rank): upcast "above C-Rank" (built literally: +1d6 from B-Rank).
+- Sealing Art: Circle of Defiance: "end a jutsu with the seal of resistance" (it grants temporary hit points).
+- Sealing Art: Hex: "cursed" for "Hexed"; Death "for every rank about C-Rank".
+- Darkvision: "you 60ft of Darkvision"; "every rank about C-Rank".
+- Finger Carving Seal: "worlds" (words).
+- Life Transference, Sealing Weapon, Warding Seal: the upcast runs into the paragraph.
+- Sealing Art: Chakra Dispel: "Sealed, Sealed"; "seal of Dispis".
+- Sealing Art: Commune: "You the most correct answer possible".
+- Flying Thunder God jutsu: "Sealing Art: Chakra Seal" (the jutsu is Sealing Art: Chakra Mark); Barrier: "Sealed Art".
+- Arms of Buddha: "that you can seem".
+- Touch of Death: "a willing creature" then "an unwilling creature".
+
 ## Progress log
 
 - 2026-11-22 King: "Next batch" (after STD6e E8). Claude: spec proposed from a survey of the jutsu pack. Nothing built.
@@ -197,3 +232,4 @@ Review tables: `docs/jutsu/bukijutsu-power-automation.md` (30 jutsu: 28 partly a
 - 2026-11-22 King: "Next batch." Claude: F3 Bukijutsu I built (103 jutsu: Shinobi Basics and Blade); F-D5 ([Weapon damage] in damage formulas); published 0.89.0-alpha.1. No new questions.
 - 2026-11-23 King: "Next batch." Claude: F4 Bukijutsu II built (66 jutsu: Flail and Polearm); F-D5 adds @wdie (the weapon damage die alone); published 0.90.0-alpha.1. No new questions.
 - 2026-11-23 King: "Next batch." Claude: F5 Bukijutsu III built (83 jutsu: Power and Ammunition): Bukijutsu complete; F-D2 (Fury tracker from data; Binding Fury Stance's trigger on its effect); published 0.91.0-alpha.1. No new questions.
+- 2026-11-23 King: "Next batch." Claude: F6 Non-Elemental built (86 jutsu); six summons from the Summon Stat Blocks (Ink Bat/Snake, Ink Reptile, Ink Predator, Inanimate Puppet, Ink Oni, Clone); published 0.92.0-alpha.1. No new questions.
