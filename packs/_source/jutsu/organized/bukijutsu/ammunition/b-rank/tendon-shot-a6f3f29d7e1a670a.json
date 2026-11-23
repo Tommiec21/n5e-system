@@ -85,23 +85,27 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eG37yydpsrnW4T",
         "type": "attack",
-        "label": "Attack",
+        "label": "Tendon Shot",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "@wdie + 8d4",
+              "type": ""
+            }
+          ]
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5e5bfzzmwnXbZJv",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Tendon: disadvantage",
         "save": {
           "abilities": [
             "con"
@@ -110,30 +114,21 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "On a hit. Failure: disadvantage on that many of its Taijutsu or weapon attacks (the roll).",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll2",
+        "id": "n5eXXkIEsqBzajxf",
         "type": "roll",
-        "label": "8d4",
+        "label": "Attacks with disadvantage",
         "roll": {
-          "formula": "8d4",
-          "note": "Make a ranged Taijutsu attack against a target within range, on hit, deal your [Weapons damage Die] + 8d4. On hit the target must also make a Constitution saving throw, on a failure, you've pierced a tendon or nerve relating to their fighting style, roll a 1d4+1. The affected creature has disadvantage on that many Taijutsu and/or weapon attacks."
-        }
-      },
-      {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "1d4+1",
-        "roll": {
-          "formula": "1d4+1",
-          "note": "On hit the target must also make a Constitution saving throw, on a failure, you've pierced a tendon or nerve relating to their fighting style, roll a 1d4+1. The affected creature has disadvantage on that many Taijutsu and/or weapon attacks."
+          "formula": "1d4 + 1",
+          "note": ""
         }
       }
     ],
@@ -233,9 +228,109 @@
           "Weapon-die-only expression is retained; no full weapon/modifier substitution is assumed.",
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eG37yydpsrnW4T",
+              "type": "attack",
+              "label": "Tendon Shot",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@wdie + 8d4) + (1d4)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e5bfzzmwnXbZJv",
+              "type": "save",
+              "label": "Tendon: disadvantage",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit. Failure: disadvantage on that many of its Taijutsu or weapon attacks (the roll).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eXXkIEsqBzajxf",
+              "type": "roll",
+              "label": "Attacks with disadvantage",
+              "roll": {
+                "formula": "1d6 + 1",
+                "note": ""
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eG37yydpsrnW4T",
+              "type": "attack",
+              "label": "Tendon Shot",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@wdie + 8d4) + (2d4)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e5bfzzmwnXbZJv",
+              "type": "save",
+              "label": "Tendon: disadvantage",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit. Failure: disadvantage on that many of its Taijutsu or weapon attacks (the roll).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eXXkIEsqBzajxf",
+              "type": "roll",
+              "label": "Attacks with disadvantage",
+              "roll": {
+                "formula": "1d8 + 1",
+                "note": ""
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "a7edbe01a9022231"

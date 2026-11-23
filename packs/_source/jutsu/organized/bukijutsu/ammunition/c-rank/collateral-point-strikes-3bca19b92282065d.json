@@ -85,17 +85,31 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5etYdeR7D65nihJ",
+        "type": "attack",
+        "label": "Collateral Point Strikes",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "One roll against up to 3 creatures. Chain 1: +1 critical range if it has temporary hit points, +2 if a jutsu AC bonus (by hand).",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "2d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eOBMMz3C9nD3DZ",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "bleed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bleeding"
-          }
-        ],
+        "label": "Collateral: Bleed",
         "save": {
           "abilities": [
             "con"
@@ -104,21 +118,19 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Each creature hit. Failure: 1 Bleed (Chain 2: 2).",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "On a hit, you deal your [Weapons damage] +2d6 and each affected creature must make a Constitution saving throw, gaining a rank of Bleeding on a failed save."
         }
       }
     ],
@@ -211,9 +223,164 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5etYdeR7D65nihJ",
+              "type": "attack",
+              "label": "Collateral Point Strikes",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "One roll against up to 3 creatures. Chain 1: +1 critical range if it has temporary hit points, +2 if a jutsu AC bonus (by hand).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "2d6 + 1d4",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eOBMMz3C9nD3DZ",
+              "type": "save",
+              "label": "Collateral: Bleed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Each creature hit. Failure: 1 Bleed (Chain 2: 2).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5etYdeR7D65nihJ",
+              "type": "attack",
+              "label": "Collateral Point Strikes",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "One roll against up to 3 creatures. Chain 1: +1 critical range if it has temporary hit points, +2 if a jutsu AC bonus (by hand).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "2d6 + 2d4",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eOBMMz3C9nD3DZ",
+              "type": "save",
+              "label": "Collateral: Bleed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Each creature hit. Failure: 1 Bleed (Chain 2: 2).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5etYdeR7D65nihJ",
+              "type": "attack",
+              "label": "Collateral Point Strikes",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "One roll against up to 3 creatures. Chain 1: +1 critical range if it has temporary hit points, +2 if a jutsu AC bonus (by hand).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "2d6 + 3d4",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eOBMMz3C9nD3DZ",
+              "type": "save",
+              "label": "Collateral: Bleed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Each creature hit. Failure: 1 Bleed (Chain 2: 2).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "f8211708ba076b1c"

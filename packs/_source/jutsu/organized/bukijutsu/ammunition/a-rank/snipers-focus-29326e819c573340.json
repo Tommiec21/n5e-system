@@ -84,10 +84,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5elYbsic6Epv19i",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Sniper’s Focus",
         "save": {
           "abilities": [
             "dex"
@@ -96,21 +95,21 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "At the start of your next turn (no Bonus action or reactions until then): a 100 by 5-foot line, at disadvantage; your weapon's damage type.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "6d10",
-        "roll": {
-          "formula": "6d10",
-          "note": "All creatures in a line 5 feet wide and 100 feet long originating from you must make a Dexterity saving throw at disadvantage, taking [Weapons damage] + 6d10 damage of your weapon’s type."
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "6d10",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -197,9 +196,42 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5elYbsic6Epv19i",
+              "type": "save",
+              "label": "Sniper’s Focus",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "At the start of your next turn (no Bonus action or reactions until then): a 100 by 5-foot line, at disadvantage; your weapon's damage type.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(6d10) + (2d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "26d6e19825ba0550"

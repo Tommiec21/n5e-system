@@ -84,14 +84,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eGlcTbfGmLwuXS",
         "type": "attack",
-        "label": "Attack",
+        "label": "Moonbane's Wrath",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 4
         },
+        "text": "Record hits per creature.",
         "damage": {
           "parts": []
         },
@@ -101,13 +102,23 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "4"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eMkHUwXSzCSxVx",
         "type": "save",
-        "label": "Save",
+        "label": "2+ hits: Dazed, Prone",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "dazed",
@@ -120,35 +131,53 @@
             "kind": "state",
             "ranks": 1,
             "label": "Prone"
-          },
-          {
-            "key": "bruised",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bruised"
-          },
-          {
-            "key": "staggered",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Staggered"
           }
         ],
-        "save": {
-          "abilities": [
-            "con"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "A creature hit at least twice. Failure: Dazed and Prone.",
         "damage": {
           "parts": []
         }
+      },
+      {
+        "id": "n5enRf0Q0wt95yCQ",
+        "type": "effect",
+        "label": "3 hits: also Bruised",
+        "effect": {
+          "name": "3 hits: also Bruised",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eJGaFxuw4YEpeB",
+        "type": "effect",
+        "label": "4 hits: also Staggered",
+        "effect": {
+          "name": "4 hits: also Staggered",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            }
+          ]
+        },
+        "text": "Four hits: Staggered, Dazed and Prone (not Bruised)."
       }
     ],
     "featureType": "active",
@@ -222,7 +251,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "2bc91904eae523f2"

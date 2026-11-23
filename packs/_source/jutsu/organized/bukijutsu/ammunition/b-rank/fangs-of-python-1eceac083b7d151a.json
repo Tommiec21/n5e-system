@@ -85,16 +85,20 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e27heU9zxT5GyY",
         "type": "attack",
-        "label": "Attack",
+        "label": "Fangs of Python",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
         "damage": {
           "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
             {
               "formula": "2d12",
               "type": "necrotic"
@@ -103,23 +107,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eXPxs2FZXleBZg",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "dazed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Dazed"
-          },
-          {
-            "key": "petrified",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Petrified"
-          }
-        ],
+        "label": "Python: Dazed",
         "save": {
           "abilities": [
             "con"
@@ -128,12 +118,39 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "On a hit. Failure: Dazed; failing by 10+ (Chain 2: 5+): Petrified instead (the effect) for 1 minute or until damaged.",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5ejJbxjpFjZiBS6",
+        "type": "effect",
+        "label": "Petrified",
+        "effect": {
+          "name": "Petrified",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "petrified",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Petrified"
+            }
+          ]
         }
       }
     ],
@@ -217,16 +234,20 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5e27heU9zxT5GyY",
               "type": "attack",
-              "label": "Attack",
+              "label": "Fangs of Python",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
               "damage": {
                 "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
                   {
                     "formula": "(2d12) + (1d12)",
                     "type": "necrotic"
@@ -235,23 +256,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eXPxs2FZXleBZg",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "dazed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Dazed"
-                },
-                {
-                  "key": "petrified",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Petrified"
-                }
-              ],
+              "label": "Python: Dazed",
               "save": {
                 "abilities": [
                   "con"
@@ -260,27 +267,58 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "On a hit. Failure: Dazed; failing by 10+ (Chain 2: 5+): Petrified instead (the effect) for 1 minute or until damaged.",
               "damage": {
                 "parts": []
+              }
+            },
+            {
+              "id": "n5ejJbxjpFjZiBS6",
+              "type": "effect",
+              "label": "Petrified",
+              "effect": {
+                "name": "Petrified",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "petrified",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Petrified"
+                  }
+                ]
               }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5e27heU9zxT5GyY",
               "type": "attack",
-              "label": "Attack",
+              "label": "Fangs of Python",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
               "damage": {
                 "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
                   {
                     "formula": "(2d12) + (2d12)",
                     "type": "necrotic"
@@ -289,23 +327,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eXPxs2FZXleBZg",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "dazed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Dazed"
-                },
-                {
-                  "key": "petrified",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Petrified"
-                }
-              ],
+              "label": "Python: Dazed",
               "save": {
                 "abilities": [
                   "con"
@@ -314,18 +338,46 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "On a hit. Failure: Dazed; failing by 10+ (Chain 2: 5+): Petrified instead (the effect) for 1 minute or until damaged.",
               "damage": {
                 "parts": []
+              }
+            },
+            {
+              "id": "n5ejJbxjpFjZiBS6",
+              "type": "effect",
+              "label": "Petrified",
+              "effect": {
+                "name": "Petrified",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "petrified",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Petrified"
+                  }
+                ]
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "a7edbe01a9022231"

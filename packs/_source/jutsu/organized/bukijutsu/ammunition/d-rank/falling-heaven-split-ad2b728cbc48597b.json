@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e1j6GFz3MDWCXW",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Falling Heaven: Split",
         "save": {
           "abilities": [
             "dex"
@@ -96,23 +95,44 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "A 30-foot cone. Success: half.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "1d12",
+              "type": ""
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "1d12",
-        "roll": {
-          "formula": "1d12",
-          "note": "Creature in range must make a Dexterity saving throw, taking your [Weapon Damage] + 1d12 on a failed save or half as on a success."
-        }
+        "id": "n5eEeG8Fh7cNm9AY",
+        "type": "effect",
+        "label": "Chain 1: Prone",
+        "effect": {
+          "name": "Chain 1: Prone",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ]
+        },
+        "text": "Chain 1: a creature that failed; also disarmed."
       }
     ],
     "featureType": "active",
@@ -198,9 +218,219 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5e1j6GFz3MDWCXW",
+              "type": "save",
+              "label": "Falling Heaven: Split",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 30-foot cone. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(1d12) + (1d12)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEeG8Fh7cNm9AY",
+              "type": "effect",
+              "label": "Chain 1: Prone",
+              "effect": {
+                "name": "Chain 1: Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
+              },
+              "text": "Chain 1: a creature that failed; also disarmed."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5e1j6GFz3MDWCXW",
+              "type": "save",
+              "label": "Falling Heaven: Split",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 30-foot cone. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(1d12) + (2d12)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEeG8Fh7cNm9AY",
+              "type": "effect",
+              "label": "Chain 1: Prone",
+              "effect": {
+                "name": "Chain 1: Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
+              },
+              "text": "Chain 1: a creature that failed; also disarmed."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e1j6GFz3MDWCXW",
+              "type": "save",
+              "label": "Falling Heaven: Split",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 30-foot cone. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(1d12) + (3d12)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEeG8Fh7cNm9AY",
+              "type": "effect",
+              "label": "Chain 1: Prone",
+              "effect": {
+                "name": "Chain 1: Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
+              },
+              "text": "Chain 1: a creature that failed; also disarmed."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e1j6GFz3MDWCXW",
+              "type": "save",
+              "label": "Falling Heaven: Split",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 30-foot cone. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(1d12) + (4d12)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEeG8Fh7cNm9AY",
+              "type": "effect",
+              "label": "Chain 1: Prone",
+              "effect": {
+                "name": "Chain 1: Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
+              },
+              "text": "Chain 1: a creature that failed; also disarmed."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "4dbff179bff78120"

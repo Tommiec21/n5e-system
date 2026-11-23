@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eix72WKYuqhecy",
         "type": "attack",
-        "label": "Attack",
+        "label": "Shot Put Crash",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "Constructs and structures vulnerable. Chain 1: +2 critical range against them (the effect).",
         "damage": {
           "parts": []
         },
@@ -104,6 +105,25 @@
           "maximize": false,
           "attacks": "1"
         }
+      },
+      {
+        "id": "n5ezrLEYmKVWxwJv",
+        "type": "effect",
+        "label": "Chain 1: +2 critical range",
+        "effect": {
+          "name": "Chain 1",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.critRange.weapon",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 0
+        },
+        "text": "Against a construct or structure."
       }
     ],
     "featureType": "active",
@@ -192,99 +212,180 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5eix72WKYuqhecy",
               "type": "attack",
-              "label": "Attack",
+              "label": "Shot Put Crash",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "Constructs and structures vulnerable. Chain 1: +2 critical range against them (the effect).",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d6) + (1d6)",
+                "extraDice": "2d6 + 1d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
                 "attacks": "1"
               }
+            },
+            {
+              "id": "n5ezrLEYmKVWxwJv",
+              "type": "effect",
+              "label": "Chain 1: +2 critical range",
+              "effect": {
+                "name": "Chain 1",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.critRange.weapon",
+                    "value": "2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "Against a construct or structure."
             }
           ],
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5eix72WKYuqhecy",
               "type": "attack",
-              "label": "Attack",
+              "label": "Shot Put Crash",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "Constructs and structures vulnerable. Chain 1: +2 critical range against them (the effect).",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d6) + (2d6)",
+                "extraDice": "2d6 + 2d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
                 "attacks": "1"
               }
+            },
+            {
+              "id": "n5ezrLEYmKVWxwJv",
+              "type": "effect",
+              "label": "Chain 1: +2 critical range",
+              "effect": {
+                "name": "Chain 1",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.critRange.weapon",
+                    "value": "2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "Against a construct or structure."
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eix72WKYuqhecy",
               "type": "attack",
-              "label": "Attack",
+              "label": "Shot Put Crash",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "Constructs and structures vulnerable. Chain 1: +2 critical range against them (the effect).",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d6) + (3d6)",
+                "extraDice": "2d6 + 3d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
                 "attacks": "1"
               }
+            },
+            {
+              "id": "n5ezrLEYmKVWxwJv",
+              "type": "effect",
+              "label": "Chain 1: +2 critical range",
+              "effect": {
+                "name": "Chain 1",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.critRange.weapon",
+                    "value": "2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "Against a construct or structure."
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eix72WKYuqhecy",
               "type": "attack",
-              "label": "Attack",
+              "label": "Shot Put Crash",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "Constructs and structures vulnerable. Chain 1: +2 critical range against them (the effect).",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d6) + (4d6)",
+                "extraDice": "2d6 + 4d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
                 "attacks": "1"
               }
+            },
+            {
+              "id": "n5ezrLEYmKVWxwJv",
+              "type": "effect",
+              "label": "Chain 1: +2 critical range",
+              "effect": {
+                "name": "Chain 1",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.critRange.weapon",
+                    "value": "2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "Against a construct or structure."
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "4dbff179bff78120"

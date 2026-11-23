@@ -125,3 +125,10 @@ test("casting updates Chain and Combo", async () => {
   assert.ok(!fresh.chain.show && !fresh.combo.show && !fresh.concentration.show, "trackers hidden until used");
   assert.deepEqual(fresh.jutsu.map(g => g.key), ["tai"], "empty disciplines hidden");
 });
+
+test("STD6f F-D2: the Fury tracker shows from data (flags.n5e.trackers), not from a name or text", () => {
+  const furyItem = flags => ({ _id: "fury000000000001", name: "Rabbit Fury", type: "jutsu", flags, system: { description: "<p>The fury of the moon.</p>" } });
+  const vm = items => combatVM(makeActor({ name: "Fury Test", system: { ...baseAbilities }, items })).fury;
+  assert.equal(vm([furyItem({})]).show, false, "a name or text mentioning Fury doesn't show it");
+  assert.equal(vm([furyItem({ n5e: { trackers: ["fury"] } })]).show, true);
+});

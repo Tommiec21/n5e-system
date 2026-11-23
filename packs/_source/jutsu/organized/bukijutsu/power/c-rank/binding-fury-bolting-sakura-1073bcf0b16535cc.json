@@ -86,14 +86,34 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e4zfStnmNVD4YH",
+        "type": "effect",
+        "label": "Bolting Sakura: +2 AC",
+        "effect": {
+          "name": "Bolting Sakura",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Reaction to damage: until the start of your next turn."
+      },
+      {
+        "id": "n5elotQxSZekZa4p",
         "type": "attack",
-        "label": "Attack",
+        "label": "Bolting Sakura: strike",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Each melee attack against you: a creature in your weapon's range. Chain 1: disarmed on a hit.",
         "damage": {
           "parts": []
         },
@@ -107,17 +127,9 @@
         }
       },
       {
-        "id": "chain-2-parsed1",
+        "id": "n5eE1Hn9Toc8jwQs",
         "type": "save",
-        "label": "Chain 2: Save",
-        "inflicts": [
-          {
-            "key": "bruised",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bruised"
-          }
-        ],
+        "label": "Chain 2: Bruised",
         "save": {
           "abilities": [
             "con"
@@ -126,13 +138,39 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "Chain 2. Failure: Bruised.",
         "damage": {
           "parts": []
         }
+      },
+      {
+        "id": "n5exrCCCyNYRfwro",
+        "type": "effect",
+        "label": "Fury: ally +2 AC",
+        "effect": {
+          "name": "Bolting Sakura",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Spend Fury: an ally in your weapon's range."
       }
     ],
     "featureType": "active",
@@ -221,20 +259,40 @@
         "activitiesByRank": {
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5e4zfStnmNVD4YH",
+              "type": "effect",
+              "label": "Bolting Sakura: +2 AC",
+              "effect": {
+                "name": "Bolting Sakura",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction to damage: until the start of your next turn."
+            },
+            {
+              "id": "n5elotQxSZekZa4p",
               "type": "attack",
-              "label": "Attack",
+              "label": "Bolting Sakura: strike",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Each melee attack against you: a creature in your weapon's range. Chain 1: disarmed on a hit.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d6) + (1d6)",
+                "extraDice": "2d6 + 1d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -242,17 +300,9 @@
               }
             },
             {
-              "id": "chain-2-parsed1",
+              "id": "n5eE1Hn9Toc8jwQs",
               "type": "save",
-              "label": "Chain 2: Save",
-              "inflicts": [
-                {
-                  "key": "bruised",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bruised"
-                }
-              ],
+              "label": "Chain 2: Bruised",
               "save": {
                 "abilities": [
                   "con"
@@ -261,31 +311,77 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Chain 2. Failure: Bruised.",
               "damage": {
                 "parts": []
               }
+            },
+            {
+              "id": "n5exrCCCyNYRfwro",
+              "type": "effect",
+              "label": "Fury: ally +2 AC",
+              "effect": {
+                "name": "Bolting Sakura",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Spend Fury: an ally in your weapon's range."
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5e4zfStnmNVD4YH",
+              "type": "effect",
+              "label": "Bolting Sakura: +2 AC",
+              "effect": {
+                "name": "Bolting Sakura",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction to damage: until the start of your next turn."
+            },
+            {
+              "id": "n5elotQxSZekZa4p",
               "type": "attack",
-              "label": "Attack",
+              "label": "Bolting Sakura: strike",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Each melee attack against you: a creature in your weapon's range. Chain 1: disarmed on a hit.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d6) + (2d6)",
+                "extraDice": "2d6 + 2d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -293,17 +389,9 @@
               }
             },
             {
-              "id": "chain-2-parsed1",
+              "id": "n5eE1Hn9Toc8jwQs",
               "type": "save",
-              "label": "Chain 2: Save",
-              "inflicts": [
-                {
-                  "key": "bruised",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bruised"
-                }
-              ],
+              "label": "Chain 2: Bruised",
               "save": {
                 "abilities": [
                   "con"
@@ -312,31 +400,77 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Chain 2. Failure: Bruised.",
               "damage": {
                 "parts": []
               }
+            },
+            {
+              "id": "n5exrCCCyNYRfwro",
+              "type": "effect",
+              "label": "Fury: ally +2 AC",
+              "effect": {
+                "name": "Bolting Sakura",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Spend Fury: an ally in your weapon's range."
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5e4zfStnmNVD4YH",
+              "type": "effect",
+              "label": "Bolting Sakura: +2 AC",
+              "effect": {
+                "name": "Bolting Sakura",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction to damage: until the start of your next turn."
+            },
+            {
+              "id": "n5elotQxSZekZa4p",
               "type": "attack",
-              "label": "Attack",
+              "label": "Bolting Sakura: strike",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Each melee attack against you: a creature in your weapon's range. Chain 1: disarmed on a hit.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d6) + (3d6)",
+                "extraDice": "2d6 + 3d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -344,17 +478,9 @@
               }
             },
             {
-              "id": "chain-2-parsed1",
+              "id": "n5eE1Hn9Toc8jwQs",
               "type": "save",
-              "label": "Chain 2: Save",
-              "inflicts": [
-                {
-                  "key": "bruised",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bruised"
-                }
-              ],
+              "label": "Chain 2: Bruised",
               "save": {
                 "abilities": [
                   "con"
@@ -363,18 +489,48 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Chain 2. Failure: Bruised.",
               "damage": {
                 "parts": []
               }
+            },
+            {
+              "id": "n5exrCCCyNYRfwro",
+              "type": "effect",
+              "label": "Fury: ally +2 AC",
+              "effect": {
+                "name": "Bolting Sakura",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Spend Fury: an ally in your weapon's range."
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "trackers": [
+        "fury"
+      ]
     }
   },
   "folder": "ff1cfb282039b6a7"

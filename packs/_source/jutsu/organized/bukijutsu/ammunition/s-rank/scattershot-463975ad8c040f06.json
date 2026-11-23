@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e4V5FJxY7NTQb4",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Scattershot",
         "save": {
           "abilities": [
             "dex"
@@ -96,13 +95,18 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "Spend an ammunition die (Chain 3: shrink it one step): a cone as long as your weapon's range. Add 6 dice the size of the spent ammunition die (roll them by hand). Success: half.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -179,7 +183,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "a8010b352a59571c"

@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e6IixblPdIF9Ua",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Weapon Break",
         "save": {
           "abilities": [
             "dex"
@@ -97,21 +96,34 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Reaction to melee damage. Failure: its weapon breaks (a sealed weapon only to an equal or better bonus or seal).",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "Chain 1: 2d8",
-        "roll": {
-          "formula": "2d8",
-          "note": "Chain 1: A creature whose weapon you break, can be targeted with a melee taijutsu attack as part of this reaction, dealing you [Weapons damage] + 2d8 on a hit."
+        "id": "n5eZRhBZ6U6sPIMb",
+        "type": "attack",
+        "label": "Chain 1: strike",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Chain 1: a creature whose weapon broke.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "2d8",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       }
     ],
@@ -194,7 +206,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c0a6a06641c5a7be"

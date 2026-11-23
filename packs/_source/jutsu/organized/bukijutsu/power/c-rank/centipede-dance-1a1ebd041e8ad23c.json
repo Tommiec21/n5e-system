@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e4J9bim7Gx2nIs",
         "type": "attack",
-        "label": "Attack",
+        "label": "Centipede Dance",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
+        "text": "One creature. Chain 2: constructs and structures vulnerable.",
         "damage": {
           "parts": []
         },
@@ -102,7 +103,34 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "2"
+        }
+      },
+      {
+        "id": "n5epmd0RVxUaVdm8",
+        "type": "save",
+        "label": "Centipede: Weakened",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          }
+        ],
+        "text": "At least one hit. Failure: 1 Weakened (Chain 1: 2).",
+        "damage": {
+          "parts": []
         }
       }
     ],
@@ -192,76 +220,161 @@
         "activitiesByRank": {
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5e4J9bim7Gx2nIs",
               "type": "attack",
-              "label": "Attack",
+              "label": "Centipede Dance",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
+              "text": "One creature. Chain 2: constructs and structures vulnerable.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(1d10) + (1d10)",
+                "extraDice": "1d10 + 1d10",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5epmd0RVxUaVdm8",
+              "type": "save",
+              "label": "Centipede: Weakened",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "At least one hit. Failure: 1 Weakened (Chain 1: 2).",
+              "damage": {
+                "parts": []
               }
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5e4J9bim7Gx2nIs",
               "type": "attack",
-              "label": "Attack",
+              "label": "Centipede Dance",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
+              "text": "One creature. Chain 2: constructs and structures vulnerable.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(1d10) + (2d10)",
+                "extraDice": "1d10 + 2d10",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5epmd0RVxUaVdm8",
+              "type": "save",
+              "label": "Centipede: Weakened",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "At least one hit. Failure: 1 Weakened (Chain 1: 2).",
+              "damage": {
+                "parts": []
               }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5e4J9bim7Gx2nIs",
               "type": "attack",
-              "label": "Attack",
+              "label": "Centipede Dance",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
+              "text": "One creature. Chain 2: constructs and structures vulnerable.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(1d10) + (3d10)",
+                "extraDice": "1d10 + 3d10",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5epmd0RVxUaVdm8",
+              "type": "save",
+              "label": "Centipede: Weakened",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "At least one hit. Failure: 1 Weakened (Chain 1: 2).",
+              "damage": {
+                "parts": []
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ff1cfb282039b6a7"

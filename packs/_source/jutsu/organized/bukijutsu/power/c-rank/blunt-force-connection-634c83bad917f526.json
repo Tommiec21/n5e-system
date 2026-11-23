@@ -86,30 +86,31 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eRsU7QnpmkDa3J",
         "type": "attack",
-        "label": "Attack",
+        "label": "Blunt Force Connection",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Chain 1: a 15-foot cube from you becomes difficult terrain.",
         "damage": {
           "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "4d8",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eaNAxjdZbPqM6Q",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "prone",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Prone"
-          }
-        ],
+        "label": "Blunt Force: Prone",
         "save": {
           "abilities": [
             "str"
@@ -118,22 +119,41 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "On a hit. Failure: Prone.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "4d8",
-        "roll": {
-          "formula": "4d8",
-          "note": "On a hit, you deal your weapons damage + 4d8 and the target must make a Strength saving throw, falling Prone on a failed save."
-        }
+        "id": "n5eIW9HlxpDsXV8G",
+        "type": "effect",
+        "label": "Chain 2: Bruised",
+        "effect": {
+          "name": "Chain 2: Bruised",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            }
+          ]
+        },
+        "text": "Chain 2: a creature that failed."
       }
     ],
     "featureType": "active",
@@ -213,9 +233,227 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eRsU7QnpmkDa3J",
+              "type": "attack",
+              "label": "Blunt Force Connection",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Chain 1: a 15-foot cube from you becomes difficult terrain.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "4d8 + 1d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eaNAxjdZbPqM6Q",
+              "type": "save",
+              "label": "Blunt Force: Prone",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "On a hit. Failure: Prone.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eIW9HlxpDsXV8G",
+              "type": "effect",
+              "label": "Chain 2: Bruised",
+              "effect": {
+                "name": "Chain 2: Bruised",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ]
+              },
+              "text": "Chain 2: a creature that failed."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eRsU7QnpmkDa3J",
+              "type": "attack",
+              "label": "Blunt Force Connection",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Chain 1: a 15-foot cube from you becomes difficult terrain.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "4d8 + 2d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eaNAxjdZbPqM6Q",
+              "type": "save",
+              "label": "Blunt Force: Prone",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "On a hit. Failure: Prone.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eIW9HlxpDsXV8G",
+              "type": "effect",
+              "label": "Chain 2: Bruised",
+              "effect": {
+                "name": "Chain 2: Bruised",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ]
+              },
+              "text": "Chain 2: a creature that failed."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eRsU7QnpmkDa3J",
+              "type": "attack",
+              "label": "Blunt Force Connection",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Chain 1: a 15-foot cube from you becomes difficult terrain.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "4d8 + 3d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eaNAxjdZbPqM6Q",
+              "type": "save",
+              "label": "Blunt Force: Prone",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "On a hit. Failure: Prone.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eIW9HlxpDsXV8G",
+              "type": "effect",
+              "label": "Chain 2: Bruised",
+              "effect": {
+                "name": "Chain 2: Bruised",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ]
+              },
+              "text": "Chain 2: a creature that failed."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ff1cfb282039b6a7"

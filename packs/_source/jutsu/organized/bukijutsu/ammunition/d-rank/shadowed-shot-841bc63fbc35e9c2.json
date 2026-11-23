@@ -85,11 +85,11 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5evao9tRGdbAP5Y",
         "type": "attack",
-        "label": "Attack",
+        "label": "Shadowed Shot",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
@@ -106,10 +106,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eSYUKSeN1HDuGT",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "The second shot",
         "save": {
           "abilities": [
             "wis"
@@ -118,22 +117,39 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Failure: the hidden shot hits. Success: nothing.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "Chain 1: 1d6",
-        "roll": {
-          "formula": "1d6",
-          "note": "At Higher Ranks: For every rank you cast this jutsu above D-Rank, increase the cost by 3 and the damage by 1d6."
-        }
+        "id": "n5efx0w2ziZpGqBN",
+        "type": "effect",
+        "label": "Chain 1: Bleed",
+        "effect": {
+          "name": "Chain 1: Bleed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            }
+          ]
+        },
+        "text": "Chain 1: a creature that failed."
       }
     ],
     "featureType": "active",
@@ -222,11 +238,11 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5evao9tRGdbAP5Y",
               "type": "attack",
-              "label": "Attack",
+              "label": "Shadowed Shot",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
@@ -243,10 +259,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eSYUKSeN1HDuGT",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "The second shot",
               "save": {
                 "abilities": [
                   "wis"
@@ -255,31 +270,48 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Failure: the hidden shot hits. Success: nothing.",
               "damage": {
-                "parts": []
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  }
+                ]
               }
             },
             {
-              "id": "sourceRoll3",
-              "type": "roll",
-              "label": "Chain 1: 1d6",
-              "roll": {
-                "formula": "1d6",
-                "note": "At Higher Ranks: For every rank you cast this jutsu above D-Rank, increase the cost by 3 and the damage by 1d6."
-              }
+              "id": "n5efx0w2ziZpGqBN",
+              "type": "effect",
+              "label": "Chain 1: Bleed",
+              "effect": {
+                "name": "Chain 1: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ]
+              },
+              "text": "Chain 1: a creature that failed."
             }
           ],
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5evao9tRGdbAP5Y",
               "type": "attack",
-              "label": "Attack",
+              "label": "Shadowed Shot",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
@@ -296,10 +328,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eSYUKSeN1HDuGT",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "The second shot",
               "save": {
                 "abilities": [
                   "wis"
@@ -308,31 +339,48 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Failure: the hidden shot hits. Success: nothing.",
               "damage": {
-                "parts": []
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  }
+                ]
               }
             },
             {
-              "id": "sourceRoll3",
-              "type": "roll",
-              "label": "Chain 1: 1d6",
-              "roll": {
-                "formula": "1d6",
-                "note": "At Higher Ranks: For every rank you cast this jutsu above D-Rank, increase the cost by 3 and the damage by 1d6."
-              }
+              "id": "n5efx0w2ziZpGqBN",
+              "type": "effect",
+              "label": "Chain 1: Bleed",
+              "effect": {
+                "name": "Chain 1: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ]
+              },
+              "text": "Chain 1: a creature that failed."
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5evao9tRGdbAP5Y",
               "type": "attack",
-              "label": "Attack",
+              "label": "Shadowed Shot",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
@@ -349,10 +397,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eSYUKSeN1HDuGT",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "The second shot",
               "save": {
                 "abilities": [
                   "wis"
@@ -361,31 +408,48 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Failure: the hidden shot hits. Success: nothing.",
               "damage": {
-                "parts": []
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  }
+                ]
               }
             },
             {
-              "id": "sourceRoll3",
-              "type": "roll",
-              "label": "Chain 1: 1d6",
-              "roll": {
-                "formula": "1d6",
-                "note": "At Higher Ranks: For every rank you cast this jutsu above D-Rank, increase the cost by 3 and the damage by 1d6."
-              }
+              "id": "n5efx0w2ziZpGqBN",
+              "type": "effect",
+              "label": "Chain 1: Bleed",
+              "effect": {
+                "name": "Chain 1: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ]
+              },
+              "text": "Chain 1: a creature that failed."
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5evao9tRGdbAP5Y",
               "type": "attack",
-              "label": "Attack",
+              "label": "Shadowed Shot",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
@@ -402,10 +466,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eSYUKSeN1HDuGT",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "The second shot",
               "save": {
                 "abilities": [
                   "wis"
@@ -414,27 +477,45 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Failure: the hidden shot hits. Success: nothing.",
               "damage": {
-                "parts": []
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  }
+                ]
               }
             },
             {
-              "id": "sourceRoll3",
-              "type": "roll",
-              "label": "Chain 1: 1d6",
-              "roll": {
-                "formula": "1d6",
-                "note": "At Higher Ranks: For every rank you cast this jutsu above D-Rank, increase the cost by 3 and the damage by 1d6."
-              }
+              "id": "n5efx0w2ziZpGqBN",
+              "type": "effect",
+              "label": "Chain 1: Bleed",
+              "effect": {
+                "name": "Chain 1: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ]
+              },
+              "text": "Chain 1: a creature that failed."
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "4dbff179bff78120"

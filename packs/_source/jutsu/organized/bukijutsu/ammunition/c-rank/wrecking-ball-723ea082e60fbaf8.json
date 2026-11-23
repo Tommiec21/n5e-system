@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eTwzunaX4GFrZI",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Wrecking Ball",
         "save": {
           "abilities": [
             "dex"
@@ -96,31 +95,22 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "A 30 by 5-foot line (Chain 1: Weakened creatures at disadvantage). Failure: pushed to its end; success: half, nothing else. Chain 2: an ally can use its reaction to cast a 1-Action Taijutsu Finisher at one of them.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "2d8",
-        "roll": {
-          "formula": "2d8",
-          "note": "On Failure they take your [Weapons damage] +2d8 and are Pushed to the end of the jutsu’s range, into a space that can hold them. On a success they only take half damage and no additional effects."
-        }
-      },
-      {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "Chain 2: 1d10",
-        "roll": {
-          "formula": "1d10",
-          "note": "At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the damage by 1d10."
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "2d8",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -207,9 +197,104 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eTwzunaX4GFrZI",
+              "type": "save",
+              "label": "Wrecking Ball",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 30 by 5-foot line (Chain 1: Weakened creatures at disadvantage). Failure: pushed to its end; success: half, nothing else. Chain 2: an ally can use its reaction to cast a 1-Action Taijutsu Finisher at one of them.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d8) + (1d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eTwzunaX4GFrZI",
+              "type": "save",
+              "label": "Wrecking Ball",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 30 by 5-foot line (Chain 1: Weakened creatures at disadvantage). Failure: pushed to its end; success: half, nothing else. Chain 2: an ally can use its reaction to cast a 1-Action Taijutsu Finisher at one of them.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d8) + (2d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eTwzunaX4GFrZI",
+              "type": "save",
+              "label": "Wrecking Ball",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 30 by 5-foot line (Chain 1: Weakened creatures at disadvantage). Failure: pushed to its end; success: half, nothing else. Chain 2: an ally can use its reaction to cast a 1-Action Taijutsu Finisher at one of them.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d8) + (3d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "f8211708ba076b1c"

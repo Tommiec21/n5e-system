@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e0Lv5iIInYtEXC",
         "type": "attack",
-        "label": "Attack",
+        "label": "Yoichi’s Focus",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "Chain 2: a critical hit: creatures within 5 feet take half the damage dealt.",
         "damage": {
           "parts": []
         },
@@ -103,6 +104,45 @@
           "pierce": 0,
           "maximize": false,
           "attacks": "1"
+        }
+      },
+      {
+        "id": "n5ejfCMkeJoi4qi1",
+        "type": "effect",
+        "label": "+1 critical range",
+        "effect": {
+          "name": "+1 critical range",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.critRange.weapon",
+              "value": "1",
+              "mode": 2
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 0
+        },
+        "text": "Before the attack."
+      },
+      {
+        "id": "n5euJrlZdFZBwUEI",
+        "type": "effect",
+        "label": "Chain 1: critical: Bleed",
+        "effect": {
+          "name": "Chain 1: critical: Bleed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            }
+          ]
         }
       }
     ],
@@ -192,76 +232,197 @@
         "activitiesByRank": {
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5e0Lv5iIInYtEXC",
               "type": "attack",
-              "label": "Attack",
+              "label": "Yoichi’s Focus",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "Chain 2: a critical hit: creatures within 5 feet take half the damage dealt.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(3d12) + (1d12)",
+                "extraDice": "3d12 + 1d12",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
                 "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ejfCMkeJoi4qi1",
+              "type": "effect",
+              "label": "+1 critical range",
+              "effect": {
+                "name": "+1 critical range",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.critRange.weapon",
+                    "value": "1",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "Before the attack."
+            },
+            {
+              "id": "n5euJrlZdFZBwUEI",
+              "type": "effect",
+              "label": "Chain 1: critical: Bleed",
+              "effect": {
+                "name": "Chain 1: critical: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ]
               }
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5e0Lv5iIInYtEXC",
               "type": "attack",
-              "label": "Attack",
+              "label": "Yoichi’s Focus",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "Chain 2: a critical hit: creatures within 5 feet take half the damage dealt.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(3d12) + (2d12)",
+                "extraDice": "3d12 + 2d12",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
                 "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ejfCMkeJoi4qi1",
+              "type": "effect",
+              "label": "+1 critical range",
+              "effect": {
+                "name": "+1 critical range",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.critRange.weapon",
+                    "value": "1",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "Before the attack."
+            },
+            {
+              "id": "n5euJrlZdFZBwUEI",
+              "type": "effect",
+              "label": "Chain 1: critical: Bleed",
+              "effect": {
+                "name": "Chain 1: critical: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ]
               }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5e0Lv5iIInYtEXC",
               "type": "attack",
-              "label": "Attack",
+              "label": "Yoichi’s Focus",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "Chain 2: a critical hit: creatures within 5 feet take half the damage dealt.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(3d12) + (3d12)",
+                "extraDice": "3d12 + 3d12",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
                 "attacks": "1"
               }
+            },
+            {
+              "id": "n5ejfCMkeJoi4qi1",
+              "type": "effect",
+              "label": "+1 critical range",
+              "effect": {
+                "name": "+1 critical range",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.critRange.weapon",
+                    "value": "1",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "Before the attack."
+            },
+            {
+              "id": "n5euJrlZdFZBwUEI",
+              "type": "effect",
+              "label": "Chain 1: critical: Bleed",
+              "effect": {
+                "name": "Chain 1: critical: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ]
+              }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "f8211708ba076b1c"

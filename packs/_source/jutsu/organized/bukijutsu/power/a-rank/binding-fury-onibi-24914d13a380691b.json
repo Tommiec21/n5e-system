@@ -85,16 +85,20 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eaDXOtBoBPPWds",
         "type": "attack",
-        "label": "Attack",
+        "label": "Binding Fury: Onibi",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
         "damage": {
           "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
             {
               "formula": "6d12",
               "type": "bludgeoning"
@@ -103,9 +107,19 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5elKSLLu9dVLJWy",
         "type": "save",
-        "label": "Save",
+        "label": "Onibi: the line",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "weakened",
@@ -120,21 +134,31 @@
             "label": "Prone"
           }
         ],
-        "save": {
-          "abilities": [
-            "dex"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Creatures in a 30 by 5-foot line from the target (Fury: spend it, the target too). Failure: 2 Weakened and Prone.",
         "damage": {
           "parts": []
         }
+      },
+      {
+        "id": "n5ei3rtYJhhwDkb8",
+        "type": "effect",
+        "label": "Chain 2: target Prone",
+        "effect": {
+          "name": "Chain 2: target Prone",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ]
+        },
+        "text": "Chain 2: pushed 30 feet. Chain 3: a critical hit: cast a 1-Action Bukijutsu now; if you don't, gain Fury."
       }
     ],
     "featureType": "active",
@@ -210,7 +234,11 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "trackers": [
+        "fury"
+      ]
     }
   },
   "folder": "2bc91904eae523f2"

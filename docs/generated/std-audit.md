@@ -17,13 +17,12 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 
 ## 2. Other content-driven code
 
-### Name or description tests (5)
+### Name or description tests (4)
 
 - `module/applications/browser/compendium-browser.mjs:183`
 - `module/applications/browser/compendium-browser.mjs:184`
 - `module/applications/browser/compendium-browser.mjs:185`
 - `module/rules/trackers.mjs:156`
-- `module/view-models/combat.mjs:351`
 
 ### State checks named in code (1)
 
@@ -89,7 +88,7 @@ The contract: no content named in engine code; every mechanic is data a GM can o
 | equipment | 66 | 7 | 0 | 0 | 0 | 0 |
 | feats | 4 | 1 | 0 | 0 | 0 | 0 |
 | features | 700 | 411 | 43 | 372 | 360 | 11 |
-| jutsu | 968 | 944 | 0 | 89 | 88 | 0 |
+| jutsu | 968 | 935 | 0 | 102 | 102 | 0 |
 | stances | 24 | 16 | 15 | 24 | 24 | 0 |
 | summons | 18 | 0 | 0 | 0 | 0 | 0 |
 

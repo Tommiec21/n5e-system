@@ -85,13 +85,61 @@
     },
     "activities": [
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "1d6",
-        "roll": {
-          "formula": "1d6",
-          "note": "On a failure they take your [Weapon Damage] + 1d6 and gain 1 rank of Bleed. On a success they take half damage and suffer no effects."
+        "id": "n5e2OaCWrAzNqKh9",
+        "type": "save",
+        "label": "Falling Heaven: Rain",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Within 15 feet of a point within 60 feet. Failure: 1 Bleed; success: half, nothing else.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "1d6",
+              "type": ""
+            }
+          ]
         }
+      },
+      {
+        "id": "n5eDnfo2bO0v4Glm",
+        "type": "effect",
+        "label": "Chain 1: Grappled",
+        "effect": {
+          "name": "Chain 1: Grappled",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "grappled",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Grappled"
+            }
+          ]
+        },
+        "text": "Chain 1: a creature that failed, until the end of its next turn."
       }
     ],
     "featureType": "active",
@@ -177,9 +225,247 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5e2OaCWrAzNqKh9",
+              "type": "save",
+              "label": "Falling Heaven: Rain",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Within 15 feet of a point within 60 feet. Failure: 1 Bleed; success: half, nothing else.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(1d6) + (1d6)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eDnfo2bO0v4Glm",
+              "type": "effect",
+              "label": "Chain 1: Grappled",
+              "effect": {
+                "name": "Chain 1: Grappled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ]
+              },
+              "text": "Chain 1: a creature that failed, until the end of its next turn."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5e2OaCWrAzNqKh9",
+              "type": "save",
+              "label": "Falling Heaven: Rain",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Within 15 feet of a point within 60 feet. Failure: 1 Bleed; success: half, nothing else.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(1d6) + (2d6)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eDnfo2bO0v4Glm",
+              "type": "effect",
+              "label": "Chain 1: Grappled",
+              "effect": {
+                "name": "Chain 1: Grappled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ]
+              },
+              "text": "Chain 1: a creature that failed, until the end of its next turn."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e2OaCWrAzNqKh9",
+              "type": "save",
+              "label": "Falling Heaven: Rain",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Within 15 feet of a point within 60 feet. Failure: 1 Bleed; success: half, nothing else.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(1d6) + (3d6)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eDnfo2bO0v4Glm",
+              "type": "effect",
+              "label": "Chain 1: Grappled",
+              "effect": {
+                "name": "Chain 1: Grappled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ]
+              },
+              "text": "Chain 1: a creature that failed, until the end of its next turn."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e2OaCWrAzNqKh9",
+              "type": "save",
+              "label": "Falling Heaven: Rain",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Within 15 feet of a point within 60 feet. Failure: 1 Bleed; success: half, nothing else.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(1d6) + (4d6)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eDnfo2bO0v4Glm",
+              "type": "effect",
+              "label": "Chain 1: Grappled",
+              "effect": {
+                "name": "Chain 1: Grappled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ]
+              },
+              "text": "Chain 1: a creature that failed, until the end of its next turn."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "4dbff179bff78120"

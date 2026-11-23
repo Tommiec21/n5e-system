@@ -85,23 +85,30 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5etwMuHGOPcDJk2",
         "type": "attack",
-        "label": "Attack",
+        "label": "Burst Shot",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
         "damage": {
           "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "3d10",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5ewLlPACUnRA7Gv",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Burst: the line",
         "save": {
           "abilities": [
             "dex"
@@ -109,22 +116,18 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "Creatures in a 20-foot line behind the target (Chain 2: 40). Success: half. Your weapon's damage type (set it).",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "3d10",
-        "roll": {
-          "formula": "3d10",
-          "note": "Make a ranged taijutsu attack against the target, dealing your [Weapon’s damage] +3d10 and all creatures in a 20-foot line behind the target must make a Dexterity saving throw, or take 3d10 damage of the same type your weapon deals on a failed save, or half as much on a success."
+          "parts": [
+            {
+              "formula": "3d10",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -211,9 +214,107 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5etwMuHGOPcDJk2",
+              "type": "attack",
+              "label": "Burst Shot",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "3d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ewLlPACUnRA7Gv",
+              "type": "save",
+              "label": "Burst: the line",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Creatures in a 20-foot line behind the target (Chain 2: 40). Success: half. Your weapon's damage type (set it).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d10",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5etwMuHGOPcDJk2",
+              "type": "attack",
+              "label": "Burst Shot",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "3d10 + 2d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ewLlPACUnRA7Gv",
+              "type": "save",
+              "label": "Burst: the line",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Creatures in a 20-foot line behind the target (Chain 2: 40). Success: half. Your weapon's damage type (set it).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d10 + 2d10",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "a7edbe01a9022231"

@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e4hWdgucGxEag9",
         "type": "attack",
-        "label": "Attack",
+        "label": "Falling Heaven: Cross",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "ranged",
-          "count": 1
+          "count": 2
         },
+        "text": "Chain 1: +1 critical range if it has temporary hit points, +2 if a jutsu AC bonus (by hand).",
         "damage": {
           "parts": []
         },
@@ -102,21 +103,13 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "2"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eHhXKvrOym80OX",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "blinded",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Blinded"
-          }
-        ],
+        "label": "Cross: Blinded",
         "save": {
           "abilities": [
             "dex"
@@ -125,13 +118,41 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          }
+        ],
+        "text": "Both hit one creature. Failure: Blinded until the end of its next turn.",
         "damage": {
           "parts": []
         }
+      },
+      {
+        "id": "n5e6RDlmQJRYBAPT",
+        "type": "effect",
+        "label": "Chain 2: Bleed",
+        "effect": {
+          "name": "Chain 2: Bleed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            }
+          ]
+        },
+        "text": "Chain 2: a creature that failed."
       }
     ],
     "featureType": "active",
@@ -220,38 +241,31 @@
         "activitiesByRank": {
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5e4hWdgucGxEag9",
               "type": "attack",
-              "label": "Attack",
+              "label": "Falling Heaven: Cross",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
-                "count": 1
+                "count": 2
               },
+              "text": "Chain 1: +1 critical range if it has temporary hit points, +2 if a jutsu AC bonus (by hand).",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d6) + (1d6)",
+                "extraDice": "2d6 + 1d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eHhXKvrOym80OX",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "blinded",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Blinded"
-                }
-              ],
+              "label": "Cross: Blinded",
               "save": {
                 "abilities": [
                   "dex"
@@ -260,49 +274,70 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                }
+              ],
+              "text": "Both hit one creature. Failure: Blinded until the end of its next turn.",
               "damage": {
                 "parts": []
               }
+            },
+            {
+              "id": "n5e6RDlmQJRYBAPT",
+              "type": "effect",
+              "label": "Chain 2: Bleed",
+              "effect": {
+                "name": "Chain 2: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ]
+              },
+              "text": "Chain 2: a creature that failed."
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5e4hWdgucGxEag9",
               "type": "attack",
-              "label": "Attack",
+              "label": "Falling Heaven: Cross",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
-                "count": 1
+                "count": 2
               },
+              "text": "Chain 1: +1 critical range if it has temporary hit points, +2 if a jutsu AC bonus (by hand).",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d6) + (2d6)",
+                "extraDice": "2d6 + 2d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eHhXKvrOym80OX",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "blinded",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Blinded"
-                }
-              ],
+              "label": "Cross: Blinded",
               "save": {
                 "abilities": [
                   "dex"
@@ -311,49 +346,70 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                }
+              ],
+              "text": "Both hit one creature. Failure: Blinded until the end of its next turn.",
               "damage": {
                 "parts": []
               }
+            },
+            {
+              "id": "n5e6RDlmQJRYBAPT",
+              "type": "effect",
+              "label": "Chain 2: Bleed",
+              "effect": {
+                "name": "Chain 2: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ]
+              },
+              "text": "Chain 2: a creature that failed."
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5e4hWdgucGxEag9",
               "type": "attack",
-              "label": "Attack",
+              "label": "Falling Heaven: Cross",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
-                "count": 1
+                "count": 2
               },
+              "text": "Chain 1: +1 critical range if it has temporary hit points, +2 if a jutsu AC bonus (by hand).",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d6) + (3d6)",
+                "extraDice": "2d6 + 3d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eHhXKvrOym80OX",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "blinded",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Blinded"
-                }
-              ],
+              "label": "Cross: Blinded",
               "save": {
                 "abilities": [
                   "dex"
@@ -362,18 +418,47 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                }
+              ],
+              "text": "Both hit one creature. Failure: Blinded until the end of its next turn.",
               "damage": {
                 "parts": []
               }
+            },
+            {
+              "id": "n5e6RDlmQJRYBAPT",
+              "type": "effect",
+              "label": "Chain 2: Bleed",
+              "effect": {
+                "name": "Chain 2: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ]
+              },
+              "text": "Chain 2: a creature that failed."
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "f8211708ba076b1c"

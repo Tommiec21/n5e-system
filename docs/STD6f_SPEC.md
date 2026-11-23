@@ -1,6 +1,6 @@
 # STD6f function spec: jutsu as data
 
-Status: **Approved by King 2026-11-22 (Q-J1 yes; Q-J2 fix and finish). F1 Taijutsu I (0.87.0-alpha.1) and F2 Taijutsu II (0.88.0-alpha.1) built: Taijutsu is done. F3 Bukijutsu I (0.89.0-alpha.1) and F4 Bukijutsu II (0.90.0-alpha.1) built. Next: F5 Power + Ammunition.**
+Status: **Approved by King 2026-11-22 (Q-J1 yes; Q-J2 fix and finish). F1 Taijutsu I (0.87.0-alpha.1) and F2 Taijutsu II (0.88.0-alpha.1) built: Taijutsu is done. F3 Bukijutsu I (0.89.0-alpha.1) F4 Bukijutsu II (0.90.0-alpha.1) and F5 Bukijutsu III (0.91.0-alpha.1) built: Bukijutsu is done. Next: F6 Non-Elemental.**
 
 Plan: `docs/STD_SPEC.md` (STD6f: "Every jutsu's riders as Active Effects and elements, emitted by an upgraded importer where the pattern is regular; a review table per section for King"). Same method as the clan pass (`docs/STD6e_SPEC.md`).
 
@@ -72,7 +72,7 @@ Plan: `docs/STD_SPEC.md` (STD6f: "Every jutsu's riders as Active Effects and ele
 | # | Addition | Behaviour |
 | --- | --- | --- |
 | F-D1 | Jutsu tables | `content/automation/jutsu/<discipline>-<section>.json` over the section's folder in the jutsu pack; review tables `docs/jutsu/`. |
-| F-D2 | Fury tracker from data | A jutsu or stance that gains or spends Fury says so in its data (`flags.n5e.trackers: ["fury"]`); the tracker's name-and-text test is removed from `view-models/combat.mjs`. |
+| F-D2 | Fury tracker from data | A jutsu or stance that gains or spends Fury says so in its data (`flags.n5e.trackers: ["fury"]`); the tracker's name-and-text test is removed from `view-models/combat.mjs`. Built in F5: the tracker shows when Fury > 0, its maximum is raised, or an item has `trackers: ["fury"]`; Binding Fury Stance's Fury trigger moved from the jutsu (predicated on a stance item it never was) to its concentration effect, so it fires while the stance is up. |
 | F-D3 | Conditions with no save | An effect button's `inflicts` (`[{key, kind, ranks}]`) puts conditions and states on its targets with no save ("knocked Prone", "Bruised and Staggered"); for a creature you don't own it goes through the GM's client with no approval step (owner intent `inflictConditions`). Built in F1. |
 | F-D4 | [Unarmed damage] in healing | A heal's formula can use `@unarmed` (Iron Guard's temporary hit points: twice your [Unarmed damage] + your level). Built in F1. |
 | F-D5 | [Weapon damage] in damage | A damage formula can use `@weapon`: your wielded weapon's die, extra dice and flat bonus (you pick the weapon if you hold several); the part takes the weapon's damage type when it has none, and the weapon's ability modifier. For saves that deal "[Weapon damage] + 1d8 earth" and the like. Built in F3. F4 adds `@wdie`: the weapon's damage die alone ("your weapon damage die + 2d8"), no bonus or modifier. |
@@ -154,6 +154,41 @@ Review tables: `docs/jutsu/bukijutsu-flail-automation.md` (33 jutsu: 31 partly a
 - Merciless Havoc: keywords list Ninjutsu, not Chain, on a Bukijutsu.
 - Razor's Swift: "must a Strength saving throw"; range "Weapons reach".
 
+## F5 Bukijutsu III (0.91.0-alpha.1)
+
+Review tables: `docs/jutsu/bukijutsu-power-automation.md` (30 jutsu: 28 partly automated, 2 notes only) and `docs/jutsu/bukijutsu-ammunition-automation.md` (53 jutsu: 46 partly automated, 7 notes only). Bukijutsu is done (6 sections, 252 jutsu).
+
+- **Fury (F-D2):** the Binding Fury jutsu are tagged as Fury users; the tracker no longer appears for Rabbit Fury, Sun Spear and other names or text that merely say "fury". Binding Fury Stance's cast button now starts its concentration effect, which carries the Fury trigger. Fury spends are their own buttons ("Fury: …") or button text; the tracker's − spends it.
+- **Fixed and finished:** weapon strikes (melee and ranged) with their number of attacks and extra dice; saves dealing [Weapon damage] plus dice; Chain buttons; per-rank dice, extra attacks (Monkey Kings Fang, Deadly Ranged Connection) and upcast riders (Brutal Block's temporary hit points, Tyger Claws' +2 critical range, Carpet of Steel's 6, Fangs of Medusa's 2d10, Tendon Shot's growing die, Burst Shot); critical-range effects; twice or three times [Weapon damage] (Heaven Earth Impact, Twinshot, Starstream); the weapon die alone (Tendon Shot, `@wdie`); no-save conditions.
+- **Notes only:** Binding Fury: Rebound Swing, Monkey Kings Arrogance, Lethal Momentum, Counter Shot and the Mark jutsu (Rundas, Takeminakata's, Apollo's, Artemis's, Ullr; Neith's keeps its Ra detonation button). Marks are still placed from the Marks tracker, which finds them by name (a later STD pass).
+- **By hand:** a chosen damage type (Blunt Strike's bludgeoning, Burst Shot's line, Sniper's Focus), the ammunition die's dice (Scattershot), delayed damage rounds (Shadow Eclipse), stacking critical range (Dragon's Roar).
+- **No new holds:** no Power or Ammunition jutsu summons a creature.
+
+## Text issues found in F5
+
+- 2-Cross Strike: "two melee taijutsu" (attacks).
+- Binding Fury: Demonic Dance, Shadowed Shot, Tyger Claws, Wrecking Ball: the upcast runs into the Chain paragraph.
+- Monkey King's Stance: "increase … the Action damage 1d8" (by).
+- Earth Breaker: "stand up form this jutsu".
+- Castle Crasher: "[Weapons damage + 4d12" (bracket).
+- Heaven Earth Impact: "be push 20-feet".
+- Moonbane's Wrath: "gains becomes Bruised"; the save sentence runs on.
+- Binding Fury: Onibi: "powerful trust".
+- Binding Fury: Dragon's Roar: "pent of fury".
+- Bite of the Viper (C-Rank): upcast "above D-Rank".
+- Collateral Point Strikes: upcast "the damage by 1d4 and max by 1d4" (built as +1d4 damage).
+- Retreating Shot: 3d6 base, upcast "+1d10".
+- Wrecking Ball: "30-foot lone"; 2d8 base, upcast "+1d10".
+- Burst Shot (B-Rank): upcast "above A-Rank" (built as S-Rank only).
+- Fangs of Medusa: "Full Moon benefits on a Half Moon / Crescent Moon": no such benefits in the text.
+- Fangs of Python: holds the Ullr Ammo "Skadi Marked" box; "they instead being Petrified".
+- Tendon Shot: its Chain 2 is Fangs of Python's ("becomes Petrified if they fail by 5 or more").
+- Binding Shot: "saving thrown", "the affects".
+- Twinshot, Breach-N-Clear: "you [Weapons damage]".
+- Starstream (S-Rank): upcast "above A-Rank"; "half as much on a success save".
+- Scattershot: "fide spread", "Justus"; "6dx".
+- Ullr Ammo's Skadi Marked box is on Fangs of Python, not Ullr Ammo.
+
 ## Progress log
 
 - 2026-11-22 King: "Next batch" (after STD6e E8). Claude: spec proposed from a survey of the jutsu pack. Nothing built.
@@ -161,3 +196,4 @@ Review tables: `docs/jutsu/bukijutsu-flail-automation.md` (33 jutsu: 31 partly a
 - 2026-11-22 King: "Next batch." Claude: F2 Taijutsu II built (55 jutsu): Taijutsu complete; published 0.88.0-alpha.1. No new questions.
 - 2026-11-22 King: "Next batch." Claude: F3 Bukijutsu I built (103 jutsu: Shinobi Basics and Blade); F-D5 ([Weapon damage] in damage formulas); published 0.89.0-alpha.1. No new questions.
 - 2026-11-23 King: "Next batch." Claude: F4 Bukijutsu II built (66 jutsu: Flail and Polearm); F-D5 adds @wdie (the weapon damage die alone); published 0.90.0-alpha.1. No new questions.
+- 2026-11-23 King: "Next batch." Claude: F5 Bukijutsu III built (83 jutsu: Power and Ammunition): Bukijutsu complete; F-D2 (Fury tracker from data; Binding Fury Stance's trigger on its effect); published 0.91.0-alpha.1. No new questions.

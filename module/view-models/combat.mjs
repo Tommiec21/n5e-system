@@ -346,18 +346,17 @@ function comboVM(actor, combo) {
 /*  Phase 6 trackers                            */
 /* -------------------------------------------- */
 
-// Does any owned item's name or text mention this? Used to show a tracker only to characters who
-// have something that uses it (Fury).
-const mentions = (actor, re) => list(actor.items).some(i => re.test(i.name) || re.test(String(i.system?.description ?? "")));
+// STD6f F-D2: does something the character has use this tracker? Its data says so
+// (flags.n5e.trackers: ["fury"]), not its name or text.
+const usesTracker = (actor, key) => list(actor.items).some(i => [].concat(i.flags?.n5e?.trackers ?? []).includes(key));
 
-/** Fury tracker: value / max boxes; shown when Fury > 0 or something the character has mentions Fury. */
+/** Fury tracker: value / max boxes; shown when Fury > 0, Fury's maximum is raised, or an item uses Fury. */
 function furyVM(actor) {
   const value = actor.system.combat?.fury ?? 0;
   const max = furyMax(actor);
-  const stance = list(actor.items).find(i => i.id === actor.system.combat?.activeStance);
-  return { show: value > 0 || mentions(actor, /\bfury\b/i), value, max, boxes: pips(value, max),
-    // STD6a: "gains Fury on weapon damage" is a trigger element on the active stance (STD4), not its name.
-    binding: !!stance && triggersFor(actor, "damageDealt", { spec: { kind: "damage", type: "damage", scope: "weapon" } }).some(t => t.element.pool === "fury") };
+  return { show: value > 0 || max > 1 || usesTracker(actor, "fury"), value, max, boxes: pips(value, max),
+    // STD6a: "gains Fury on weapon damage" is a trigger element (STD4): Binding Fury Stance's effect.
+    binding: triggersFor(actor, "damageDealt", { spec: { kind: "damage", type: "damage", scope: "weapon" } }).some(t => t.element.pool === "fury") };
 }
 
 /**

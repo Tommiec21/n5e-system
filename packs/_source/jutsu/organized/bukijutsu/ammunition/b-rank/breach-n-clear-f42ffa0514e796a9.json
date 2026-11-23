@@ -85,33 +85,56 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eHIItVL6BoHOHs",
         "type": "attack",
-        "label": "Attack",
+        "label": "Breach-N-Clear",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "A construct or structure; vulnerable to it.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "6d6",
+              "type": "fire"
+            },
+            {
+              "formula": "6d6",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5erevuvBB9QXrwQ",
+        "type": "attack",
+        "label": "Chain 2: at a creature",
+        "attack": {
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
         "damage": {
-          "parts": []
-        },
-        "strike": {
-          "kind": "weapon",
-          "extraDice": "6d6",
-          "dieSteps": 0,
-          "pierce": 0,
-          "maximize": false,
-          "attacks": "1"
-        }
-      },
-      {
-        "id": "sourceRoll4",
-        "type": "roll",
-        "label": "Chain 2: 2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "If you do, reduce the bonus damage dealt to 2d6 for each damage type."
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "2d6",
+              "type": "fire"
+            },
+            {
+              "formula": "2d6",
+              "type": "bludgeoning"
+            }
+          ]
         }
       }
     ],
@@ -213,71 +236,118 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eHIItVL6BoHOHs",
               "type": "attack",
-              "label": "Attack",
+              "label": "Breach-N-Clear",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "A construct or structure; vulnerable to it.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(6d6) + (1d6)",
+                    "type": "fire"
+                  },
+                  {
+                    "formula": "(6d6) + (1d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5erevuvBB9QXrwQ",
+              "type": "attack",
+              "label": "Chain 2: at a creature",
+              "attack": {
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
               "damage": {
-                "parts": []
-              },
-              "strike": {
-                "kind": "weapon",
-                "extraDice": "(6d6) + (1d6)",
-                "dieSteps": 0,
-                "pierce": 0,
-                "maximize": false,
-                "attacks": "1"
-              }
-            },
-            {
-              "id": "sourceRoll4",
-              "type": "roll",
-              "label": "Chain 2: 2d6",
-              "roll": {
-                "formula": "2d6",
-                "note": "If you do, reduce the bonus damage dealt to 2d6 for each damage type."
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": "fire"
+                  },
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
               }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eHIItVL6BoHOHs",
               "type": "attack",
-              "label": "Attack",
+              "label": "Breach-N-Clear",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "A construct or structure; vulnerable to it.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(6d6) + (2d6)",
+                    "type": "fire"
+                  },
+                  {
+                    "formula": "(6d6) + (2d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5erevuvBB9QXrwQ",
+              "type": "attack",
+              "label": "Chain 2: at a creature",
+              "attack": {
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
               "damage": {
-                "parts": []
-              },
-              "strike": {
-                "kind": "weapon",
-                "extraDice": "(6d6) + (2d6)",
-                "dieSteps": 0,
-                "pierce": 0,
-                "maximize": false,
-                "attacks": "1"
-              }
-            },
-            {
-              "id": "sourceRoll4",
-              "type": "roll",
-              "label": "Chain 2: 2d6",
-              "roll": {
-                "formula": "2d6",
-                "note": "If you do, reduce the bonus damage dealt to 2d6 for each damage type."
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": "fire"
+                  },
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "a7edbe01a9022231"

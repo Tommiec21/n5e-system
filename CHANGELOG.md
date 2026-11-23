@@ -1,3 +1,11 @@
+## 0.91.0-alpha.1 — STD6f F5 Bukijutsu III; Fury from data
+
+King 2026-11-23: "Next batch." Bukijutsu Power (30) and Ammunition (53) reviewed at every rank (74 partly automated, 9 notes only); Bukijutsu is done. Review tables docs/jutsu/bukijutsu-power-automation.md and bukijutsu-ammunition-automation.md; spec docs/STD6f_SPEC.md (F5).
+
+- **Fury tracker from data (F-D2):** it shows when you have Fury, a raised Fury maximum, or an item tagged as a Fury user (`flags.n5e.trackers: ["fury"]`); names and text that say "fury" (Rabbit Fury, Sun Spear) no longer show it.
+- **Binding Fury Stance:** its button starts the concentration effect that gains Fury on your first [Weapon damage] each turn. Before, the trigger waited for a stance item the jutsu never was, so it never fired.
+- **Bukijutsu III:** melee and ranged weapon strikes with their number of attacks and extra dice; saves dealing [Weapon damage] plus dice; Chain and Fury buttons; per-rank dice, extra attacks and upcast riders; critical-range effects; no-save conditions.
+
 ## 0.90.0-alpha.1 — STD6f F4 Bukijutsu II
 
 King 2026-11-23: "Next batch." Bukijutsu Flail (33) and Polearm (33) reviewed at every rank (62 partly automated, 4 notes only). Review tables docs/jutsu/bukijutsu-flail-automation.md and bukijutsu-polearm-automation.md; spec docs/STD6f_SPEC.md (F4).

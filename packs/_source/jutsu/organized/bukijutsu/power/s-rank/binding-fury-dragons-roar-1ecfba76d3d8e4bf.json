@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eTGe4cRpLVHdEz",
         "type": "attack",
-        "label": "Attack",
+        "label": "Binding Fury: Dragon's Roar",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 3
         },
+        "text": "Each hit on one creature: +2 critical range on your next Taijutsu attack against it (max +4; Fury: +6).",
         "damage": {
           "parts": []
         },
@@ -102,21 +103,32 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "3"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5ePQRree0kcRj73",
+        "type": "effect",
+        "label": "Critical range +2",
+        "effect": {
+          "name": "Critical range +2",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.critRange.weapon",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 0
+        },
+        "text": "After a hit; press again per hit, up to the cap."
+      },
+      {
+        "id": "n5efyCdyk0x6CqPu",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "demoralized",
-            "kind": "condition",
-            "ranks": 2,
-            "label": "Demoralized"
-          }
-        ],
+        "label": "Roar: Demoralized",
         "save": {
           "abilities": [
             "wis"
@@ -125,10 +137,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "demoralized",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Demoralized"
+          }
+        ],
+        "text": "Each critical hit: hostile creatures within 40 feet that see and hear you (Chain 3: at disadvantage). Failure: 2 Demoralized.",
         "damage": {
           "parts": []
         }
@@ -213,7 +232,11 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "trackers": [
+        "fury"
+      ]
     }
   },
   "folder": "3defed4a961f01ae"

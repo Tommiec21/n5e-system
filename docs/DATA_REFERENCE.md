@@ -1032,3 +1032,7 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 ### Weapon damage die in damage formulas (STD6f F-D5)
 
 - A damage part's formula may use `@wdie`: the wielded weapon's damage die alone, with no extra dice, bonus or modifier (`workflow/activity-buttons.mjs`). A part with no type takes the weapon's first damage type.
+
+### Tracker users (STD6f F-D2)
+
+- `flags.n5e.trackers`: tracker keys an item uses (`["fury"]`). The Fury tracker shows when Fury > 0, the Fury maximum is raised, or an owned item lists `"fury"`.

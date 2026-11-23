@@ -85,17 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e9Qi2lToG4sDZ6",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "weakened",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Weakened"
-          }
-        ],
+        "label": "Eclipse",
         "save": {
           "abilities": [
             "str"
@@ -104,12 +96,39 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          }
+        ],
+        "text": "Concentration: once per turn when you deal [Weapon damage] with a Bukijutsu and a weapon attack. Failure: 1 Weakened.",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5eD2U4imjoxiNgZ",
+        "type": "effect",
+        "label": "Chain 2: failed by 5+: Dazed",
+        "effect": {
+          "name": "Chain 2: failed by 5+: Dazed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            }
+          ]
         }
       }
     ],
@@ -186,7 +205,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "f69fa4fab70e66b3"

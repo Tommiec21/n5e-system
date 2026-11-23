@@ -84,14 +84,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eGBAmeB1vT5sNz",
         "type": "attack",
-        "label": "Attack",
+        "label": "Pinning Shot",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "+1 creature per rank above D.",
         "damage": {
           "parts": []
         },
@@ -105,17 +106,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5exL8F64SDeC48Z",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "restrained",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Restrained"
-          }
-        ],
+        "label": "Pinning: Restrained",
         "save": {
           "abilities": [
             "str"
@@ -124,10 +117,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "Failure: Restrained; resave at the end of each of its turns.",
         "damage": {
           "parts": []
         }
@@ -212,7 +212,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "4dbff179bff78120"

@@ -140,3 +140,29 @@ test("STD6f F4 Bukijutsu II: Flail and Polearm reviewed at every rank; Amps kept
   assert.ok(aura.filter(a => a.type === "save").every(a => !a.inflicts?.length));
   assert.deepEqual(aura.filter(a => a.type === "effect").map(a => a.effect.inflicts[0].key), ["demoralized", "concussed", "dazzled"]);
 });
+
+test("STD6f F5 Bukijutsu III: Power and Ammunition reviewed; Fury users tagged (F-D2); Binding Fury Stance's Fury on its effect", () => {
+  for ( const [section, count] of [["bukijutsu/power", 30], ["bukijutsu/ammunition", 53]] ) {
+    const t = table(section);
+    const items = sectionJutsu(section, t.ranks);
+    assert.equal(items.size, count, section);
+    for ( const [id, { doc }] of items ) {
+      assert.ok(t.features[id], id);
+      assert.equal(doc.flags.n5e.reviewed, true, id);
+    }
+  }
+  assert.deepEqual(tableProblems().filter(p => p.startsWith("jutsu/")), []);
+  // F-D2: every Power jutsu that gains or spends Fury says so in its data; others don't.
+  const power = sectionJutsu("bukijutsu/power", table("bukijutsu/power").ranks);
+  const tagged = [...power].filter(([, { doc }]) => doc.flags.n5e.trackers?.includes("fury")).map(([id]) => id).sort();
+  assert.ok(tagged.length >= 10 && tagged.every(id => id.startsWith("binding-fury")), tagged.join());
+  // Binding Fury Stance: the Fury trigger rides on its concentration effect (it was predicated on a stance item it isn't).
+  const stance = jutsu("bukijutsu/power", "binding-fury-stance");
+  assert.ok(!(stance.flags.n5e.rules ?? []).some(r => r.key === "resource"));
+  const rule = stance.system.activities[0].effect.rules[0];
+  assert.deepEqual([rule.on, rule.selector, rule.pool, rule.oncePerTurn, rule.predicate], ["damageDealt", "damage:weapon", "fury", true, undefined]);
+  // Upcasts: Tyger Claws' critical range +2 from B-Rank; Tendon Shot's 1d4+1 grows its die.
+  assert.ok(jutsu("bukijutsu/ammunition", "tyger-claws").flags.n5e.jutsuBookImport.activitiesByRank.B.some(a => a.label === "+2 critical range"));
+  assert.equal(jutsu("bukijutsu/ammunition", "tendon-shot").flags.n5e.jutsuBookImport.activitiesByRank.S.find(a => a.type === "roll").roll.formula, "1d8 + 1");
+  assert.deepEqual(jutsu("bukijutsu/ammunition", "rundas-ammo").system.activities, []);
+});

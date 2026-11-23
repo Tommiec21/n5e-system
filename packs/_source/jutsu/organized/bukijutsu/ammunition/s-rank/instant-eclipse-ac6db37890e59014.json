@@ -85,17 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eo5DwYAEgQtxZ5",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "bleed",
-            "kind": "condition",
-            "ranks": 4,
-            "label": "Bleed"
-          }
-        ],
+        "label": "Instant Eclipse",
         "save": {
           "abilities": [
             "dex"
@@ -104,10 +96,17 @@
             "source": "discipline"
           },
           "onSuccess": "half",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 4,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Leap 60 feet up: everyone but you within 30 feet (Chain 3: creatures you choose are spared). Failure: 4 Bleed; success: half. Both scrolls and the weapons are destroyed.",
         "damage": {
           "parts": [
             {
@@ -191,7 +190,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "a8010b352a59571c"

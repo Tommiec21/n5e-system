@@ -86,14 +86,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e5tcmIOlybP05M",
         "type": "attack",
-        "label": "Attack",
+        "label": "Burning Impacts",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 3
         },
+        "text": "Move to up to 3 spaces in your full movement (Chain 2: 4), one attack at each. Chain 3: a critical hit refunds the chakra.",
         "damage": {
           "parts": []
         },
@@ -103,21 +104,13 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "3"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eDCkiuXkZJig0A",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "burned",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Burned"
-          }
-        ],
+        "label": "Burning: Burned",
         "save": {
           "abilities": [
             "dex"
@@ -126,10 +119,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Burned"
+          }
+        ],
+        "text": "At least one hit. Failure: 1 Burned.",
         "damage": {
           "parts": []
         }
@@ -221,38 +221,31 @@
         "activitiesByRank": {
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5e5tcmIOlybP05M",
               "type": "attack",
-              "label": "Attack",
+              "label": "Burning Impacts",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 3
               },
+              "text": "Move to up to 3 spaces in your full movement (Chain 2: 4), one attack at each. Chain 3: a critical hit refunds the chakra.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(7d6) + (1d6)",
+                "extraDice": "7d6 + 1d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "3"
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eDCkiuXkZJig0A",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "burned",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Burned"
-                }
-              ],
+              "label": "Burning: Burned",
               "save": {
                 "abilities": [
                   "dex"
@@ -261,10 +254,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "At least one hit. Failure: 1 Burned.",
               "damage": {
                 "parts": []
               }
@@ -272,7 +272,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "2bc91904eae523f2"

@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eaiONNwZqveahI",
         "type": "attack",
-        "label": "Attack",
+        "label": "Air Snatcher",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "ranged",
-          "count": 1
+          "count": 2
         },
+        "text": "Each creature damaged: −15 speed until the start of your next turn. Chain 2: on a hit, disadvantage on its next Constitution save.",
         "damage": {
           "parts": []
         },
@@ -102,8 +103,29 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "2"
         }
+      },
+      {
+        "id": "n5eu8mMcLUvEU1mA",
+        "type": "effect",
+        "label": "Both hit one: Restrained",
+        "effect": {
+          "name": "Both hit one: Restrained",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            }
+          ]
+        },
+        "text": "Until the end of its next turn."
       }
     ],
     "featureType": "active",
@@ -192,53 +214,98 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eaiONNwZqveahI",
               "type": "attack",
-              "label": "Attack",
+              "label": "Air Snatcher",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
-                "count": 1
+                "count": 2
               },
+              "text": "Each creature damaged: −15 speed until the start of your next turn. Chain 2: on a hit, disadvantage on its next Constitution save.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d6) + (1d6)",
+                "extraDice": "2d6 + 1d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
               }
+            },
+            {
+              "id": "n5eu8mMcLUvEU1mA",
+              "type": "effect",
+              "label": "Both hit one: Restrained",
+              "effect": {
+                "name": "Both hit one: Restrained",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  }
+                ]
+              },
+              "text": "Until the end of its next turn."
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eaiONNwZqveahI",
               "type": "attack",
-              "label": "Attack",
+              "label": "Air Snatcher",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
-                "count": 1
+                "count": 2
               },
+              "text": "Each creature damaged: −15 speed until the start of your next turn. Chain 2: on a hit, disadvantage on its next Constitution save.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d6) + (2d6)",
+                "extraDice": "2d6 + 2d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
               }
+            },
+            {
+              "id": "n5eu8mMcLUvEU1mA",
+              "type": "effect",
+              "label": "Both hit one: Restrained",
+              "effect": {
+                "name": "Both hit one: Restrained",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  }
+                ]
+              },
+              "text": "Until the end of its next turn."
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "a7edbe01a9022231"

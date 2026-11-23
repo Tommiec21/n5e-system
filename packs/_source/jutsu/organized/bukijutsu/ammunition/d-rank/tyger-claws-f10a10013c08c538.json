@@ -85,11 +85,11 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eUAeGDbb6ifHRm",
         "type": "attack",
-        "label": "Attack",
+        "label": "Tyger Claws",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
@@ -106,12 +106,42 @@
         }
       },
       {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "Chain 1: 1d8",
-        "roll": {
-          "formula": "1d8",
-          "note": "At Higher Ranks: For every rank you cast this jutsu above D-Rank, increase the cost by 3 and the damage by 1d8. If this jutsu is cast at B-Rank or higher, increase the bonus to critical threat range to +2."
+        "id": "n5eoKhAlu4ND67uq",
+        "type": "effect",
+        "label": "+1 critical range",
+        "effect": {
+          "name": "+1 critical range",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.critRange.weapon",
+              "value": "1",
+              "mode": 2
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 0
+        },
+        "text": "Before the attack."
+      },
+      {
+        "id": "n5eJJe6YwjTAsQaN",
+        "type": "effect",
+        "label": "Chain 1: critical: 2 Bleed",
+        "effect": {
+          "name": "Chain 1: critical: 2 Bleed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Bleed"
+            }
+          ]
         }
       }
     ],
@@ -201,11 +231,11 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5eUAeGDbb6ifHRm",
               "type": "attack",
-              "label": "Attack",
+              "label": "Tyger Claws",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
@@ -214,7 +244,7 @@
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(3d8) + (1d8)",
+                "extraDice": "3d8 + 1d8",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -222,22 +252,52 @@
               }
             },
             {
-              "id": "sourceRoll3",
-              "type": "roll",
-              "label": "Chain 1: 1d8",
-              "roll": {
-                "formula": "1d8",
-                "note": "At Higher Ranks: For every rank you cast this jutsu above D-Rank, increase the cost by 3 and the damage by 1d8. If this jutsu is cast at B-Rank or higher, increase the bonus to critical threat range to +2."
+              "id": "n5eoKhAlu4ND67uq",
+              "type": "effect",
+              "label": "+1 critical range",
+              "effect": {
+                "name": "+1 critical range",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.critRange.weapon",
+                    "value": "1",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "Before the attack."
+            },
+            {
+              "id": "n5eJJe6YwjTAsQaN",
+              "type": "effect",
+              "label": "Chain 1: critical: 2 Bleed",
+              "effect": {
+                "name": "Chain 1: critical: 2 Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Bleed"
+                  }
+                ]
               }
             }
           ],
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5eUAeGDbb6ifHRm",
               "type": "attack",
-              "label": "Attack",
+              "label": "Tyger Claws",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
@@ -246,7 +306,7 @@
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(3d8) + (2d8)",
+                "extraDice": "3d8 + 2d8",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -254,22 +314,52 @@
               }
             },
             {
-              "id": "sourceRoll3",
-              "type": "roll",
-              "label": "Chain 1: 1d8",
-              "roll": {
-                "formula": "1d8",
-                "note": "At Higher Ranks: For every rank you cast this jutsu above D-Rank, increase the cost by 3 and the damage by 1d8. If this jutsu is cast at B-Rank or higher, increase the bonus to critical threat range to +2."
+              "id": "n5eoKhAlu4ND67uq",
+              "type": "effect",
+              "label": "+2 critical range",
+              "effect": {
+                "name": "+1 critical range",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.critRange.weapon",
+                    "value": "2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "Before the attack."
+            },
+            {
+              "id": "n5eJJe6YwjTAsQaN",
+              "type": "effect",
+              "label": "Chain 1: critical: 2 Bleed",
+              "effect": {
+                "name": "Chain 1: critical: 2 Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Bleed"
+                  }
+                ]
               }
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eUAeGDbb6ifHRm",
               "type": "attack",
-              "label": "Attack",
+              "label": "Tyger Claws",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
@@ -278,7 +368,7 @@
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(3d8) + (3d8)",
+                "extraDice": "3d8 + 3d8",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -286,22 +376,52 @@
               }
             },
             {
-              "id": "sourceRoll3",
-              "type": "roll",
-              "label": "Chain 1: 1d8",
-              "roll": {
-                "formula": "1d8",
-                "note": "At Higher Ranks: For every rank you cast this jutsu above D-Rank, increase the cost by 3 and the damage by 1d8. If this jutsu is cast at B-Rank or higher, increase the bonus to critical threat range to +2."
+              "id": "n5eoKhAlu4ND67uq",
+              "type": "effect",
+              "label": "+2 critical range",
+              "effect": {
+                "name": "+1 critical range",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.critRange.weapon",
+                    "value": "2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "Before the attack."
+            },
+            {
+              "id": "n5eJJe6YwjTAsQaN",
+              "type": "effect",
+              "label": "Chain 1: critical: 2 Bleed",
+              "effect": {
+                "name": "Chain 1: critical: 2 Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Bleed"
+                  }
+                ]
               }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eUAeGDbb6ifHRm",
               "type": "attack",
-              "label": "Attack",
+              "label": "Tyger Claws",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
@@ -310,7 +430,7 @@
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(3d8) + (4d8)",
+                "extraDice": "3d8 + 4d8",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -318,18 +438,49 @@
               }
             },
             {
-              "id": "sourceRoll3",
-              "type": "roll",
-              "label": "Chain 1: 1d8",
-              "roll": {
-                "formula": "1d8",
-                "note": "At Higher Ranks: For every rank you cast this jutsu above D-Rank, increase the cost by 3 and the damage by 1d8. If this jutsu is cast at B-Rank or higher, increase the bonus to critical threat range to +2."
+              "id": "n5eoKhAlu4ND67uq",
+              "type": "effect",
+              "label": "+2 critical range",
+              "effect": {
+                "name": "+1 critical range",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.critRange.weapon",
+                    "value": "2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "Before the attack."
+            },
+            {
+              "id": "n5eJJe6YwjTAsQaN",
+              "type": "effect",
+              "label": "Chain 1: critical: 2 Bleed",
+              "effect": {
+                "name": "Chain 1: critical: 2 Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Bleed"
+                  }
+                ]
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "4dbff179bff78120"

@@ -84,13 +84,18 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "4",
-        "roll": {
-          "formula": "4",
-          "note": "The area becomes difficult terrain and creatures that move while inside the area suffer 4 Piercing damage for every 5 feet they move within the area. Spaces that have already been traversed are no longer difficult terrain and no longer deal damage if moved through again."
-        }
+        "id": "n5epAhiNsOvKEb1S",
+        "type": "damage",
+        "label": "Carpet of Steel",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4",
+              "type": "piercing"
+            }
+          ]
+        },
+        "text": "Per 5 feet moved inside the 15-foot cube (not again over traversed spaces); difficult terrain."
       }
     ],
     "featureType": "active",
@@ -164,9 +169,75 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5epAhiNsOvKEb1S",
+              "type": "damage",
+              "label": "Carpet of Steel",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "text": "Per 5 feet moved inside the 15-foot cube (not again over traversed spaces); difficult terrain."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5epAhiNsOvKEb1S",
+              "type": "damage",
+              "label": "Carpet of Steel",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "6",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "text": "Per 5 feet moved inside the 15-foot cube (not again over traversed spaces); difficult terrain."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5epAhiNsOvKEb1S",
+              "type": "damage",
+              "label": "Carpet of Steel",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "6",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "text": "Per 5 feet moved inside the 15-foot cube (not again over traversed spaces); difficult terrain."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5epAhiNsOvKEb1S",
+              "type": "damage",
+              "label": "Carpet of Steel",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "6",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "text": "Per 5 feet moved inside the 15-foot cube (not again over traversed spaces); difficult terrain."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "4dbff179bff78120"

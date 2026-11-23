@@ -327,7 +327,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `adversary-builder.mjs` | 75 | The Adversary Builder's view model (pure; NPC2). | `STEPS`, `builderVM` |
 | `character.mjs` | 588 | Character sheet view models: actor in, plain data out. | `headerVM`, `resourcesVM`, `railVM`, `mainVM`, `jutsuVM`, `inventoryVM`, `OPTION_GROUPS`, `featuresVM`, `effectsVM`, `biographyVM`, `xpTable` |
-| `combat.mjs` | 438 | Combat tab view model: every option the character has in a fight, plus the trackers (Chain, concentration and upkeep, stance, Combo/Finisher). | `jutsuPill`, `ampsVM`, `combatVM` |
+| `combat.mjs` | 437 | Combat tab view model: every option the character has in a fight, plus the trackers (Chain, concentration and upkeep, stance, Combo/Finisher). | `jutsuPill`, `ampsVM`, `combatVM` |
 | `common.mjs` | 152 | Shared view-model helpers: signed numbers, breakdown tooltips, action glyphs, rule chips. | `esc`, `breakdownTooltip`, `glyph`, `keywordChip`, `componentChips`, `propertyChips`, `conditionSummary`, `pips`, `signed` |
 | `damage-trace.mjs` | 24 | Minimal fallback for legacy roll data; normal cards use Foundry's Roll renderer. | `damageRollHTML`, `renderDamageRolls` |
 | `effect-editor.mjs` | 99 | Effect editor view model (UX1; docs/UX1_SPEC.md), pure. | `pickerGroups`, `normalizeModes`, `changeCards`, `ruleRows` |

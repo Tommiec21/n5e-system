@@ -85,10 +85,28 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5eDzEsJl4XA7OuL",
+        "type": "effect",
+        "label": "Binding Fury Stance",
+        "effect": {
+          "name": "Binding Fury Stance",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "rules": [
+            {
+              "key": "resource",
+              "on": "damageDealt",
+              "selector": "damage:weapon",
+              "pool": "fury",
+              "amount": 1,
+              "oncePerTurn": true,
+              "label": "Binding Fury Stance"
+            }
+          ]
+        },
+        "text": "Bonus action, concentration: the first time each turn you deal [Weapon damage], gain Fury (the Fury tracker)."
       }
     ],
     "featureType": "active",
@@ -165,15 +183,13 @@
       },
       "rules": [
         {
-          "key": "resource",
-          "on": "damageDealt",
-          "selector": "damage:weapon",
-          "pool": "fury",
-          "amount": 1,
-          "oncePerTurn": true,
-          "predicate": "self:stance:binding-fury-stance",
-          "label": "Binding Fury Stance"
+          "key": "note",
+          "text": "Fury: you keep it until the end of the turn after you gained it; spend it (the Fury tracker's −) before damage on a Bukijutsu that calls for it."
         }
+      ],
+      "reviewed": true,
+      "trackers": [
+        "fury"
       ]
     }
   },

@@ -85,9 +85,19 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e6Ww6qB4h09sGj",
         "type": "save",
-        "label": "Save",
+        "label": "Binding Fury: Earth Shatter",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "dazed",
@@ -108,27 +118,44 @@
             "label": "Prone"
           }
         ],
-        "save": {
-          "abilities": [
-            "str"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "A 15-foot cone (Chain 2: 25). Failure: Dazed, Bruised and Prone; success: half and Bruised (the effect). Fury: spend it to count as Chain 3.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "3d8",
+              "type": ""
+            }
+          ]
         }
       },
       {
-        "id": "chain-3-parsed1",
+        "id": "n5eMykBZENajqraH",
+        "type": "effect",
+        "label": "Success: Bruised",
+        "effect": {
+          "name": "Success: Bruised",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eQSxmXoircCyvl",
         "type": "save",
-        "label": "Chain 3: Save",
-        "inflicts": [],
+        "label": "Chain 3: shockwave",
         "save": {
           "abilities": [
             "dex"
@@ -137,21 +164,40 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          },
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          },
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Chain 3: creatures on the ground within 20 feet of you. Failure: the damage and effects; then leap 20 feet without provoking.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "3d8",
-        "roll": {
-          "formula": "3d8",
-          "note": "Each creature in a 15-foot cone must make a Strength saving throw, taking your [Weapons damage] + 3d8 and being Dazed, Bruised, knocked Prone on a failed save or half as much damage and are only Bruised on a successful save. If you have Fury, you can spend it to increase your Chain rank to 3, regardless of your current Chain rank."
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "3d8",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -238,9 +284,132 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5e6Ww6qB4h09sGj",
+              "type": "save",
+              "label": "Binding Fury: Earth Shatter",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 15-foot cone (Chain 2: 25). Failure: Dazed, Bruised and Prone; success: half and Bruised (the effect). Fury: spend it to count as Chain 3.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(3d8) + (1d8)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eMykBZENajqraH",
+              "type": "effect",
+              "label": "Success: Bruised",
+              "effect": {
+                "name": "Success: Bruised",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eQSxmXoircCyvl",
+              "type": "save",
+              "label": "Chain 3: shockwave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Chain 3: creatures on the ground within 20 feet of you. Failure: the damage and effects; then leap 20 feet without provoking.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(3d8) + (1d8)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "trackers": [
+        "fury"
+      ]
     }
   },
   "folder": "2bc91904eae523f2"

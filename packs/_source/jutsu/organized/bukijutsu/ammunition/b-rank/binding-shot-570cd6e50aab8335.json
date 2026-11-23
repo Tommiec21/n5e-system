@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eiveE5n1cx3YPh",
         "type": "attack",
-        "label": "Attack",
+        "label": "Binding Shot",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "Chain 2: one roll against every creature within 5 feet of a point.",
         "damage": {
           "parts": []
         },
@@ -106,23 +107,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5erpUYJHkr4Whhz",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "restrained",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Restrained"
-          },
-          {
-            "key": "bleed",
-            "kind": "condition",
-            "ranks": 2,
-            "label": "Bleeding"
-          }
-        ],
+        "label": "Binding: Restrained",
         "save": {
           "abilities": [
             "dex"
@@ -131,12 +118,39 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "On a hit. Failure: Restrained; resave at the end of its turns.",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5er7Ms5l7FEDzIp",
+        "type": "effect",
+        "label": "Starts its turn Restrained: Bleed",
+        "effect": {
+          "name": "Starts its turn Restrained: Bleed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Bleed"
+            }
+          ]
         }
       }
     ],
@@ -226,20 +240,21 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eiveE5n1cx3YPh",
               "type": "attack",
-              "label": "Attack",
+              "label": "Binding Shot",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "Chain 2: one roll against every creature within 5 feet of a point.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d10) + (1d10)",
+                "extraDice": "2d10 + 1d10",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -247,23 +262,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5erpUYJHkr4Whhz",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "restrained",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Restrained"
-                },
-                {
-                  "key": "bleed",
-                  "kind": "condition",
-                  "ranks": 2,
-                  "label": "Bleeding"
-                }
-              ],
+              "label": "Binding: Restrained",
               "save": {
                 "abilities": [
                   "dex"
@@ -272,31 +273,59 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "On a hit. Failure: Restrained; resave at the end of its turns.",
               "damage": {
                 "parts": []
+              }
+            },
+            {
+              "id": "n5er7Ms5l7FEDzIp",
+              "type": "effect",
+              "label": "Starts its turn Restrained: Bleed",
+              "effect": {
+                "name": "Starts its turn Restrained: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Bleed"
+                  }
+                ]
               }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eiveE5n1cx3YPh",
               "type": "attack",
-              "label": "Attack",
+              "label": "Binding Shot",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "Chain 2: one roll against every creature within 5 feet of a point.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d10) + (2d10)",
+                "extraDice": "2d10 + 2d10",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -304,23 +333,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5erpUYJHkr4Whhz",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "restrained",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Restrained"
-                },
-                {
-                  "key": "bleed",
-                  "kind": "condition",
-                  "ranks": 2,
-                  "label": "Bleeding"
-                }
-              ],
+              "label": "Binding: Restrained",
               "save": {
                 "abilities": [
                   "dex"
@@ -329,18 +344,46 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "On a hit. Failure: Restrained; resave at the end of its turns.",
               "damage": {
                 "parts": []
+              }
+            },
+            {
+              "id": "n5er7Ms5l7FEDzIp",
+              "type": "effect",
+              "label": "Starts its turn Restrained: Bleed",
+              "effect": {
+                "name": "Starts its turn Restrained: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Bleed"
+                  }
+                ]
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "a7edbe01a9022231"

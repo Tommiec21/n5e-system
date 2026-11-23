@@ -86,14 +86,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ej7k8M1ZRRRtED",
         "type": "attack",
-        "label": "Attack",
+        "label": "Binding Fury: Blunt Force Trauma",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Fury: spend it to count as Chain 2.",
         "damage": {
           "parts": []
         },
@@ -107,23 +108,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eSHFV2JzpCUQDS",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "bruised",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bruised"
-          },
-          {
-            "key": "stunned",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Stunned"
-          }
-        ],
+        "label": "Trauma: pushed, Bruised",
         "save": {
           "abilities": [
             "con"
@@ -132,18 +119,55 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "On a hit. Failure: pushed 40 feet and Bruised; on a critical hit Stunned instead (the effect).",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "chain-2-parsed1",
+        "id": "n5eZp2sTecCI1768",
+        "type": "effect",
+        "label": "Critical hit: Stunned",
+        "effect": {
+          "name": "Critical hit: Stunned",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "stunned",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Stunned"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5emaR2vGFYk0GXO",
         "type": "save",
-        "label": "Chain 2: Save",
+        "label": "Chain 2: picked up",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "prone",
@@ -158,18 +182,7 @@
             "label": "Dazed"
           }
         ],
-        "save": {
-          "abilities": [
-            "dex"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Chain 2: creatures it passes. Failure: carried along; at the end Prone and Dazed.",
         "damage": {
           "parts": []
         }
@@ -261,20 +274,21 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5ej7k8M1ZRRRtED",
               "type": "attack",
-              "label": "Attack",
+              "label": "Binding Fury: Blunt Force Trauma",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Fury: spend it to count as Chain 2.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(3d12) + (1d12)",
+                "extraDice": "3d12 + 1d12",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -282,23 +296,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eSHFV2JzpCUQDS",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "bruised",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bruised"
-                },
-                {
-                  "key": "stunned",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Stunned"
-                }
-              ],
+              "label": "Trauma: pushed, Bruised",
               "save": {
                 "abilities": [
                   "con"
@@ -307,18 +307,55 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "On a hit. Failure: pushed 40 feet and Bruised; on a critical hit Stunned instead (the effect).",
               "damage": {
                 "parts": []
               }
             },
             {
-              "id": "chain-2-parsed1",
+              "id": "n5eZp2sTecCI1768",
+              "type": "effect",
+              "label": "Critical hit: Stunned",
+              "effect": {
+                "name": "Critical hit: Stunned",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "stunned",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Stunned"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5emaR2vGFYk0GXO",
               "type": "save",
-              "label": "Chain 2: Save",
+              "label": "Chain 2: picked up",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "prone",
@@ -333,18 +370,7 @@
                   "label": "Dazed"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "dex"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "Chain 2: creatures it passes. Failure: carried along; at the end Prone and Dazed.",
               "damage": {
                 "parts": []
               }
@@ -352,20 +378,21 @@
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5ej7k8M1ZRRRtED",
               "type": "attack",
-              "label": "Attack",
+              "label": "Binding Fury: Blunt Force Trauma",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Fury: spend it to count as Chain 2.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(3d12) + (2d12)",
+                "extraDice": "3d12 + 2d12",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -373,23 +400,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eSHFV2JzpCUQDS",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "bruised",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bruised"
-                },
-                {
-                  "key": "stunned",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Stunned"
-                }
-              ],
+              "label": "Trauma: pushed, Bruised",
               "save": {
                 "abilities": [
                   "con"
@@ -398,18 +411,55 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "On a hit. Failure: pushed 40 feet and Bruised; on a critical hit Stunned instead (the effect).",
               "damage": {
                 "parts": []
               }
             },
             {
-              "id": "chain-2-parsed1",
+              "id": "n5eZp2sTecCI1768",
+              "type": "effect",
+              "label": "Critical hit: Stunned",
+              "effect": {
+                "name": "Critical hit: Stunned",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "stunned",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Stunned"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5emaR2vGFYk0GXO",
               "type": "save",
-              "label": "Chain 2: Save",
+              "label": "Chain 2: picked up",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "prone",
@@ -424,18 +474,7 @@
                   "label": "Dazed"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "dex"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "Chain 2: creatures it passes. Failure: carried along; at the end Prone and Dazed.",
               "damage": {
                 "parts": []
               }
@@ -443,7 +482,11 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "trackers": [
+        "fury"
+      ]
     }
   },
   "folder": "f69fa4fab70e66b3"

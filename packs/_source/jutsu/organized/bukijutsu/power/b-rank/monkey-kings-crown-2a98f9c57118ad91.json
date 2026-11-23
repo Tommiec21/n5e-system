@@ -85,11 +85,11 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5etycw8Y5KQP2Hv",
         "type": "attack",
-        "label": "Attack",
+        "label": "Monkey Kings Crown",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
@@ -106,17 +106,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5ea6wGRePqH7YGW",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "concussed",
-            "kind": "condition",
-            "ranks": 3,
-            "label": "Concussed"
-          }
-        ],
+        "label": "Crown: Concussed",
         "save": {
           "abilities": [
             "str"
@@ -125,18 +117,35 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "concussed",
+            "kind": "condition",
+            "ranks": 3,
+            "label": "Concussed"
+          }
+        ],
+        "text": "On a hit. Failure: 3 Concussed.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "chain-2-parsed1",
+        "id": "n5ee9ETBT00rV2LL",
         "type": "save",
-        "label": "Chain 2: Save",
+        "label": "Chain 2: everyone in range",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "concussed",
@@ -145,29 +154,18 @@
             "label": "Concussed"
           }
         ],
-        "save": {
-          "abilities": [
-            "dex"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Chain 2, instead, with 2+ creatures in your weapon's range: all of them. Failure: 2 Concussed; success: half and 1 Concussed (set it).",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll4",
-        "type": "roll",
-        "label": "Chain 2: 2d12",
-        "roll": {
-          "formula": "2d12",
-          "note": "On a failed save they take your [Weapons damage] + 2d12 and gain 2 ranks of Concussed. On a successful save, they take half damage and gains 1 rank of Concussed."
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "2d12",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -269,11 +267,11 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5etycw8Y5KQP2Hv",
               "type": "attack",
-              "label": "Attack",
+              "label": "Monkey Kings Crown",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
@@ -282,7 +280,7 @@
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(4d12) + (1d12)",
+                "extraDice": "4d12 + 1d12",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -290,17 +288,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5ea6wGRePqH7YGW",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "concussed",
-                  "kind": "condition",
-                  "ranks": 3,
-                  "label": "Concussed"
-                }
-              ],
+              "label": "Crown: Concussed",
               "save": {
                 "abilities": [
                   "str"
@@ -309,18 +299,35 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 3,
+                  "label": "Concussed"
+                }
+              ],
+              "text": "On a hit. Failure: 3 Concussed.",
               "damage": {
                 "parts": []
               }
             },
             {
-              "id": "chain-2-parsed1",
+              "id": "n5ee9ETBT00rV2LL",
               "type": "save",
-              "label": "Chain 2: Save",
+              "label": "Chain 2: everyone in range",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "concussed",
@@ -329,39 +336,28 @@
                   "label": "Concussed"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "dex"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "Chain 2, instead, with 2+ creatures in your weapon's range: all of them. Failure: 2 Concussed; success: half and 1 Concussed (set it).",
               "damage": {
-                "parts": []
-              }
-            },
-            {
-              "id": "sourceRoll4",
-              "type": "roll",
-              "label": "Chain 2: 2d12",
-              "roll": {
-                "formula": "2d12",
-                "note": "On a failed save they take your [Weapons damage] + 2d12 and gain 2 ranks of Concussed. On a successful save, they take half damage and gains 1 rank of Concussed."
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d12) + (1d12)",
+                    "type": ""
+                  }
+                ]
               }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5etycw8Y5KQP2Hv",
               "type": "attack",
-              "label": "Attack",
+              "label": "Monkey Kings Crown",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
@@ -370,7 +366,7 @@
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(4d12) + (2d12)",
+                "extraDice": "4d12 + 2d12",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -378,17 +374,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5ea6wGRePqH7YGW",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "concussed",
-                  "kind": "condition",
-                  "ranks": 3,
-                  "label": "Concussed"
-                }
-              ],
+              "label": "Crown: Concussed",
               "save": {
                 "abilities": [
                   "str"
@@ -397,18 +385,35 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 3,
+                  "label": "Concussed"
+                }
+              ],
+              "text": "On a hit. Failure: 3 Concussed.",
               "damage": {
                 "parts": []
               }
             },
             {
-              "id": "chain-2-parsed1",
+              "id": "n5ee9ETBT00rV2LL",
               "type": "save",
-              "label": "Chain 2: Save",
+              "label": "Chain 2: everyone in range",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "concussed",
@@ -417,35 +422,25 @@
                   "label": "Concussed"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "dex"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "Chain 2, instead, with 2+ creatures in your weapon's range: all of them. Failure: 2 Concussed; success: half and 1 Concussed (set it).",
               "damage": {
-                "parts": []
-              }
-            },
-            {
-              "id": "sourceRoll4",
-              "type": "roll",
-              "label": "Chain 2: 2d12",
-              "roll": {
-                "formula": "2d12",
-                "note": "On a failed save they take your [Weapons damage] + 2d12 and gain 2 ranks of Concussed. On a successful save, they take half damage and gains 1 rank of Concussed."
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d12) + (2d12)",
+                    "type": ""
+                  }
+                ]
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "f69fa4fab70e66b3"
