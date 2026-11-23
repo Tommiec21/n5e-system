@@ -85,16 +85,20 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eaCGjWL2XQC6lQ",
         "type": "attack",
-        "label": "Attack",
+        "label": "Sun Spear",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
         "damage": {
           "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
             {
               "formula": "4d8",
               "type": "fire"
@@ -103,10 +107,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eQeJ1pAIqd9YER",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Sun Spear: cone",
         "save": {
           "abilities": [
             "dex"
@@ -115,16 +118,16 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Hostile creatures you choose in a 15-foot cone from the target. Failure: half the fire damage rolled (by hand); success: none.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "chain-2-parsed1",
+        "id": "n5exmEM35IlRQZRg",
         "type": "damage",
         "label": "Chain 2: Damage",
         "damage": {
@@ -134,7 +137,8 @@
               "type": "fire"
             }
           ]
-        }
+        },
+        "text": "Chain 2: the next time your weapon deals damage before the end of your next turn."
       }
     ],
     "featureType": "active",
@@ -220,9 +224,127 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eaCGjWL2XQC6lQ",
+              "type": "attack",
+              "label": "Sun Spear",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(4d8) + (1d8)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eQeJ1pAIqd9YER",
+              "type": "save",
+              "label": "Sun Spear: cone",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Hostile creatures you choose in a 15-foot cone from the target. Failure: half the fire damage rolled (by hand); success: none.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5exmEM35IlRQZRg",
+              "type": "damage",
+              "label": "Chain 2: Damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "text": "Chain 2: the next time your weapon deals damage before the end of your next turn."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eaCGjWL2XQC6lQ",
+              "type": "attack",
+              "label": "Sun Spear",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(4d8) + (2d8)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eQeJ1pAIqd9YER",
+              "type": "save",
+              "label": "Sun Spear: cone",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Hostile creatures you choose in a 15-foot cone from the target. Failure: half the fire damage rolled (by hand); success: none.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5exmEM35IlRQZRg",
+              "type": "damage",
+              "label": "Chain 2: Damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "text": "Chain 2: the next time your weapon deals damage before the end of your next turn."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "df4eaad46b8ce1b6"

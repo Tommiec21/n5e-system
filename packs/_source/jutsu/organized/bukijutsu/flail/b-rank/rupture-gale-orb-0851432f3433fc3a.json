@@ -86,17 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ev1POJj1kDmaoE",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "prone",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Prone"
-          }
-        ],
+        "label": "Rupture Gale Orb",
         "save": {
           "abilities": [
             "str"
@@ -105,21 +97,50 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Every creature in your weapon's range (Chain 2: one at disadvantage). Failure: pulled 10 feet toward you.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "4d6",
-        "roll": {
-          "formula": "4d6",
-          "note": "All creatures whose movement ends within 5 feet of you is struck by the small gale around you, dealing your [Weapons damage] + 4d6 and are knocked Prone."
+        "id": "n5e66RBXSY81yhUD",
+        "type": "damage",
+        "label": "Gale: within 5 feet",
+        "damage": {
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "4d6",
+              "type": ""
+            }
+          ]
+        },
+        "text": "Every creature ending within 5 feet of you."
+      },
+      {
+        "id": "n5eW6OPNzSyJs9vw",
+        "type": "effect",
+        "label": "Gale: Prone",
+        "effect": {
+          "name": "Gale: Prone",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ]
         }
       }
     ],
@@ -206,9 +227,131 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5ev1POJj1kDmaoE",
+              "type": "save",
+              "label": "Rupture Gale Orb",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Every creature in your weapon's range (Chain 2: one at disadvantage). Failure: pulled 10 feet toward you.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e66RBXSY81yhUD",
+              "type": "damage",
+              "label": "Gale: within 5 feet",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "Every creature ending within 5 feet of you."
+            },
+            {
+              "id": "n5eW6OPNzSyJs9vw",
+              "type": "effect",
+              "label": "Gale: Prone",
+              "effect": {
+                "name": "Gale: Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ev1POJj1kDmaoE",
+              "type": "save",
+              "label": "Rupture Gale Orb",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Every creature in your weapon's range (Chain 2: one at disadvantage). Failure: pulled 10 feet toward you.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e66RBXSY81yhUD",
+              "type": "damage",
+              "label": "Gale: within 5 feet",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "Every creature ending within 5 feet of you."
+            },
+            {
+              "id": "n5eW6OPNzSyJs9vw",
+              "type": "effect",
+              "label": "Gale: Prone",
+              "effect": {
+                "name": "Gale: Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "a56cd4d54013a971"

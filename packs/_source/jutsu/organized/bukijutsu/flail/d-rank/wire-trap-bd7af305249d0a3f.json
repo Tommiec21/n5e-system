@@ -85,9 +85,19 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e8kAvuWdOhfFZy",
         "type": "save",
-        "label": "Save",
+        "label": "Wire Trap",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "grappled",
@@ -102,18 +112,7 @@
             "label": "Prone"
           }
         ],
-        "save": {
-          "abilities": [
-            "dex"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Reaction, on another creature's turn: creatures within 10 feet of the point (passive Perception below the DC: disadvantage). Failure: Grappled, Prone and pulled 10 feet. Stay within 15 feet of the point or it ends.",
         "damage": {
           "parts": []
         }
@@ -183,7 +182,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "405b2bbb2a52157d"

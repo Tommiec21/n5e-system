@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eLNPlZNsO2qI6R",
         "type": "attack",
-        "label": "Attack",
+        "label": "Stanchion Sky Pillar",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Spend an Action (and optionally a Bonus action and/or a Reaction); leap 20 feet after.",
         "damage": {
           "parts": []
         },
@@ -106,23 +107,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5euWtCQWs40ZvzL",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "staggered",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Staggered"
-          },
-          {
-            "key": "stunned",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Stunned"
-          }
-        ],
+        "label": "+ Bonus action: Staggered",
         "save": {
           "abilities": [
             "con"
@@ -131,26 +118,110 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "staggered",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Staggered"
+          }
+        ],
+        "text": "Failure: Staggered.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "chain-2-parsed1",
-        "type": "attack",
-        "label": "Chain 2: Attack",
-        "attack": {
-          "discipline": "tai",
-          "range": "melee",
-          "count": 1
+        "id": "n5ewBjM1YG12DwH4",
+        "type": "save",
+        "label": "+ Reaction: vulnerable",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
         },
+        "inflicts": [],
+        "text": "Failure: vulnerable to the next damage from someone other than you before the end of your next turn.",
         "damage": {
           "parts": []
         }
+      },
+      {
+        "id": "n5em2Rv5lwB9wYD2",
+        "type": "save",
+        "label": "+ Both: Stunned",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "stunned",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Stunned"
+          }
+        ],
+        "text": "Failure: Stunned and vulnerable to the next damage from someone else. Chain 3: you regain your Action; a jutsu with it: 2 Exhaustion.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eyE6SBmHSbkhF5",
+        "type": "attack",
+        "label": "Chain 2: landing attack",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "A hostile creature adjacent to where you land.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5e2Fs3BTkmeYgon",
+        "type": "effect",
+        "label": "Chain 3: 2 Exhaustion",
+        "effect": {
+          "name": "Chain 3: 2 Exhaustion",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "exhaustion",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Exhaustion"
+            }
+          ]
+        },
+        "text": "Using the regained Action to cast a jutsu."
       }
     ],
     "featureType": "active",
@@ -238,7 +309,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "405991324385ff7a"

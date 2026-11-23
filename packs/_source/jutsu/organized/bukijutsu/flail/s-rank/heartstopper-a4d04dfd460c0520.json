@@ -85,11 +85,11 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eFvyOnFOhBTqaF",
         "type": "attack",
-        "label": "Attack",
+        "label": "Heartstopper",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
@@ -106,9 +106,19 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eunLTm86CcNBSf",
         "type": "save",
-        "label": "Save",
+        "label": "Heartstopper: Weakened, Staggered",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "weakened",
@@ -123,20 +133,49 @@
             "label": "Staggered"
           }
         ],
-        "save": {
-          "abilities": [
-            "con"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "On a hit. Failure: 3 Weakened and Staggered. Chain 3: failing by 5+: Stunned until the end of its next turn; by 10+: Unconscious for 1 minute.",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5em7HH1M0DCJsLf",
+        "type": "effect",
+        "label": "Chain 3: failed by 5+: Stunned",
+        "effect": {
+          "name": "Chain 3: failed by 5+: Stunned",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "stunned",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Stunned"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eHExxk07NNNiIs",
+        "type": "effect",
+        "label": "Chain 3: failed by 10+: Unconscious",
+        "effect": {
+          "name": "Chain 3: failed by 10+: Unconscious",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "unconscious",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Unconscious"
+            }
+          ]
         }
       }
     ],
@@ -219,7 +258,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "5230b2127c99713f"

@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e1CzNqEs2anNon",
         "type": "attack",
-        "label": "Attack",
+        "label": "Coiling Strike",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Bonus action, right after a Bukijutsu that dealt damage: move 10 feet first. Chain 2: pushed 10 feet; hitting a solid surface: Prone.",
         "damage": {
           "parts": []
         },
@@ -106,17 +107,9 @@
         }
       },
       {
-        "id": "chain-1-parsed1",
+        "id": "n5eV6clB78VeOfHG",
         "type": "save",
-        "label": "Chain 1: Save",
-        "inflicts": [
-          {
-            "key": "bleed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bleed"
-          }
-        ],
+        "label": "Chain 1: Bleed",
         "save": {
           "abilities": [
             "con"
@@ -125,10 +118,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Chain 1. Failure: 1 Bleed.",
         "damage": {
           "parts": []
         }
@@ -213,7 +213,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "f8b8034e73078532"

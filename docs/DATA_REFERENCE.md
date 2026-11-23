@@ -1028,3 +1028,7 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 ### [Weapon damage] in damage formulas (STD6f F-D5)
 
 - A damage part's formula may use `@weapon`: the wielded weapon's die, extra dice and flat bonus (`workflow/activity-buttons.mjs`, via `attack.mjs pickWeapon` and `weaponAttackSpec`). A part with no type takes the weapon's first damage type; the weapon's ability modifier is used when the activity sets none.
+
+### Weapon damage die in damage formulas (STD6f F-D5)
+
+- A damage part's formula may use `@wdie`: the wielded weapon's damage die alone, with no extra dice, bonus or modifier (`workflow/activity-buttons.mjs`). A part with no type takes the weapon's first damage type.

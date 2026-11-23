@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eIB2azFmBlr0lP",
         "type": "attack",
-        "label": "Attack",
+        "label": "Branding Fury",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
+        "text": "Every creature you choose within 5 feet of a point in range. On a hit: Branded until the end of your next turn (A-Rank: 1 minute or a full-turn action): allies' attacks against it can't have disadvantage.",
         "damage": {
           "parts": []
         },
@@ -102,8 +103,29 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "2"
         }
+      },
+      {
+        "id": "n5ebkCneub2UxQy1",
+        "type": "effect",
+        "label": "Chain 2: Weakened",
+        "effect": {
+          "name": "Chain 2: Weakened",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Weakened"
+            }
+          ]
+        },
+        "text": "Chain 2: 2 Weakened while Branded."
       }
     ],
     "featureType": "active",
@@ -192,53 +214,125 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eIB2azFmBlr0lP",
               "type": "attack",
-              "label": "Attack",
+              "label": "Branding Fury",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
+              "text": "Every creature you choose within 5 feet of a point in range. On a hit: Branded until the end of your next turn (A-Rank: 1 minute or a full-turn action): allies' attacks against it can't have disadvantage.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(3d6) + (1d6)",
+                "extraDice": "3d6 + 1d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
               }
+            },
+            {
+              "id": "n5ebkCneub2UxQy1",
+              "type": "effect",
+              "label": "Chain 2: Weakened",
+              "effect": {
+                "name": "Chain 2: Weakened",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Weakened"
+                  }
+                ]
+              },
+              "text": "Chain 2: 2 Weakened while Branded."
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eIB2azFmBlr0lP",
               "type": "attack",
-              "label": "Attack",
+              "label": "Branding Fury",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
+              "text": "Every creature you choose within 5 feet of a point in range. On a hit: Branded until the end of your next turn (A-Rank: 1 minute or a full-turn action): allies' attacks against it can't have disadvantage.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(3d6) + (2d6)",
+                "extraDice": "3d6 + 2d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5ebkCneub2UxQy1",
+              "type": "effect",
+              "label": "Chain 2: Weakened",
+              "effect": {
+                "name": "Chain 2: Weakened",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Weakened"
+                  }
+                ]
+              },
+              "text": "Chain 2: 2 Weakened while Branded."
+            },
+            {
+              "id": "n5evs8XFzlPJFvfm",
+              "type": "save",
+              "label": "S-Rank: Branded pain",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "At the start of each of its turns while Branded. Failure: Dazed.",
+              "damage": {
+                "parts": []
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "a56cd4d54013a971"

@@ -85,23 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eSWiCCz3nIXa8o",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "bruised",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bruised"
-          },
-          {
-            "key": "prone",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Prone"
-          }
-        ],
+        "label": "Benthic Descent",
         "save": {
           "abilities": [
             "str"
@@ -109,22 +95,70 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "A creature in range (S-Rank: every creature in your weapon's range). Failure: thrown 20 feet up; success: half.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "4d6",
+              "type": ""
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "4d6",
-        "roll": {
-          "formula": "4d6",
-          "note": "A target creature in range must make a Strength Saving Throw, taking your [Weapons damage] + 4d6 and are thrown 20 feet into the air on a failure or half as much on a success."
+        "id": "n5eJbPoOXMCTcZqv",
+        "type": "attack",
+        "label": "Follow-up",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Launched: at advantage (S-Rank: one roll against each). Chain 2: standing from this Prone takes its full movement.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "4d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eYtPAeUCtiULjU",
+        "type": "effect",
+        "label": "Follow-up: Bruised and Prone",
+        "effect": {
+          "name": "Follow-up: Bruised and Prone",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            },
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ]
         }
       }
     ],
@@ -219,7 +253,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "df4eaad46b8ce1b6"

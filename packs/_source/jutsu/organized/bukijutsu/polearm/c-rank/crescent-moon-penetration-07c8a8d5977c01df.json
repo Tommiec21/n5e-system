@@ -85,10 +85,31 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eRGQuWeInoGlPB",
+        "type": "attack",
+        "label": "Crescent Moon Penetration",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Two-handed grip.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "4d10",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5epAJBpq3IlqBnq",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Through the heart",
         "save": {
           "abilities": [
             "dex"
@@ -97,48 +118,30 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "On a hit. Failure: roll the 4d20; four 20s kill it (Chain 1: three 20s, reroll one d20 once; Chain 2: +1d4 per Weakened rank to one d20, max 5).",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll2",
+        "id": "n5ekvGIcRNO2iLJS",
         "type": "roll",
-        "label": "4d10",
-        "roll": {
-          "formula": "4d10",
-          "note": "Make a single melee taijutsu attack dealing your [Weapons damage] + 4d10 and the affected creature must make a Dexterity saving throw, on a failed save, you must roll 4d20. If you rolled four 20’s, you immediately kill them as you pierce straight through their heart."
-        }
-      },
-      {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "4d20",
+        "label": "Heart dice",
         "roll": {
           "formula": "4d20",
-          "note": "Make a single melee taijutsu attack dealing your [Weapons damage] + 4d10 and the affected creature must make a Dexterity saving throw, on a failed save, you must roll 4d20. If you rolled four 20’s, you immediately kill them as you pierce straight through their heart."
+          "note": "Four 20s (Chain 1: three) pierce its heart."
         }
       },
       {
-        "id": "sourceRoll4",
+        "id": "n5eYP738u7M7p3hJ",
         "type": "roll",
-        "label": "Chain 1: d20",
+        "label": "Chain 2: +d4",
         "roll": {
-          "formula": "d20",
-          "note": "Chain 1: You instead only need three 20’s to pierce the targets heart and you can reroll 1 of the rolled d20 of your choice, once."
-        }
-      },
-      {
-        "id": "sourceRoll5",
-        "type": "roll",
-        "label": "Chain 2: d4",
-        "roll": {
-          "formula": "d4",
-          "note": "Chain 2: If the affected creature has ranks of Weakened, for each rank, you can add one d4 to a single d20 rolled (up to a max of 5), adding it to the result of the d20, treating results of 20 or higher, as a 20."
+          "formula": "1d4",
+          "note": "Per Weakened rank (max 5), onto one d20."
         }
       }
     ],
@@ -261,9 +264,203 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eRGQuWeInoGlPB",
+              "type": "attack",
+              "label": "Crescent Moon Penetration",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Two-handed grip.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "4d10 + 1d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5epAJBpq3IlqBnq",
+              "type": "save",
+              "label": "Through the heart",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit. Failure: roll the 4d20; four 20s kill it (Chain 1: three 20s, reroll one d20 once; Chain 2: +1d4 per Weakened rank to one d20, max 5).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ekvGIcRNO2iLJS",
+              "type": "roll",
+              "label": "Heart dice",
+              "roll": {
+                "formula": "4d20",
+                "note": "Four 20s (Chain 1: three) pierce its heart."
+              }
+            },
+            {
+              "id": "n5eYP738u7M7p3hJ",
+              "type": "roll",
+              "label": "Chain 2: +d4",
+              "roll": {
+                "formula": "1d4",
+                "note": "Per Weakened rank (max 5), onto one d20."
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eRGQuWeInoGlPB",
+              "type": "attack",
+              "label": "Crescent Moon Penetration",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Two-handed grip.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "4d10 + 2d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5epAJBpq3IlqBnq",
+              "type": "save",
+              "label": "Through the heart",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit. Failure: roll the 4d20; four 20s kill it (Chain 1: three 20s, reroll one d20 once; Chain 2: +1d4 per Weakened rank to one d20, max 5).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ekvGIcRNO2iLJS",
+              "type": "roll",
+              "label": "Heart dice",
+              "roll": {
+                "formula": "4d20",
+                "note": "Four 20s (Chain 1: three) pierce its heart."
+              }
+            },
+            {
+              "id": "n5eYP738u7M7p3hJ",
+              "type": "roll",
+              "label": "Chain 2: +d4",
+              "roll": {
+                "formula": "1d4",
+                "note": "Per Weakened rank (max 5), onto one d20."
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eRGQuWeInoGlPB",
+              "type": "attack",
+              "label": "Crescent Moon Penetration",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Two-handed grip.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "4d10 + 3d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5epAJBpq3IlqBnq",
+              "type": "save",
+              "label": "Through the heart",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit. Failure: roll the 4d20; four 20s kill it (Chain 1: three 20s, reroll one d20 once; Chain 2: +1d4 per Weakened rank to one d20, max 5).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ekvGIcRNO2iLJS",
+              "type": "roll",
+              "label": "Heart dice",
+              "roll": {
+                "formula": "4d20",
+                "note": "Four 20s (Chain 1: three) pierce its heart."
+              }
+            },
+            {
+              "id": "n5eYP738u7M7p3hJ",
+              "type": "roll",
+              "label": "Chain 2: +d4",
+              "roll": {
+                "formula": "1d4",
+                "note": "Per Weakened rank (max 5), onto one d20."
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Higher ranks: +1d10 damage (the buttons) or +1 d20 rolled, your choice."
+        }
+      ]
     }
   },
   "folder": "f8b8034e73078532"

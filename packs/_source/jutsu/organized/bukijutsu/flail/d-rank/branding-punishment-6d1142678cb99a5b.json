@@ -85,13 +85,13 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eCmy41vVpOgDn4",
         "type": "attack",
-        "label": "Attack",
+        "label": "Branding Punishment",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
         "damage": {
           "parts": []
@@ -102,21 +102,13 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "2"
         }
       },
       {
-        "id": "chain-1-parsed1",
+        "id": "n5egn5HUs97IU9w4",
         "type": "save",
-        "label": "Chain 1: Save",
-        "inflicts": [
-          {
-            "key": "bruised",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bruised"
-          }
-        ],
+        "label": "Chain 1: Branded",
         "save": {
           "abilities": [
             "con"
@@ -125,10 +117,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "Chain 1. Failure: Branded until the end of your next turn (B-Rank: 1 minute or until it spends a full-turn action): Bruised while Branded.",
         "damage": {
           "parts": []
         }
@@ -223,9 +222,217 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eCmy41vVpOgDn4",
+              "type": "attack",
+              "label": "Branding Punishment",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "1d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5egn5HUs97IU9w4",
+              "type": "save",
+              "label": "Chain 1: Branded",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Chain 1. Failure: Branded until the end of your next turn (B-Rank: 1 minute or until it spends a full-turn action): Bruised while Branded.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eCmy41vVpOgDn4",
+              "type": "attack",
+              "label": "Branding Punishment",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "1d8 + 1d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5egn5HUs97IU9w4",
+              "type": "save",
+              "label": "Chain 1: Branded",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Chain 1. Failure: Branded until the end of your next turn (B-Rank: 1 minute or until it spends a full-turn action): Bruised while Branded.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eCmy41vVpOgDn4",
+              "type": "attack",
+              "label": "Branding Punishment",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "1d8 + 1d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5egn5HUs97IU9w4",
+              "type": "save",
+              "label": "Chain 1: Branded",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Chain 1. Failure: Branded until the end of your next turn (B-Rank: 1 minute or until it spends a full-turn action): Bruised while Branded.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eCmy41vVpOgDn4",
+              "type": "attack",
+              "label": "Branding Punishment",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "1d8 + 2d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5egn5HUs97IU9w4",
+              "type": "save",
+              "label": "Chain 1: Branded",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Chain 1. Failure: Branded until the end of your next turn (B-Rank: 1 minute or until it spends a full-turn action): Bruised while Branded.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "C-Rank and higher: +1 Reach for this casting."
+        }
+      ]
     }
   },
   "folder": "405b2bbb2a52157d"

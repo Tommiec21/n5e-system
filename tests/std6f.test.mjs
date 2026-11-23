@@ -111,3 +111,32 @@ test("STD6f F3 Bukijutsu I: Shinobi Basics and Blade reviewed at every rank; wea
   // Note-only action economy.
   assert.deepEqual(jutsu("bukijutsu/shinobi-basics", "baton-pass").system.activities, []);
 });
+
+test("STD6f F4 Bukijutsu II: Flail and Polearm reviewed at every rank; Amps kept; @wdie", () => {
+  for ( const section of ["bukijutsu/flail", "bukijutsu/polearm"] ) {
+    const t = table(section);
+    const items = sectionJutsu(section, t.ranks);
+    assert.equal(items.size, 33, section);
+    for ( const [id, { doc }] of items ) {
+      assert.ok(t.features[id], id);
+      assert.equal(doc.flags.n5e.reviewed, true, id);
+    }
+  }
+  assert.deepEqual(tableProblems().filter(p => p.startsWith("jutsu/")), []);
+  // Kept Amps (King Q-J2), including Demon Hunter's and Overcomer's beside new buttons.
+  for ( const [s, id] of [["flail", "warriors-zone"], ["flail", "sparking-flail"], ["polearm", "enhanced-blocking"], ["polearm", "demon-hunter"], ["polearm", "overcomer"]] )
+    assert.ok(jutsu(`bukijutsu/${s}`, id).system.activities.some(a => a.effect?.amp === `jutsu-${id}`), id);
+  assert.ok(!jutsu("bukijutsu/polearm", "overcomer").system.activities.some(a => a.type === "save"));
+  // Extra attacks at higher ranks.
+  const holes = jutsu("bukijutsu/polearm", "holes-of-despair").flags.n5e.jutsuBookImport.activitiesByRank;
+  assert.equal(holes.C[0].attack.count, 2);
+  assert.equal(holes.B[0].attack.count, 3);
+  assert.equal(jutsu("bukijutsu/flail", "whip-like-strikes").flags.n5e.jutsuBookImport.activitiesByRank.S[0].attack.count, 5);
+  // The weapon damage die alone (@wdie) and twice [Weapon damage].
+  assert.equal(jutsu("bukijutsu/polearm", "merciless-havoc").system.activities[0].damage.parts[0].formula, "@wdie + 2d8");
+  assert.equal(jutsu("bukijutsu/flail", "chain-kill").system.activities[0].damage.parts[0].formula, "@weapon + @weapon");
+  // Delayed conditions are effect buttons, not save results.
+  const aura = jutsu("bukijutsu/flail", "abyssal-aura").system.activities;
+  assert.ok(aura.filter(a => a.type === "save").every(a => !a.inflicts?.length));
+  assert.deepEqual(aura.filter(a => a.type === "effect").map(a => a.effect.inflicts[0].key), ["demoralized", "concussed", "dazzled"]);
+});

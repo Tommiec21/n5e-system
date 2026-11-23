@@ -86,17 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5enawJBvC75cU3J",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "dazed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Dazed"
-          }
-        ],
+        "label": "Murderous Stabbing Link",
         "save": {
           "abilities": [
             "dex"
@@ -105,22 +97,50 @@
             "source": "discipline"
           },
           "onSuccess": "half",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "A 30 by 5-foot line from you. Failure: Dazed (Chain 2: −20 speed until the end of its next turn); success: half, nothing else.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "2d10",
+              "type": ""
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "2d10",
-        "roll": {
-          "formula": "2d10",
-          "note": "On a failed save they take your [Weapons damage] + 2d10 and becomes Dazed or half as much damage on a success and no further effects."
-        }
+        "id": "n5e8DKFwgttuL7Dp",
+        "type": "effect",
+        "label": "Chain 1: Prone",
+        "effect": {
+          "name": "Chain 1: Prone",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ]
+        },
+        "text": "Chain 1: a creature that failed; pushed 10 feet along the line."
       }
     ],
     "featureType": "active",
@@ -206,9 +226,188 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5enawJBvC75cU3J",
+              "type": "save",
+              "label": "Murderous Stabbing Link",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "A 30 by 5-foot line from you. Failure: Dazed (Chain 2: −20 speed until the end of its next turn); success: half, nothing else.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d10) + (1d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e8DKFwgttuL7Dp",
+              "type": "effect",
+              "label": "Chain 1: Prone",
+              "effect": {
+                "name": "Chain 1: Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
+              },
+              "text": "Chain 1: a creature that failed; pushed 10 feet along the line."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5enawJBvC75cU3J",
+              "type": "save",
+              "label": "Murderous Stabbing Link",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "A 30 by 5-foot line from you. Failure: Dazed (Chain 2: −20 speed until the end of its next turn); success: half, nothing else.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d10) + (2d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e8DKFwgttuL7Dp",
+              "type": "effect",
+              "label": "Chain 1: Prone",
+              "effect": {
+                "name": "Chain 1: Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
+              },
+              "text": "Chain 1: a creature that failed; pushed 10 feet along the line."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5enawJBvC75cU3J",
+              "type": "save",
+              "label": "Murderous Stabbing Link",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "A 30 by 5-foot line from you. Failure: Dazed (Chain 2: −20 speed until the end of its next turn); success: half, nothing else.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d10) + (3d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e8DKFwgttuL7Dp",
+              "type": "effect",
+              "label": "Chain 1: Prone",
+              "effect": {
+                "name": "Chain 1: Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
+              },
+              "text": "Chain 1: a creature that failed; pushed 10 feet along the line."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "f8b8034e73078532"

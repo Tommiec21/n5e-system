@@ -85,13 +85,13 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eVymemvhsAfPjc",
         "type": "attack",
-        "label": "Attack",
+        "label": "Lashing Attack",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 3
         },
         "damage": {
           "parts": []
@@ -102,21 +102,13 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "3"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5edXCXr21PFqwiV",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "prone",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Prone"
-          }
-        ],
+        "label": "Lashing: Prone",
         "save": {
           "abilities": [
             "con"
@@ -125,13 +117,41 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Two hits on one creature. Failure: Prone; standing takes its full movement; Flail attacks against it +2 damage while Prone.",
         "damage": {
           "parts": []
         }
+      },
+      {
+        "id": "n5eB5b8FhwcKzkKV",
+        "type": "effect",
+        "label": "Chain 2: Staggered",
+        "effect": {
+          "name": "Chain 2: Staggered",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            }
+          ]
+        },
+        "text": "Chain 2: a creature that failed."
       }
     ],
     "featureType": "active",
@@ -217,9 +237,153 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eVymemvhsAfPjc",
+              "type": "attack",
+              "label": "Lashing Attack",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "2d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "3"
+              }
+            },
+            {
+              "id": "n5edXCXr21PFqwiV",
+              "type": "save",
+              "label": "Lashing: Prone",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Two hits on one creature. Failure: Prone; standing takes its full movement; Flail attacks against it +2 damage while Prone.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eB5b8FhwcKzkKV",
+              "type": "effect",
+              "label": "Chain 2: Staggered",
+              "effect": {
+                "name": "Chain 2: Staggered",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ]
+              },
+              "text": "Chain 2: a creature that failed."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eVymemvhsAfPjc",
+              "type": "attack",
+              "label": "Lashing Attack",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "2d6 + 1d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "3"
+              }
+            },
+            {
+              "id": "n5edXCXr21PFqwiV",
+              "type": "save",
+              "label": "Lashing: Prone",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Two hits on one creature. Failure: Prone; standing takes its full movement; Flail attacks against it +2 damage while Prone.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eB5b8FhwcKzkKV",
+              "type": "effect",
+              "label": "Chain 2: Staggered",
+              "effect": {
+                "name": "Chain 2: Staggered",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ]
+              },
+              "text": "Chain 2: a creature that failed."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "a56cd4d54013a971"

@@ -95,7 +95,7 @@ export function damageButtons(parts, { label = "Damage", abilityMod = null, genj
   weaponId = "", activity = null, itemId = "", critExtra = "" } = {}) {
   if ( !parts?.length ) return "";
   const json = JSON.stringify(parts.map(p => ({ formula: p.formula, type: p.type ?? "", ...(p.alsoAs ? { alsoAs: p.alsoAs } : {}) })));
-  const shown = parts.map(p => `${p.formula.replace(/@unarmed/g, "[Unarmed]").replace(/@weapon/g, "[Weapon]")}${p.type ? ` ${typeLabel([p.type])}` : ""}${p.alsoAs ? ` and the same ${typeLabel([p.alsoAs])}` : ""}`).join(" + ");
+  const shown = parts.map(p => `${p.formula.replace(/@unarmed/g, "[Unarmed]").replace(/@weapon/g, "[Weapon]").replace(/@wdie/g, "[Weapon die]")}${p.type ? ` ${typeLabel([p.type])}` : ""}${p.alsoAs ? ` and the same ${typeLabel([p.alsoAs])}` : ""}`).join(" + ");
   const common = `${activity ? attr("activity", activity.id || activity.label || activity.type) + attr("once", activity.oncePerTurn ? 1 : "") + attr("activation", activity.activation || "") + attr("item", itemId) : ""}${attr("parts", json)}${attr("weapon-id", weaponId)}${attr("mod", abilityMod)}${attr("gen", genjutsu ? 1 : "")}${attr("weapon", weapon ? 1 : "")}${attr("pierce", pierce || "")}${cost?.pool ? attr("cost", JSON.stringify(cost)) : ""}${attr("crit-extra", critExtra)}`;
   return `<button type="button" data-n5e-act="damage"${common}><i class="fa-solid fa-burst"></i> ${esc(label)}: ${esc(shown)}</button>
     <button type="button" class="crit" data-n5e-act="damage" data-crit="1"${common}>Critical</button>`;
@@ -422,6 +422,16 @@ async function executeActivityClick(message, button, event, { healingTargets = n
           formula = formula.replace(/@weapon/g, `(${wf})`);
           p.type ||= ws.damage.types[0] ?? "";
           abilityMod = abilityMod ?? ws.abilityMod;
+        }
+        // STD6f F-D5: "@wdie" is the wielded weapon's damage die alone ("your weapon damage die + 2d8"):
+        // no extra dice, bonus or modifier; the part takes the weapon's type unless it names one.
+        if ( formula.includes("@wdie") ) {
+          const { pickWeapon, weaponAttackSpec } = await import("./attack.mjs");
+          heldWeapon ??= await pickWeapon(actor, null);
+          if ( !heldWeapon ) return null;
+          const ws = weaponAttackSpec(actor, heldWeapon);
+          formula = formula.replace(/@wdie/g, ws.damage.die.replace(/min\d+|r<\d+/g, ""));
+          p.type ||= ws.damage.types[0] ?? "";
         }
         // Advantage on these named damage dice (rule elements, King 2026-11-13): roll twice, keep one.
         // Deadly X: a crit adds the weapon's own dice after doubling (first part only).

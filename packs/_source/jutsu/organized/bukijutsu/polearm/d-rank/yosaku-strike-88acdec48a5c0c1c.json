@@ -85,9 +85,19 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eiUOL47gtejUCA",
         "type": "save",
-        "label": "Save",
+        "label": "Yosaku Strike",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "prone",
@@ -96,29 +106,18 @@
             "label": "Prone"
           }
         ],
-        "save": {
-          "abilities": [
-            "dex"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Bonus action: a 15-foot cone. Failure: Prone; success: half.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "1d10",
-        "roll": {
-          "formula": "1d10",
-          "note": "On a failed save you deal your [Weapons damage] + 1d10 and they are knocked Prone on a failed save or half as much on a successful one.      At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the damage by 1d10."
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "1d10",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -205,9 +204,163 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eiUOL47gtejUCA",
+              "type": "save",
+              "label": "Yosaku Strike",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Bonus action: a 15-foot cone. Failure: Prone; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(1d10) + (1d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eiUOL47gtejUCA",
+              "type": "save",
+              "label": "Yosaku Strike",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Bonus action: a 15-foot cone. Failure: Prone; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(1d10) + (2d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eiUOL47gtejUCA",
+              "type": "save",
+              "label": "Yosaku Strike",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Bonus action: a 15-foot cone. Failure: Prone; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(1d10) + (3d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eiUOL47gtejUCA",
+              "type": "save",
+              "label": "Yosaku Strike",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Bonus action: a 15-foot cone. Failure: Prone; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(1d10) + (4d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "204c67326d5fa509"

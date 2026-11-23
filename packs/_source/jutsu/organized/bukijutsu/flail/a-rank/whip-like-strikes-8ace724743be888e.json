@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5emVziSwXWsrZB9",
         "type": "attack",
-        "label": "Attack",
+        "label": "Whip Like Strikes",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 4
         },
+        "text": "One creature; count the hits after the first. Chain 3: per hit, +10 speed and push it 10 feet.",
         "damage": {
           "parts": []
         },
@@ -102,21 +103,13 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "4"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eqO1J1EKtPZjOH",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "bruised",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bruised"
-          }
-        ],
+        "label": "Whip: Bruised",
         "save": {
           "abilities": [
             "con"
@@ -125,12 +118,39 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "Failure: Bruised.",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5eVgvnBrTEvHMbV",
+        "type": "effect",
+        "label": "Chain 2: critical: Prone",
+        "effect": {
+          "name": "Chain 2: critical: Prone",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ]
         }
       }
     ],
@@ -211,9 +231,82 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5emVziSwXWsrZB9",
+              "type": "attack",
+              "label": "Whip Like Strikes",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 5
+              },
+              "text": "One creature; count the hits after the first. Chain 3: per hit, +10 speed and push it 10 feet.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "1d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "5"
+              }
+            },
+            {
+              "id": "n5eqO1J1EKtPZjOH",
+              "type": "save",
+              "label": "Whip: Bruised",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Failure: Bruised.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eVgvnBrTEvHMbV",
+              "type": "effect",
+              "label": "Chain 2: critical: Prone",
+              "effect": {
+                "name": "Chain 2: critical: Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "3d2e2375a5c550b3"

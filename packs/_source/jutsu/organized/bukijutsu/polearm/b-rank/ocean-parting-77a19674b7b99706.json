@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e9mBbdXQ2jvK0F",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Ocean Parting",
         "save": {
           "abilities": [
             "str"
@@ -97,22 +96,43 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "A 20-foot cube at a point in your weapon's reach. Failure: the damage and knocked up 30 feet. Allies within 10 feet of you can use their reaction to cast a 1-Action Ninjutsu or Genjutsu at one of them.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "3d10",
+              "type": ""
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "3d10",
-        "roll": {
-          "formula": "3d10",
-          "note": "All creatures within a 20-foot cube centered the chosen point must make a Strength Saving throw, taking your [Weapons damage] + 3d10 on a failure and being knocked up 30 feet."
-        }
+        "id": "n5erPTlG8YbLs4NA",
+        "type": "effect",
+        "label": "Chain 2: Dazed",
+        "effect": {
+          "name": "Chain 2: Dazed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            }
+          ]
+        },
+        "text": "Chain 2: a creature that failed (+1 round if an ally damages it in this casting)."
       }
     ],
     "featureType": "active",
@@ -198,9 +218,115 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5e9mBbdXQ2jvK0F",
+              "type": "save",
+              "label": "Ocean Parting",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 20-foot cube at a point in your weapon's reach. Failure: the damage and knocked up 30 feet. Allies within 10 feet of you can use their reaction to cast a 1-Action Ninjutsu or Genjutsu at one of them.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(3d10) + (1d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5erPTlG8YbLs4NA",
+              "type": "effect",
+              "label": "Chain 2: Dazed",
+              "effect": {
+                "name": "Chain 2: Dazed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  }
+                ]
+              },
+              "text": "Chain 2: a creature that failed (+1 round if an ally damages it in this casting)."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e9mBbdXQ2jvK0F",
+              "type": "save",
+              "label": "Ocean Parting",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 20-foot cube at a point in your weapon's reach. Failure: the damage and knocked up 30 feet. Allies within 10 feet of you can use their reaction to cast a 1-Action Ninjutsu or Genjutsu at one of them.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(3d10) + (2d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5erPTlG8YbLs4NA",
+              "type": "effect",
+              "label": "Chain 2: Dazed",
+              "effect": {
+                "name": "Chain 2: Dazed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  }
+                ]
+              },
+              "text": "Chain 2: a creature that failed (+1 round if an ally damages it in this casting)."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "df4eaad46b8ce1b6"

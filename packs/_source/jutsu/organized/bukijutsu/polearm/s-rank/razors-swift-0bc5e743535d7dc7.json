@@ -85,25 +85,50 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5epDiWucrsyarAC",
         "type": "attack",
-        "label": "Attack",
+        "label": "Razor’s Swift",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Your [Weapon damage] only.",
         "damage": {
           "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "5d8",
-        "roll": {
-          "formula": "5d8",
-          "note": "Creatures that fail take damage equal to your weapons damage die+5d8 and are pulled 15 feet toward you, or half as much damage on success with no additional effects."
+        "id": "n5eeGVPfxBpEDOEq",
+        "type": "save",
+        "label": "Razor’s Swift: pull",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Every creature within your weapon's reach + 10 feet. Failure: pulled 15 feet toward you; success: half, nothing else.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "@wdie + 5d8",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -178,7 +203,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b84ef5a229ff9738"

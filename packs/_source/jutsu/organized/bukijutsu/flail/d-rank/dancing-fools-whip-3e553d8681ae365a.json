@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e86mPydB2PBAfy",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Dancing Fool’s Whip",
         "save": {
           "abilities": [
             "dex"
@@ -96,23 +95,44 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "A 5-foot radius at a point in your weapon's range. Success: half.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "1d10",
+              "type": ""
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "1d10",
-        "roll": {
-          "formula": "1d10",
-          "note": "On a failed save, the target takes your weapons damage + 1d10 or half as much on a successful save."
-        }
+        "id": "n5eTdAsd2ZBecdZj",
+        "type": "effect",
+        "label": "Chain 1: Bleed",
+        "effect": {
+          "name": "Chain 1: Bleed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            }
+          ]
+        },
+        "text": "Chain 1: each creature that failed."
       }
     ],
     "featureType": "active",
@@ -192,9 +212,219 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5e86mPydB2PBAfy",
+              "type": "save",
+              "label": "Dancing Fool’s Whip",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 5-foot radius at a point in your weapon's range. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(1d10) + (1d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eTdAsd2ZBecdZj",
+              "type": "effect",
+              "label": "Chain 1: Bleed",
+              "effect": {
+                "name": "Chain 1: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ]
+              },
+              "text": "Chain 1: each creature that failed."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5e86mPydB2PBAfy",
+              "type": "save",
+              "label": "Dancing Fool’s Whip",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 5-foot radius at a point in your weapon's range. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(1d10) + (2d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eTdAsd2ZBecdZj",
+              "type": "effect",
+              "label": "Chain 1: Bleed",
+              "effect": {
+                "name": "Chain 1: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ]
+              },
+              "text": "Chain 1: each creature that failed."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e86mPydB2PBAfy",
+              "type": "save",
+              "label": "Dancing Fool’s Whip",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 5-foot radius at a point in your weapon's range. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(1d10) + (3d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eTdAsd2ZBecdZj",
+              "type": "effect",
+              "label": "Chain 1: Bleed",
+              "effect": {
+                "name": "Chain 1: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ]
+              },
+              "text": "Chain 1: each creature that failed."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e86mPydB2PBAfy",
+              "type": "save",
+              "label": "Dancing Fool’s Whip",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 5-foot radius at a point in your weapon's range. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(1d10) + (4d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eTdAsd2ZBecdZj",
+              "type": "effect",
+              "label": "Chain 1: Bleed",
+              "effect": {
+                "name": "Chain 1: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ]
+              },
+              "text": "Chain 1: each creature that failed."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "405b2bbb2a52157d"

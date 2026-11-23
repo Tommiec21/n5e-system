@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eBLdATnNiYbIg2",
         "type": "attack",
-        "label": "Attack",
+        "label": "Blue Moon",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
+        "text": "One creature.",
         "damage": {
           "parts": []
         },
@@ -102,16 +103,26 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "2"
         }
       },
       {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "3d10",
-        "roll": {
-          "formula": "3d10",
-          "note": "If both attacks are successful, you can make a third attack dealing 3d10 damage of your weapons type."
+        "id": "n5eC2QHpguvNLKEw",
+        "type": "attack",
+        "label": "Both hit: third attack",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "If both hit; your weapon's damage type (set it).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d10",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -207,71 +218,100 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eBLdATnNiYbIg2",
               "type": "attack",
-              "label": "Attack",
+              "label": "Blue Moon",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
+              "text": "One creature.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(1d10) + (1d10)",
+                "extraDice": "1d10",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
               }
             },
             {
-              "id": "sourceRoll3",
-              "type": "roll",
-              "label": "3d10",
-              "roll": {
-                "formula": "3d10",
-                "note": "If both attacks are successful, you can make a third attack dealing 3d10 damage of your weapons type."
+              "id": "n5eC2QHpguvNLKEw",
+              "type": "attack",
+              "label": "Both hit: third attack",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "If both hit; your weapon's damage type (set it).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (1d10)",
+                    "type": ""
+                  }
+                ]
               }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eBLdATnNiYbIg2",
               "type": "attack",
-              "label": "Attack",
+              "label": "Blue Moon",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
+              "text": "One creature.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(1d10) + (2d10)",
+                "extraDice": "1d10",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
               }
             },
             {
-              "id": "sourceRoll3",
-              "type": "roll",
-              "label": "3d10",
-              "roll": {
-                "formula": "3d10",
-                "note": "If both attacks are successful, you can make a third attack dealing 3d10 damage of your weapons type."
+              "id": "n5eC2QHpguvNLKEw",
+              "type": "attack",
+              "label": "Both hit: third attack",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "If both hit; your weapon's damage type (set it).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (2d10)",
+                    "type": ""
+                  }
+                ]
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Chain 2: until the end of your next turn, your next Flail Bukijutsu can use any Chain effect at this Chain rank."
+        }
+      ]
     }
   },
   "folder": "a56cd4d54013a971"

@@ -85,17 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eex4Ep7yFkRu0O",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "weakened",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Weakened"
-          }
-        ],
+        "label": "Dual Ring",
         "save": {
           "abilities": [
             "dex"
@@ -104,12 +96,24 @@
             "source": "discipline"
           },
           "onSuccess": "half",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          }
+        ],
+        "text": "Every creature within 15 feet; those in your weapon's range at disadvantage and 2 Weakened on a failure. Failure: 1 Weakened; success: half.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "@weapon + @weapon",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -202,9 +206,85 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eex4Ep7yFkRu0O",
+              "type": "save",
+              "label": "Dual Ring",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Every creature within 15 feet; those in your weapon's range at disadvantage and 2 Weakened on a failure. Failure: 1 Weakened; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon + @weapon",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eex4Ep7yFkRu0O",
+              "type": "save",
+              "label": "Dual Ring",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Every creature within 15 feet; those in your weapon's range at disadvantage and 2 Weakened on a failure. Failure: 1 Weakened; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon + @weapon + @weapon",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Chain 2: roll your [Weapon damage]: DR equal to it until the start of your next turn."
+        }
+      ]
     }
   },
   "folder": "df4eaad46b8ce1b6"

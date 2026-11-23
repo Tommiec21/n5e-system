@@ -85,25 +85,42 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eaWG6p0NFcdhrr",
         "type": "attack",
-        "label": "Attack",
+        "label": "Merciless Havoc",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 7
         },
+        "text": "Each roll against every creature in a 15-foot line; no critical hits. All 7 hit: Prone and speed 0 until the end of its next turn.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "@wdie + 2d8",
+              "type": ""
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d8",
-        "roll": {
-          "formula": "2d8",
-          "note": "On hit, targets take your weapons damage die+2d8. A target that is hit by all 7 attacks is knocked Prone and has their movement speed reduced to 0 until the end of their next turn. These attacks cannot score a critical hit."
+        "id": "n5eFv2yrllRF4tNV",
+        "type": "effect",
+        "label": "All 7 hit: Prone",
+        "effect": {
+          "name": "All 7 hit: Prone",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ]
         }
       }
     ],
@@ -179,7 +196,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b84ef5a229ff9738"

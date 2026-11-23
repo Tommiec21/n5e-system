@@ -1,6 +1,6 @@
 # STD6f function spec: jutsu as data
 
-Status: **Approved by King 2026-11-22 (Q-J1 yes; Q-J2 fix and finish). F1 Taijutsu I (0.87.0-alpha.1) and F2 Taijutsu II (0.88.0-alpha.1) built: Taijutsu is done. F3 Bukijutsu I (0.89.0-alpha.1) built. Next: F4 Flail + Polearm.**
+Status: **Approved by King 2026-11-22 (Q-J1 yes; Q-J2 fix and finish). F1 Taijutsu I (0.87.0-alpha.1) and F2 Taijutsu II (0.88.0-alpha.1) built: Taijutsu is done. F3 Bukijutsu I (0.89.0-alpha.1) and F4 Bukijutsu II (0.90.0-alpha.1) built. Next: F5 Power + Ammunition.**
 
 Plan: `docs/STD_SPEC.md` (STD6f: "Every jutsu's riders as Active Effects and elements, emitted by an upgraded importer where the pattern is regular; a review table per section for King"). Same method as the clan pass (`docs/STD6e_SPEC.md`).
 
@@ -75,7 +75,7 @@ Plan: `docs/STD_SPEC.md` (STD6f: "Every jutsu's riders as Active Effects and ele
 | F-D2 | Fury tracker from data | A jutsu or stance that gains or spends Fury says so in its data (`flags.n5e.trackers: ["fury"]`); the tracker's name-and-text test is removed from `view-models/combat.mjs`. |
 | F-D3 | Conditions with no save | An effect button's `inflicts` (`[{key, kind, ranks}]`) puts conditions and states on its targets with no save ("knocked Prone", "Bruised and Staggered"); for a creature you don't own it goes through the GM's client with no approval step (owner intent `inflictConditions`). Built in F1. |
 | F-D4 | [Unarmed damage] in healing | A heal's formula can use `@unarmed` (Iron Guard's temporary hit points: twice your [Unarmed damage] + your level). Built in F1. |
-| F-D5 | [Weapon damage] in damage | A damage formula can use `@weapon`: your wielded weapon's die, extra dice and flat bonus (you pick the weapon if you hold several); the part takes the weapon's damage type when it has none, and the weapon's ability modifier. For saves that deal "[Weapon damage] + 1d8 earth" and the like. Built in F3. |
+| F-D5 | [Weapon damage] in damage | A damage formula can use `@weapon`: your wielded weapon's die, extra dice and flat bonus (you pick the weapon if you hold several); the part takes the weapon's damage type when it has none, and the weapon's ability modifier. For saves that deal "[Weapon damage] + 1d8 earth" and the like. Built in F3. F4 adds `@wdie`: the weapon's damage die alone ("your weapon damage die + 2d8"), no bonus or modifier. |
 | F-D6 | More as needed | Anything a section needs that the engine can't do yet is listed here before it's built. |
 
 ## King's answers (2026-11-22)
@@ -124,9 +124,40 @@ Review tables: `docs/jutsu/bukijutsu-shinobi-basics-automation.md` (68 jutsu: 64
 
 - Breath of Earth: Smash and Suicide Bombing "half as much on a failed save / failure"; Nobunaga's Rage upcast "above C-Rank" (it's B); Flying Swallow: Flurry Guard upcast "above B-Rank" (it's C); Breath of Moon: Catastrophe upcast "above B-Rank" (it's A); Grass-Cutting Strike "Male a"; Breath of Wind: Gusts' cost "12 Chakra, Chain"; Sword Aura: Monochrome holds an "Inverted" box; Infernal Slash's upcast runs into Chain 3; Danger Zone's Chain 1 runs into its upcast; Blade of Sin: Pride "Weapon, Ninjutsu…" as a damage type.
 
+## F4 Bukijutsu II (0.90.0-alpha.1)
+
+Review tables: `docs/jutsu/bukijutsu-flail-automation.md` (33 jutsu: 31 partly automated, 2 notes only) and `docs/jutsu/bukijutsu-polearm-automation.md` (33 jutsu: 31 partly automated, 2 notes only). Tables: `content/automation/jutsu/bukijutsu-flail.json` and `bukijutsu-polearm.json`.
+
+- **Kept** (Q-J2): the Warriors Zone, Sparking Flail, Enhanced Blocking, Demon Hunter and Overcomer Amps (Demon Hunter and Overcomer with their other buttons fixed: Overcomer's wrong save removed, its 1d4 kept).
+- **Fixed and finished:** weapon strikes with their number of attacks and extra dice; saves dealing [Weapon damage] plus dice; Chain effects as their own buttons; per-rank dice, extra attacks (Holes of Despair, Whip Like Strikes) and upcast riders (Bone Crusher's Prone, Branding Fury's S-Rank save, Bounding Blossom's Weakened, Offensive Dodge's +3 AC, Iron Web Dome's +1d8 and broken-dome damage); twice [Weapon damage] (Chain Kill, Dual Ring, Iron Web Dome); the weapon die alone (Razor's Swift, Merciless Havoc, F-D5 `@wdie`); no-save conditions (Impaler Stab, Heartstopper's Chain 3, Stanchion Sky Pillar's Exhaustion); Abyssal Aura's conditions as effect buttons for its next Flail damage.
+- **Notes only:** Iron Web Deflection, Toads Whipping Tongue, Achilles Heel, Hollow Silhouette.
+- **By hand:** Branded (not a condition; its effects are on the buttons), the weapon's damage type on untyped dice (Blue Moon's third attack, Dancing Fool's Embrace's tighten), contested checks (Iron Grasp, Hollow Silhouette), AC and DR penalties (Moon-Fang Piercer, Spear Assault), temporary hit points from [Weapon damage] (Bounding Blossom, Offensive Dodge).
+- **No new holds:** no Flail or Polearm jutsu summons a creature.
+
+## Text issues found in F4
+
+- Branding Punishment: "two melee taijutsu attack"; its Chain 1 save has no "on a failed save" and its S-Rank line has no period.
+- Dancing Fool's Embrace: "weapons ranged" and "no damage of effect".
+- Iron Web Dome: "Weapons Damagte".
+- Hurricane Flail: "withing".
+- Lashing Attack and others: "Weapons damage" / "Weapon's damage" spelled several ways.
+- Crucifixion: range "Self (" is cut off.
+- Collateral Damage: "Saving thrown"; its success result is unclear about which creature takes half.
+- Iron Grasp, Whip Like Strikes, Annihilation, Heartstopper: saves with no "on a failed save" wording; Whip Like Strikes "+10-movement speed".
+- Annihilation: "being throw straight back".
+- Yosaku Strike and Benthic Descent: the upcast runs into the paragraph; Benthic Descent "conditionas".
+- Bounding Blossom and Murderous Stabbing Link: "withing"; Bounding Blossom's A-Rank line says "at A-Rank" (A only, or A and higher?) — built as A-Rank and higher.
+- Sun Spear: "Fire damage and on hit."
+- All-In Attack: "who case jutsu".
+- Ocean Parting: no success result.
+- Spear Assault: no success result.
+- Merciless Havoc: keywords list Ninjutsu, not Chain, on a Bukijutsu.
+- Razor's Swift: "must a Strength saving throw"; range "Weapons reach".
+
 ## Progress log
 
 - 2026-11-22 King: "Next batch" (after STD6e E8). Claude: spec proposed from a survey of the jutsu pack. Nothing built.
 - 2026-11-22 King: "QJ1. Yes. QJ2. Fix/Finish the rest. Next Batch". Claude: F1 Taijutsu I built (91 jutsu); F-D3 (no-save conditions) and F-D4 ([Unarmed damage] in healing); published 0.87.0-alpha.1.
 - 2026-11-22 King: "Next batch." Claude: F2 Taijutsu II built (55 jutsu): Taijutsu complete; published 0.88.0-alpha.1. No new questions.
 - 2026-11-22 King: "Next batch." Claude: F3 Bukijutsu I built (103 jutsu: Shinobi Basics and Blade); F-D5 ([Weapon damage] in damage formulas); published 0.89.0-alpha.1. No new questions.
+- 2026-11-23 King: "Next batch." Claude: F4 Bukijutsu II built (66 jutsu: Flail and Polearm); F-D5 adds @wdie (the weapon damage die alone); published 0.90.0-alpha.1. No new questions.

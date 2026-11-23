@@ -85,9 +85,19 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ecG0i2VM33agrQ",
         "type": "save",
-        "label": "Save",
+        "label": "Bounding Blossom",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "prone",
@@ -96,18 +106,7 @@
             "label": "Prone"
           }
         ],
-        "save": {
-          "abilities": [
-            "str"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Leap to within 5 feet of a point within 20 feet; creatures but you within 15 feet of it (Chain 2: within 5 feet at disadvantage). Failure: Prone (A-Rank: and 1 Weakened); success: half, nothing else.",
         "damage": {
           "parts": [
             {
@@ -198,9 +197,19 @@
         "activitiesByRank": {
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5ecG0i2VM33agrQ",
               "type": "save",
-              "label": "Save",
+              "label": "Bounding Blossom",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "prone",
@@ -209,18 +218,7 @@
                   "label": "Prone"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "str"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "Leap to within 5 feet of a point within 20 feet; creatures but you within 15 feet of it (Chain 2: within 5 feet at disadvantage). Failure: Prone (A-Rank: and 1 Weakened); success: half, nothing else.",
               "damage": {
                 "parts": [
                   {
@@ -233,17 +231,9 @@
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5ecG0i2VM33agrQ",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "prone",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Prone"
-                }
-              ],
+              "label": "Bounding Blossom",
               "save": {
                 "abilities": [
                   "str"
@@ -251,11 +241,24 @@
                 "dc": {
                   "source": "discipline"
                 },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
+                "onSuccess": "half",
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Leap to within 5 feet of a point within 20 feet; creatures but you within 15 feet of it (Chain 2: within 5 feet at disadvantage). Failure: Prone (A-Rank: and 1 Weakened); success: half, nothing else.",
               "damage": {
                 "parts": [
                   {
@@ -268,17 +271,9 @@
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5ecG0i2VM33agrQ",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "prone",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Prone"
-                }
-              ],
+              "label": "Bounding Blossom",
               "save": {
                 "abilities": [
                   "str"
@@ -286,11 +281,24 @@
                 "dc": {
                   "source": "discipline"
                 },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
+                "onSuccess": "half",
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Leap to within 5 feet of a point within 20 feet; creatures but you within 15 feet of it (Chain 2: within 5 feet at disadvantage). Failure: Prone (A-Rank: and 1 Weakened); success: half, nothing else.",
               "damage": {
                 "parts": [
                   {
@@ -303,7 +311,14 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Chain 1: temporary hit points equal to your [Weapon damage] until the start of your next turn (roll it)."
+        }
+      ]
     }
   },
   "folder": "f8b8034e73078532"

@@ -84,17 +84,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eHHyXDeHQni7BH",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "restrained",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Restrained"
-          }
-        ],
+        "label": "Mobility jutsu: Restrained",
         "save": {
           "abilities": [
             "dex"
@@ -103,10 +95,37 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "A creature casting a Mobility (M) jutsu in the area. Failure: Restrained.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5e0ODFN5TwNDPvv",
+        "type": "save",
+        "label": "Weapon attack: caught",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "A creature making a weapon attack in the area. Failure: the attack fails.",
         "damage": {
           "parts": []
         }
@@ -176,7 +195,14 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "1 minute to cast, 1 hour: a 60-foot cube of wires; difficult terrain; creatures you choose are unaffected."
+        }
+      ]
     }
   },
   "folder": "a56cd4d54013a971"

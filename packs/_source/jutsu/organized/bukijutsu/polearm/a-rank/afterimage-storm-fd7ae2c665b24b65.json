@@ -86,14 +86,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eLWUzeP9XrODu3",
         "type": "attack",
-        "label": "Attack",
+        "label": "Afterimage Storm",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 3
         },
+        "text": "Each roll against every creature in your weapon's range. A critical hit: their saves at disadvantage. Chain 3: +20 speed this turn; a 1-Action Bukijutsu as a Bonus action at half cost.",
         "damage": {
           "parts": []
         },
@@ -103,21 +104,13 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "3"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eJGJlhXNwtQRS1",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "bruised",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bruised"
-          }
-        ],
+        "label": "Afterimage: Bruised",
         "save": {
           "abilities": [
             "str"
@@ -126,13 +119,41 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "Hit at least once. Failure: Bruised.",
         "damage": {
           "parts": []
         }
+      },
+      {
+        "id": "n5expMmYg13JpF87",
+        "type": "effect",
+        "label": "Chain 2: Prone and failed: Stunned",
+        "effect": {
+          "name": "Chain 2: Prone and failed: Stunned",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "stunned",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Stunned"
+            }
+          ]
+        },
+        "text": "Chain 2: Prone when attacked and failed; until the end of its next turn."
       }
     ],
     "featureType": "active",
@@ -221,38 +242,31 @@
         "activitiesByRank": {
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eLWUzeP9XrODu3",
               "type": "attack",
-              "label": "Attack",
+              "label": "Afterimage Storm",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 3
               },
+              "text": "Each roll against every creature in your weapon's range. A critical hit: their saves at disadvantage. Chain 3: +20 speed this turn; a 1-Action Bukijutsu as a Bonus action at half cost.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(3d6) + (1d6)",
+                "extraDice": "3d6 + 1d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "3"
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eJGJlhXNwtQRS1",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "bruised",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bruised"
-                }
-              ],
+              "label": "Afterimage: Bruised",
               "save": {
                 "abilities": [
                   "str"
@@ -261,18 +275,47 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Hit at least once. Failure: Bruised.",
               "damage": {
                 "parts": []
               }
+            },
+            {
+              "id": "n5expMmYg13JpF87",
+              "type": "effect",
+              "label": "Chain 2: Prone and failed: Stunned",
+              "effect": {
+                "name": "Chain 2: Prone and failed: Stunned",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "stunned",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Stunned"
+                  }
+                ]
+              },
+              "text": "Chain 2: Prone when attacked and failed; until the end of its next turn."
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "405991324385ff7a"

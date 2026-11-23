@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eDliWOSf535Mjh",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Chain Pull",
         "save": {
           "abilities": [
             "str"
@@ -97,10 +96,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "grappled",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Grappled"
+          }
+        ],
+        "text": "Failure: Grappled and pulled to you; resave at the end of each of its turns. Chain 1: one more creature.",
         "damage": {
           "parts": []
         }
@@ -172,7 +178,14 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "+5 feet range per rank above D."
+        }
+      ]
     }
   },
   "folder": "405b2bbb2a52157d"

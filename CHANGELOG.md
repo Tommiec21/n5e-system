@@ -1,3 +1,11 @@
+## 0.90.0-alpha.1 — STD6f F4 Bukijutsu II
+
+King 2026-11-23: "Next batch." Bukijutsu Flail (33) and Polearm (33) reviewed at every rank (62 partly automated, 4 notes only). Review tables docs/jutsu/bukijutsu-flail-automation.md and bukijutsu-polearm-automation.md; spec docs/STD6f_SPEC.md (F4).
+
+- **Weapon damage die (F-D5):** a damage formula can use `@wdie`, the wielded weapon's damage die alone, for "your weapon damage die + 2d8".
+- **Bukijutsu II:** weapon strikes with their number of attacks and extra dice; saves dealing [Weapon damage] plus dice; Chain buttons; per-rank dice, extra attacks and upcast riders; twice [Weapon damage] (Chain Kill, Dual Ring); no-save conditions; Abyssal Aura's delayed conditions as effect buttons.
+- **Kept** (King Q-J2): the Warriors Zone, Sparking Flail, Enhanced Blocking, Demon Hunter and Overcomer Amps; Overcomer's wrong save button removed.
+
 ## 0.89.0-alpha.1 — STD6f F3 Bukijutsu I
 
 King 2026-11-22: "Next batch." Bukijutsu Shinobi Basics (68) and Blade (35) reviewed at every rank (96 partly automated, 7 notes only). Review tables docs/jutsu/bukijutsu-shinobi-basics-automation.md and bukijutsu-blade-automation.md; spec docs/STD6f_SPEC.md (F3).

@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ehQsQSBIO5QQ0G",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Dancing Fool’s Embrace",
         "save": {
           "abilities": [
             "str"
@@ -97,22 +96,32 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Hostile creatures within 5 feet of a point in your weapon's range. Failure: bound: can't move beyond your weapon's range; you can't use the weapon. Success: nothing.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "3d10",
-        "roll": {
-          "formula": "3d10",
-          "note": "As a Bonus action, while you have creature(s) bound by this jutsu, you can tighten the embrace, dealing 3d10 damage to all bound creatures using your weapons damage type."
-        }
+        "id": "n5e3Fd9TiLPHeVjV",
+        "type": "damage",
+        "label": "Tighten (Bonus action)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d10",
+              "type": ""
+            }
+          ]
+        },
+        "text": "Every bound creature; your weapon's damage type (set it)."
       }
     ],
     "featureType": "active",
@@ -198,9 +207,140 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5ehQsQSBIO5QQ0G",
+              "type": "save",
+              "label": "Dancing Fool’s Embrace",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Hostile creatures within 5 feet of a point in your weapon's range. Failure: bound: can't move beyond your weapon's range; you can't use the weapon. Success: nothing.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e3Fd9TiLPHeVjV",
+              "type": "damage",
+              "label": "Tighten (Bonus action)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (1d10)",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "Every bound creature; your weapon's damage type (set it)."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ehQsQSBIO5QQ0G",
+              "type": "save",
+              "label": "Dancing Fool’s Embrace",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Hostile creatures within 5 feet of a point in your weapon's range. Failure: bound: can't move beyond your weapon's range; you can't use the weapon. Success: nothing.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e3Fd9TiLPHeVjV",
+              "type": "damage",
+              "label": "Tighten (Bonus action)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (2d10)",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "Every bound creature; your weapon's damage type (set it)."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ehQsQSBIO5QQ0G",
+              "type": "save",
+              "label": "Dancing Fool’s Embrace",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Hostile creatures within 5 feet of a point in your weapon's range. Failure: bound: can't move beyond your weapon's range; you can't use the weapon. Success: nothing.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e3Fd9TiLPHeVjV",
+              "type": "damage",
+              "label": "Tighten (Bonus action)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (3d10)",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "Every bound creature; your weapon's damage type (set it)."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Concentration: no chakra to maintain."
+        }
+      ]
     }
   },
   "folder": "0e415a5f84ce5a5f"
