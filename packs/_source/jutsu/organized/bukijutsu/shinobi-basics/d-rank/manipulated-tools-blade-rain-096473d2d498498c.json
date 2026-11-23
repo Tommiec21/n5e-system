@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eeXd0YR0lPAKUF",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Blade Rain",
         "save": {
           "abilities": [
             "dex"
@@ -96,32 +95,33 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "A 10-foot cube within 60 feet. Success: half. Chain 1: difficult terrain until the end of your next turn.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "piercing"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "3d6",
-        "roll": {
-          "formula": "3d6",
-          "note": "On a failed save, they take 3d6 in piercing damage or half as much on a success."
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "Chain 1: 4",
-        "roll": {
-          "formula": "4",
-          "note": "The first time a creature would walk through any affected space, they take 4 piercing damage from the scattered weaponry protruding from the ground."
-        }
+        "id": "n5eDF5dmCL5aLCAX",
+        "type": "damage",
+        "label": "Chain 1: walking through",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4",
+              "type": "piercing"
+            }
+          ]
+        },
+        "text": "The first time a creature walks through it."
       }
     ],
     "featureType": "active",
@@ -207,9 +207,175 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eeXd0YR0lPAKUF",
+              "type": "save",
+              "label": "Blade Rain",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 10-foot cube within 60 feet. Success: half. Chain 1: difficult terrain until the end of your next turn.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eDF5dmCL5aLCAX",
+              "type": "damage",
+              "label": "Chain 1: walking through",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "text": "The first time a creature walks through it."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eeXd0YR0lPAKUF",
+              "type": "save",
+              "label": "Blade Rain",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 10-foot cube within 60 feet. Success: half. Chain 1: difficult terrain until the end of your next turn.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eDF5dmCL5aLCAX",
+              "type": "damage",
+              "label": "Chain 1: walking through",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "text": "The first time a creature walks through it."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eeXd0YR0lPAKUF",
+              "type": "save",
+              "label": "Blade Rain",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 10-foot cube within 60 feet. Success: half. Chain 1: difficult terrain until the end of your next turn.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (3d6)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eDF5dmCL5aLCAX",
+              "type": "damage",
+              "label": "Chain 1: walking through",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "text": "The first time a creature walks through it."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eeXd0YR0lPAKUF",
+              "type": "save",
+              "label": "Blade Rain",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 10-foot cube within 60 feet. Success: half. Chain 1: difficult terrain until the end of your next turn.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (4d6)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eDF5dmCL5aLCAX",
+              "type": "damage",
+              "label": "Chain 1: walking through",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "text": "The first time a creature walks through it."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "1b8bbde86064544a"

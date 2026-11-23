@@ -87,17 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eD71ixyYw2E4fT",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "bleed",
-            "kind": "condition",
-            "ranks": 2,
-            "label": "Bleeding"
-          }
-        ],
+        "label": "Breath of Wind: Gusts",
         "save": {
           "abilities": [
             "dex"
@@ -105,13 +97,24 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Creatures you choose in a 10 by 30-foot line. Failure: 2 Bleed (Chain 2: thrown to the end, Prone and Dazed); success: half, nothing else.",
         "damage": {
           "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
             {
               "formula": "2d8",
               "type": "wind"
@@ -206,17 +209,9 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eD71ixyYw2E4fT",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "bleed",
-                  "kind": "condition",
-                  "ranks": 2,
-                  "label": "Bleeding"
-                }
-              ],
+              "label": "Breath of Wind: Gusts",
               "save": {
                 "abilities": [
                   "dex"
@@ -224,13 +219,24 @@
                 "dc": {
                   "source": "discipline"
                 },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
+                "onSuccess": "half",
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Creatures you choose in a 10 by 30-foot line. Failure: 2 Bleed (Chain 2: thrown to the end, Prone and Dazed); success: half, nothing else.",
               "damage": {
                 "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
                   {
                     "formula": "(2d8) + (1d8)",
                     "type": "wind"
@@ -241,17 +247,9 @@
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eD71ixyYw2E4fT",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "bleed",
-                  "kind": "condition",
-                  "ranks": 2,
-                  "label": "Bleeding"
-                }
-              ],
+              "label": "Breath of Wind: Gusts",
               "save": {
                 "abilities": [
                   "dex"
@@ -259,13 +257,24 @@
                 "dc": {
                   "source": "discipline"
                 },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
+                "onSuccess": "half",
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Creatures you choose in a 10 by 30-foot line. Failure: 2 Bleed (Chain 2: thrown to the end, Prone and Dazed); success: half, nothing else.",
               "damage": {
                 "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
                   {
                     "formula": "(2d8) + (2d8)",
                     "type": "wind"
@@ -276,7 +285,14 @@
           ]
         },
         "manualCost": true
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its cost is 12 chakra and needs Chain."
+        }
+      ]
     }
   },
   "folder": "0c3fd08eae955429"

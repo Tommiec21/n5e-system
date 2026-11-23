@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ef3948vArpudQR",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Shockwave Slash",
         "save": {
           "abilities": [
             "dex"
@@ -97,22 +96,25 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "A 30 by 5-foot line (Chain 2: Elemental ranks −2). Failure: pushed to its end (Chain 1: disarmed and Prone); success: half.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "2d4",
-        "roll": {
-          "formula": "2d4",
-          "note": "Targets in a 30-foot line that’s 5-feet wide must make a Dexterity saving throw, taking your [Weapons damage] + 2d4 and be pushed to the end of the line into a space that can hold it on a failed save, or half as much on a successful one."
+          "parts": [
+            {
+              "formula": "@weapon + 2d4",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -199,9 +201,119 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5ef3948vArpudQR",
+              "type": "save",
+              "label": "Shockwave Slash",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 30 by 5-foot line (Chain 2: Elemental ranks −2). Failure: pushed to its end (Chain 1: disarmed and Prone); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 2d4) + (2d4)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ef3948vArpudQR",
+              "type": "save",
+              "label": "Shockwave Slash",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 30 by 5-foot line (Chain 2: Elemental ranks −2). Failure: pushed to its end (Chain 1: disarmed and Prone); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 2d4) + (4d4)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ef3948vArpudQR",
+              "type": "save",
+              "label": "Shockwave Slash",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 30 by 5-foot line (Chain 2: Elemental ranks −2). Failure: pushed to its end (Chain 1: disarmed and Prone); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 2d4) + (6d4)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The disarm and Prone are Chain 1 only."
+        }
+      ]
     }
   },
   "folder": "575645fa4b1ef057"

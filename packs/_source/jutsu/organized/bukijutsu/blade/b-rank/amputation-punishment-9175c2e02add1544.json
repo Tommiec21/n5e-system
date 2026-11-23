@@ -85,23 +85,30 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5erDbQ1JLowzMIh",
         "type": "attack",
-        "label": "Attack",
+        "label": "Amputation Punishment",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
         "damage": {
           "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "4d8",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5emkoW2MdQQL75K",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "One arm",
         "save": {
           "abilities": [
             "dex"
@@ -110,19 +117,18 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "On a hit. Failure: one arm useless (no holding, hand seals or manipulating) until the end of its next turn.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "chain-2-parsed1",
+        "id": "n5ekDCgGByOqtgBR",
         "type": "save",
-        "label": "Chain 2: Save",
-        "inflicts": [],
+        "label": "Chain 2: arms lost",
         "save": {
           "abilities": [
             "con"
@@ -131,21 +137,12 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Chain 2, a critical hit. Failure: its arms useless until healed (C-Rank or higher condition removal).",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "4d8",
-        "roll": {
-          "formula": "4d8",
-          "note": "Make a melee taijutsu attack, dealing your weapons damage + 4d8 and the target must make a Dexterity saving throw. On a failed save the target loses mobility and function in one of their arms being unable to hold things, form hand seals or manipulate objects with it until the end of their next turn."
         }
       }
     ],
@@ -226,9 +223,137 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5erDbQ1JLowzMIh",
+              "type": "attack",
+              "label": "Amputation Punishment",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "4d8 + 1d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5emkoW2MdQQL75K",
+              "type": "save",
+              "label": "One arm",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit. Failure: one arm useless (no holding, hand seals or manipulating) until the end of its next turn.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ekDCgGByOqtgBR",
+              "type": "save",
+              "label": "Chain 2: arms lost",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Chain 2, a critical hit. Failure: its arms useless until healed (C-Rank or higher condition removal).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5erDbQ1JLowzMIh",
+              "type": "attack",
+              "label": "Amputation Punishment",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "4d8 + 2d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5emkoW2MdQQL75K",
+              "type": "save",
+              "label": "One arm",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit. Failure: one arm useless (no holding, hand seals or manipulating) until the end of its next turn.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ekDCgGByOqtgBR",
+              "type": "save",
+              "label": "Chain 2: arms lost",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Chain 2, a critical hit. Failure: its arms useless until healed (C-Rank or higher condition removal).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "850448e8be1ed23c"

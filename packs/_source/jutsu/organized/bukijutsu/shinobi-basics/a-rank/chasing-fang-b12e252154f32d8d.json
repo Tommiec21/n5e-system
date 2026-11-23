@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eJcHVyGwObj5Ht",
         "type": "attack",
-        "label": "Attack",
+        "label": "Chasing Fang: throw",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "A thrown weapon.",
         "damage": {
           "parts": []
         },
@@ -106,10 +107,9 @@
         }
       },
       {
-        "id": "chain-2-parsed1",
+        "id": "n5eMwFmskbsD1zAL",
         "type": "save",
-        "label": "Chain 2: Save",
-        "inflicts": [],
+        "label": "Chain 2: guard broken",
         "save": {
           "abilities": [
             "con"
@@ -118,18 +118,50 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Chain 2, hit by the throw. Failure: DR −6 until the end of the turn.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "chain-3-parsed1",
+        "id": "n5ebTKKG48Qfuvaa",
+        "type": "attack",
+        "label": "Chasing Fang: swing",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Move adjacent to the target first.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "2d10",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5evSellFDQHga1n",
         "type": "save",
-        "label": "Chain 3: Save",
+        "label": "Chain 3: Staggered",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "staggered",
@@ -138,18 +170,7 @@
             "label": "Staggered"
           }
         ],
-        "save": {
-          "abilities": [
-            "con"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Chain 3, hit by the swing. Failure: Staggered.",
         "damage": {
           "parts": []
         }
@@ -253,20 +274,21 @@
         "activitiesByRank": {
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eJcHVyGwObj5Ht",
               "type": "attack",
-              "label": "Attack",
+              "label": "Chasing Fang: throw",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "A thrown weapon.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d10) + (1d10)",
+                "extraDice": "2d10 + 1d10",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -274,10 +296,9 @@
               }
             },
             {
-              "id": "chain-2-parsed1",
+              "id": "n5eMwFmskbsD1zAL",
               "type": "save",
-              "label": "Chain 2: Save",
-              "inflicts": [],
+              "label": "Chain 2: guard broken",
               "save": {
                 "abilities": [
                   "con"
@@ -286,18 +307,50 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Chain 2, hit by the throw. Failure: DR −6 until the end of the turn.",
               "damage": {
                 "parts": []
               }
             },
             {
-              "id": "chain-3-parsed1",
+              "id": "n5ebTKKG48Qfuvaa",
+              "type": "attack",
+              "label": "Chasing Fang: swing",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Move adjacent to the target first.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "2d10 + 1d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5evSellFDQHga1n",
               "type": "save",
-              "label": "Chain 3: Save",
+              "label": "Chain 3: Staggered",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "staggered",
@@ -306,18 +359,7 @@
                   "label": "Staggered"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "con"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "Chain 3, hit by the swing. Failure: Staggered.",
               "damage": {
                 "parts": []
               }
@@ -325,7 +367,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "7116760d98edc24e"

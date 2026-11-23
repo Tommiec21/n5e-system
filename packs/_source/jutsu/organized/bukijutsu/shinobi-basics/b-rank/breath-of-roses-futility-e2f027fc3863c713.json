@@ -87,30 +87,42 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5enIvJyOTx0Tqvg",
         "type": "attack",
-        "label": "Attack",
+        "label": "Breath of Roses: Futility",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 3
         },
+        "text": "One creature. Chain 2: its healing or temporary hit points before the end of your next turn fail and become damage.",
         "damage": {
-          "parts": []
-        },
-        "strike": {
-          "kind": "weapon",
-          "extraDice": "2d6",
-          "dieSteps": 0,
-          "pierce": 0,
-          "maximize": false,
-          "attacks": "1"
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "2d6",
+              "type": "poison"
+            }
+          ]
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eiZJsk16LbC8NV",
         "type": "save",
-        "label": "Save",
+        "label": "Futility: Weakened, Envenomed",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "weakened",
@@ -125,18 +137,7 @@
             "label": "Envenomed"
           }
         ],
-        "save": {
-          "abilities": [
-            "con"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Failure: 1 Weakened and 1 Envenomed.",
         "damage": {
           "parts": []
         }
@@ -228,30 +229,42 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5enIvJyOTx0Tqvg",
               "type": "attack",
-              "label": "Attack",
+              "label": "Breath of Roses: Futility",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 3
               },
+              "text": "One creature. Chain 2: its healing or temporary hit points before the end of your next turn fail and become damage.",
               "damage": {
-                "parts": []
-              },
-              "strike": {
-                "kind": "weapon",
-                "extraDice": "(2d6) + (1d6)",
-                "dieSteps": 0,
-                "pierce": 0,
-                "maximize": false,
-                "attacks": "1"
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": "poison"
+                  }
+                ]
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eiZJsk16LbC8NV",
               "type": "save",
-              "label": "Save",
+              "label": "Futility: Weakened, Envenomed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "weakened",
@@ -266,18 +279,7 @@
                   "label": "Envenomed"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "con"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "Failure: 1 Weakened and 1 Envenomed.",
               "damage": {
                 "parts": []
               }
@@ -285,30 +287,42 @@
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5enIvJyOTx0Tqvg",
               "type": "attack",
-              "label": "Attack",
+              "label": "Breath of Roses: Futility",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 3
               },
+              "text": "One creature. Chain 2: its healing or temporary hit points before the end of your next turn fail and become damage.",
               "damage": {
-                "parts": []
-              },
-              "strike": {
-                "kind": "weapon",
-                "extraDice": "(2d6) + (2d6)",
-                "dieSteps": 0,
-                "pierce": 0,
-                "maximize": false,
-                "attacks": "1"
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": "poison"
+                  }
+                ]
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eiZJsk16LbC8NV",
               "type": "save",
-              "label": "Save",
+              "label": "Futility: Weakened, Envenomed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "weakened",
@@ -323,18 +337,7 @@
                   "label": "Envenomed"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "con"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "Failure: 1 Weakened and 1 Envenomed.",
               "damage": {
                 "parts": []
               }
@@ -342,7 +345,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0c3fd08eae955429"

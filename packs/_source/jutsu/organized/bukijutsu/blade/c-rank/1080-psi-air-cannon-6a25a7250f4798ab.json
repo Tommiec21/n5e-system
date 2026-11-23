@@ -86,14 +86,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ewNSFX9LPEJ4P3",
         "type": "attack",
-        "label": "Attack",
+        "label": "1080 Psi Air Cannon",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "60 feet.",
         "damage": {
           "parts": []
         },
@@ -107,9 +108,19 @@
         }
       },
       {
-        "id": "chain-1-parsed1",
+        "id": "n5eQgF9WCk3iHHSB",
         "type": "save",
-        "label": "Chain 1: Save",
+        "label": "Chain 1: Bleed",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "bleed",
@@ -118,6 +129,15 @@
             "label": "Bleed"
           }
         ],
+        "text": "Chain 1. Failure: 1 Bleed.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5euUjR0oHWz210l",
+        "type": "save",
+        "label": "Chain 2: Bruised",
         "save": {
           "abilities": [
             "con"
@@ -126,18 +146,8 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
-        "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "chain-2-parsed1",
-        "type": "save",
-        "label": "Chain 2: Save",
         "inflicts": [
           {
             "key": "bruised",
@@ -146,18 +156,7 @@
             "label": "Bruised"
           }
         ],
-        "save": {
-          "abilities": [
-            "con"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Chain 2: its concentration checks at disadvantage. Failure: Bruised.",
         "damage": {
           "parts": []
         }
@@ -249,20 +248,21 @@
         "activitiesByRank": {
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5ewNSFX9LPEJ4P3",
               "type": "attack",
-              "label": "Attack",
+              "label": "1080 Psi Air Cannon",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "60 feet.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d6) + (1d6)",
+                "extraDice": "2d6 + 1d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -270,9 +270,19 @@
               }
             },
             {
-              "id": "chain-1-parsed1",
+              "id": "n5eQgF9WCk3iHHSB",
               "type": "save",
-              "label": "Chain 1: Save",
+              "label": "Chain 1: Bleed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "bleed",
@@ -281,6 +291,15 @@
                   "label": "Bleed"
                 }
               ],
+              "text": "Chain 1. Failure: 1 Bleed.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5euUjR0oHWz210l",
+              "type": "save",
+              "label": "Chain 2: Bruised",
               "save": {
                 "abilities": [
                   "con"
@@ -289,18 +308,8 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
-              "damage": {
-                "parts": []
-              }
-            },
-            {
-              "id": "chain-2-parsed1",
-              "type": "save",
-              "label": "Chain 2: Save",
               "inflicts": [
                 {
                   "key": "bruised",
@@ -309,18 +318,7 @@
                   "label": "Bruised"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "con"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "Chain 2: its concentration checks at disadvantage. Failure: Bruised.",
               "damage": {
                 "parts": []
               }
@@ -328,20 +326,21 @@
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5ewNSFX9LPEJ4P3",
               "type": "attack",
-              "label": "Attack",
+              "label": "1080 Psi Air Cannon",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "60 feet.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d6) + (2d6)",
+                "extraDice": "2d6 + 2d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -349,9 +348,19 @@
               }
             },
             {
-              "id": "chain-1-parsed1",
+              "id": "n5eQgF9WCk3iHHSB",
               "type": "save",
-              "label": "Chain 1: Save",
+              "label": "Chain 1: Bleed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "bleed",
@@ -360,6 +369,15 @@
                   "label": "Bleed"
                 }
               ],
+              "text": "Chain 1. Failure: 1 Bleed.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5euUjR0oHWz210l",
+              "type": "save",
+              "label": "Chain 2: Bruised",
               "save": {
                 "abilities": [
                   "con"
@@ -368,18 +386,8 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
-              "damage": {
-                "parts": []
-              }
-            },
-            {
-              "id": "chain-2-parsed1",
-              "type": "save",
-              "label": "Chain 2: Save",
               "inflicts": [
                 {
                   "key": "bruised",
@@ -388,18 +396,7 @@
                   "label": "Bruised"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "con"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "Chain 2: its concentration checks at disadvantage. Failure: Bruised.",
               "damage": {
                 "parts": []
               }
@@ -407,20 +404,21 @@
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5ewNSFX9LPEJ4P3",
               "type": "attack",
-              "label": "Attack",
+              "label": "1080 Psi Air Cannon",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "60 feet.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d6) + (3d6)",
+                "extraDice": "2d6 + 3d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -428,9 +426,19 @@
               }
             },
             {
-              "id": "chain-1-parsed1",
+              "id": "n5eQgF9WCk3iHHSB",
               "type": "save",
-              "label": "Chain 1: Save",
+              "label": "Chain 1: Bleed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "bleed",
@@ -439,6 +447,15 @@
                   "label": "Bleed"
                 }
               ],
+              "text": "Chain 1. Failure: 1 Bleed.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5euUjR0oHWz210l",
+              "type": "save",
+              "label": "Chain 2: Bruised",
               "save": {
                 "abilities": [
                   "con"
@@ -447,18 +464,8 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
-              "damage": {
-                "parts": []
-              }
-            },
-            {
-              "id": "chain-2-parsed1",
-              "type": "save",
-              "label": "Chain 2: Save",
               "inflicts": [
                 {
                   "key": "bruised",
@@ -467,18 +474,7 @@
                   "label": "Bruised"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "con"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "Chain 2: its concentration checks at disadvantage. Failure: Bruised.",
               "damage": {
                 "parts": []
               }
@@ -486,7 +482,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "575645fa4b1ef057"

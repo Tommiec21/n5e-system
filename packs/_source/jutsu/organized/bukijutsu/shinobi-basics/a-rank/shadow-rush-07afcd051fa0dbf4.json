@@ -84,25 +84,25 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5efduIgkAVusTEt",
         "type": "attack",
-        "label": "Attack",
+        "label": "Shadow Rush",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Bonus action: move 60 feet to within 5 feet of a creature first; then leap up.",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "4d4",
-        "roll": {
-          "formula": "4d4",
-          "note": "Next, make a melee taijutsu attack against the target creature, on a hit the target takes your weapons damage + 4d4."
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "4d4",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       }
     ],
@@ -177,7 +177,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "7116760d98edc24e"

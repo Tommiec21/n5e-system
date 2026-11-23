@@ -85,23 +85,30 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5erZFgUFLPOBdXF",
         "type": "attack",
-        "label": "Attack",
+        "label": "Blade of Sin: Envy",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
         "damage": {
           "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "6d8",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eMVR9lxlZDOGec",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Envy: steal",
         "save": {
           "abilities": [
             "con"
@@ -110,21 +117,12 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "A target with a jutsu AC or DR bonus. Failure: you take it until the start of your next turn (Chain 2: share it with an ally within 20 feet; Chain 3: your conditions move to it until the end of your next turn).",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "6d8",
-        "roll": {
-          "formula": "6d8",
-          "note": "On a hit you deal your Weapons damage+6d8. If the target creature is benefiting from a jutsu based bonus to AC or DR they must make a Constitution Saving Throw. On a failed save the benefits they receive is transferred to you as they lose it until the beginning of your next turn."
         }
       }
     ],
@@ -205,9 +203,54 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5erZFgUFLPOBdXF",
+              "type": "attack",
+              "label": "Blade of Sin: Envy",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "6d8 + 1d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eMVR9lxlZDOGec",
+              "type": "save",
+              "label": "Envy: steal",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A target with a jutsu AC or DR bonus. Failure: you take it until the start of your next turn (Chain 2: share it with an ally within 20 feet; Chain 3: your conditions move to it until the end of your next turn).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "00a31a843def3e70"

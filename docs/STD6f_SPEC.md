@@ -1,6 +1,6 @@
 # STD6f function spec: jutsu as data
 
-Status: **Approved by King 2026-11-22 (Q-J1 yes; Q-J2 fix and finish). F1 Taijutsu I (0.87.0-alpha.1) and F2 Taijutsu II (0.88.0-alpha.1) built: Taijutsu is done. Next: F3 Bukijutsu I.**
+Status: **Approved by King 2026-11-22 (Q-J1 yes; Q-J2 fix and finish). F1 Taijutsu I (0.87.0-alpha.1) and F2 Taijutsu II (0.88.0-alpha.1) built: Taijutsu is done. F3 Bukijutsu I (0.89.0-alpha.1) built. Next: F4 Flail + Polearm.**
 
 Plan: `docs/STD_SPEC.md` (STD6f: "Every jutsu's riders as Active Effects and elements, emitted by an upgraded importer where the pattern is regular; a review table per section for King"). Same method as the clan pass (`docs/STD6e_SPEC.md`).
 
@@ -75,7 +75,8 @@ Plan: `docs/STD_SPEC.md` (STD6f: "Every jutsu's riders as Active Effects and ele
 | F-D2 | Fury tracker from data | A jutsu or stance that gains or spends Fury says so in its data (`flags.n5e.trackers: ["fury"]`); the tracker's name-and-text test is removed from `view-models/combat.mjs`. |
 | F-D3 | Conditions with no save | An effect button's `inflicts` (`[{key, kind, ranks}]`) puts conditions and states on its targets with no save ("knocked Prone", "Bruised and Staggered"); for a creature you don't own it goes through the GM's client with no approval step (owner intent `inflictConditions`). Built in F1. |
 | F-D4 | [Unarmed damage] in healing | A heal's formula can use `@unarmed` (Iron Guard's temporary hit points: twice your [Unarmed damage] + your level). Built in F1. |
-| F-D5 | More as needed | Anything a section needs that the engine can't do yet is listed here before it's built. |
+| F-D5 | [Weapon damage] in damage | A damage formula can use `@weapon`: your wielded weapon's die, extra dice and flat bonus (you pick the weapon if you hold several); the part takes the weapon's damage type when it has none, and the weapon's ability modifier. For saves that deal "[Weapon damage] + 1d8 earth" and the like. Built in F3. |
+| F-D6 | More as needed | Anything a section needs that the engine can't do yet is listed here before it's built. |
 
 ## King's answers (2026-11-22)
 
@@ -109,8 +110,23 @@ Review table: `docs/jutsu/taijutsu-general-automation.md`, now the whole section
 
 - Asakujaku: Morning Peacock gives no damage type; Titan Break "you instead my three"; Dragon Crush "a part of casting" (As a part); Breaker Fist "they are shaken as become Staggered"; Heavenly Foot of Pain's Finisher deals "half damage" of an unstated roll, with its upcast run into the same paragraph; Rabbit Boss Stomp's Finisher ends "and." and its upcast says "1d8 or 1d12"; Leaf Earth Crush and Passionate Dancing Leaf "All creature in in range"; Steel Knuckle "Make a two" and "feed"; Cherry Blossom Impact's save has no "on a failed save"; Night Guy "they take deal"; Supreme Pacification "Strength of Dexterity"; Unpredictable Blows "resist being Physical conditions"; World Breaker's Finisher "until the end of their turns"; Leaf Earth Crush and World Breaker have no success result.
 
+## F3 Bukijutsu I (0.89.0-alpha.1)
+
+Review tables: `docs/jutsu/bukijutsu-shinobi-basics-automation.md` (68 jutsu: 64 partly automated, 4 notes only) and `docs/jutsu/bukijutsu-blade-automation.md` (35 jutsu: 32 partly automated, 3 notes only). Tables: `content/automation/jutsu/bukijutsu-shinobi-basics.json` and `bukijutsu-blade.json` (ranks E–S).
+
+- **Kept** (Q-J2): the Breath of Sound: Score, Guardian Knight, Blade Heart and The Zone Amps.
+- **Fixed and finished:** weapon strikes with their number of attacks and extra dice; saves and attacks dealing [Weapon damage] plus typed dice (F-D5); Chain effects as their own buttons ("Chain N: …") with the Chain text on the card; per-rank dice and extra attacks (Breath of Beasts: Fang, Breath of Wind: Claws, Flying Swallow: Penetrate, Twin Rising Dragons, Ichimonji); no-save conditions (Binding Meteor, Killer Bee's Stunned, Shadowfall's Exhaustion); self bonuses as effects (Weapon Deflect, Mikiri Counter, Flurry Guard, Silent Killing, Reapers Swing, Disarming Riposte).
+- **Notes only:** Devil's Gambit, Baton Pass, Breath of Sun: Fake Rainbow, Shinobi Cross, Sword Aura: Primary, Sword Aura: Secondary, Three Thousand Worlds (actions, reactions and choices the table runs).
+- **By hand:** a chosen damage type (Twin Rising Dragons), Chain-only conditions (the button text says which Chain), "no ability modifier" (Afterglow, Multipoint Strike, Flying Swallow: Penetrate).
+- **No new holds:** no Shinobi Basics or Blade jutsu summons a creature.
+
+## Text issues found in F3
+
+- Breath of Earth: Smash and Suicide Bombing "half as much on a failed save / failure"; Nobunaga's Rage upcast "above C-Rank" (it's B); Flying Swallow: Flurry Guard upcast "above B-Rank" (it's C); Breath of Moon: Catastrophe upcast "above B-Rank" (it's A); Grass-Cutting Strike "Male a"; Breath of Wind: Gusts' cost "12 Chakra, Chain"; Sword Aura: Monochrome holds an "Inverted" box; Infernal Slash's upcast runs into Chain 3; Danger Zone's Chain 1 runs into its upcast; Blade of Sin: Pride "Weapon, Ninjutsu…" as a damage type.
+
 ## Progress log
 
 - 2026-11-22 King: "Next batch" (after STD6e E8). Claude: spec proposed from a survey of the jutsu pack. Nothing built.
 - 2026-11-22 King: "QJ1. Yes. QJ2. Fix/Finish the rest. Next Batch". Claude: F1 Taijutsu I built (91 jutsu); F-D3 (no-save conditions) and F-D4 ([Unarmed damage] in healing); published 0.87.0-alpha.1.
 - 2026-11-22 King: "Next batch." Claude: F2 Taijutsu II built (55 jutsu): Taijutsu complete; published 0.88.0-alpha.1. No new questions.
+- 2026-11-22 King: "Next batch." Claude: F3 Bukijutsu I built (103 jutsu: Shinobi Basics and Blade); F-D5 ([Weapon damage] in damage formulas); published 0.89.0-alpha.1. No new questions.

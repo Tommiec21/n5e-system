@@ -87,31 +87,31 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eYUILi04S8icU9",
         "type": "attack",
-        "label": "Attack",
+        "label": "Breath of Earth: Justice",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
         "damage": {
-          "parts": []
-        },
-        "strike": {
-          "kind": "weapon",
-          "extraDice": "2d8",
-          "dieSteps": 0,
-          "pierce": 0,
-          "maximize": false,
-          "attacks": "1"
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "2d8",
+              "type": "earth"
+            }
+          ]
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eXHV6jIWUZHySC",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Justice: disabled",
         "save": {
           "abilities": [
             "str"
@@ -120,10 +120,10 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Each creature hit (Chain 2, both hits on one: disadvantage). Failure: no weapons or hand seals for 1 minute; resave at the end of each of its turns.",
         "damage": {
           "parts": []
         }
@@ -215,31 +215,31 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eYUILi04S8icU9",
               "type": "attack",
-              "label": "Attack",
+              "label": "Breath of Earth: Justice",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
               "damage": {
-                "parts": []
-              },
-              "strike": {
-                "kind": "weapon",
-                "extraDice": "(2d8) + (1d8)",
-                "dieSteps": 0,
-                "pierce": 0,
-                "maximize": false,
-                "attacks": "1"
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d8) + (1d8)",
+                    "type": "earth"
+                  }
+                ]
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eXHV6jIWUZHySC",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Justice: disabled",
               "save": {
                 "abilities": [
                   "str"
@@ -248,10 +248,10 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Each creature hit (Chain 2, both hits on one: disadvantage). Failure: no weapons or hand seals for 1 minute; resave at the end of each of its turns.",
               "damage": {
                 "parts": []
               }
@@ -259,31 +259,31 @@
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eYUILi04S8icU9",
               "type": "attack",
-              "label": "Attack",
+              "label": "Breath of Earth: Justice",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
               "damage": {
-                "parts": []
-              },
-              "strike": {
-                "kind": "weapon",
-                "extraDice": "(2d8) + (2d8)",
-                "dieSteps": 0,
-                "pierce": 0,
-                "maximize": false,
-                "attacks": "1"
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d8) + (2d8)",
+                    "type": "earth"
+                  }
+                ]
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eXHV6jIWUZHySC",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Justice: disabled",
               "save": {
                 "abilities": [
                   "str"
@@ -292,10 +292,10 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Each creature hit (Chain 2, both hits on one: disadvantage). Failure: no weapons or hand seals for 1 minute; resave at the end of each of its turns.",
               "damage": {
                 "parts": []
               }
@@ -303,7 +303,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0c3fd08eae955429"

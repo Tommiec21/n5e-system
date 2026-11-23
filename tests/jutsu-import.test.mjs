@@ -80,7 +80,7 @@ test("same-named Brutal Block variants are separate and prior core jutsu IDs are
 });
 
 test("conditional and repeating damage is not silently combined into one base roll", () => {
-  for ( const name of ["Mental Prison", "Medical Release: Acid Whips", "Lightning Release: Lightning Ball", "Breath of Wind: Claws"] ) {
+  for ( const name of ["Mental Prison", "Medical Release: Acid Whips", "Lightning Release: Lightning Ball"] ) {
     const doc = byName(name);
     assert.ok(doc.flags.n5e.jutsuBookImport.manual.length);
     assert.ok(doc.system.activities.every(a => (a.damage?.parts?.length ?? 0) <= 1), name);
@@ -88,6 +88,10 @@ test("conditional and repeating damage is not silently combined into one base ro
   }
   const tusk = byName("Earth Release: Lazuli Tusk");
   assert.equal(tusk.system.activities.find(a => a.type === "attack").damage.parts.length, 2, "explicit simultaneous piercing + earth is retained");
+  // Reviewed in STD6f F3: [Weapon damage] + 1d8 wind on one button, each extra hit its own roll.
+  const claws = byName("Breath of Wind: Claws").system.activities;
+  assert.deepEqual(claws.find(a => a.label === "Claws: damage").damage.parts.map(p => p.formula), ["@weapon", "1d8"]);
+  assert.ok(claws.some(a => a.label === "Each hit beyond the first"));
 });
 
 test("source-clear upcasting selects ranked damage without mutating the base or mixing in finisher damage", () => {

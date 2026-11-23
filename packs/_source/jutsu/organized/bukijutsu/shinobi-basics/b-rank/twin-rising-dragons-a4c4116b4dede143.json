@@ -85,9 +85,38 @@
     },
     "activities": [
       {
-        "id": "chain-2-parsed1",
+        "id": "n5efuEqB0rL6HhAA",
+        "type": "attack",
+        "label": "Twin Rising Dragons",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 3
+        },
+        "text": "Concentration, floating 30 feet up: an Action makes up to 3 (S-Rank: 4); bludgeoning, piercing or slashing (pick).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "slashing"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ew0FckYsNE4NnV",
         "type": "save",
-        "label": "Chain 2: Save",
+        "label": "Chain 2: by damage type",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "bruised",
@@ -108,29 +137,9 @@
             "label": "Bleed"
           }
         ],
-        "save": {
-          "abilities": [
-            "con"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Once per turn. Failure: bludgeoning Bruised, piercing Weakened, slashing Bleed (apply the one that fits).",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "5d6",
-        "roll": {
-          "formula": "5d6",
-          "note": "For the duration, as an action, you can make up to 3 ranged taijutsu attacks, dealing 5d6 Bludgeoning, Piercing or Slashing damage (your choice)."
         }
       }
     ],
@@ -211,10 +220,132 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5efuEqB0rL6HhAA",
+              "type": "attack",
+              "label": "Twin Rising Dragons",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 3
+              },
+              "text": "Concentration, floating 30 feet up: an Action makes up to 3 (S-Rank: 4); bludgeoning, piercing or slashing (pick).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (1d6)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ew0FckYsNE4NnV",
+              "type": "save",
+              "label": "Chain 2: by damage type",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                },
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Once per turn. Failure: bludgeoning Bruised, piercing Weakened, slashing Bleed (apply the one that fits).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5efuEqB0rL6HhAA",
+              "type": "attack",
+              "label": "Twin Rising Dragons",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 3
+              },
+              "text": "Concentration, floating 30 feet up: an Action makes up to 3 (S-Rank: 4); bludgeoning, piercing or slashing (pick).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (2d6)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ew0FckYsNE4NnV",
+              "type": "save",
+              "label": "Chain 2: by damage type",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                },
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Once per turn. Failure: bludgeoning Bruised, piercing Weakened, slashing Bleed (apply the one that fits).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
       },
-      "notAmp": "It grants an attack action; floating is positioning (King Q-F10)."
+      "notAmp": "It grants an attack action; floating is positioning (King Q-F10).",
+      "reviewed": true
     }
   },
   "folder": "0c3fd08eae955429"

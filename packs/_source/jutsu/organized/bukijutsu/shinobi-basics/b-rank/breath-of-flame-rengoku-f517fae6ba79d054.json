@@ -87,24 +87,26 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e8fXSFgkWNAvFC",
         "type": "attack",
-        "label": "Attack",
+        "label": "Breath of Flame: Rengoku",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "A 10 by 30-foot line: move to its end; every creature in it. A critical hit: one creature you choose (S-Rank: all). Chain 2: ignores jutsu DR.",
         "damage": {
-          "parts": []
-        },
-        "strike": {
-          "kind": "weapon",
-          "extraDice": "6d6",
-          "dieSteps": 0,
-          "pierce": 0,
-          "maximize": false,
-          "attacks": "1"
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "6d6",
+              "type": "fire"
+            }
+          ]
         }
       }
     ],
@@ -194,53 +196,58 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5e8fXSFgkWNAvFC",
               "type": "attack",
-              "label": "Attack",
+              "label": "Breath of Flame: Rengoku",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "A 10 by 30-foot line: move to its end; every creature in it. A critical hit: one creature you choose (S-Rank: all). Chain 2: ignores jutsu DR.",
               "damage": {
-                "parts": []
-              },
-              "strike": {
-                "kind": "weapon",
-                "extraDice": "(6d6) + (1d6)",
-                "dieSteps": 0,
-                "pierce": 0,
-                "maximize": false,
-                "attacks": "1"
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(6d6) + (1d6)",
+                    "type": "fire"
+                  }
+                ]
               }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5e8fXSFgkWNAvFC",
               "type": "attack",
-              "label": "Attack",
+              "label": "Breath of Flame: Rengoku",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "A 10 by 30-foot line: move to its end; every creature in it. A critical hit: one creature you choose (S-Rank: all). Chain 2: ignores jutsu DR.",
               "damage": {
-                "parts": []
-              },
-              "strike": {
-                "kind": "weapon",
-                "extraDice": "(6d6) + (2d6)",
-                "dieSteps": 0,
-                "pierce": 0,
-                "maximize": false,
-                "attacks": "1"
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(6d6) + (2d6)",
+                    "type": "fire"
+                  }
+                ]
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0c3fd08eae955429"

@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eNfdUHPbZ7FGUn",
         "type": "attack",
-        "label": "Attack",
+        "label": "1-Strike Slash",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Chain 1: a miss can be remade against a different creature.",
         "damage": {
           "parts": []
         },
@@ -106,17 +107,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eyQxgOApz9v0Qz",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "bleed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bleeding"
-          }
-        ],
+        "label": "1-Strike: Bleed",
         "save": {
           "abilities": [
             "con"
@@ -125,10 +118,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "text": "On a hit. Failure: 1 Bleed.",
         "damage": {
           "parts": []
         }
@@ -220,20 +220,21 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5eNfdUHPbZ7FGUn",
               "type": "attack",
-              "label": "Attack",
+              "label": "1-Strike Slash",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Chain 1: a miss can be remade against a different creature.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(3d6) + (1d6)",
+                "extraDice": "3d6 + 1d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -241,17 +242,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eyQxgOApz9v0Qz",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "bleed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bleeding"
-                }
-              ],
+              "label": "1-Strike: Bleed",
               "save": {
                 "abilities": [
                   "con"
@@ -260,10 +253,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "On a hit. Failure: 1 Bleed.",
               "damage": {
                 "parts": []
               }
@@ -271,20 +271,21 @@
           ],
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5eNfdUHPbZ7FGUn",
               "type": "attack",
-              "label": "Attack",
+              "label": "1-Strike Slash",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Chain 1: a miss can be remade against a different creature.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(3d6) + (2d6)",
+                "extraDice": "3d6 + 2d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -292,17 +293,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eyQxgOApz9v0Qz",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "bleed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bleeding"
-                }
-              ],
+              "label": "1-Strike: Bleed",
               "save": {
                 "abilities": [
                   "con"
@@ -311,10 +304,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "On a hit. Failure: 1 Bleed.",
               "damage": {
                 "parts": []
               }
@@ -322,20 +322,21 @@
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eNfdUHPbZ7FGUn",
               "type": "attack",
-              "label": "Attack",
+              "label": "1-Strike Slash",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Chain 1: a miss can be remade against a different creature.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(3d6) + (3d6)",
+                "extraDice": "3d6 + 3d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -343,17 +344,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eyQxgOApz9v0Qz",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "bleed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bleeding"
-                }
-              ],
+              "label": "1-Strike: Bleed",
               "save": {
                 "abilities": [
                   "con"
@@ -362,10 +355,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "On a hit. Failure: 1 Bleed.",
               "damage": {
                 "parts": []
               }
@@ -373,20 +373,21 @@
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eNfdUHPbZ7FGUn",
               "type": "attack",
-              "label": "Attack",
+              "label": "1-Strike Slash",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Chain 1: a miss can be remade against a different creature.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(3d6) + (4d6)",
+                "extraDice": "3d6 + 4d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -394,17 +395,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eyQxgOApz9v0Qz",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "bleed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bleeding"
-                }
-              ],
+              "label": "1-Strike: Bleed",
               "save": {
                 "abilities": [
                   "con"
@@ -413,10 +406,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "On a hit. Failure: 1 Bleed.",
               "damage": {
                 "parts": []
               }
@@ -424,7 +424,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c23989398aafdb46"

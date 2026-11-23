@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ek2nGsZjaE8Abc",
         "type": "attack",
-        "label": "Attack",
+        "label": "Sakura Twister",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Chain 2: on a hit, move 20 feet and Dodge. Chain 3: against every creature in your weapon's range.",
         "damage": {
           "parts": []
         },
@@ -106,9 +107,19 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eIEFvEbDMSh8lV",
         "type": "save",
-        "label": "Save",
+        "label": "Sakura Twister: Prone, Staggered",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "prone",
@@ -123,18 +134,7 @@
             "label": "Staggered"
           }
         ],
-        "save": {
-          "abilities": [
-            "con"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "On a hit. Failure: Prone and Staggered.",
         "damage": {
           "parts": []
         }
@@ -226,20 +226,21 @@
         "activitiesByRank": {
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5ek2nGsZjaE8Abc",
               "type": "attack",
-              "label": "Attack",
+              "label": "Sakura Twister",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Chain 2: on a hit, move 20 feet and Dodge. Chain 3: against every creature in your weapon's range.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(10d8) + (1d8)",
+                "extraDice": "10d8 + 1d8",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -247,9 +248,19 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eIEFvEbDMSh8lV",
               "type": "save",
-              "label": "Save",
+              "label": "Sakura Twister: Prone, Staggered",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "prone",
@@ -264,18 +275,7 @@
                   "label": "Staggered"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "con"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "On a hit. Failure: Prone and Staggered.",
               "damage": {
                 "parts": []
               }
@@ -283,7 +283,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "7116760d98edc24e"

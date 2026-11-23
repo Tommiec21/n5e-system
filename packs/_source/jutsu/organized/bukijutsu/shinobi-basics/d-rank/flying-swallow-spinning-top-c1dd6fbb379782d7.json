@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eEkdV1CjDyWLnK",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Flying Swallow: Spinning Top",
         "save": {
           "abilities": [
             "dex"
@@ -96,22 +95,25 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "Dual wielding: every creature in your weapon's range. Chain 1: failure also Bruised. Success: half.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d4",
-        "roll": {
-          "formula": "2d4",
-          "note": "On a failed save they take your weapons damage + 2d4 or half as much on a success."
+          "parts": [
+            {
+              "formula": "@weapon + 2d4",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -192,9 +194,153 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eEkdV1CjDyWLnK",
+              "type": "save",
+              "label": "Flying Swallow: Spinning Top",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Dual wielding: every creature in your weapon's range. Chain 1: failure also Bruised. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 2d4) + (1d6)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eEkdV1CjDyWLnK",
+              "type": "save",
+              "label": "Flying Swallow: Spinning Top",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Dual wielding: every creature in your weapon's range. Chain 1: failure also Bruised. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 2d4) + (2d6)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eEkdV1CjDyWLnK",
+              "type": "save",
+              "label": "Flying Swallow: Spinning Top",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Dual wielding: every creature in your weapon's range. Chain 1: failure also Bruised. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 2d4) + (3d6)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eEkdV1CjDyWLnK",
+              "type": "save",
+              "label": "Flying Swallow: Spinning Top",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Dual wielding: every creature in your weapon's range. Chain 1: failure also Bruised. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 2d4) + (4d6)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Bruised is Chain 1 only: apply it only with Chain 1."
+        }
+      ]
     }
   },
   "folder": "1b8bbde86064544a"

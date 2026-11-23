@@ -87,10 +87,18 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eSJh09UdXq0kd2",
+        "type": "roll",
+        "label": "Damage reduced",
+        "roll": {
+          "formula": "2d8",
+          "note": "Reaction to damage (not Genjutsu): reduce it by this (Chain 1: + your weapon damage dice)."
+        }
+      },
+      {
+        "id": "n5e9A7sFGeoSAsTt",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Plum: poison",
         "save": {
           "abilities": [
             "dex"
@@ -98,11 +106,11 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "Hostile creatures adjacent to you. Success: half. B-Rank: failure gives 1 Envenomed.",
         "damage": {
           "parts": [
             {
@@ -196,9 +204,176 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eSJh09UdXq0kd2",
+              "type": "roll",
+              "label": "Damage reduced",
+              "roll": {
+                "formula": "(2d8) + (1d8)",
+                "note": "Reaction to damage (not Genjutsu): reduce it by this (Chain 1: + your weapon damage dice)."
+              }
+            },
+            {
+              "id": "n5e9A7sFGeoSAsTt",
+              "type": "save",
+              "label": "Plum: poison",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Hostile creatures adjacent to you. Success: half. B-Rank: failure gives 1 Envenomed.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (1d8)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eSJh09UdXq0kd2",
+              "type": "roll",
+              "label": "Damage reduced",
+              "roll": {
+                "formula": "(2d8) + (2d8)",
+                "note": "Reaction to damage (not Genjutsu): reduce it by this (Chain 1: + your weapon damage dice)."
+              }
+            },
+            {
+              "id": "n5e9A7sFGeoSAsTt",
+              "type": "save",
+              "label": "Plum: poison",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "Hostile creatures adjacent to you. Success: half. B-Rank: failure gives 1 Envenomed.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (2d8)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eSJh09UdXq0kd2",
+              "type": "roll",
+              "label": "Damage reduced",
+              "roll": {
+                "formula": "(2d8) + (3d8)",
+                "note": "Reaction to damage (not Genjutsu): reduce it by this (Chain 1: + your weapon damage dice)."
+              }
+            },
+            {
+              "id": "n5e9A7sFGeoSAsTt",
+              "type": "save",
+              "label": "Plum: poison",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "Hostile creatures adjacent to you. Success: half. B-Rank: failure gives 1 Envenomed.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (3d8)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eSJh09UdXq0kd2",
+              "type": "roll",
+              "label": "Damage reduced",
+              "roll": {
+                "formula": "(2d8) + (4d8)",
+                "note": "Reaction to damage (not Genjutsu): reduce it by this (Chain 1: + your weapon damage dice)."
+              }
+            },
+            {
+              "id": "n5e9A7sFGeoSAsTt",
+              "type": "save",
+              "label": "Plum: poison",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "Hostile creatures adjacent to you. Success: half. B-Rank: failure gives 1 Envenomed.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (4d8)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "1b8bbde86064544a"

@@ -86,12 +86,12 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
+        "id": "n5eXwDRvvjHdaPMD",
         "type": "roll",
-        "label": "2d6",
+        "label": "Brutal Block",
         "roll": {
           "formula": "2d6",
-          "note": "Roll 2d6, and record the result. You reduce the triggering damage and the first damage taken each turn, until the beginning of your next turn, by the result."
+          "note": "Reaction to damage: reduce it and the first damage each turn until the start of your next turn by the result. Chain 1: next attack +1 critical range; Chain 2: a creature in your weapon's range takes the result."
         }
       }
     ],
@@ -172,9 +172,44 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eXwDRvvjHdaPMD",
+              "type": "roll",
+              "label": "Brutal Block",
+              "roll": {
+                "formula": "(2d6) + (1d6)",
+                "note": "Reaction to damage: reduce it and the first damage each turn until the start of your next turn by the result. Chain 1: next attack +1 critical range; Chain 2: a creature in your weapon's range takes the result."
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eXwDRvvjHdaPMD",
+              "type": "roll",
+              "label": "Brutal Block",
+              "roll": {
+                "formula": "(2d6) + (2d6)",
+                "note": "Reaction to damage: reduce it and the first damage each turn until the start of your next turn by the result. Chain 1: next attack +1 critical range; Chain 2: a creature in your weapon's range takes the result."
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eXwDRvvjHdaPMD",
+              "type": "roll",
+              "label": "Brutal Block",
+              "roll": {
+                "formula": "(2d6) + (3d6)",
+                "note": "Reaction to damage: reduce it and the first damage each turn until the start of your next turn by the result. Chain 1: next attack +1 critical range; Chain 2: a creature in your weapon's range takes the result."
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0032efe7c08875b9"

@@ -80,3 +80,34 @@ test("STD6f F2 Taijutsu II: every B- to S-Rank Taijutsu reviewed; the whole sect
   // Kept Amps (King Q-J2).
   assert.equal(jutsu("taijutsu/general", "tiger-lily").system.activities[0].effect.amp, "jutsu-tiger-lily");
 });
+
+test("STD6f F3 Bukijutsu I: Shinobi Basics and Blade reviewed at every rank; weapon strikes and @weapon", () => {
+  for ( const [section, count] of [["bukijutsu/shinobi-basics", 68], ["bukijutsu/blade", 35]] ) {
+    const t = table(section);
+    assert.deepEqual(t.ranks, ["E", "D", "C", "B", "A", "S"]);
+    const items = sectionJutsu(section, t.ranks);
+    assert.equal(items.size, count, section);
+    for ( const [id, { doc }] of items ) {
+      assert.ok(t.features[id], id);
+      assert.equal(doc.flags.n5e.reviewed, true, id);
+    }
+  }
+  assert.deepEqual(tableProblems().filter(p => p.startsWith("jutsu/")), []);
+  // Weapon strike with per-rank extra dice and a Chain button.
+  const fang = jutsu("bukijutsu/shinobi-basics", "breath-of-beasts-fang");
+  assert.equal(fang.system.activities[0].strike.kind, "weapon");
+  assert.equal(fang.system.activities[0].attack.count, 2);
+  const fangC = fang.flags.n5e.jutsuBookImport.activitiesByRank.C[0];
+  assert.equal(fangC.strike.extraDice, "1d6");
+  assert.equal(fang.flags.n5e.jutsuBookImport.activitiesByRank.B[0].attack.count, 3);
+  assert.ok(fang.system.activities.some(a => a.label.startsWith("Chain 1:")));
+  // A save dealing [Weapon damage] + typed dice (F-D5 @weapon), growing only the typed part.
+  const smash = jutsu("bukijutsu/shinobi-basics", "breath-of-earth-smash");
+  assert.deepEqual(smash.system.activities[0].damage.parts.map(p => p.formula), ["@weapon", "1d8"]);
+  assert.deepEqual(smash.flags.n5e.jutsuBookImport.activitiesByRank.C[0].damage.parts.map(p => p.formula), ["@weapon", "(1d8) + (1d8)"]);
+  // Kept Amps (King Q-J2).
+  for ( const [s, id] of [["bukijutsu/shinobi-basics", "breath-of-sound-score"], ["bukijutsu/shinobi-basics", "guardian-knight"], ["bukijutsu/blade", "blade-heart"], ["bukijutsu/shinobi-basics", "the-zone"]] )
+    assert.ok(jutsu(s, id).system.activities.some(a => a.effect?.amp), id);
+  // Note-only action economy.
+  assert.deepEqual(jutsu("bukijutsu/shinobi-basics", "baton-pass").system.activities, []);
+});

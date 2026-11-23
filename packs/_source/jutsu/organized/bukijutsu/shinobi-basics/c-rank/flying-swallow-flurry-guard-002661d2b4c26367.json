@@ -85,14 +85,34 @@
     },
     "activities": [
       {
-        "id": "parsed1",
-        "type": "attack",
-        "label": "Attack",
-        "attack": {
-          "discipline": "tai",
-          "range": "melee",
-          "count": 1
+        "id": "n5eW0wMoRGROe03T",
+        "type": "effect",
+        "label": "Flurry Guard: DR",
+        "effect": {
+          "name": "Flurry Guard",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.dr",
+              "value": "4",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
         },
+        "text": "Reaction: +4 DR against the trigger, +2 more per further damage from it before your next turn (raise by hand)."
+      },
+      {
+        "id": "n5ewofQ5vbTrF5Dw",
+        "type": "attack",
+        "label": "Flurry Guard: return",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 2
+        },
+        "text": "When its attacks or jutsu end: one with each weapon; + the total DR gained (add by hand).",
         "damage": {
           "parts": []
         },
@@ -102,7 +122,7 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "2"
         }
       }
     ],
@@ -192,76 +212,137 @@
         "activitiesByRank": {
           "B": [
             {
-              "id": "parsed1",
-              "type": "attack",
-              "label": "Attack",
-              "attack": {
-                "discipline": "tai",
-                "range": "melee",
-                "count": 1
+              "id": "n5eW0wMoRGROe03T",
+              "type": "effect",
+              "label": "Flurry Guard: DR",
+              "effect": {
+                "name": "Flurry Guard",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.dr",
+                    "value": "4",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
               },
+              "text": "Reaction: +4 DR against the trigger, +2 more per further damage from it before your next turn (raise by hand)."
+            },
+            {
+              "id": "n5ewofQ5vbTrF5Dw",
+              "type": "attack",
+              "label": "Flurry Guard: return",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "When its attacks or jutsu end: one with each weapon; + the total DR gained (add by hand).",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(1d6) + (1d6)",
+                "extraDice": "1d6 + 1d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
               }
             }
           ],
           "A": [
             {
-              "id": "parsed1",
-              "type": "attack",
-              "label": "Attack",
-              "attack": {
-                "discipline": "tai",
-                "range": "melee",
-                "count": 1
+              "id": "n5eW0wMoRGROe03T",
+              "type": "effect",
+              "label": "Flurry Guard: DR",
+              "effect": {
+                "name": "Flurry Guard",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.dr",
+                    "value": "4",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
               },
+              "text": "Reaction: +4 DR against the trigger, +2 more per further damage from it before your next turn (raise by hand)."
+            },
+            {
+              "id": "n5ewofQ5vbTrF5Dw",
+              "type": "attack",
+              "label": "Flurry Guard: return",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "When its attacks or jutsu end: one with each weapon; + the total DR gained (add by hand).",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(1d6) + (2d6)",
+                "extraDice": "1d6 + 2d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
               }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
-              "type": "attack",
-              "label": "Attack",
-              "attack": {
-                "discipline": "tai",
-                "range": "melee",
-                "count": 1
+              "id": "n5eW0wMoRGROe03T",
+              "type": "effect",
+              "label": "Flurry Guard: DR",
+              "effect": {
+                "name": "Flurry Guard",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.dr",
+                    "value": "4",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
               },
+              "text": "Reaction: +4 DR against the trigger, +2 more per further damage from it before your next turn (raise by hand)."
+            },
+            {
+              "id": "n5ewofQ5vbTrF5Dw",
+              "type": "attack",
+              "label": "Flurry Guard: return",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "When its attacks or jutsu end: one with each weapon; + the total DR gained (add by hand).",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(1d6) + (3d6)",
+                "extraDice": "1d6 + 3d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "2"
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0032efe7c08875b9"

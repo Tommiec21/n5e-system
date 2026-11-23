@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e05RGwUHLoTCoD",
         "type": "attack",
-        "label": "Attack",
+        "label": "Ichimonji",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
+        "text": "One creature. Both hit: no jutsu bonuses to its AC. S-Rank: a third attack (still two hits).",
         "damage": {
           "parts": []
         },
@@ -102,14 +103,13 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "2"
         }
       },
       {
-        "id": "chain-2-parsed1",
+        "id": "n5eDWlkvPv85uKZo",
         "type": "save",
-        "label": "Chain 2: Save",
-        "inflicts": [],
+        "label": "Chain 2: AC −2",
         "save": {
           "abilities": [
             "con"
@@ -118,10 +118,10 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Chain 2. Failure: AC −2 until the end of your next turn.",
         "damage": {
           "parts": []
         }
@@ -204,9 +204,99 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5e05RGwUHLoTCoD",
+              "type": "attack",
+              "label": "Ichimonji",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "One creature. Both hit: no jutsu bonuses to its AC. S-Rank: a third attack (still two hits).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "4d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eDWlkvPv85uKZo",
+              "type": "save",
+              "label": "Chain 2: AC −2",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Chain 2. Failure: AC −2 until the end of your next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e05RGwUHLoTCoD",
+              "type": "attack",
+              "label": "Ichimonji",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "One creature. Both hit: no jutsu bonuses to its AC. S-Rank: a third attack (still two hits).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "4d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eDWlkvPv85uKZo",
+              "type": "save",
+              "label": "Chain 2: AC −2",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Chain 2. Failure: AC −2 until the end of your next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "850448e8be1ed23c"

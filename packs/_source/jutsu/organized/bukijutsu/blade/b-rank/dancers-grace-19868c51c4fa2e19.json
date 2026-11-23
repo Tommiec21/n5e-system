@@ -85,12 +85,35 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d10",
-        "roll": {
-          "formula": "2d10",
-          "note": "All creatures within your weapons range must make 2 Dexterity saving throws, taking your weapon's damage +2d10 on a failure and gaining 1 rank of Bleeding for each failure."
+        "id": "n5eAXeqQ2Enwch8U",
+        "type": "save",
+        "label": "Dancer's Grace",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Every creature in your weapon's range makes 2 saves (+1 per rank). Each failure: the damage and 1 Bleed (Chain 2: and Prone).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "@weapon + 2d10",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -167,7 +190,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "850448e8be1ed23c"

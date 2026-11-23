@@ -85,12 +85,25 @@
     },
     "activities": [
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "3d8",
-        "roll": {
-          "formula": "3d8",
-          "note": "Make a melee attack against a creature in range, dealing your [Weapons damage] + 3d8 on a hit. Regardless, if your attack is successful or not, you can move up to 10 feet without provoking attacks of opportunity until the end of the current turn."
+        "id": "n5eHAyPL8coLGMN9",
+        "type": "attack",
+        "label": "Viper’s Retreat",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Hit or miss: move 10 feet without provoking. Chain 1: no disadvantage; Chain 2: its next attack has disadvantage.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "3d8",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       }
     ],
@@ -177,9 +190,83 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eHAyPL8coLGMN9",
+              "type": "attack",
+              "label": "Viper’s Retreat",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Hit or miss: move 10 feet without provoking. Chain 1: no disadvantage; Chain 2: its next attack has disadvantage.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "3d8 + 1d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eHAyPL8coLGMN9",
+              "type": "attack",
+              "label": "Viper’s Retreat",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Hit or miss: move 10 feet without provoking. Chain 1: no disadvantage; Chain 2: its next attack has disadvantage.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "3d8 + 2d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eHAyPL8coLGMN9",
+              "type": "attack",
+              "label": "Viper’s Retreat",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Hit or miss: move 10 feet without provoking. Chain 1: no disadvantage; Chain 2: its next attack has disadvantage.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "3d8 + 3d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0032efe7c08875b9"

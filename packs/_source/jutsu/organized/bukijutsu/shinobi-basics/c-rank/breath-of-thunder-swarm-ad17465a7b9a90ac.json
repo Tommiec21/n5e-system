@@ -87,31 +87,32 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eTjcrcBqmEoRWo",
         "type": "attack",
-        "label": "Attack",
+        "label": "Breath of Thunder: Swarm",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
+        "text": "Shocked target: +1 critical range (A-Rank: advantage).",
         "damage": {
-          "parts": []
-        },
-        "strike": {
-          "kind": "weapon",
-          "extraDice": "1d8",
-          "dieSteps": 0,
-          "pierce": 0,
-          "maximize": false,
-          "attacks": "1"
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "1d8",
+              "type": "lightning"
+            }
+          ]
         }
       },
       {
-        "id": "chain-1-parsed1",
+        "id": "n5eV9JBVjE6WCQeI",
         "type": "save",
-        "label": "Chain 1: Save",
-        "inflicts": [],
+        "label": "Chain 1: disarm",
         "save": {
           "abilities": [
             "dex"
@@ -120,18 +121,28 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Chain 1. Failure: disarmed; the weapon thrown 10 feet.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "chain-2-parsed1",
+        "id": "n5edESGxJNaTp5Ys",
         "type": "save",
-        "label": "Chain 2: Save",
+        "label": "Chain 2: Bleed",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "bleed",
@@ -140,18 +151,7 @@
             "label": "Bleed"
           }
         ],
-        "save": {
-          "abilities": [
-            "dex"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Chain 2. Failure: 1 Bleed.",
         "damage": {
           "parts": []
         }
@@ -243,31 +243,32 @@
         "activitiesByRank": {
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5eTjcrcBqmEoRWo",
               "type": "attack",
-              "label": "Attack",
+              "label": "Breath of Thunder: Swarm",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
+              "text": "Shocked target: +1 critical range (A-Rank: advantage).",
               "damage": {
-                "parts": []
-              },
-              "strike": {
-                "kind": "weapon",
-                "extraDice": "(1d8) + (1d8)",
-                "dieSteps": 0,
-                "pierce": 0,
-                "maximize": false,
-                "attacks": "1"
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(1d8) + (1d8)",
+                    "type": "lightning"
+                  }
+                ]
               }
             },
             {
-              "id": "chain-1-parsed1",
+              "id": "n5eV9JBVjE6WCQeI",
               "type": "save",
-              "label": "Chain 1: Save",
-              "inflicts": [],
+              "label": "Chain 1: disarm",
               "save": {
                 "abilities": [
                   "dex"
@@ -276,18 +277,28 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Chain 1. Failure: disarmed; the weapon thrown 10 feet.",
               "damage": {
                 "parts": []
               }
             },
             {
-              "id": "chain-2-parsed1",
+              "id": "n5edESGxJNaTp5Ys",
               "type": "save",
-              "label": "Chain 2: Save",
+              "label": "Chain 2: Bleed",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "bleed",
@@ -296,18 +307,7 @@
                   "label": "Bleed"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "dex"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "Chain 2. Failure: 1 Bleed.",
               "damage": {
                 "parts": []
               }
@@ -315,31 +315,32 @@
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eTjcrcBqmEoRWo",
               "type": "attack",
-              "label": "Attack",
+              "label": "Breath of Thunder: Swarm",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
+              "text": "Shocked target: +1 critical range (A-Rank: advantage).",
               "damage": {
-                "parts": []
-              },
-              "strike": {
-                "kind": "weapon",
-                "extraDice": "(1d8) + (2d8)",
-                "dieSteps": 0,
-                "pierce": 0,
-                "maximize": false,
-                "attacks": "1"
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(1d8) + (2d8)",
+                    "type": "lightning"
+                  }
+                ]
               }
             },
             {
-              "id": "chain-1-parsed1",
+              "id": "n5eV9JBVjE6WCQeI",
               "type": "save",
-              "label": "Chain 1: Save",
-              "inflicts": [],
+              "label": "Chain 1: disarm",
               "save": {
                 "abilities": [
                   "dex"
@@ -348,18 +349,28 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Chain 1. Failure: disarmed; the weapon thrown 10 feet.",
               "damage": {
                 "parts": []
               }
             },
             {
-              "id": "chain-2-parsed1",
+              "id": "n5edESGxJNaTp5Ys",
               "type": "save",
-              "label": "Chain 2: Save",
+              "label": "Chain 2: Bleed",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "bleed",
@@ -368,18 +379,7 @@
                   "label": "Bleed"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "dex"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "Chain 2. Failure: 1 Bleed.",
               "damage": {
                 "parts": []
               }
@@ -387,31 +387,32 @@
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eTjcrcBqmEoRWo",
               "type": "attack",
-              "label": "Attack",
+              "label": "Breath of Thunder: Swarm",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 2
               },
+              "text": "Shocked target: +1 critical range (A-Rank: advantage).",
               "damage": {
-                "parts": []
-              },
-              "strike": {
-                "kind": "weapon",
-                "extraDice": "(1d8) + (3d8)",
-                "dieSteps": 0,
-                "pierce": 0,
-                "maximize": false,
-                "attacks": "1"
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(1d8) + (3d8)",
+                    "type": "lightning"
+                  }
+                ]
               }
             },
             {
-              "id": "chain-1-parsed1",
+              "id": "n5eV9JBVjE6WCQeI",
               "type": "save",
-              "label": "Chain 1: Save",
-              "inflicts": [],
+              "label": "Chain 1: disarm",
               "save": {
                 "abilities": [
                   "dex"
@@ -420,18 +421,28 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Chain 1. Failure: disarmed; the weapon thrown 10 feet.",
               "damage": {
                 "parts": []
               }
             },
             {
-              "id": "chain-2-parsed1",
+              "id": "n5edESGxJNaTp5Ys",
               "type": "save",
-              "label": "Chain 2: Save",
+              "label": "Chain 2: Bleed",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "bleed",
@@ -440,18 +451,7 @@
                   "label": "Bleed"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "dex"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "Chain 2. Failure: 1 Bleed.",
               "damage": {
                 "parts": []
               }
@@ -459,7 +459,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0032efe7c08875b9"

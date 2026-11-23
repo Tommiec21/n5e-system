@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5enh6L1L4C5FG7H",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Judgement Cut",
         "save": {
           "abilities": [
             "dex"
@@ -97,11 +96,18 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Within 5 feet of a point within 30 feet (S-Rank: two points). 6 more chakra repeats it, twice per casting. Chain 2: failure 1 Bleed. Success: half.",
         "damage": {
           "parts": [
             {
@@ -192,10 +198,9 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5enh6L1L4C5FG7H",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Judgement Cut",
               "save": {
                 "abilities": [
                   "dex"
@@ -203,11 +208,18 @@
                 "dc": {
                   "source": "discipline"
                 },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
+                "onSuccess": "half",
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Within 5 feet of a point within 30 feet (S-Rank: two points). 6 more chakra repeats it, twice per casting. Chain 2: failure 1 Bleed. Success: half.",
               "damage": {
                 "parts": [
                   {
@@ -220,10 +232,9 @@
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5enh6L1L4C5FG7H",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Judgement Cut",
               "save": {
                 "abilities": [
                   "dex"
@@ -231,11 +242,18 @@
                 "dc": {
                   "source": "discipline"
                 },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
+                "onSuccess": "half",
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Within 5 feet of a point within 30 feet (S-Rank: two points). 6 more chakra repeats it, twice per casting. Chain 2: failure 1 Bleed. Success: half.",
               "damage": {
                 "parts": [
                   {
@@ -248,7 +266,14 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Bleed is Chain 2 only."
+        }
+      ]
     }
   },
   "folder": "850448e8be1ed23c"

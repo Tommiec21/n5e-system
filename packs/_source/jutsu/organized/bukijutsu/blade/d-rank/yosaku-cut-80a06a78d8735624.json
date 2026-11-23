@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eCQe0TfU1UL8BG",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Yosaku Cut",
         "save": {
           "abilities": [
             "dex"
@@ -96,22 +95,18 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "A 15-foot cone (+5 feet per rank); Chain 1: creatures within 5 feet at disadvantage. Success: half.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "1d12",
-        "roll": {
-          "formula": "1d12",
-          "note": "On a failed save you deal your [Weapons damage] + 1d12 or half as much on a successful one."
+          "parts": [
+            {
+              "formula": "@weapon + 1d12",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -198,9 +193,119 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eCQe0TfU1UL8BG",
+              "type": "save",
+              "label": "Yosaku Cut",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 15-foot cone (+5 feet per rank); Chain 1: creatures within 5 feet at disadvantage. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 1d12) + (1d12)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eCQe0TfU1UL8BG",
+              "type": "save",
+              "label": "Yosaku Cut",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 15-foot cone (+5 feet per rank); Chain 1: creatures within 5 feet at disadvantage. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 1d12) + (2d12)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eCQe0TfU1UL8BG",
+              "type": "save",
+              "label": "Yosaku Cut",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 15-foot cone (+5 feet per rank); Chain 1: creatures within 5 feet at disadvantage. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 1d12) + (3d12)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eCQe0TfU1UL8BG",
+              "type": "save",
+              "label": "Yosaku Cut",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 15-foot cone (+5 feet per rank); Chain 1: creatures within 5 feet at disadvantage. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 1d12) + (4d12)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c23989398aafdb46"

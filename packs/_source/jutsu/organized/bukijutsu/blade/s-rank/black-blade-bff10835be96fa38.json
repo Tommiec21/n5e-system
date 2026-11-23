@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eRYbFyOtbWT3qn",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Black Blade",
         "save": {
           "abilities": [
             "dex"
@@ -97,22 +96,25 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "stunned",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Stunned"
+          }
+        ],
+        "text": "Your weapon has a damage-raising jutsu; a 60-foot cone; the buffing jutsu's damage type. Failure: maximum hit points −the damage for 1 minute (A-Rank Medical removes it); Chain 3, failing by 5+: Stunned until the end of its next turn. Success: half.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "4d12",
-        "roll": {
-          "formula": "4d12",
-          "note": "All creatures within range must make a Dexterity saving throw, taking your [Weapon's damage] + 4d12 damage of the damage type of the jutsu that buffs your damage and has their maximum hit points reduced by the damage dealt for the next minute on a failed save, or half much damage on a success. The maximum hit point reduction effect can be removed by a medical effect that removes conditions of A-Rank or higher."
+          "parts": [
+            {
+              "formula": "@weapon + 4d12",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -189,7 +191,14 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Stunned is Chain 3 only."
+        }
+      ]
     }
   },
   "folder": "0e23cefc01dadef0"

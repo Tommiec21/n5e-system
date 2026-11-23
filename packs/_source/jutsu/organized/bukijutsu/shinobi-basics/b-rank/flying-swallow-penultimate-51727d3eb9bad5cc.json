@@ -86,13 +86,13 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e4Pjwbw9YelJmv",
         "type": "attack",
-        "label": "Attack",
+        "label": "Flying Swallow: Penultimate",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
         "damage": {
           "parts": []
@@ -103,21 +103,32 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "2"
         }
       },
       {
-        "id": "chain-2-parsed1",
+        "id": "n5eTeecNs4Rcv1dD",
+        "type": "attack",
+        "label": "Both hit: third attack",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "If both hit.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d10",
+              "type": ""
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e5cH065RhQeczY",
         "type": "save",
-        "label": "Chain 2: Save",
-        "inflicts": [
-          {
-            "key": "bruised",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bruised"
-          }
-        ],
+        "label": "Chain 2: Bruised",
         "save": {
           "abilities": [
             "con"
@@ -126,21 +137,19 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "Chain 2. Failure: Bruised per hit; success: half as many (set the ranks).",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "3d10",
-        "roll": {
-          "formula": "3d10",
-          "note": "If both attacks were successful, you attack one additional time dealing 3d10."
         }
       }
     ],
@@ -233,9 +242,149 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5e4Pjwbw9YelJmv",
+              "type": "attack",
+              "label": "Flying Swallow: Penultimate",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "1d10 + 1d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eTeecNs4Rcv1dD",
+              "type": "attack",
+              "label": "Both hit: third attack",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "If both hit.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d10",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e5cH065RhQeczY",
+              "type": "save",
+              "label": "Chain 2: Bruised",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Chain 2. Failure: Bruised per hit; success: half as many (set the ranks).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e4Pjwbw9YelJmv",
+              "type": "attack",
+              "label": "Flying Swallow: Penultimate",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "1d10 + 2d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eTeecNs4Rcv1dD",
+              "type": "attack",
+              "label": "Both hit: third attack",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "If both hit.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d10",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e5cH065RhQeczY",
+              "type": "save",
+              "label": "Chain 2: Bruised",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Chain 2. Failure: Bruised per hit; success: half as many (set the ranks).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0c3fd08eae955429"

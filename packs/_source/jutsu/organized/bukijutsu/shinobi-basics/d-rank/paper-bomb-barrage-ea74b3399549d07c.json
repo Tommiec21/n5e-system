@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e49KmvrehzJOrZ",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Paper Bomb Barrage",
         "save": {
           "abilities": [
             "dex"
@@ -96,11 +95,18 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Burned"
+          }
+        ],
+        "text": "A creature within 30 feet and everyone within 10 feet of it (+1 marked creature per rank). Chain 1: failure also 1 Burned. Success: half.",
         "damage": {
           "parts": [
             {
@@ -184,7 +190,14 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Consumes paper bombs. The Burned is Chain 1 only."
+        }
+      ]
     }
   },
   "folder": "1b8bbde86064544a"

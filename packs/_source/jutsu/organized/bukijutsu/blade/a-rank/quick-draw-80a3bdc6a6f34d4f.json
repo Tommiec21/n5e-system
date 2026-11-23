@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eoHUMcYrVAnrJV",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Quick Draw",
         "save": {
           "abilities": [
             "dex"
@@ -98,21 +97,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "At the start of your next turn: everyone in front of you within 5 feet, at disadvantage (S-Rank: move first). No Bonus action this turn or reactions after (Chain 2: reactions allowed). Chain 3: failing by 5+: a C-Rank or lower 1-Action Bukijutsu with the same weapon as a Bonus action.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "5d12",
-        "roll": {
-          "formula": "5d12",
-          "note": "At the start of your next turn, you swing with all of your force, all creatures in front of you within 5 feet, must make a Dexterity saving throw at disadvantage, taking your [Weapons damage] + 5d12 damage."
+          "parts": [
+            {
+              "formula": "@weapon + 5d12",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -199,9 +194,38 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5eoHUMcYrVAnrJV",
+              "type": "save",
+              "label": "Quick Draw",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "At the start of your next turn: everyone in front of you within 5 feet, at disadvantage (S-Rank: move first). No Bonus action this turn or reactions after (Chain 2: reactions allowed). Chain 3: failing by 5+: a C-Rank or lower 1-Action Bukijutsu with the same weapon as a Bonus action.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 5d12) + (1d12)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "00a31a843def3e70"

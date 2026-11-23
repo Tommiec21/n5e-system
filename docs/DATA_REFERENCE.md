@@ -1024,3 +1024,7 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 - `content/automation/jutsu/<discipline>-<section>.json`: `{section: "taijutsu/general", ranks: ["E", "D", "C"], features: {<identifier>: entry}}`, the same entry keys as the class and clan tables; applied to the section's jutsu of those ranks. A jutsu's per-rank buttons are `flags.n5e.jutsuBookImport.activitiesByRank`.
 - An effect activity's `effect.inflicts`: `[{key, kind: "condition" | "state", ranks, label}]` put on the targets with no save (`workflow/trackers.mjs inflictOn`; owner intent `inflictConditions` for creatures the user doesn't own).
 - A heal's formula may use `@unarmed` (the caster's current [Unarmed damage]).
+
+### [Weapon damage] in damage formulas (STD6f F-D5)
+
+- A damage part's formula may use `@weapon`: the wielded weapon's die, extra dice and flat bonus (`workflow/activity-buttons.mjs`, via `attack.mjs pickWeapon` and `weaponAttackSpec`). A part with no type takes the weapon's first damage type; the weapon's ability modifier is used when the activity sets none.

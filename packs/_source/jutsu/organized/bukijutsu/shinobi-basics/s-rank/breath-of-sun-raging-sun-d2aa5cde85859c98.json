@@ -86,25 +86,25 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eENiTtnacms6IB",
         "type": "attack",
-        "label": "Attack",
+        "label": "Breath of Sun: Raging Sun",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
+        "text": "Chain 3: +4 AC per miss against the first attack on you (max +8, by hand).",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "6d8",
-        "roll": {
-          "formula": "6d8",
-          "note": "On a successful hit, you deal your weapons damage + 6d8."
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "6d8",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "2"
         }
       }
     ],
@@ -181,7 +181,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "8a9c91a8d73fad43"

@@ -1,3 +1,11 @@
+## 0.89.0-alpha.1 — STD6f F3 Bukijutsu I
+
+King 2026-11-22: "Next batch." Bukijutsu Shinobi Basics (68) and Blade (35) reviewed at every rank (96 partly automated, 7 notes only). Review tables docs/jutsu/bukijutsu-shinobi-basics-automation.md and bukijutsu-blade-automation.md; spec docs/STD6f_SPEC.md (F3).
+
+- **[Weapon damage] in damage (F-D5):** a damage formula can use `@weapon`, your wielded weapon's dice and bonus with its damage type; for saves like "[Weapon damage] + 1d8 earth".
+- **Bukijutsu I:** weapon strikes with their number of attacks and extra dice; Chain effects as their own "Chain N: …" buttons; per-rank dice and extra attacks; no-save conditions (Binding Meteor, Killer Bee, Shadowfall); self bonuses as effects (Weapon Deflect, Mikiri Counter, Flurry Guard, Silent Killing, Reapers Swing, Disarming Riposte).
+- **Kept** (King Q-J2): the Breath of Sound: Score, Guardian Knight, Blade Heart and The Zone Amps.
+
 ## 0.88.0-alpha.1 — STD6f F2 Taijutsu II
 
 King 2026-11-22: "Next batch." 55 B- to S-Rank Taijutsu reviewed (48 partly automated, 7 notes only); the whole Taijutsu section is now done (146 jutsu). Review table docs/jutsu/taijutsu-general-automation.md; spec docs/STD6f_SPEC.md (F2).

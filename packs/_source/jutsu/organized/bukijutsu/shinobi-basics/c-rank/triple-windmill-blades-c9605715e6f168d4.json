@@ -85,17 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5epyHYvo7gBONaq",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "restrained",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Restrained"
-          }
-        ],
+        "label": "Triple Windmill Blades",
         "save": {
           "abilities": [
             "dex"
@@ -104,22 +96,34 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "A creature within 60 feet. Failure: Restrained (its Action: Strength check against your Taijutsu save DC); Chain 2: on a success, grappled until the start of its next turn.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "Chain 1: 2d8",
-        "roll": {
-          "formula": "2d8",
-          "note": "Chain 1: On a failed save, the affected creature also takes 2d8 + your Taijutsu ability modifier, as they are struck by your launched weapon."
-        }
+        "id": "n5eglEr9xpQr9rET",
+        "type": "damage",
+        "label": "Chain 1: struck",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d8 + @mod.tai",
+              "type": ""
+            }
+          ]
+        },
+        "text": "Chain 1, on a failure."
       }
     ],
     "featureType": "active",
@@ -195,7 +199,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0032efe7c08875b9"

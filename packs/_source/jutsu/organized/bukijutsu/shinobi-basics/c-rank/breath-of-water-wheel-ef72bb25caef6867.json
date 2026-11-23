@@ -87,23 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eI7IiBOBUSDtVz",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "chilled",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Chilled"
-          },
-          {
-            "key": "dazed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Dazed"
-          }
-        ],
+        "label": "Breath of Water: Wheel",
         "save": {
           "abilities": [
             "dex"
@@ -112,12 +98,23 @@
             "source": "discipline"
           },
           "onSuccess": "half",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "chilled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Chilled"
+          }
+        ],
+        "text": "Move your speed, then creatures you choose in your weapon's range (Chilled or Dazed: −2). Failure: 1 Chilled (Chain 2: 2); success: half. Chain 1, near water: 2 less chakra or +1 Reach this turn.",
         "damage": {
           "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
             {
               "formula": "1d10",
               "type": "cold"
@@ -212,23 +209,9 @@
         "activitiesByRank": {
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5eI7IiBOBUSDtVz",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "chilled",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Chilled"
-                },
-                {
-                  "key": "dazed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Dazed"
-                }
-              ],
+              "label": "Breath of Water: Wheel",
               "save": {
                 "abilities": [
                   "dex"
@@ -237,12 +220,23 @@
                   "source": "discipline"
                 },
                 "onSuccess": "half",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Chilled"
+                }
+              ],
+              "text": "Move your speed, then creatures you choose in your weapon's range (Chilled or Dazed: −2). Failure: 1 Chilled (Chain 2: 2); success: half. Chain 1, near water: 2 less chakra or +1 Reach this turn.",
               "damage": {
                 "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
                   {
                     "formula": "(1d10) + (1d10)",
                     "type": "cold"
@@ -253,23 +247,9 @@
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eI7IiBOBUSDtVz",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "chilled",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Chilled"
-                },
-                {
-                  "key": "dazed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Dazed"
-                }
-              ],
+              "label": "Breath of Water: Wheel",
               "save": {
                 "abilities": [
                   "dex"
@@ -278,12 +258,23 @@
                   "source": "discipline"
                 },
                 "onSuccess": "half",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Chilled"
+                }
+              ],
+              "text": "Move your speed, then creatures you choose in your weapon's range (Chilled or Dazed: −2). Failure: 1 Chilled (Chain 2: 2); success: half. Chain 1, near water: 2 less chakra or +1 Reach this turn.",
               "damage": {
                 "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
                   {
                     "formula": "(1d10) + (2d10)",
                     "type": "cold"
@@ -294,23 +285,9 @@
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eI7IiBOBUSDtVz",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "chilled",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Chilled"
-                },
-                {
-                  "key": "dazed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Dazed"
-                }
-              ],
+              "label": "Breath of Water: Wheel",
               "save": {
                 "abilities": [
                   "dex"
@@ -319,12 +296,23 @@
                   "source": "discipline"
                 },
                 "onSuccess": "half",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Chilled"
+                }
+              ],
+              "text": "Move your speed, then creatures you choose in your weapon's range (Chilled or Dazed: −2). Failure: 1 Chilled (Chain 2: 2); success: half. Chain 1, near water: 2 less chakra or +1 Reach this turn.",
               "damage": {
                 "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
                   {
                     "formula": "(1d10) + (3d10)",
                     "type": "cold"
@@ -335,7 +323,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0032efe7c08875b9"
