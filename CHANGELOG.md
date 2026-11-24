@@ -1,3 +1,7 @@
+## 0.94.1-alpha.1 — GM06 Journal Desk usability
+
+Design A styling, collapsible navigation, responsive Ideas tray, clearer save actions, character profile headings and explicit native page-access controls. No gameplay rules or imported content changed; no live verification.
+
 ## 0.94.0-alpha.1 — STD6f F8 Earth and Wind Ninjutsu; Mud Wolf, Stone Dragon
 
 King 2026-11-24: "Next Batch." Earth Release (54) and Wind Release (50) Ninjutsu reviewed at every rank (87 partly automated, 17 notes only). Review tables docs/jutsu/ninjutsu-earth-release-automation.md and ninjutsu-wind-release-automation.md; spec docs/STD6f_SPEC.md (F8).

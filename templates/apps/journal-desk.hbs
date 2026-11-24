@@ -1,30 +1,30 @@
 <section class="jd-shell">
-  <header class="jd-toolbar"><strong>Journal Desk</strong><select name="kind" aria-label="New entry type">{{#each kinds}}<option value="{{this}}">{{this}}</option>{{/each}}</select><button type="button" data-action="create">New entry</button><button type="button" data-action="ideas" aria-expanded="{{showIdeas}}">Ideas</button></header>
-  <div class="jd-layout {{#if showIdeas}}with-ideas{{/if}}">
-    <nav class="jd-library" aria-label="Workspace library">
+  <header class="jd-toolbar"><strong><i class="fa-solid fa-scroll" aria-hidden="true"></i> Journal Desk</strong><button type="button" data-action="library" aria-expanded="{{showLibrary}}">Library</button><select name="kind" aria-label="New entry type">{{#each kinds}}<option value="{{this}}">{{this}}</option>{{/each}}</select><button type="button" data-action="create">New entry</button><button type="button" data-action="ideas" aria-expanded="{{showIdeas}}">Ideas</button></header>
+  <div class="jd-layout {{#if showIdeas}}with-ideas{{/if}} {{#unless showLibrary}}without-library{{/unless}}">
+    {{#if showLibrary}}<nav class="jd-library" aria-label="Workspace library">
       <label>Find an entry<input name="search" type="search" value="{{query}}" placeholder="Title or type"></label><button type="button" data-action="search">Search</button>
       <label>Campaign<select name="campaignFilter"><option value="">All campaigns</option>{{#each filters}}<option value="{{uuid}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}</select></label><button type="button" data-action="filter">Filter library</button>
       <button type="button" data-action="starter">Import Part I starter entries</button>
-      <h3>Library</h3>{{#each entries}}<button type="button" class="jd-entry" data-action="open" data-uuid="{{uuid}}">{{#if favorite}}★ {{/if}}{{name}}<small>{{kind}}</small></button>{{else}}<p>Create an entry to start writing.</p>{{/each}}
-    </nav>
+      <h3>Library</h3>{{#each entries}}<button type="button" class="jd-entry {{#if active}}active{{/if}}" aria-current="{{#if active}}page{{else}}false{{/if}}" data-action="open" data-uuid="{{uuid}}">{{#if favorite}}★ {{/if}}{{name}}<small>{{kind}}</small></button>{{else}}<p>No matching entries. Clear your filters or create a new entry.</p>{{/each}}
+    </nav>{{/if}}
     <main class="jd-main">
       <nav class="jd-history" aria-label="Entry history"><button type="button" data-action="back" {{#unless canBack}}disabled{{/unless}}>← Back</button><button type="button" data-action="forward" {{#unless canForward}}disabled{{/unless}}>Forward →</button></nav>
       <nav class="jd-tabs" aria-label="Open entries">{{#each tabs}}<span class="{{#if active}}active{{/if}}"><button type="button" data-action="open" data-uuid="{{uuid}}">{{name}}{{#if dirty}} •{{/if}}</button><button type="button" data-action="closeTab" data-uuid="{{uuid}}" aria-label="Close {{name}}">×</button></span>{{/each}}</nav>
       {{#if draft}}
       <div class="jd-heading"><label>Title<input name="name" value="{{draft.name}}"></label><button type="button" data-action="favorite">{{#if favorite}}★ Favorite{{else}}☆ Favorite{{/if}}</button></div>
-      <div class="jd-meta"><span>{{draft.kind}} · GM journal</span><span data-save-state aria-live="polite">{{#if dirty}}Unsaved changes{{else}}Saved{{/if}}</span></div>
+      <div class="jd-meta"><span>{{draft.kind}} · {{#if isCharacter}}Character profile{{else}}Journal entry{{/if}}</span><span data-save-state aria-live="polite">{{#if dirty}}Unsaved changes{{else}}Saved{{/if}}</span></div>
       <label>Belongs to campaign<select name="campaignUuid"><option value="">No campaign</option>{{#each campaigns}}<option value="{{uuid}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}</select></label>
       <prose-mirror name="content" value="{{draft.content}}"></prose-mirror>
       <details class="jd-links"><summary>Linked records ({{linked.length}})</summary>
         {{#each linked}}<div class="jd-link-row"><button type="button" data-action="follow" data-uuid="{{uuid}}" {{#if missing}}disabled{{/if}}>{{name}}</button><span>{{label}}</span><button type="button" data-action="unlink" data-uuid="{{uuid}}" aria-label="Remove link to {{name}}">Remove</button></div>{{/each}}
         <label>Choose a record<select name="linkRecord"><option value="">Select a record</option>{{#each records}}<option value="{{uuid}}">{{name}} · {{kind}}</option>{{/each}}</select></label><details><summary>Link another Foundry document</summary><label>Document UUID<input name="linkUuid" placeholder="Paste a document UUID"></label></details><label>Relationship<input name="linkLabel" placeholder="Client, location, related mission…"></label><button type="button" data-action="link">Add link</button><p>Links and campaign changes are saved with the entry.</p>
       </details>
-      <button type="button" data-action="template">Append starter headings</button>
+      <button type="button" class="jd-template" data-action="template">{{#if isCharacter}}Append character profile headings{{else}}Append starter headings{{/if}}</button>
       <details><summary>GM tools</summary><div class="jd-tool-row"><button type="button" data-action="missionBudget">Mission budget</button><button type="button" data-action="adversary">Build adversary</button><button type="button" data-action="social">Social encounter</button></div><p>A linked mission budget opens directly; otherwise a new unsaved plan opens. Save it there, then link it through Linked records. Social encounters use the NPC token selected on the canvas.</p></details>
-      <footer><button type="button" data-action="original">Open journal</button><button type="button" data-action="reload">Reload saved</button><button type="submit" class="jd-save">Save entry</button></footer>
+      <footer><button type="button" data-action="access">Player access…</button><button type="button" data-action="original">Open journal</button><button type="button" data-action="reload">Reload saved</button><button type="submit" class="jd-save">Save entry</button></footer>
       {{else}}<div class="jd-empty"><h2>A place for your next story</h2><p>Write a mission, collect a character idea, or start a campaign. Choose an entry type and select New entry.</p><p>Ideas are optional. Your writing can start with a blank page.</p></div>{{/if}}
     </main>
-    {{#if showIdeas}}<aside class="jd-ideas"><h3>Mission ideas</h3><p>Original prompts. Rank suggests a theme, not a balanced encounter.</p>
+    {{#if showIdeas}}<aside class="jd-ideas"><h3><i class="fa-regular fa-lightbulb" aria-hidden="true"></i> Mission ideas</h3><p>Original prompts. Rank suggests a theme, not a balanced encounter.</p>
       <label>Theme<select name="ideatheme"><option value="">Any theme</option>{{#each ideaOptions.theme}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{value}}</option>{{/each}}</select></label>
       <label>Region<select name="idearegion"><option value="">Any region</option>{{#each ideaOptions.region}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{value}}</option>{{/each}}</select></label>
       <label>Rank<select name="idearank"><option value="">Any rank</option>{{#each ideaOptions.rank}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{value}}</option>{{/each}}</select></label><button type="button" data-action="ideaFilter">Filter ideas</button>

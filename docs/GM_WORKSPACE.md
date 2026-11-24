@@ -108,3 +108,16 @@ Based on 7f344c0. Six original offline mission prompts with theme/region/suggest
 GM tools open existing systems: a linked native mission budget opens directly; otherwise a new unsaved planner receives the draft title only. Save the budget in its own window and link it through the newly included Mission budget records. No duplicated budget/reward math. Adversary Builder opens a fresh draft; Social Encounter uses the selected NPC token and its existing setup dialog. Neither an idea preview nor insertion creates actors or starts combat.
 
 Three focused suggestion/filter/escaping checks and lint passed on attempt 1. PR/main reserved as 2/3; integration is source-inspected, not live verified. No local installation. The six prompts are the initial library; expanded recipes and direct selection of linked NPCs for social setup are GM05b (Gameplay System). GM06 remains the next main batch for Design A polish; GM04d broader atlas coverage and optional B/D/C layouts remain.
+
+## GM06 — Codex, 2026-11-24 — Front End User System
+
+Based on bd126d30; scope limited to Journal Desk UI/navigation and documentation. Design A paper/forest palette, compact selected library rows, tab accents, collapsible library, smaller-window Ideas tray, sticky save actions and keyboard search. Character profile headings append appearance, affiliation, motivation, connections and GM secrets without replacing text or creating Actors.
+
+Player access requires a clean saved draft and explicit whole-page warning before opening native page ownership controls; linked records retain their own permissions. No auto-sharing or secret redaction is claimed. The GM reviews text before granting access; players use native journals, not the GM-only desk. Existing private creation defaults and unrelated sheets remain unchanged.
+
+Validation budget: one local focused pass, PR CI second, main release CI third; stop after two failures. No live verification or local installation. Visual acceptance remains with the user. GM05 published v0.93.1-alpha.1; GM06 targets v0.93.2-alpha.1.
+
+Remaining additional batches: GM04d broader Part I atlas; GM05b expanded recipes/linked-NPC social setup; GM07 later eras; GM08 Campaign Board; GM09 World & Story; GM10 Writer journal. GM06b covers any user-reported visual refinements after in-game review.
+Local attempt 1: three focused access/template checks passed; focused lint passed. PR and main checks remain reserved as attempts 2 and 3.
+
+GM06 reconciliation: Claude published 03a4719b (Earth/Wind jutsu and summons) while this batch was prepared. Merged it unchanged; release target superseded by 0.94.1-alpha.1. No Journal Desk overlap.

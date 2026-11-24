@@ -17,7 +17,8 @@ export default class JournalDesk extends HandlebarsApplicationMixin(ApplicationV
       search: JournalDesk.onSearch, insert: JournalDesk.onInsert, original: JournalDesk.onOriginal,
       back: JournalDesk.onBack, forward: JournalDesk.onForward, filter: JournalDesk.onFilter,
       link: JournalDesk.onLink, unlink: JournalDesk.onUnlink, follow: JournalDesk.onFollow,
-      template: JournalDesk.onTemplate, starter: JournalDesk.onStarter,
+      template: JournalDesk.onTemplate, starter: JournalDesk.onStarter, library: JournalDesk.onLibrary,
+      access: JournalDesk.onAccess,
       ideaFilter: JournalDesk.onIdeaFilter, ideaAppend: JournalDesk.onIdeaAppend, ideaSave: JournalDesk.onIdeaSave,
       missionBudget: JournalDesk.onMissionBudget, adversary: JournalDesk.onAdversary, social: JournalDesk.onSocial }
   };
@@ -26,6 +27,7 @@ export default class JournalDesk extends HandlebarsApplicationMixin(ApplicationV
   active = null;
   query = "";
   showIdeas = false;
+  showLibrary = true;
   busy = false;
   restored = false;
   campaign = "";
@@ -74,6 +76,10 @@ export default class JournalDesk extends HandlebarsApplicationMixin(ApplicationV
     };
     this.element.querySelector("[name=name]")?.addEventListener("input", updateStatus);
     this.element.querySelector("prose-mirror")?.addEventListener("change", updateStatus);
+    this.element.querySelector("[name=campaignUuid]")?.addEventListener("change", updateStatus);
+    this.element.querySelector("[name=search]")?.addEventListener("keydown", event => {
+      if (event.key === "Enter") { event.preventDefault(); JournalDesk.onSearch.call(this); }
+    });
   }
 
   /** Capture the active editor before any navigation rerenders it. */
@@ -96,7 +102,7 @@ export default class JournalDesk extends HandlebarsApplicationMixin(ApplicationV
     const favorites = game.user.getFlag("n5e", "deskFavorites") ?? [];
     const entries = game.journal.contents.flatMap(j => j.pages.contents.filter(isWorkspacePage)
       .map(p => ({ uuid: p.uuid, name: p.name, kind: p.flags.n5e.preparation.kind,
-        campaignUuid: p.flags.n5e.preparation.campaignUuid ?? "", favorite: favorites.includes(p.uuid) })));
+        campaignUuid: p.flags.n5e.preparation.campaignUuid ?? "", favorite: favorites.includes(p.uuid), active: p.uuid === this.active })));
     entries.sort((a, b) => Number(b.favorite) - Number(a.favorite) || a.name.localeCompare(b.name));
     const draft = this.drafts.get(this.active);
     const campaigns = entries.filter(e => e.kind === "campaign");
@@ -118,7 +124,8 @@ export default class JournalDesk extends HandlebarsApplicationMixin(ApplicationV
       records, campaigns: campaigns.filter(e => e.uuid !== this.active).map(e => ({ ...e, selected: e.uuid === draft?.campaignUuid })),
       filters: campaigns.map(e => ({ ...e, selected: e.uuid === this.campaign })), linked,
       canBack: this.cursor > 0, canForward: this.cursor < this.history.length - 1,
-      kinds: ENTRY_KINDS, query: this.query, showIdeas: this.showIdeas, draft, active: this.active,
+      kinds: ENTRY_KINDS, query: this.query, showIdeas: this.showIdeas, showLibrary: this.showLibrary,
+      isCharacter: draft?.kind === "character", draft, active: this.active,
       tabs: [...this.drafts].map(([uuid, d]) => ({ uuid, name: d.name, active: uuid === this.active, dirty: this.dirty(d) })),
       dirty: draft && this.dirty(draft), favorite: favorites.includes(this.active),
       ideas: entries.filter(e => e.kind === "idea" && e.uuid !== this.active).slice(0, 30) };
@@ -164,6 +171,20 @@ export default class JournalDesk extends HandlebarsApplicationMixin(ApplicationV
     finally { this.busy = false; }
   }
   static onIdeas() { this.capture(); this.showIdeas = !this.showIdeas; return this.render(); }
+  /** Hide navigation without closing tabs or discarding the active draft. */
+  static onLibrary() { this.capture(); this.showLibrary = !this.showLibrary; return this.render(); }
+  /** Open native page permissions only after the GM reviews the saved-content warning. */
+  static async onAccess() {
+    this.capture();
+    const draft = this.drafts.get(this.active);
+    if (!draft || this.dirty(draft)) return ui.notifications.warn("Save or reload this entry before changing player access.");
+    const confirmed = await foundry.applications.api.DialogV2.confirm({ window: { title: "Review player access" },
+      content: "<p>Access applies to this entire saved page, including any GM notes or secrets. Review its text first, or use a separate player-facing entry. Linked records keep their own permissions.</p><p>Continue to Foundry's permission controls?</p>" });
+    if (!confirmed) return;
+    const page = await fromUuid(this.active);
+    if (!game.user.isGM || !isWorkspacePage(page)) return;
+    return new foundry.applications.apps.DocumentOwnershipConfig({ document: page }).render({ force: true });
+  }
   static onSearch() { this.capture(); this.query = this.element.querySelector("[name=search]").value; return this.render(); }
   static async onFavorite() {
     this.capture();
