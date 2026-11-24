@@ -304,3 +304,33 @@ test("STD6f F9 Fire and Water: every jutsu reviewed; Flame Spider, Water Shark, 
   assert.ok(!w("drown").system.activities.some(a => (a.inflicts ?? []).some(x => x.key === "dying")));
   assert.ok(!w("heavenly-mirror-of-pain").system.activities.some(a => a.inflicts?.length));
 });
+
+test("STD6f F10 Lightning: every jutsu reviewed; Lightning Beast and Lightning Dragon built; the import's wrong buttons fixed", async () => {
+  const t = table("ninjutsu/lightning-release");
+  const items = sectionJutsu("ninjutsu/lightning-release", t.ranks);
+  assert.equal(items.size, 44);
+  for ( const [id, { doc }] of items ) {
+    assert.ok(t.features[id], id);
+    assert.equal(doc.flags.n5e.reviewed, true, id);
+  }
+  assert.deepEqual(tableProblems().filter(p => p.startsWith("jutsu/")), []);
+  const l = id => jutsu("ninjutsu/lightning-release", `lightning-release-${id}`);
+  for ( const id of ["spark", "jolt", "lightning-chakra-armor", "lightning-kings-mantle"] ) assert.ok(l(id).system.activities.some(a => a.effect?.amp === `jutsu-lightning-release-${id}`), id);
+  const { SUMMONS } = await import("../tools/content/build-summons.mjs");
+  const uuid = d => `Compendium.n5e.summons.Actor.${d._id}`;
+  for ( const [j, d] of [[l("beast-lightning"), SUMMONS.lightningBeast], [l("lightning-dragon"), SUMMONS.lightningDragon], [l("lightning-clone"), SUMMONS.clone]] ) {
+    const s = j.system.activities.find(a => a.type === "summon");
+    assert.equal(s.summon.uuid, uuid(d), j.name);
+  }
+  assert.deepEqual([SUMMONS.lightningDragon.system.attributes.ac.flat, SUMMONS.lightningDragon.system.hpMax, SUMMONS.lightningDragon.system.traits.dr], [22, 60, 8]);
+  assert.equal(SUMMONS.lightningBeast.system.details.blurb, "Lightning Release: Beast Lightning (B-Rank)");
+  // Banquet of Lightning and Static Falcon are saves (half), not bare damage; Lightning Reflex is no save; Railgun gives no Shocked.
+  for ( const id of ["banquet-of-lightning", "static-falcon"] ) assert.equal(l(id).system.activities[0].save.onSuccess, "half", id);
+  assert.ok(!l("lightning-reflex").system.activities.some(a => a.type === "save"));
+  assert.ok(!l("railgun").system.activities.some(a => (a.inflicts ?? []).some(x => x.key === "shocked")));
+  // Lightning Claw: three attacks; B-Rank adds an attack to Thunder Punch; A-Rank deals 6d6.
+  const claw = l("lightning-claw");
+  assert.deepEqual(claw.system.activities.map(a => a.type), ["attack", "attack", "attack"]);
+  assert.equal(claw.flags.n5e.jutsuBookImport.activitiesByRank.B[0].attack.count, 2);
+  assert.equal(claw.flags.n5e.jutsuBookImport.activitiesByRank.A[0].damage.parts[0].formula, "6d6");
+});

@@ -86,13 +86,34 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
+        "id": "n5eK7wiLDftFZ9Xv",
         "type": "roll",
-        "label": "3d6",
+        "label": "Jolted Buckler (reaction)",
         "roll": {
           "formula": "3d6",
-          "note": "Reduce the damage you would take by 3d6. If the damage is reduced to 0, the triggering creature gains 1 rank of Shocked."
+          "note": "Concentration (damage can't end it). Reaction to taking damage: reduce it by the roll (wind: 1 die less)."
         }
+      },
+      {
+        "id": "n5eAcAfvbH4TmBlB",
+        "type": "effect",
+        "label": "Reduced to 0: Shocked",
+        "effect": {
+          "name": "Reduced to 0: Shocked",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "shocked",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shocked"
+            }
+          ]
+        },
+        "text": "The triggering creature."
       }
     ],
     "featureType": "active",
@@ -166,9 +187,139 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eK7wiLDftFZ9Xv",
+              "type": "roll",
+              "label": "Jolted Buckler (reaction)",
+              "roll": {
+                "formula": "3d6 + 4",
+                "note": "Concentration (damage can't end it). Reaction to taking damage: reduce it by the roll (wind: 1 die less)."
+              }
+            },
+            {
+              "id": "n5eAcAfvbH4TmBlB",
+              "type": "effect",
+              "label": "Reduced to 0: Shocked",
+              "effect": {
+                "name": "Reduced to 0: Shocked",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  }
+                ]
+              },
+              "text": "The triggering creature."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eK7wiLDftFZ9Xv",
+              "type": "roll",
+              "label": "Jolted Buckler (reaction)",
+              "roll": {
+                "formula": "3d6 + 8",
+                "note": "Concentration (damage can't end it). Reaction to taking damage: reduce it by the roll (wind: 1 die less)."
+              }
+            },
+            {
+              "id": "n5eAcAfvbH4TmBlB",
+              "type": "effect",
+              "label": "Reduced to 0: Shocked",
+              "effect": {
+                "name": "Reduced to 0: Shocked",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  }
+                ]
+              },
+              "text": "The triggering creature."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eK7wiLDftFZ9Xv",
+              "type": "roll",
+              "label": "Jolted Buckler (reaction)",
+              "roll": {
+                "formula": "3d6 + 12",
+                "note": "Concentration (damage can't end it). Reaction to taking damage: reduce it by the roll (wind: 1 die less)."
+              }
+            },
+            {
+              "id": "n5eAcAfvbH4TmBlB",
+              "type": "effect",
+              "label": "Reduced to 0: Shocked",
+              "effect": {
+                "name": "Reduced to 0: Shocked",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  }
+                ]
+              },
+              "text": "The triggering creature."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eK7wiLDftFZ9Xv",
+              "type": "roll",
+              "label": "Jolted Buckler (reaction)",
+              "roll": {
+                "formula": "3d6 + 16",
+                "note": "Concentration (damage can't end it). Reaction to taking damage: reduce it by the roll (wind: 1 die less)."
+              }
+            },
+            {
+              "id": "n5eAcAfvbH4TmBlB",
+              "type": "effect",
+              "label": "Reduced to 0: Shocked",
+              "effect": {
+                "name": "Reduced to 0: Shocked",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  }
+                ]
+              },
+              "text": "The triggering creature."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "8ebb04f9de7c596b"

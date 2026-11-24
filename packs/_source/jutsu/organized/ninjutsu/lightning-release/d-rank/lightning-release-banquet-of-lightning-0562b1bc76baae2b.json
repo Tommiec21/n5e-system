@@ -85,9 +85,28 @@
     },
     "activities": [
       {
-        "id": "parsed1",
-        "type": "damage",
-        "label": "Damage",
+        "id": "n5ezXG90xeg5goup",
+        "type": "save",
+        "label": "Banquet of Lightning",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "shaken",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shaken"
+          }
+        ],
+        "text": "A creature within 60 feet; ignores line of sight (C-Rank: a 10-foot cube within 60 feet; B-Rank: Overcharged, or a 60-foot cone). Failure: 1 Shaken (B-Rank: and no hand seals until the end of its next turn); success: half.",
         "damage": {
           "parts": [
             {
@@ -96,6 +115,27 @@
             }
           ]
         }
+      },
+      {
+        "id": "n5ej24RXubUadrln",
+        "type": "effect",
+        "label": "Overcharge: +1 Shaken",
+        "effect": {
+          "name": "Overcharge: +1 Shaken",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "shaken",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shaken"
+            }
+          ]
+        },
+        "text": "Creatures that failed."
       }
     ],
     "featureType": "active",
@@ -178,9 +218,28 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
-              "type": "damage",
-              "label": "Damage",
+              "id": "n5ezXG90xeg5goup",
+              "type": "save",
+              "label": "Banquet of Lightning",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "A creature within 60 feet; ignores line of sight (C-Rank: a 10-foot cube within 60 feet; B-Rank: Overcharged, or a 60-foot cone). Failure: 1 Shaken (B-Rank: and no hand seals until the end of its next turn); success: half.",
               "damage": {
                 "parts": [
                   {
@@ -189,13 +248,53 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5ej24RXubUadrln",
+              "type": "effect",
+              "label": "Overcharge: +1 Shaken",
+              "effect": {
+                "name": "Overcharge: +1 Shaken",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  }
+                ]
+              },
+              "text": "Creatures that failed."
             }
           ],
           "B": [
             {
-              "id": "parsed1",
-              "type": "damage",
-              "label": "Damage",
+              "id": "n5ezXG90xeg5goup",
+              "type": "save",
+              "label": "Banquet of Lightning",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "A creature within 60 feet; ignores line of sight (C-Rank: a 10-foot cube within 60 feet; B-Rank: Overcharged, or a 60-foot cone). Failure: 1 Shaken (B-Rank: and no hand seals until the end of its next turn); success: half.",
               "damage": {
                 "parts": [
                   {
@@ -204,13 +303,53 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5ej24RXubUadrln",
+              "type": "effect",
+              "label": "Overcharge: +1 Shaken",
+              "effect": {
+                "name": "Overcharge: +1 Shaken",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  }
+                ]
+              },
+              "text": "Creatures that failed."
             }
           ],
           "A": [
             {
-              "id": "parsed1",
-              "type": "damage",
-              "label": "Damage",
+              "id": "n5ezXG90xeg5goup",
+              "type": "save",
+              "label": "Banquet of Lightning",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "A creature within 60 feet; ignores line of sight (C-Rank: a 10-foot cube within 60 feet; B-Rank: Overcharged, or a 60-foot cone). Failure: 1 Shaken (B-Rank: and no hand seals until the end of its next turn); success: half.",
               "damage": {
                 "parts": [
                   {
@@ -219,13 +358,53 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5ej24RXubUadrln",
+              "type": "effect",
+              "label": "Overcharge: +1 Shaken",
+              "effect": {
+                "name": "Overcharge: +1 Shaken",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  }
+                ]
+              },
+              "text": "Creatures that failed."
             }
           ],
           "S": [
             {
-              "id": "parsed1",
-              "type": "damage",
-              "label": "Damage",
+              "id": "n5ezXG90xeg5goup",
+              "type": "save",
+              "label": "Banquet of Lightning",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "A creature within 60 feet; ignores line of sight (C-Rank: a 10-foot cube within 60 feet; B-Rank: Overcharged, or a 60-foot cone). Failure: 1 Shaken (B-Rank: and no hand seals until the end of its next turn); success: half.",
               "damage": {
                 "parts": [
                   {
@@ -234,11 +413,33 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5ej24RXubUadrln",
+              "type": "effect",
+              "label": "Overcharge: +1 Shaken",
+              "effect": {
+                "name": "Overcharge: +1 Shaken",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  }
+                ]
+              },
+              "text": "Creatures that failed."
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "8ebb04f9de7c596b"

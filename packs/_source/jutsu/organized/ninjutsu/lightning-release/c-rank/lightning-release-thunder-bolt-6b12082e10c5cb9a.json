@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5evwGxRrVvqJ9KS",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Lightning Strike",
         "save": {
           "abilities": [
             "dex"
@@ -96,11 +95,11 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "Concentration, open sky: when cast and as a Bonus Action on later turns, a 5-foot radius at a point within 60 feet (+1 point per rank); once per turn per creature (S-Rank: twice). Success: half. Overcharge: failure: walking speed 5 feet until the end of its next turn (by hand).",
         "damage": {
           "parts": [
             {
@@ -188,9 +187,106 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5evwGxRrVvqJ9KS",
+              "type": "save",
+              "label": "Lightning Strike",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Concentration, open sky: when cast and as a Bonus Action on later turns, a 5-foot radius at a point within 60 feet (+1 point per rank); once per turn per creature (S-Rank: twice). Success: half. Overcharge: failure: walking speed 5 feet until the end of its next turn (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d12",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5evwGxRrVvqJ9KS",
+              "type": "save",
+              "label": "Lightning Strike",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "text": "Concentration, open sky: when cast and as a Bonus Action on later turns, a 5-foot radius at a point within 60 feet (+1 point per rank); once per turn per creature (S-Rank: twice). Success: half. Overcharge: failure: walking speed 5 feet until the end of its next turn (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d12",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5evwGxRrVvqJ9KS",
+              "type": "save",
+              "label": "Lightning Strike",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "text": "Concentration, open sky: when cast and as a Bonus Action on later turns, a 5-foot radius at a point within 60 feet (+1 point per rank); once per turn per creature (S-Rank: twice). Success: half. Overcharge: failure: walking speed 5 feet until the end of its next turn (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d12",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "5a30ed7096cb7ea2"

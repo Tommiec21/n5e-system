@@ -1,0 +1,333 @@
+{
+  "_id": "n5exzwdnoezCXNOw",
+  "_key": "!actors!n5exzwdnoezCXNOw",
+  "name": "Lightning Beast",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Lightning Release: Beast Lightning (B-Rank)",
+      "summonRole": "Lightning Beast",
+      "biography": "<p><em>Lightning Release: Beast Lightning (B-Rank) (Lightning Release Ninjutsu).</em> It uses your Ninjutsu attack bonus and save DC. You command it as a Bonus Action; it can take reactions it's able to, such as opportunity attacks.</p><p><strong>Medium Construct.</strong> <strong>Armor Class</strong> 14 + 4 for every rank above B-Rank · <strong>Hit Points</strong> 35 + 7 for every rank above B-Rank · <strong>Speed</strong> 45 ft..</p><p><strong>Abilities</strong> STR +2 (save +1), DEX +6 (save +9), CON +0 (save +1), INT −5 (save −5), WIS +0 (save +0), CHA −5 (save −5). <strong>Damage Immunities</strong> Acid, Lightning, Earth, Psychic. <strong>Damage Vulnerabilities</strong> Wind. <strong>Condition Immunities</strong> All Mental and Sensory, Incapacitated, Stunned, Petrified, Envenomed. <strong>Senses</strong> passive Perception 10.</p><p><strong>Linked to you when summoned:</strong> AC and hit points by the rank you cast the jutsu at, and your Ninjutsu attack bonus and save DC.</p>"
+    },
+    "abilities": {
+      "str": {
+        "value": 14
+      },
+      "dex": {
+        "value": 22
+      },
+      "con": {
+        "value": 10
+      },
+      "int": {
+        "value": 0
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 0
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 14,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "medium",
+      "resist": [],
+      "immune": [
+        "acid",
+        "lightning",
+        "earth",
+        "psychic"
+      ],
+      "vuln": [
+        "wind"
+      ],
+      "conditionImmune": [
+        "berserk",
+        "charmed",
+        "confused",
+        "demoralized",
+        "shaken",
+        "concussed",
+        "blinded",
+        "dazzled",
+        "deafened",
+        "petrified",
+        "envenomed"
+      ],
+      "stateImmune": [
+        "incapacitated",
+        "stunned"
+      ],
+      "dr": 0,
+      "speed": {
+        "walk": 45,
+        "climb": 0,
+        "swim": 0,
+        "fly": 0,
+        "burrow": 0,
+        "hover": false
+      },
+      "senses": {}
+    },
+    "hpMax": 35,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5ekJihkYwlDdji5",
+      "_key": "!actors.items!n5exzwdnoezCXNOw.n5ekJihkYwlDdji5",
+      "name": "Kill Switch",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>When the beast reaches 0 hit points it explodes. All creatures within 10 feet of it must make a Dexterity saving throw, taking 4d10 lightning damage and becoming Shocked on a failed save, or half as much and no additional effects on a successful one.</p>",
+        "category": "npcTraits",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5ejdX650DL7Uiur",
+            "type": "save",
+            "label": "Kill Switch",
+            "save": {
+              "abilities": [
+                "dex"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "half",
+              "resave": false
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "4d10",
+                  "type": "lightning"
+                }
+              ]
+            },
+            "inflicts": [
+              {
+                "key": "shocked",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Shocked"
+              }
+            ],
+            "text": "At 0 hit points."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.96.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eOp4K194PdR1bm",
+      "_key": "!actors.items!n5exzwdnoezCXNOw.n5eOp4K194PdR1bm",
+      "name": "Static Rend",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Multiattack.</em> The Lightning Beast attacks twice with its Static Rend. <em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 4d8 lightning damage. If the target has ranks of Shocked, these attacks gain a +2 bonus to hit.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eGB8y7tBLi5Rge",
+            "type": "attack",
+            "label": "Static Rend",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 2,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "4d8",
+                  "type": "lightning"
+                }
+              ]
+            },
+            "text": "+2 to hit against a Shocked target (add it by hand)."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.96.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5ebEx5CMHPFqwER",
+      "_key": "!actors.items!n5exzwdnoezCXNOw.n5ebEx5CMHPFqwER",
+      "name": "Lightning Fang",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 3d12 lightning damage, and the creature must make a Constitution saving throw, gaining 1 rank of Shocked on a failed save.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5efCFhlBLwckRue",
+            "type": "attack",
+            "label": "Lightning Fang",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 1,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "3d12",
+                  "type": "lightning"
+                }
+              ]
+            }
+          },
+          {
+            "id": "n5ersXToFoMJzAs5",
+            "type": "save",
+            "label": "Lightning Fang: Shocked",
+            "save": {
+              "abilities": [
+                "con"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "inflicts": [
+              {
+                "key": "shocked",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Shocked"
+              }
+            ]
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.96.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5ec7NZzyf5WHCSJ",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "attributes.ac.flat": "14 + 4 * max(0, @rankValue - 3)",
+        "hpMax": "35 + 7 * max(0, @rankValue - 3)",
+        "bonuses.saveDC.nin": "@dc.nin - 8 - @prof",
+        "bonuses.attack.nin": "@attack.nin - @prof"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Lightning Beast",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.96.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

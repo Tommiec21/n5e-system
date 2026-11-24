@@ -80,7 +80,7 @@ test("same-named Brutal Block variants are separate and prior core jutsu IDs are
 });
 
 test("conditional and repeating damage is not silently combined into one base roll", () => {
-  for ( const name of ["Mental Prison", "Lightning Release: Lightning Ball"] ) {
+  for ( const name of ["Mental Prison"] ) {
     const doc = byName(name);
     assert.ok(doc.flags.n5e.jutsuBookImport.manual.length);
     assert.ok(doc.system.activities.every(a => (a.damage?.parts?.length ?? 0) <= 1), name);
@@ -96,6 +96,10 @@ test("conditional and repeating damage is not silently combined into one base ro
   const whips = byName("Medical Release: Acid Whips").system.activities;
   assert.ok(whips.every(a => (a.damage?.parts?.length ?? 0) <= 1));
   assert.deepEqual(whips.filter(a => a.damage?.parts?.length).map(a => a.damage.parts[0].formula), ["2d6", "1d12"]);
+  // Reviewed in STD6f F10: Lightning Ball's attack and its line save each carry their own damage.
+  const ball = byName("Lightning Release: Lightning Ball").system.activities;
+  assert.ok(ball.every(a => (a.damage?.parts?.length ?? 0) <= 1));
+  assert.deepEqual(ball.map(a => [a.type, a.damage.parts[0].formula]), [["attack", "3d6"], ["save", "2d6"]]);
 });
 
 test("source-clear upcasting selects ranked damage without mutating the base or mixing in finisher damage", () => {

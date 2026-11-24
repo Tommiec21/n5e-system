@@ -86,17 +86,23 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5es0Ash3T2QkiRR",
+        "type": "damage",
+        "label": "Jolts",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d8",
+              "type": "lightning"
+            }
+          ]
+        },
+        "text": "Concentration, a Kanji within 5 feet (move it 20 feet as a Bonus Action). Choose Jolts or Shocks. Jolts: creatures except you within 10 feet of it, at the end of each of your turns. Per rank: +1d6, or Shocks +1 trigger."
+      },
+      {
+        "id": "n5emN7hPsmF15mFg",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "shocked",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Shocked"
-          }
-        ],
+        "label": "Shocks",
         "save": {
           "abilities": [
             "con"
@@ -105,17 +111,19 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "shocked",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shocked"
+          }
+        ],
+        "text": "Creatures except you within 10 feet of it that take lightning damage. Failure: 1 Shocked; after 3 Shocked (+1 per rank, instead of the dice) the jutsu ends.",
         "damage": {
-          "parts": [
-            {
-              "formula": "2d8",
-              "type": "lightning"
-            }
-          ]
+          "parts": []
         }
       }
     ],
@@ -199,29 +207,9 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
-              "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "shocked",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Shocked"
-                }
-              ],
-              "save": {
-                "abilities": [
-                  "con"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "id": "n5es0Ash3T2QkiRR",
+              "type": "damage",
+              "label": "Jolts",
               "damage": {
                 "parts": [
                   {
@@ -229,22 +217,13 @@
                     "type": "lightning"
                   }
                 ]
-              }
-            }
-          ],
-          "B": [
+              },
+              "text": "Concentration, a Kanji within 5 feet (move it 20 feet as a Bonus Action). Choose Jolts or Shocks. Jolts: creatures except you within 10 feet of it, at the end of each of your turns. Per rank: +1d6, or Shocks +1 trigger."
+            },
             {
-              "id": "parsed1",
+              "id": "n5emN7hPsmF15mFg",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "shocked",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Shocked"
-                }
-              ],
+              "label": "Shocks",
               "save": {
                 "abilities": [
                   "con"
@@ -253,10 +232,27 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "text": "Creatures except you within 10 feet of it that take lightning damage. Failure: 1 Shocked; after 3 Shocked (+1 per rank, instead of the dice) the jutsu ends.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5es0Ash3T2QkiRR",
+              "type": "damage",
+              "label": "Jolts",
               "damage": {
                 "parts": [
                   {
@@ -264,22 +260,13 @@
                     "type": "lightning"
                   }
                 ]
-              }
-            }
-          ],
-          "A": [
+              },
+              "text": "Concentration, a Kanji within 5 feet (move it 20 feet as a Bonus Action). Choose Jolts or Shocks. Jolts: creatures except you within 10 feet of it, at the end of each of your turns. Per rank: +1d6, or Shocks +1 trigger."
+            },
             {
-              "id": "parsed1",
+              "id": "n5emN7hPsmF15mFg",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "shocked",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Shocked"
-                }
-              ],
+              "label": "Shocks",
               "save": {
                 "abilities": [
                   "con"
@@ -288,10 +275,27 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "text": "Creatures except you within 10 feet of it that take lightning damage. Failure: 1 Shocked; after 3 Shocked (+1 per rank, instead of the dice) the jutsu ends.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5es0Ash3T2QkiRR",
+              "type": "damage",
+              "label": "Jolts",
               "damage": {
                 "parts": [
                   {
@@ -299,22 +303,13 @@
                     "type": "lightning"
                   }
                 ]
-              }
-            }
-          ],
-          "S": [
+              },
+              "text": "Concentration, a Kanji within 5 feet (move it 20 feet as a Bonus Action). Choose Jolts or Shocks. Jolts: creatures except you within 10 feet of it, at the end of each of your turns. Per rank: +1d6, or Shocks +1 trigger."
+            },
             {
-              "id": "parsed1",
+              "id": "n5emN7hPsmF15mFg",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "shocked",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Shocked"
-                }
-              ],
+              "label": "Shocks",
               "save": {
                 "abilities": [
                   "con"
@@ -323,10 +318,27 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "text": "Creatures except you within 10 feet of it that take lightning damage. Failure: 1 Shocked; after 3 Shocked (+1 per rank, instead of the dice) the jutsu ends.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5es0Ash3T2QkiRR",
+              "type": "damage",
+              "label": "Jolts",
               "damage": {
                 "parts": [
                   {
@@ -334,12 +346,41 @@
                     "type": "lightning"
                   }
                 ]
+              },
+              "text": "Concentration, a Kanji within 5 feet (move it 20 feet as a Bonus Action). Choose Jolts or Shocks. Jolts: creatures except you within 10 feet of it, at the end of each of your turns. Per rank: +1d6, or Shocks +1 trigger."
+            },
+            {
+              "id": "n5emN7hPsmF15mFg",
+              "type": "save",
+              "label": "Shocks",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "text": "Creatures except you within 10 feet of it that take lightning damage. Failure: 1 Shocked; after 3 Shocked (+1 per rank, instead of the dice) the jutsu ends.",
+              "damage": {
+                "parts": []
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "8ebb04f9de7c596b"

@@ -86,9 +86,19 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eyhhDBqdDeXtmF",
         "type": "save",
-        "label": "Save",
+        "label": "Powerful Bullet Breath",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "dazed",
@@ -109,18 +119,7 @@
             "label": "Deafened"
           }
         ],
-        "save": {
-          "abilities": [
-            "con"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "A 30-foot cone. Failure: Dazed, Blinded and Deafened until the end of its next turn; success: half, nothing else.",
         "damage": {
           "parts": [
             {
@@ -129,6 +128,27 @@
             }
           ]
         }
+      },
+      {
+        "id": "n5e1DT68kuwDm48G",
+        "type": "effect",
+        "label": "Overcharge: failed by 5+: Stunned",
+        "effect": {
+          "name": "Overcharge: failed by 5+: Stunned",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "stunned",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Stunned"
+            }
+          ]
+        },
+        "text": "Until the end of its next turn."
       }
     ],
     "featureType": "active",
@@ -204,7 +224,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "406afaae95c62927"

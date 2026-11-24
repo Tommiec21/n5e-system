@@ -86,13 +86,14 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "6d10",
-        "roll": {
+        "id": "n5eaeik0pym1EUY7",
+        "type": "heal",
+        "label": "Penance: temporary hit points",
+        "heal": {
           "formula": "6d10",
-          "note": "Make a Ninshou Check vs DC (15 + 1 for every round the target has been dead.)  On a success, they awake, gaining 1 Hit points and a number of temporary hit points equal to 6d10. These temporary hit points last for 1 minute. When the creature runs out of temporary hit points granted by this jutsu, they fall unconscious for 24 hours, unable to awaken by any means. A creature can be revived by this jutsu no more than once per full rest."
-        }
+          "pool": "tempHp"
+        },
+        "text": "A creature you touch dead no longer than 1 minute: a Ninshou check, DC 15 + 1 per round dead. Success: it wakes with 1 hit point and these for 1 minute; while it has them, Mastery in Strength, Dexterity and Constitution saves and its damage is lightning that ignores resistance (immunity counts as resistance). When they run out: unconscious for 24 hours. Once per full rest per creature."
       }
     ],
     "featureType": "active",
@@ -166,7 +167,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "acabc40e90c929b8"

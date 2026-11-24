@@ -86,9 +86,19 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eMlIDrrHEXNixq",
         "type": "save",
-        "label": "Save",
+        "label": "Kirin",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "shocked",
@@ -103,18 +113,7 @@
             "label": "Dazed"
           }
         ],
-        "save": {
-          "abilities": [
-            "dex"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "half",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Full turn, an active thunderstorm: a 40-foot wide, 500-foot tall cylinder at a space within 300 feet; flying creatures at disadvantage. Failure: 5 Shocked and Dazed until no longer Shocked; success: half.",
         "damage": {
           "parts": [
             {
@@ -196,7 +195,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "6eb4cf52289e000c"

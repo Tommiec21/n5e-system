@@ -1,3 +1,11 @@
+## 0.96.0-alpha.1 — STD6f F10 Lightning Ninjutsu; Lightning Beast and Lightning Dragon
+
+King 2026-11-24: "Next batch." Lightning Release Ninjutsu (44) reviewed at every rank (39 partly automated, 5 notes only). Review table docs/jutsu/ninjutsu-lightning-release-automation.md; spec docs/STD6f_SPEC.md (F10).
+
+- **Summons:** Lightning Beast (Beast Lightning) and Lightning Dragon (Lightning Dragon's Overcharge) from the source book's Summon Stat Blocks (Summons > Ninjutsu > Lightning Release). Lightning Clone places the Clone.
+- **Fixed buttons:** Banquet of Lightning, Static Falcon and the other half-damage saves; Lightning Ball, Lightning Claw and Shock Whip are attacks; Lightning Reflex is no longer a save; Thunder Bomb saves by Shocked ranks; Railgun no longer gives Shocked.
+- **Overcharge:** buttons labelled "Overcharge: …" where it adds a save, damage or condition; upcasts per the text; four Amps kept.
+
 ## 0.95.0-alpha.1 — STD6f F9 Fire and Water Ninjutsu; Fire and Water summons
 
 King 2026-11-24: "Next Batch." Fire Release (51) and Water Release (50) Ninjutsu reviewed at every rank (80 partly automated, 21 notes only). Review tables docs/jutsu/ninjutsu-fire-release-automation.md and ninjutsu-water-release-automation.md; spec docs/STD6f_SPEC.md (F9).

@@ -1,6 +1,6 @@
 # STD6f function spec: jutsu as data
 
-Status: **Approved by King 2026-11-22 (Q-J1 yes; Q-J2 fix and finish). F1 Taijutsu I (0.87.0-alpha.1) and F2 Taijutsu II (0.88.0-alpha.1) built: Taijutsu is done. F3 Bukijutsu I (0.89.0-alpha.1) F4 Bukijutsu II (0.90.0-alpha.1) and F5 Bukijutsu III (0.91.0-alpha.1) built: Bukijutsu is done. F6 Non-Elemental (0.92.0-alpha.1) F7 Medical (0.93.0-alpha.1) F8 Earth + Wind (0.94.0-alpha.1) and F9 Fire + Water (0.95.0-alpha.1) built. Next: F10 Lightning.**
+Status: **Approved by King 2026-11-22 (Q-J1 yes; Q-J2 fix and finish). F1 Taijutsu I (0.87.0-alpha.1) and F2 Taijutsu II (0.88.0-alpha.1) built: Taijutsu is done. F3 Bukijutsu I (0.89.0-alpha.1) F4 Bukijutsu II (0.90.0-alpha.1) and F5 Bukijutsu III (0.91.0-alpha.1) built: Bukijutsu is done. F6 Non-Elemental (0.92.0-alpha.1) F7 Medical (0.93.0-alpha.1) F8 Earth + Wind (0.94.0-alpha.1) F9 Fire + Water (0.95.0-alpha.1) and F10 Lightning (0.96.0-alpha.1) built. Next: F11 Phantasm + Hallucinogenic.**
 
 Plan: `docs/STD_SPEC.md` (STD6f: "Every jutsu's riders as Active Effects and elements, emitted by an upgraded importer where the pattern is regular; a review table per section for King"). Same method as the clan pass (`docs/STD6e_SPEC.md`).
 
@@ -307,6 +307,34 @@ Review tables: `docs/jutsu/ninjutsu-fire-release-automation.md` (51 jutsu: 41 pa
 - Wall of Water: casting time "1 Action, 1 Reaction"; "a 5d6 Hit points".
 - Typos: Fireball "success save"; Dragon Flame Bolt "effected creature" and its upcast split across lines; Fox Fire "3 chakras", "neither you or"; Green Fire "Self(45-Radius)"; Heavenly Prison "S-Rank, and its duration"; Everflame Fruit "who's"; Great Fire Cage "ranks of Burn"; Body of Dawn "effect cause by"; Explosive Clone "the they"; Dolphin Break "On a success you deal"; Shark's Maw "a sharks"; Viscous Water Mass "cast a B-Rank"; Water Formation "up to two twice"; Raging Bubble Tide "Ranging wave"; Hydra Scorpion "for its the duration", "use this, Action"; Blessing of Poseidon "a Atlantean"; Tsunami Bow "have not moves"; Great Shark Bullet "successful on"; Water Dragon "target creature 14d6"; Giant Water Prison Dance "60 radius".
 
+## F10 Ninjutsu V: Lightning (0.96.0-alpha.1)
+
+Review table: `docs/jutsu/ninjutsu-lightning-release-automation.md` (44 jutsu: 39 partly automated, 5 notes only).
+
+- **Summons built** from the Summon Stat Blocks section (Summons > Ninjutsu > Lightning Release): Lightning Beast (AC 14 + 4 and 35 + 7 hit points per rank above B; Kill Switch, Static Rend ×2, Lightning Fang) for Beast Lightning, and Lightning Dragon (AC 22, DR 8, 60 hit points, Large; Lightning Bite, Lightning Breath) for Lightning Dragon's Overcharge. Lightning Clone places the shared Clone.
+- **Kept** (Q-J2): the Spark, Jolt, Lightning Chakra Armor and Lightning King's Mantle Amps.
+- **Fixed:** Banquet of Lightning and Static Falcon are Constitution saves with half (not bare damage); Lightning Ball is an attack plus a line save; Lightning Claw is Thunder Punch, Lightning Cross and Panther Claw attacks; Shock Whip is an attack, then the save; Lightning Reflex is no longer a save; Mark of Jolts is Jolts damage and a Shocks save; Thunder Tempest, Lightning Wall, Lightning Step, Chained Lightning, Storm Breaker and the A/S breaths save for half; Thunder Bomb has one save per number of Shocked ranks (3d8 to 7d8); Penance is temporary hit points; Raging Storm is an effect (resistances, +20 speed) plus its +2d8; Railgun no longer gives Shocked.
+- **Overcharge buttons** (labelled "Overcharge: …"): Banquet of Lightning, Guiding Bolt's line, Lightning Claw's Panther Claw, Shock Whip, Chidori's Raikiri (B-Rank), Lightning Step, Spider Web, False Darkness, Lightning Lily, Lightning Spear, Lightning Dragon (the summon), Powerful Bullet Breath. The rest are notes on the button.
+- **Upcasts:** dice per rank throughout; Guiding Bolt (C-Rank Surge and the jutsu-bonus damage, B-Rank Shocked), Lightning Buckler (+4 per rank), Lightning Claw (+1d6 at C and A, +1 attack at B), Lightning Retribution (+3 AC at B, 2 Shocked at A), Shock Whip (+1 target at C, Restrained at B), Chidori (+2d10), Lightning Rod (A-Rank 5d10, 8 DR), Thunder Bolt (B-Rank 3d12, A-Rank Shocked).
+- **Notes only:** Lightning Reflex, Lightning Repel, Lightning Speed, Static Sense, Aftershock.
+- **By hand:** critical threat range bonuses (Chidori, Lightning Claw, Bang), Pierce DR, Lightning Retribution's dice per instance, Thunder Bomb's splash, Chained Lightning's Overcharge Shocked, Thunder Bolt's 5-foot speed, Thunder Tempest's initiative, Absorb Lightning's temporary chakra, Static Rend's +2 against Shocked.
+- **No new holds:** both stat blocks are complete.
+
+## Text issues found in F10
+
+- Built on a reading; confirm: Lightning Lily's "+1d12 per rank" also grows the Overcharge 9d12; Lightning Rod "+2S" read as +2 DR; Mark of Jolts' "1d6 or +1 trigger" left as a choice (dice on the button); Lightning Retribution's +2 AC lasts to the end of the turn; Lightning Shield's immunities and +5 AC built as one effect; Lightning Dragon block CHA +5 with a −5 save and Earth immunity as written; Lightning Beast's Static Rend and Lightning Fang use your Ninjutsu attack bonus.
+- Chidori: its Overcharge field holds the upcast sentence ("For each rank above C-Rank…") as a second Overcharge.
+- Shock Whip: "half damage on a successful save" after a hit (built as the save's half).
+- Thunder Tempest: "are pushed back 10 feet and Shocked" (missing "and"); the import gave no half.
+- Railgun: "On a failed a creature"; the import added Shocked (not in the text).
+- Kirin: "on a failed Save" twice.
+- Lightning Lily: "Select a point you can within range".
+- Lightning Wall: "lighting" ×3, "attacks or affects".
+- Guiding Bolt: "lighting damage"; "would make gain a jutsu based bonus".
+- Lightning Step: "have is knocked Prone".
+- Thunder Bolt: "has their legs begins to seize up".
+- Typos: Banquet "gain an additional rank"; Lightning Buckler "shields you manifest sits", "can only be take"; Spark "Overcharge … you would take" (it's the target); Chained Lightning "that be targeted"; Lightning Shield "Reaction, to being damaged"; Storm Breaker "is plummeted", "Creatures … is Blinded"; Penance "a creature have"; Jolt "a creature have"; Lightning Chakra Armor "the bonus to attacks" (no attack bonus listed); Raging Storm "until it covering".
+
 ## Progress log
 
 - 2026-11-22 King: "Next batch" (after STD6e E8). Claude: spec proposed from a survey of the jutsu pack. Nothing built.
@@ -319,3 +347,4 @@ Review tables: `docs/jutsu/ninjutsu-fire-release-automation.md` (51 jutsu: 41 pa
 - 2026-11-23 King: "Make sure all missing pieces are being recorded in the MD file. Then move on to the next batch." Claude: F1–F6 text issues and built-on-a-reading items added to the context text-issues files (10a, 10b); F7 Medical built (68 jutsu) with the Supreme Poison Deity; published 0.93.0-alpha.1. No new questions.
 - 2026-11-24 King: "Next Batch." Claude: F8 Earth + Wind built (104 jutsu) with the Mud Wolf and Stone Dragon; text issues logged in 10a; published 0.94.0-alpha.1. No new questions.
 - 2026-11-24 King: "Next Batch." Claude: F9 Fire + Water built (101 jutsu) with the Flame Spider, Water Shark, Medical Jellyfish and Supreme Water Lion; text issues logged in 10a; published 0.95.0-alpha.1. No new questions.
+- 2026-11-24 King: "Next batch." Claude: F10 Lightning built (44 jutsu) with the Lightning Beast and Lightning Dragon; text issues logged in 10a; published 0.96.0-alpha.1. No new questions.

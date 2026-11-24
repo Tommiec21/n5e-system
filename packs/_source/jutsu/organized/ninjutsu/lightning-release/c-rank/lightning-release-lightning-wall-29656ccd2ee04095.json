@@ -86,9 +86,19 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eD46lFOlgqqIGR",
         "type": "save",
-        "label": "Save",
+        "label": "Lightning Wall",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "shocked",
@@ -97,38 +107,64 @@
             "label": "Shocked"
           }
         ],
+        "text": "Full turn, concentration: a 30 by 15 by 1-foot wall or a 40-foot ring, opaque; creatures in its area when it appears. Failure: Shocked; success: half, nothing else.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "lightning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eBMW02pxGQ2cmU",
+        "type": "damage",
+        "label": "Ending a turn within 5 feet, or entering",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "lightning"
+            }
+          ]
+        },
+        "text": "Either side; also entering it the first time or ending a turn in it. Then the save below."
+      },
+      {
+        "id": "n5eGEWvQ7TAysLc4",
+        "type": "save",
+        "label": "Near the wall: Shocked",
         "save": {
           "abilities": [
-            "dex"
+            "con"
           ],
           "dc": {
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "shocked",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shocked"
+          }
+        ],
+        "text": "Failure: 1 Shocked.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
+        "id": "n5eoQ8nKMfpX5nMg",
         "type": "roll",
-        "label": "4d8",
-        "roll": {
-          "formula": "4d8",
-          "note": "On a failed save, a creature takes 4d8 lighting damage and becomes Shocked or half as much damage and no further effects on a successful save."
-        }
-      },
-      {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "5d6",
+        "label": "Wall hit points",
         "roll": {
           "formula": "5d6",
-          "note": "The wall has 5d6 hit points and intercepts all attacks or affects that would need to pass through it to take effect. It has resistance to Earth damage and vulnerability to Wind damage."
+          "note": "It blocks attacks and effects through it; resistance to earth, vulnerability to wind."
         }
       }
     ],
@@ -215,7 +251,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "5a30ed7096cb7ea2"

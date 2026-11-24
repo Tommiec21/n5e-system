@@ -86,9 +86,19 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e0VITUCqWZMUBM",
         "type": "save",
-        "label": "Save",
+        "label": "Spider Web",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "shocked",
@@ -103,26 +113,15 @@
             "label": "Dazed"
           }
         ],
-        "save": {
-          "abilities": [
-            "con"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Concentration: a 15-foot cube within 60 feet (+5 feet per rank); creatures starting a turn in or entering it. Failure: 1 Shocked and Dazed.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "overcharge-parsed1",
+        "id": "n5eBtZFAwOa9AW73",
         "type": "damage",
-        "label": "Overcharge: Damage",
+        "label": "Overcharge: Shocked, starting a turn",
         "damage": {
           "parts": [
             {
@@ -130,7 +129,8 @@
               "type": "lightning"
             }
           ]
-        }
+        },
+        "text": "A Shocked creature starting its turn in the area."
       }
     ],
     "featureType": "active",
@@ -210,9 +210,158 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5e0VITUCqWZMUBM",
+              "type": "save",
+              "label": "Spider Web",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                },
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "Concentration: a 15-foot cube within 60 feet (+5 feet per rank); creatures starting a turn in or entering it. Failure: 1 Shocked and Dazed.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eBtZFAwOa9AW73",
+              "type": "damage",
+              "label": "Overcharge: Shocked, starting a turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d12) + (1d12)",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "text": "A Shocked creature starting its turn in the area."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e0VITUCqWZMUBM",
+              "type": "save",
+              "label": "Spider Web",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                },
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "Concentration: a 15-foot cube within 60 feet (+5 feet per rank); creatures starting a turn in or entering it. Failure: 1 Shocked and Dazed.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eBtZFAwOa9AW73",
+              "type": "damage",
+              "label": "Overcharge: Shocked, starting a turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d12) + (2d12)",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "text": "A Shocked creature starting its turn in the area."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e0VITUCqWZMUBM",
+              "type": "save",
+              "label": "Spider Web",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                },
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "Concentration: a 15-foot cube within 60 feet (+5 feet per rank); creatures starting a turn in or entering it. Failure: 1 Shocked and Dazed.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eBtZFAwOa9AW73",
+              "type": "damage",
+              "label": "Overcharge: Shocked, starting a turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d12) + (3d12)",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "text": "A Shocked creature starting its turn in the area."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "5a30ed7096cb7ea2"

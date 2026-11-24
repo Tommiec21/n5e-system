@@ -86,9 +86,19 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eA4xBx1xVRhZxY",
         "type": "save",
-        "label": "Save",
+        "label": "Lightning Dragon",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "blinded",
@@ -103,18 +113,7 @@
             "label": "Deafened"
           }
         ],
-        "save": {
-          "abilities": [
-            "dex"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "half",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "A 90 by 10-foot line. Failure: Blinded and Deafened for 1 minute; success: half, nothing else.",
         "damage": {
           "parts": [
             {
@@ -122,6 +121,16 @@
               "type": "lightning"
             }
           ]
+        }
+      },
+      {
+        "id": "n5ef0vd5rZYWxQW4",
+        "type": "summon",
+        "label": "Overcharge: Lightning Dragon",
+        "summon": {
+          "uuid": "Compendium.n5e.summons.Actor.n5eOcvKJ2LQMmsKy",
+          "count": 1,
+          "template": ""
         }
       }
     ],
@@ -205,9 +214,19 @@
         "activitiesByRank": {
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eA4xBx1xVRhZxY",
               "type": "save",
-              "label": "Save",
+              "label": "Lightning Dragon",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "blinded",
@@ -222,18 +241,7 @@
                   "label": "Deafened"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "dex"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "half",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "A 90 by 10-foot line. Failure: Blinded and Deafened for 1 minute; success: half, nothing else.",
               "damage": {
                 "parts": [
                   {
@@ -242,11 +250,28 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5ef0vd5rZYWxQW4",
+              "type": "summon",
+              "label": "Overcharge: Lightning Dragon",
+              "summon": {
+                "uuid": "Compendium.n5e.summons.Actor.n5eOcvKJ2LQMmsKy",
+                "count": 1,
+                "template": ""
+              }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Overcharge: the dragon remains as a construct; command it as a Bonus Action."
+        }
+      ]
     }
   },
   "folder": "406afaae95c62927"

@@ -85,23 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ehrCbO3PwizJto",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "blinded",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Blinded"
-          },
-          {
-            "key": "shocked",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Shocked"
-          }
-        ],
+        "label": "Lightning Lily",
         "save": {
           "abilities": [
             "dex"
@@ -110,10 +96,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          }
+        ],
+        "text": "Creatures within 15 feet of a point within 90 feet. Failure: Blinded until the end of its next turn; success: no damage, 1 Shocked until the start of its next turn (the effect).",
         "damage": {
           "parts": [
             {
@@ -124,9 +117,48 @@
         }
       },
       {
-        "id": "overcharge-parsed1",
-        "type": "damage",
-        "label": "Overcharge: Damage",
+        "id": "n5etYemnQLHs0r6s",
+        "type": "effect",
+        "label": "Success: 1 Shocked",
+        "effect": {
+          "name": "Success: 1 Shocked",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "shocked",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shocked"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5elyDXq8Mq0BDaV",
+        "type": "save",
+        "label": "Overcharge: chose advantage",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "stunned",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Stunned"
+          }
+        ],
+        "text": "Each creature chooses advantage or disadvantage on the save. Advantage, failure: this instead, Stunned until the end of its next turn. Disadvantage: as normal.",
         "damage": {
           "parts": [
             {
@@ -220,9 +252,183 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5ehrCbO3PwizJto",
+              "type": "save",
+              "label": "Lightning Lily",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                }
+              ],
+              "text": "Creatures within 15 feet of a point within 90 feet. Failure: Blinded until the end of its next turn; success: no damage, 1 Shocked until the start of its next turn (the effect).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d12) + (1d12)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5etYemnQLHs0r6s",
+              "type": "effect",
+              "label": "Success: 1 Shocked",
+              "effect": {
+                "name": "Success: 1 Shocked",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5elyDXq8Mq0BDaV",
+              "type": "save",
+              "label": "Overcharge: chose advantage",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "stunned",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Stunned"
+                }
+              ],
+              "text": "Each creature chooses advantage or disadvantage on the save. Advantage, failure: this instead, Stunned until the end of its next turn. Disadvantage: as normal.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(9d12) + (1d12)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ehrCbO3PwizJto",
+              "type": "save",
+              "label": "Lightning Lily",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                }
+              ],
+              "text": "Creatures within 15 feet of a point within 90 feet. Failure: Blinded until the end of its next turn; success: no damage, 1 Shocked until the start of its next turn (the effect).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d12) + (2d12)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5etYemnQLHs0r6s",
+              "type": "effect",
+              "label": "Success: 1 Shocked",
+              "effect": {
+                "name": "Success: 1 Shocked",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5elyDXq8Mq0BDaV",
+              "type": "save",
+              "label": "Overcharge: chose advantage",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "stunned",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Stunned"
+                }
+              ],
+              "text": "Each creature chooses advantage or disadvantage on the save. Advantage, failure: this instead, Stunned until the end of its next turn. Disadvantage: as normal.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(9d12) + (2d12)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "acabc40e90c929b8"

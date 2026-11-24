@@ -89,43 +89,60 @@
     },
     "activities": [
       {
-        "id": "overcharge-parsed1",
+        "id": "n5esfT69V4l5axnG",
         "type": "attack",
-        "label": "Overcharge: Attack",
+        "label": "Thunder Punch",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Concentration: in place of an attack of the Attack action. A Shocked target: +1 rank of Mastery (by hand).",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "lightning"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "Overcharge: 4d6",
-        "roll": {
-          "formula": "4d6",
-          "note": "Make a melee ninjutsu attack dealing 4d6 Lightning damage on a hit. If a target is Shocked you gain a rank of Mastery to the attack."
+        "id": "n5eiylKPG8pBgN56",
+        "type": "attack",
+        "label": "Lightning Cross (reaction)",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Reaction to taking damage from a melee attack.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "lightning"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "Overcharge: 5d6",
-        "roll": {
-          "formula": "5d6",
-          "note": "Make a melee ninjutsu attack, dealing 5d6 lightning damage on a hit."
-        }
-      },
-      {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "Overcharge: 6d6",
-        "roll": {
-          "formula": "6d6",
-          "note": "On a hit, you deal 6d6 Lightning damage."
+        "id": "n5exMDbu3BLGpDqU",
+        "type": "attack",
+        "label": "Overcharge: Panther Claw",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "As Thunder Punch. 2+ Shocked: advantage and +1 critical threat range (by hand).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": "lightning"
+            }
+          ]
         }
       }
     ],
@@ -225,9 +242,247 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5esfT69V4l5axnG",
+              "type": "attack",
+              "label": "Thunder Punch",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration: in place of an attack of the Attack action. A Shocked target: +1 rank of Mastery (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "5d6",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eiylKPG8pBgN56",
+              "type": "attack",
+              "label": "Lightning Cross (reaction)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Reaction to taking damage from a melee attack.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "6d6",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5exMDbu3BLGpDqU",
+              "type": "attack",
+              "label": "Overcharge: Panther Claw",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "As Thunder Punch. 2+ Shocked: advantage and +1 critical threat range (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "7d6",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5esfT69V4l5axnG",
+              "type": "attack",
+              "label": "Thunder Punch",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Concentration: in place of an attack of the Attack action. A Shocked target: +1 rank of Mastery (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "5d6",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eiylKPG8pBgN56",
+              "type": "attack",
+              "label": "Lightning Cross (reaction)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Reaction to taking damage from a melee attack.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "6d6",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5exMDbu3BLGpDqU",
+              "type": "attack",
+              "label": "Overcharge: Panther Claw",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "As Thunder Punch. 2+ Shocked: advantage and +1 critical threat range (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "7d6",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5esfT69V4l5axnG",
+              "type": "attack",
+              "label": "Thunder Punch",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Concentration: in place of an attack of the Attack action. A Shocked target: +1 rank of Mastery (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "6d6",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eiylKPG8pBgN56",
+              "type": "attack",
+              "label": "Lightning Cross (reaction)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Reaction to taking damage from a melee attack.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "7d6",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5exMDbu3BLGpDqU",
+              "type": "attack",
+              "label": "Overcharge: Panther Claw",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "As Thunder Punch. 2+ Shocked: advantage and +1 critical threat range (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "8d6",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5esfT69V4l5axnG",
+              "type": "attack",
+              "label": "Thunder Punch",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Concentration: in place of an attack of the Attack action. A Shocked target: +1 rank of Mastery (by hand). S-Rank: +2 critical threat range (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "6d6",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eiylKPG8pBgN56",
+              "type": "attack",
+              "label": "Lightning Cross (reaction)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Reaction to taking damage from a melee attack. S-Rank: +2 critical threat range (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "7d6",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5exMDbu3BLGpDqU",
+              "type": "attack",
+              "label": "Overcharge: Panther Claw",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "As Thunder Punch. 2+ Shocked: advantage and +1 critical threat range (by hand). S-Rank: +2 critical threat range (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "8d6",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "8ebb04f9de7c596b"

@@ -88,9 +88,29 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eqx6tMcWeRp0lJ",
+        "type": "summon",
+        "label": "Lightning Clone",
+        "summon": {
+          "uuid": "Compendium.n5e.summons.Actor.n5eEJhEoWEBSSwYK",
+          "count": 1,
+          "template": ""
+        }
+      },
+      {
+        "id": "n5eb0yhTlwMjQJRM",
         "type": "save",
-        "label": "Save",
+        "label": "Discharge",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "shocked",
@@ -105,18 +125,7 @@
             "label": "Dazed"
           }
         ],
-        "save": {
-          "abilities": [
-            "con"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "At 0 hit points: creatures within 20 feet. Failure: 3 Shocked and Dazed.",
         "damage": {
           "parts": []
         }
@@ -188,7 +197,14 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "16 chakra; 8 more per extra clone, up to 3 more (+1 per rank; summon again). Immune to genjutsu, psychic and poison damage; speed equal to yours or 50 feet; no weight; explodes in a body of water (the Lightning Clone adjustments by hand on the Clone's sheet)."
+        }
+      ]
     }
   },
   "folder": "406afaae95c62927"

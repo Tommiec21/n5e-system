@@ -85,16 +85,20 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ePAve82LvIi3Xk",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "shocked",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Shocked"
+        "label": "Railgun",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
           },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
           {
             "key": "prone",
             "kind": "state",
@@ -114,23 +118,38 @@
             "label": "Shaken"
           }
         ],
-        "save": {
-          "abilities": [
-            "dex"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "A 15 by 500-foot line from a metal object; Shocked creatures at disadvantage; objects and structures take the maximum. Failure: Prone, Dazed and 2 Shaken; success: half (the effect). Overcharge: ignores cover and no advantage on the save.",
         "damage": {
           "parts": [
             {
               "formula": "9d10",
               "type": "lightning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eQh7b6edEfPhCF",
+        "type": "effect",
+        "label": "Success: Prone, 2 Shaken",
+        "effect": {
+          "name": "Success: Prone, 2 Shaken",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            },
+            {
+              "key": "shaken",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Shaken"
             }
           ]
         }
@@ -209,7 +228,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "6eb4cf52289e000c"

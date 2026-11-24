@@ -725,8 +725,41 @@ const waterLion = actor("supreme-water-lion", "Supreme Water Lion", water._id, {
 ], { "details.level": "@level", ...NIN }, "icons/svg/mystery-man-black.svg");
 waterLion.prototypeToken.width = waterLion.prototypeToken.height = 3;
 
+// Lightning Release summons (STD6f F10), from the Summon Stat Blocks section.
+const lightning = folder("Lightning Release", ninjutsu._id, "ninjutsu/lightning-release");
+const lightningBeast = inkSummon("lightning-beast", "Lightning Beast", { jutsu: "Lightning Release: Beast Lightning (B-Rank)", release: "Lightning Release", dir: lightning, ac: [14, 4, 3], hp: [35, 7, 3], speed: 45,
+  m: [2, 6, 0, -5, 0, -5], sv: [1, 9, 1, -5, 0, -5], senses: {}, immune: ["acid", "lightning", "earth", "psychic"], vuln: ["wind"], condImmune: [...MENTAL, ...SENSORY, "petrified", "envenomed"], stateImmune: ["incapacitated", "stunned"],
+  extraBio: " <strong>Damage Immunities</strong> Acid, Lightning, Earth, Psychic. <strong>Damage Vulnerabilities</strong> Wind. <strong>Condition Immunities</strong> All Mental and Sensory, Incapacitated, Stunned, Petrified, Envenomed. <strong>Senses</strong> passive Perception 10." }, id => [
+  item(id, "Kill Switch", "npcTraits", html("When the beast reaches 0 hit points it explodes. All creatures within 10 feet of it must make a Dexterity saving throw, taking 4d10 lightning damage and becoming Shocked on a failed save, or half as much and no additional effects on a successful one."),
+    [ninSave("lightning-beast", "Kill Switch", "dex", { half: true, damage: [{ formula: "4d10", type: "lightning" }], inflicts: [inf("shocked")], text: "At 0 hit points." })]),
+  item(id, "Static Rend", "npcStrikes", html("<em>Multiattack.</em> The Lightning Beast attacks twice with its Static Rend. <em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 4d8 lightning damage. If the target has ranks of Shocked, these attacks gain a +2 bonus to hit."),
+    [ninAtk("lightning-beast", "Static Rend", "4d8", "lightning", 2, "+2 to hit against a Shocked target (add it by hand).")]),
+  item(id, "Lightning Fang", "npcStrikes", html("<em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 3d12 lightning damage, and the creature must make a Constitution saving throw, gaining 1 rank of Shocked on a failed save."),
+    [ninAtk("lightning-beast-fang", "Lightning Fang", "3d12", "lightning"), ninSave("lightning-beast-fang", "Lightning Fang: Shocked", "con", { inflicts: [inf("shocked")] })])
+]);
+const lightningDragon = actor("lightning-dragon", "Lightning Dragon", lightning._id, {
+  details: { build: "character", level: 1, template: "summon", creatureType: "construct", blurb: "Lightning Release: Lightning Dragon (Overcharge)", summonRole: "Lightning Dragon",
+    biography: html("<p><em>Lightning Release: Lightning Dragon (A-Rank), when Overcharged.</em> It uses your Ninjutsu attack bonus and save DC; you command it as a Bonus Action.</p>",
+      "<p><strong>Large Construct.</strong> <strong>Armor Class</strong> 22, DR 8 · <strong>Hit Points</strong> 60 · <strong>Speed</strong> 40 ft. fly.</p>",
+      `<p><strong>Abilities</strong> ${statLine([7, 7, 3, -5, 0, 5], [10, 10, 6, -5, 0, -5])}. <strong>Damage Immunities</strong> Earth. <strong>Damage Vulnerabilities</strong> Wind. <strong>Condition Immunities</strong> All Mental, Sensory and Elemental, Incapacitated. <strong>Senses</strong> relies on the caster's senses.</p>`,
+      "<p><strong>Linked to you when summoned:</strong> your Ninjutsu attack bonus and save DC.</p>") },
+  abilities: mods([7, 7, 3, -5, 0, 5]),
+  attributes: { ac: { calc: "flat", flat: 22, formula: "" }, init: { bonus: "" } },
+  traits: { size: "large", dr: 8, immune: ["earth"], vuln: ["wind"], conditionImmune: [...MENTAL, ...SENSORY, ...ELEMENTAL], stateImmune: ["incapacitated"],
+    speed: { walk: 0, climb: 0, swim: 0, fly: 40, burrow: 0, hover: false }, senses: {} },
+  hpMax: 60, cpMax: 0, diesAtZero: true
+}, id => [
+  item(id, "Recharge", "npcTraits", html("When the Lightning Dragon takes lightning damage, it regains hit points equal to the damage dealt.")),
+  item(id, "Lightning Charge", "npcAbilities", html("The Lightning Dragon charges forward, moving up to 80 feet in any direction, zig-zagging or turning corners. All creatures whose space it would pass become targets for its Lightning Bite attack.")),
+  item(id, "Lightning Bite", "npcStrikes", html("<em>Melee Ninjutsu Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 6d6 lightning damage."),
+    [ninAtk("lightning-dragon", "Lightning Bite", "6d6", "lightning")]),
+  item(id, "Lightning Breath (2 Charges)", "npcAbilities", html("The Dragon spews pure Lightning Release chakra in a 60-foot line. Each creature except its summoner in that line must make a Dexterity saving throw, taking 6d10 lightning damage and 2 ranks of Shocked on a failed save, or half as much damage on a successful one."),
+    [ninSave("lightning-dragon", "Lightning Breath", "dex", { half: true, damage: [{ formula: "6d10", type: "lightning" }], inflicts: [inf("shocked", "condition", 2)], text: "2 charges." })])
+], { "details.level": "@level", ...NIN }, "icons/svg/mystery-man-black.svg");
+lightningDragon.prototypeToken.width = lightningDragon.prototypeToken.height = 2;
+
 /* -------------------------------------------- */
-export const SUMMONS = { bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone, poisonDeity, mudWolf, stoneDragon, flameSpider, waterShark, jellyfish, waterLion, folders: [scout, cloning, voidHeart, genjutsu, beguiler, illusionist, bakuton, chinoike, hozuki, kashu, shoton, tsuchigumo, hoshi, ninjutsu, nonElemental, medical, earth, fire, water] };
+export const SUMMONS = { bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone, poisonDeity, mudWolf, stoneDragon, flameSpider, waterShark, jellyfish, waterLion, lightningBeast, lightningDragon, folders: [scout, cloning, voidHeart, genjutsu, beguiler, illusionist, bakuton, chinoike, hozuki, kashu, shoton, tsuchigumo, hoshi, ninjutsu, nonElemental, medical, earth, fire, water, lightning] };
 
 if ( import.meta.url === `file://${process.argv[1]}` ) {
   fs.rmSync(OUT, { recursive: true, force: true });
@@ -766,10 +799,12 @@ if ( import.meta.url === `file://${process.argv[1]}` ) {
   write("ninjutsu/fire-release/_folder.json", fire);
   write(`ninjutsu/fire-release/flame-spider-${flameSpider._id}.json`, flameSpider);
   write("ninjutsu/water-release/_folder.json", water);
+  write("ninjutsu/lightning-release/_folder.json", lightning);
+  for ( const d of [lightningBeast, lightningDragon] ) write(`ninjutsu/lightning-release/${d.name.toLowerCase().replace(/[^a-z]+/g, "-")}-${d._id}.json`, d);
   for ( const d of [waterShark, jellyfish, waterLion] ) write(`ninjutsu/water-release/${d.name.toLowerCase().replace(/[^a-z]+/g, "-")}-${d._id}.json`, d);
   write(`ninjutsu/earth-release/mud-wolf-${mudWolf._id}.json`, mudWolf);
   write(`ninjutsu/earth-release/stone-dragon-${stoneDragon._id}.json`, stoneDragon);
   write(`ninjutsu/medical-release/supreme-poison-deity-${poisonDeity._id}.json`, poisonDeity);
   for ( const d of [inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone] ) write(`ninjutsu/non-elemental/${d.name.toLowerCase().replace(/[^a-z]+/g, "-").replace(/-$/, "")}-${d._id}.json`, d);
-  console.log(`✓ summons: 31 NPCs (${[bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone, poisonDeity, mudWolf, stoneDragon, flameSpider, waterShark, jellyfish, waterLion].map(d => `${d.name} ${d._id}`).join(", ")})`);
+  console.log(`✓ summons: 33 NPCs (${[bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone, poisonDeity, mudWolf, stoneDragon, flameSpider, waterShark, jellyfish, waterLion, lightningBeast, lightningDragon].map(d => `${d.name} ${d._id}`).join(", ")})`);
 }

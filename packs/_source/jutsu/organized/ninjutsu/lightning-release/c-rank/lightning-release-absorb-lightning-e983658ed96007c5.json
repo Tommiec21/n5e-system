@@ -85,10 +85,23 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5eX18f0Jm5HwoLd",
+        "type": "effect",
+        "label": "Absorb Lightning: immune",
+        "effect": {
+          "name": "Absorb Lightning",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.immune",
+              "value": "lightning",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Reaction to taking lightning damage: until the start of your next turn. Gain temporary chakra equal to half the damage you take (by hand)."
       }
     ],
     "featureType": "active",
@@ -155,7 +168,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "5a30ed7096cb7ea2"

@@ -86,17 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ee0DISU6oJaln5",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "shocked",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Shocked"
-          }
-        ],
+        "label": "1 Shocked",
         "save": {
           "abilities": [
             "con"
@@ -104,58 +96,138 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "Reaction when a creature gains or would lose Shocked: each Shocked creature within 30 feet (disadvantage if within 10 feet of another Shocked creature). Success: half. Shocked then ends on every creature in range; at most 2 explosions per creature.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "lightning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e9tev1vww92mEw",
+        "type": "save",
+        "label": "2 Shocked",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Reaction when a creature gains or would lose Shocked: each Shocked creature within 30 feet (disadvantage if within 10 feet of another Shocked creature). Success: half. Shocked then ends on every creature in range; at most 2 explosions per creature.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "lightning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ezG9TY5KhKFcKT",
+        "type": "save",
+        "label": "3 Shocked",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Reaction when a creature gains or would lose Shocked: each Shocked creature within 30 feet (disadvantage if within 10 feet of another Shocked creature). Success: half. Shocked then ends on every creature in range; at most 2 explosions per creature.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d8",
+              "type": "lightning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ew9aDRAKHYgpkN",
+        "type": "save",
+        "label": "4 Shocked",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Reaction when a creature gains or would lose Shocked: each Shocked creature within 30 feet (disadvantage if within 10 feet of another Shocked creature). Success: half. Shocked then ends on every creature in range; at most 2 explosions per creature.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d8",
+              "type": "lightning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eIDcujQTOFQ54T",
+        "type": "save",
+        "label": "5 Shocked",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Reaction when a creature gains or would lose Shocked: each Shocked creature within 30 feet (disadvantage if within 10 feet of another Shocked creature). Success: half. Shocked then ends on every creature in range; at most 2 explosions per creature.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "7d8",
+              "type": "lightning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eU49tJXV6lgcQ4",
+        "type": "save",
+        "label": "Within 10 feet of a Shocked creature",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Failure: half the damage of that creature's explosion (by hand); success: none.",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "3d8",
-        "roll": {
-          "formula": "3d8",
-          "note": "(1 Stack: 3d8, 2 Stacks: 4d8, 3 Stacks: 5d8, 4 Stacks: 6d8,  5 Stacks: 7d8)"
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "4d8",
-        "roll": {
-          "formula": "4d8",
-          "note": "(1 Stack: 3d8, 2 Stacks: 4d8, 3 Stacks: 5d8, 4 Stacks: 6d8,  5 Stacks: 7d8)"
-        }
-      },
-      {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "5d8",
-        "roll": {
-          "formula": "5d8",
-          "note": "(1 Stack: 3d8, 2 Stacks: 4d8, 3 Stacks: 5d8, 4 Stacks: 6d8,  5 Stacks: 7d8)"
-        }
-      },
-      {
-        "id": "sourceRoll4",
-        "type": "roll",
-        "label": "6d8",
-        "roll": {
-          "formula": "6d8",
-          "note": "(1 Stack: 3d8, 2 Stacks: 4d8, 3 Stacks: 5d8, 4 Stacks: 6d8,  5 Stacks: 7d8)"
-        }
-      },
-      {
-        "id": "sourceRoll5",
-        "type": "roll",
-        "label": "7d8",
-        "roll": {
-          "formula": "7d8",
-          "note": "(1 Stack: 3d8, 2 Stacks: 4d8, 3 Stacks: 5d8, 4 Stacks: 6d8,  5 Stacks: 7d8)"
         }
       }
     ],
@@ -254,7 +326,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "5a30ed7096cb7ea2"

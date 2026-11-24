@@ -1,0 +1,319 @@
+{
+  "_id": "n5eOcvKJ2LQMmsKy",
+  "_key": "!actors!n5eOcvKJ2LQMmsKy",
+  "name": "Lightning Dragon",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Lightning Release: Lightning Dragon (Overcharge)",
+      "summonRole": "Lightning Dragon",
+      "biography": "<p><em>Lightning Release: Lightning Dragon (A-Rank), when Overcharged.</em> It uses your Ninjutsu attack bonus and save DC; you command it as a Bonus Action.</p><p><strong>Large Construct.</strong> <strong>Armor Class</strong> 22, DR 8 · <strong>Hit Points</strong> 60 · <strong>Speed</strong> 40 ft. fly.</p><p><strong>Abilities</strong> STR +7 (save +10), DEX +7 (save +10), CON +3 (save +6), INT −5 (save −5), WIS +0 (save +0), CHA +5 (save −5). <strong>Damage Immunities</strong> Earth. <strong>Damage Vulnerabilities</strong> Wind. <strong>Condition Immunities</strong> All Mental, Sensory and Elemental, Incapacitated. <strong>Senses</strong> relies on the caster's senses.</p><p><strong>Linked to you when summoned:</strong> your Ninjutsu attack bonus and save DC.</p>"
+    },
+    "abilities": {
+      "str": {
+        "value": 24
+      },
+      "dex": {
+        "value": 24
+      },
+      "con": {
+        "value": 16
+      },
+      "int": {
+        "value": 0
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 20
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 22,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "large",
+      "dr": 8,
+      "immune": [
+        "earth"
+      ],
+      "vuln": [
+        "wind"
+      ],
+      "conditionImmune": [
+        "berserk",
+        "charmed",
+        "confused",
+        "demoralized",
+        "shaken",
+        "concussed",
+        "blinded",
+        "dazzled",
+        "deafened",
+        "burned",
+        "chilled",
+        "corroded",
+        "shocked",
+        "envenomed"
+      ],
+      "stateImmune": [
+        "incapacitated"
+      ],
+      "speed": {
+        "walk": 0,
+        "climb": 0,
+        "swim": 0,
+        "fly": 40,
+        "burrow": 0,
+        "hover": false
+      },
+      "senses": {}
+    },
+    "hpMax": 60,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5erPQkmRGpBQs1i",
+      "_key": "!actors.items!n5eOcvKJ2LQMmsKy.n5erPQkmRGpBQs1i",
+      "name": "Recharge",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>When the Lightning Dragon takes lightning damage, it regains hit points equal to the damage dealt.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.96.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5e2hGJJMt1Mazg6",
+      "_key": "!actors.items!n5eOcvKJ2LQMmsKy.n5e2hGJJMt1Mazg6",
+      "name": "Lightning Charge",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Lightning Dragon charges forward, moving up to 80 feet in any direction, zig-zagging or turning corners. All creatures whose space it would pass become targets for its Lightning Bite attack.</p>",
+        "category": "npcAbilities",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.96.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eWtzMBJkNCvXpo",
+      "_key": "!actors.items!n5eOcvKJ2LQMmsKy.n5eWtzMBJkNCvXpo",
+      "name": "Lightning Bite",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Melee Ninjutsu Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 6d6 lightning damage.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eNoseDHtbgxVKr",
+            "type": "attack",
+            "label": "Lightning Bite",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 1,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "6d6",
+                  "type": "lightning"
+                }
+              ]
+            }
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.96.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eJEZIQB58Y4iqj",
+      "_key": "!actors.items!n5eOcvKJ2LQMmsKy.n5eJEZIQB58Y4iqj",
+      "name": "Lightning Breath (2 Charges)",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Dragon spews pure Lightning Release chakra in a 60-foot line. Each creature except its summoner in that line must make a Dexterity saving throw, taking 6d10 lightning damage and 2 ranks of Shocked on a failed save, or half as much damage on a successful one.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eAeeSwpEaBCoVC",
+            "type": "save",
+            "label": "Lightning Breath",
+            "save": {
+              "abilities": [
+                "dex"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "half",
+              "resave": false
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "6d10",
+                  "type": "lightning"
+                }
+              ]
+            },
+            "inflicts": [
+              {
+                "key": "shocked",
+                "kind": "condition",
+                "ranks": 2,
+                "label": "Shocked"
+              }
+            ],
+            "text": "2 charges."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.96.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5ec7NZzyf5WHCSJ",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "bonuses.saveDC.nin": "@dc.nin - 8 - @prof",
+        "bonuses.attack.nin": "@attack.nin - @prof"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Lightning Dragon",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 2,
+    "height": 2
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.96.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

@@ -86,9 +86,19 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e4ado6egkrjhp0",
         "type": "save",
-        "label": "Save",
+        "label": "Lightning Spear",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "shaken",
@@ -97,18 +107,7 @@
             "label": "Shaken"
           }
         ],
-        "save": {
-          "abilities": [
-            "dex"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "A 60 by 5-foot line. Failure: 2 Shaken; success: half, nothing else.",
         "damage": {
           "parts": [
             {
@@ -117,6 +116,27 @@
             }
           ]
         }
+      },
+      {
+        "id": "n5eG2Sgc2E3i0Mdk",
+        "type": "effect",
+        "label": "Overcharge: Restrained",
+        "effect": {
+          "name": "Overcharge: Restrained",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            }
+          ]
+        },
+        "text": "Creatures that failed, until the start of your next turn."
       }
     ],
     "featureType": "active",
@@ -199,9 +219,19 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5e4ado6egkrjhp0",
               "type": "save",
-              "label": "Save",
+              "label": "Lightning Spear",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "shaken",
@@ -210,18 +240,7 @@
                   "label": "Shaken"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "dex"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "A 60 by 5-foot line. Failure: 2 Shaken; success: half, nothing else.",
               "damage": {
                 "parts": [
                   {
@@ -230,13 +249,44 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5eG2Sgc2E3i0Mdk",
+              "type": "effect",
+              "label": "Overcharge: Restrained",
+              "effect": {
+                "name": "Overcharge: Restrained",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  }
+                ]
+              },
+              "text": "Creatures that failed, until the start of your next turn."
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5e4ado6egkrjhp0",
               "type": "save",
-              "label": "Save",
+              "label": "Lightning Spear",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "shaken",
@@ -245,18 +295,7 @@
                   "label": "Shaken"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "dex"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "A 60 by 5-foot line. Failure: 2 Shaken; success: half, nothing else.",
               "damage": {
                 "parts": [
                   {
@@ -265,11 +304,33 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5eG2Sgc2E3i0Mdk",
+              "type": "effect",
+              "label": "Overcharge: Restrained",
+              "effect": {
+                "name": "Overcharge: Restrained",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  }
+                ]
+              },
+              "text": "Creatures that failed, until the start of your next turn."
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "acabc40e90c929b8"

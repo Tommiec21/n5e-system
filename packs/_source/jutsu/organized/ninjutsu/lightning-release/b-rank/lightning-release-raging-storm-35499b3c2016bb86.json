@@ -85,9 +85,38 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eo3cwVZIqC57Bw",
+        "type": "effect",
+        "label": "Raging Storm",
+        "effect": {
+          "name": "Raging Storm",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "n5e.resist",
+              "value": "earth",
+              "mode": 2
+            },
+            {
+              "key": "n5e.resist",
+              "value": "lightning",
+              "mode": 2
+            },
+            {
+              "key": "system.bonuses.speed",
+              "value": "20",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Concentration: an allied creature within 60 feet, not you (+1 per rank)."
+      },
+      {
+        "id": "n5eIwf5IPJGUiDdg",
         "type": "damage",
-        "label": "Damage",
+        "label": "Raging Storm: +2d8",
         "damage": {
           "parts": [
             {
@@ -95,7 +124,8 @@
               "type": "lightning"
             }
           ]
-        }
+        },
+        "text": "Damage the target deals, twice per turn."
       }
     ],
     "featureType": "active",
@@ -171,7 +201,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "acabc40e90c929b8"

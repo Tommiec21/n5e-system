@@ -86,14 +86,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e32o7BI78DEufe",
         "type": "attack",
-        "label": "Attack",
+        "label": "Lightning Strike Attack",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Concentration with no chakra to maintain: an Action, a creature within 10 feet. Lightning Supercharge (Bonus action): the next one pierces 6 DR (by hand).",
         "damage": {
           "parts": [
             {
@@ -102,6 +103,25 @@
             }
           ]
         }
+      },
+      {
+        "id": "n5e7y7oOVBUi14so",
+        "type": "effect",
+        "label": "Lightning Guard (reaction): 6 DR",
+        "effect": {
+          "name": "Lightning Guard",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.dr",
+              "value": "6",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Reaction to taking damage: not against wind damage, until the start of your next turn."
       }
     ],
     "featureType": "active",
@@ -181,9 +201,131 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5e32o7BI78DEufe",
+              "type": "attack",
+              "label": "Lightning Strike Attack",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration with no chakra to maintain: an Action, a creature within 10 feet. Lightning Supercharge (Bonus action): the next one pierces 6 DR (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d10",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e7y7oOVBUi14so",
+              "type": "effect",
+              "label": "Lightning Guard (reaction): 6 DR",
+              "effect": {
+                "name": "Lightning Guard",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.dr",
+                    "value": "6",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction to taking damage: not against wind damage, until the start of your next turn."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e32o7BI78DEufe",
+              "type": "attack",
+              "label": "Lightning Strike Attack",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration with no chakra to maintain: an Action, a creature within 10 feet. Lightning Supercharge (Bonus action): the next one pierces 6 DR (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "5d10",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e7y7oOVBUi14so",
+              "type": "effect",
+              "label": "Lightning Guard (reaction): 8 DR",
+              "effect": {
+                "name": "Lightning Guard",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.dr",
+                    "value": "8",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction to taking damage: not against wind damage, until the start of your next turn."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e32o7BI78DEufe",
+              "type": "attack",
+              "label": "Lightning Strike Attack",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration with no chakra to maintain: an Action, a creature within 10 feet. Lightning Supercharge (Bonus action): the next one pierces 6 DR (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "5d10",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e7y7oOVBUi14so",
+              "type": "effect",
+              "label": "Lightning Guard (reaction): 8 DR",
+              "effect": {
+                "name": "Lightning Guard",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.dr",
+                    "value": "8",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction to taking damage: not against wind damage, until the start of your next turn."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "5a30ed7096cb7ea2"

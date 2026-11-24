@@ -87,14 +87,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eWBWiiHO3gCAsV",
         "type": "attack",
-        "label": "Attack",
+        "label": "Chidori",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Full turn (B-Rank: an Action), concentration with no chakra to maintain; the hand can't hold items. +1 critical threat range (+1 per rank; by hand). A hit ends the jutsu.",
         "damage": {
           "parts": [
             {
@@ -182,9 +183,131 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eWBWiiHO3gCAsV",
+              "type": "attack",
+              "label": "Chidori",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Full turn (B-Rank: an Action), concentration with no chakra to maintain; the hand can't hold items. +1 critical threat range (+1 per rank; by hand). A hit ends the jutsu.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d10) + (2d10)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eGWzZjU05KVy1e",
+              "type": "effect",
+              "label": "Overcharge: Raikiri",
+              "effect": {
+                "name": "Raikiri",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.speed",
+                    "value": "20",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              },
+              "text": "B-Rank: until the jutsu ends. +1 rank of Mastery to melee ninjutsu attacks and a critical hit raises the damage die 1 step (by hand)."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eWBWiiHO3gCAsV",
+              "type": "attack",
+              "label": "Chidori",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Full turn (B-Rank: an Action), concentration with no chakra to maintain; the hand can't hold items. +1 critical threat range (+1 per rank; by hand). A hit ends the jutsu.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d10) + (4d10)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eGWzZjU05KVy1e",
+              "type": "effect",
+              "label": "Overcharge: Raikiri",
+              "effect": {
+                "name": "Raikiri",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.speed",
+                    "value": "20",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              },
+              "text": "B-Rank: until the jutsu ends. +1 rank of Mastery to melee ninjutsu attacks and a critical hit raises the damage die 1 step (by hand)."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eWBWiiHO3gCAsV",
+              "type": "attack",
+              "label": "Chidori",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Full turn (B-Rank: an Action), concentration with no chakra to maintain; the hand can't hold items. +1 critical threat range (+1 per rank; by hand). A hit ends the jutsu.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d10) + (6d10)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eGWzZjU05KVy1e",
+              "type": "effect",
+              "label": "Overcharge: Raikiri",
+              "effect": {
+                "name": "Raikiri",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.speed",
+                    "value": "20",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              },
+              "text": "B-Rank: until the jutsu ends. +1 rank of Mastery to melee ninjutsu attacks and a critical hit raises the damage die 1 step (by hand)."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "5a30ed7096cb7ea2"

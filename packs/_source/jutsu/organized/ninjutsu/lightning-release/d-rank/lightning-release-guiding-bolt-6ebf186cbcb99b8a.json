@@ -86,14 +86,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eWIcJW4uVkPDTZ",
         "type": "attack",
-        "label": "Attack",
+        "label": "Guiding Bolt",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "90 feet. On a hit: the next attack against it before the end of your next turn has advantage.",
         "damage": {
           "parts": [
             {
@@ -104,10 +105,9 @@
         }
       },
       {
-        "id": "overcharge-parsed1",
+        "id": "n5e81EmjRBVjLMPT",
         "type": "save",
-        "label": "Overcharge: Save",
-        "inflicts": [],
+        "label": "Overcharge: 60-foot line",
         "save": {
           "abilities": [
             "dex"
@@ -115,13 +115,18 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "Instead: a 60 by 5-foot line. Success: half. A creature concentrating makes its concentration check at disadvantage.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "lightning"
+            }
+          ]
         }
       }
     ],
@@ -223,14 +228,15 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5eWIcJW4uVkPDTZ",
               "type": "attack",
-              "label": "Attack",
+              "label": "Guiding Bolt",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "90 feet. On a hit: the next attack against it before the end of your next turn has advantage.",
               "damage": {
                 "parts": [
                   {
@@ -241,10 +247,9 @@
               }
             },
             {
-              "id": "overcharge-parsed1",
+              "id": "n5e81EmjRBVjLMPT",
               "type": "save",
-              "label": "Overcharge: Save",
-              "inflicts": [],
+              "label": "Overcharge: 60-foot line",
               "save": {
                 "abilities": [
                   "dex"
@@ -252,26 +257,60 @@
                 "dc": {
                   "source": "discipline"
                 },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
+                "onSuccess": "half",
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Instead: a 60 by 5-foot line. Success: half. A creature concentrating makes its concentration check at disadvantage.",
               "damage": {
-                "parts": []
+                "parts": [
+                  {
+                    "formula": "(3d8) + (1d8)",
+                    "type": "lightning"
+                  }
+                ]
               }
+            },
+            {
+              "id": "n5eakYkSa3YabwVN",
+              "type": "damage",
+              "label": "Surge (Bonus action)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d8",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "text": "C-Rank: on a hit you can concentrate on it; each of your turns as a Bonus Action."
+            },
+            {
+              "id": "n5ev47MV30vnxG7D",
+              "type": "damage",
+              "label": "Gains a jutsu bonus while not concentrating",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "text": "C-Rank, while you concentrate on it."
             }
           ],
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5eWIcJW4uVkPDTZ",
               "type": "attack",
-              "label": "Attack",
+              "label": "Guiding Bolt",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "90 feet. On a hit: the next attack against it before the end of your next turn has advantage.",
               "damage": {
                 "parts": [
                   {
@@ -282,10 +321,9 @@
               }
             },
             {
-              "id": "overcharge-parsed1",
+              "id": "n5e81EmjRBVjLMPT",
               "type": "save",
-              "label": "Overcharge: Save",
-              "inflicts": [],
+              "label": "Overcharge: 60-foot line",
               "save": {
                 "abilities": [
                   "dex"
@@ -293,26 +331,67 @@
                 "dc": {
                   "source": "discipline"
                 },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
+                "onSuccess": "half",
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "text": "Instead: a 60 by 5-foot line. Success: half. A creature concentrating makes its concentration check at disadvantage.",
               "damage": {
-                "parts": []
+                "parts": [
+                  {
+                    "formula": "(3d8) + (2d8)",
+                    "type": "lightning"
+                  }
+                ]
               }
+            },
+            {
+              "id": "n5eakYkSa3YabwVN",
+              "type": "damage",
+              "label": "Surge (Bonus action)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d8",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "text": "C-Rank: on a hit you can concentrate on it; each of your turns as a Bonus Action."
+            },
+            {
+              "id": "n5ev47MV30vnxG7D",
+              "type": "damage",
+              "label": "Gains a jutsu bonus while not concentrating",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "text": "C-Rank, while you concentrate on it."
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eWIcJW4uVkPDTZ",
               "type": "attack",
-              "label": "Attack",
+              "label": "Guiding Bolt",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "90 feet. On a hit: the next attack against it before the end of your next turn has advantage.",
               "damage": {
                 "parts": [
                   {
@@ -323,10 +402,9 @@
               }
             },
             {
-              "id": "overcharge-parsed1",
+              "id": "n5e81EmjRBVjLMPT",
               "type": "save",
-              "label": "Overcharge: Save",
-              "inflicts": [],
+              "label": "Overcharge: 60-foot line",
               "save": {
                 "abilities": [
                   "dex"
@@ -334,26 +412,67 @@
                 "dc": {
                   "source": "discipline"
                 },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
+                "onSuccess": "half",
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "text": "Instead: a 60 by 5-foot line. Success: half. A creature concentrating makes its concentration check at disadvantage.",
               "damage": {
-                "parts": []
+                "parts": [
+                  {
+                    "formula": "(3d8) + (3d8)",
+                    "type": "lightning"
+                  }
+                ]
               }
+            },
+            {
+              "id": "n5eakYkSa3YabwVN",
+              "type": "damage",
+              "label": "Surge (Bonus action)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d8",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "text": "C-Rank: on a hit you can concentrate on it; each of your turns as a Bonus Action."
+            },
+            {
+              "id": "n5ev47MV30vnxG7D",
+              "type": "damage",
+              "label": "Gains a jutsu bonus while not concentrating",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "text": "C-Rank, while you concentrate on it."
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eWIcJW4uVkPDTZ",
               "type": "attack",
-              "label": "Attack",
+              "label": "Guiding Bolt",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "90 feet. On a hit: the next attack against it before the end of your next turn has advantage.",
               "damage": {
                 "parts": [
                   {
@@ -364,10 +483,9 @@
               }
             },
             {
-              "id": "overcharge-parsed1",
+              "id": "n5e81EmjRBVjLMPT",
               "type": "save",
-              "label": "Overcharge: Save",
-              "inflicts": [],
+              "label": "Overcharge: 60-foot line",
               "save": {
                 "abilities": [
                   "dex"
@@ -375,19 +493,60 @@
                 "dc": {
                   "source": "discipline"
                 },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
+                "onSuccess": "half",
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "text": "Instead: a 60 by 5-foot line. Success: half. A creature concentrating makes its concentration check at disadvantage.",
               "damage": {
-                "parts": []
+                "parts": [
+                  {
+                    "formula": "(3d8) + (4d8)",
+                    "type": "lightning"
+                  }
+                ]
               }
+            },
+            {
+              "id": "n5eakYkSa3YabwVN",
+              "type": "damage",
+              "label": "Surge (Bonus action)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d8",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "text": "C-Rank: on a hit you can concentrate on it; each of your turns as a Bonus Action."
+            },
+            {
+              "id": "n5ev47MV30vnxG7D",
+              "type": "damage",
+              "label": "Gains a jutsu bonus while not concentrating",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "text": "C-Rank, while you concentrate on it."
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "8ebb04f9de7c596b"

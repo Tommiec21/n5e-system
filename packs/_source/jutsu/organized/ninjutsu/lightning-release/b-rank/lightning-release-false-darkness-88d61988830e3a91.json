@@ -85,9 +85,19 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eEXolmS6wGyJ5L",
         "type": "save",
-        "label": "Save",
+        "label": "False Darkness",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "blinded",
@@ -96,18 +106,7 @@
             "label": "Blinded"
           }
         ],
-        "save": {
-          "abilities": [
-            "con"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "A 30-foot cone (+5 feet per rank). Failure: Blinded for 1 minute, resave at the start of each of its turns; success: half.",
         "damage": {
           "parts": [
             {
@@ -116,6 +115,27 @@
             }
           ]
         }
+      },
+      {
+        "id": "n5eqtftRVtdZg5CM",
+        "type": "effect",
+        "label": "Overcharge: Deafened",
+        "effect": {
+          "name": "Overcharge: Deafened",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "deafened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Deafened"
+            }
+          ]
+        },
+        "text": "Creatures that failed, while Blinded by it."
       }
     ],
     "featureType": "active",
@@ -198,9 +218,19 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eEXolmS6wGyJ5L",
               "type": "save",
-              "label": "Save",
+              "label": "False Darkness",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "blinded",
@@ -209,18 +239,7 @@
                   "label": "Blinded"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "con"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "A 30-foot cone (+5 feet per rank). Failure: Blinded for 1 minute, resave at the start of each of its turns; success: half.",
               "damage": {
                 "parts": [
                   {
@@ -229,13 +248,44 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5eqtftRVtdZg5CM",
+              "type": "effect",
+              "label": "Overcharge: Deafened",
+              "effect": {
+                "name": "Overcharge: Deafened",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "deafened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deafened"
+                  }
+                ]
+              },
+              "text": "Creatures that failed, while Blinded by it."
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eEXolmS6wGyJ5L",
               "type": "save",
-              "label": "Save",
+              "label": "False Darkness",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "blinded",
@@ -244,18 +294,7 @@
                   "label": "Blinded"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "con"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "A 30-foot cone (+5 feet per rank). Failure: Blinded for 1 minute, resave at the start of each of its turns; success: half.",
               "damage": {
                 "parts": [
                   {
@@ -264,11 +303,33 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5eqtftRVtdZg5CM",
+              "type": "effect",
+              "label": "Overcharge: Deafened",
+              "effect": {
+                "name": "Overcharge: Deafened",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "deafened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deafened"
+                  }
+                ]
+              },
+              "text": "Creatures that failed, while Blinded by it."
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "acabc40e90c929b8"

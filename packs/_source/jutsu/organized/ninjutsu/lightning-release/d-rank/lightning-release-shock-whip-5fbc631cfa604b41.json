@@ -85,14 +85,42 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ep9tmy9BsWOG7r",
         "type": "attack",
-        "label": "Attack",
+        "label": "Shock Whip",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "30 feet (+10 per rank; C-Rank: one more creature). On a hit: the save.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eyQ8wsYHswQ3nG",
+        "type": "save",
+        "label": "Whip: Grappled, pulled",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "grappled",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Grappled"
+          }
+        ],
+        "text": "Failure: Grappled by you (B-Rank: Restrained) and pulled 10 feet; success: half.",
         "damage": {
           "parts": [
             {
@@ -103,32 +131,25 @@
         }
       },
       {
-        "id": "parsed2",
-        "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "grappled",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Grappled"
-          }
-        ],
-        "save": {
-          "abilities": [
-            "con"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "half",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
+        "id": "n5eF5EUylVA69BS5",
+        "type": "effect",
+        "label": "Overcharge: Shocked",
+        "effect": {
+          "name": "Overcharge: Shocked",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "shocked",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shocked"
+            }
+          ]
         },
-        "damage": {
-          "parts": []
-        }
+        "text": "Creatures that failed."
       }
     ],
     "featureType": "active",
@@ -211,14 +232,42 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5ep9tmy9BsWOG7r",
               "type": "attack",
-              "label": "Attack",
+              "label": "Shock Whip",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "ranged",
-                "count": 1
+                "count": 2
               },
+              "text": "30 feet (+10 per rank; C-Rank: one more creature). On a hit: the save.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eyQ8wsYHswQ3nG",
+              "type": "save",
+              "label": "Whip: Grappled, pulled",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "Failure: Grappled by you (B-Rank: Restrained) and pulled 10 feet; success: half.",
               "damage": {
                 "parts": [
                   {
@@ -229,17 +278,46 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eF5EUylVA69BS5",
+              "type": "effect",
+              "label": "Overcharge: Shocked",
+              "effect": {
+                "name": "Overcharge: Shocked",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  }
+                ]
+              },
+              "text": "Creatures that failed."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5ep9tmy9BsWOG7r",
+              "type": "attack",
+              "label": "Shock Whip",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 2
+              },
+              "text": "30 feet (+10 per rank; C-Rank: one more creature). On a hit: the save.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eyQ8wsYHswQ3nG",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "grappled",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Grappled"
-                }
-              ],
+              "label": "Whip: Restrained, pulled",
               "save": {
                 "abilities": [
                   "con"
@@ -248,25 +326,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "half",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
-              "damage": {
-                "parts": []
-              }
-            }
-          ],
-          "B": [
-            {
-              "id": "parsed1",
-              "type": "attack",
-              "label": "Attack",
-              "attack": {
-                "discipline": "nin",
-                "range": "ranged",
-                "count": 1
-              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "Failure: Grappled by you (B-Rank: Restrained) and pulled 10 feet; success: half.",
               "damage": {
                 "parts": [
                   {
@@ -277,17 +347,46 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eF5EUylVA69BS5",
+              "type": "effect",
+              "label": "Overcharge: Shocked",
+              "effect": {
+                "name": "Overcharge: Shocked",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  }
+                ]
+              },
+              "text": "Creatures that failed."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ep9tmy9BsWOG7r",
+              "type": "attack",
+              "label": "Shock Whip",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 2
+              },
+              "text": "30 feet (+10 per rank; C-Rank: one more creature). On a hit: the save.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eyQ8wsYHswQ3nG",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "grappled",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Grappled"
-                }
-              ],
+              "label": "Whip: Restrained, pulled",
               "save": {
                 "abilities": [
                   "con"
@@ -296,25 +395,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "half",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
-              "damage": {
-                "parts": []
-              }
-            }
-          ],
-          "A": [
-            {
-              "id": "parsed1",
-              "type": "attack",
-              "label": "Attack",
-              "attack": {
-                "discipline": "nin",
-                "range": "ranged",
-                "count": 1
-              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "Failure: Grappled by you (B-Rank: Restrained) and pulled 10 feet; success: half.",
               "damage": {
                 "parts": [
                   {
@@ -325,17 +416,46 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eF5EUylVA69BS5",
+              "type": "effect",
+              "label": "Overcharge: Shocked",
+              "effect": {
+                "name": "Overcharge: Shocked",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  }
+                ]
+              },
+              "text": "Creatures that failed."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ep9tmy9BsWOG7r",
+              "type": "attack",
+              "label": "Shock Whip",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 2
+              },
+              "text": "30 feet (+10 per rank; C-Rank: one more creature). On a hit: the save.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eyQ8wsYHswQ3nG",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "grappled",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Grappled"
-                }
-              ],
+              "label": "Whip: Restrained, pulled",
               "save": {
                 "abilities": [
                   "con"
@@ -344,25 +464,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "half",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
-              "damage": {
-                "parts": []
-              }
-            }
-          ],
-          "S": [
-            {
-              "id": "parsed1",
-              "type": "attack",
-              "label": "Attack",
-              "attack": {
-                "discipline": "nin",
-                "range": "ranged",
-                "count": 1
-              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "Failure: Grappled by you (B-Rank: Restrained) and pulled 10 feet; success: half.",
               "damage": {
                 "parts": [
                   {
@@ -373,37 +485,31 @@
               }
             },
             {
-              "id": "parsed2",
-              "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "grappled",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Grappled"
-                }
-              ],
-              "save": {
-                "abilities": [
-                  "con"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "half",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
+              "id": "n5eF5EUylVA69BS5",
+              "type": "effect",
+              "label": "Overcharge: Shocked",
+              "effect": {
+                "name": "Overcharge: Shocked",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  }
+                ]
               },
-              "damage": {
-                "parts": []
-              }
+              "text": "Creatures that failed."
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "8ebb04f9de7c596b"

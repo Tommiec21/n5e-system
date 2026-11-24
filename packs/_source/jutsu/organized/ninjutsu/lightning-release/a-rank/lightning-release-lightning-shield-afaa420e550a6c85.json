@@ -86,17 +86,38 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eBBPzdbTGYDqtH",
+        "type": "effect",
+        "label": "Lightning Shield: +5 AC",
+        "effect": {
+          "name": "Lightning Shield",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "5",
+              "mode": 2
+            },
+            {
+              "key": "n5e.immune",
+              "value": "lightning",
+              "mode": 2
+            },
+            {
+              "key": "n5e.immune",
+              "value": "earth",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Reaction to being damaged: until the start of your next turn."
+      },
+      {
+        "id": "n5elIcLUGEEEmPEt",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "shocked",
-            "kind": "condition",
-            "ranks": 3,
-            "label": "Shocked"
-          }
-        ],
+        "label": "Attacker within 30 feet",
         "save": {
           "abilities": [
             "con"
@@ -105,12 +126,39 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "shocked",
+            "kind": "condition",
+            "ranks": 3,
+            "label": "Shocked"
+          }
+        ],
+        "text": "A creature targeting you with an attack. Failure: 3 Shocked; success: 1 (the effect).",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5eHFUCRzpx7sogk",
+        "type": "effect",
+        "label": "Success: 1 Shocked",
+        "effect": {
+          "name": "Success: 1 Shocked",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "shocked",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shocked"
+            }
+          ]
         }
       }
     ],
@@ -178,7 +226,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "406afaae95c62927"

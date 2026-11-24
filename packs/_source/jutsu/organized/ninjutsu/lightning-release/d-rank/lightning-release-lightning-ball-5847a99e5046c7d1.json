@@ -86,22 +86,38 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eFQneTfX4ZTaSq",
         "type": "attack",
-        "label": "Attack",
+        "label": "Lightning Ball",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "60 feet. Overcharge: a second set at a second creature (roll again).",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "lightning"
+            }
+          ]
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eTxCcffE6SXicr",
         "type": "save",
-        "label": "Save",
+        "label": "Its line",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "shaken",
@@ -110,38 +126,14 @@
             "label": "Shaken"
           }
         ],
-        "save": {
-          "abilities": [
-            "dex"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Once per casting: creatures in the 60 by 5-foot line between you and the target. Failure: 1 Shaken; success: half.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "3d6",
-        "roll": {
-          "formula": "3d6",
-          "note": "On a hit, the target creature takes 3d6 lightning damage. Once per casting, all creatures in a 60-foot, 5 feet wide line between you and the target creature must make a dexterity saving throw taking 2d6 lightning damage and gaining 1 rank of Shaken on a failed save and half as much on a success."
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "Once per casting, all creatures in a 60-foot, 5 feet wide line between you and the target creature must make a dexterity saving throw taking 2d6 lightning damage and gaining 1 rank of Shaken on a failed save and half as much on a success."
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "lightning"
+            }
+          ]
         }
       }
     ],
@@ -229,9 +221,223 @@
           "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically.",
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eFQneTfX4ZTaSq",
+              "type": "attack",
+              "label": "Lightning Ball",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet. Overcharge: a second set at a second creature (roll again).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eTxCcffE6SXicr",
+              "type": "save",
+              "label": "Its line",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "Once per casting: creatures in the 60 by 5-foot line between you and the target. Failure: 1 Shaken; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eFQneTfX4ZTaSq",
+              "type": "attack",
+              "label": "Lightning Ball",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet. Overcharge: a second set at a second creature (roll again).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eTxCcffE6SXicr",
+              "type": "save",
+              "label": "Its line",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "Once per casting: creatures in the 60 by 5-foot line between you and the target. Failure: 1 Shaken; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eFQneTfX4ZTaSq",
+              "type": "attack",
+              "label": "Lightning Ball",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet. Overcharge: a second set at a second creature (roll again).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (3d6)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eTxCcffE6SXicr",
+              "type": "save",
+              "label": "Its line",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "Once per casting: creatures in the 60 by 5-foot line between you and the target. Failure: 1 Shaken; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (3d6)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eFQneTfX4ZTaSq",
+              "type": "attack",
+              "label": "Lightning Ball",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet. Overcharge: a second set at a second creature (roll again).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (4d6)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eTxCcffE6SXicr",
+              "type": "save",
+              "label": "Its line",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "Once per casting: creatures in the 60 by 5-foot line between you and the target. Failure: 1 Shaken; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (4d6)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "8ebb04f9de7c596b"
