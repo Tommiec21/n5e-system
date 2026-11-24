@@ -17,6 +17,14 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu",
         "components": "HS"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Swarm active",
+        "appliesTo": {
+          "namePrefix": "Hive Dispersal"
+        },
+        "note": "With your Swarm released: it can be a Reaction to taking damage, +20 feet."
       }
     }
   },
@@ -107,7 +115,17 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eWMWBApVLGuzdn",
+        "type": "roll",
+        "label": "Hive Dispersal",
+        "roll": {
+          "formula": "",
+          "note": "Teleport to a space you can see within 20 feet (+10 at B; A-Rank: a willing creature with you as a Bonus action). Swarm active: also a Reaction to taking damage, +20 feet."
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

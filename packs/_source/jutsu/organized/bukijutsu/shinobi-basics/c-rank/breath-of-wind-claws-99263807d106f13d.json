@@ -87,23 +87,55 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eJY5uJRswAgqRn",
         "type": "attack",
-        "label": "Attack",
+        "label": "Breath of Wind: Claws",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 4
         },
+        "text": "One creature; record the hits (+1 attack per rank).",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "chain-1-parsed1",
+        "id": "n5evCSzDnOqxqYMN",
+        "type": "damage",
+        "label": "Claws: damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "1d8",
+              "type": "wind"
+            }
+          ]
+        },
+        "text": "At least one hit."
+      },
+      {
+        "id": "n5eI5LH7Iovid2Ra",
+        "type": "damage",
+        "label": "Each hit beyond the first",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d8",
+              "type": "wind"
+            }
+          ]
+        },
+        "text": "Roll once per extra hit; a critical hit: +2d8 (once)."
+      },
+      {
+        "id": "n5ePIVgoqswaELKb",
         "type": "save",
-        "label": "Chain 1: Save",
-        "inflicts": [],
+        "label": "Chain 1: thrown",
         "save": {
           "abilities": [
             "str"
@@ -112,26 +144,18 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Chain 1. Failure: thrown 20 feet (not up).",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "chain-2-parsed1",
+        "id": "n5e4u0g4ZxVzfb7L",
         "type": "save",
-        "label": "Chain 2: Save",
-        "inflicts": [
-          {
-            "key": "bleed",
-            "kind": "condition",
-            "ranks": 2,
-            "label": "Bleed"
-          }
-        ],
+        "label": "Chain 2: Bleed",
         "save": {
           "abilities": [
             "dex"
@@ -140,30 +164,19 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Chain 2. Failure: 2 Bleed.",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "1d8",
-        "roll": {
-          "formula": "1d8",
-          "note": "If you score at least one attack, you deal your [Weapons damage] +1d8 wind damage. For every attack that hits, beyond the first, you deal an additional 1d8 wind damage. If you roll a critical hit on any of these attacks, you increase the wind damage by 2d8."
-        }
-      },
-      {
-        "id": "sourceRoll4",
-        "type": "roll",
-        "label": "2d8",
-        "roll": {
-          "formula": "2d8",
-          "note": "If you roll a critical hit on any of these attacks, you increase the wind damage by 2d8."
         }
       }
     ],
@@ -257,9 +270,302 @@
           "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically.",
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eJY5uJRswAgqRn",
+              "type": "attack",
+              "label": "Breath of Wind: Claws",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 5
+              },
+              "text": "One creature; record the hits (+1 attack per rank).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5evCSzDnOqxqYMN",
+              "type": "damage",
+              "label": "Claws: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "1d8",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "At least one hit."
+            },
+            {
+              "id": "n5eI5LH7Iovid2Ra",
+              "type": "damage",
+              "label": "Each hit beyond the first",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d8",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Roll once per extra hit; a critical hit: +2d8 (once)."
+            },
+            {
+              "id": "n5ePIVgoqswaELKb",
+              "type": "save",
+              "label": "Chain 1: thrown",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Chain 1. Failure: thrown 20 feet (not up).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e4u0g4ZxVzfb7L",
+              "type": "save",
+              "label": "Chain 2: Bleed",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Chain 2. Failure: 2 Bleed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eJY5uJRswAgqRn",
+              "type": "attack",
+              "label": "Breath of Wind: Claws",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 6
+              },
+              "text": "One creature; record the hits (+1 attack per rank).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5evCSzDnOqxqYMN",
+              "type": "damage",
+              "label": "Claws: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "1d8",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "At least one hit."
+            },
+            {
+              "id": "n5eI5LH7Iovid2Ra",
+              "type": "damage",
+              "label": "Each hit beyond the first",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d8",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Roll once per extra hit; a critical hit: +2d8 (once)."
+            },
+            {
+              "id": "n5ePIVgoqswaELKb",
+              "type": "save",
+              "label": "Chain 1: thrown",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Chain 1. Failure: thrown 20 feet (not up).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e4u0g4ZxVzfb7L",
+              "type": "save",
+              "label": "Chain 2: Bleed",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Chain 2. Failure: 2 Bleed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eJY5uJRswAgqRn",
+              "type": "attack",
+              "label": "Breath of Wind: Claws",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 7
+              },
+              "text": "One creature; record the hits (+1 attack per rank).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5evCSzDnOqxqYMN",
+              "type": "damage",
+              "label": "Claws: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "1d8",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "At least one hit."
+            },
+            {
+              "id": "n5eI5LH7Iovid2Ra",
+              "type": "damage",
+              "label": "Each hit beyond the first",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d8",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Roll once per extra hit; a critical hit: +2d8 (once)."
+            },
+            {
+              "id": "n5ePIVgoqswaELKb",
+              "type": "save",
+              "label": "Chain 1: thrown",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Chain 1. Failure: thrown 20 feet (not up).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e4u0g4ZxVzfb7L",
+              "type": "save",
+              "label": "Chain 2: Bleed",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Chain 2. Failure: 2 Bleed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "A-Rank: Swirl: its Elemental conditions spread to hostile creatures within 5 feet (1 rank each)."
+        }
+      ]
     }
   },
   "folder": "0032efe7c08875b9"

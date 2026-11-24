@@ -1,0 +1,1402 @@
+{
+  "clan": "aburame",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "aburame-deceptive-swarm": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Chakra Sense and Chakra Sight can't tell you from an insect's chakra; with your swarm out, willing creatures within 10 feet too."
+        }
+      ]
+    },
+    "aburame-festering-brood": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eEuC4Fb3nCVLvZ",
+          "type": "save",
+          "label": "Festering Brood",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "aburame-infested",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Infested"
+            }
+          ],
+          "text": "Once per turn, your jutsu damages a creature (if the jutsu has a save, use that result). Failure: Infested.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "aburame-gentle-maggots": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eU98QWNAtIvTnc",
+          "type": "heal",
+          "label": "Gentle Maggots",
+          "heal": {
+            "formula": "3d8 + 4",
+            "pool": "hp"
+          },
+          "text": "A willing creature in your reach. Swarm active: Animal Handling vs DC 20 for a bonus (lose a rank of a Physical condition, or +10 speed and +1 to its next save before your next turn)."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eU98QWNAtIvTnc",
+                "type": "heal",
+                "label": "Gentle Maggots",
+                "heal": {
+                  "formula": "3d8 + 4",
+                  "pool": "hp"
+                },
+                "text": "A willing creature in your reach. Swarm active: Animal Handling vs DC 20 for a bonus (lose a rank of a Physical condition, or +10 speed and +1 to its next save before your next turn)."
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eU98QWNAtIvTnc",
+                "type": "heal",
+                "label": "Gentle Maggots",
+                "heal": {
+                  "formula": "3d8 + 4",
+                  "pool": "hp"
+                },
+                "text": "A willing creature in your reach. Swarm active: Animal Handling vs DC 20 for a bonus (lose a rank of a Physical condition, or +10 speed and +1 to its next save before your next turn)."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eU98QWNAtIvTnc",
+                "type": "heal",
+                "label": "Gentle Maggots",
+                "heal": {
+                  "formula": "3d8 + 4",
+                  "pool": "hp"
+                },
+                "text": "A willing creature in your reach. Swarm active: Animal Handling vs DC 20 for a bonus (lose a rank of a Physical condition, or +10 speed and +1 to its next save before your next turn)."
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Swarm active",
+          "appliesTo": {
+            "namePrefix": "Gentle Maggots"
+          },
+          "note": "With your Swarm released: an Animal Handling check vs DC 20 for the bonus."
+        }
+      ]
+    },
+    "aburame-grand-veil": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5epS8t8a4jYwDCQ",
+          "type": "effect",
+          "label": "Plague Swarm",
+          "effect": {
+            "name": "Plague Swarm",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Swarm out, Action, once per rest: a 20-foot radius cloud within 60 feet while the swarm lasts (obscured, difficult terrain for creatures you choose; a Bonus action moves it 20 feet). Infested creatures in it can't save to end it until the end of their next turn.",
+          "activation": "action"
+        },
+        {
+          "id": "n5e9P1T4o7DP0cNe",
+          "type": "save",
+          "label": "Plague Swarm: in the cloud",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "aburame-infested",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Infested"
+            }
+          ],
+          "text": "Creatures you choose starting or ending their turn there or first entering it on a turn: 2 ranks of Infested (the text gives no save: apply them).",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5etMpv8YVaFmyIX",
+          "type": "effect",
+          "label": "Queen's Call",
+          "effect": {
+            "name": "Queen's Call",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "-2",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Swarm out, Action, once per rest: a creature you can see within 60 feet, 1 minute: −2 AC and −2 on saves against your Aburame Hijutsu (−1 against your other jutsu).",
+          "activation": "action"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Release your swarm at the start of your turn at no action cost."
+        }
+      ]
+    },
+    "aburame-hive-dispersal": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eWMWBApVLGuzdn",
+          "type": "roll",
+          "label": "Hive Dispersal",
+          "roll": {
+            "formula": "",
+            "note": "Teleport to a space you can see within 20 feet (+10 at B; A-Rank: a willing creature with you as a Bonus action). Swarm active: also a Reaction to taking damage, +20 feet."
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Swarm active",
+          "appliesTo": {
+            "namePrefix": "Hive Dispersal"
+          },
+          "note": "With your Swarm released: it can be a Reaction to taking damage, +20 feet."
+        }
+      ]
+    },
+    "aburame-insect-amp": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eereVeGoxCAQVa",
+          "type": "effect",
+          "label": "Insect Amp",
+          "effect": {
+            "name": "Insect Amp",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action, concentration: your damaging Aburame Hijutsu add your Ninjutsu modifier to the damage; each rank of Infested you inflict is +1.",
+          "activation": "bonus"
+        }
+      ]
+    },
+    "aburame-insect-deception": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5euq8PiwgOno9BB",
+          "type": "save",
+          "label": "Insect Deception",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            }
+          ],
+          "text": "Bonus action: an invisible 10-foot radius trap within 40 feet (+5 at B and S) for 1 hour, while you're within 120 feet. A hostile creature moving in or out triggers it: creatures you choose in it. Failure: the damage and Restrained for 1 minute (concentration from then; resave at the end of its turns, taking the damage again on a failure).",
+          "activation": "bonus",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": "poison"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Poison or chakra (your choice)."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5euq8PiwgOno9BB",
+                "type": "save",
+                "label": "Insect Deception",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  }
+                ],
+                "text": "Bonus action: an invisible 10-foot radius trap within 40 feet (+5 at B and S) for 1 hour, while you're within 120 feet. A hostile creature moving in or out triggers it: creatures you choose in it. Failure: the damage and Restrained for 1 minute (concentration from then; resave at the end of its turns, taking the damage again on a failure).",
+                "activation": "bonus",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (1d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5euq8PiwgOno9BB",
+                "type": "save",
+                "label": "Insect Deception",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  }
+                ],
+                "text": "Bonus action: an invisible 10-foot radius trap within 40 feet (+5 at B and S) for 1 hour, while you're within 120 feet. A hostile creature moving in or out triggers it: creatures you choose in it. Failure: the damage and Restrained for 1 minute (concentration from then; resave at the end of its turns, taking the damage again on a failure).",
+                "activation": "bonus",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (2d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5euq8PiwgOno9BB",
+                "type": "save",
+                "label": "Insect Deception",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  }
+                ],
+                "text": "Bonus action: an invisible 10-foot radius trap within 40 feet (+5 at B and S) for 1 hour, while you're within 120 feet. A hostile creature moving in or out triggers it: creatures you choose in it. Failure: the damage and Restrained for 1 minute (concentration from then; resave at the end of its turns, taking the damage again on a failure).",
+                "activation": "bonus",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (3d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5euq8PiwgOno9BB",
+                "type": "save",
+                "label": "Insect Deception",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  }
+                ],
+                "text": "Bonus action: an invisible 10-foot radius trap within 40 feet (+5 at B and S) for 1 hour, while you're within 120 feet. A hostile creature moving in or out triggers it: creatures you choose in it. Failure: the damage and Restrained for 1 minute (concentration from then; resave at the end of its turns, taking the damage again on a failure).",
+                "activation": "bonus",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (4d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "aburame-insect-jamming": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUMA6gPOnunnqh",
+          "type": "effect",
+          "label": "Insect Jamming",
+          "effect": {
+            "name": "Insect Jamming",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Only while obscured: spaces equal to your Ninjutsu modifier within 60 feet; a successful Suppress Chakra, then Stealth, Ninshou or Illusions against hostile passive Perception to hide. You're invisible to Chakra Sense and Chakra Sight."
+        }
+      ]
+    },
+    "aburame-insect-jar-technique": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eVoGCAiapZFKPt",
+          "type": "heal",
+          "label": "Insect Jar",
+          "heal": {
+            "formula": "5d8",
+            "pool": "tempHp"
+          },
+          "text": "Reaction: a 10-foot radius Barrier on you until the start of your next turn; damage to you and allies at once counts as one instance. Swarm active: +2 per die.",
+          "activation": "reaction"
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eVoGCAiapZFKPt",
+                "type": "heal",
+                "label": "Insect Jar",
+                "heal": {
+                  "formula": "5d8",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: a 10-foot radius Barrier on you until the start of your next turn; damage to you and allies at once counts as one instance. Swarm active: +2 per die.",
+                "activation": "reaction"
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eVoGCAiapZFKPt",
+                "type": "heal",
+                "label": "Insect Jar",
+                "heal": {
+                  "formula": "5d8",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: a 10-foot radius Barrier on you until the start of your next turn; damage to you and allies at once counts as one instance. Swarm active: +2 per die.",
+                "activation": "reaction"
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eVoGCAiapZFKPt",
+                "type": "heal",
+                "label": "Insect Jar",
+                "heal": {
+                  "formula": "5d8",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: a 10-foot radius Barrier on you until the start of your next turn; damage to you and allies at once counts as one instance. Swarm active: +2 per die.",
+                "activation": "reaction"
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Swarm active",
+          "appliesTo": {
+            "namePrefix": "Insect Jar Technique"
+          },
+          "note": "With your Swarm released: +2 hit points per die rolled."
+        }
+      ]
+    },
+    "aburame-insect-sphere": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eh0nCWGhOBlgdz",
+          "type": "save",
+          "label": "Insect Sphere",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "grappled",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Grappled"
+            }
+          ],
+          "text": "Creatures within 5 feet of a point within 30 feet (two points with your Swarm). Failure: Grappled; its jutsu cost +4 (+2 per rank); a Strength save at the end of its turns ends it.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eCcWm9jbFJyXV2",
+          "type": "damage",
+          "label": "Insect Sphere: end of its turn",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "poison"
+              }
+            ]
+          },
+          "text": "A grappled creature; poison or chakra."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eh0nCWGhOBlgdz",
+                "type": "save",
+                "label": "Insect Sphere",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ],
+                "text": "Creatures within 5 feet of a point within 30 feet (two points with your Swarm). Failure: Grappled; its jutsu cost +4 (+2 per rank); a Strength save at the end of its turns ends it.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eCcWm9jbFJyXV2",
+                "type": "damage",
+                "label": "Insect Sphere: end of its turn",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (1d8)",
+                      "type": "poison"
+                    }
+                  ]
+                },
+                "text": "A grappled creature; poison or chakra."
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eh0nCWGhOBlgdz",
+                "type": "save",
+                "label": "Insect Sphere",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ],
+                "text": "Creatures within 5 feet of a point within 30 feet (two points with your Swarm). Failure: Grappled; its jutsu cost +4 (+2 per rank); a Strength save at the end of its turns ends it.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eCcWm9jbFJyXV2",
+                "type": "damage",
+                "label": "Insect Sphere: end of its turn",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (2d8)",
+                      "type": "poison"
+                    }
+                  ]
+                },
+                "text": "A grappled creature; poison or chakra."
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eh0nCWGhOBlgdz",
+                "type": "save",
+                "label": "Insect Sphere",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ],
+                "text": "Creatures within 5 feet of a point within 30 feet (two points with your Swarm). Failure: Grappled; its jutsu cost +4 (+2 per rank); a Strength save at the end of its turns ends it.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eCcWm9jbFJyXV2",
+                "type": "damage",
+                "label": "Insect Sphere: end of its turn",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (3d8)",
+                      "type": "poison"
+                    }
+                  ]
+                },
+                "text": "A grappled creature; poison or chakra."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eh0nCWGhOBlgdz",
+                "type": "save",
+                "label": "Insect Sphere",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ],
+                "text": "Creatures within 5 feet of a point within 30 feet (two points with your Swarm). Failure: Grappled; its jutsu cost +4 (+2 per rank); a Strength save at the end of its turns ends it.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eCcWm9jbFJyXV2",
+                "type": "damage",
+                "label": "Insect Sphere: end of its turn",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (4d8)",
+                      "type": "poison"
+                    }
+                  ]
+                },
+                "text": "A grappled creature; poison or chakra."
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Swarm active",
+          "appliesTo": {
+            "namePrefix": "Insect Sphere"
+          },
+          "note": "With your Swarm released: a second point in range."
+        }
+      ]
+    },
+    "aburame-kikaichu-swarm": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e1tmtHfTkWRp84",
+          "type": "attack",
+          "label": "Kikaichu Swarm: melee",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "In place of Attack action attacks (two at 7th without Extra Attack); poison or chakra. A 6+ on a die: temporary chakra equal to the damage. A critical hit: 1 rank of Infested. Counts as a D-Rank Hijutsu.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(3:2d6,7:2d8,11:2d10,15:2d12) + max(@mod.nin, @mod.tai, @mod.gen)",
+                "type": "poison"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eT0pQvws70ektq",
+          "type": "attack",
+          "label": "Kikaichu Swarm: ranged",
+          "attack": {
+            "discipline": "highest",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "60 feet; poison or chakra. A 6+ on the die: temporary chakra equal to the damage. A critical hit: 1 rank of Infested.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(3:1d6,7:1d8,11:1d10,15:1d12) + max(@mod.nin, @mod.tai, @mod.gen)",
+                "type": "poison"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The text's melee line says 2d6 and the growth says the die becomes 1d8, 1d10, 1d12: the melee button grows both dice."
+        }
+      ]
+    },
+    "aburame-parasitic-destruction": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eLICoUE7HSmfsT",
+          "type": "attack",
+          "label": "Parasitic Destruction",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "Ignores cover; poison or chakra. Swarm active: a second attack (same creature: +1 rank of Infested).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": "poison"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eJYdIXHzcQI4Zz",
+          "type": "save",
+          "label": "Parasitic Destruction: on a hit",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "aburame-infested",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Infested"
+            }
+          ],
+          "text": "Failure: a rank of Infested.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eLICoUE7HSmfsT",
+                "type": "attack",
+                "label": "Parasitic Destruction",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "Ignores cover; poison or chakra. Swarm active: a second attack (same creature: +1 rank of Infested).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (1d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eJYdIXHzcQI4Zz",
+                "type": "save",
+                "label": "Parasitic Destruction: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "aburame-infested",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Infested"
+                  }
+                ],
+                "text": "Failure: a rank of Infested.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eLICoUE7HSmfsT",
+                "type": "attack",
+                "label": "Parasitic Destruction",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "Ignores cover; poison or chakra. Swarm active: a second attack (same creature: +1 rank of Infested).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (2d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eJYdIXHzcQI4Zz",
+                "type": "save",
+                "label": "Parasitic Destruction: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "aburame-infested",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Infested"
+                  }
+                ],
+                "text": "Failure: a rank of Infested.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eLICoUE7HSmfsT",
+                "type": "attack",
+                "label": "Parasitic Destruction",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "Ignores cover; poison or chakra. Swarm active: a second attack (same creature: +1 rank of Infested).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (3d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eJYdIXHzcQI4Zz",
+                "type": "save",
+                "label": "Parasitic Destruction: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "aburame-infested",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Infested"
+                  }
+                ],
+                "text": "Failure: a rank of Infested.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eLICoUE7HSmfsT",
+                "type": "attack",
+                "label": "Parasitic Destruction",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "Ignores cover; poison or chakra. Swarm active: a second attack (same creature: +1 rank of Infested).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (4d6)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eJYdIXHzcQI4Zz",
+                "type": "save",
+                "label": "Parasitic Destruction: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "aburame-infested",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Infested"
+                  }
+                ],
+                "text": "Failure: a rank of Infested.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Swarm active",
+          "appliesTo": {
+            "namePrefix": "Parasitic Destruction"
+          },
+          "note": "With your Swarm released: a second attack at the same or another creature (the same: +1 rank of Infested)."
+        }
+      ]
+    },
+    "aburame-parasitic-giant-insect": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ed4fx8U5bwkjrj",
+          "type": "save",
+          "label": "Parasitic Giant Insect",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Once per turn, a creature you can see within 120 feet with 5+ ranks of Infested (−1 per rank past 5). Failure: the damage and it loses all Infested.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "10d12",
+                "type": "poison",
+                "alsoAs": "chakra"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "One 10d12 roll dealt as both poison and chakra: 50 rolled is 50 poison and 50 chakra (King Q-E20)."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "S": [
+              {
+                "id": "n5ed4fx8U5bwkjrj",
+                "type": "save",
+                "label": "Parasitic Giant Insect",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Once per turn, a creature you can see within 120 feet with 5+ ranks of Infested (−1 per rank past 5). Failure: the damage and it loses all Infested.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(10d12) + (1d12)",
+                      "type": "poison",
+                      "alsoAs": "chakra"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "aburame-parasitic-insect-cloud": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e4U9Csx7sFZdHj",
+          "type": "save",
+          "label": "Parasitic Insect Cloud",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "envenomed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Envenomed"
+            }
+          ],
+          "text": "A 15-foot cube within 60 feet; creatures in its path and starting their turn in it (a Bonus action moves it 30 feet). Failure: \"poisoned\" (Envenomed?) and the damage.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d8",
+                "type": "poison"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5e4U9Csx7sFZdHj",
+                "type": "save",
+                "label": "Parasitic Insect Cloud",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "envenomed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Envenomed"
+                  }
+                ],
+                "text": "A 15-foot cube within 60 feet; creatures in its path and starting their turn in it (a Bonus action moves it 30 feet). Failure: \"poisoned\" (Envenomed?) and the damage.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d8) + (1d8)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e4U9Csx7sFZdHj",
+                "type": "save",
+                "label": "Parasitic Insect Cloud",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "envenomed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Envenomed"
+                  }
+                ],
+                "text": "A 15-foot cube within 60 feet; creatures in its path and starting their turn in it (a Bonus action moves it 30 feet). Failure: \"poisoned\" (Envenomed?) and the damage.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d8) + (2d8)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "aburame-spindle-formation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5emRg27jeByobLf",
+          "type": "save",
+          "label": "Spindle Formation",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "A 30 by 5-foot line (+5 per rank; B: or a 30-foot cone; S: a 40-foot radius). Failure: Prone and no HS jutsu until the end of its next turn unless it passes a Ninshou or Illusions check against your save DC (at disadvantage with your Swarm).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Swarm active",
+          "appliesTo": {
+            "namePrefix": "Spindle Formation"
+          },
+          "note": "With your Swarm released: affected creatures make the skill check at disadvantage."
+        }
+      ]
+    },
+    "aburame-stance-swarm-chakra": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e9zjziDblvFvdD",
+          "type": "effect",
+          "label": "Swarm released",
+          "effect": {
+            "name": "Swarm",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Bonus action: your Swarm Chakra stance (your Swarm types' active benefits). Unconscious or fire damage ends it.",
+          "activation": "bonus"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Aburame Hijutsu with \"If you have your Swarm active\" have it as a cast dialog option."
+        }
+      ]
+    },
+    "aburame-symbiotic-hive": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Release or recall your swarm as a Bonus action (the Swarm Chakra stance item). One Swarm type at creation (+1 at 7th, 11th and 15th): the option items; each has a passive benefit and a stronger one while the swarm is out. Unconscious or taking fire damage recalls it."
+        }
+      ]
+    },
+    "aburame-symbiotic-hive-ants": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Whisper to one willing creature you can see within 60 feet. Swarm active: a Hijutsu's damage marks the creature with a messenger ant until the end of your next turn; the next creature you choose to target it gains a rank of Mastery on that attack."
+        }
+      ]
+    },
+    "aburame-symbiotic-hive-beetles": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5epL02kGLih3iiM",
+          "type": "roll",
+          "label": "Chitin Shield",
+          "roll": {
+            "formula": "lvl(1:1d4,7:1d6,15:1d8) + max(@abilities.int.mod, @abilities.wis.mod, @abilities.cha.mod)",
+            "note": "Reaction to taking damage (swarm active: or an ally within 20 feet taking damage): DR against it."
+          },
+          "activation": "reaction"
+        }
+      ]
+    },
+    "aburame-symbiotic-hive-flies": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A rank of Mastery on Search and Track in forests, swamps and cities. Swarm active: a 20-foot cube of flies around you (lightly obscured; attacks from outside on creatures you choose inside are at disadvantage); dismiss it free, a Bonus action brings it back."
+        }
+      ]
+    },
+    "aburame-symbiotic-hive-larva": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A cocoon to rest in: on a short rest, +4 to each Hit and Chakra Die spent. (Its text also holds the Infested condition.)"
+        }
+      ]
+    },
+    "aburame-symbiotic-hive-mosquitoes": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eMDHRGf7SR3ZHd",
+          "type": "damage",
+          "label": "Mosquitoes: extra damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:2,15:4)",
+                "type": "necrotic"
+              }
+            ]
+          },
+          "text": "A creature within 15 feet (30 at 7th) takes damage from your attack or jutsu."
+        },
+        {
+          "id": "n5eCGP9gsy8e7sJT",
+          "type": "heal",
+          "label": "Mosquitoes: drain",
+          "heal": {
+            "formula": "lvl(1:1d6,7:2d6,15:3d6)",
+            "pool": "hp"
+          },
+          "text": "Swarm active: your attack beats AC by 5, or a creature fails your save by 5."
+        }
+      ]
+    },
+    "aburame-symbiotic-hive-moths": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "You hover 1 foot up; Dash gives a fly speed equal to it. Swarm active: a fly speed of half your speed; Reaction when falling: no falling damage."
+        }
+      ]
+    },
+    "aburame-symbiotic-hive-parasites": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "You can learn and cast Medical jutsu. Swarm active: Infested uses its enhanced effects."
+        }
+      ]
+    },
+    "aburame-symbiotic-hive-worms": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Tremorsense 15 feet on solid ground. Swarm active: a burrowing speed of half your speed, leaving a one-creature tunnel. (Set the senses and speeds on the sheet.)"
+        }
+      ]
+    }
+  }
+}

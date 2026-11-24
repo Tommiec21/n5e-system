@@ -85,10 +85,15 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "ampea31440a16d6c",
+        "type": "effect",
+        "label": "Beast Fist: Wise Turtle",
+        "effect": {
+          "name": "Beast Fist: Wise Turtle",
+          "target": "self",
+          "amp": "jutsu-beast-fist-wise-turtle"
+        },
+        "text": "Starts the jutsu's Amp at the rank it was cast at."
       }
     ],
     "featureType": "active",
@@ -155,7 +160,14 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its Amp sets Strength to 18 if lower; see the Amp card for the rest."
+        }
+      ]
     }
   },
   "folder": "b31b1b0d97c02089"

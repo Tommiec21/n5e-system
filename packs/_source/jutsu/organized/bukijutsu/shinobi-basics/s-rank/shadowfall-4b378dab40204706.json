@@ -85,10 +85,25 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5ekfIrYCJMrDGIJ",
+        "type": "effect",
+        "label": "Then 3 Exhaustion",
+        "effect": {
+          "name": "Exhaustion",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "exhaustion",
+              "kind": "condition",
+              "ranks": 3,
+              "label": "Exhaustion"
+            }
+          ]
+        },
+        "text": "At the end of the turn."
       }
     ],
     "featureType": "active",
@@ -155,7 +170,14 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus action: 3 more Actions this turn, used only for Bukijutsu in a row; then 3 Exhaustion."
+        }
+      ]
     }
   },
   "folder": "8a9c91a8d73fad43"

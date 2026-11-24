@@ -17,6 +17,113 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Earth Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eNAD0VK0eAFEep",
+              "type": "save",
+              "label": "Gods Crossing",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "A 60-foot line (A-Rank: or a 30-foot cone); it becomes difficult terrain (you ignore it at B). Failure: the damage and a rank of Bleed (S: speed 0 until the end of its next turn); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (1d8)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eNAD0VK0eAFEep",
+              "type": "save",
+              "label": "Gods Crossing",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "A 60-foot line (A-Rank: or a 30-foot cone); it becomes difficult terrain (you ignore it at B). Failure: the damage and a rank of Bleed (S: speed 0 until the end of its next turn); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (2d8)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eNAD0VK0eAFEep",
+              "type": "save",
+              "label": "Gods Crossing",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "A 60-foot line (A-Rank: or a 30-foot cone); it becomes difficult terrain (you ignore it at B). Failure: the damage and a rank of Bleed (S: speed 0 until the end of its next turn); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (3d8)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -108,7 +215,40 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eNAD0VK0eAFEep",
+        "type": "save",
+        "label": "Gods Crossing",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "text": "A 60-foot line (A-Rank: or a 30-foot cone); it becomes difficult terrain (you ignore it at B). Failure: the damage and a rank of Bleed (S: speed 0 until the end of its next turn); success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "earth"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

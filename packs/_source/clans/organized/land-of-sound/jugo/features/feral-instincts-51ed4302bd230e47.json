@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "jugo",
-      "sourceLine": 6268
+      "sourceLine": 6268,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Instincts (more at 7th and 15th): Feral Assistance is in this item's text; the rest are the option items."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,22 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5emNjnr1XbniVUJ",
+        "type": "roll",
+        "label": "Feral Assistance",
+        "roll": {
+          "formula": "",
+          "note": "Reaction, an ally within 30 feet (not you) casts a jutsu: its cost drops 1 per Nature Energy spent (up to 6)."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "natureEnergy",
+          "choose": true
+        }
+      }
+    ]
   }
 }

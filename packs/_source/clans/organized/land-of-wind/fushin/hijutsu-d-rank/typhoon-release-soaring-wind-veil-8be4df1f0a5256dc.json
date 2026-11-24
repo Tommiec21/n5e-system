@@ -17,6 +17,269 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Auditory), Wind Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Inside is heavily obscured both ways (you see through it at B-Rank or higher). S-Rank: ranged attacks against you deal 3d6 less, and it gains the Barrier keyword."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5e79OFSJnI0sYuM",
+              "type": "save",
+              "label": "Soaring Wind Veil",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 3d6 wind.",
+                  "success": "Success: half of 3d6 wind and Bruised.",
+                  "failure": "Failure: 3d6 wind, Bruised and pushed back 10 feet.",
+                  "critFailure": "Critical Failure: as a failure, but 5d6 wind."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "A creature other than you entering the cylinder first on a turn or starting its turn there.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eNITD2H69DF7Bz",
+              "type": "damage",
+              "label": "Wind Veil: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5ea98xLyfo6EikM",
+              "type": "damage",
+              "label": "Wind Veil: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (1d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5e79OFSJnI0sYuM",
+              "type": "save",
+              "label": "Soaring Wind Veil",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 3d6 wind.",
+                  "success": "Success: half of 3d6 wind and Bruised.",
+                  "failure": "Failure: 3d6 wind, Bruised and pushed back 10 feet.",
+                  "critFailure": "Critical Failure: as a failure, but 5d6 wind."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "A creature other than you entering the cylinder first on a turn or starting its turn there.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eNITD2H69DF7Bz",
+              "type": "damage",
+              "label": "Wind Veil: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5ea98xLyfo6EikM",
+              "type": "damage",
+              "label": "Wind Veil: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (2d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e79OFSJnI0sYuM",
+              "type": "save",
+              "label": "Soaring Wind Veil",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 3d6 wind.",
+                  "success": "Success: half of 3d6 wind and Bruised.",
+                  "failure": "Failure: 3d6 wind, Bruised and pushed back 10 feet.",
+                  "critFailure": "Critical Failure: as a failure, but 5d6 wind."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "A creature other than you entering the cylinder first on a turn or starting its turn there.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eNITD2H69DF7Bz",
+              "type": "damage",
+              "label": "Wind Veil: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (3d6)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5ea98xLyfo6EikM",
+              "type": "damage",
+              "label": "Wind Veil: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (3d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e79OFSJnI0sYuM",
+              "type": "save",
+              "label": "Soaring Wind Veil",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 3d6 wind.",
+                  "success": "Success: half of 3d6 wind and Bruised.",
+                  "failure": "Failure: 3d6 wind, Bruised and pushed back 10 feet.",
+                  "critFailure": "Critical Failure: as a failure, but 5d6 wind."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "A creature other than you entering the cylinder first on a turn or starting its turn there.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eNITD2H69DF7Bz",
+              "type": "damage",
+              "label": "Wind Veil: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (4d6)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5ea98xLyfo6EikM",
+              "type": "damage",
+              "label": "Wind Veil: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (4d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +373,69 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e79OFSJnI0sYuM",
+        "type": "save",
+        "label": "Soaring Wind Veil",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: half of 3d6 wind.",
+            "success": "Success: half of 3d6 wind and Bruised.",
+            "failure": "Failure: 3d6 wind, Bruised and pushed back 10 feet.",
+            "critFailure": "Critical Failure: as a failure, but 5d6 wind."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "A creature other than you entering the cylinder first on a turn or starting its turn there.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eNITD2H69DF7Bz",
+        "type": "damage",
+        "label": "Wind Veil: damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "wind"
+            }
+          ]
+        },
+        "text": "Halve it on a success."
+      },
+      {
+        "id": "n5ea98xLyfo6EikM",
+        "type": "damage",
+        "label": "Wind Veil: critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "wind"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

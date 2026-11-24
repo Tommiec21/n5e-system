@@ -17,6 +17,83 @@
         "cost": "10 Chakra",
         "keywords": "Hijutsu, Taijutsu, Bukijutsu, Genjutsu (Auditory, Tactile), Barrier, Symphonic Branch",
         "components": "CM, W (Shinobi Instrument)"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Symphonic Branch]"
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eGyqgldyHb2ii6",
+              "type": "heal",
+              "label": "Vibrational Barrier",
+              "heal": {
+                "formula": "5d8 + 5",
+                "pool": "tempHp"
+              },
+              "text": "Reaction: a Barrier with resistance to bludgeoning, piercing and slashing.",
+              "activation": "reaction"
+            },
+            {
+              "id": "n5enDgmHoFDw4A5T",
+              "type": "save",
+              "label": "Vibrational Barrier: backlash",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "It survives: creatures within 10 feet take psychic or force damage equal to its original hit points (on a failure).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eGyqgldyHb2ii6",
+              "type": "heal",
+              "label": "Vibrational Barrier",
+              "heal": {
+                "formula": "5d8 + 5",
+                "pool": "tempHp"
+              },
+              "text": "Reaction: a Barrier with resistance to bludgeoning, piercing and slashing.",
+              "activation": "reaction"
+            },
+            {
+              "id": "n5enDgmHoFDw4A5T",
+              "type": "save",
+              "label": "Vibrational Barrier: backlash",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "It survives: creatures within 10 feet take psychic or force damage equal to its original hit points (on a failure).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -113,7 +190,39 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eGyqgldyHb2ii6",
+        "type": "heal",
+        "label": "Vibrational Barrier",
+        "heal": {
+          "formula": "5d8 + 5",
+          "pool": "tempHp"
+        },
+        "text": "Reaction: a Barrier with resistance to bludgeoning, piercing and slashing.",
+        "activation": "reaction"
+      },
+      {
+        "id": "n5enDgmHoFDw4A5T",
+        "type": "save",
+        "label": "Vibrational Barrier: backlash",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "It survives: creatures within 10 feet take psychic or force damage equal to its original hit points (on a failure).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai",

@@ -1,0 +1,2166 @@
+{
+  "clan": "shikigami",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "shikigami-blank-canvas": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5etVjRLp8UBFoEa",
+          "type": "effect",
+          "label": "Paper Veil",
+          "effect": {
+            "name": "Paper Veil",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "In combat, Bonus action: until combat ends.",
+          "activation": "bonus"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "One Canvas Type (+1 at 7th and 15th): the option items; picking the same one again gives its Craft I, then Craft II."
+        }
+      ]
+    },
+    "shikigami-blank-canvas-binding-veil": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5exCiuEsDSyF9r4",
+          "type": "roll",
+          "label": "Binding Field",
+          "roll": {
+            "formula": "lvl(1:4,7:6,15:8)",
+            "note": "Action: two 10-foot radii within 60 feet (20 with Craft II; up to 2 at once). Jutsu cast inside cost more. Craft I: a Bonus action moves them 30 feet."
+          }
+        }
+      ]
+    },
+    "shikigami-blank-canvas-explosive-veil": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eEk1WorZU874iN",
+          "type": "save",
+          "label": "Detonate on Arrival",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Bonus action: a 10-foot cube within 60 feet. Craft II: 2 Burned.",
+          "activation": "bonus",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:3d6,7:5d6,15:7d6)",
+                "type": "fire"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eIGc97NzJPSD5Z",
+          "type": "save",
+          "label": "Set Trap",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Until combat ends; a hostile creature entering: it and everyone within 15 feet. Craft II: 3 Burned.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:4d6,7:6d6,15:8d6)",
+                "type": "fire"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eVpsrDAlqcP09w",
+          "type": "save",
+          "label": "Craft I: residual tags",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            }
+          ],
+          "text": "Reaction before your next turn: tagged creatures resave. Failure: Staggered.",
+          "activation": "reaction",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eEL5BOv3K2Ehmy",
+          "type": "effect",
+          "label": "Craft II: Burned",
+          "effect": {
+            "name": "Burned",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "inflicts": [
+              {
+                "key": "burned",
+                "kind": "condition",
+                "ranks": 2,
+                "label": "Burned"
+              }
+            ]
+          },
+          "text": "Failed creatures: 2 ranks (arrival; a trap gives 3: add 1 more)."
+        }
+      ]
+    },
+    "shikigami-blank-canvas-serrated-veil": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eTWvwNZkzKf3eo",
+          "type": "save",
+          "label": "Serrated aura",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            },
+            {
+              "key": "slowed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Slow"
+            }
+          ],
+          "text": "First time on a turn a chosen hostile creature is within 10 feet, or starts its turn within 5 feet (10 with Craft I). Failure: Bleed (2 at 7th, 3 at 15th); Craft II: also Slowed.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "slashing"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Craft I: Shikigami Hijutsu dealing piercing or slashing +4 damage."
+        }
+      ]
+    },
+    "shikigami-blank-canvas-weaving-veil": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ebXRuAGWwWXGLm",
+          "type": "attack",
+          "label": "Spiral Weave",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Craft I, once per turn (not with Execution Weave), an Action or in place of an unarmed attack: 15 feet.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "piercing"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5epzpj8v4ecB44h",
+          "type": "save",
+          "label": "Spiral Weave: Staggered",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            }
+          ],
+          "text": "On a hit. Failure: Staggered.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eTK2csHrhC5oUX",
+          "type": "save",
+          "label": "Execution Weave",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            },
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            }
+          ],
+          "text": "Craft II, once per turn (not with Spiral Weave): a 30 by 5-foot line. Failure: Staggered and Dazed; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "piercing"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Paper Veil active: the Muscle Weave chakra stance (the clan's stance item)."
+        }
+      ]
+    },
+    "shikigami-kamis-salvation-akumas-damnation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5egEPqMfmDz1QSd",
+          "type": "effect",
+          "label": "Origami Angel/Demon",
+          "effect": {
+            "name": "Origami Angel/Demon",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "origami-angel-demon"
+          },
+          "text": "Bonus action, 1 minute, once per rest.",
+          "activation": "bonus"
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "rest",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      }
+    },
+    "shikigami-origami": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eVXeYFWtMAk8Zv",
+          "type": "roll",
+          "label": "Make a Rei",
+          "roll": {
+            "formula": "",
+            "note": "Start of each of your turns, or the first Shikigami Hijutsu each turn (the turn gain is automatic; out of combat an Action)."
+          },
+          "cost": {
+            "pool": "rei",
+            "amount": 1,
+            "gain": true
+          }
+        },
+        {
+          "id": "n5eL4RrpYnyWHaZB",
+          "type": "heal",
+          "label": "Origami Turtle",
+          "heal": {
+            "formula": "1d10 + floor(@level / 2)",
+            "pool": "tempHp"
+          },
+          "text": "An ally within 30 feet takes hostile damage: interpose a barrier. 7th: 2 Rei +1d10; 15th: 3 Rei +1d10 more (roll the extra).",
+          "cost": {
+            "pool": "rei",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5ehAfCHMoxjYrpy",
+          "type": "save",
+          "label": "Origami Snake",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Bonus action, a creature within 30 feet. Failure: half speed, can't move beyond 30 feet of you until the end of its next turn (its Action tears it). 7th, 2 Rei: Prone; 15th, 3 Rei: speed 0.",
+          "activation": "bonus",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "rei",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5etgZLoSy6zRPuH",
+          "type": "roll",
+          "label": "Origami Bird",
+          "roll": {
+            "formula": "",
+            "note": "Bonus action, a creature within 60 feet, 10 minutes: you always know where it is (Search finds it). 7th, 2 Rei: no advantage on attacks on you; 15th, 3 Rei: your single-target Shikigami effects reach it within 120 feet."
+          },
+          "activation": "bonus",
+          "cost": {
+            "pool": "rei",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eq72cXeZsjfrlK",
+          "type": "save",
+          "label": "Origami Rabbit",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Reaction, a hostile creature summons or commands a construct. Failure: the command is wasted (7th: it follows your command this turn; 15th: you command it on your turn).",
+          "activation": "reaction",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "rei",
+            "amount": 1
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "rei",
+          "label": "Rei",
+          "value": 0,
+          "max": "4",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "turn",
+              "amount": "formula",
+              "formula": "1",
+              "requires": ""
+            },
+            {
+              "on": "encounter",
+              "amount": "empty",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Rei: up to 4, made in combat; once per turn spend them on one ability (more Rei add the upgrades)."
+        }
+      ]
+    },
+    "shikigami-origami-technique-dance-of-the-shikigami": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ejpDiohHMkFnS0",
+          "type": "effect",
+          "label": "Nephilim",
+          "effect": {
+            "name": "Nephilim",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "origami-angel-demon"
+          },
+          "text": "Both Angel and Demon Forms; all your Veil Enhancements; with one Canvas Type, borrow another's base ability; Shikigami Hijutsu gain one more Veil effect."
+        }
+      ]
+    },
+    "shikigami-origami-technique-paper-chakram": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eEgIg2CVdnOdDC",
+          "type": "attack",
+          "label": "Paper Chakram",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Summoned within 20 feet; a Bonus action moves it 30 feet and attacks again. Serrated: every hostile creature within 5 feet of it; Binding: opportunity attacks; Weaving: it follows up your unarmed attack once per turn.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d6",
+                "type": "slashing"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eQbu5aMynx9V9N",
+          "type": "effect",
+          "label": "Critical hit: Bleed",
+          "effect": {
+            "name": "Bleed",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "inflicts": [
+              {
+                "key": "bleed",
+                "kind": "condition",
+                "ranks": 3,
+                "label": "Bleed"
+              }
+            ]
+          },
+          "text": "3 ranks (Explosive Veil: also 3 Burned)."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5eEgIg2CVdnOdDC",
+                "type": "attack",
+                "label": "Paper Chakram",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Summoned within 20 feet; a Bonus action moves it 30 feet and attacks again. Serrated: every hostile creature within 5 feet of it; Binding: opportunity attacks; Weaving: it follows up your unarmed attack once per turn.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d6) + (1d6)",
+                      "type": "slashing"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eQbu5aMynx9V9N",
+                "type": "effect",
+                "label": "Critical hit: Bleed",
+                "effect": {
+                  "name": "Bleed",
+                  "target": "targets",
+                  "changes": [],
+                  "expires": "",
+                  "seconds": 0,
+                  "inflicts": [
+                    {
+                      "key": "bleed",
+                      "kind": "condition",
+                      "ranks": 3,
+                      "label": "Bleed"
+                    }
+                  ]
+                },
+                "text": "3 ranks (Explosive Veil: also 3 Burned)."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eEgIg2CVdnOdDC",
+                "type": "attack",
+                "label": "Paper Chakram",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Summoned within 20 feet; a Bonus action moves it 30 feet and attacks again. Serrated: every hostile creature within 5 feet of it; Binding: opportunity attacks; Weaving: it follows up your unarmed attack once per turn.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d6) + (2d6)",
+                      "type": "slashing"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eQbu5aMynx9V9N",
+                "type": "effect",
+                "label": "Critical hit: Bleed",
+                "effect": {
+                  "name": "Bleed",
+                  "target": "targets",
+                  "changes": [],
+                  "expires": "",
+                  "seconds": 0,
+                  "inflicts": [
+                    {
+                      "key": "bleed",
+                      "kind": "condition",
+                      "ranks": 3,
+                      "label": "Bleed"
+                    }
+                  ]
+                },
+                "text": "3 ranks (Explosive Veil: also 3 Burned)."
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Paper Veil",
+          "appliesTo": {
+            "namePrefix": "Origami Technique: Paper Chakram"
+          },
+          "note": "Paper Veil active, your first Canvas Type's effect: Explosive, Serrated, Binding or Weaving effect."
+        }
+      ]
+    },
+    "shikigami-origami-technique-paper-clone": {
+      "status": "note",
+      "activities": [],
+      "rules": [
+        {
+          "key": "note",
+          "text": "One clone for 8 chakra (+4 for a second; up to 2, +1 per rank): immune to bludgeoning, piercing and slashing, vulnerable to fire; each can cast two C-Rank or lower Shikigami Hijutsu."
+        }
+      ]
+    },
+    "shikigami-origami-technique-paper-coffin": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUlvDY6BtBXrte",
+          "type": "save",
+          "label": "Paper Coffin",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            }
+          ],
+          "text": "A creature within 60 feet. Failure: Restrained, no HS jutsu, no weapons or speech (your choice each turn); Strength save at the end of its turns breaks free. The coffin: AC your Ninjutsu save DC, 25 hit points, vulnerable to fire.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eI9SOwwhk3fSCz",
+          "type": "damage",
+          "label": "Suffocating",
+          "damage": {
+            "parts": [
+              {
+                "formula": "9d6",
+                "type": "necrotic"
+              }
+            ]
+          },
+          "text": "Start of its turns, ignoring resistance and DR (none if allowed to talk or it doesn't breathe)."
+        }
+      ]
+    },
+    "shikigami-origami-technique-paper-drizzle": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eKdBzgcASEapRw",
+          "type": "save",
+          "label": "Paper Drizzle",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Bleed"
+            },
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Weakened"
+            }
+          ],
+          "text": "A 20-foot cube within 90 feet; success: half. Serrated: 2 Bleed; Binding: 2 Weakened (+1 at A).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d10",
+                "type": "piercing"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eEGcrPpsCSb0Q1",
+          "type": "save",
+          "label": "Explosive: detonation",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A hostile creature moving in it before your next turn; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d10",
+                "type": "fire"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Weaving: on a failure, teleport into the area and make one unarmed attack (+1 at A)."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eKdBzgcASEapRw",
+                "type": "save",
+                "label": "Paper Drizzle",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Bleed"
+                  },
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "A 20-foot cube within 90 feet; success: half. Serrated: 2 Bleed; Binding: 2 Weakened (+1 at A).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (1d10)",
+                      "type": "piercing"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eEGcrPpsCSb0Q1",
+                "type": "save",
+                "label": "Explosive: detonation",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A hostile creature moving in it before your next turn; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "2d10",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eKdBzgcASEapRw",
+                "type": "save",
+                "label": "Paper Drizzle",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Bleed"
+                  },
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "A 20-foot cube within 90 feet; success: half. Serrated: 2 Bleed; Binding: 2 Weakened (+1 at A).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (2d10)",
+                      "type": "piercing"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eEGcrPpsCSb0Q1",
+                "type": "save",
+                "label": "Explosive: detonation",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A hostile creature moving in it before your next turn; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "2d10",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eKdBzgcASEapRw",
+                "type": "save",
+                "label": "Paper Drizzle",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Bleed"
+                  },
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "A 20-foot cube within 90 feet; success: half. Serrated: 2 Bleed; Binding: 2 Weakened (+1 at A).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (3d10)",
+                      "type": "piercing"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eEGcrPpsCSb0Q1",
+                "type": "save",
+                "label": "Explosive: detonation",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A hostile creature moving in it before your next turn; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "2d10",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Paper Veil",
+          "appliesTo": {
+            "namePrefix": "Origami Technique: Paper Drizzle"
+          },
+          "note": "Paper Veil active, your first Canvas Type's effect: Serrated, Binding, Explosive or Weaving effect."
+        }
+      ]
+    },
+    "shikigami-origami-technique-paper-hammer": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUNp3g8jBJhowL",
+          "type": "save",
+          "label": "Paper Hammer",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "Hostile creatures in a 10-foot radius within 15 feet (B: +10 range, +5 radius); bludgeoning or piercing. Failure: Prone; success: half. S-Rank: failing by 5+ makes it vulnerable.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "bludgeoning"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eXG51kzgUStYri",
+          "type": "attack",
+          "label": "Paper Hammer (Angel/Demon)",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "In the Origami Angel/Demon state: one creature, twice the dice (+2d6 per rank).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d6",
+                "type": "bludgeoning"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eUNp3g8jBJhowL",
+                "type": "save",
+                "label": "Paper Hammer",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "Hostile creatures in a 10-foot radius within 15 feet (B: +10 range, +5 radius); bludgeoning or piercing. Failure: Prone; success: half. S-Rank: failing by 5+ makes it vulnerable.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (1d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eXG51kzgUStYri",
+                "type": "attack",
+                "label": "Paper Hammer (Angel/Demon)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "In the Origami Angel/Demon state: one creature, twice the dice (+2d6 per rank).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d6) + (2d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eUNp3g8jBJhowL",
+                "type": "save",
+                "label": "Paper Hammer",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "Hostile creatures in a 10-foot radius within 15 feet (B: +10 range, +5 radius); bludgeoning or piercing. Failure: Prone; success: half. S-Rank: failing by 5+ makes it vulnerable.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (2d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eXG51kzgUStYri",
+                "type": "attack",
+                "label": "Paper Hammer (Angel/Demon)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "In the Origami Angel/Demon state: one creature, twice the dice (+2d6 per rank).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d6) + (4d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eUNp3g8jBJhowL",
+                "type": "save",
+                "label": "Paper Hammer",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "Hostile creatures in a 10-foot radius within 15 feet (B: +10 range, +5 radius); bludgeoning or piercing. Failure: Prone; success: half. S-Rank: failing by 5+ makes it vulnerable.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (3d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eXG51kzgUStYri",
+                "type": "attack",
+                "label": "Paper Hammer (Angel/Demon)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "In the Origami Angel/Demon state: one creature, twice the dice (+2d6 per rank).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d6) + (6d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eUNp3g8jBJhowL",
+                "type": "save",
+                "label": "Paper Hammer",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "Hostile creatures in a 10-foot radius within 15 feet (B: +10 range, +5 radius); bludgeoning or piercing. Failure: Prone; success: half. S-Rank: failing by 5+ makes it vulnerable.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (4d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eXG51kzgUStYri",
+                "type": "attack",
+                "label": "Paper Hammer (Angel/Demon)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "In the Origami Angel/Demon state: one creature, twice the dice (+2d6 per rank).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d6) + (8d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Origami Angel/Demon",
+          "appliesTo": {
+            "namePrefix": "Origami Technique: Paper Hammer"
+          },
+          "note": "In your Origami Angel/Demon state: a melee attack against one creature (the second button)."
+        }
+      ]
+    },
+    "shikigami-origami-technique-paper-shackles": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eBK6zlZccW0I4n",
+          "type": "save",
+          "label": "Paper Shackles",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A creature within 30 feet (+1 per rank). Failure: no weapon or Taijutsu attacks; resave at the end of each turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "shikigami-origami-technique-paper-shuriken": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eyBYWQiAew2s7d",
+          "type": "attack",
+          "label": "Paper Shuriken",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "60 feet (Angel/Demon: a 30-foot cone).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d4",
+                "type": "slashing"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5ezkIuJ5SCvxOsA",
+          "type": "save",
+          "label": "Explosive",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "On a hit: the target and everyone within 10 feet; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "fire"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eCGjPecKy9KK8p",
+          "type": "save",
+          "label": "Serrated",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            }
+          ],
+          "text": "On a hit. Failure: Bleed (+1 at B, +1 at S).",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eV44jHOjxREtAc",
+          "type": "save",
+          "label": "Binding",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "sealed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Sealed"
+            }
+          ],
+          "text": "On a hit. Failure: Sealed (+1 at B, +1 at S).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Weaving: on a hit, move your speed and make one unarmed attack (+1 at B and S)."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eyBYWQiAew2s7d",
+                "type": "attack",
+                "label": "Paper Shuriken",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "60 feet (Angel/Demon: a 30-foot cone).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d4) + (2d4)",
+                      "type": "slashing"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ezkIuJ5SCvxOsA",
+                "type": "save",
+                "label": "Explosive",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "On a hit: the target and everyone within 10 feet; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (1d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eCGjPecKy9KK8p",
+                "type": "save",
+                "label": "Serrated",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "On a hit. Failure: Bleed (+1 at B, +1 at S).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eV44jHOjxREtAc",
+                "type": "save",
+                "label": "Binding",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "sealed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Sealed"
+                  }
+                ],
+                "text": "On a hit. Failure: Sealed (+1 at B, +1 at S).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eyBYWQiAew2s7d",
+                "type": "attack",
+                "label": "Paper Shuriken",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "60 feet (Angel/Demon: a 30-foot cone).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d4) + (4d4)",
+                      "type": "slashing"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ezkIuJ5SCvxOsA",
+                "type": "save",
+                "label": "Explosive",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "On a hit: the target and everyone within 10 feet; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (2d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eCGjPecKy9KK8p",
+                "type": "save",
+                "label": "Serrated",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "On a hit. Failure: Bleed (+1 at B, +1 at S).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eV44jHOjxREtAc",
+                "type": "save",
+                "label": "Binding",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "sealed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Sealed"
+                  }
+                ],
+                "text": "On a hit. Failure: Sealed (+1 at B, +1 at S).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eyBYWQiAew2s7d",
+                "type": "attack",
+                "label": "Paper Shuriken",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "60 feet (Angel/Demon: a 30-foot cone).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d4) + (6d4)",
+                      "type": "slashing"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ezkIuJ5SCvxOsA",
+                "type": "save",
+                "label": "Explosive",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "On a hit: the target and everyone within 10 feet; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (3d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eCGjPecKy9KK8p",
+                "type": "save",
+                "label": "Serrated",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "On a hit. Failure: Bleed (+1 at B, +1 at S).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eV44jHOjxREtAc",
+                "type": "save",
+                "label": "Binding",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "sealed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Sealed"
+                  }
+                ],
+                "text": "On a hit. Failure: Sealed (+1 at B, +1 at S).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eyBYWQiAew2s7d",
+                "type": "attack",
+                "label": "Paper Shuriken",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "60 feet (Angel/Demon: a 30-foot cone).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d4) + (8d4)",
+                      "type": "slashing"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ezkIuJ5SCvxOsA",
+                "type": "save",
+                "label": "Explosive",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "On a hit: the target and everyone within 10 feet; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (4d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eCGjPecKy9KK8p",
+                "type": "save",
+                "label": "Serrated",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "On a hit. Failure: Bleed (+1 at B, +1 at S).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eV44jHOjxREtAc",
+                "type": "save",
+                "label": "Binding",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "sealed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Sealed"
+                  }
+                ],
+                "text": "On a hit. Failure: Sealed (+1 at B, +1 at S).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Paper Veil",
+          "appliesTo": {
+            "namePrefix": "Origami Technique: Paper Shuriken"
+          },
+          "note": "Paper Veil active, your first Canvas Type's effect: Explosive, Serrated or Binding button, or Weaving's move and attack."
+        },
+        {
+          "label": "Origami Angel/Demon",
+          "appliesTo": {
+            "namePrefix": "Origami Technique: Paper Shuriken"
+          },
+          "note": "In your Origami Angel/Demon state: Self (30-foot cone) against every AC."
+        }
+      ]
+    },
+    "shikigami-origami-technique-paper-stich": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e8F2Id0xT5WKhQ",
+          "type": "heal",
+          "label": "Paper Stitch",
+          "heal": {
+            "formula": "3d6",
+            "pool": "tempHp"
+          },
+          "text": "A willing creature within 30 feet below full (Angel/Demon: allies in a 30-foot cone); then a DC 20 Constitution save removes 1 Physical rank."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5e8F2Id0xT5WKhQ",
+                "type": "heal",
+                "label": "Paper Stitch",
+                "heal": {
+                  "formula": "3d6",
+                  "pool": "tempHp"
+                },
+                "text": "A willing creature within 30 feet below full (Angel/Demon: allies in a 30-foot cone); then a DC 20 Constitution save removes 1 Physical rank."
+              }
+            ],
+            "A": [
+              {
+                "id": "n5e8F2Id0xT5WKhQ",
+                "type": "heal",
+                "label": "Paper Stitch",
+                "heal": {
+                  "formula": "3d6",
+                  "pool": "tempHp"
+                },
+                "text": "A willing creature within 30 feet below full (Angel/Demon: allies in a 30-foot cone); then a DC 20 Constitution save removes 1 Physical rank."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e8F2Id0xT5WKhQ",
+                "type": "heal",
+                "label": "Paper Stitch",
+                "heal": {
+                  "formula": "3d6",
+                  "pool": "tempHp"
+                },
+                "text": "A willing creature within 30 feet below full (Angel/Demon: allies in a 30-foot cone); then a DC 20 Constitution save removes 1 Physical rank."
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Origami Angel/Demon",
+          "appliesTo": {
+            "namePrefix": "Origami Technique: Paper Stich"
+          },
+          "note": "In your Origami Angel/Demon state: Self (30-foot cone), every ally in it."
+        }
+      ]
+    },
+    "shikigami-origami-technique-paper-substitution": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5emlNUtirVKfr6K",
+          "type": "effect",
+          "label": "Paper Substitution",
+          "effect": {
+            "name": "Paper Substitution",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "3",
+                "mode": 2
+              },
+              {
+                "key": "n5e.resist",
+                "value": "bludgeoning",
+                "mode": 2
+              },
+              {
+                "key": "n5e.resist",
+                "value": "piercing",
+                "mode": 2
+              },
+              {
+                "key": "n5e.resist",
+                "value": "slashing",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Reaction, until the start of your next turn: +3 AC (+1 at B), resistance to bludgeoning, piercing and slashing.",
+          "activation": "reaction"
+        },
+        {
+          "id": "n5efNIBd5iGlc1nD",
+          "type": "save",
+          "label": "Explosive",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "You move 30 feet; creatures within 5 feet of your old space; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "fire"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5e23libg8uX7Vr1",
+          "type": "save",
+          "label": "Serrated",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            }
+          ],
+          "text": "The trigger within 10 feet. Failure: Bleed.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eCpiLl7VheIQOv",
+          "type": "save",
+          "label": "Binding",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            }
+          ],
+          "text": "The trigger more than 10 feet away. Failure: Weakened and pulled 10 feet.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Weaving: the trigger within 20 feet: move half your speed and make two unarmed attacks."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Paper Veil",
+          "appliesTo": {
+            "namePrefix": "Origami Technique: Paper Substitution"
+          },
+          "note": "Paper Veil active, your first Canvas Type's effect: Explosive, Serrated or Binding button, or Weaving's attacks."
+        }
+      ]
+    },
+    "shikigami-secret-pages": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eYFu1URRk1yv4h",
+          "type": "roll",
+          "label": "Paper Mask",
+          "roll": {
+            "formula": "",
+            "note": "10 minutes: a paper disguise for you or a willing creature, 8 hours (damage or water ends it)."
+          }
+        },
+        {
+          "id": "n5e77hERl5UKEG70",
+          "type": "roll",
+          "label": "Paper Scout",
+          "roll": {
+            "formula": "",
+            "note": "10 minutes: a Rei scout (60-foot fly, 1 hit point; one at a time) writes basic descriptions of what it sees."
+          }
+        },
+        {
+          "id": "n5eZFJ5EL3AiKbTq",
+          "type": "roll",
+          "label": "Paper Forgery",
+          "roll": {
+            "formula": "",
+            "note": "10 minutes: copy a document; spotting it takes Investigation against your highest jutsu save DC."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "(Its copy of Origami Angel/Demon's Amp is removed, as King Q-E12.)"
+        }
+      ]
+    },
+    "shikigami-stance-muscle-weave": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eo2Ze7N0nXSuzS",
+          "type": "effect",
+          "label": "Muscle Weave",
+          "effect": {
+            "name": "Muscle Weave",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "With Paper Veil (Weaving Veil)."
+        }
+      ],
+      "system": {
+        "unarmedDie": "1d6"
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "The stance item now holds Weaving Veil's text (as King Q-E9). Usable with a Taijutsu or Bukijutsu stance; [Unarmed Damage] d6 with a rank of Mastery (2 at 11th), with your Hijutsu Flexibility ability; 7th: two attacks without Extra Attack."
+        }
+      ]
+    },
+    "shikigami-the-final-page": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eytHpBQflE56RE",
+          "type": "save",
+          "label": "Scorched Page",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            }
+          ],
+          "text": "Explosive: hostile creatures starting their turn in it. Failure: Staggered.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "fire"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5ey7cm99dQIQbNx",
+          "type": "effect",
+          "label": "Bleeding Edge: Bleed",
+          "effect": {
+            "name": "Bleed",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "inflicts": [
+              {
+                "key": "bleed",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Bleed"
+              }
+            ]
+          },
+          "text": "Serrated: a hostile creature moving 10+ feet in it gains 1 Bleed."
+        },
+        {
+          "id": "n5eem5PF2xlhaAtz",
+          "type": "damage",
+          "label": "Bleeding Edge: didn't move",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "slashing"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5e9Kn5WKnwAAjp2",
+          "type": "effect",
+          "label": "Sealed Page",
+          "effect": {
+            "name": "Sealed",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "inflicts": [
+              {
+                "key": "sealed",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Sealed"
+              }
+            ]
+          },
+          "text": "Binding: starting its turn concentrating: 1 Sealed."
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "lr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "Once per long rest: a 60-foot radius on you or within 120 feet, 1 minute, your first Canvas Type. Crushed Page (Weaving): [Unarmed Damage] rolled twice keeping the higher, a rank of Mastery to the attacks; two hits in one Action: Prone."
+        }
+      ]
+    }
+  }
+}

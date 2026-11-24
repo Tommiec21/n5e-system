@@ -17,6 +17,60 @@
         "cost": "20 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Wind Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Difficult terrain for others (flying too). Three consecutive turns inside: flung out with falling damage and Prone."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5eYDtDs7ReK9ugP",
+              "type": "save",
+              "label": "Severe Wind Destruction",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "A creature starting its turn in the 45-foot cylinder. Failure: pulled toward the center and Restrained while in motion.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eFXD9SF9i4MF9b",
+              "type": "damage",
+              "label": "Severe Wind Destruction: each of your turns",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d12) + (2d12)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "At the start of each of your turns, to every creature and object in the cylinder."
+            }
+          ]
+        }
       }
     }
   },
@@ -108,7 +162,49 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eYDtDs7ReK9ugP",
+        "type": "save",
+        "label": "Severe Wind Destruction",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "A creature starting its turn in the 45-foot cylinder. Failure: pulled toward the center and Restrained while in motion.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eFXD9SF9i4MF9b",
+        "type": "damage",
+        "label": "Severe Wind Destruction: each of your turns",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d12",
+              "type": "wind"
+            }
+          ]
+        },
+        "text": "At the start of each of your turns, to every creature and object in the cylinder."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

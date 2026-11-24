@@ -17,7 +17,8 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Genjutsu, Visual",
         "components": "CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -108,7 +109,45 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eEp2srC3CXjFKD",
+        "type": "roll",
+        "label": "Deflect check",
+        "roll": {
+          "formula": "1d20 + @mod.gen",
+          "note": "Reaction, Sharingan active: a Standard Jutsu ability check against the triggering Genjutsu; success ends it."
+        },
+        "activation": "reaction"
+      },
+      {
+        "id": "n5eFOn4xxbDTa3Yx",
+        "type": "save",
+        "label": "Deflect: new target",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "",
+            "success": "It resists.",
+            "failure": "The Deflected Genjutsu's Failure effect, as if you cast it.",
+            "critFailure": "Its Critical Failure effect (none: Restrained for its duration, no hand signs, resave at the end of each turn)."
+          }
+        },
+        "inflicts": [],
+        "text": "Another creature within 30 feet you make eye contact with.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "gen"

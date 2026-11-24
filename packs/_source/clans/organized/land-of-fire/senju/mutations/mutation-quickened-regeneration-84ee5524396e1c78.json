@@ -13,7 +13,14 @@
       "mutation": {
         "replaces": [],
         "manualReplacement": true
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Conditions with [Persist] end after 1 minute."
+        }
+      ]
     }
   },
   "ownership": {
@@ -46,6 +53,18 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eZiCALzHZXMHzR",
+        "type": "heal",
+        "label": "Quickened Regeneration",
+        "heal": {
+          "formula": "floor(@level / 2)",
+          "pool": "hp"
+        },
+        "text": "Once per turn in combat, a hostile creature's damage that doesn't drop you to 0."
+      }
+    ]
   }
 }

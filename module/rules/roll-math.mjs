@@ -110,7 +110,7 @@ export function choiceForMember(spec, groupRows, choice = {}) {
  */
 export function diceParts(parts = [], modifiers = []) {
   return [
-    ...parts.map((p, i) => ({ id: `d${i}`, label: p.label || p.formula, formula: String(p.formula), type: p.type ?? "", abilityMod: p.abilityMod })),
+    ...parts.map((p, i) => ({ id: `d${i}`, label: p.label || p.formula, formula: String(p.formula), type: p.type ?? "", abilityMod: p.abilityMod, ...(p.optional ? { situational: true } : {}), ...(p.alsoAs ? { alsoAs: p.alsoAs } : {}) })),
     ...modifiers.map((m, i) => (m.dice ? { id: `m${i}`, label: m.label, formula: m.dice.replace(/^\+/, ""), type: "" }
       : { id: `m${i}`, label: m.label, formula: String(m.value), type: "", flat: true }))
   ];
@@ -120,10 +120,12 @@ export function diceParts(parts = [], modifiers = []) {
  * What is rolled: the ticked parts (flat modifiers folded into the first rolled part, as before), plus
  * added parts with their own type. Returns {parts: [{formula, type, abilityMod}], crit, edited}.
  */
-export function composeDice(parts, { off = [], added = [], crit = false } = {}) {
+export function composeDice(parts, { off = [], on = [], added = [], crit = false } = {}) {
   const offSet = new Set(off);
-  const kept = parts.filter(p => !offSet.has(p.id));
-  const rolled = kept.filter(p => !p.flat).map(p => ({ formula: p.formula, type: p.type, abilityMod: p.abilityMod }));
+  const onSet = new Set(on);
+  // Optional parts (situational: Lethal Attack) count only when ticked.
+  const kept = parts.filter(p => (p.situational ? onSet.has(p.id) : !offSet.has(p.id)));
+  const rolled = kept.filter(p => !p.flat).map(p => ({ formula: p.formula, type: p.type, abilityMod: p.abilityMod, ...(p.alsoAs ? { alsoAs: p.alsoAs } : {}) }));
   const flat = kept.filter(p => p.flat).reduce((a, p) => a + (Number(p.formula) || 0), 0);
   for ( const a of added ) {
     const parsed = parseAdded(a.value);
@@ -132,7 +134,7 @@ export function composeDice(parts, { off = [], added = [], crit = false } = {}) 
   }
   if ( flat && rolled.length ) rolled[0] = { ...rolled[0], formula: `(${rolled[0].formula}) + (${flat})` };
   else if ( flat ) rolled.push({ formula: String(flat), type: parts.find(p => !p.flat)?.type ?? "", abilityMod: 0 });
-  return { parts: rolled, crit: !!crit, edited: offSet.size > 0 || added.some(a => parseAdded(a.value).ok) };
+  return { parts: rolled, crit: !!crit, edited: offSet.size > 0 || onSet.size > 0 || added.some(a => parseAdded(a.value).ok) };
 }
 
 /**

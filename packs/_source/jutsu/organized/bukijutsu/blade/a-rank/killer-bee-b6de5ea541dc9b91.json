@@ -84,16 +84,119 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e8a0MzBCGspcDG",
+        "type": "effect",
+        "label": "Killer Bee",
+        "effect": {
+          "name": "Killer Bee",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Full turn, concentration (no other), Tanto only: your melee weapon attacks can't be reacted to."
+      },
+      {
+        "id": "n5eFVB8nXZCDoT6o",
+        "type": "effect",
+        "label": "Deflect: +5 AC",
+        "effect": {
+          "name": "Killer Bee: deflect",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "5",
+              "mode": 2
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 0
+        },
+        "text": "Reaction: against the attack; a miss allows one melee weapon attack."
+      },
+      {
+        "id": "n5eGKvkCjOEPFpQk",
         "type": "attack",
-        "label": "Attack",
+        "label": "Bonus action: two attacks",
         "attack": {
-          "discipline": "",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
         "damage": {
           "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "2"
+        }
+      },
+      {
+        "id": "n5eHn7TE7K6O6HIF",
+        "type": "attack",
+        "label": "Action: Dash and three attacks",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 3
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "3"
+        }
+      },
+      {
+        "id": "n5eM4iFlu4YqvQYr",
+        "type": "attack",
+        "label": "Full turn: five attacks",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 5
+        },
+        "text": "All five hit: Stunned until the end of its next turn.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "5"
+        }
+      },
+      {
+        "id": "n5eiAzNXeoiOhI8C",
+        "type": "effect",
+        "label": "All five hit: Stunned",
+        "effect": {
+          "name": "Stunned",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "stunned",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Stunned"
+            }
+          ]
         }
       }
     ],
@@ -161,7 +264,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "00a31a843def3e70"

@@ -33,13 +33,52 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e6QGEvEnkPEYLE",
+        "type": "roll",
+        "label": "Sharpshooting Savant",
+        "roll": {
+          "formula": "",
+          "note": "Your first turn in combat (not surprised), Action: 1 Discipline for each creature within 90 feet that hasn't acted; a ranged Taijutsu attack at each."
+        },
+        "activation": "action",
+        "cost": {
+          "pool": "discipline",
+          "choose": true
+        }
+      },
+      {
+        "id": "n5e6kV4DoBF2JdlH",
+        "type": "save",
+        "label": "Chakra Rope",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Once on each of your turns, a ranged weapon or Taijutsu attack hits: you may flip up to 20 feet away; failure: it is pulled 20 feet toward you, to a space you pick.",
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        },
+        "oncePerTurn": true
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

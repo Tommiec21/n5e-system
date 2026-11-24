@@ -1,0 +1,1136 @@
+{
+  "clan": "inuzuka",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "inuzuka-beast-human-clone": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "On initiative your Nin-Dog looks exactly like you (only Chakra Sight tells you apart); it gains your Four-Legs stance and goes Feral with you."
+        }
+      ]
+    },
+    "inuzuka-beast-master": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Nin-Dog (breed: Inuit, Kugsha, Tamaskan, Shiba or Akita, plus a trait; +1 trait at 7th and 15th): acts on your turn with its own reaction (casting your Tag-Team Hijutsu). Commands: Move (free), Strike (forgo attacks for its Bite), Synchronize (with a Tag-Team jutsu: it casts the Tag-Team effect, spending a jutsu slot), Hunt (Bonus action: a special ability, Dash, Disengage, Hide, Help or a skill action). Jutsu slots back on any rest; at 0 it makes death saves; a Full Rest ritual replaces it. Small, Medium at 7th, Large at 15th; +1 to an ability and save at 4, 8, 12, 16, 19 (max +6). Its stat block is held for King's (H6)."
+        }
+      ]
+    },
+    "inuzuka-beast-sense": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A rank of Mastery in Perception, Insight and Survival; their Action skill actions take a Bonus action."
+        }
+      ]
+    },
+    "inuzuka-cross-guard": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezUAispTIcgd9m",
+          "type": "roll",
+          "label": "Cross Guard",
+          "roll": {
+            "formula": "",
+            "note": "Reaction: reduce the damage by [Unarmed Damage] + [Unarmed Damage] (or + [Weapon Damage]); the Nin-Dog: Bite + Bite. +1d6 per rank."
+          },
+          "activation": "reaction"
+        }
+      ]
+    },
+    "inuzuka-dynamic-marking": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eO3PBXN9BGHJBU",
+          "type": "effect",
+          "label": "Dynamic Marking",
+          "effect": {
+            "name": "Marked (scent)",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 600
+          },
+          "text": "Bonus action: creatures in a 10-foot cube within your Nin-Dog's movement, 10 minutes: you and the dog know their direction, blindsight against them, advantage to Search for them, +1 to hit them.",
+          "activation": "bonus"
+        }
+      ]
+    },
+    "inuzuka-fang-over-fang": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ela33SATpiAbbx",
+          "type": "attack",
+          "label": "Fang Over Fang",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Move your speed through creatures; one attack at each (once each): [Unarmed Damage] (or [Weapon Damage]) + 4d6.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": "slashing"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5etNtrGymkHFGpA",
+          "type": "save",
+          "label": "Fang Over Fang: on a hit",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            },
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            }
+          ],
+          "text": "Failure: Bruised; the Nin-Dog's Tag-Team damage on it: Dazed too.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5ela33SATpiAbbx",
+                "type": "attack",
+                "label": "Fang Over Fang",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Move your speed through creatures; one attack at each (once each): [Unarmed Damage] (or [Weapon Damage]) + 4d6.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (1d6)",
+                      "type": "slashing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5etNtrGymkHFGpA",
+                "type": "save",
+                "label": "Fang Over Fang: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  },
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  }
+                ],
+                "text": "Failure: Bruised; the Nin-Dog's Tag-Team damage on it: Dazed too.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5ela33SATpiAbbx",
+                "type": "attack",
+                "label": "Fang Over Fang",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Move your speed through creatures; one attack at each (once each): [Unarmed Damage] (or [Weapon Damage]) + 4d6.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (2d6)",
+                      "type": "slashing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5etNtrGymkHFGpA",
+                "type": "save",
+                "label": "Fang Over Fang: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  },
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  }
+                ],
+                "text": "Failure: Bruised; the Nin-Dog's Tag-Team damage on it: Dazed too.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5ela33SATpiAbbx",
+                "type": "attack",
+                "label": "Fang Over Fang",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Move your speed through creatures; one attack at each (once each): [Unarmed Damage] (or [Weapon Damage]) + 4d6.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (3d6)",
+                      "type": "slashing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5etNtrGymkHFGpA",
+                "type": "save",
+                "label": "Fang Over Fang: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  },
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  }
+                ],
+                "text": "Failure: Bruised; the Nin-Dog's Tag-Team damage on it: Dazed too.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Tag-Team (Nin-Dog)",
+          "appliesTo": {
+            "namePrefix": "Fang Over Fang"
+          },
+          "note": "Your Nin-Dog synchronizes (spending a jutsu slot or its reaction): it moves its speed through creatures, biting each (+2d6, +1d6 per rank)."
+        }
+      ]
+    },
+    "inuzuka-fang-wolf-fang": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5evoSt4keM00XT3",
+          "type": "save",
+          "label": "Fang Wolf Fang",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Needs Feral, not in Two-Headed Wolf: a 60 by 10-foot line. Failure: [Unarmed Damage] (or [Weapon Damage]) + the Nin-Dog's Bite + 5d6 piercing, and −2 AC and DR until the start of your next turn (−1 more per rank); success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "piercing"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5evoSt4keM00XT3",
+                "type": "save",
+                "label": "Fang Wolf Fang",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Needs Feral, not in Two-Headed Wolf: a 60 by 10-foot line. Failure: [Unarmed Damage] (or [Weapon Damage]) + the Nin-Dog's Bite + 5d6 piercing, and −2 AC and DR until the start of your next turn (−1 more per rank); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (1d6)",
+                      "type": "piercing"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5evoSt4keM00XT3",
+                "type": "save",
+                "label": "Fang Wolf Fang",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Needs Feral, not in Two-Headed Wolf: a 60 by 10-foot line. Failure: [Unarmed Damage] (or [Weapon Damage]) + the Nin-Dog's Bite + 5d6 piercing, and −2 AC and DR until the start of your next turn (−1 more per rank); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (2d6)",
+                      "type": "piercing"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "inuzuka-feral-boost": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e4O9yY6Rx0uYsH",
+          "type": "effect",
+          "label": "Feral Boost",
+          "effect": {
+            "name": "Feral",
+            "target": "self",
+            "changes": [],
+            "expires": "nextTurnEnd",
+            "seconds": 0,
+            "amp": "feral"
+          },
+          "text": "On your turn, no action: enter Feral."
+        }
+      ]
+    },
+    "inuzuka-four-legs-technique": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "In combat, drop to all fours: the Four-Legs Taijutsu stance (the clan's stance item)."
+        }
+      ]
+    },
+    "inuzuka-gouge-and-claw": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eOyKgFTmBTz2dW",
+          "type": "attack",
+          "label": "Gouge and Claw",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 2
+          },
+          "text": "[Unarmed Damage] (or [Weapon Damage]) + 2d4. S-Rank: +1 attack.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d4",
+                "type": "slashing"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "2"
+          }
+        },
+        {
+          "id": "n5eZya2vCLB8rKQY",
+          "type": "save",
+          "label": "Gouge and Claw: damaged",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            },
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            }
+          ],
+          "text": "Failure: Prone; with the Nin-Dog's Tag-Team damage, also a rank of Bleed.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eOyKgFTmBTz2dW",
+                "type": "attack",
+                "label": "Gouge and Claw",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "text": "[Unarmed Damage] (or [Weapon Damage]) + 2d4. S-Rank: +1 attack.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d4) + (1d4)",
+                      "type": "slashing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "2"
+                }
+              },
+              {
+                "id": "n5eZya2vCLB8rKQY",
+                "type": "save",
+                "label": "Gouge and Claw: damaged",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "Failure: Prone; with the Nin-Dog's Tag-Team damage, also a rank of Bleed.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eOyKgFTmBTz2dW",
+                "type": "attack",
+                "label": "Gouge and Claw",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "text": "[Unarmed Damage] (or [Weapon Damage]) + 2d4. S-Rank: +1 attack.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d4) + (2d4)",
+                      "type": "slashing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "2"
+                }
+              },
+              {
+                "id": "n5eZya2vCLB8rKQY",
+                "type": "save",
+                "label": "Gouge and Claw: damaged",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "Failure: Prone; with the Nin-Dog's Tag-Team damage, also a rank of Bleed.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eOyKgFTmBTz2dW",
+                "type": "attack",
+                "label": "Gouge and Claw",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "text": "[Unarmed Damage] (or [Weapon Damage]) + 2d4. S-Rank: +1 attack.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d4) + (3d4)",
+                      "type": "slashing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "2"
+                }
+              },
+              {
+                "id": "n5eZya2vCLB8rKQY",
+                "type": "save",
+                "label": "Gouge and Claw: damaged",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "Failure: Prone; with the Nin-Dog's Tag-Team damage, also a rank of Bleed.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eOyKgFTmBTz2dW",
+                "type": "attack",
+                "label": "Gouge and Claw",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "text": "[Unarmed Damage] (or [Weapon Damage]) + 2d4. S-Rank: +1 attack.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d4) + (4d4)",
+                      "type": "slashing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "2"
+                }
+              },
+              {
+                "id": "n5eZya2vCLB8rKQY",
+                "type": "save",
+                "label": "Gouge and Claw: damaged",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "Failure: Prone; with the Nin-Dog's Tag-Team damage, also a rank of Bleed.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Tag-Team (Nin-Dog)",
+          "appliesTo": {
+            "namePrefix": "Gouge and Claw"
+          },
+          "note": "Your Nin-Dog synchronizes (spending a jutsu slot or its reaction): it makes a Bite attack (+1 at B-Rank)."
+        }
+      ]
+    },
+    "inuzuka-lick-wounds": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e5MCM04Sg4o1Td",
+          "type": "heal",
+          "label": "Lick Wounds",
+          "heal": {
+            "formula": "2d10",
+            "pool": "hp"
+          },
+          "text": "Up to 2 Hit Dice (+1 at B, +2 at S): per die, roll two of your Hit Die size (adjust the dice). C-Rank: the Nin-Dog can lick an adjacent ally instead."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Tag-Team (Nin-Dog)",
+          "appliesTo": {
+            "namePrefix": "Lick Wounds"
+          },
+          "note": "Your Nin-Dog synchronizes (spending a jutsu slot or its reaction): the Nin-Dog regains 2d10."
+        }
+      ]
+    },
+    "inuzuka-nin-dog-traits": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Nin-Dog traits: Wild Sense, Ravage, Paw-Signs, Silent Paw, Grit, Savage, Barker, Talker, Skilled, Big Boy/Girl. Build them on the Nin-Dog with its stat block (held: H6)."
+        }
+      ]
+    },
+    "inuzuka-savage-attacker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5evMQYLBIptGpAi",
+          "type": "effect",
+          "label": "Feral",
+          "effect": {
+            "name": "Feral",
+            "target": "self",
+            "changes": [],
+            "expires": "nextTurnEnd",
+            "seconds": 0,
+            "amp": "feral"
+          },
+          "text": "You or your Nin-Dog score a critical hit: until the end of your next turn (Calming)."
+        },
+        {
+          "id": "n5eBrIQlxQuoqLpR",
+          "type": "effect",
+          "label": "Feral (11th)",
+          "effect": {
+            "name": "Feral (11th)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "feral-11"
+          },
+          "text": "11th, once per rest: you or your Nin-Dog drop below half hit points: Feral for 1 minute, ignoring Calming.",
+          "minLevel": 11
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Once per turn, you and your Nin-Dog on opposite sides of a creature: the first attack either of you makes has advantage. (Its copy of Feral's Amp is removed, as King Q-E12; it also holds the Nin-Dog's stat block, held: H6.)"
+        }
+      ]
+    },
+    "inuzuka-stance-four-legs": {
+      "status": "partial",
+      "system": {
+        "unarmedDie": "2d4",
+        "unarmedType": "slashing"
+      },
+      "effects": [
+        {
+          "name": "Four-Legs: speed",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "10",
+              "mode": 2
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Four-Legs Taijutsu stance (its text is Four-Legs Technique's, as King Q-E9): [Unarmed Damage] 2d4 slashing (4d4 at 11th); your Hijutsu Flexibility ability in place of Strength for attacks and damage; +10 speed; no extra movement Wall or Water Walking; Dash as a Bonus action. Set 4d4 at 11th on the sheet."
+        }
+      ]
+    },
+    "inuzuka-tail-chasing-fang": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ef7KhoBtaBzlvm",
+          "type": "save",
+          "label": "Tail Chasing Fang",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Needs Two-Headed Wolf: creatures you choose in a 40-foot radius. Failure: your Bite + 3d8 slashing and 3d8 piercing, and −4 AC and DR until the start of your next turn; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "slashing"
+              },
+              {
+                "formula": "3d8",
+                "type": "piercing"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "inuzuka-tunneling-fang": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eDWqBoKr8p9bpb",
+          "type": "attack",
+          "label": "Tunneling Fang",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Move to a space within 30 feet without provoking; one attack roll against every adjacent hostile creature: [Unarmed Damage] (or [Weapon Damage]) + 2d6.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "bludgeoning"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eDWqBoKr8p9bpb",
+                "type": "attack",
+                "label": "Tunneling Fang",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Move to a space within 30 feet without provoking; one attack roll against every adjacent hostile creature: [Unarmed Damage] (or [Weapon Damage]) + 2d6.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (1d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eDWqBoKr8p9bpb",
+                "type": "attack",
+                "label": "Tunneling Fang",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Move to a space within 30 feet without provoking; one attack roll against every adjacent hostile creature: [Unarmed Damage] (or [Weapon Damage]) + 2d6.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (2d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eDWqBoKr8p9bpb",
+                "type": "attack",
+                "label": "Tunneling Fang",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Move to a space within 30 feet without provoking; one attack roll against every adjacent hostile creature: [Unarmed Damage] (or [Weapon Damage]) + 2d6.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (3d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eDWqBoKr8p9bpb",
+                "type": "attack",
+                "label": "Tunneling Fang",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Move to a space within 30 feet without provoking; one attack roll against every adjacent hostile creature: [Unarmed Damage] (or [Weapon Damage]) + 2d6.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (4d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Tag-Team (Nin-Dog)",
+          "appliesTo": {
+            "namePrefix": "Tunneling Fang"
+          },
+          "note": "Your Nin-Dog synchronizes (spending a jutsu slot or its reaction): it moves 30 feet to one of them and bites (+1d6, +1d6 per rank) and becomes Feral."
+        }
+      ]
+    },
+    "inuzuka-two-headed-wolf": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eszRoT7HzFUE7O",
+          "type": "effect",
+          "label": "Two-Headed Wolf",
+          "effect": {
+            "name": "Two-Headed Wolf",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action, 1 minute, once per long rest: fuse with your Nin-Dog (one size larger, up to Huge). At 0, you separate: the dog at 1 hit point, you at half your maximum.",
+          "activation": "bonus"
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "lr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its stat block (in this item; Intelligence, Wisdom and Charisma blank) is held for King's (H7)."
+        }
+      ]
+    },
+    "inuzuka-wolf-pack": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZq9kD3a95ohQ8",
+          "type": "effect",
+          "label": "Wolf Pack",
+          "effect": {
+            "name": "Wolf Pack",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Concentration, a 30-foot radius of clones. Pack Die d8: once per turn a missed attack by you or the dog is rerolled (roll the Pack Die); once per turn damage to either of you drops by twice the Pack Die. A 1 or 2 shrinks it a step; at d4 it ends."
+        },
+        {
+          "id": "n5ervSu5b9MjHe5C",
+          "type": "roll",
+          "label": "Pack Die",
+          "roll": {
+            "formula": "1d8",
+            "note": "Shrinks a step on 1 or 2 (d8 > d6 > d4 > ends)."
+          }
+        }
+      ]
+    }
+  }
+}

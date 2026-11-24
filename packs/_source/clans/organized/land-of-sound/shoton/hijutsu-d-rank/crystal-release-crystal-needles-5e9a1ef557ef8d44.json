@@ -17,7 +17,8 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Earth Release",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -109,7 +110,27 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5euKLcmMVPZqESr",
+        "type": "attack",
+        "label": "Crystal Needles",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 2
+        },
+        "text": "+1 attack per rank. On a hit: −10 speed until the end of its next turn.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "earth"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

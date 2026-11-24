@@ -17,6 +17,137 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fuinjutsu, Bio Amphibian",
         "components": "HS, CM, CS"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Bio-Amphibian]"
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eywg9GqlkoQJP8",
+              "type": "save",
+              "label": "Cart Destroyer",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Your Bio-Pet, Huge, falls on a point within 30 feet. Failure: the damage, Prone and Bruised; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d12) + (1d12)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eywg9GqlkoQJP8",
+              "type": "save",
+              "label": "Cart Destroyer",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Your Bio-Pet, Huge, falls on a point within 30 feet. Failure: the damage, Prone and Bruised; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d12) + (2d12)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eywg9GqlkoQJP8",
+              "type": "save",
+              "label": "Cart Destroyer",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Your Bio-Pet, Huge, falls on a point within 30 feet. Failure: the damage, Prone and Bruised; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d12) + (3d12)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +241,46 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eywg9GqlkoQJP8",
+        "type": "save",
+        "label": "Cart Destroyer",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          },
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "Your Bio-Pet, Huge, falls on a point within 30 feet. Failure: the damage, Prone and Bruised; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d12",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

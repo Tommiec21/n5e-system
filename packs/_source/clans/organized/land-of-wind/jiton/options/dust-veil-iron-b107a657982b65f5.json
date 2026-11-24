@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "jiton",
       "sourceLine": 3183,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Potency I: once per turn, a failed save against your Jiton Hijutsu adds a rank of Bleed. Potency II: 10 minutes coats the particles in a poison; failing creatures can suffer it instead."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,28 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5esohSwarJr37HG",
+        "type": "save",
+        "label": "Iron aura",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "A creature of your choice casts a Mobility jutsu within your 10-foot aura. Failure: if it has Bleed, it suffers Bleed as if its turn started.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

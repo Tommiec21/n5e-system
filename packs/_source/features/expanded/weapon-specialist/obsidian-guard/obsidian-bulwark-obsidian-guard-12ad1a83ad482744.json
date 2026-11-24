@@ -33,13 +33,69 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ew52bw5CSd68NC",
+        "type": "roll",
+        "label": "Stonewall Reprisal",
+        "roll": {
+          "formula": "",
+          "note": "When your ward takes damage, with your reaction: until the start of your next turn, each time a creature damages the ward, a weapon attack; add your [Weapon Damage] die to the ward's hit points."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5ew6xCYkEhSZVKs",
+        "type": "roll",
+        "label": "Shackle Guard",
+        "roll": {
+          "formula": "2d12",
+          "note": "Reaction: an ally within 15 feet takes damage. Move 10 feet toward the attacker and make a weapon attack: [Weapon Damage] plus this, and a Strength save or Slowed and Prone."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5e7PahEtF0jgeRm",
+        "type": "effect",
+        "label": "Intimidating Presence",
+        "effect": {
+          "name": "Provoked",
+          "target": "targets",
+          "condition": "provoked",
+          "changes": [],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Hostile creatures within your Aura of Protection are Provoked until the start of your next turn (target them first).",
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        },
+        "activation": "bonus"
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The ward's maximum + proficiency bonus is on the Obsidian Ward pool; roll Ward Restoration dice twice and keep the higher (at the table)."
+        }
+      ]
     }
   },
   "ownership": {

@@ -36,13 +36,38 @@
       "scout-maneuver"
     ],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ecyFLvy9yUnDAb",
+        "type": "save",
+        "label": "Shadow Drain",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1
+        },
+        "activation": "reaction",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "nin"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Reaction: a creature within 30 feet gains a bonus to hit or damage. Failure: it loses the bonus and you gain it until the end of your next turn."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

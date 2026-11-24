@@ -17,7 +17,14 @@
         "cost": "14 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fuinjutsu, Earth Release, Wind Release, Fire Release, Water Release, Lightning Release, Bio Branch",
         "components": "HS, CM, CS"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Bio Branch]"
+        }
+      ]
     }
   },
   "ownership": {
@@ -114,7 +121,36 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eChltnw4iCHWfH",
+        "type": "effect",
+        "label": "Elemental Pet",
+        "effect": {
+          "name": "Elemental Pet",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Bonus action, your Bio-Pet within 10 feet: +2 sizes; Bite or Tongue Lash +2d6 cold, earth, fire or lightning; it can cast your C-Rank or lower jutsu with these releases (Cast, spending a charge; your highest attack bonus and DC); immune to Elemental conditions; +1 charge to its abilities.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5eq1iRe9jH4N6Aj",
+        "type": "damage",
+        "label": "Elemental Pet: extra damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "fire"
+            }
+          ]
+        },
+        "text": "Pick cold, earth, fire or lightning."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

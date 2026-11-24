@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "jugo",
-      "sourceLine": 6321
+      "sourceLine": 6321,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Once per short rest, becoming Manic: mark a creature you can see as your Marked Prey (Priority Target; concentration as an S-Rank jutsu; until it drops to 0 or you lose concentration)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,59 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e9cQpS6BEr7i87",
+        "type": "save",
+        "label": "Savage Intimidation",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Bonus action, your Priority Target within 60 feet. Failure: it spends its Reaction to move its speed toward you (it provokes only from you).",
+        "activation": "bonus",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "natureEnergy",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5eXhQGG5BswWWI3",
+        "type": "roll",
+        "label": "Rejuvenating Siphon",
+        "roll": {
+          "formula": "",
+          "note": "A hostile critical hit on you: remove up to 4 of its highest damage dice; regain twice their total."
+        },
+        "cost": {
+          "pool": "natureEnergy",
+          "amount": 4
+        }
+      },
+      {
+        "id": "n5etdpfAilB089LR",
+        "type": "roll",
+        "label": "Natures Verdict",
+        "roll": {
+          "formula": "",
+          "note": "A critical hit on your Priority Target while Manic, from an Action: an extra action to repeat it."
+        },
+        "cost": {
+          "pool": "natureEnergy",
+          "amount": 6
+        }
+      }
+    ]
   }
 }

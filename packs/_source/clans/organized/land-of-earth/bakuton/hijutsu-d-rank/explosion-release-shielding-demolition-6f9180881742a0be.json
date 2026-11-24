@@ -17,6 +17,137 @@
         "cost": "3 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Lightning Release, Earth Release, Barrier",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1d6 to both per rank (the higher-rank buttons)."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eEKjHwommDMVyW",
+              "type": "roll",
+              "label": "Reduce the damage",
+              "roll": {
+                "formula": "(4d6) + (1d6)",
+                "note": "Take this off the triggering damage."
+              }
+            },
+            {
+              "id": "n5eo7sw52dx71xHA",
+              "type": "attack",
+              "label": "Deflect back",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "If a creature you can see hit you with a ranged attack: attack it.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eEKjHwommDMVyW",
+              "type": "roll",
+              "label": "Reduce the damage",
+              "roll": {
+                "formula": "(4d6) + (2d6)",
+                "note": "Take this off the triggering damage."
+              }
+            },
+            {
+              "id": "n5eo7sw52dx71xHA",
+              "type": "attack",
+              "label": "Deflect back",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "If a creature you can see hit you with a ranged attack: attack it.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eEKjHwommDMVyW",
+              "type": "roll",
+              "label": "Reduce the damage",
+              "roll": {
+                "formula": "(4d6) + (3d6)",
+                "note": "Take this off the triggering damage."
+              }
+            },
+            {
+              "id": "n5eo7sw52dx71xHA",
+              "type": "attack",
+              "label": "Deflect back",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "If a creature you can see hit you with a ranged attack: attack it.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (3d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eEKjHwommDMVyW",
+              "type": "roll",
+              "label": "Reduce the damage",
+              "roll": {
+                "formula": "(4d6) + (4d6)",
+                "note": "Take this off the triggering damage."
+              }
+            },
+            {
+              "id": "n5eo7sw52dx71xHA",
+              "type": "attack",
+              "label": "Deflect back",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "If a creature you can see hit you with a ranged attack: attack it.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (4d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -111,7 +242,36 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eEKjHwommDMVyW",
+        "type": "roll",
+        "label": "Reduce the damage",
+        "roll": {
+          "formula": "4d6",
+          "note": "Take this off the triggering damage."
+        }
+      },
+      {
+        "id": "n5eo7sw52dx71xHA",
+        "type": "attack",
+        "label": "Deflect back",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "If a creature you can see hit you with a ranged attack: attack it.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "force"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

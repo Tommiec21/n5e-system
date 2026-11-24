@@ -87,10 +87,30 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "amp890b295809c77",
+        "type": "effect",
+        "label": "Medical Release: Strength of 1000",
+        "effect": {
+          "name": "Medical Release: Strength of 1000",
+          "target": "self",
+          "amp": "jutsu-medical-release-strength-of-1000"
+        },
+        "text": "Starts the jutsu's Amp at the rank it was cast at."
+      },
+      {
+        "id": "n5eqXknoxJGagpKG",
+        "type": "heal",
+        "label": "Regeneration",
+        "heal": {
+          "formula": "2d4 + 8",
+          "pool": "tempHp"
+        },
+        "text": "At the start of each of your turns."
+      },
+      {
+        "id": "n5ecAE4g2wFcrhV7",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Distortion Impact",
         "save": {
           "abilities": [
             "dex"
@@ -98,32 +118,38 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "Once per turn, with an unarmed or Taijutsu hit: creatures you choose within 20 feet of the target (your Taijutsu or Ninjutsu save DC). Success: half.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "@unarmed",
+              "type": ""
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "3d8",
-        "roll": {
-          "formula": "3d8",
-          "note": "Your [Unarmed damage Die] becomes 3d8."
-        }
-      },
-      {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "2d4+8",
-        "roll": {
-          "formula": "2d4+8",
-          "note": "You regenerate hit points equal to 2d4+8 at the start of each of your turns."
-        }
+        "id": "n5eGEmraV9aOLowN",
+        "type": "effect",
+        "label": "Critical Break: +2 critical range",
+        "effect": {
+          "name": "Critical Break",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.critRange.unarmed",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 0
+        },
+        "text": "Once per turn, before an unarmed or Taijutsu attack; a critical hit triples your unarmed dice."
       }
     ],
     "featureType": "active",
@@ -209,7 +235,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b0d365bba0d080fc"

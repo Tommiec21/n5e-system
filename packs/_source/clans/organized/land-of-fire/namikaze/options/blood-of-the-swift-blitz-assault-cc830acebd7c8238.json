@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "namikaze",
       "sourceLine": 1589,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,27 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e6S3hbPFvyXb9O",
+        "type": "damage",
+        "label": "Blitz Assault",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:2d8,7:4d8,15:6d8)",
+              "type": ""
+            }
+          ]
+        },
+        "text": "Once per turn, attacking with a jutsu: one more attack of the same type; on a hit this, and the jutsu's non-damage effect again.",
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "speedSeals",
+          "amount": 2
+        }
+      }
+    ]
   }
 }

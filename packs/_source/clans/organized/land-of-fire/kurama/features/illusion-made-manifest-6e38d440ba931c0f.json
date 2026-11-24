@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "kurama",
-      "sourceLine": 1521
+      "sourceLine": 1521,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "After a rest, proficiency with one weapon group; those weapons turn ethereal for you only and deal psychic. If the creature already saves against the damage, apply these on its failure."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,63 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eZ5c0U5zjmEASf",
+        "type": "save",
+        "label": "Memory Haze",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "confused",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Confused"
+          }
+        ],
+        "text": "Your manifest weapon's [Weapon Damage] (psychic). Failure: Confused.",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "oniCoils",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eZTsGhcAjZLvGb",
+        "type": "save",
+        "label": "Stolen Thoughts",
+        "save": {
+          "abilities": [
+            "int"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Your manifest weapon's [Weapon Damage]. Failure: you learn its most immediate goals and it forgets them for 1 minute.",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "oniCoils",
+          "amount": 2
+        }
+      }
+    ]
   }
 }

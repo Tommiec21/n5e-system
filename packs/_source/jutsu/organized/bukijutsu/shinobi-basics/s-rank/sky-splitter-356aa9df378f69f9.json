@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eLeIB925S0WRmb",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Sky Splitter",
         "save": {
           "abilities": [
             "dex"
@@ -96,22 +95,18 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "A 60 by 10-foot line (Chain 3: a 60-foot cone); a 10-foot crevasse; those that fail fall in. Success: half.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "3d12",
-        "roll": {
-          "formula": "3d12",
-          "note": "On a failed save, affected creatures take your [Weapons damage] + 3d12 of your weapons damage on a failed save or half as much on a successful save. The ground tears open and leaves a 10-foot-deep crevasse from the force of your attack. Creatures who fail their saving throw also falls to the bottom of the crevasse."
+          "parts": [
+            {
+              "formula": "@weapon + 3d12",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -194,7 +189,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "8a9c91a8d73fad43"

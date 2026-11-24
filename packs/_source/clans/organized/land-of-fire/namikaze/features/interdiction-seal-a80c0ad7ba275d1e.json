@@ -9,7 +9,15 @@
   "flags": {
     "n5e": {
       "clanPackage": "namikaze",
-      "sourceLine": 1604
+      "sourceLine": 1604,
+      "ampCopyRemoved": "Speed Sovereign (King Q-E12)",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "(Its copy of Speed Sovereign's Amp is removed, as King Q-E12.)"
+        }
+      ]
     }
   },
   "ownership": {
@@ -17,7 +25,7 @@
   },
   "system": {
     "identifier": "namikaze-interdiction-seal",
-    "description": "<p>3rd Level Clan Feature</p>\n<p>The Namikaze are related to the Uzumaki through both blood and familial history. The Namikaze honors that by training its members to be specialist in Fuinjutsu as well as speed. Once per turn, when you deal damage with a weapon attack or a melee attack, you can spend 1 Speed Seal to mark a damaged creature with the spent seal. A specialized seal of your design grows over the impact point and there it remains for the next minute. While a creature is marked in this way, the seal provides the following benefits to you:</p>\n<p>Marked. Trigger Interdiction Seal effects from Hijutsu you cast.</p>\n<p>Triangulate. The first attack each turn against a marked creature has a +1 to the attacks critical threat range.</p>\n<p>Interdiction. As a reaction, to a marked creature you can see casting a jutsu that requires Hand Signs (HS), you can detonate the Speed Seal forcing their chakra network to go out of control. The affected creature must make a Constitution saving throw vs your highest jutsu save DC, having their jutsu Interrupted gaining 1 rank of Sealed on a failure. This increases to 2 ranks at 11th level. Once your speed seal has detonated, the creature is no longer marked.</p>\n<p>| #### Speed Sovereign / Reflex Amp / Your movements leaves steaks the same color as your hair. You leave after images in your wake. Others can barely comprehend what you have become. / Seal Reproduction. You regain 1 Speed Seal at the beginning of each of your turns for the duration. / Chain Blink. You can teleport to any creature marked with your Speed Seal, once per turn. If there are multiple creatures marked with your Speed Seal, you can teleport to them each, once per turn. / Spatial Sovereign. The Sealed condition cannot prevent you from teleporting. / Spatial Immunity. You cannot be teleported against your will by any means. |</p>",
+    "description": "<p>3rd Level Clan Feature</p>\n<p>The Namikaze are related to the Uzumaki through both blood and familial history. The Namikaze honors that by training its members to be specialist in Fuinjutsu as well as speed. Once per turn, when you deal damage with a weapon attack or a melee attack, you can spend 1 Speed Seal to mark a damaged creature with the spent seal. A specialized seal of your design grows over the impact point and there it remains for the next minute. While a creature is marked in this way, the seal provides the following benefits to you:</p>\n<p>Marked. Trigger Interdiction Seal effects from Hijutsu you cast.</p>\n<p>Triangulate. The first attack each turn against a marked creature has a +1 to the attacks critical threat range.</p>\n<p>Interdiction. As a reaction, to a marked creature you can see casting a jutsu that requires Hand Signs (HS), you can detonate the Speed Seal forcing their chakra network to go out of control. The affected creature must make a Constitution saving throw vs your highest jutsu save DC, having their jutsu Interrupted gaining 1 rank of Sealed on a failure. This increases to 2 ranks at 11th level. Once your speed seal has detonated, the creature is no longer marked.</p>\n",
     "source": {
       "book": "Tsunade's Studies Compendium",
       "page": "",
@@ -42,6 +50,50 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eCjwAPlEzWW6oL",
+        "type": "roll",
+        "label": "Mark with a Speed Seal",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, a weapon or melee attack's damage: the creature is marked for 1 minute (Marked: your Hijutsu's Interdiction Seal options; Triangulate: the first attack on it each turn +1 critical range)."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "speedSeals",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5ejiXnuW55NzYJj",
+        "type": "save",
+        "label": "Interdiction",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "sealed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Sealed"
+          }
+        ],
+        "text": "Reaction, a marked creature you can see casts an HS jutsu: detonate the seal (it's no longer marked). Failure: its jutsu is Interrupted and 1 rank of Sealed (2 at 11th).",
+        "activation": "reaction",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

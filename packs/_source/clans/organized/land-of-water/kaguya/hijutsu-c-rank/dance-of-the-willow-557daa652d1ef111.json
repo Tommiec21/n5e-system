@@ -17,6 +17,109 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Taijutsu, Bukijutsu, Chain",
         "components": "M, W (Any Melee Weapon)"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5e0YIm2uGOJCbxp",
+              "type": "attack",
+              "label": "Willow",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Reaction, being hit: the triggering creature; on a hit you can move 10 feet.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (1d8)",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e0YIm2uGOJCbxp",
+              "type": "attack",
+              "label": "Willow",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Reaction, being hit: the triggering creature; on a hit you can move 10 feet.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (2d8)",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e0YIm2uGOJCbxp",
+              "type": "attack",
+              "label": "Willow",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Reaction, being hit: the triggering creature; on a hit you can move 10 feet.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (3d8)",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Battle Lust (1)",
+        "appliesTo": {
+          "namePrefix": "Dance of the Willow"
+        },
+        "note": "It counts as an Opportunity attack.",
+        "cost": {
+          "pool": "battleLust",
+          "amount": 1
+        }
       }
     }
   },
@@ -109,7 +212,35 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e0YIm2uGOJCbxp",
+        "type": "attack",
+        "label": "Willow",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Reaction, being hit: the triggering creature; on a hit you can move 10 feet.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "piercing"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

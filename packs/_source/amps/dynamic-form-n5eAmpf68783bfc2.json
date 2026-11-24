@@ -1,0 +1,73 @@
+{
+  "_id": "n5eAmpf68783bfc2",
+  "name": "DYNAMIC FORM!",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldOther1",
+  "sort": 2600,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "dynamic-form",
+    "description": "<p><b>No type · doesn't count toward Rule of 3's</b></p><p>When you cast a Taijutsu with the Combo keyword, you enter a state of combat rhythm you call your DYNAMIC FORM!. Which lasts until you cast a Taijutsu with the Finisher keyword or initiative ends, whichever happens first.</p><p>While in your DYNAMIC FORM! state, each time you cast a Taijutsu with the Combo keyword, you gain 1 Tempo (Max 3). You lose 1 Tempo at the end of each of your turns, where you didn’t cast a Taijutsu with the Combo keyword.</p><p>Passive Tempo Benefits. 1 Tempo: a rank of Mastery with Athletics and Acrobatics based skill actions, and you can ignore difficult terrain. 2 Tempo: you can move through enemy spaces, and attacks of opportunity against you are made at disadvantage. 3 Tempo: a +1 bonus to your Taijutsu attacks' critical threat range and your Taijutsu save DC.</p><p>Finisher Tempo Benefits. When you cast a Taijutsu finisher, you spend all tempo you have, gaining cumulative benefits for each tempo spent. 1 Tempo: one Martial Technique at no Martial Die cost. 2 Tempo: if the jutsu requires an attack, compare the attack result to the AC of all creatures in a 5-foot radius around the original target (10 feet at 10th level, 15 feet at 17th). 3 Tempo: on a critical hit, or a failed save by 5 or more, you regain the action spent casting the jutsu.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "",
+    "namedType": "",
+    "owner": {
+      "kind": "feat",
+      "id": "never-ending-combo",
+      "subclass": ""
+    },
+    "summary": "A combat rhythm: Combo Taijutsu build Tempo (max 3), a Finisher spends it. Ends when you cast a Finisher or initiative ends.",
+    "activation": "trigger",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 0,
+      "until": "combatEnd",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "dynamicForm",
+    "tempHp": "",
+    "endsOn": [
+      "finisherCast"
+    ],
+    "changes": [],
+    "aura": {},
+    "outsideLimits": true
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "Starts when you cast a Taijutsu with the Combo keyword."
+        },
+        {
+          "key": "note",
+          "text": "Tempo is tracked on the Tempo pool (Gain Tempo, Spend Tempo). Its bonuses depend on how much Tempo you have, so they stay with the pool."
+        }
+      ],
+      "amp1c": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.61.0"
+  },
+  "_key": "!items!n5eAmpf68783bfc2"
+}

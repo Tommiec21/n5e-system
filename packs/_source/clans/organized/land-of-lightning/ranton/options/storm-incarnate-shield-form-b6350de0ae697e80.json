@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "ranton",
       "sourceLine": 6045,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,47 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eC07rZERJdEOmQ",
+        "type": "effect",
+        "label": "Shield Form",
+        "effect": {
+          "name": "Shield Form",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.resist",
+              "value": "lightning",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "Until combat ends (or you swap): resistance to lightning."
+      },
+      {
+        "id": "n5eh5i9wJlxb3CEc",
+        "type": "heal",
+        "label": "Shield Form: start of turn",
+        "heal": {
+          "formula": "4 * @pools.voltage.value",
+          "pool": "tempHp"
+        },
+        "text": "At the start of each of your turns."
+      },
+      {
+        "id": "n5ebO1p5tce2uH0c",
+        "type": "heal",
+        "label": "Shield Form: Lightning or Water jutsu",
+        "heal": {
+          "formula": "@pools.voltage.value",
+          "pool": "tempHp"
+        },
+        "text": "Casting a Lightning or Water jutsu on a turn you gained them, up to twice a turn."
+      }
+    ]
   }
 }

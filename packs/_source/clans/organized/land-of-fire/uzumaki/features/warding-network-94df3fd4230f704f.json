@@ -9,7 +9,8 @@
   "flags": {
     "n5e": {
       "clanPackage": "uzumaki",
-      "sourceLine": 2384
+      "sourceLine": 2384,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -42,6 +43,58 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5euTDL6m0oTQYbW",
+        "type": "effect",
+        "label": "Spiral Ward: Aegis",
+        "effect": {
+          "name": "Aegis",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "Once per turn, Bonus action or with a Fuinjutsu jutsu: a ward within 60 feet (up to 2; counts as concentrating on one B-Rank Ninjutsu); allies in 10 feet: a rank of Mastery to AC.",
+        "activation": "bonus",
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5eaLJyOr4hrNqGh",
+        "type": "effect",
+        "label": "Spiral Ward: Clarity",
+        "effect": {
+          "name": "Clarity",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "Allies in 10 feet: a rank of Mastery to their first save each round.",
+        "activation": "bonus",
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5eZSEK8BUnmiHsL",
+        "type": "save",
+        "label": "Spiral Ward: Anchor",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "A hostile creature teleporting within 1 mile of it. Failure: it arrives in the ward's 10 feet instead.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

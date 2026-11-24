@@ -1,0 +1,406 @@
+{
+  "_id": "n5eC9Z4DPq8QpWGA",
+  "_key": "!actors!n5eC9Z4DPq8QpWGA",
+  "name": "Clay Dragon",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Bakuton: Clay Dragon",
+      "biography": "<p><em>Explosion Release: Clay Dragon (Bakuton Hijutsu).</em> It uses your Ninjutsu attack bonus or Save DC when an effect calls for it. You command it as an Action or Bonus action.</p><p><strong>Armor Class</strong> 16 + your ninjutsu ability modifier · <strong>Hit Points</strong> 60 + 25 for every rank above A-Rank · <strong>Speed</strong> 40 ft. flying</p><p><strong>Abilities</strong> STR +5 (save +11), DEX +4 (+10), CON +5 (+11), INT −5, WIS +0, CHA −5. <strong>Damage Vulnerability</strong> Lightning. <strong>Damage Immunities</strong> Acid, Poison, Psychic. <strong>Condition Immunities</strong> All Mental, All Sensory, Stunned, Exhaustion. <strong>Senses</strong> Relies on Caster senses.</p><p><strong>DR</strong> 6. <strong>Jutsu Slots</strong> 4.</p><p><strong>Linked to you when summoned:</strong> its AC (base + your Ninjutsu ability modifier), hit points (by the rank you cast the jutsu at), Ninjutsu attack bonus and save DC, and your senses.</p>",
+      "summonRole": "Clay Dragon"
+    },
+    "abilities": {
+      "str": {
+        "value": 20
+      },
+      "dex": {
+        "value": 18
+      },
+      "con": {
+        "value": 20
+      },
+      "int": {
+        "value": 0
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 0
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 16,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "huge",
+      "immune": [
+        "acid",
+        "poison",
+        "psychic"
+      ],
+      "conditionImmune": [
+        "berserk",
+        "charmed",
+        "confused",
+        "demoralized",
+        "shaken",
+        "concussed",
+        "blinded",
+        "dazzled",
+        "deafened",
+        "exhaustion"
+      ],
+      "stateImmune": [
+        "stunned"
+      ],
+      "vuln": [
+        "lightning"
+      ],
+      "speed": {
+        "walk": 0,
+        "climb": 0,
+        "swim": 0,
+        "fly": 40,
+        "burrow": 0,
+        "hover": false
+      },
+      "dr": 6
+    },
+    "hpMax": 60,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5efsrxEKF2tbwdY",
+      "_key": "!actors.items!n5eC9Z4DPq8QpWGA.n5efsrxEKF2tbwdY",
+      "name": "Shock Weakness",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>If this creature takes Lightning damage it cannot perform its Detonate attack, until the end of its casters next turn. It also cannot perform its Detonate attack while it has the Shocked condition.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eHkFCvLsVWJcTL",
+      "_key": "!actors.items!n5eC9Z4DPq8QpWGA.n5eHkFCvLsVWJcTL",
+      "name": "Purpose to BOOM",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>Once summoned this creature has 1 minute before it self Detonates. If it cannot Detonate after this 1-minute duration, it dispels itself.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eOwJBk1h7JCi1X",
+      "_key": "!actors.items!n5eC9Z4DPq8QpWGA.n5eOwJBk1h7JCi1X",
+      "name": "Flying Mount",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Clay Dragon primary purpose is to be a flying mount. A creature of your choice can mount the Clay Dragon. When it does, replace the creatures movement with the Clay Dragon. The Clay Dragon moves with the mounted creature. If you are mounted to the Clay Dragon, you cannot command it to move separate from you unless you dismount by spending 5 feet of your normal movement. Attacks targeting the mounted Creature must instead target the Dragon and attacks targeting the Clay Dragon does not harm the mounted creature. Effects that target an area affects only the Clay Dragon.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eA7x6kzrHG5WCD",
+      "_key": "!actors.items!n5eC9Z4DPq8QpWGA.n5eA7x6kzrHG5WCD",
+      "name": "Tail",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Multiattack.</em> The Clay Dragon can attack 2 times with its Tail. <em>Melee Weapon Attack:</em> reach 10 ft., one creature. <em>Hit:</em> 3d8 + 5 Earth damage.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eOB4JYSylLPNmQ",
+            "type": "attack",
+            "label": "Tail",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 2,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "3d8 + 5",
+                  "type": "earth"
+                }
+              ]
+            }
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5e8HaPnup7jL14q",
+      "_key": "!actors.items!n5eC9Z4DPq8QpWGA.n5e8HaPnup7jL14q",
+      "name": "Explosive Breath",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Clay Dragon casts Explosion Release: Clay Missiles at C-Rank as if you had cast it, using your Ninjutsu attack bonus, save DC or ability Modifier when needed.</p>",
+        "category": "npcAbilities",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5e374Q9v2rdrsyG",
+      "_key": "!actors.items!n5eC9Z4DPq8QpWGA.n5e374Q9v2rdrsyG",
+      "name": "Detonate",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Clay Dragon detonates in a beautiful incendiary display, filling a 10-foot radius centered on it. All creatures in the radius takes force damage on a failed Dexterity saving throw or half as much on a success based on the rank the Clay Dragon was summoned at. A-Rank: 8d8. S-Rank: 12d8.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eAOlzVaSXKt2qa",
+            "type": "save",
+            "label": "Detonate",
+            "save": {
+              "abilities": [
+                "dex"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "half",
+              "resave": false
+            },
+            "text": "Force damage by the rank it was summoned at; half on a success."
+          },
+          {
+            "id": "n5etvYIm5FDjMV14",
+            "type": "damage",
+            "label": "Detonate: A-Rank",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "8d8",
+                  "type": "force"
+                }
+              ]
+            },
+            "text": "Summoned at A-Rank."
+          },
+          {
+            "id": "n5eKeSE76b2RG4zk",
+            "type": "damage",
+            "label": "Detonate: S-Rank",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "12d8",
+                  "type": "force"
+                }
+              ]
+            },
+            "text": "Summoned at S-Rank."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5eCOJnly0WDE9lV",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "attributes.ac.flat": "16 + (@dc.nin - 8 - @prof)",
+        "hpMax": "60 + 25 * max(0, @rankValue - 4)",
+        "bonuses.saveDC.nin": "@dc.nin - 8 - @prof",
+        "bonuses.attack.nin": "@attack.nin - @prof",
+        "traits.senses.blindsight": "@senses.blindsight",
+        "traits.senses.chakraSensing": "@senses.chakraSensing",
+        "traits.senses.chakraSight": "@senses.chakraSight",
+        "traits.senses.darkvision": "@senses.darkvision",
+        "traits.senses.tremorSense": "@senses.tremorSense",
+        "traits.senses.trueSight": "@senses.trueSight",
+        "traits.senses.heatSense": "@senses.heatSense",
+        "traits.senses.waterSense": "@senses.waterSense"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Clay Dragon",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.93.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

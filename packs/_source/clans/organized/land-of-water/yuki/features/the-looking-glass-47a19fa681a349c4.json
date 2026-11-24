@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "yuki",
-      "sourceLine": 4709
+      "sourceLine": 4709,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Ice Mirrors: up to 2 (3 at 7th, 4 at 11th, 5 at 15th), the pool; each lasts 1 minute. With one active: Join Reflection (5 feet of movement to enter one adjacent, or leave it); Attacking Reflections (entering with another active: Stealth with a rank of Mastery to Hide among them); Mirrors Protection (in one, attacks on you target it; immune to Grappled, Restrained and Prone; only teleportation moves you); Reflective Movement (10 feet: teleport to another within 30 feet); Mirrored Strike (ranged attacks from one keep your stealth)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,49 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eTHNFrZxLsIbt0",
+        "type": "roll",
+        "label": "Ice Mirror",
+        "roll": {
+          "formula": "",
+          "note": "Bonus action: a mirror (6 by 3 feet, 2 inches thick) on the ground in an unoccupied space within 30 feet for up to 1 minute; 10 hit points, 20 AC, resistance to piercing, slashing, cold and wind, vulnerable to fire. Over your maximum the oldest melts (spend one first)."
+        },
+        "activation": "bonus",
+        "cost": {
+          "pool": "iceMirrors",
+          "amount": 1,
+          "gain": true
+        }
+      },
+      {
+        "id": "n5eaeqwl1dyDSduh",
+        "type": "roll",
+        "label": "Mirror destroyed",
+        "roll": {
+          "formula": "",
+          "note": "A mirror melts or drops to 0 hit points (damage past it reaches you if you're in it)."
+        },
+        "cost": {
+          "pool": "iceMirrors",
+          "amount": 1
+        }
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "iceMirrors",
+        "label": "Ice Mirrors",
+        "value": 0,
+        "max": "lvl(1:2,7:3,11:4,15:5)",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [],
+        "lifetime": 60
+      }
+    ]
   }
 }

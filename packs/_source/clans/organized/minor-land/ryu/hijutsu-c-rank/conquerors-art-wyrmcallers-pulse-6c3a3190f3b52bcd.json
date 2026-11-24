@@ -17,6 +17,20 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its Amp button stays (Wyrmlings: +1 AC, 14 temporary hit points, +4 per rank)."
+        }
+      ],
+      "castOption": {
+        "label": "Dragon Rage",
+        "appliesTo": {
+          "namePrefix": "Conqueror’s Art: Wyrmcaller’s Pulse"
+        },
+        "note": "In your Dragon's Rage: you gain 4 temporary hit points per affected creature."
       }
     }
   },
@@ -108,7 +122,46 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "amp3589d821ab591",
+        "type": "effect",
+        "label": "Conqueror’s Art: Wyrmcaller’s Pulse",
+        "effect": {
+          "name": "Conqueror’s Art: Wyrmcaller’s Pulse",
+          "target": "targets",
+          "amp": "jutsu-ryu-conquerors-art-wyrmcallers-pulse"
+        },
+        "text": "Starts the jutsu's Amp at the rank it was cast at. Target the creatures first."
+      },
+      {
+        "id": "n5eZ1HOIioIdzc5I",
+        "type": "save",
+        "label": "Prey",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Resists.",
+            "success": "Disadvantage on its next attack on others before the end of its next turn.",
+            "failure": "Disadvantage on attacks on others for the duration.",
+            "critFailure": "As failure, and 2 ranks of your chosen release's condition (Earth Shaken, Wind Bleed, Fire Burned, Water Chilled, Lightning Shocked)."
+          }
+        },
+        "inflicts": [],
+        "text": "Hostile creatures you choose within 30 feet.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

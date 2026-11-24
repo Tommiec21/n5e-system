@@ -17,6 +17,107 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fire Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your fire damage to creatures inside +2 (+4 at A). It heavily obscures you. B-Rank: cast it as a Reaction to an attack of opportunity."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eAScnBrtIVAbJ4",
+              "type": "damage",
+              "label": "Cinder Field: entering or starting",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (1d8)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "text": "Others entering or starting their turn in your 15-foot radius (not with a breathing apparatus); +4 fire per 5 feet they willingly move in it."
+            },
+            {
+              "id": "n5ePtCS8u05FPcL9",
+              "type": "damage",
+              "label": "Cinder Field: moving",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "text": "Per 5 feet a creature willingly moves inside."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eAScnBrtIVAbJ4",
+              "type": "damage",
+              "label": "Cinder Field: entering or starting",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (2d8)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "text": "Others entering or starting their turn in your 15-foot radius (not with a breathing apparatus); +4 fire per 5 feet they willingly move in it."
+            },
+            {
+              "id": "n5ePtCS8u05FPcL9",
+              "type": "damage",
+              "label": "Cinder Field: moving",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "text": "Per 5 feet a creature willingly moves inside."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eAScnBrtIVAbJ4",
+              "type": "damage",
+              "label": "Cinder Field: entering or starting",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (3d8)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "text": "Others entering or starting their turn in your 15-foot radius (not with a breathing apparatus); +4 fire per 5 feet they willingly move in it."
+            },
+            {
+              "id": "n5ePtCS8u05FPcL9",
+              "type": "damage",
+              "label": "Cinder Field: moving",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "text": "Per 5 feet a creature willingly moves inside."
+            }
+          ]
+        }
       }
     }
   },
@@ -108,7 +209,36 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eAScnBrtIVAbJ4",
+        "type": "damage",
+        "label": "Cinder Field: entering or starting",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d8",
+              "type": "fire"
+            }
+          ]
+        },
+        "text": "Others entering or starting their turn in your 15-foot radius (not with a breathing apparatus); +4 fire per 5 feet they willingly move in it."
+      },
+      {
+        "id": "n5ePtCS8u05FPcL9",
+        "type": "damage",
+        "label": "Cinder Field: moving",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4",
+              "type": "fire"
+            }
+          ]
+        },
+        "text": "Per 5 feet a creature willingly moves inside."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

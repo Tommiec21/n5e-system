@@ -1,0 +1,91 @@
+{
+  "_id": "n5eAmpeb1953ed4e",
+  "name": "Medical Aura (in the aura)",
+  "type": "amp",
+  "img": "icons/svg/book.svg",
+  "folder": "n5eAmpFoldOther1",
+  "sort": 103700,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jutsu-medical-release-medical-aura-aura",
+    "description": "<p><b>Medical Release: Medical Aura</b> · cast at C-Rank to S-Rank · no type</p><p>Resistance to necrotic damage and immunity to Bleeding.</p><p>A living creature that starts its turn here at 0 hit points regains 1 (once per casting).</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1420",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "ampType": "",
+    "namedType": "",
+    "owner": {
+      "kind": "jutsu",
+      "id": "medical-release-medical-aura",
+      "subclass": ""
+    },
+    "summary": "Resistance to necrotic damage and immunity to Bleeding. A living creature that starts its turn here at 0 hit points regains 1 (once per casting).",
+    "activation": "",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": true
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "n5e.resist",
+        "value": "necrotic",
+        "mode": 2
+      },
+      {
+        "key": "n5e.conditionImmune",
+        "value": "bleed",
+        "mode": 2
+      }
+    ],
+    "aura": {},
+    "outsideLimits": false,
+    "series": "",
+    "level": 0,
+    "rank": "C",
+    "choose": {
+      "prompt": "",
+      "options": []
+    },
+    "buttons": [],
+    "onEnd": {
+      "condition": ""
+    },
+    "statuses": [],
+    "endsWith": ""
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "A non-hostile, living creature that starts its turn in the aura at 0 hit points regains 1 hit point (once per casting)."
+        }
+      ],
+      "amp1f": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.70.0"
+  },
+  "_key": "!items!n5eAmpeb1953ed4e"
+}

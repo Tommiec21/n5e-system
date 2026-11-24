@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e3fD1eqw6F2kTJ",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Spear Assault",
         "save": {
           "abilities": [
             "dex"
@@ -97,21 +96,21 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "A 15-foot cone (Chain 1: 20). Failure: the damage and DR −4 until the end of its next turn. Chain 2: temporary hit points equal to the highest damage dealt.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "1d12",
-        "roll": {
-          "formula": "1d12",
-          "note": "On a failed save, they take [Weapons damage] + 1d12 and have their DR reduced by 4, until the end of their next turn."
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "1d12",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -198,9 +197,104 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5e3fD1eqw6F2kTJ",
+              "type": "save",
+              "label": "Spear Assault",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 15-foot cone (Chain 1: 20). Failure: the damage and DR −4 until the end of its next turn. Chain 2: temporary hit points equal to the highest damage dealt.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(1d12) + (1d12)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e3fD1eqw6F2kTJ",
+              "type": "save",
+              "label": "Spear Assault",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 15-foot cone (Chain 1: 20). Failure: the damage and DR −4 until the end of its next turn. Chain 2: temporary hit points equal to the highest damage dealt.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(1d12) + (2d12)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e3fD1eqw6F2kTJ",
+              "type": "save",
+              "label": "Spear Assault",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 15-foot cone (Chain 1: 20). Failure: the damage and DR −4 until the end of its next turn. Chain 2: temporary hit points equal to the highest damage dealt.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(1d12) + (3d12)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "f8b8034e73078532"

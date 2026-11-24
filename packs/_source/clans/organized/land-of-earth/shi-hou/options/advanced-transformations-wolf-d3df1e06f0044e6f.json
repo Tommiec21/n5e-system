@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "shi-hou",
       "sourceLine": 5309,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,36 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eqUibyoNpIEShB",
+        "type": "save",
+        "label": "Wolf",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Once per turn, a melee attack of a jutsu you cast. Failure: Bleed ranks equal to the jutsu's rank (D 1 ... S 5); against the jutsu's save DC.",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

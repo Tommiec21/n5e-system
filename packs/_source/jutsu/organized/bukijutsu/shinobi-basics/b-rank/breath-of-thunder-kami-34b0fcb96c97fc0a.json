@@ -87,24 +87,26 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ewlOz9XVNDGFsg",
         "type": "attack",
-        "label": "Attack",
+        "label": "Breath of Thunder: Kami",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Move adjacent to a creature in range first. Shocked target: advantage. Chain 2: ignores jutsu AC bonuses.",
         "damage": {
-          "parts": []
-        },
-        "strike": {
-          "kind": "weapon",
-          "extraDice": "4d10",
-          "dieSteps": 0,
-          "pierce": 0,
-          "maximize": false,
-          "attacks": "1"
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "4d10",
+              "type": "lightning"
+            }
+          ]
         }
       }
     ],
@@ -194,53 +196,58 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5ewlOz9XVNDGFsg",
               "type": "attack",
-              "label": "Attack",
+              "label": "Breath of Thunder: Kami",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Move adjacent to a creature in range first. Shocked target: advantage. Chain 2: ignores jutsu AC bonuses.",
               "damage": {
-                "parts": []
-              },
-              "strike": {
-                "kind": "weapon",
-                "extraDice": "(4d10) + (1d10)",
-                "dieSteps": 0,
-                "pierce": 0,
-                "maximize": false,
-                "attacks": "1"
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(4d10) + (1d10)",
+                    "type": "lightning"
+                  }
+                ]
               }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5ewlOz9XVNDGFsg",
               "type": "attack",
-              "label": "Attack",
+              "label": "Breath of Thunder: Kami",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Move adjacent to a creature in range first. Shocked target: advantage. Chain 2: ignores jutsu AC bonuses.",
               "damage": {
-                "parts": []
-              },
-              "strike": {
-                "kind": "weapon",
-                "extraDice": "(4d10) + (2d10)",
-                "dieSteps": 0,
-                "pierce": 0,
-                "maximize": false,
-                "attacks": "1"
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(4d10) + (2d10)",
+                    "type": "lightning"
+                  }
+                ]
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0c3fd08eae955429"

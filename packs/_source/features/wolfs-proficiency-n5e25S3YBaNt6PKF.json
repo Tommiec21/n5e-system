@@ -68,6 +68,91 @@
           "formula": "",
           "note": "Once per turn, when you reduce or resist damage with a reaction feature or jutsu."
         }
+      },
+      {
+        "id": "n5eTLzxFCgXd9aZ5",
+        "type": "roll",
+        "label": "Deflect",
+        "roll": {
+          "formula": "",
+          "note": "Reaction to damage: reduce it by 4 (10 with 1 Posture: use the Posture button)."
+        },
+        "activation": "reaction"
+      },
+      {
+        "id": "n5eed6VnfSBTewSF",
+        "type": "roll",
+        "label": "Deflect (1 Posture)",
+        "roll": {
+          "formula": "",
+          "note": "Reduce the damage by 10."
+        },
+        "cost": {
+          "pool": "posture",
+          "amount": 1
+        },
+        "activation": "reaction"
+      },
+      {
+        "id": "n5eT3hlhANqgGAcF",
+        "type": "effect",
+        "label": "Parry",
+        "effect": {
+          "name": "Parry",
+          "target": "self",
+          "changes": [],
+          "expires": "turnEnd",
+          "seconds": 6
+        },
+        "text": "Reaction to a critical hit: resistance to its damage.",
+        "activation": "reaction"
+      },
+      {
+        "id": "n5eof1uyiYZejnBs",
+        "type": "effect",
+        "label": "Parry (1 Posture)",
+        "effect": {
+          "name": "Parry",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.resist",
+              "value": "all",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Resistance to all damage until the start of your next turn.",
+        "activation": "reaction",
+        "cost": {
+          "pool": "posture",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5egLUppj2q9gT42",
+        "type": "roll",
+        "label": "Retaliate",
+        "roll": {
+          "formula": "",
+          "note": "Reaction to damage: the Attack action against the creature, if in your weapon's range (1 Posture: without using your reaction)."
+        },
+        "activation": "reaction"
+      },
+      {
+        "id": "n5eFK6d8326kqnB7",
+        "type": "roll",
+        "label": "Retaliate (1 Posture)",
+        "roll": {
+          "formula": "",
+          "note": "Retaliate without using your reaction."
+        },
+        "cost": {
+          "pool": "posture",
+          "amount": 1
+        }
       }
     ]
   },
@@ -79,7 +164,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Proficiency in Martial Arts and Survival (Str or Dex). Posture lasts 1 minute (max 3). Lethal Attack also against Dazed or Confused. Posture Break (not counting against your exploits)."
+        }
+      ]
     }
   },
   "_stats": {

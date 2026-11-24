@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "keton",
-      "sourceLine": 5828
+      "sourceLine": 5828,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Attack action can use these in place of its attacks (two at 7th without Extra Attack). Keton Hijutsu ranged attacks can come from an active Starlight. Stellar Knuckle adds your highest jutsu ability modifier."
+        }
+      ]
     }
   },
   "ownership": {
@@ -29,6 +36,45 @@
     ],
     "clan": "keton",
     "featureType": "passive",
-    "requirement": "Keton clan"
+    "requirement": "Keton clan",
+    "activities": [
+      {
+        "id": "n5eU4mWVbq5AfV8f",
+        "type": "attack",
+        "label": "Stellar Knuckle",
+        "attack": {
+          "discipline": "highest",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d8 + max(@mod.nin, @mod.tai, @mod.gen)",
+              "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e8dvNLxYoaoget",
+        "type": "attack",
+        "label": "Plasma Burst",
+        "attack": {
+          "discipline": "highest",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "A creature you can see within 60 feet; it can come from a Starlight.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d12",
+              "type": "fire"
+            }
+          ]
+        }
+      }
+    ]
   }
 }

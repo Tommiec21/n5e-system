@@ -14,7 +14,8 @@
  *     of combat and rests always end Amps that last until then.
  *   - Cooldowns start when the Amp ends; uses come back on rests (rules/rest.mjs).
  */
-import { ampDefinition, ampKey, ampWarnings, ampSpendUpdate, ampCooldownUpdate, ampEffectPlan, ampLimitConflict, ampsEndingOn, ampVersionFor, actorLevel, trackKey,
+import { ampPer } from "../rules/recovery-overrides.mjs";
+import { ampDefinition, ampKey, ampWarnings, ampSpendUpdate, ampCooldownUpdate, ampEffectPlan, ampLimitConflict, ampsEndingOn, ampVersionFor, actorLevel, trackKey, withChoice, ampChoiceUpdate, ampDefFor, ampsEndingWith, activeAmpOfSeries,
   ownsAmp, activeAmpCards, AMP_END_TRIGGERS, ampTypeLabel } from "../rules/amp-cards.mjs";
 import { canModify } from "../automation/authority.mjs";
 import { registerIntentHandler, submitIntent } from "../automation/owner-intents.mjs";
@@ -41,8 +42,26 @@ export function registerAmp(card) {
   const key = card.system?.identifier || existing[0] || ampKey(card);
   if ( !key ) return null;
   for ( const k of existing ) if ( k !== key ) delete reg[k];
-  reg[key] = ampDefinition(card);
+  reg[key] = withLimitOverride(key, ampDefinition(card));
   return key;
+}
+
+/**
+ * King 2026-11-21: the GM's Class & Clan limits menu can change when an Amp's uses come back. The
+ * written period stays on the definition (uses.writtenPer) so the choice can be undone.
+ */
+function withLimitOverride(key, def) {
+  if ( !def?.uses ) return def;
+  const written = def.uses.writtenPer ?? def.uses.per;
+  let overrides = {};
+  try { overrides = game.settings.get("n5e", "limitRecovery") ?? {}; } catch { /* settings not ready */ }
+  def.uses = { ...def.uses, writtenPer: written, per: ampPer(key, written, overrides) };
+  return def;
+}
+
+/** The limits menu changed: apply it to every registered Amp. */
+export function refreshAmpLimits() {
+  for ( const [key, def] of Object.entries(registry()) ) withLimitOverride(key, def);
 }
 
 /** Ready hook: register every card from the compendium and the world. */
@@ -88,9 +107,10 @@ async function confirmWarnings(def, warnings) {
  * @param {Item|null} [o.item]       the feature or jutsu it came from (concentration, origin)
  * @param {boolean} [o.confirm=true] false: skip the confirmation (initiative "auto")
  */
-export async function applyAmp(target, key, { applier = null, item = null, confirm = true } = {}) {
+export async function applyAmp(target, key, { applier = null, item = null, confirm = true, rank = "", choice = null } = {}) {
   // AMP1g (King 2026-11-20): start the version the character's level reaches (Flow (11th) at 11th).
-  key = ampVersionFor(registry(), key, actorLevel(applier ?? target));
+  // AMP1f (King Q-F1): and the version for the rank the jutsu was cast at.
+  key = ampVersionFor(registry(), key, actorLevel(applier ?? target), rank);
   const def = registry()[key];
   if ( !def ) throw new Error(`Unknown Amp: ${key}`);
   if ( !target ) throw new Error("Drop the Amp on a creature.");
@@ -98,24 +118,98 @@ export async function applyAmp(target, key, { applier = null, item = null, confi
   const resolve = resolver(who);
   const warnings = ampWarnings(def, { applier: who, target, worldTime: game.time.worldTime, key, resolve });
   if ( confirm && !(await confirmWarnings(def, warnings)) ) return null;
+  // AMP1f (King Q-F1): the caster picks from the card's options in a menu.
+  if ( def.choose && choice == null ) {
+    choice = await pickOption(def);
+    if ( choice == null ) return null;
+  }
   // Uses are spent by whoever starts it, when it is theirs to start.
   if ( ownsAmp(who, def) && def.uses?.max && canModify(game.user, who) ) {
     const spend = ampSpendUpdate(who, key, def);
     if ( spend ) await who.update(spend);
   }
-  if ( canModify(game.user, target) ) return placeAmp(target, key, { applier: who, item });
+  if ( canModify(game.user, target) ) return placeAmp(target, key, { applier: who, item, choice });
   if ( !canModify(game.user, who) ) throw new Error("Select a token you own (or assign your character) to apply this.");
-  return submitIntent(who, "applyAmp", { key, targetUuid: target.uuid });
+  return submitIntent(who, "applyAmp", { key, targetUuid: target.uuid, ...(choice == null ? {} : { choice }) });
+}
+
+/**
+ * AMP1f: for an Amp given to several creatures, the caster picks once (the cast's one choice).
+ * @returns {number|null|false}  the option, null when the card has no options, false when closed
+ */
+export async function pickAmpOption(key, applier, rank = "") {
+  const def = registry()[ampVersionFor(registry(), key, actorLevel(applier), rank)];
+  if ( !def?.choose ) return null;
+  const choice = await pickOption(def);
+  return choice == null ? false : choice;
+}
+
+/** AMP1f: the options menu (every option in view). Returns the picked indexes, or null when closed. */
+async function pickOption(def, current = []) {
+  const count = def.choose.count ?? 1;
+  const many = count > 1;
+  const rows = def.choose.options.map((o, i) => `<label class="checkbox"><input type="${many ? "checkbox" : "radio"}" name="choice" value="${i}" ${(current.length ? current.includes(i) : i === 0) ? "checked" : ""}> ${esc(o.label)}</label>`).join("");
+  const picked = await foundry.applications.api.DialogV2.prompt({
+    window: { title: def.label }, content: `<p>${esc(def.choose.prompt)}${many ? ` (up to ${count})` : ""}</p>${rows}`,
+    ok: { label: current.length ? "Change" : "Start", callback: (event, button) => [...button.form.querySelectorAll("input[name=choice]:checked")].map(x => Number(x.value)) },
+    rejectClose: false
+  });
+  if ( !Array.isArray(picked) || !picked.length ) return null;
+  if ( picked.length > count ) { ui.notifications.warn(`Pick up to ${count}.`); return null; }
+  return picked;
+}
+
+/** AMP1f (King Q-F9): the Change button on an active Amp whose pick can change (Score's tempo). */
+export async function changeAmpChoice(actor, effectId) {
+  const effect = actor.effects.get(effectId);
+  const def = effect ? ampDefFor(effect, registry()) : null;
+  if ( !def?.choose?.changeable ) return null;
+  const picked = await pickOption(def, effect.flags?.n5e?.ampChoice ?? []);
+  if ( !picked ) return null;
+  return effect.update(ampChoiceUpdate(def, picked));
+}
+
+/** AMP1f batch 3 (King Q-F11): a button on an active Amp applies its effect to the Amp's bearer. */
+export async function useAmpButton(actor, effectId, index) {
+  const effect = actor.effects.get(effectId);
+  const button = effect ? ampDefFor(effect, registry())?.buttons?.[index] : null;
+  if ( !button ) return null;
+  // AMP1f batch 4 (King Q-F20): end it early without its aftermath (The Zone can be reactivated).
+  if ( button.end === "pause" ) { await effect.delete({ n5eAmpPause: true }); return effect.name; }
+  const { applyActivityEffect } = await import("./trackers.mjs");
+  return applyActivityEffect(actor, { ...button.effect, target: "self" }, { label: button.label, item: { name: effect.name, img: effect.img, id: null, uuid: effect.uuid }, targetActors: [actor] });
 }
 
 /** Create the Amp effect from the card (runs on a client that can modify the target). */
-export async function placeAmp(target, key, { applier = null, item = null } = {}) {
+export async function placeAmp(target, key, { applier = null, item = null, choice = null } = {}) {
   const def = registry()[key];
   if ( !def ) return null;
   const { applyActivityEffect } = await import("./trackers.mjs");
   const source = item ?? { img: def.icon, uuid: def.card, name: def.label, id: null, system: { description: def.summary } };
-  await applyActivityEffect(applier ?? target, ampEffectPlan(key, def), { label: def.label, item: source, targetActors: [target] });
+  if ( def.endsWith ) await releaseFor(target, def);
+  await applyActivityEffect(applier ?? target, withChoice(ampEffectPlan(key, def), def, choice), { label: def.label, item: source, targetActors: [target] });
   return { applied: target.name, key };
+}
+
+/**
+ * AMP1f batch 4 (King Q-F17): an Amp that ends with another (Strength of 1000 with Strength of 100)
+ * frees that Amp from its concentration: it keeps its duration, and the jutsu leaves the
+ * concentration list. Without that Amp on the bearer, a warning (the jutsu requires it).
+ */
+async function releaseFor(target, def) {
+  const other = activeAmpOfSeries(target.effects, def.endsWith, registry());
+  if ( !other ) {
+    ui.notifications.warn(`${def.label}: ${target.name} isn't under ${registry()[def.endsWith]?.label ?? def.endsWith}.`);
+    return;
+  }
+  const dep = other.flags?.n5e?.dependentOn;
+  if ( !dep ) return;
+  await other.update({ "flags.n5e.dependentOn": null });
+  const caster = dep.actorUuid === target.uuid ? target : await fromUuid(dep.actorUuid).catch(() => null);
+  const held = caster?.system?.combat?.concentrating ?? [];
+  if ( caster && held.includes(dep.itemId) && canModify(game.user, caster) ) {
+    await caster.update({ "system.combat.concentrating": held.filter(id => id !== dep.itemId) });
+  }
 }
 
 /** End an Amp (by effect id or card key). The cooldown starts (deleteActiveEffect hook). */
@@ -175,13 +269,14 @@ async function pickAmps(actor, clash) {
 /* -------------------------------------------- */
 
 /**
- * End the Amps an event ends. "combatEnd" and "rest" are durations and always end; the others follow
+ * End the Amps an event ends. "combatEnd", "rest" and "finisherCast" are durations and always end; the others follow
  * the GM's setting: automatically, or a reminder to end them at the table.
  */
 export async function endAmpsOn(actor, trigger) {
   const ending = ampsEndingOn(actor, trigger);
   if ( !ending.length ) return 0;
-  const auto = trigger === "combatEnd" || trigger === "rest" || rule("ampEnding") !== "table";
+  // AMP1e: casting a Finisher is part of DYNAMIC FORM!'s duration ("until you cast a Finisher"), so it always ends.
+  const auto = ["combatEnd", "rest", "finisherCast"].includes(trigger) || rule("ampEnding") !== "table";
   const why = AMP_END_TRIGGERS[trigger] ?? trigger;
   if ( auto ) {
     await actor.deleteEmbeddedDocuments("ActiveEffect", ending.map(e => e.id));
@@ -245,7 +340,7 @@ export function registerAmpCards() {
     const doc = await fromUuid(data.targetUuid);
     const target = doc?.actor ?? doc;
     if ( !(target instanceof Actor) ) throw new Error("That creature no longer exists.");
-    return placeAmp(target, data.key, { applier: actor });
+    return placeAmp(target, data.key, { applier: actor, choice: data.choice ?? null });
   });
   for ( const hook of ["createItem", "updateItem"] ) {
     Hooks.on(hook, item => { if ( item.type === "amp" && !item.parent ) registerAmp(item); });
@@ -271,6 +366,24 @@ export function registerAmpCards() {
     const cp = foundry.utils.getProperty(change, "system.cp.value");
     if ( cp != null && cp <= 0 ) void endAmpsOn(actor, "noChakra");
     if ( foundry.utils.hasProperty(change, "system.combat.activeStance") ) void endAmpsOn(actor, "stanceLeave");
+  });
+  // AMP1f batch 3 (King Q-F13): an Amp that leaves a condition behind when it ends (Strength of 100's
+  // aftermath). Not on a swap or a version change; placed by the bearer's responsible client.
+  Hooks.on("deleteActiveEffect", async (effect, options) => {
+    const key = effect.type === "amp" ? effect.system?.key : null;
+    const after = key ? registry()[key]?.onEnd?.condition : null;
+    const actor = effect.parent;
+    if ( !after || options?.n5eAmpSwap || options?.n5eAmpPause || !(actor instanceof Actor) || !isResponsible(actor) ) return;
+    const { applyConditionCard } = await import("./condition-cards.mjs");
+    await applyConditionCard(actor, after, { applier: actor }).catch(e => console.warn("n5e | Amp aftermath", e));
+  });
+  // AMP1f batch 4 (King Q-F17): Amps that end with this one end too (each leaves its own aftermath).
+  Hooks.on("deleteActiveEffect", async (effect, options) => {
+    const key = effect.type === "amp" ? effect.system?.key : null;
+    const actor = effect.parent;
+    if ( !key || options?.n5eAmpSwap || !(actor instanceof Actor) || !isResponsible(actor) ) return;
+    const ids = ampsEndingWith(actor.effects, key, registry()).filter(id => actor.effects.has(id));
+    if ( ids.length ) await actor.deleteEmbeddedDocuments("ActiveEffect", ids).catch(e => console.warn("n5e | Amp ends with", e));
   });
   // The cooldown starts when an Amp card's effect ends, on whoever starts it.
   Hooks.on("deleteActiveEffect", async (effect, options, userId) => {

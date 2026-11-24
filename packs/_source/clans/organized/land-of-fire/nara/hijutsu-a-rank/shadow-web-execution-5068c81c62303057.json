@@ -17,7 +17,8 @@
         "cost": "20 Chakra",
         "keywords": "Hijutsu, Ninjutsu",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -107,7 +108,41 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ebbpU7NKMTWF7L",
+        "type": "save",
+        "label": "Shadow Web Execution",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "exhaustion",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Exhaustion"
+          }
+        ],
+        "text": "Reaction: every Shadow Bound creature; bludgeoning, piercing or necrotic. Failure: 1 rank of Exhaustion; success: half.",
+        "activation": "reaction",
+        "damage": {
+          "parts": [
+            {
+              "formula": "12d8",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

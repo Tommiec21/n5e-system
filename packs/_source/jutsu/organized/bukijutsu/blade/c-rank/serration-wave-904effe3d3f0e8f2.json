@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ea2cw9AbN9hVOm",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Serration Wave",
         "save": {
           "abilities": [
             "dex"
@@ -96,22 +95,25 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "A 20-foot cone (Chain 1: in difficult terrain at disadvantage). Failure: −10 speed until the end of its next turn (Chain 2: also Prone); success: half, nothing else.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "1d10",
-        "roll": {
-          "formula": "1d10",
-          "note": "On a failed save they take your [Weapon’s damage] +1d10 and lose 10-feet of their movement speed until the end of their next turn. On a success they take half damage and do not suffer any additional effects."
+          "parts": [
+            {
+              "formula": "@weapon + 1d10",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -192,9 +194,119 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5ea2cw9AbN9hVOm",
+              "type": "save",
+              "label": "Serration Wave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 20-foot cone (Chain 1: in difficult terrain at disadvantage). Failure: −10 speed until the end of its next turn (Chain 2: also Prone); success: half, nothing else.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 1d10) + (1d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ea2cw9AbN9hVOm",
+              "type": "save",
+              "label": "Serration Wave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 20-foot cone (Chain 1: in difficult terrain at disadvantage). Failure: −10 speed until the end of its next turn (Chain 2: also Prone); success: half, nothing else.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 1d10) + (2d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ea2cw9AbN9hVOm",
+              "type": "save",
+              "label": "Serration Wave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 20-foot cone (Chain 1: in difficult terrain at disadvantage). Failure: −10 speed until the end of its next turn (Chain 2: also Prone); success: half, nothing else.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 1d10) + (3d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Prone is Chain 2 only."
+        }
+      ]
     }
   },
   "folder": "575645fa4b1ef057"

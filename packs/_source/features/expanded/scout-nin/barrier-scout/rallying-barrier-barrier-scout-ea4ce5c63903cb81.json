@@ -33,13 +33,31 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eFmgICjKOcM1nN",
+        "type": "heal",
+        "label": "Rallying Barrier",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1
+        },
+        "activation": "bonus",
+        "heal": {
+          "formula": "@level",
+          "pool": "tempHp"
+        },
+        "text": "Bonus action: up to 4 allies within 30 feet (not you) gain temporary hit points equal to your level for 1 minute."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

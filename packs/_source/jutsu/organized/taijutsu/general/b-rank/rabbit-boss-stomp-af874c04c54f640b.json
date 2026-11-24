@@ -86,11 +86,11 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5enoQgdWVzeA8MX",
         "type": "attack",
-        "label": "Attack",
+        "label": "Rabbit Boss Stomp",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
@@ -107,10 +107,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eQwFCnh4mggSQb",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Shockwave",
         "save": {
           "abilities": [
             "str"
@@ -118,26 +117,39 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
-        "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "finisher-parsed1",
-        "type": "damage",
-        "label": "Finisher: Damage",
+        "inflicts": [],
+        "text": "A 30-foot cone from the target; difficult terrain behind it. Success: half.",
         "damage": {
           "parts": [
             {
-              "formula": "@unarmed + 9d8",
+              "formula": "6d8",
               "type": "bludgeoning"
             }
           ]
+        }
+      },
+      {
+        "id": "n5eJft3cK4Y7Ou80",
+        "type": "attack",
+        "label": "Finisher: Rabbit Boss Stomp",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "9d8",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       }
     ],
@@ -248,9 +260,149 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5enoQgdWVzeA8MX",
+              "type": "attack",
+              "label": "Rabbit Boss Stomp",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "6d8 + 1d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eQwFCnh4mggSQb",
+              "type": "save",
+              "label": "Shockwave",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 30-foot cone from the target; difficult terrain behind it. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d8) + (1d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eJft3cK4Y7Ou80",
+              "type": "attack",
+              "label": "Finisher: Rabbit Boss Stomp",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "9d8 + 1d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5enoQgdWVzeA8MX",
+              "type": "attack",
+              "label": "Rabbit Boss Stomp",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "6d8 + 2d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eQwFCnh4mggSQb",
+              "type": "save",
+              "label": "Shockwave",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 30-foot cone from the target; difficult terrain behind it. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d8) + (2d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eJft3cK4Y7Ou80",
+              "type": "attack",
+              "label": "Finisher: Rabbit Boss Stomp",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "9d8 + 2d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "64b78902f2631880"

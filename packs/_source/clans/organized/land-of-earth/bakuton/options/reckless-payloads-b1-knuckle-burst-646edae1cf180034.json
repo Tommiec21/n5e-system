@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "bakuton",
       "sourceLine": 4895,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,35 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eyJUyH8AsEPEM7",
+        "type": "save",
+        "label": "Payload: Knuckle Burst",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "shaken",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shaken"
+          }
+        ],
+        "text": "Triggered by [Unarmed Damage]: a 30-foot cone from you. Failure: 1 rank of Shaken.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

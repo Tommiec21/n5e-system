@@ -9,7 +9,15 @@
   "flags": {
     "n5e": {
       "clanPackage": "hoshi",
-      "sourceLine": 7901
+      "sourceLine": 7901,
+      "ampCopyRemoved": "Kujaku Sanseijin (King Q-E12)",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "(Its copy of Kujaku Sanseijin's Amp is removed, as King Q-E12.)"
+        }
+      ]
     }
   },
   "ownership": {
@@ -17,7 +25,7 @@
   },
   "system": {
     "identifier": "hoshi-irradiated-apex",
-    "description": "<p>15th Level Clan Feature</p>\n<p>You have pushed further than any Hoshi has before. Your use of Star Chakra grants you the chance, for one brilliant catastrophic moment, to become the Star your clan looks to for guidance.</p>\n<p>When you spend 6 or more Star Chakra between the beginning of your most recent turn and the beginning of your next turn, you enter your Kujaku Sanseiijin (Brilliant Peacock Star Formation) state until the end of your next turn. You cannot extend the duration of this state if you are already in it, meaning even if you spend an additional 6 or more Star Chakra while in this state, it still ends at the predefined time.</p>\n<p>| #### Kujaku Sanseijin / Fortitude Amp / Your chakra made tail feathers are more beautiful than you could imagine. / Brilliant Plumage. You gain the benefits of Kujaku Mode for the duration. / Stars Momentum. You gain the Star Momentum special action once per activation of this state. You can use this special action to cast or use any Hoshi Clan Hijutsu or Celestial Trait, that costs an Action, Bonus Action or Reaction. / Irradiated Reflexes. All Hoshi clan Hijutsu you cast for the duration, gain their Irradiated Effect, without spending additional Star Chakra. / Star Control. Star Chakra you spend while in this state, does not count towards gaining Star Sickness. |</p>",
+    "description": "<p>15th Level Clan Feature</p>\n<p>You have pushed further than any Hoshi has before. Your use of Star Chakra grants you the chance, for one brilliant catastrophic moment, to become the Star your clan looks to for guidance.</p>\n<p>When you spend 6 or more Star Chakra between the beginning of your most recent turn and the beginning of your next turn, you enter your Kujaku Sanseiijin (Brilliant Peacock Star Formation) state until the end of your next turn. You cannot extend the duration of this state if you are already in it, meaning even if you spend an additional 6 or more Star Chakra while in this state, it still ends at the predefined time.</p>\n",
     "source": {
       "book": "Tsunade's Studies Compendium",
       "page": "",
@@ -42,6 +50,22 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5etinME0iqFXH0k",
+        "type": "effect",
+        "label": "Kujaku Sanseijin",
+        "effect": {
+          "name": "Kujaku Sanseijin",
+          "target": "self",
+          "changes": [],
+          "expires": "nextTurnEnd",
+          "seconds": 0,
+          "amp": "kujaku-sanseijin-11"
+        },
+        "text": "Spending 6+ Star Chakra between the start of your last turn and your next: until the end of your next turn (not extended)."
+      }
+    ]
   }
 }

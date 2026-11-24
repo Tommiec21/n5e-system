@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "kashu",
       "sourceLine": 6618,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,41 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eGneLxCKUBucGa",
+        "type": "save",
+        "label": "Lingering Bell: detonate",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "slowed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Slow"
+          },
+          {
+            "key": "concussed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Concussed"
+          }
+        ],
+        "text": "A triggered wire marks it instead (1 minute); Bonus action or Reaction: creatures within 20 feet of it. Failure: Slowed and 1 rank of Concussed (+1 at 7th and 15th).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

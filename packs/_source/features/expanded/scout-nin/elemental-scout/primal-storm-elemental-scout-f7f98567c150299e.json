@@ -33,13 +33,39 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ekjQywpnzXJgKa",
+        "type": "effect",
+        "label": "Primal Storm",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1
+        },
+        "effect": {
+          "name": "Primal Storm",
+          "target": "self",
+          "changes": [],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "At the start of your turn in Flux: immunity to your Flux type's damage until the start of your next turn (add it to the effect)."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "In Flux, one more maneuver on your turn."
+        }
+      ]
     }
   },
   "ownership": {

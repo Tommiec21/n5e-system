@@ -17,6 +17,24 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Water Release, Medical",
         "components": "HS, W (Any)"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "A-Rank or higher: +1d10 damage (add it)."
+        }
+      ],
+      "castOption": {
+        "label": "Blood Detonation (any Crimson Charges)",
+        "appliesTo": {
+          "namePrefix": "Rivers of Blood"
+        },
+        "cost": {
+          "pool": "crimsonCharges",
+          "choose": true
+        },
+        "note": "Needs your Ketsuryugan active. Up to three times: +1 attack against the same creature for every 2 Crimson Charges."
       }
     }
   },
@@ -110,7 +128,62 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eluL1x7nvWEnWg",
+        "type": "attack",
+        "label": "Rivers of Blood",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 3
+        },
+        "text": "Three melee or ranged attacks against one creature: [Weapon Damage] + 1d10 necrotic each.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d10",
+              "type": "necrotic"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "3"
+        }
+      },
+      {
+        "id": "n5e1iQDsBbP2VRmJ",
+        "type": "save",
+        "label": "Rivers of Blood: bleed",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "text": "A damaged creature, −1 per hit. Failure: 1 rank of Bleed per hit.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

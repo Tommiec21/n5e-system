@@ -179,6 +179,7 @@ export class StanceData extends TDM() {
       requirement: S.str(),
       unarmedDie: S.str(),
       unarmedType: S.str(),
+      unarmedNoMod: S.bool(),                           // STD6e Q-E7: [Unarmed Damage] adds no ability modifier (Ballistic Knuckle)
       /** A better die with an item ("Combat Bracers") and, optionally, an ability requirement. */
       unarmedAlt: S.obj({ die: S.str(), item: S.str(), ability: S.str() }),
       upgrades: S.obj({ 5: S.html(), 10: S.html() }),

@@ -85,13 +85,14 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d8",
-        "roll": {
+        "id": "n5eqgckhma5Kx9xQ",
+        "type": "heal",
+        "label": "Circle of Defiance",
+        "heal": {
           "formula": "2d8",
-          "note": "That creature gains 2d8 temporary hit points, until the beginning of your next turn."
-        }
+          "pool": "tempHp"
+        },
+        "text": "Concentration, Bonus action: a willing creature within 30 feet (+1 per rank); until the start of your next turn."
       }
     ],
     "featureType": "active",
@@ -171,9 +172,47 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eqgckhma5Kx9xQ",
+              "type": "heal",
+              "label": "Circle of Defiance",
+              "heal": {
+                "formula": "(2d8) + (1d8)",
+                "pool": "tempHp"
+              },
+              "text": "Concentration, Bonus action: a willing creature within 30 feet (+1 per rank); until the start of your next turn."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eqgckhma5Kx9xQ",
+              "type": "heal",
+              "label": "Circle of Defiance",
+              "heal": {
+                "formula": "(2d8) + (2d8)",
+                "pool": "tempHp"
+              },
+              "text": "Concentration, Bonus action: a willing creature within 30 feet (+1 per rank); until the start of your next turn."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eqgckhma5Kx9xQ",
+              "type": "heal",
+              "label": "Circle of Defiance",
+              "heal": {
+                "formula": "(2d8) + (3d8)",
+                "pool": "tempHp"
+              },
+              "text": "Concentration, Bonus action: a willing creature within 30 feet (+1 per rank); until the start of your next turn."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "cfa6ae1d0e387079"

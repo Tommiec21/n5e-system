@@ -85,17 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ebey9lpVXUQEP5",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "prone",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Prone"
-          }
-        ],
+        "label": "Dragon Tail Foot",
         "save": {
           "abilities": [
             "dex"
@@ -104,17 +96,41 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Within 5 feet. Failure: Prone.",
         "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed + 3d6",
-              "type": "bludgeoning"
-            }
-          ]
+          "parts": []
+        }
+      },
+      {
+        "id": "n5ecfWKiYfA4M0Fe",
+        "type": "attack",
+        "label": "Dragon Tail Foot: slam",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "A creature knocked Prone.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "3d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       }
     ],
@@ -204,17 +220,9 @@
         "activitiesByRank": {
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5ebey9lpVXUQEP5",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "prone",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Prone"
-                }
-              ],
+              "label": "Dragon Tail Foot",
               "save": {
                 "abilities": [
                   "dex"
@@ -223,33 +231,49 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Within 5 feet. Failure: Prone.",
               "damage": {
-                "parts": [
-                  {
-                    "formula": "(@unarmed + 3d6) + (1d8)",
-                    "type": "bludgeoning"
-                  }
-                ]
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ecfWKiYfA4M0Fe",
+              "type": "attack",
+              "label": "Dragon Tail Foot: slam",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "A creature knocked Prone.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d6 + 1d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
               }
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5ebey9lpVXUQEP5",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "prone",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Prone"
-                }
-              ],
+              "label": "Dragon Tail Foot",
               "save": {
                 "abilities": [
                   "dex"
@@ -258,33 +282,49 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Within 5 feet. Failure: Prone.",
               "damage": {
-                "parts": [
-                  {
-                    "formula": "(@unarmed + 3d6) + (2d8)",
-                    "type": "bludgeoning"
-                  }
-                ]
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ecfWKiYfA4M0Fe",
+              "type": "attack",
+              "label": "Dragon Tail Foot: slam",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "A creature knocked Prone.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d6 + 2d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
               }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5ebey9lpVXUQEP5",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "prone",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Prone"
-                }
-              ],
+              "label": "Dragon Tail Foot",
               "save": {
                 "abilities": [
                   "dex"
@@ -293,23 +333,48 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Within 5 feet. Failure: Prone.",
               "damage": {
-                "parts": [
-                  {
-                    "formula": "(@unarmed + 3d6) + (3d8)",
-                    "type": "bludgeoning"
-                  }
-                ]
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ecfWKiYfA4M0Fe",
+              "type": "attack",
+              "label": "Dragon Tail Foot: slam",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "A creature knocked Prone.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d6 + 3d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "aee26bc2434fe738"

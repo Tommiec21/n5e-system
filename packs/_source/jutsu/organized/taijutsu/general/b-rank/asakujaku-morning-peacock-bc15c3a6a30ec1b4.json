@@ -87,17 +87,37 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5em9NgHeAe0o2k7",
+        "type": "attack",
+        "label": "Finisher: Asakujaku",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Finisher only, an airborne or falling target; 5th Gate or higher; once per 10 minutes of rest. Attacks equal to your proficiency bonus, no ability modifier; each hit after the first deals one more die (1d6, 2d6, 3d6...).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d6",
+              "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eLJ3hZunyp4N6f",
+        "type": "roll",
+        "label": "Hit damage (nth hit)",
+        "roll": {
+          "formula": "1d6",
+          "note": "For the nth hit, change the dice count to n by hand."
+        }
+      },
+      {
+        "id": "n5eTtB53cUBMSiFg",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "stunned",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Stunned"
-          }
-        ],
+        "label": "Finisher: Stunned (5+ hits)",
         "save": {
           "abilities": [
             "con"
@@ -106,21 +126,19 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "stunned",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Stunned"
+          }
+        ],
+        "text": "Five or more hits. Failure: Stunned until the end of its next turn.",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "1d6",
-        "roll": {
-          "formula": "1d6",
-          "note": "Make a number of melee taijutsu attacks equal to your proficiency bonus dealing 1d6 damage on the first hit, then each successful hit after the first, increase damage die by +1. You cannot add your ability modifier to the damage dealt."
         }
       }
     ],
@@ -195,7 +213,14 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Make the attacks one at a time (the attack button once per proficiency bonus); its damage type isn't stated (fire from the flames, as written: adjust by hand)."
+        }
+      ]
     }
   },
   "folder": "64b78902f2631880"

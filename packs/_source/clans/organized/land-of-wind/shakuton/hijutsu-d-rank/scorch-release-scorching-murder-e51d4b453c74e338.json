@@ -17,6 +17,344 @@
         "cost": "3 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Wind Release, Fire Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "B-Rank and S-Rank: +1 target each."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eBcth05IHSqjZX",
+              "type": "attack",
+              "label": "Scorching Murder",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e5EeRsMSrNFqiX",
+              "type": "save",
+              "label": "Scorching Murder: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "Failure: 1 rank of Burned.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5emjOiSq0suAN7P",
+              "type": "save",
+              "label": "Scorch: explosion",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "With the Scorch option, on a hit: all creatures within 10 feet of the target. Failure: the jutsu's damage; success: half; failing by 5: 1 rank of Burned.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eBcth05IHSqjZX",
+              "type": "attack",
+              "label": "Scorching Murder",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e5EeRsMSrNFqiX",
+              "type": "save",
+              "label": "Scorching Murder: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "Failure: 1 rank of Burned.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5emjOiSq0suAN7P",
+              "type": "save",
+              "label": "Scorch: explosion",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "With the Scorch option, on a hit: all creatures within 10 feet of the target. Failure: the jutsu's damage; success: half; failing by 5: 1 rank of Burned.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eBcth05IHSqjZX",
+              "type": "attack",
+              "label": "Scorching Murder",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (3d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e5EeRsMSrNFqiX",
+              "type": "save",
+              "label": "Scorching Murder: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "Failure: 1 rank of Burned.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5emjOiSq0suAN7P",
+              "type": "save",
+              "label": "Scorch: explosion",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "With the Scorch option, on a hit: all creatures within 10 feet of the target. Failure: the jutsu's damage; success: half; failing by 5: 1 rank of Burned.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (3d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eBcth05IHSqjZX",
+              "type": "attack",
+              "label": "Scorching Murder",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (4d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e5EeRsMSrNFqiX",
+              "type": "save",
+              "label": "Scorching Murder: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "Failure: 1 rank of Burned.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5emjOiSq0suAN7P",
+              "type": "save",
+              "label": "Scorch: explosion",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "With the Scorch option, on a hit: all creatures within 10 feet of the target. Failure: the jutsu's damage; success: half; failing by 5: 1 rank of Burned.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (4d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Scorch: explosive (1 Scorch Charge)",
+        "appliesTo": {
+          "namePrefix": "Scorch Release: Scorching Murder"
+        },
+        "cost": {
+          "pool": "scorchCharges",
+          "amount": 1
+        },
+        "note": "On a hit, the target's surroundings save (the Scorch: explosion button)."
       }
     }
   },
@@ -109,7 +447,85 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eBcth05IHSqjZX",
+        "type": "attack",
+        "label": "Scorching Murder",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e5EeRsMSrNFqiX",
+        "type": "save",
+        "label": "Scorching Murder: on a hit",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Burned"
+          }
+        ],
+        "text": "Failure: 1 rank of Burned.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5emjOiSq0suAN7P",
+        "type": "save",
+        "label": "Scorch: explosion",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Burned"
+          }
+        ],
+        "text": "With the Scorch option, on a hit: all creatures within 10 feet of the target. Failure: the jutsu's damage; success: half; failing by 5: 1 rank of Burned.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "fire"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

@@ -1,0 +1,1714 @@
+{
+  "clan": "jugo",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "jugo-cascading-mania": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eSJ5BOhy7jG8Kb",
+          "type": "roll",
+          "label": "Voluntary Mania",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn at the start of your turn: become Manic without the requirement; 2 Nature Energy each turn start to keep it (can't pay: it ends, Dazed and Staggered)."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "natureEnergy",
+            "amount": 2
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Becoming Manic, Reaction: up to two willing allies within 30 feet become Manic with your Priority Target (each takes a concentration slot as an A-Rank jutsu; ends if you lose it, the target drops to 0, or they're incapacitated)."
+        }
+      ]
+    },
+    "jugo-cellular-regeneration-absorption": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e14AtV6MmjFb0B",
+          "type": "save",
+          "label": "Absorption",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Weakened"
+            }
+          ],
+          "text": "A creature you touch. Failure: 2 ranks of Weakened (3 at A) and you regain the healing.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5ePBN7V9C3YverS",
+          "type": "heal",
+          "label": "Absorption: regain",
+          "heal": {
+            "formula": "5d6",
+            "pool": "hp"
+          },
+          "text": "On its failure."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1d6 healing per rank (add it)."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Amplify (3 Nature Energy)",
+          "appliesTo": {
+            "namePrefix": "Cellular Regeneration: Absorption"
+          },
+          "note": "On a failure it takes chakra damage equal to your healing; you gain temporary chakra equal to half your level.",
+          "cost": {
+            "pool": "natureEnergy",
+            "amount": 3
+          }
+        }
+      ]
+    },
+    "jugo-feral-instincts": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5emNjnr1XbniVUJ",
+          "type": "roll",
+          "label": "Feral Assistance",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, an ally within 30 feet (not you) casts a jutsu: its cost drops 1 per Nature Energy spent (up to 6)."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "natureEnergy",
+            "choose": true
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Instincts (more at 7th and 15th): Feral Assistance is in this item's text; the rest are the option items."
+        }
+      ]
+    },
+    "jugo-feral-instincts-feral-axe": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "With 1+ Nature Energy: [Unarmed Damage] d10 slashing; each unarmed hit lowers its DR by 2 until the end of your next turn (set the die on the sheet while it applies)."
+        }
+      ]
+    },
+    "jugo-feral-instincts-feral-bloodlust": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5efYIBUlpiNrCVY",
+          "type": "roll",
+          "label": "Feral Bloodlust",
+          "roll": {
+            "formula": "2d20",
+            "note": "While Manic, a hit: roll two d20s; a 20 on either makes it a critical hit."
+          },
+          "cost": {
+            "pool": "natureEnergy",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "jugo-feral-instincts-feral-bursts": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your ranged-attack Hijutsu get +1 attack against a different creature. Your line or cone Hijutsu saves can't be made at advantage."
+        }
+      ]
+    },
+    "jugo-feral-instincts-feral-consumption": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5elaZTaAXTlkHIl",
+          "type": "save",
+          "label": "Feral Consumption",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "sealed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Sealed"
+            }
+          ],
+          "text": "Action (11th: a Bonus action for 4 Nature Energy): creatures you can see in a 15-foot cube within 30 feet. Failure: the damage and Sealed; success: half.",
+          "activation": "action",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(3:2d6,7:4d6,15:6d6)",
+                "type": "chakra"
+              }
+            ]
+          },
+          "cost": {
+            "pool": "natureEnergy",
+            "amount": 3
+          }
+        }
+      ]
+    },
+    "jugo-feral-instincts-feral-denial": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Suppress one Nature Energy trigger (change once per long rest)."
+        }
+      ]
+    },
+    "jugo-feral-instincts-feral-endurance": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Natures Endurance can pick from Strength, Dexterity, Constitution, Wisdom and Charisma."
+        }
+      ]
+    },
+    "jugo-feral-instincts-feral-force": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "While Manic: immune to Grappled and Prone from hostile jutsu; within 10 feet of your Priority Target, its moving or casting HS or M jutsu provokes attacks of opportunity."
+        }
+      ]
+    },
+    "jugo-feral-instincts-feral-grasp": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "With Predator's Grasp: +1 Reach and a rank of Mastery on Athletics checks to Grapple."
+        }
+      ]
+    },
+    "jugo-feral-instincts-feral-hunger": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "One Nature Energy trigger grants 2."
+        }
+      ]
+    },
+    "jugo-feral-instincts-feral-leap": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ewFguqX7rtEfWv",
+          "type": "roll",
+          "label": "Feral Leap",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, a creature you can see damages you: move up to 30 feet straight toward it; ending within 5 feet, it provokes an attack of opportunity."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "natureEnergy",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "jugo-feral-instincts-feral-morningstar": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5effnRudw7xSQXF",
+          "type": "save",
+          "label": "Feral Morningstar",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            }
+          ],
+          "text": "With 3+ Nature Energy: [Unarmed Damage] d10 piercing (set it on the sheet); each unarmed hit. Failure: Bruised until the end of your next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "jugo-feral-instincts-feral-purge": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQ45RibqfOZC1v",
+          "type": "save",
+          "label": "Feral Purge",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "While Manic, Bonus action: creatures within 10 feet. Failure: the damage and Prone. Then lose 1d4 Nature Energy either way.",
+          "activation": "bonus",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(3:2d8,7:4d8,15:6d8)",
+                "type": "force"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5e7P9CmJlveoJAu",
+          "type": "roll",
+          "label": "Purge: lose Nature Energy",
+          "roll": {
+            "formula": "1d4",
+            "note": "After the purge."
+          },
+          "cost": {
+            "pool": "natureEnergy",
+            "formula": "1d4"
+          }
+        }
+      ]
+    },
+    "jugo-feral-instincts-feral-roar": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eoXE7TMO5CcUZl",
+          "type": "save",
+          "label": "Feral Roar",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "demoralized",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Demoralized"
+            }
+          ],
+          "text": "With 5+ Nature Energy, Bonus action: creatures within 20 feet. Failure: pushed 10 feet and 2 ranks of Demoralized.",
+          "activation": "bonus",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "natureEnergy",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "jugo-feral-instincts-feral-senses": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "With 5+ Nature Energy: tremorsense 15 feet; attacks against you can't have advantage."
+        }
+      ]
+    },
+    "jugo-feral-instincts-feral-shell": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5evGnbgk0BxVDSH",
+          "type": "damage",
+          "label": "Feral Shell",
+          "damage": {
+            "parts": [
+              {
+                "formula": "floor(@level / 2)",
+                "type": "piercing"
+              }
+            ]
+          },
+          "text": "With Nature Shell: each melee attack against you, hit or miss; ignores DR and resistance."
+        }
+      ]
+    },
+    "jugo-feral-instincts-feral-suppression": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Becoming Manic, you can concentrate as on a B-Rank jutsu instead: no Manic while you do."
+        }
+      ]
+    },
+    "jugo-flesh-crafting": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e6ERPbJYfuQLIT",
+          "type": "save",
+          "label": "Tyrants Presence (8+ NE)",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Hostile creatures starting their turn within 10 feet. Failure: no Reaction until the start of its next turn.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eNzbqMJ218wnzf",
+          "type": "heal",
+          "label": "King of Savagery (10 NE)",
+          "heal": {
+            "formula": "@level",
+            "pool": "hp"
+          },
+          "text": "+1 size; at the start of each of your turns."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "By your Nature Energy (NE): 2+ Nature Shell (DR half your level, min 1, without Medium or Heavy Armor); 4+ Predator's Grasp (unarmed Reach 1 and +2 damage); 6+ Natures Endurance (a rank of Mastery on two of Strength, Dexterity or Constitution saves; change on a long rest); 8+ Tyrants Presence; 10 King of Savagery. Reaching your maximum on your turn: Manic."
+        }
+      ]
+    },
+    "jugo-full-sage-nature-transfiguration": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "ampcaac49eb104df",
+          "type": "effect",
+          "label": "Full Sage: Nature Transfiguration",
+          "effect": {
+            "name": "Full Sage: Nature Transfiguration",
+            "target": "self",
+            "amp": "jutsu-jugo-full-sage-nature-transfiguration"
+          },
+          "text": "Starts the jutsu's Amp at the rank it was cast at."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its Amp button stays."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Amplify (6 Nature Energy)",
+          "appliesTo": {
+            "namePrefix": "Full Sage: Nature Transfiguration"
+          },
+          "note": "No concentration; it lasts 1 minute.",
+          "cost": {
+            "pool": "natureEnergy",
+            "amount": 6
+          }
+        }
+      ]
+    },
+    "jugo-hellfire-jets": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZUAw9JP0tPnQB",
+          "type": "effect",
+          "label": "Hellfire Jets",
+          "effect": {
+            "name": "Hellfire Jets",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.bonuses.speed",
+                "value": "20",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "As part of moving, until the start of your next turn: +20 speed, a fly speed equal to it, and you can float 1 foot up, immune to difficult and special terrain."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Amplify (2 Nature Energy)",
+          "appliesTo": {
+            "namePrefix": "Hellfire Jets"
+          },
+          "note": "Then 1 Nature Energy at the start of each turn: +1 round.",
+          "cost": {
+            "pool": "natureEnergy",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "jugo-lotus-cannon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZby9rLRm8wETr",
+          "type": "attack",
+          "label": "Lotus Cannon",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "60 feet (90 at B-Rank).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d10",
+                "type": "force"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eF0POxScQkSLAa",
+          "type": "save",
+          "label": "Lotus Cannon: on a hit",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            }
+          ],
+          "text": "Failure: Bruised (S-Rank, Amplified, on a critical hit: Stunned).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eZby9rLRm8wETr",
+                "type": "attack",
+                "label": "Lotus Cannon",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "60 feet (90 at B-Rank).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (1d10)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eF0POxScQkSLAa",
+                "type": "save",
+                "label": "Lotus Cannon: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "Failure: Bruised (S-Rank, Amplified, on a critical hit: Stunned).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eZby9rLRm8wETr",
+                "type": "attack",
+                "label": "Lotus Cannon",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "60 feet (90 at B-Rank).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (2d10)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eF0POxScQkSLAa",
+                "type": "save",
+                "label": "Lotus Cannon: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "Failure: Bruised (S-Rank, Amplified, on a critical hit: Stunned).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eZby9rLRm8wETr",
+                "type": "attack",
+                "label": "Lotus Cannon",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "60 feet (90 at B-Rank).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (3d10)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eF0POxScQkSLAa",
+                "type": "save",
+                "label": "Lotus Cannon: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "Failure: Bruised (S-Rank, Amplified, on a critical hit: Stunned).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eZby9rLRm8wETr",
+                "type": "attack",
+                "label": "Lotus Cannon",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "60 feet (90 at B-Rank).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (4d10)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eF0POxScQkSLAa",
+                "type": "save",
+                "label": "Lotus Cannon: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "Failure: Bruised (S-Rank, Amplified, on a critical hit: Stunned).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Amplify (2 Nature Energy)",
+          "appliesTo": {
+            "namePrefix": "Lotus Cannon"
+          },
+          "note": "A 30-foot cone (45 feet and 4 Nature Energy at B-Rank): one attack roll against each creature in it.",
+          "cost": {
+            "pool": "natureEnergy",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "jugo-lotus-nonself-connected-cannons": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eHywBDBUgbGmV3",
+          "type": "save",
+          "label": "Connected Cannons",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A 10 by 90-foot line (+10 feet per rank). Failure: temporary hit points to 0, −2 DR for 1 minute, then the damage; success: temporary hit points halved, half damage. Refire as an Action while you keep it.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "7d10",
+                "type": "force"
+              }
+            ]
+          }
+        },
+        {
+          "id": "amp2a3ef2a6f1390",
+          "type": "effect",
+          "label": "Maintain the cannon",
+          "effect": {
+            "name": "Lotus Nonself Connected Cannons",
+            "target": "self",
+            "amp": "jutsu-jugo-lotus-nonself-connected-cannons"
+          },
+          "text": "Starts the jutsu's Amp at the rank it was cast at."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "S": [
+              {
+                "id": "n5eHywBDBUgbGmV3",
+                "type": "save",
+                "label": "Connected Cannons",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A 10 by 90-foot line (+10 feet per rank). Failure: temporary hit points to 0, −2 DR for 1 minute, then the damage; success: temporary hit points halved, half damage. Refire as an Action while you keep it.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(7d10) + (1d10)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "amp2a3ef2a6f1390",
+                "type": "effect",
+                "label": "Maintain the cannon",
+                "effect": {
+                  "name": "Lotus Nonself Connected Cannons",
+                  "target": "self",
+                  "amp": "jutsu-jugo-lotus-nonself-connected-cannons"
+                },
+                "text": "Starts the jutsu's Amp at the rank it was cast at."
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Amplify (5 Nature Energy)",
+          "appliesTo": {
+            "namePrefix": "Lotus Nonself Connected Cannons"
+          },
+          "note": "Range Self (60-foot cone).",
+          "cost": {
+            "pool": "natureEnergy",
+            "amount": 5
+          }
+        }
+      ]
+    },
+    "jugo-misplaced-misfire": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezjuOwWItcYGJE",
+          "type": "attack",
+          "label": "Misplaced Misfire",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "After missing an unarmed attack: one more against the same target (advantage with Feral Axe or Morningstar). Once per turn (+1 per rank).",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Amplify (2 Nature Energy)",
+          "appliesTo": {
+            "namePrefix": "Misplaced Misfire"
+          },
+          "note": "It ignores jutsu bonuses to the target's AC or DR.",
+          "cost": {
+            "pool": "natureEnergy",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "jugo-mutation-feral-abandon": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutation (replaces Flesh Crafting): the same Nature Energy thresholds, but reaching your maximum gives Feral Mania (the clan's condition) instead of Manic. Requires Full Sage: Undiluted Rage. By your Nature Energy (NE): 2+ Nature Shell (DR half your level, min 1, without Medium or Heavy Armor); 4+ Predator's Grasp (unarmed Reach 1 and +2 damage); 6+ Natures Endurance (a rank of Mastery on two of Strength, Dexterity or Constitution saves; change on a long rest); 8+ Tyrants Presence; 10 King of Savagery."
+        }
+      ]
+    },
+    "jugo-mutation-full-sage-undiluted-rage": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutation (11th): you know Full Sage: Nature Transfiguration (not counted). Entering Feral Mania casts it; casting it enters Feral Mania."
+        }
+      ]
+    },
+    "jugo-mutation-natural-mutant": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutation (trait): +1 Nature Energy whenever you gain it. Requires Feral Abandon."
+        }
+      ]
+    },
+    "jugo-mutation-tempered-beast": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutation (replaces Flesh Crafting): Nature Shell, Predator's Grasp and Natures Endurance only; reaching your maximum gives Primal Focus (the clan's condition) instead of Manic."
+        }
+      ]
+    },
+    "jugo-nature-energy": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eSckVMCyaxM1WH",
+          "type": "roll",
+          "label": "Gain Nature Energy",
+          "roll": {
+            "formula": "",
+            "note": "In combat, 1 per trigger per turn: you damage a hostile creature, a hostile creature damages you, or you start your turn within 10 feet of a hostile creature (Feral Hunger: 2 for its trigger; Natural Mutant: +1)."
+          },
+          "cost": {
+            "pool": "natureEnergy",
+            "amount": 1,
+            "gain": true
+          }
+        },
+        {
+          "id": "n5emaC99o0bwZvKN",
+          "type": "heal",
+          "label": "Heal",
+          "heal": {
+            "formula": "1d6",
+            "pool": "hp"
+          },
+          "text": "Action: an ally you touch (not you) regains 1d6 per Nature Energy spent, up to 4 (6 at 11th; roll once per point).",
+          "activation": "action",
+          "cost": {
+            "pool": "natureEnergy",
+            "choose": true
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "natureEnergy",
+          "label": "Nature Energy",
+          "value": 0,
+          "max": "1 + @prof",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "lr",
+              "amount": "empty",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Nature Energy: 1 + your proficiency bonus (the pool); 0 after a long rest; it carries between encounters. One expenditure per turn. Amplify: a Jūgo Hijutsu's Amplified effect (cast dialog options). Reaching your maximum makes you Manic (Flesh Crafting)."
+        }
+      ]
+    },
+    "jugo-natures-surge": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eLMXEAhezNy4vr",
+          "type": "roll",
+          "label": "Natures Surge",
+          "roll": {
+            "formula": "",
+            "note": "Bonus action: gain 3 Nature Energy (+2 per rank), even past your maximum; the excess is lost at the end of the turn (raise the pool by hand past its maximum)."
+          },
+          "activation": "bonus"
+        }
+      ]
+    },
+    "jugo-natures-voice": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eJqG8PAW87Eqlk",
+          "type": "effect",
+          "label": "Nature's Voice",
+          "effect": {
+            "name": "Nature's Voice",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 3600
+          },
+          "text": "10 minutes of focus, once per short rest: for 1 hour, two ranks of Mastery on Charisma checks with animals and terrain, and you learn an area's last-24-hour movements, chakra use, water and shelter, and whether a creature your size or larger hides within 120 feet."
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "sr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "You speak Animal Speak (all land animals)."
+        }
+      ]
+    },
+    "jugo-sage-energy-transfiguration": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eViPGgogyk7avC",
+          "type": "effect",
+          "label": "Monstrous Arms",
+          "effect": {
+            "name": "Monstrous Arms",
+            "target": "self",
+            "changes": [
+              {
+                "key": "n5e.unarmed.dice",
+                "value": "1d8",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action, 1 minute: [Unarmed Damage] +1d8 force (B-Rank: both forms).",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eQnM4rUUiDAhCa",
+          "type": "effect",
+          "label": "Jet Legs",
+          "effect": {
+            "name": "Jet Legs",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.bonuses.speed",
+                "value": "15",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action, 1 minute: +15 speed, jump height +20 feet, attacks of opportunity against you at disadvantage.",
+          "activation": "bonus"
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Amplify (3 Nature Energy)",
+          "appliesTo": {
+            "namePrefix": "Sage Energy Transfiguration"
+          },
+          "note": "Monstrous Arms: unarmed attacks gain Deadly 2. Jet Legs: your Taijutsu range +10 feet.",
+          "cost": {
+            "pool": "natureEnergy",
+            "amount": 3
+          }
+        }
+      ]
+    },
+    "jugo-savage-overhand": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eq26C9qKwC3oEB",
+          "type": "attack",
+          "label": "Savage Overhand",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d12",
+                "type": "force"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eMslRNxLiaOpOT",
+          "type": "save",
+          "label": "Savage Overhand: on a hit",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            },
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            }
+          ],
+          "text": "Failure: Prone (Feral Axe or Morningstar, on a critical hit: Staggered too).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eq26C9qKwC3oEB",
+                "type": "attack",
+                "label": "Savage Overhand",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (1d12)",
+                      "type": "force"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eMslRNxLiaOpOT",
+                "type": "save",
+                "label": "Savage Overhand: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "Failure: Prone (Feral Axe or Morningstar, on a critical hit: Staggered too).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eq26C9qKwC3oEB",
+                "type": "attack",
+                "label": "Savage Overhand",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (2d12)",
+                      "type": "force"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eMslRNxLiaOpOT",
+                "type": "save",
+                "label": "Savage Overhand: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "Failure: Prone (Feral Axe or Morningstar, on a critical hit: Staggered too).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eq26C9qKwC3oEB",
+                "type": "attack",
+                "label": "Savage Overhand",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (3d12)",
+                      "type": "force"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eMslRNxLiaOpOT",
+                "type": "save",
+                "label": "Savage Overhand: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "Failure: Prone (Feral Axe or Morningstar, on a critical hit: Staggered too).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eq26C9qKwC3oEB",
+                "type": "attack",
+                "label": "Savage Overhand",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (4d12)",
+                      "type": "force"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eMslRNxLiaOpOT",
+                "type": "save",
+                "label": "Savage Overhand: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "Failure: Prone (Feral Axe or Morningstar, on a critical hit: Staggered too).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Amplify (2 Nature Energy)",
+          "appliesTo": {
+            "namePrefix": "Savage Overhand"
+          },
+          "note": "Throw it 30 feet (not up); it saves against Prone at disadvantage.",
+          "cost": {
+            "pool": "natureEnergy",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "jugo-the-hunter": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e9cQpS6BEr7i87",
+          "type": "save",
+          "label": "Savage Intimidation",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Bonus action, your Priority Target within 60 feet. Failure: it spends its Reaction to move its speed toward you (it provokes only from you).",
+          "activation": "bonus",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "natureEnergy",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5eXhQGG5BswWWI3",
+          "type": "roll",
+          "label": "Rejuvenating Siphon",
+          "roll": {
+            "formula": "",
+            "note": "A hostile critical hit on you: remove up to 4 of its highest damage dice; regain twice their total."
+          },
+          "cost": {
+            "pool": "natureEnergy",
+            "amount": 4
+          }
+        },
+        {
+          "id": "n5etdpfAilB089LR",
+          "type": "roll",
+          "label": "Natures Verdict",
+          "roll": {
+            "formula": "",
+            "note": "A critical hit on your Priority Target while Manic, from an Action: an extra action to repeat it."
+          },
+          "cost": {
+            "pool": "natureEnergy",
+            "amount": 6
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Once per short rest, becoming Manic: mark a creature you can see as your Marked Prey (Priority Target; concentration as an S-Rank jutsu; until it drops to 0 or you lose concentration)."
+        }
+      ]
+    },
+    "jugo-tyrants-piston-press": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUmqyjDByQEFlT",
+          "type": "damage",
+          "label": "Tyrants Piston Press",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d8",
+                "type": "force"
+              }
+            ]
+          },
+          "text": "On a melee hit (with Feral Axe or Morningstar: ignores resistance, immunity as resistance)."
+        },
+        {
+          "id": "n5eT3eOnlVewj8zG",
+          "type": "save",
+          "label": "Piston Press: daze",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            }
+          ],
+          "text": "Failure: Dazed.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eUmqyjDByQEFlT",
+                "type": "damage",
+                "label": "Tyrants Piston Press",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (1d8)",
+                      "type": "force"
+                    }
+                  ]
+                },
+                "text": "On a melee hit (with Feral Axe or Morningstar: ignores resistance, immunity as resistance)."
+              },
+              {
+                "id": "n5eT3eOnlVewj8zG",
+                "type": "save",
+                "label": "Piston Press: daze",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  }
+                ],
+                "text": "Failure: Dazed.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eUmqyjDByQEFlT",
+                "type": "damage",
+                "label": "Tyrants Piston Press",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (2d8)",
+                      "type": "force"
+                    }
+                  ]
+                },
+                "text": "On a melee hit (with Feral Axe or Morningstar: ignores resistance, immunity as resistance)."
+              },
+              {
+                "id": "n5eT3eOnlVewj8zG",
+                "type": "save",
+                "label": "Piston Press: daze",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  }
+                ],
+                "text": "Failure: Dazed.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eUmqyjDByQEFlT",
+                "type": "damage",
+                "label": "Tyrants Piston Press",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (3d8)",
+                      "type": "force"
+                    }
+                  ]
+                },
+                "text": "On a melee hit (with Feral Axe or Morningstar: ignores resistance, immunity as resistance)."
+              },
+              {
+                "id": "n5eT3eOnlVewj8zG",
+                "type": "save",
+                "label": "Piston Press: daze",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  }
+                ],
+                "text": "Failure: Dazed.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Amplify (4 Nature Energy)",
+          "appliesTo": {
+            "namePrefix": "Tyrants Piston Press"
+          },
+          "note": "On a failure, it's Grappled and you move up to your speed dragging it.",
+          "cost": {
+            "pool": "natureEnergy",
+            "amount": 4
+          }
+        }
+      ]
+    }
+  }
+}

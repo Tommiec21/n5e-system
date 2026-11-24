@@ -9,7 +9,8 @@
   "flags": {
     "n5e": {
       "clanPackage": "hebi",
-      "sourceLine": 8341
+      "sourceLine": 8341,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -42,6 +43,47 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5efVe8INQ7DTGV6",
+        "type": "effect",
+        "label": "Basilisk's Blessing",
+        "effect": {
+          "name": "Basilisk's Blessing",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "amp": "basilisks-blessing"
+        },
+        "text": "Bonus action, 1 minute, once per short rest.",
+        "activation": "bonus",
+        "cost": {
+          "pool": "viperBlood",
+          "amount": 4
+        }
+      },
+      {
+        "id": "n5evJpoRo8k2KT0Q",
+        "type": "roll",
+        "label": "Basilisk Blood",
+        "roll": {
+          "formula": "",
+          "note": "Start of each of your turns while Blessed."
+        },
+        "cost": {
+          "pool": "viperBlood",
+          "amount": 1,
+          "gain": true
+        }
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "sr",
+      "recovery": []
+    }
   }
 }

@@ -32,6 +32,17 @@
     "resourcePools": [],
     "activities": [
       {
+        "id": "n5eOz1P80ANcb01a",
+        "type": "summon",
+        "label": "Phantasm",
+        "summon": {
+          "uuid": "Compendium.n5e.summons.Actor.n5e31g28SpVe9r9s",
+          "count": 1,
+          "template": ""
+        },
+        "activation": "action"
+      },
+      {
         "id": "n5e7zeb3STXmoWbN",
         "type": "roll",
         "label": "Recharge a Phantasm ability",
@@ -42,7 +53,8 @@
         "roll": {
           "formula": "",
           "note": "One of its Recharge abilities is ready again."
-        }
+        },
+        "text": "1 Actualization Die: one of its Recharge abilities is ready again."
       }
     ]
   },
@@ -54,7 +66,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Action: summon your Phantasm (the Class & Clan Summons NPC: AC 20, 10 HP; its attacks use your Genjutsu attack bonus and its saves your Genjutsu save DC). Command it as a Bonus action. One at a time (two from Phantasmic Double); it's dispelled more than 120 feet from you. Small, always tinged black."
+        }
+      ]
     }
   },
   "_stats": {

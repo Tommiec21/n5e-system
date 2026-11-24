@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "ranton",
-      "sourceLine": 6105
+      "sourceLine": 6105,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Grounded Surge: hostile creatures Shocked or Chilled on your turn save against your Ranton Hijutsu at −2."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,49 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5edpjX7uVQbrXeK",
+        "type": "effect",
+        "label": "Eye of the Storm",
+        "effect": {
+          "name": "Eye of the Storm",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Bonus action, once per long rest: a 60-foot radius on you for 1 minute (unseen without Chakra sense or sight). You know where every creature in it is; Laser Circus can target them, even behind Cover.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5ejEdIovoc97kJw",
+        "type": "save",
+        "label": "Interference Field",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Hostile creatures in it, at the start of their turns. Failure: their Ninjutsu and Genjutsu without Lightning or Water Release cost 4 more until the start of their next turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "lr",
+      "recharge": "",
+      "staminaEligible": false
+    }
   }
 }

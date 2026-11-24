@@ -17,6 +17,98 @@
         "cost": "13 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Visual, Inhale, Tactile, Unaware), Water Release, Medical, Clash",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eYTZxr9oihYxMm",
+              "type": "save",
+              "label": "Numbing Blood Spear",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half damage.",
+                  "success": "Success: half of 3d10 necrotic and 3d10 psychic.",
+                  "failure": "Failure: 3d10 necrotic and 3d10 psychic; its DR is 2 lower each time it uses it for the duration (below 0: that much psychic, up to 10).",
+                  "critFailure": "Critical Failure: as a failure, but 4 lower."
+                }
+              },
+              "inflicts": [],
+              "text": "A 5 by 60-foot line (a 30-foot cone with Blood Detonation).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (1d10)",
+                    "type": "necrotic"
+                  },
+                  {
+                    "formula": "(3d10) + (1d10)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eYTZxr9oihYxMm",
+              "type": "save",
+              "label": "Numbing Blood Spear",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half damage.",
+                  "success": "Success: half of 3d10 necrotic and 3d10 psychic.",
+                  "failure": "Failure: 3d10 necrotic and 3d10 psychic; its DR is 2 lower each time it uses it for the duration (below 0: that much psychic, up to 10).",
+                  "critFailure": "Critical Failure: as a failure, but 4 lower."
+                }
+              },
+              "inflicts": [],
+              "text": "A 5 by 60-foot line (a 30-foot cone with Blood Detonation).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (2d10)",
+                    "type": "necrotic"
+                  },
+                  {
+                    "formula": "(3d10) + (2d10)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Blood Detonation (2 Crimson Charges)",
+        "appliesTo": {
+          "namePrefix": "Genjutsu: Numbing Blood Spear"
+        },
+        "cost": {
+          "pool": "crimsonCharges",
+          "amount": 2
+        },
+        "note": "Needs your Ketsuryugan active. The range becomes a 30-foot cone."
       }
     }
   },
@@ -115,7 +207,44 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eYTZxr9oihYxMm",
+        "type": "save",
+        "label": "Numbing Blood Spear",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: half damage.",
+            "success": "Success: half of 3d10 necrotic and 3d10 psychic.",
+            "failure": "Failure: 3d10 necrotic and 3d10 psychic; its DR is 2 lower each time it uses it for the duration (below 0: that much psychic, up to 10).",
+            "critFailure": "Critical Failure: as a failure, but 4 lower."
+          }
+        },
+        "inflicts": [],
+        "text": "A 5 by 60-foot line (a 30-foot cone with Blood Detonation).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d10",
+              "type": "necrotic"
+            },
+            {
+              "formula": "3d10",
+              "type": "psychic"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

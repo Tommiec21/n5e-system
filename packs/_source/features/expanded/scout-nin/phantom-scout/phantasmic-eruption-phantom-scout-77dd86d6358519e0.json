@@ -33,13 +33,44 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e7jFNC24n9PF8E",
+        "type": "save",
+        "label": "Phantasmic Eruption",
+        "cost": {
+          "pool": "ghostfire",
+          "amount": 3
+        },
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "nin"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "ghostburn",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Ghostburn"
+          }
+        ],
+        "text": "Under Ghost Walk, dealing melee damage. Failure: Ghostburned."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

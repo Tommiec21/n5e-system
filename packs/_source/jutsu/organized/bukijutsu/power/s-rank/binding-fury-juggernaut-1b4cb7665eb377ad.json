@@ -84,9 +84,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e4loFwk4PbLztA",
         "type": "damage",
-        "label": "Damage",
+        "label": "Feedback",
         "damage": {
           "parts": [
             {
@@ -94,7 +94,8 @@
               "type": "chakra"
             }
           ]
-        }
+        },
+        "text": "You didn't spend the Fury by the end of the turn."
       }
     ],
     "featureType": "active",
@@ -168,7 +169,17 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": true
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "At the start of your turn: gain Fury (the Fury tracker's +)."
+        }
+      ],
+      "trackers": [
+        "fury"
+      ]
     }
   },
   "folder": "3defed4a961f01ae"

@@ -17,7 +17,14 @@
         "cost": "12 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Water Release, Wind Release",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "You can't be targeted by ranged attacks or line-of-sight effects for the duration."
+        }
+      ]
     }
   },
   "ownership": {
@@ -109,7 +116,41 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eURUO4hxCwUyOv",
+        "type": "save",
+        "label": "Twin Dragon Whirlwind",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "yuki-frostbite",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Frostbite"
+          },
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          }
+        ],
+        "text": "Once per turn, a creature entering the 20-foot radius. Failure: 2 ranks of Frostbite and Blinded while inside.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

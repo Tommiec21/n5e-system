@@ -17,6 +17,89 @@
         "cost": "19 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Visual, Inhale, Tactile), Fire Release, Water Release, Corrosive Branch",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5eqzNUFugHlmhth",
+              "type": "save",
+              "label": "Acidic Apocalypse",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "futton-deteriorate",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Deteriorate"
+                },
+                {
+                  "key": "futton-scald",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Scald"
+                }
+              ],
+              "text": "Creatures, objects and structures of your choice in 20 feet. Failure: damage and 2 ranks of Deteriorate or Scald (pick); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d10) + (1d10)",
+                    "type": "acid"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ewmMaIGO0LdBKk",
+              "type": "save",
+              "label": "Acidic Apocalypse: lingering",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "futton-deteriorate",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Deteriorate"
+                },
+                {
+                  "key": "futton-scald",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Scald"
+                }
+              ],
+              "text": "Starting a turn in the radius or entering it first on a turn. Failure: damage and 1 rank of Deteriorate or Scald.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (1d10)",
+                    "type": "acid"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -114,7 +197,84 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eqzNUFugHlmhth",
+        "type": "save",
+        "label": "Acidic Apocalypse",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "futton-deteriorate",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Deteriorate"
+          },
+          {
+            "key": "futton-scald",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Scald"
+          }
+        ],
+        "text": "Creatures, objects and structures of your choice in 20 feet. Failure: damage and 2 ranks of Deteriorate or Scald (pick); success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d10",
+              "type": "acid"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ewmMaIGO0LdBKk",
+        "type": "save",
+        "label": "Acidic Apocalypse: lingering",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "futton-deteriorate",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Deteriorate"
+          },
+          {
+            "key": "futton-scald",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Scald"
+          }
+        ],
+        "text": "Starting a turn in the radius or entering it first on a turn. Failure: damage and 1 rank of Deteriorate or Scald.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d10",
+              "type": "acid"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

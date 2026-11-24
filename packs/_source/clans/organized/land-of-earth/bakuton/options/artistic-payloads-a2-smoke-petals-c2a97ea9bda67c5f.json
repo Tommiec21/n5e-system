@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "bakuton",
       "sourceLine": 4881,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,41 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ezJKOB9EcDpqES",
+        "type": "save",
+        "label": "Payload: Smoke Petals",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "concussed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Concussed"
+          },
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          }
+        ],
+        "text": "A 20-foot radius of smoke heavily obscures vision until the end of your next turn. Failure: 1 rank of Concussed and Dazzled.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

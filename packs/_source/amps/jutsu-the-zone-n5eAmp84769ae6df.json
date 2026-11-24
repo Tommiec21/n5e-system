@@ -1,0 +1,130 @@
+{
+  "_id": "n5eAmp84769ae6df",
+  "name": "The Zone",
+  "type": "amp",
+  "img": "icons/svg/book.svg",
+  "folder": "n5eAmpFoldOther1",
+  "sort": 106500,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jutsu-the-zone",
+    "description": "<p><b>The Zone</b> · cast at S-Rank · no type</p><p>Your Weapon and Taijutsu attacks can't be reacted to, treat damage immunity as resistance and ignore resistance.</p><p>Your movement speed is doubled and your AC is increased by 2.</p><p>Advantage on Weapon and Taijutsu attack rolls; +1 to your Taijutsu save DC.</p><p>You can't lose concentration on it from a failed concentration check, and can't concentrate on any other jutsu.</p><p>End it early as a bonus action and reactivate it as a bonus action for half the initial cost; once it ends otherwise, you can't use it again until a full rest.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5693",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "ampType": "",
+    "namedType": "",
+    "owner": {
+      "kind": "jutsu",
+      "id": "the-zone",
+      "subclass": ""
+    },
+    "summary": "Your Weapon and Taijutsu attacks can't be reacted to, treat damage immunity as resistance and ignore resistance. Your movement speed is doubled and your AC is increased by 2. Advantage on Weapon and Taijutsu attack rolls; +1 to your Taijutsu save DC. You can't lose concentration on it from a failed ",
+    "activation": "",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": true
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "system.attributes.speed.walk",
+        "value": "2",
+        "mode": 1
+      },
+      {
+        "key": "system.bonuses.ac",
+        "value": "2",
+        "mode": 2
+      },
+      {
+        "key": "n5e.saveDC.tai",
+        "value": "1",
+        "mode": 2
+      }
+    ],
+    "aura": {},
+    "outsideLimits": false,
+    "series": "",
+    "level": 0,
+    "rank": "S",
+    "choose": {
+      "prompt": "",
+      "options": []
+    },
+    "buttons": [
+      {
+        "label": "End early (pause)",
+        "activation": "bonus",
+        "text": "As a bonus action: end it early. You may reactivate it as a bonus action for half the initial cost.",
+        "end": "pause"
+      }
+    ],
+    "onEnd": {
+      "condition": "the-zone-spent"
+    },
+    "statuses": [],
+    "endsWith": ""
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "advantage",
+          "selector": "attack",
+          "predicate": {
+            "any": [
+              "weapon",
+              "jutsu:discipline:tai"
+            ]
+          },
+          "label": "The Zone"
+        },
+        {
+          "key": "note",
+          "text": "Your Weapon and Taijutsu attacks can't be reacted to; their damage treats immunity as resistance and ignores resistance."
+        },
+        {
+          "key": "note",
+          "text": "Your speed is doubled (set here as your walking speed ×2)."
+        },
+        {
+          "key": "note",
+          "text": "A failed concentration check doesn't end it. You can't concentrate on any other jutsu."
+        },
+        {
+          "key": "note",
+          "text": "End early (pause): the button on this Amp; reactivate it by casting it again as a bonus action for half the initial cost."
+        },
+        {
+          "key": "note",
+          "text": "Any other ending (its duration, losing concentration) gives you The Zone: Spent until a full rest (applied automatically)."
+        }
+      ],
+      "amp1f": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.70.0"
+  },
+  "_key": "!items!n5eAmp84769ae6df"
+}

@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "ranton",
-      "sourceLine": 6032
+      "sourceLine": 6032,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Reezaa Branch] The Attack action, or a Ranton Hijutsu that attacks, can swap any of its attacks for Laser Circus. Without Extra Attack: two at 7th, three at 15th."
+        }
+      ]
     }
   },
   "ownership": {
@@ -29,6 +36,27 @@
     ],
     "clan": "ranton",
     "featureType": "passive",
-    "requirement": "Ranton clan"
+    "requirement": "Ranton clan",
+    "activities": [
+      {
+        "id": "n5eUjyc4N4XCf7Yh",
+        "type": "attack",
+        "label": "Laser Circus",
+        "attack": {
+          "discipline": "highest",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "A creature you can see within 60 feet. An 8 or higher on the die: it is marked as a Refraction Point.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d10",
+              "type": "lightning"
+            }
+          ]
+        }
+      }
+    ]
   }
 }

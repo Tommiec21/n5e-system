@@ -6,6 +6,9 @@
  *   jutsu:keyword:<k>        each keyword (medical, fireRelease, clash...)
  *   jutsu:rank:<R>           the rank it was cast at (D, C, B, A, S)
  *   jutsu:discipline:<d>     the discipline it was cast as (nin, tai, gen, buki)
+ *   jutsu:id:<identifier>    the jutsu itself (STD6d Genjutsu Specialist: Black Fangs on Shadow Bite)
+ * A save against a cast card carries the same facts prefixed "against:" (AMP1f batch 4: Aura of
+ * Power, "against:jutsu:discipline:nin").
  * Pure: plain item data in.
  */
 const list = v => (Array.isArray(v) ? v : v ? [...v] : []);
@@ -18,6 +21,7 @@ export function jutsuFacts(item, { rank = "", discipline = "" } = {}) {
   if ( r ) facts.push(`jutsu:rank:${r}`);
   const d = discipline || sys.discipline;
   if ( d ) facts.push(`jutsu:discipline:${d}`);
+  if ( sys.identifier ) facts.push(`jutsu:id:${sys.identifier}`);
   return facts;
 }
 

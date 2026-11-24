@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "inuzuka",
-      "sourceLine": 1328
+      "sourceLine": 1328,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its stat block (in this item; Intelligence, Wisdom and Charisma blank) is held for King's (H7)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,29 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eszRoT7HzFUE7O",
+        "type": "effect",
+        "label": "Two-Headed Wolf",
+        "effect": {
+          "name": "Two-Headed Wolf",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Bonus action, 1 minute, once per long rest: fuse with your Nin-Dog (one size larger, up to Huge). At 0, you separate: the dog at 1 hit point, you at half your maximum.",
+        "activation": "bonus"
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "lr",
+      "recharge": "",
+      "staminaEligible": false
+    }
   }
 }

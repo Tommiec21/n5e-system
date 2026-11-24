@@ -85,9 +85,19 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5egZEM5IZOrjdfx",
         "type": "save",
-        "label": "Save",
+        "label": "Annihilation",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "concussed",
@@ -96,29 +106,18 @@
             "label": "Concussed"
           }
         ],
-        "save": {
-          "abilities": [
-            "str"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Move your speed and make up to 3 30-foot cones on the way; a creature at most twice. Failure: thrown back 20 feet and 2 Concussed; success: half. Chain 3: jutsu structures and constructs vulnerable; a Staggered creature stays Staggered until the end of your next turn.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "2d12",
-        "roll": {
-          "formula": "2d12",
-          "note": "All creatures in each affected area must make a Strength Saving Throw, being throw straight back 20 feet and taking you [Weapons damage] +2d12 and gaining 2 ranks of Concussed or only half as much damage, on a success. A creature can be affected by this Jutsu no more than twice."
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "2d12",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -201,7 +200,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "5230b2127c99713f"

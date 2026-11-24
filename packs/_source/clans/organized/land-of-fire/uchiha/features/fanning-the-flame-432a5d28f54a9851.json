@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "uchiha",
-      "sourceLine": 2207
+      "sourceLine": 2207,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Activating your Sharingan: pick two of these for this combat; one per trigger."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,107 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ettKy2sDEQUUHS",
+        "type": "damage",
+        "label": "Blazing Set Up: detonate",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "fire"
+            }
+          ]
+        },
+        "text": "Once per turn, your damage (an attack or a B-Rank or lower jutsu): 1 Ocular Charge or your Bonus action marks the creatures until the end of your next turn; the next damage to one from you or an ally you see detonates it.",
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "ocularCharges",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eBt62KL3aCkq7h",
+        "type": "save",
+        "label": "After-Image Assault",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Once per turn, your damage (1 Charge or your reaction). Failure: its attacks on you have disadvantage until the start of your next turn; its damage through this lets you teleport 10 feet.",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "ocularCharges",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5ewYQs4qLzAlkl3",
+        "type": "roll",
+        "label": "Ricochet Technique",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, a ranged attack (1 Charge or a Bonus action): a second creature within 20 feet of the target; remake the attack: half damage and the original effects."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "ocularCharges",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eUeHEHGHi8DNHS",
+        "type": "roll",
+        "label": "Critical Refocus",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn: 1 Charge per creature that critically fails a save against your Genjutsu."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "ocularCharges",
+          "amount": 1,
+          "gain": true
+        }
+      },
+      {
+        "id": "n5eptGClEuzANVo1",
+        "type": "save",
+        "label": "Commanding Gaze",
+        "save": {
+          "abilities": [
+            "wis",
+            "int"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Once per turn, in place of an Attack action attack: a non-blinded enemy you see within 30 feet; again after the end of your next turn. Failure: a Command (Disarm: throws its weapon 30 + 5 × Str or Dex modifier feet; Retarget: must pick another target, even an ally; Telegraph: announces its next attack or jutsu (a successful Read the Enemy for you and allies); Taunt: disadvantage on attacks on others, others treat its DC as 2 lower).",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "ocularCharges",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

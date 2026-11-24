@@ -15,6 +15,8 @@
  *   resave    {ability, dc, label, applied}  end-of-turn resave prompt
  *   gates     {n}  the 8-Inner Gates effect
  */
+import { optionChosen } from "../rules/features.mjs";
+
 export default class N5eActiveEffect extends ActiveEffect {
 
   /**
@@ -43,6 +45,10 @@ export default class N5eActiveEffect extends ActiveEffect {
       const cats = st?.system?.categories;
       if ( !st || !(cats instanceof Set ? cats.has(needStance) : [...(cats ?? [])].includes(needStance)) ) return true;
     }
+    // STD6d Hunter-Nin: effects that need a class level-up choice (flags.n5e.requiresOption
+    // "lethalPrecision:tai": Lethal Precision's Dexterity for Taijutsu, only if Taijutsu was chosen).
+    const needOption = this.flags?.n5e?.requiresOption;
+    if ( needOption && !optionChosen(item?.documentName === "Item" ? item.actor : item, needOption) ) return true;
     if ( item?.documentName === "Item" && item.type === "stance" && item.actor ) {
       if ( item.actor.system?.combat?.activeStance !== item.id ) return true;
     }
@@ -50,20 +56,22 @@ export default class N5eActiveEffect extends ActiveEffect {
   }
 
   /** Effect data for a condition from the registry. */
-  static conditionData(key, { ranks = 1, sourceRank = "", origin } = {}) {
+  static conditionData(key, { ranks = 1, sourceRank = "", origin, changes = null } = {}) {
     const def = CONFIG.N5E.conditions[key] ?? CONFIG.N5E.clanConditions[key];
     return {
       name: def?.label ?? key,
       img: def?.icon ?? "icons/svg/aura.svg",
       type: "condition",
       // The status id puts the condition's icon on the token and lets the HUD toggle it off.
-      statuses: [key],
+      // AMP1f batch 4: a condition card's extra statuses (Freight Train: Overheated is Incapacitated).
+      statuses: [key, ...(def?.owner && Array.isArray(def.statuses) ? def.statuses.filter(x => x !== key) : [])],
       origin,
       system: { key, ranks, sourceRank },
       // CCOND1: a condition card's rule elements ride on the effect, so the rules engine reads them
       // (core conditions keep theirs in config and are read by rules/condition-elements.mjs).
       ...(def?.owner && def.rules?.length ? { flags: { n5e: { rules: structuredClone(def.rules) } } } : {}),
-      ...(def?.owner && def.changes?.length ? { changes: structuredClone(def.changes) } : {})
+      // AMP1e: changes resolved from the applier's level replace the card's own.
+      ...(changes?.length ? { changes: structuredClone(changes) } : def?.owner && def.changes?.length ? { changes: structuredClone(def.changes) } : {})
     };
   }
 

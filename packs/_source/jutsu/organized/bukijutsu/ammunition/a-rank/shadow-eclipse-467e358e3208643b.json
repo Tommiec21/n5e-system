@@ -85,21 +85,68 @@
     },
     "activities": [
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "4d12",
-        "roll": {
-          "formula": "4d12",
-          "note": "This jutsu’s base damage is [Weapons damage] + 4d12. For every round beyond the one you cast this jutsu in that you delay, this jutsu increases in damage by 2d12."
+        "id": "n5eYRjAKDlzouiCw",
+        "type": "attack",
+        "label": "Shadow Eclipse",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "On a hit, pick up to 3 rounds' delay (Chain 2: one roll against up to 3 creatures); the damage lands at the start of your turn then (the next buttons).",
+        "damage": {
+          "parts": []
         }
       },
       {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "2d12",
-        "roll": {
-          "formula": "2d12",
-          "note": "For every round beyond the one you cast this jutsu in that you delay, this jutsu increases in damage by 2d12."
+        "id": "n5eZQdYdLrDoKKW1",
+        "type": "damage",
+        "label": "The shot lands",
+        "damage": {
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "4d12",
+              "type": ""
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eQVnkAiE0BJXjL",
+        "type": "damage",
+        "label": "+ per round delayed",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d12",
+              "type": ""
+            }
+          ]
+        },
+        "text": "Roll once per round of delay."
+      },
+      {
+        "id": "n5enuNFiTENAwB0D",
+        "type": "effect",
+        "label": "Chain 3: 4 Bleed per round delayed",
+        "effect": {
+          "name": "Chain 3: 4 Bleed per round delayed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 4,
+              "label": "Bleed"
+            }
+          ]
         }
       }
     ],
@@ -188,7 +235,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "26d6e19825ba0550"

@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "kuru",
-      "sourceLine": 8438
+      "sourceLine": 8438,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Foresight: 1 + proficiency bonus (the pool), back on a rest. The clan item's copy of Miraigan is the Amp card's text."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,85 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5en2BZuluNZ29xK",
+        "type": "effect",
+        "label": "Miraigan",
+        "effect": {
+          "name": "Miraigan",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "amp": "miraigan"
+        },
+        "text": "Entering initiative: until combat ends (or a Bonus action: 10 minutes, then 10 minutes of rest)."
+      },
+      {
+        "id": "n5eJhSGTWNgTiwKm",
+        "type": "effect",
+        "label": "Miraigan (7th)",
+        "effect": {
+          "name": "Miraigan (7th)",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "amp": "miraigan-7"
+        },
+        "text": "From 7th level.",
+        "minLevel": 7
+      },
+      {
+        "id": "n5eglrGsW89pTMBm",
+        "type": "effect",
+        "label": "Miraigan (15th)",
+        "effect": {
+          "name": "Miraigan (15th)",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "amp": "miraigan-15"
+        },
+        "text": "From 15th level.",
+        "minLevel": 15
+      },
+      {
+        "id": "n5eOgveDSZVNmCRd",
+        "type": "roll",
+        "label": "Prophesize",
+        "roll": {
+          "formula": "1d4",
+          "note": "Once per turn, in combat on your turn: a willing ally within 60 feet (or you) gains a Fortune until the start of your next turn (yours lasts until spent). Spent for Foretold Circumstance (+1d4 to a d20 roll) or Foretold Event (an extra reaction for a damage trigger)."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "foresight",
+          "amount": 1
+        }
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "foresight",
+        "label": "Foresight",
+        "value": 0,
+        "max": "1 + @prof",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "rest",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ]
   }
 }

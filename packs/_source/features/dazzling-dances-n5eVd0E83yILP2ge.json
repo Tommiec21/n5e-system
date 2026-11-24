@@ -52,6 +52,54 @@
           "amp": "samba"
         },
         "activation": "bonus"
+      },
+      {
+        "id": "n5eHKBZswEI9b2mv",
+        "type": "roll",
+        "label": "Move in Tandem",
+        "roll": {
+          "formula": "",
+          "note": "Waltz: you and your Partner take your turns together this round (the later one's turn is skipped)."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eDsCe7qw9uFuZP",
+        "type": "save",
+        "label": "Cascade Step",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Waltz: with the Attack action or an attack jutsu. Failure: −2 AC until the start of your next turn.",
+        "cost": {
+          "pool": "discipline",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5ee82BtfOarIqAf",
+        "type": "roll",
+        "label": "Defensive Dance",
+        "roll": {
+          "formula": "",
+          "note": "Waltz, reaction: you or your Partner gain resistance to the triggering damage."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        }
       }
     ]
   },
@@ -63,7 +111,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Waltz and Samba Amp cards carry the dances. A Partner without Discipline spends yours (1 for Defensive Dance, with their reaction)."
+        }
+      ]
     }
   },
   "_stats": {

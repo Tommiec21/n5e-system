@@ -5,11 +5,51 @@
   "name": "Built Different",
   "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
   "folder": "65a1219039655db8",
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5e2lkANVnLNtMDu",
+      "name": "Built Different",
+      "type": "generic",
+      "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "system.bonuses.hpPerLevel",
+          "value": "2",
+          "mode": 2,
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!6d7a04d9acc8a3a2.n5e2lkANVnLNtMDu"
+    }
+  ],
   "flags": {
     "n5e": {
       "clanPackage": "senju",
-      "sourceLine": 1939
+      "sourceLine": 1939,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Hit points +2 per level (the effect). Senju Cells: 2 (4 at 7th, 6 at 15th; Elite Bloodline +2, +2 more at 11th: raise the pool's maximum by hand), back on a rest."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +82,70 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eMnl6HE6qGq2UV",
+        "type": "heal",
+        "label": "Senju Cell: heal",
+        "heal": {
+          "formula": "max(1, 1d6 + floor(@level / 2))",
+          "pool": "hp"
+        },
+        "text": "Once per turn, start of your turn, not incapacitated.",
+        "cost": {
+          "pool": "senjuCells",
+          "amount": 1
+        },
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5eJUO1iY9KjvORp",
+        "type": "roll",
+        "label": "Senju Cell: end a condition",
+        "roll": {
+          "formula": "",
+          "note": "7th, start of your turn: end one Physical or Elemental condition on you."
+        },
+        "cost": {
+          "pool": "senjuCells",
+          "amount": 1
+        },
+        "minLevel": 7
+      },
+      {
+        "id": "n5e3lpPWQUB44mKg",
+        "type": "roll",
+        "label": "Senju Cell: Hit Dice at 0",
+        "roll": {
+          "formula": "",
+          "note": "15th, starting your turn at 0 hit points: spend Hit Dice equal to the Cells spent and regain the result (roll them)."
+        },
+        "cost": {
+          "pool": "senjuCells",
+          "choose": true
+        },
+        "minLevel": 15
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "senjuCells",
+        "label": "Senju Cells",
+        "value": 0,
+        "max": "lvl(1:2,7:4,15:6)",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "rest",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ]
   }
 }

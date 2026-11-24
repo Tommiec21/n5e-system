@@ -87,17 +87,33 @@
     },
     "activities": [
       {
-        "id": "parsed1",
-        "type": "damage",
-        "label": "Damage",
-        "damage": {
-          "parts": [
+        "id": "n5emm1VN5U93L3AH",
+        "type": "effect",
+        "label": "Iron Guard: +4 AC",
+        "effect": {
+          "name": "Iron Guard",
+          "target": "self",
+          "changes": [
             {
-              "formula": "@unarmed",
-              "type": "bludgeoning"
+              "key": "system.bonuses.ac",
+              "value": "4",
+              "mode": 2
             }
-          ]
-        }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Reaction to damage, in a Taijutsu stance: until the start of your next turn."
+      },
+      {
+        "id": "n5ertqR2aSe0L6av",
+        "type": "heal",
+        "label": "Iron Guard: temporary hit points",
+        "heal": {
+          "formula": "2 * (@unarmed) + @level",
+          "pool": "tempHp"
+        },
+        "text": "Hit or miss."
       }
     ],
     "featureType": "active",
@@ -171,7 +187,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "aee26bc2434fe738"

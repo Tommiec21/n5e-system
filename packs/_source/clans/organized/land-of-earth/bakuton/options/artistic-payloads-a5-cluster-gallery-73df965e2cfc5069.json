@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "bakuton",
       "sourceLine": 4887,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,41 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5efBCas3DSjoaSN",
+        "type": "save",
+        "label": "Payload: Cluster Gallery",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "concussed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Concussed"
+          },
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "4 mini charges land within 20 feet of the explosion; each a 5-foot radius. Failure: 1 rank of Concussed and Prone. Up to 2 mini charges on a creature (one save).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

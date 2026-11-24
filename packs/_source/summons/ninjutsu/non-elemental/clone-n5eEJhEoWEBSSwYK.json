@@ -1,0 +1,488 @@
+{
+  "_id": "n5eEJhEoWEBSSwYK",
+  "_key": "!actors!n5eEJhEoWEBSSwYK",
+  "name": "Clone",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "clone",
+      "creatureType": "construct",
+      "blurb": "Clone jutsu (Shadow Clone Technique and the release Clones)",
+      "summonRole": "Clone",
+      "biography": "<p><em>Clone</em> (the Clone keyword: Shadow Clone Technique; Earth, Explosive, Water and Lightning Clones). You command a clone by spending your Action or Bonus Action as its jutsu says.</p><p><strong>Medium Construct.</strong> <strong>Armor Class</strong> your Ninjutsu save DC, DR 6 · <strong>Hit Points</strong> 1 · <strong>Jutsu Slots</strong> 2 · <strong>Speed</strong> 30 ft. <strong>Abilities</strong> none (−). <strong>Senses</strong> the same special senses as its caster.</p><p><strong>Clone adjustments.</strong> Shadow Clone Technique: at B-Rank or S-Rank, +1 Jutsu Slot; at A-Rank it can cast A-Rank jutsu; out of combat, clones can travel up to 1 mile from their caster. Earth Clone: 20 hit points; immune to Genjutsu, psychic and poison damage; resists bludgeoning, earth and cold; vulnerable to lightning; two Clone Strikes; Earth Release jutsu only. Explosive Clone: no Clone Strike; Fire Release jutsu only; detonates at 0 hit points (see the jutsu). Water Clone: Water Release Ninjutsu only; can concentrate on its jutsu (one clone at a time). Lightning Clone: Lightning Release Ninjutsu only; immune to Genjutsu, psychic and poison damage; speed equal to its summoner's or 50, whichever is higher; discharges at 0 hit points (see the jutsu).</p><p><strong>Linked to you when summoned:</strong> its level, AC, attack bonuses, save DCs, skills and senses are set from yours.</p>"
+    },
+    "abilities": {
+      "str": {
+        "value": 10
+      },
+      "dex": {
+        "value": 10
+      },
+      "con": {
+        "value": 10
+      },
+      "int": {
+        "value": 10
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 10
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 10,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "medium",
+      "dr": 6,
+      "speed": {
+        "walk": 30,
+        "climb": 0,
+        "swim": 0,
+        "fly": 0,
+        "burrow": 0,
+        "hover": false
+      }
+    },
+    "hpMax": 1,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5ebtpG1Zc9r5zT7",
+      "_key": "!actors.items!n5eEJhEoWEBSSwYK.n5ebtpG1Zc9r5zT7",
+      "name": "Unison Command",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>When more than one Clone is attacking or targeting the same target, you don't make multiple attacks and the target doesn't make multiple saving throws; consolidate them into a single attack roll or saving throw. Increase Clone Strike's or Clone Cast's damage by +2 for each Clone beyond the first.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5exnA5jPZzzOOE5",
+      "_key": "!actors.items!n5eEJhEoWEBSSwYK.n5exnA5jPZzzOOE5",
+      "name": "Placement",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>Clones can never be more than 60 feet away from you, otherwise they are dispelled.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eOcLVcaWdikncT",
+      "_key": "!actors.items!n5eEJhEoWEBSSwYK.n5eOcLVcaWdikncT",
+      "name": "Combat Synergy",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>It uses its summoner's attack bonuses and save DCs for jutsu it casts, and its summoner's skill bonuses for skill-based actions.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eGUuCG5sptGeOz",
+      "_key": "!actors.items!n5eEJhEoWEBSSwYK.n5eGUuCG5sptGeOz",
+      "name": "Part of a Whole",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>Clones can only make one attack per command, even if a jutsu normally allows more.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5e0bBJvERSxtgBD",
+      "_key": "!actors.items!n5eEJhEoWEBSSwYK.n5e0bBJvERSxtgBD",
+      "name": "Fractional Strength",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>Damage a clone deals with a jutsu it casts always defaults to an amount based on the jutsu's rank (D-Rank: 2d6, C-Rank: 3d6, B-Rank: 4d6, A-Rank: 5d6). If the jutsu affects an area, reduce the number of damage dice by 1.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5erwkGV59kpBQyE",
+      "_key": "!actors.items!n5eEJhEoWEBSSwYK.n5erwkGV59kpBQyE",
+      "name": "Limitations",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>Clones can't cast jutsu with the Clone, Fuinjutsu or Combination keyword, concentrate on jutsu they cast, inflict conditions under the Death, Dying or Disabled category, or force a creature to make more than 1 saving throw per round.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eEVEFXnW68HFy5",
+      "_key": "!actors.items!n5eEJhEoWEBSSwYK.n5eEVEFXnW68HFy5",
+      "name": "Clone Strike",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Melee or Ranged Weapon Attack:</em> your attack bonus with the clone's weapon to hit, reach (the weapon's range), one creature. <em>Hit:</em> 1d6 + your Ninjutsu modifier damage (the weapon's damage type).",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eEOif0ViCrrr7b",
+            "type": "attack",
+            "label": "Clone Strike",
+            "attack": {
+              "discipline": "tai",
+              "range": "melee",
+              "count": 1,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "1d6",
+                  "type": ""
+                }
+              ]
+            },
+            "text": "Add your Ninjutsu modifier to the damage; Unison Command: +2 per clone beyond the first."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5etKoJ49XEbwEOo",
+      "_key": "!actors.items!n5eEJhEoWEBSSwYK.n5etKoJ49XEbwEOo",
+      "name": "Clone Cast",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Clone casts a jutsu on its summoner's known list of one rank lower than the rank of the jutsu used to summon it. The jutsu can't be greater than B-Rank. Damage follows Fractional Strength.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5e2DNKaBvuXVDEo",
+            "type": "damage",
+            "label": "D-Rank damage",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "2d6",
+                  "type": ""
+                }
+              ]
+            },
+            "text": "The jutsu's damage at D-Rank (an area: one die fewer)."
+          },
+          {
+            "id": "n5eTBC7rmokC9Jud",
+            "type": "damage",
+            "label": "C-Rank damage",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "3d6",
+                  "type": ""
+                }
+              ]
+            },
+            "text": "The jutsu's damage at C-Rank (an area: one die fewer)."
+          },
+          {
+            "id": "n5eKKdUiAE2dYpm2",
+            "type": "damage",
+            "label": "B-Rank damage",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "4d6",
+                  "type": ""
+                }
+              ]
+            },
+            "text": "The jutsu's damage at B-Rank (an area: one die fewer)."
+          },
+          {
+            "id": "n5eaWhuN9OywEYgi",
+            "type": "damage",
+            "label": "A-Rank damage",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "5d6",
+                  "type": ""
+                }
+              ]
+            },
+            "text": "The jutsu's damage at A-Rank (an area: one die fewer)."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5eYZQzrhbOq1gNa",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "attributes.ac.flat": "@dc.nin",
+        "bonuses.attack.tai": "max(@str, @dex) + @bonuses.attack.weapon",
+        "bonuses.attack.nin": "@attack.nin - @prof",
+        "bonuses.attack.gen": "@attack.gen - @prof",
+        "bonuses.saveDC.nin": "@dc.nin - 8 - @prof",
+        "bonuses.saveDC.gen": "@dc.gen - 8 - @prof",
+        "bonuses.saveDC.tai": "@dc.tai - 8 - @prof",
+        "bonuses.save": "0 - floor(@prof / 2)",
+        "skills.acr.bonus": "@skills.acr.total",
+        "skills.ani.bonus": "@skills.ani.total",
+        "skills.ath.bonus": "@skills.ath.total",
+        "skills.cha.bonus": "@skills.cha.total",
+        "skills.dec.bonus": "@skills.dec.total",
+        "skills.his.bonus": "@skills.his.total",
+        "skills.ill.bonus": "@skills.ill.total",
+        "skills.ins.bonus": "@skills.ins.total",
+        "skills.itm.bonus": "@skills.itm.total",
+        "skills.inv.bonus": "@skills.inv.total",
+        "skills.mar.bonus": "@skills.mar.total",
+        "skills.med.bonus": "@skills.med.total",
+        "skills.nat.bonus": "@skills.nat.total",
+        "skills.nin.bonus": "@skills.nin.total",
+        "skills.prc.bonus": "@skills.prc.total",
+        "skills.prf.bonus": "@skills.prf.total",
+        "skills.per.bonus": "@skills.per.total",
+        "skills.slt.bonus": "@skills.slt.total",
+        "skills.ste.bonus": "@skills.ste.total",
+        "skills.sur.bonus": "@skills.sur.total",
+        "traits.senses.blindsight": "@senses.blindsight",
+        "traits.senses.chakraSensing": "@senses.chakraSensing",
+        "traits.senses.chakraSight": "@senses.chakraSight",
+        "traits.senses.darkvision": "@senses.darkvision",
+        "traits.senses.tremorSense": "@senses.tremorSense",
+        "traits.senses.trueSight": "@senses.trueSight",
+        "traits.senses.heatSense": "@senses.heatSense",
+        "traits.senses.waterSense": "@senses.waterSense"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Clone",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.93.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

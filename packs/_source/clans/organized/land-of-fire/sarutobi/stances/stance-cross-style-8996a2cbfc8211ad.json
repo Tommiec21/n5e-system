@@ -9,7 +9,15 @@
   "flags": {
     "n5e": {
       "clanPackage": "sarutobi",
-      "sourceLine": 1905
+      "sourceLine": 1905,
+      "textFrom": "sarutobi-cross-style (King Q-E9)",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Cross-Style stance, a Chakra, Taijutsu and Bukijutsu stance at once (its text is Cross-Style's, as King Q-E9): [Unarmed Damage] d6; [Unarmed] and [Weapon Damage] take your Advanced Nature Affinity release's type (Medical: poison; pick when you roll); Unified Form."
+        }
+      ]
     }
   },
   "ownership": {
@@ -17,7 +25,7 @@
   },
   "system": {
     "identifier": "sarutobi-stance-cross-style",
-    "description": "<p>7th Level Clan Feature</p>\n<p>The Sarutobi clan has a unique talent for manifesting multiple different nature releases, focusing in on a core martial fighting technique or broadening their illusory skills. You have reached that decision point. Select one:</p>\n<p>You gain another Nature release you didn’t select from your Advanced Nature Affinity clan trait.</p>\n<p>Select a Taijutsu or Bukijutsu Expert stance, even if you don’t qualify. You gain the benefits of the chosen Expert stance while in your Cross-Style stance.</p>\n<p>While in your Cross-Style stance, creatures that critically succeed a saving throw against a Genjutsu you cast, suffer the effects of a success if you spend 2 Will.</p>",
+    "description": "<p>3rd Level Clan Feature</p>\n<p>As a Sarutobi, you are a versatile Swiss army knife of skill and options. You are able to mix it up and use any form of combat you see fit to unlike all others.</p>\n<p>This technique manifests itself into a unique stance known as Cross-Style. This stance is unique in that it counts as a Chakra, Taijutsu and Bukijutsu stance all at once. You can enter your Cross-Style stance as a bonus action. While in this stance, you gain the following benefits.</p>\n<p>Chakra Powered Strikes. Your unarmed damage die becomes 1d6. Your [Unarmed Damage] and [Weapon Damage] types becomes the damage type associated with the nature release you selected for Advanced Nature Affinity (Medical = Poison).</p>\n<p>Unified Form. Once per turn, when you cast a Jutsu (Ninjutsu, Genjutsu, Taijutsu or Bukijutsu) as an Action, you can spend a number of Will based on the jutsu’s rank (D-Rank: 1, C-Rank: 2, B-Rank: 3, A-Rank: 4, S-Rank: 5) to cast a second jutsu of a different discipline but the same rank as part of the same action. The second jutsu must have the same casting time and neither jutsu can require concentration or benefit from cost reduction effects. Once you do, you cannot spend your Bonus action to cast a jutsu until the beginning of your next turn. You gain a benefit based on the order in which you cast the chosen jutsu:</p>\n<p>Any &gt; Ninjutsu: Affected creatures with ranks of a Physical, Elemental, or Sensory condition suffer a -1 to their saving throw against the Ninjutsu cast.</p>\n<p>Any &gt; Taijutsu: The initial jutsu cast gains the Combo keyword and when the Taijutsu deals damage, the affected creature is pushed 10 feet in a direction of your choice.</p>\n<p>Any &gt; Bukijutsu: The initial jutsu cast gains the Chain keyword and when the Bukijutsu deals damage, the affected creature has a -1 to their AC until the beginning of your next turn.</p>\n<p>Any &gt; Genjutsu: Select a willing allied creature within half your movement speed range. You each teleport and swap places with each other.</p>",
     "source": {
       "book": "Tsunade's Studies Compendium",
       "page": "",
@@ -31,6 +39,37 @@
     ],
     "clan": "sarutobi",
     "featureType": "passive",
-    "requirement": "Sarutobi clan"
+    "requirement": "Sarutobi clan",
+    "activities": [
+      {
+        "id": "n5eN0ZteaNcq73XK",
+        "type": "effect",
+        "label": "Cross-Style",
+        "effect": {
+          "name": "Cross-Style",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "Bonus action: the Cross-Style stance.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5e75PLc60uoak0z",
+        "type": "roll",
+        "label": "Unified Form",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, casting a jutsu as an Action: Will by its rank (D 1 ... S 5) casts a second jutsu of another discipline, same rank and casting time (neither concentration nor reduced cost), in the same action; no Bonus action jutsu until your next turn. Second jutsu: Ninjutsu −1 on saves for creatures with Physical, Elemental or Sensory ranks; Taijutsu: the first gains Combo, its damage pushes 10 feet; Bukijutsu: the first gains Chain, its damage gives −1 AC until your next turn; Genjutsu: swap places with a willing ally within half your speed."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "will",
+          "choose": true
+        }
+      }
+    ],
+    "unarmedDie": "1d6"
   }
 }

@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ecFk5w52i3ssM0",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Falling Heaven: Storm",
         "save": {
           "abilities": [
             "str"
@@ -97,13 +96,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {
-            "failure": "on a failure. Affected creature remakes their saving throw at the end of each of their turns, breaking free",
-            "success": "on a success."
-          },
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "Concentration: a creature within 60 feet (+1 per rank above D; Chain 1: everyone within 5 feet of each). Failure: Restrained; resave at the end of each of its turns.",
         "damage": {
           "parts": []
         }
@@ -175,7 +178,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "4dbff179bff78120"

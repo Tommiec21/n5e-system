@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "jiton",
-      "sourceLine": 3212
+      "sourceLine": 3212,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Magnetic Charges: +1 at the start of each of your turns and once per turn casting a Jiton Hijutsu (the buttons), up to 4 (6 at 15th); each lasts 1 minute, the turn's one too (King Q-E11). Spend once per turn."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,137 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e3d8RgDdAv8SOA",
+        "type": "roll",
+        "label": "Magnetic Pulse",
+        "roll": {
+          "formula": "lvl(3:1d4,11:1d6)",
+          "note": "A metallic weapon attacks in range: subtract this from the attack."
+        },
+        "cost": {
+          "pool": "magneticCharges",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eGNMXm8QOoDtb8",
+        "type": "roll",
+        "label": "Magnetic Shield",
+        "roll": {
+          "formula": "",
+          "note": "A metallic weapon attacks in range: its damage die is 1 step smaller (2 at 7th, 3 at 15th), or one fewer die."
+        },
+        "cost": {
+          "pool": "magneticCharges",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eJeCcWJAdDnjyV",
+        "type": "save",
+        "label": "Magnetic Snatch",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Bonus action: an unwilling creature's held weapon in range (one more creature at 7th and 15th). Failure: the weapon is pulled to you.",
+        "activation": "bonus",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "magneticCharges",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eknPQKpaU2iazH",
+        "type": "attack",
+        "label": "Magnetic Vectors",
+        "attack": {
+          "discipline": "highest",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "2 charges and your reaction: a metallic ranged attack in range is redirected; on a hit, the original attack's effect lands on the new target.",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "magneticCharges",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5ed0omQYF2QaHyw",
+        "type": "save",
+        "label": "Magnetic Puppetry",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Action, 3 charges: a creature wielding a metallic weapon. Failure: it attacks the closest creature of your choice with its weapon's damage + 2d8 (+1d8 and +1 creature at 7th, 11th and 15th).",
+        "activation": "action",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "magneticCharges",
+          "amount": 3
+        }
+      },
+      {
+        "id": "n5eh2NQcWHkCYFWK",
+        "type": "roll",
+        "label": "Gain a Magnetic Charge",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, casting a Jiton Hijutsu (the start of your turn adds one by itself)."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "magneticCharges",
+          "amount": 1,
+          "gain": true
+        }
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "magneticCharges",
+        "label": "Magnetic Charges",
+        "value": 0,
+        "max": "lvl(3:4,15:6)",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "turn",
+            "amount": "formula",
+            "formula": "1",
+            "requires": ""
+          }
+        ],
+        "lifetime": 60
+      }
+    ]
   }
 }

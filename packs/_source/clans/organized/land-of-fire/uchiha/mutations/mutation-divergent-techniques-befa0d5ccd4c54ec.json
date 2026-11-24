@@ -15,7 +15,14 @@
           "Mutated Trait: Sharingan"
         ],
         "manualReplacement": true
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutates the Sharingan: the Flaming Spark and Blazing Fan stances at once (Agile Fist with one of them, never all three) and a Gunbai Fan. You must also take Heightened Battle Sense."
+        }
+      ]
     }
   },
   "ownership": {
@@ -48,6 +55,126 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eQ5RZycuf3cyCW",
+        "type": "effect",
+        "label": "Flaming Spark",
+        "effect": {
+          "name": "Flaming Spark",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "Bonus action: the chakra stance.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5el1OoBRCDaLsmN",
+        "type": "attack",
+        "label": "Flame Flower",
+        "attack": {
+          "discipline": "highest",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "Action, 60 feet (two at 7th without Extra Attack).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:2d6+2,7:3d6+3)",
+              "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eHIK5647KyKYMY",
+        "type": "save",
+        "label": "Flame Flower: Off-Guard",
+        "save": {
+          "abilities": [
+            "dex",
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "offGuard",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Off-Guard"
+          }
+        ],
+        "text": "On a hit; until the end of your next turn.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eGjL77jGw6raE2",
+        "type": "effect",
+        "label": "Enflamed",
+        "effect": {
+          "name": "Enflamed",
+          "target": "self",
+          "changes": [],
+          "expires": "nextTurnEnd",
+          "seconds": 0
+        },
+        "text": "Casting a Fire Release jutsu in Flaming Spark: fire attacks +1 critical range until the end of your next turn."
+      },
+      {
+        "id": "n5eYEo8vq2yJW5p7",
+        "type": "effect",
+        "label": "Blazing Fan",
+        "effect": {
+          "name": "Blazing Fan",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "Bonus action, wielding a Gunbai Fan: the Bukijutsu stance (the fan gains Blocking 1; two attacks at 7th without Extra Attack).",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5e80bp1B2aDYnKH",
+        "type": "save",
+        "label": "Fanned Wind",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Action: a 30-foot cone (7th: +10 feet or + one more [Weapon Damage]). Failure: [Weapon Damage] + [Weapon Damage] (roll it) and pushed 20 feet.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eZW6kUEZRJNSlS",
+        "type": "roll",
+        "label": "Uchiha Return",
+        "roll": {
+          "formula": "",
+          "note": "Reaction to Ninjutsu, Taijutsu or Bukijutsu damage: a Clash with your highest of Ninshou, Martial Arts or Chakra Control."
+        },
+        "activation": "reaction"
+      }
+    ]
   }
 }

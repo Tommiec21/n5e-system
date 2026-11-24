@@ -33,13 +33,48 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eRAFbBlyPyvrk9",
+        "type": "roll",
+        "label": "Encore",
+        "roll": {
+          "formula": "",
+          "note": "Samba: rolling the maximum on a [Weapon Damage] die: roll one more [Weapon Damage] die and add it (it can chain)."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5emiIKpfSKRE6E7",
+        "type": "roll",
+        "label": "Blazing Rhythm",
+        "roll": {
+          "formula": "",
+          "note": "Samba, on a weapon or Taijutsu hit: 1 Discipline, plus 1 for each successful attack; +1 to all later attack rolls this turn for each (up to +3)."
+        },
+        "cost": {
+          "pool": "discipline",
+          "choose": true
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Waltz: up to two Partners."
+        }
+      ]
     }
   },
   "ownership": {

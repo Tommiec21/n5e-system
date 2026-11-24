@@ -17,6 +17,298 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Visual, Tactile) Wind Release, Fire Release, Clash",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eyzWUeQ8DVp6KI",
+              "type": "save",
+              "label": "Murderous Flame",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 3d8 fire.",
+                  "success": "Success: half of 3d8 fire and Dazzled until the end of its next turn.",
+                  "failure": "Failure: 3d8 fire and Confused.",
+                  "critFailure": "Critical Failure: as a failure, but 4d8 fire."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                },
+                {
+                  "key": "confused",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Confused"
+                }
+              ],
+              "text": "A 30-foot by 5-foot line.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5etrG5I53mPuAUf",
+              "type": "damage",
+              "label": "Murderous Flame: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (1d8)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5eRzleNiHxgiLXQ",
+              "type": "damage",
+              "label": "Murderous Flame: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (1d8)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eyzWUeQ8DVp6KI",
+              "type": "save",
+              "label": "Murderous Flame",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 3d8 fire.",
+                  "success": "Success: half of 3d8 fire and Dazzled until the end of its next turn.",
+                  "failure": "Failure: 3d8 fire and Confused.",
+                  "critFailure": "Critical Failure: as a failure, but 4d8 fire."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                },
+                {
+                  "key": "confused",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Confused"
+                }
+              ],
+              "text": "A 30-foot by 5-foot line.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5etrG5I53mPuAUf",
+              "type": "damage",
+              "label": "Murderous Flame: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (2d8)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5eRzleNiHxgiLXQ",
+              "type": "damage",
+              "label": "Murderous Flame: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (2d8)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eyzWUeQ8DVp6KI",
+              "type": "save",
+              "label": "Murderous Flame",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 3d8 fire.",
+                  "success": "Success: half of 3d8 fire and Dazzled until the end of its next turn.",
+                  "failure": "Failure: 3d8 fire and Confused.",
+                  "critFailure": "Critical Failure: as a failure, but 4d8 fire."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                },
+                {
+                  "key": "confused",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Confused"
+                }
+              ],
+              "text": "A 30-foot by 5-foot line.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5etrG5I53mPuAUf",
+              "type": "damage",
+              "label": "Murderous Flame: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (3d8)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5eRzleNiHxgiLXQ",
+              "type": "damage",
+              "label": "Murderous Flame: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (3d8)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eyzWUeQ8DVp6KI",
+              "type": "save",
+              "label": "Murderous Flame",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 3d8 fire.",
+                  "success": "Success: half of 3d8 fire and Dazzled until the end of its next turn.",
+                  "failure": "Failure: 3d8 fire and Confused.",
+                  "critFailure": "Critical Failure: as a failure, but 4d8 fire."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                },
+                {
+                  "key": "confused",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Confused"
+                }
+              ],
+              "text": "A 30-foot by 5-foot line.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5etrG5I53mPuAUf",
+              "type": "damage",
+              "label": "Murderous Flame: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (4d8)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5eRzleNiHxgiLXQ",
+              "type": "damage",
+              "label": "Murderous Flame: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (4d8)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Scorch: 30-foot cone (2 Scorch Charges)",
+        "appliesTo": {
+          "namePrefix": "Scorch Release: Murderous Flame"
+        },
+        "cost": {
+          "pool": "scorchCharges",
+          "amount": 2
+        },
+        "note": "The range becomes a 30-foot cone."
       }
     }
   },
@@ -113,7 +405,75 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eyzWUeQ8DVp6KI",
+        "type": "save",
+        "label": "Murderous Flame",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: half of 3d8 fire.",
+            "success": "Success: half of 3d8 fire and Dazzled until the end of its next turn.",
+            "failure": "Failure: 3d8 fire and Confused.",
+            "critFailure": "Critical Failure: as a failure, but 4d8 fire."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          },
+          {
+            "key": "confused",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Confused"
+          }
+        ],
+        "text": "A 30-foot by 5-foot line.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5etrG5I53mPuAUf",
+        "type": "damage",
+        "label": "Murderous Flame: damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "fire"
+            }
+          ]
+        },
+        "text": "Halve it on a success."
+      },
+      {
+        "id": "n5eRzleNiHxgiLXQ",
+        "type": "damage",
+        "label": "Murderous Flame: critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "fire"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

@@ -17,6 +17,124 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Water Release, Medical",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eNHME9ffo7o484",
+              "type": "save",
+              "label": "Sanguine Sphere",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Creatures of your choice within 20 feet of the sphere (30 with Blood Detonation). Failure: the damage and 2 ranks of Bleed.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (1d6)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eNHME9ffo7o484",
+              "type": "save",
+              "label": "Sanguine Sphere",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Creatures of your choice within 20 feet of the sphere (30 with Blood Detonation). Failure: the damage and 2 ranks of Bleed.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (2d6)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eNHME9ffo7o484",
+              "type": "save",
+              "label": "Sanguine Sphere",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Creatures of your choice within 20 feet of the sphere (30 with Blood Detonation). Failure: the damage and 2 ranks of Bleed.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (3d6)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Blood Detonation (2 Crimson Charges)",
+        "appliesTo": {
+          "namePrefix": "Sanguine Sphere"
+        },
+        "cost": {
+          "pool": "crimsonCharges",
+          "amount": 2
+        },
+        "note": "Needs your Ketsuryugan active. +10 feet to the area, and up to 3 creatures are unaffected."
       }
     }
   },
@@ -109,7 +227,40 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eNHME9ffo7o484",
+        "type": "save",
+        "label": "Sanguine Sphere",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Creatures of your choice within 20 feet of the sphere (30 with Blood Detonation). Failure: the damage and 2 ranks of Bleed.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "necrotic"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

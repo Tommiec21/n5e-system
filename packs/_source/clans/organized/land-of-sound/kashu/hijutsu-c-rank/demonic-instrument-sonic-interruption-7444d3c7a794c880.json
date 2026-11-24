@@ -17,7 +17,14 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Genjutsu (Auditory), Mnemonic Branch, Interrupt",
         "components": "CM, W (Auditory Ninja Tool)"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Mnemonic Branch]"
+        }
+      ]
     }
   },
   "ownership": {
@@ -110,7 +117,43 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eaVMWkodpH1vRC",
+        "type": "save",
+        "label": "Sonic Interruption",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: no effect.",
+            "success": "Success: 1 rank of Disoriented.",
+            "failure": "Failure: 2 ranks of Disoriented and its jutsu fails.",
+            "critFailure": "Critical Failure: as a failure, and it can't cast that jutsu for 1 minute (an Action clears it)."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "kashu-disoriented",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Disoriented"
+          }
+        ],
+        "text": "Reaction, a creature casting with hand seals within 60 feet.",
+        "activation": "reaction",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "gen"

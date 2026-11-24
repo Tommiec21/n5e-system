@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "hoshi",
       "sourceLine": 7878,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,32 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5egGVx4CtzIm9Wh",
+        "type": "effect",
+        "label": "Star Threads",
+        "effect": {
+          "name": "Star Threads",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "n5e.resist",
+              "value": "chakra",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Bonus action: one willing ally within 30 feet per 2 Star Chakra, 1 minute (ends beyond 60 feet or behind full cover): resistance to chakra damage, advantage on saves against raised jutsu cost.",
+        "activation": "bonus",
+        "cost": {
+          "pool": "starChakra",
+          "choose": true
+        }
+      }
+    ]
   }
 }

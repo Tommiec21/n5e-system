@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "jiton",
       "sourceLine": 3200,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "In the Dust Veil: DR against attack damage equal to your highest ability modifier (add it while the stance is active)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,32 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eW247glPW7673g",
+        "type": "effect",
+        "label": "Potency I: Unstable",
+        "effect": {
+          "name": "Unstable",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 12,
+          "condition": "jiton-unstable"
+        },
+        "text": "In the stance, a creature takes damage from your Jiton Hijutsu."
+      },
+      {
+        "id": "n5eL86leCLVXEW6z",
+        "type": "roll",
+        "label": "Potency II: sand construct",
+        "roll": {
+          "formula": "",
+          "note": "Bonus action, once per rest: cast your chosen jutsu (Beast Imitating Art: Predator, Sealing Art: Inanimate Puppet, Beast Imitating Art: Oni Twins, Earth Release: Mud Wolf or Stone Dragon) at A-Rank for no chakra (up to two summons)."
+        },
+        "activation": "bonus"
+      }
+    ]
   }
 }

@@ -1,0 +1,136 @@
+{
+  "_id": "n5eAmpe8c47e783f",
+  "name": "Guardian Knight",
+  "type": "amp",
+  "img": "icons/svg/book.svg",
+  "folder": "n5eAmpFoldOther1",
+  "sort": 103100,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jutsu-guardian-knight",
+    "description": "<p><b>Guardian Knight</b> · cast at C-Rank to S-Rank · no type</p><p>Benefits by the armor you're wearing (light, medium or heavy).</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 5437",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "ampType": "",
+    "namedType": "",
+    "owner": {
+      "kind": "jutsu",
+      "id": "guardian-knight",
+      "subclass": ""
+    },
+    "summary": "Benefits by the armor you're wearing (light, medium or heavy).",
+    "activation": "",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": true
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [],
+    "aura": {},
+    "outsideLimits": false,
+    "series": "",
+    "level": 0,
+    "rank": "C",
+    "choose": {
+      "prompt": "Guardian Knight: what armor are you wearing?",
+      "count": 1,
+      "changeable": false,
+      "options": [
+        {
+          "label": "Light Guardian",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "10",
+              "mode": 2
+            },
+            {
+              "key": "n5e.save.dex",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "rules": [
+            {
+              "key": "note",
+              "text": "Light Guardian: as a reaction to taking damage, reduce it by your proficiency bonus."
+            }
+          ]
+        },
+        {
+          "label": "Moderate Guardian",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "1",
+              "mode": 2
+            },
+            {
+              "key": "n5e.reinforced",
+              "value": "4",
+              "mode": 2
+            }
+          ],
+          "rules": [
+            {
+              "key": "note",
+              "text": "Moderate Guardian: as a reaction when an ally within 20 feet takes damage, move next to it; it gets +1 AC and +2 DR against that damage."
+            }
+          ]
+        },
+        {
+          "label": "Heavy Metal",
+          "changes": [
+            {
+              "key": "n5e.reinforced",
+              "value": "6",
+              "mode": 2
+            }
+          ],
+          "rules": [
+            {
+              "key": "note",
+              "text": "Heavy Metal: as a reaction when an ally within 15 feet takes damage, move next to it and take the damage instead, applying your Reinforce value."
+            }
+          ]
+        }
+      ]
+    },
+    "buttons": [],
+    "onEnd": {
+      "condition": ""
+    },
+    "statuses": [],
+    "endsWith": ""
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [],
+      "amp1f": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.70.0"
+  },
+  "_key": "!items!n5eAmpe8c47e783f"
+}

@@ -85,23 +85,23 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eV59DCFhARXR2V",
         "type": "attack",
-        "label": "Attack",
+        "label": "Death Blossom",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "A downed creature.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5ejeKd6zlzspuvn",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Stop the heart",
         "save": {
           "abilities": [
             "con"
@@ -109,22 +109,50 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "On a hit. Can't be reduced by any means. Success: half.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "10d6",
+              "type": "necrotic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "10d6",
-        "roll": {
-          "formula": "10d6",
-          "note": "On a failed save, they take 10d6 in necrotic damage which cannot be reduced by any means or half as much on a success."
+        "id": "n5erbsOJbtspxPd0",
+        "type": "save",
+        "label": "Finisher: Stop the heart",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 5,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Finisher. Failure: also 5 Bleed. Success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "10d6",
+              "type": "necrotic"
+            }
+          ]
         }
       }
     ],
@@ -201,7 +229,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ee1379d61e3505ec"

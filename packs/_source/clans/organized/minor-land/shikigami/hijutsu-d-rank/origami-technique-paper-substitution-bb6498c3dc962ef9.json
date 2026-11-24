@@ -17,6 +17,20 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Fuinjutsu",
         "components": "HS, CS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Weaving: the trigger within 20 feet: move half your speed and make two unarmed attacks."
+        }
+      ],
+      "castOption": {
+        "label": "Paper Veil",
+        "appliesTo": {
+          "namePrefix": "Origami Technique: Paper Substitution"
+        },
+        "note": "Paper Veil active, your first Canvas Type's effect: Explosive, Serrated or Binding button, or Weaving's attacks."
       }
     }
   },
@@ -109,7 +123,122 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5emlNUtirVKfr6K",
+        "type": "effect",
+        "label": "Paper Substitution",
+        "effect": {
+          "name": "Paper Substitution",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "3",
+              "mode": 2
+            },
+            {
+              "key": "n5e.resist",
+              "value": "bludgeoning",
+              "mode": 2
+            },
+            {
+              "key": "n5e.resist",
+              "value": "piercing",
+              "mode": 2
+            },
+            {
+              "key": "n5e.resist",
+              "value": "slashing",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Reaction, until the start of your next turn: +3 AC (+1 at B), resistance to bludgeoning, piercing and slashing.",
+        "activation": "reaction"
+      },
+      {
+        "id": "n5efNIBd5iGlc1nD",
+        "type": "save",
+        "label": "Explosive",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "You move 30 feet; creatures within 5 feet of your old space; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e23libg8uX7Vr1",
+        "type": "save",
+        "label": "Serrated",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "text": "The trigger within 10 feet. Failure: Bleed.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eCpiLl7VheIQOv",
+        "type": "save",
+        "label": "Binding",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          }
+        ],
+        "text": "The trigger more than 10 feet away. Failure: Weakened and pulled 10 feet.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

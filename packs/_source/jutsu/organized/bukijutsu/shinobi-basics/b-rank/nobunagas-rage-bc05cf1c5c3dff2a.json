@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eEQIR0qzF0OovN",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Nobunaga’s Rage",
         "save": {
           "abilities": [
             "wis"
@@ -97,10 +96,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "demoralized",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Demoralized"
+          }
+        ],
+        "text": "Hostile creatures within 15 feet (+5 feet per rank). Failure: must target you with its attacks and jutsu until the end of its next turn; Chain 2: also Demoralized.",
         "damage": {
           "parts": []
         }
@@ -172,7 +178,14 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Demoralized is Chain 2 only."
+        }
+      ]
     }
   },
   "folder": "0c3fd08eae955429"

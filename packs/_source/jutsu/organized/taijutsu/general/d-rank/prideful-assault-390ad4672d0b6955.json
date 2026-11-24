@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eVupAYZlse64Km",
         "type": "attack",
-        "label": "Attack",
+        "label": "Prideful Assault",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
+        "text": "Lion Fist stance only. Shaken targets: +1 damage die (add by hand).",
         "damage": {
           "parts": []
         },
@@ -102,21 +103,34 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "2"
         }
       },
       {
-        "id": "finisher-parsed1",
+        "id": "n5eg30kdSy0FjC6o",
+        "type": "attack",
+        "label": "Finisher: Prideful Assault",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 2
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "3d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "2"
+        }
+      },
+      {
+        "id": "n5e1oQhcc0zNjPEi",
         "type": "save",
-        "label": "Finisher: Save",
-        "inflicts": [
-          {
-            "key": "shaken",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Shaken"
-          }
-        ],
+        "label": "Finisher: Shaken",
         "save": {
           "abilities": [
             "wis"
@@ -125,17 +139,19 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "shaken",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shaken"
+          }
+        ],
+        "text": "Two hits. Failure: 1 Shaken.",
         "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed + 3d6",
-              "type": "bludgeoning"
-            }
-          ]
+          "parts": []
         }
       }
     ],
@@ -234,9 +250,299 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eVupAYZlse64Km",
+              "type": "attack",
+              "label": "Prideful Assault",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Lion Fist stance only. Shaken targets: +1 damage die (add by hand).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "1d6 + 1d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eg30kdSy0FjC6o",
+              "type": "attack",
+              "label": "Finisher: Prideful Assault",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d6 + 1d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5e1oQhcc0zNjPEi",
+              "type": "save",
+              "label": "Finisher: Shaken",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "Two hits. Failure: 1 Shaken.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eVupAYZlse64Km",
+              "type": "attack",
+              "label": "Prideful Assault",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Lion Fist stance only. Shaken targets: +1 damage die (add by hand).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "1d6 + 2d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eg30kdSy0FjC6o",
+              "type": "attack",
+              "label": "Finisher: Prideful Assault",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d6 + 2d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5e1oQhcc0zNjPEi",
+              "type": "save",
+              "label": "Finisher: Shaken",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "Two hits. Failure: 1 Shaken.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eVupAYZlse64Km",
+              "type": "attack",
+              "label": "Prideful Assault",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "text": "Lion Fist stance only. Shaken targets: +1 damage die (add by hand).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "1d6 + 3d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "3"
+              }
+            },
+            {
+              "id": "n5eg30kdSy0FjC6o",
+              "type": "attack",
+              "label": "Finisher: Prideful Assault",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d6 + 3d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "3"
+              }
+            },
+            {
+              "id": "n5e1oQhcc0zNjPEi",
+              "type": "save",
+              "label": "Finisher: Shaken",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "Two hits. Failure: 1 Shaken.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eVupAYZlse64Km",
+              "type": "attack",
+              "label": "Prideful Assault",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "text": "Lion Fist stance only. Shaken targets: +1 damage die (add by hand).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "1d6 + 4d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "3"
+              }
+            },
+            {
+              "id": "n5eg30kdSy0FjC6o",
+              "type": "attack",
+              "label": "Finisher: Prideful Assault",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d6 + 4d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "3"
+              }
+            },
+            {
+              "id": "n5e1oQhcc0zNjPEi",
+              "type": "save",
+              "label": "Finisher: Shaken",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "Two hits. Failure: 1 Shaken.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

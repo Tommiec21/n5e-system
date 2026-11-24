@@ -17,6 +17,147 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Water Release, Lightning Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eLynv3QCYXa3Dy",
+              "type": "save",
+              "label": "Thunder Cloud Inner Wave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "text": "Once per turn, Action or Bonus action: creatures within 5 feet of a space within 30 feet. Or once per round, Reaction to a creature moving or casting a Mobility jutsu (if you didn't use the jolt last turn): that creature. Failure: the damage and 1 rank of Shocked; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (1d8)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eLynv3QCYXa3Dy",
+              "type": "save",
+              "label": "Thunder Cloud Inner Wave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "text": "Once per turn, Action or Bonus action: creatures within 5 feet of a space within 30 feet. Or once per round, Reaction to a creature moving or casting a Mobility jutsu (if you didn't use the jolt last turn): that creature. Failure: the damage and 1 rank of Shocked; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (2d8)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eLynv3QCYXa3Dy",
+              "type": "save",
+              "label": "Thunder Cloud Inner Wave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "text": "Once per turn, Action or Bonus action: creatures within 5 feet of a space within 30 feet. Or once per round, Reaction to a creature moving or casting a Mobility jutsu (if you didn't use the jolt last turn): that creature. Failure: the damage and 1 rank of Shocked; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (3d8)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eLynv3QCYXa3Dy",
+              "type": "save",
+              "label": "Thunder Cloud Inner Wave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "text": "Once per turn, Action or Bonus action: creatures within 5 feet of a space within 30 feet. Or once per round, Reaction to a creature moving or casting a Mobility jutsu (if you didn't use the jolt last turn): that creature. Failure: the damage and 1 rank of Shocked; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (4d8)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -109,7 +250,40 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eLynv3QCYXa3Dy",
+        "type": "save",
+        "label": "Thunder Cloud Inner Wave",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "shocked",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shocked"
+          }
+        ],
+        "text": "Once per turn, Action or Bonus action: creatures within 5 feet of a space within 30 feet. Or once per round, Reaction to a creature moving or casting a Mobility jutsu (if you didn't use the jolt last turn): that creature. Failure: the damage and 1 rank of Shocked; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "lightning"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

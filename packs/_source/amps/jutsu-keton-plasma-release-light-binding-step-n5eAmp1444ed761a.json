@@ -1,0 +1,93 @@
+{
+  "_id": "n5eAmp1444ed761a",
+  "name": "Plasma Release: Light Binding Step",
+  "type": "amp",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "n5eAmpFoldOther1",
+  "sort": 104200,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jutsu-keton-plasma-release-light-binding-step",
+    "description": "<p><b>Plasma Release: Light Binding Step</b> · cast at B-Rank to A-Rank · no type</p><p>Your speed is increased by +30.</p><p>Ranged attacks that target you have disadvantage.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 5979; contextual rules require adjudication."
+    },
+    "ampType": "",
+    "namedType": "",
+    "owner": {
+      "kind": "jutsu",
+      "id": "keton-plasma-release-light-binding-step",
+      "subclass": ""
+    },
+    "summary": "Your speed is increased by +30. Ranged attacks that target you have disadvantage.",
+    "activation": "",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": true
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "system.bonuses.speed",
+        "value": "30",
+        "mode": 2
+      }
+    ],
+    "aura": {},
+    "outsideLimits": false,
+    "series": "",
+    "level": 0,
+    "rank": "B",
+    "choose": {
+      "prompt": "",
+      "options": []
+    },
+    "buttons": [],
+    "onEnd": {
+      "condition": ""
+    },
+    "statuses": [],
+    "endsWith": ""
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "disadvantage",
+          "selector": "attack",
+          "direction": "against",
+          "predicate": "attack:ranged",
+          "label": "Light Binding Step"
+        },
+        {
+          "key": "note",
+          "text": "In the light of one of your Starlights: the bolt of light (an Action, Charisma save) is on the jutsu."
+        }
+      ],
+      "amp1f": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.70.0"
+  },
+  "_key": "!items!n5eAmp1444ed761a"
+}

@@ -87,14 +87,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e2rOiAZ1Fu0e8U",
         "type": "attack",
-        "label": "Attack",
+        "label": "Breath of Roses: Hanagoromo",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "S-Rank: one more attack at a different creature.",
         "damage": {
           "parts": []
         },
@@ -108,17 +109,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5emab7Ogpt7lz1Y",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "weakened",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Weakened"
-          }
-        ],
+        "label": "Hanagoromo: Weakened",
         "save": {
           "abilities": [
             "con"
@@ -127,22 +120,34 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          }
+        ],
+        "text": "On a hit. Failure: Weakened (Chain 2: 2).",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "Chain 1: 2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "Chain 1: The next time the affected creature would spend chakra they take 2d6 + their spent chakra, in poison damage."
-        }
+        "id": "n5enagAH1q6oEPl4",
+        "type": "damage",
+        "label": "Chain 1: spends chakra",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "poison"
+            }
+          ]
+        },
+        "text": "The next time it spends chakra: 2d6 + the chakra spent (add it by hand)."
       }
     ],
     "featureType": "active",
@@ -234,9 +239,206 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5e2rOiAZ1Fu0e8U",
+              "type": "attack",
+              "label": "Breath of Roses: Hanagoromo",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "S-Rank: one more attack at a different creature.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "4d6 + 1d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5emab7Ogpt7lz1Y",
+              "type": "save",
+              "label": "Hanagoromo: Weakened",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "On a hit. Failure: Weakened (Chain 2: 2).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5enagAH1q6oEPl4",
+              "type": "damage",
+              "label": "Chain 1: spends chakra",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "poison"
+                  }
+                ]
+              },
+              "text": "The next time it spends chakra: 2d6 + the chakra spent (add it by hand)."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e2rOiAZ1Fu0e8U",
+              "type": "attack",
+              "label": "Breath of Roses: Hanagoromo",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "S-Rank: one more attack at a different creature.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "4d6 + 2d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5emab7Ogpt7lz1Y",
+              "type": "save",
+              "label": "Hanagoromo: Weakened",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "On a hit. Failure: Weakened (Chain 2: 2).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5enagAH1q6oEPl4",
+              "type": "damage",
+              "label": "Chain 1: spends chakra",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "poison"
+                  }
+                ]
+              },
+              "text": "The next time it spends chakra: 2d6 + the chakra spent (add it by hand)."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e2rOiAZ1Fu0e8U",
+              "type": "attack",
+              "label": "Breath of Roses: Hanagoromo",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "S-Rank: one more attack at a different creature.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "4d6 + 3d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5emab7Ogpt7lz1Y",
+              "type": "save",
+              "label": "Hanagoromo: Weakened",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "On a hit. Failure: Weakened (Chain 2: 2).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5enagAH1q6oEPl4",
+              "type": "damage",
+              "label": "Chain 1: spends chakra",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "poison"
+                  }
+                ]
+              },
+              "text": "The next time it spends chakra: 2d6 + the chakra spent (add it by hand)."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0032efe7c08875b9"

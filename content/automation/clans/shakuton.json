@@ -1,0 +1,2545 @@
+{
+  "clan": "shakuton",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "shakuton-desiccated-heat": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Desiccated Heat abilities (two more at 11th), spending Scorch Charges; their attacks and saves use your highest jutsu attack bonus or save DC."
+        }
+      ]
+    },
+    "shakuton-desiccated-heat-blazing-aura": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eTR0mDqXzFQZX3",
+          "type": "save",
+          "label": "Blazing Aura",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "shakuton-immolation",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Immolation"
+            }
+          ],
+          "text": "Bonus action: 20 feet around you until the end of your next turn (1 more charge: +1 round). Starting or first entering it on a turn. Failure: 1 rank of Immolation (2 at 11th).",
+          "activation": "bonus",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "scorchCharges",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5ewsALqxQCm0992",
+          "type": "damage",
+          "label": "Blazing Aura: damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(3:1d6,7:2d6,15:3d6)",
+                "type": "fire"
+              }
+            ]
+          },
+          "text": "With the save: a creature that fails (King Q-E10: 1d6, +1d6 at 7th and 15th)."
+        }
+      ]
+    },
+    "shakuton-desiccated-heat-dehydrating-aura": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eygYQYT7j5RaOq",
+          "type": "save",
+          "label": "Dehydrating Aura",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            }
+          ],
+          "text": "Bonus action: 20 feet around you until the end of your next turn (1 more charge: +1 round). Starting or first entering it on a turn. Failure: 1 rank of Weakened (2 at 11th).",
+          "activation": "bonus",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "scorchCharges",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "shakuton-desiccated-heat-heat-mirage": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eIcHg9N6xec2fc",
+          "type": "save",
+          "label": "Heat Mirage",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Dazzled"
+            }
+          ],
+          "text": "Action: a 30-foot cone. Failure: 2 ranks of Dazzled. Immolated creatures save at −1 per rank.",
+          "activation": "action",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "shakuton-desiccated-heat-instigating-blaze": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e3MwxmGqHysTGn",
+          "type": "roll",
+          "label": "Instigating Blaze",
+          "roll": {
+            "formula": "",
+            "note": "An ally within 60 feet (not you) casts a Ninjutsu, Taijutsu or Bukijutsu without both Wind and Fire: it gains both, +2 damage dice as fire, and removes the targets' temporary hit points first."
+          },
+          "cost": {
+            "pool": "scorchCharges",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "shakuton-desiccated-heat-scorching-aura": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eLcqrnLzNswEh0",
+          "type": "effect",
+          "label": "Scorching Aura",
+          "effect": {
+            "name": "Scorching Aura",
+            "target": "self",
+            "changes": [],
+            "expires": "nextTurnEnd",
+            "seconds": 0
+          },
+          "text": "Bonus action: 20 feet around you until the end of your next turn (1 more charge: +1 round). Creatures in it can't regain hit points; healing instead deals them that much fire damage (from you).",
+          "activation": "bonus",
+          "cost": {
+            "pool": "scorchCharges",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "shakuton-desiccated-heat-searing-edge": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eadC1t8LsJuIEJ",
+          "type": "effect",
+          "label": "Searing Edge",
+          "effect": {
+            "name": "Searing Edge",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action, 1 minute: your or an ally's weapon's [Weapon Damage] becomes 1d12 fire; a critical hit adds 1 rank of Immolation.",
+          "activation": "bonus",
+          "cost": {
+            "pool": "scorchCharges",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "shakuton-desiccated-heat-searing-knuckle": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eanzhkhs0ti81I",
+          "type": "effect",
+          "label": "Searing Knuckle",
+          "effect": {
+            "name": "Searing Knuckle",
+            "target": "self",
+            "changes": [
+              {
+                "key": "n5e.unarmed.die",
+                "value": "2d6",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action, 1 minute: [Unarmed Damage] 2d6 fire (set the type when you roll); a critical hit adds 1 rank of Immolation.",
+          "activation": "bonus",
+          "cost": {
+            "pool": "scorchCharges",
+            "amount": 1
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Action: touch plant matter or metal (1-foot cube or smaller) to reduce it to ash or a molten puddle."
+        }
+      ]
+    },
+    "shakuton-desiccated-heat-swirling-heat": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e19JO1u0mBA9Vu",
+          "type": "save",
+          "label": "Swirling Heat",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "shakuton-immolation",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Immolation"
+            }
+          ],
+          "text": "You or an ally within 60 feet triggers Swirl: a 10-foot radius on the creature; creatures in it gain 1 rank of Immolation instead.",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "scorchCharges",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "shakuton-evaporating-barrier": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eAJBRNDUCtROzS",
+          "type": "roll",
+          "label": "Evaporating Barrier",
+          "roll": {
+            "formula": "",
+            "note": "Clashing with a jutsu: −4 to their check. Winning: they gain Weakened ranks by your jutsu's rank (D 1 ... S 5). Against Water or Wind Release: your check has advantage and they also gain as many ranks of Immolation."
+          },
+          "cost": {
+            "pool": "scorchCharges",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "shakuton-heating-up": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eA1mLi68NlmCOP",
+          "type": "roll",
+          "label": "Build a Scorch Charge",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, casting a Shakuton Hijutsu or a Fire or Wind Release jutsu (not the turn you spend them on a jutsu)."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "scorchCharges",
+            "amount": 1,
+            "gain": true
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "scorchCharges",
+          "label": "Scorch Charges",
+          "value": 0,
+          "max": "lvl(1:2,3:4,7:6,11:8,15:10)",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [],
+          "lifetime": 60
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Scorch Charges: up to 2 (+2 at 3rd, 7th, 11th and 15th), each lasts 1 minute (the pool). While you have any, you're in the Scorching Heat state (the Scorching Heat Amp)."
+        }
+      ]
+    },
+    "shakuton-scorch-release": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "note",
+          "text": "You gain the other nature release (Wind or Fire; set it on the sheet); Fire or Wind Release jutsu can deal Wind or Fire damage respectively. Action: evaporate exposed water or ice up to a 10-foot cube you touch."
+        }
+      ]
+    },
+    "shakuton-scorch-release-blazing-murder": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRJJnFjV8EBK7r",
+          "type": "save",
+          "label": "Blazing Murder",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "burned",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Burned"
+            }
+          ],
+          "text": "A 15-foot cube within 60 feet. Failure: the damage and 1 rank of Burned.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d8",
+                "type": "fire"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5e3dhzJwNSRhoF8",
+          "type": "damage",
+          "label": "Scorch: caged",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "fire"
+              }
+            ]
+          },
+          "text": "With the Scorch option: Restrained creatures starting their turn caged (Strength save at the start of each of their turns ends it)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +5 feet to the cube per rank."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Scorch: cage (2 Scorch Charges)",
+          "appliesTo": {
+            "namePrefix": "Scorch Release: Blazing Murder"
+          },
+          "cost": {
+            "pool": "scorchCharges",
+            "amount": 2
+          },
+          "note": "Failing creatures are Restrained by the cage; it becomes Concentration, up to 1 minute."
+        }
+      ]
+    },
+    "shakuton-scorch-release-hellfire-murder": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5er5vDoP7LLhYcg",
+          "type": "save",
+          "label": "Hellfire Murder",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "shakuton-immolation",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Immolation"
+            }
+          ],
+          "text": "Every creature but you in 30 feet. Failure: the damage and 2 ranks of Immolation; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d8",
+                "type": "fire"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +10 feet radius per rank."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Scorch: focus (3 Scorch Charges)",
+          "appliesTo": {
+            "namePrefix": "Scorch Release: Hellfire Murder"
+          },
+          "cost": {
+            "pool": "scorchCharges",
+            "amount": 3
+          },
+          "note": "One creature in the radius saves at disadvantage; failing by 5: 4 ranks of Immolation instead."
+        }
+      ]
+    },
+    "shakuton-scorch-release-majestic-violent-murdering-hellfire-destroyer": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eTejjqKTekEaor",
+          "type": "attack",
+          "label": "Hellfire Destroyer",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "8d12",
+                "type": "fire"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5ejYyAa6PuAr12T",
+          "type": "save",
+          "label": "Hellfire Destroyer: blast",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "shakuton-immolation",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Immolation"
+            }
+          ],
+          "text": "Hit or miss, all other creatures within 20 feet of the target. Failure: the damage and 2 ranks of Immolation.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d12",
+                "type": "fire"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Dropped to 0 by it: turned to dust."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Scorch: shared chakra (8 Scorch Charges)",
+          "appliesTo": {
+            "namePrefix": "Scorch Release: Majestic Violent Murdering Hellfire Destroyer"
+          },
+          "cost": {
+            "pool": "scorchCharges",
+            "amount": 8
+          },
+          "note": "Up to 3 willing creatures within 30 feet spend their reaction casting a B-Rank or lower attack jutsu; on a hit, each infused jutsu applies too."
+        }
+      ]
+    },
+    "shakuton-scorch-release-murderous-flame": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eyzWUeQ8DVp6KI",
+          "type": "save",
+          "label": "Murderous Flame",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: half of 3d8 fire.",
+              "success": "Success: half of 3d8 fire and Dazzled until the end of its next turn.",
+              "failure": "Failure: 3d8 fire and Confused.",
+              "critFailure": "Critical Failure: as a failure, but 4d8 fire."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            },
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            }
+          ],
+          "text": "A 30-foot by 5-foot line.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5etrG5I53mPuAUf",
+          "type": "damage",
+          "label": "Murderous Flame: damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "fire"
+              }
+            ]
+          },
+          "text": "Halve it on a success."
+        },
+        {
+          "id": "n5eRzleNiHxgiLXQ",
+          "type": "damage",
+          "label": "Murderous Flame: critical failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d8",
+                "type": "fire"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eyzWUeQ8DVp6KI",
+                "type": "save",
+                "label": "Murderous Flame",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 3d8 fire.",
+                    "success": "Success: half of 3d8 fire and Dazzled until the end of its next turn.",
+                    "failure": "Failure: 3d8 fire and Confused.",
+                    "critFailure": "Critical Failure: as a failure, but 4d8 fire."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  },
+                  {
+                    "key": "confused",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Confused"
+                  }
+                ],
+                "text": "A 30-foot by 5-foot line.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5etrG5I53mPuAUf",
+                "type": "damage",
+                "label": "Murderous Flame: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (1d8)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5eRzleNiHxgiLXQ",
+                "type": "damage",
+                "label": "Murderous Flame: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (1d8)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eyzWUeQ8DVp6KI",
+                "type": "save",
+                "label": "Murderous Flame",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 3d8 fire.",
+                    "success": "Success: half of 3d8 fire and Dazzled until the end of its next turn.",
+                    "failure": "Failure: 3d8 fire and Confused.",
+                    "critFailure": "Critical Failure: as a failure, but 4d8 fire."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  },
+                  {
+                    "key": "confused",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Confused"
+                  }
+                ],
+                "text": "A 30-foot by 5-foot line.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5etrG5I53mPuAUf",
+                "type": "damage",
+                "label": "Murderous Flame: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (2d8)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5eRzleNiHxgiLXQ",
+                "type": "damage",
+                "label": "Murderous Flame: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (2d8)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eyzWUeQ8DVp6KI",
+                "type": "save",
+                "label": "Murderous Flame",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 3d8 fire.",
+                    "success": "Success: half of 3d8 fire and Dazzled until the end of its next turn.",
+                    "failure": "Failure: 3d8 fire and Confused.",
+                    "critFailure": "Critical Failure: as a failure, but 4d8 fire."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  },
+                  {
+                    "key": "confused",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Confused"
+                  }
+                ],
+                "text": "A 30-foot by 5-foot line.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5etrG5I53mPuAUf",
+                "type": "damage",
+                "label": "Murderous Flame: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (3d8)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5eRzleNiHxgiLXQ",
+                "type": "damage",
+                "label": "Murderous Flame: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (3d8)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eyzWUeQ8DVp6KI",
+                "type": "save",
+                "label": "Murderous Flame",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 3d8 fire.",
+                    "success": "Success: half of 3d8 fire and Dazzled until the end of its next turn.",
+                    "failure": "Failure: 3d8 fire and Confused.",
+                    "critFailure": "Critical Failure: as a failure, but 4d8 fire."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  },
+                  {
+                    "key": "confused",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Confused"
+                  }
+                ],
+                "text": "A 30-foot by 5-foot line.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5etrG5I53mPuAUf",
+                "type": "damage",
+                "label": "Murderous Flame: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (4d8)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5eRzleNiHxgiLXQ",
+                "type": "damage",
+                "label": "Murderous Flame: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (4d8)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Scorch: 30-foot cone (2 Scorch Charges)",
+          "appliesTo": {
+            "namePrefix": "Scorch Release: Murderous Flame"
+          },
+          "cost": {
+            "pool": "scorchCharges",
+            "amount": 2
+          },
+          "note": "The range becomes a 30-foot cone."
+        }
+      ]
+    },
+    "shakuton-scorch-release-murderous-revitalization": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e2Niz3hf6N2FIA",
+          "type": "roll",
+          "label": "Murderous Revitalization",
+          "roll": {
+            "formula": "",
+            "note": "An ally you touch: one condition a hostile creature applied loses 1 rank (+1 rank per rank above D)."
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Scorch: everyone around you (1 Scorch Charge)",
+          "appliesTo": {
+            "namePrefix": "Scorch Release: Murderous Revitalization"
+          },
+          "cost": {
+            "pool": "scorchCharges",
+            "amount": 1
+          },
+          "note": "The range becomes Self (10 feet): all creatures of your choice in range."
+        }
+      ]
+    },
+    "shakuton-scorch-release-painful-violence": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ea5Lb2uzlU9B8Q",
+          "type": "attack",
+          "label": "Painful Violence",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "One roll against every creature in a 20-foot line; again as an Action each turn.",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "4d10",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eYPOj55VYlUy9f",
+          "type": "save",
+          "label": "Painful Violence: on a hit",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "shakuton-immolation",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Immolation"
+            }
+          ],
+          "text": "Failure: Immolated.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The extra damage is fire."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5ea5Lb2uzlU9B8Q",
+                "type": "attack",
+                "label": "Painful Violence",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "One roll against every creature in a 20-foot line; again as an Action each turn.",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(4d10) + (1d10)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eYPOj55VYlUy9f",
+                "type": "save",
+                "label": "Painful Violence: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "shakuton-immolation",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Immolation"
+                  }
+                ],
+                "text": "Failure: Immolated.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5ea5Lb2uzlU9B8Q",
+                "type": "attack",
+                "label": "Painful Violence",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "One roll against every creature in a 20-foot line; again as an Action each turn.",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(4d10) + (2d10)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eYPOj55VYlUy9f",
+                "type": "save",
+                "label": "Painful Violence: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "shakuton-immolation",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Immolation"
+                  }
+                ],
+                "text": "Failure: Immolated.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5ea5Lb2uzlU9B8Q",
+                "type": "attack",
+                "label": "Painful Violence",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "One roll against every creature in a 20-foot line; again as an Action each turn.",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(4d10) + (3d10)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eYPOj55VYlUy9f",
+                "type": "save",
+                "label": "Painful Violence: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "shakuton-immolation",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Immolation"
+                  }
+                ],
+                "text": "Failure: Immolated.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Scorch: extend (any Scorch Charges)",
+          "appliesTo": {
+            "namePrefix": "Scorch Release: Painful Violence"
+          },
+          "cost": {
+            "pool": "scorchCharges",
+            "choose": true
+          },
+          "note": "+10 feet to the spear per charge; a creature within 5 feet: roll one more d20 and use either against it."
+        }
+      ]
+    },
+    "shakuton-scorch-release-scorching-murder": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eBcth05IHSqjZX",
+          "type": "attack",
+          "label": "Scorching Murder",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": "fire"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5e5EeRsMSrNFqiX",
+          "type": "save",
+          "label": "Scorching Murder: on a hit",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "burned",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Burned"
+            }
+          ],
+          "text": "Failure: 1 rank of Burned.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5emjOiSq0suAN7P",
+          "type": "save",
+          "label": "Scorch: explosion",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "burned",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Burned"
+            }
+          ],
+          "text": "With the Scorch option, on a hit: all creatures within 10 feet of the target. Failure: the jutsu's damage; success: half; failing by 5: 1 rank of Burned.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": "fire"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "B-Rank and S-Rank: +1 target each."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eBcth05IHSqjZX",
+                "type": "attack",
+                "label": "Scorching Murder",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (1d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5e5EeRsMSrNFqiX",
+                "type": "save",
+                "label": "Scorching Murder: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "Failure: 1 rank of Burned.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5emjOiSq0suAN7P",
+                "type": "save",
+                "label": "Scorch: explosion",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "With the Scorch option, on a hit: all creatures within 10 feet of the target. Failure: the jutsu's damage; success: half; failing by 5: 1 rank of Burned.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (1d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eBcth05IHSqjZX",
+                "type": "attack",
+                "label": "Scorching Murder",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (2d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5e5EeRsMSrNFqiX",
+                "type": "save",
+                "label": "Scorching Murder: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "Failure: 1 rank of Burned.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5emjOiSq0suAN7P",
+                "type": "save",
+                "label": "Scorch: explosion",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "With the Scorch option, on a hit: all creatures within 10 feet of the target. Failure: the jutsu's damage; success: half; failing by 5: 1 rank of Burned.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (2d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eBcth05IHSqjZX",
+                "type": "attack",
+                "label": "Scorching Murder",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (3d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5e5EeRsMSrNFqiX",
+                "type": "save",
+                "label": "Scorching Murder: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "Failure: 1 rank of Burned.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5emjOiSq0suAN7P",
+                "type": "save",
+                "label": "Scorch: explosion",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "With the Scorch option, on a hit: all creatures within 10 feet of the target. Failure: the jutsu's damage; success: half; failing by 5: 1 rank of Burned.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (3d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eBcth05IHSqjZX",
+                "type": "attack",
+                "label": "Scorching Murder",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (4d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5e5EeRsMSrNFqiX",
+                "type": "save",
+                "label": "Scorching Murder: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "Failure: 1 rank of Burned.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5emjOiSq0suAN7P",
+                "type": "save",
+                "label": "Scorch: explosion",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "With the Scorch option, on a hit: all creatures within 10 feet of the target. Failure: the jutsu's damage; success: half; failing by 5: 1 rank of Burned.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (4d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Scorch: explosive (1 Scorch Charge)",
+          "appliesTo": {
+            "namePrefix": "Scorch Release: Scorching Murder"
+          },
+          "cost": {
+            "pool": "scorchCharges",
+            "amount": 1
+          },
+          "note": "On a hit, the target's surroundings save (the Scorch: explosion button)."
+        }
+      ]
+    },
+    "shakuton-scorch-release-slaughtering-flame": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eOZQisKlr4dpn5",
+          "type": "save",
+          "label": "Slaughtering Flame",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: half of 2d12 fire.",
+              "success": "Success: half of 2d12 fire and Weakened until the end of its next turn.",
+              "failure": "Failure: 2d12 fire and Burned.",
+              "critFailure": "Critical Failure: as a failure, and Weakened."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            },
+            {
+              "key": "burned",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Burned"
+            }
+          ],
+          "text": "A 20-foot radius on a point within 60 feet (Constitution with Scorch).",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eVOX9anZp5zF5V",
+          "type": "damage",
+          "label": "Slaughtering Flame: damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d12",
+                "type": "fire"
+              }
+            ]
+          },
+          "text": "Halve it on a success."
+        },
+        {
+          "id": "n5e5J4HzvuGJdYGK",
+          "type": "attack",
+          "label": "Scorch: melee",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "With the Scorch option: a melee attack; then it saves with Constitution.",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "2d12",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eOZQisKlr4dpn5",
+                "type": "save",
+                "label": "Slaughtering Flame",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 2d12 fire.",
+                    "success": "Success: half of 2d12 fire and Weakened until the end of its next turn.",
+                    "failure": "Failure: 2d12 fire and Burned.",
+                    "critFailure": "Critical Failure: as a failure, and Weakened."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  },
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "A 20-foot radius on a point within 60 feet (Constitution with Scorch).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eVOX9anZp5zF5V",
+                "type": "damage",
+                "label": "Slaughtering Flame: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (1d12)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5e5J4HzvuGJdYGK",
+                "type": "attack",
+                "label": "Scorch: melee",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "With the Scorch option: a melee attack; then it saves with Constitution.",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(2d12) + (1d12)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eOZQisKlr4dpn5",
+                "type": "save",
+                "label": "Slaughtering Flame",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 2d12 fire.",
+                    "success": "Success: half of 2d12 fire and Weakened until the end of its next turn.",
+                    "failure": "Failure: 2d12 fire and Burned.",
+                    "critFailure": "Critical Failure: as a failure, and Weakened."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  },
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "A 20-foot radius on a point within 60 feet (Constitution with Scorch).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eVOX9anZp5zF5V",
+                "type": "damage",
+                "label": "Slaughtering Flame: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (2d12)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5e5J4HzvuGJdYGK",
+                "type": "attack",
+                "label": "Scorch: melee",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "With the Scorch option: a melee attack; then it saves with Constitution.",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(2d12) + (2d12)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eOZQisKlr4dpn5",
+                "type": "save",
+                "label": "Slaughtering Flame",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 2d12 fire.",
+                    "success": "Success: half of 2d12 fire and Weakened until the end of its next turn.",
+                    "failure": "Failure: 2d12 fire and Burned.",
+                    "critFailure": "Critical Failure: as a failure, and Weakened."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  },
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "A 20-foot radius on a point within 60 feet (Constitution with Scorch).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eVOX9anZp5zF5V",
+                "type": "damage",
+                "label": "Slaughtering Flame: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (3d12)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5e5J4HzvuGJdYGK",
+                "type": "attack",
+                "label": "Scorch: melee",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "With the Scorch option: a melee attack; then it saves with Constitution.",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(2d12) + (3d12)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eOZQisKlr4dpn5",
+                "type": "save",
+                "label": "Slaughtering Flame",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 2d12 fire.",
+                    "success": "Success: half of 2d12 fire and Weakened until the end of its next turn.",
+                    "failure": "Failure: 2d12 fire and Burned.",
+                    "critFailure": "Critical Failure: as a failure, and Weakened."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  },
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "A 20-foot radius on a point within 60 feet (Constitution with Scorch).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eVOX9anZp5zF5V",
+                "type": "damage",
+                "label": "Slaughtering Flame: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d12) + (4d12)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5e5J4HzvuGJdYGK",
+                "type": "attack",
+                "label": "Scorch: melee",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "With the Scorch option: a melee attack; then it saves with Constitution.",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(2d12) + (4d12)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Scorch: melee (2 Scorch Charges)",
+          "appliesTo": {
+            "namePrefix": "Scorch Release: Slaughtering Flame"
+          },
+          "cost": {
+            "pool": "scorchCharges",
+            "amount": 2
+          },
+          "note": "It becomes a melee attack ([Unarmed Damage] + its damage), then a Constitution save."
+        }
+      ]
+    },
+    "shakuton-scorch-release-vengeful-mirage": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eirTd41NX05nqe",
+          "type": "save",
+          "label": "Vengeful Mirage",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists.",
+              "success": "Success: 1 rank of Shaken and Dazzled until the end of its next turn.",
+              "failure": "Failure: 2 ranks of Shaken and Dazzled.",
+              "critFailure": "Critical Failure: 3 ranks of Shaken and Dazzled."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "shaken",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Shaken"
+            },
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Dazzled"
+            }
+          ],
+          "text": "Starting a turn or first entering the 20-foot radius.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +10 feet radius per rank."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Scorch: aura (4 Scorch Charges)",
+          "appliesTo": {
+            "namePrefix": "Scorch Release: Vengeful Mirage"
+          },
+          "cost": {
+            "pool": "scorchCharges",
+            "amount": 4
+          },
+          "note": "Add one Desiccated Heat aura's effect (even unknown) to its failure."
+        }
+      ]
+    },
+    "shakuton-scorch-release-violent-slaughtering-flame": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZ9DtSBmkdUp0D",
+          "type": "attack",
+          "label": "Violent Slaughtering Flame (unarmed)",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "5d6",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eCzPtntqGNgPo7",
+          "type": "attack",
+          "label": "Violent Slaughtering Flame (weapon)",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "4d8",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eFn9VuG48UL64E",
+          "type": "save",
+          "label": "Violent Slaughtering Flame: on a hit",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "shakuton-immolation",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Immolation"
+            }
+          ],
+          "text": "Failure: Immolated.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eKbY73XZ7W5D0G",
+          "type": "save",
+          "label": "Scorch: shockwave",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            },
+            {
+              "key": "burned",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Burned"
+            }
+          ],
+          "text": "With the Scorch option: a 20-foot radius on the target (not you). Failure: Dazed and 1 rank of Burned.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The extra damage is fire."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eZ9DtSBmkdUp0D",
+                "type": "attack",
+                "label": "Violent Slaughtering Flame (unarmed)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(5d6) + (1d6)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eCzPtntqGNgPo7",
+                "type": "attack",
+                "label": "Violent Slaughtering Flame (weapon)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "(4d8) + (1d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eFn9VuG48UL64E",
+                "type": "save",
+                "label": "Violent Slaughtering Flame: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "shakuton-immolation",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Immolation"
+                  }
+                ],
+                "text": "Failure: Immolated.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eKbY73XZ7W5D0G",
+                "type": "save",
+                "label": "Scorch: shockwave",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "With the Scorch option: a 20-foot radius on the target (not you). Failure: Dazed and 1 rank of Burned.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eZ9DtSBmkdUp0D",
+                "type": "attack",
+                "label": "Violent Slaughtering Flame (unarmed)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(5d6) + (2d6)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eCzPtntqGNgPo7",
+                "type": "attack",
+                "label": "Violent Slaughtering Flame (weapon)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "(4d8) + (2d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eFn9VuG48UL64E",
+                "type": "save",
+                "label": "Violent Slaughtering Flame: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "shakuton-immolation",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Immolation"
+                  }
+                ],
+                "text": "Failure: Immolated.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eKbY73XZ7W5D0G",
+                "type": "save",
+                "label": "Scorch: shockwave",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "With the Scorch option: a 20-foot radius on the target (not you). Failure: Dazed and 1 rank of Burned.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eZ9DtSBmkdUp0D",
+                "type": "attack",
+                "label": "Violent Slaughtering Flame (unarmed)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "(5d6) + (3d6)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eCzPtntqGNgPo7",
+                "type": "attack",
+                "label": "Violent Slaughtering Flame (weapon)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "(4d8) + (3d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eFn9VuG48UL64E",
+                "type": "save",
+                "label": "Violent Slaughtering Flame: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "shakuton-immolation",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Immolation"
+                  }
+                ],
+                "text": "Failure: Immolated.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eKbY73XZ7W5D0G",
+                "type": "save",
+                "label": "Scorch: shockwave",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "With the Scorch option: a 20-foot radius on the target (not you). Failure: Dazed and 1 rank of Burned.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Scorch: shockwave (3 Scorch Charges)",
+          "appliesTo": {
+            "namePrefix": "Scorch Release: Violent Slaughtering Flame"
+          },
+          "cost": {
+            "pool": "scorchCharges",
+            "amount": 3
+          },
+          "note": "A 20-foot shockwave on the target (the Scorch: shockwave button)."
+        }
+      ]
+    },
+    "shakuton-scorching-dominion": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ewrkFdBuWZcUjo",
+          "type": "roll",
+          "label": "Shift Immolation or Burned",
+          "roll": {
+            "formula": "",
+            "note": "A creature within 20 feet: its Immolation or Burned goes up or down 1 rank (not again until the end of your next turn)."
+          },
+          "cost": {
+            "pool": "scorchCharges",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5e9gED8sKGgQyzq",
+          "type": "roll",
+          "label": "Thaw Chilled",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, a creature within 20 feet: 2 fewer ranks of Chilled."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "scorchCharges",
+            "amount": 1
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Scorch Charges up to twice per turn; always in your Scorching Heat state."
+        }
+      ]
+    }
+  }
+}

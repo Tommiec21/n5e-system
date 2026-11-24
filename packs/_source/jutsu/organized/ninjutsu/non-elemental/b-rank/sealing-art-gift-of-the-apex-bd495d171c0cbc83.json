@@ -85,36 +85,39 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "ampd4a20f925c8c2",
+        "type": "effect",
+        "label": "Sealing Art: Gift of the Apex",
+        "effect": {
+          "name": "Sealing Art: Gift of the Apex",
+          "target": "self",
+          "amp": "jutsu-sealing-art-gift-of-the-apex"
+        },
+        "text": "Starts the jutsu's Amp at the rank it was cast at."
+      },
+      {
+        "id": "n5ec8RIRbrmBzbC0",
         "type": "attack",
-        "label": "Attack",
+        "label": "Bull's Rush",
         "attack": {
-          "discipline": "",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Bull's Strength: in place of an attack of your Attack action; unarmed, within 5 feet.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "2d12 + @abilities.str.mod",
+              "type": "piercing"
+            }
+          ]
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eBWn1B7mIph0py",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "prone",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Prone"
-          },
-          {
-            "key": "bleed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bleed"
-          }
-        ],
+        "label": "Bull's Rush: Prone",
         "save": {
           "abilities": [
             "str"
@@ -123,30 +126,65 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Against the damage dealt (set the DC). Failure: Prone.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d12",
-        "roll": {
-          "formula": "2d12",
-          "note": "Make an unarmed attack against a creature within 5 feet of you dealing 2d12 + Strength Piercing damage. They also have to make a Strength saving throw vs the damage result, being knocked Prone on a failure."
+        "id": "n5eJiWQDdSMpyGHR",
+        "type": "attack",
+        "label": "Cat's Pounce",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Cat's Grace: once per turn, before or after an unarmed attack of your Attack action.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d8 + @abilities.dex.mod",
+              "type": "slashing"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "2d8",
-        "roll": {
-          "formula": "2d8",
-          "note": "Make an unarmed attack that deals 2d8 + your Dexterity modifier in slashing damage. On a hit the target must also make a Dexterity saving throw vs the damage result, gaining a rank of Bleed on a failure"
+        "id": "n5e3iRWWLydNeD4X",
+        "type": "save",
+        "label": "Cat's Pounce: Bleed",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Against the damage dealt (set the DC). Failure: 1 Bleed.",
+        "damage": {
+          "parts": []
         }
       }
     ],
@@ -227,7 +265,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c568998800eeab7a"

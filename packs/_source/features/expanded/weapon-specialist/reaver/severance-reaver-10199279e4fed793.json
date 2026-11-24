@@ -33,13 +33,79 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ezfHXBEiwHNTzn",
+        "type": "roll",
+        "label": "Extend Reaver Echoes",
+        "roll": {
+          "formula": "",
+          "note": "When a Reaver Echo would detonate or dispel: Reaver Echoes of your choice last until the start of your next turn (or spend your reaction instead of the Discipline)."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eoBpDmqYJXcSXm",
+        "type": "roll",
+        "label": "Reaver Gambit",
+        "roll": {
+          "formula": "",
+          "note": "Attacking a creature with Reaver Echoes: dispel one for advantage. Both d20s the same: a critical hit, and you regain all spent Discipline."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5eSeun4cAx7yxrA",
+        "type": "roll",
+        "label": "Wounding Scar",
+        "roll": {
+          "formula": "",
+          "note": "When Reaver Echoes detonate: each affected creature takes −1 AC per Echo it had, until the end of its next turn."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 3
+        }
+      },
+      {
+        "id": "n5eVD0bjbLNeHWpE",
+        "type": "damage",
+        "label": "Burst Echo",
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d12",
+              "type": ""
+            }
+          ]
+        },
+        "text": "In place of an attack of the Attack action or a Bukijutsu's Taijutsu attack: a point within 60 feet; each creature within 5 feet takes 2d12 of your held weapon's damage type (no save) and gains a Reaver Echo (apply it from the Reaver Echoes button)."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "A Reaver Echo creature spending its Bonus Action now detonates them. While wielding a Blade or Power weapon."
+        }
+      ]
     }
   },
   "ownership": {

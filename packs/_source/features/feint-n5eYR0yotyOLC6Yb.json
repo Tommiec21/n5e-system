@@ -32,7 +32,56 @@
       "hunter-exploit"
     ],
     "resourcePools": [],
-    "prerequisites": []
+    "prerequisites": [],
+    "activities": [
+      {
+        "id": "n5e9ZxOtonOeQO35",
+        "type": "damage",
+        "label": "Lethal Attack (forgo 2)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(max(0, @scale.hunterNin.lethalAttack - 2))d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true,
+        "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+      },
+      {
+        "id": "n5eixjxcT1iU6gNX",
+        "type": "damage",
+        "label": "Lethal Attack (forgo 2): Attack action or weapon",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 2))d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true,
+        "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+      },
+      {
+        "id": "n5e8PkFm2YZ8KKgg",
+        "type": "save",
+        "label": "Feint",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "A target within 30 feet. Failure: it can't target you until the end of its next turn. Once per creature every 10 minutes."
+      }
+    ]
   },
   "effects": [],
   "folder": "n5ejmaOfw6CFtZk0",
@@ -43,7 +92,8 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "optionGroup": "Combat Exploits"
+      "optionGroup": "Combat Exploits",
+      "reviewed": true
     }
   },
   "_stats": {

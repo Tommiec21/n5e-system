@@ -17,6 +17,170 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Earth Release, Fire Release",
         "components": "HS, CM, W (any Shuriken or Chakram)"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The extra damage is fire."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eEtfM1pN5A4tpx",
+              "type": "attack",
+              "label": "Expanding Flame Rings",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "A Shuriken (its ammunition die steps down) or Chakram.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(3d10) + (1d10)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eqVozVvJCq9xU3",
+              "type": "save",
+              "label": "Flame Rings: splash",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "yoton-molten",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Molten"
+                }
+              ],
+              "text": "Creatures within 10 feet of the target. Failure: Molten until the end of your next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eEtfM1pN5A4tpx",
+              "type": "attack",
+              "label": "Expanding Flame Rings",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "A Shuriken (its ammunition die steps down) or Chakram.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(3d10) + (2d10)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eqVozVvJCq9xU3",
+              "type": "save",
+              "label": "Flame Rings: splash",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "yoton-molten",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Molten"
+                }
+              ],
+              "text": "Creatures within 10 feet of the target. Failure: Molten until the end of your next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eEtfM1pN5A4tpx",
+              "type": "attack",
+              "label": "Expanding Flame Rings",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "A Shuriken (its ammunition die steps down) or Chakram.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "(3d10) + (3d10)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eqVozVvJCq9xU3",
+              "type": "save",
+              "label": "Flame Rings: splash",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "yoton-molten",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Molten"
+                }
+              ],
+              "text": "Creatures within 10 feet of the target. Failure: Molten until the end of your next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +274,57 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eEtfM1pN5A4tpx",
+        "type": "attack",
+        "label": "Expanding Flame Rings",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "A Shuriken (its ammunition die steps down) or Chakram.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "3d10",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eqVozVvJCq9xU3",
+        "type": "save",
+        "label": "Flame Rings: splash",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "yoton-molten",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Molten"
+          }
+        ],
+        "text": "Creatures within 10 feet of the target. Failure: Molten until the end of your next turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

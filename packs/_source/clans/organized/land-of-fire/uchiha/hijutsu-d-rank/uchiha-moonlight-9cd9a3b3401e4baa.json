@@ -17,6 +17,419 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Taijutsu, Bukijutsu, Combo, Chain",
         "components": "M, W (Any Melee)"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eJ7vYptkUbtnOR",
+              "type": "attack",
+              "label": "Moonlight: first strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "[Weapon Damage].",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "() + (1d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eecGjrxRMvHiq7",
+              "type": "attack",
+              "label": "Moonlight: second strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "[Unarmed Damage] + 1d6. B-Rank: a third, [Weapon Damage] + [Unarmed Damage].",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(1d6) + (1d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5e6ikDEALJ9NmGi",
+              "type": "save",
+              "label": "Chain 1 (both hit)",
+              "save": {
+                "abilities": [
+                  "dex",
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "offGuard",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Off-Guard"
+                }
+              ],
+              "text": "Failure: Off-Guard until the end of your next turn.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eOmv1eHrCEhNP5",
+              "type": "save",
+              "label": "Chain 2 (one hit)",
+              "save": {
+                "abilities": [
+                  "str",
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "offGuard",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Off-Guard"
+                }
+              ],
+              "text": "Failure: Off-Guard until the end of your next turn. Already Off-Guard and damaged: extended.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eJ7vYptkUbtnOR",
+              "type": "attack",
+              "label": "Moonlight: first strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "[Weapon Damage].",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "() + (2d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eecGjrxRMvHiq7",
+              "type": "attack",
+              "label": "Moonlight: second strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "[Unarmed Damage] + 1d6. B-Rank: a third, [Weapon Damage] + [Unarmed Damage].",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(1d6) + (2d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5e6ikDEALJ9NmGi",
+              "type": "save",
+              "label": "Chain 1 (both hit)",
+              "save": {
+                "abilities": [
+                  "dex",
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "offGuard",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Off-Guard"
+                }
+              ],
+              "text": "Failure: Off-Guard until the end of your next turn.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eOmv1eHrCEhNP5",
+              "type": "save",
+              "label": "Chain 2 (one hit)",
+              "save": {
+                "abilities": [
+                  "str",
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "offGuard",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Off-Guard"
+                }
+              ],
+              "text": "Failure: Off-Guard until the end of your next turn. Already Off-Guard and damaged: extended.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eJ7vYptkUbtnOR",
+              "type": "attack",
+              "label": "Moonlight: first strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "[Weapon Damage].",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "() + (3d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eecGjrxRMvHiq7",
+              "type": "attack",
+              "label": "Moonlight: second strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "[Unarmed Damage] + 1d6. B-Rank: a third, [Weapon Damage] + [Unarmed Damage].",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(1d6) + (3d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5e6ikDEALJ9NmGi",
+              "type": "save",
+              "label": "Chain 1 (both hit)",
+              "save": {
+                "abilities": [
+                  "dex",
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "offGuard",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Off-Guard"
+                }
+              ],
+              "text": "Failure: Off-Guard until the end of your next turn.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eOmv1eHrCEhNP5",
+              "type": "save",
+              "label": "Chain 2 (one hit)",
+              "save": {
+                "abilities": [
+                  "str",
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "offGuard",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Off-Guard"
+                }
+              ],
+              "text": "Failure: Off-Guard until the end of your next turn. Already Off-Guard and damaged: extended.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eJ7vYptkUbtnOR",
+              "type": "attack",
+              "label": "Moonlight: first strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "[Weapon Damage].",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "() + (4d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eecGjrxRMvHiq7",
+              "type": "attack",
+              "label": "Moonlight: second strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "[Unarmed Damage] + 1d6. B-Rank: a third, [Weapon Damage] + [Unarmed Damage].",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(1d6) + (4d6)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5e6ikDEALJ9NmGi",
+              "type": "save",
+              "label": "Chain 1 (both hit)",
+              "save": {
+                "abilities": [
+                  "dex",
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "offGuard",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Off-Guard"
+                }
+              ],
+              "text": "Failure: Off-Guard until the end of your next turn.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eOmv1eHrCEhNP5",
+              "type": "save",
+              "label": "Chain 2 (one hit)",
+              "save": {
+                "abilities": [
+                  "str",
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "offGuard",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Off-Guard"
+                }
+              ],
+              "text": "Failure: Off-Guard until the end of your next turn. Already Off-Guard and damaged: extended.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +523,108 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eJ7vYptkUbtnOR",
+        "type": "attack",
+        "label": "Moonlight: first strike",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "[Weapon Damage].",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eecGjrxRMvHiq7",
+        "type": "attack",
+        "label": "Moonlight: second strike",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "[Unarmed Damage] + 1d6. B-Rank: a third, [Weapon Damage] + [Unarmed Damage].",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "1d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5e6ikDEALJ9NmGi",
+        "type": "save",
+        "label": "Chain 1 (both hit)",
+        "save": {
+          "abilities": [
+            "dex",
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "offGuard",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Off-Guard"
+          }
+        ],
+        "text": "Failure: Off-Guard until the end of your next turn.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eOmv1eHrCEhNP5",
+        "type": "save",
+        "label": "Chain 2 (one hit)",
+        "save": {
+          "abilities": [
+            "str",
+            "int"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "offGuard",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Off-Guard"
+          }
+        ],
+        "text": "Failure: Off-Guard until the end of your next turn. Already Off-Guard and damaged: extended.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

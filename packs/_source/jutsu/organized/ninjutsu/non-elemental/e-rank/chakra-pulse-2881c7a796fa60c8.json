@@ -84,17 +84,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eEmYb1cu83ybLK",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "prone",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Prone"
-          }
-        ],
+        "label": "Chakra Pulse",
         "save": {
           "abilities": [
             "str"
@@ -103,10 +95,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Each creature within 5 feet of you. Failure: Prone.",
         "damage": {
           "parts": []
         }
@@ -176,7 +175,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "7bf15eaadf34d99f"

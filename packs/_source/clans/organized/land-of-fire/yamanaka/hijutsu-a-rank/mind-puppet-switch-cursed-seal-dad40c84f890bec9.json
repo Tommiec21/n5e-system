@@ -17,7 +17,8 @@
         "cost": "20 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile, Unaware), Fuinjutsu",
         "components": "HS, CM, NT, CS"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -111,7 +112,42 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ezvXCJArEhWZCD",
+        "type": "save",
+        "label": "Mind Puppet Switch",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "No effect; immune 24 hours.",
+            "success": "Confused until the end of its next turn.",
+            "failure": "Its consciousness is bound in the item; its body is Incapacitated; resave every 10 minutes (success: immune 24 hours); destroying the item frees it.",
+            "critFailure": "As failure; resave every 24 hours."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "confused",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Confused"
+          }
+        ],
+        "text": "A creature within 5 feet with 5 Mental Overwrite or 7 ranks of [Mental] conditions; a humanoid-shaped item.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

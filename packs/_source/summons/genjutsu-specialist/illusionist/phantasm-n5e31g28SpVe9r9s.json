@@ -1,0 +1,367 @@
+{
+  "_id": "n5e31g28SpVe9r9s",
+  "_key": "!actors!n5e31g28SpVe9r9s",
+  "name": "Phantasm",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 2,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Illusionist: Phantasm",
+      "biography": "<p><em>Phantasm (Illusionist, 2nd level).</em> Your illusory ally. It begins Small and looks as you describe, always tinged black (a crow, a snake, a small version of yourself). Summon it as an Action and command it as a Bonus Action on your turn. One at a time (two from Phantasmic Double); summoning another dispels the previous one. More than 120 feet from you, it's dispelled. Abilities it uses that require a saving throw use your Genjutsu Save DC. Spending 1 Actualization Die recharges one of its Recharge abilities.</p><p><strong>Illusion.</strong> <strong>Armor Class</strong> 20 · <strong>Hit Points</strong> 10 · <strong>Speed</strong> 30 ft.</p><p><strong>Abilities</strong> STR, DEX, CON, INT, WIS, CHA: no modifier; saves +0. <strong>Damage Immunities</strong> all, except Psychic, Force and Necrotic. <strong>Condition Immunities</strong> all. <strong>Senses</strong> uses its summoner's senses.</p><p><strong>Linked to you when summoned:</strong> its level, Genjutsu attack bonus, Genjutsu save DC and senses are set from yours.</p>",
+      "summonRole": "Phantasm"
+    },
+    "abilities": {
+      "str": {
+        "value": 10
+      },
+      "dex": {
+        "value": 10
+      },
+      "con": {
+        "value": 10
+      },
+      "int": {
+        "value": 10
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 10
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 20,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "small",
+      "immune": [
+        "bludgeoning",
+        "piercing",
+        "slashing",
+        "acid",
+        "cold",
+        "earth",
+        "fire",
+        "lightning",
+        "poison",
+        "wind",
+        "chakra"
+      ],
+      "conditionImmune": [
+        "exhaustion",
+        "envenomed",
+        "burned",
+        "chilled",
+        "corroded",
+        "shocked",
+        "petrified",
+        "bruised",
+        "staggered",
+        "bleed",
+        "dazed",
+        "shaken",
+        "weakened",
+        "concussed",
+        "demoralized",
+        "berserk",
+        "charmed",
+        "confused",
+        "slowed",
+        "sealed",
+        "blinded",
+        "dazzled",
+        "invisible",
+        "deafened"
+      ],
+      "stateImmune": [
+        "prone",
+        "grappled",
+        "restrained",
+        "suffocating",
+        "incapacitated",
+        "stunned",
+        "unconscious"
+      ],
+      "speed": {
+        "walk": 30,
+        "climb": 0,
+        "swim": 0,
+        "fly": 0,
+        "burrow": 0,
+        "hover": false
+      }
+    },
+    "hpMax": 10,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5eg4QsJGG45c0eN",
+      "_key": "!actors.items!n5e31g28SpVe9r9s.n5eg4QsJGG45c0eN",
+      "name": "Incorporeal Movement",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The phantasm can move through other creatures and objects as if they were difficult terrain. It takes 5 damage if it ends its turn inside an object.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eVWzb6HQcKAU4Q",
+      "_key": "!actors.items!n5e31g28SpVe9r9s.n5eVWzb6HQcKAU4Q",
+      "name": "Phantasmic Form",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>This creature is a Visual illusory construct and cannot be detected with Tremor sense, Blindsight or any auditory senses.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5exfgARt4Bw6dAX",
+      "_key": "!actors.items!n5e31g28SpVe9r9s.n5exfgARt4Bw6dAX",
+      "name": "Ghastly Strike",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Melee Weapon Attack:</em> +(Genjutsu Attack Bonus) to hit, reach 5 ft., one creature. <em>Hit:</em> 1d6 + 4 Psychic damage. On a critical Hit, the target gains +1 rank of Demoralized or Shaken.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eRcVjFPI0bEkq0",
+            "type": "attack",
+            "label": "Ghastly Strike",
+            "attack": {
+              "discipline": "gen",
+              "range": "melee",
+              "count": 1,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "1d6 + 4",
+                  "type": "psychic"
+                }
+              ]
+            }
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eZ0Jq5nMA8DzXx",
+      "_key": "!actors.items!n5e31g28SpVe9r9s.n5eZ0Jq5nMA8DzXx",
+      "name": "Maddening Echo (Recharge 5-6 or Recharge 1 Minute)",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Phantasm opens its mouth revealing a twisted hole of incomprehensible darkness, fear and misery. All creatures of your choice in a 15 feet cone originating from the Phantasm that isn't Blinded must make a Wisdom saving throw. Once the Phantasm uses this ability, it dispels itself.</p><strong>Success:</strong> Affected creature is able to resist this maddening effect. <strong>Failure:</strong> Affected creature suffers flashbacks to memories they never had taking 3d6 psychic damage and gaining 1 rank of Berserk. <strong>Critical Failure:</strong> Same a failure, but they take 4d6 psychic damage and gain 3 ranks of Berserk.",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5e7aHyLHGA7VDMu",
+            "type": "save",
+            "label": "Maddening Echo",
+            "save": {
+              "abilities": [
+                "wis"
+              ],
+              "dc": {
+                "source": "gen"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "inflicts": [
+              {
+                "key": "berserk",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Berserk (3 on a critical failure)"
+              }
+            ],
+            "text": "Failure: 3d6 psychic and 1 rank of Berserk. Critical failure: 4d6 and 3 ranks. The Phantasm then dispels itself."
+          },
+          {
+            "id": "n5eZYMXgz5VmC67A",
+            "type": "damage",
+            "label": "Maddening Echo: failure",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "3d6",
+                  "type": "psychic"
+                }
+              ]
+            }
+          },
+          {
+            "id": "n5emboeH6zRdjdgk",
+            "type": "damage",
+            "label": "Maddening Echo: critical failure",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "4d6",
+                  "type": "psychic"
+                }
+              ]
+            }
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5eAS0XrUE4i3Izo",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "bonuses.attack.gen": "@attack.gen - @prof",
+        "bonuses.saveDC.gen": "@dc.gen - 8 - @prof",
+        "bonuses.save": "0 - floor(@prof / 2)",
+        "traits.senses.blindsight": "@senses.blindsight",
+        "traits.senses.chakraSensing": "@senses.chakraSensing",
+        "traits.senses.chakraSight": "@senses.chakraSight",
+        "traits.senses.darkvision": "@senses.darkvision",
+        "traits.senses.tremorSense": "@senses.tremorSense",
+        "traits.senses.trueSight": "@senses.trueSight",
+        "traits.senses.heatSense": "@senses.heatSense",
+        "traits.senses.waterSense": "@senses.waterSense"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Phantasm",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.93.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

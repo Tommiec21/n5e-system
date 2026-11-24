@@ -1,0 +1,1187 @@
+{
+  "clan": "konjiki",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "konjiki-alomancy": {
+      "status": "partial",
+      "pools": [
+        {
+          "id": "ingots",
+          "label": "Liquid Metal Ingots",
+          "value": 0,
+          "max": "1 + @prof",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "sr",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Liquid Metal Ingots: 1 + proficiency bonus, back on a short rest (the pool). One Alomancy Technique (more at 7th and 15th). Their attacks and saves use your highest jutsu attack bonus or save DC."
+        }
+      ]
+    },
+    "konjiki-alomancy-iron-bulwark": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eG6Qwui5e5x3Hq",
+          "type": "heal",
+          "label": "Iron Bulwark",
+          "heal": {
+            "formula": "lvl(1:2d6,7:3d6,15:4d6) + 6",
+            "pool": "tempHp"
+          },
+          "text": "Reaction, an ally within 30 feet takes damage: a Barrier with these hit points and DR equal to your highest ability modifier until the start of your next turn.",
+          "activation": "reaction",
+          "cost": {
+            "pool": "ingots",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "konjiki-alomancy-metallic-fan": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ebiSiVyk1jerFd",
+          "type": "save",
+          "label": "Metallic Fan",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Damage with a metallic weapon or Konjiki Hijutsu on a single creature: creatures within 5 feet of it take the attack's damage on a failure, none on a success (disadvantage on a critical hit).",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "ingots",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "konjiki-alomancy-metallic-step": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ejIOcEUNXLE3jk",
+          "type": "roll",
+          "label": "Metallic Step",
+          "roll": {
+            "formula": "",
+            "note": "Reaction: an ally (not you) within 60 feet must make a Strength, Dexterity or Constitution save: pull it up to 20 feet toward you without provoking; out of the effect's range it saves with advantage, otherwise +2."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "ingots",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "konjiki-alomancy-metallic-thorns": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e0IheMyCyvK3p6",
+          "type": "save",
+          "label": "Metallic Thorns",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Bleed"
+            }
+          ],
+          "text": "Bonus action: a 10-foot cube within 30 feet for 1 minute; a creature of your choice stepping in (once per turn). Failure: the damage, 2 ranks of Bleed (3 at 11th) and −15 remaining movement; success: half.",
+          "activation": "bonus",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:3d6,7:4d6,15:5d6)",
+                "type": "piercing"
+              }
+            ]
+          },
+          "cost": {
+            "pool": "ingots",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "konjiki-alomancy-steel-reinforcement": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eBZNaBzjieaH8z",
+          "type": "effect",
+          "label": "Steel Reinforcement",
+          "effect": {
+            "name": "Steel Reinforcement",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action: a willing creature within 30 feet in armor or with a weapon, 1 minute. Bulk +2: Fortified and +2 Armor Bonus; +4: and +2 Constitution saves; +6: and +2 Strength and Constitution saves (add them).",
+          "activation": "bonus",
+          "cost": {
+            "pool": "ingots",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "konjiki-alomancy-superheavy-metals": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5elFWo3LxUyIE5b",
+          "type": "roll",
+          "label": "Superheavy Metals",
+          "roll": {
+            "formula": "",
+            "note": "Damage with a metallic weapon or Konjiki Hijutsu: a Bruised creature suffers Bruised once more per Ingot (up to 4)."
+          },
+          "cost": {
+            "pool": "ingots",
+            "choose": true
+          }
+        }
+      ]
+    },
+    "konjiki-alomancy-supersharp": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e1vGu5sxYAwB5L",
+          "type": "roll",
+          "label": "Supersharp",
+          "roll": {
+            "formula": "4 * @amount",
+            "note": "Damage with a metallic weapon or Konjiki Hijutsu: 4 Pierce per Ingot (up to 2)."
+          },
+          "cost": {
+            "pool": "ingots",
+            "choose": true
+          }
+        }
+      ]
+    },
+    "konjiki-bromine-keys": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "1 minute: Pick Locks as if with a Security Kit at −10 DC; on a success, only your keys work the lock from then on."
+        }
+      ]
+    },
+    "konjiki-heavy-metal": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Earth Release jutsu that make a creature, structure or barrier with hit points: + your level to its hit points, or + your highest ability modifier to its DR."
+        }
+      ]
+    },
+    "konjiki-liquid-mercury-foundry": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus action, once per short rest: the Mercury Foundry Amp for 1 minute (start it from your Amps)."
+        }
+      ]
+    },
+    "konjiki-metallurgy": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "After a rest: Metallurgy Armor or a coated weapon until your next rest (both at 11th). Weapon: an ammunition die of d12 that can't shrink, and one property (Geometric Makeup: Fortified and Blocking 1; Counter weight: can't be disarmed, Thrown 20/40 and Return; Shearing Edge: once per turn on a hit, −1 AC or −2 DR until your next turn; Rebounding Line: once per turn, 5 over AC, the next attack on you is at disadvantage). Armor (Reinforced Cloth, Shinobi Combat Jacket or Jonin Armor, Bulk 1) with one property (Anchored Greaves, Elemental Deflection Plates, Expanding Plates, Smart Armor, Kinetic Raiment). Set them on the item."
+        }
+      ]
+    },
+    "konjiki-steel-release-binding-metal-chains": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e2FWEAW3yoOE7l",
+          "type": "save",
+          "label": "Binding Metal Chains",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            }
+          ],
+          "text": "Creatures you select in the 20-foot radius (and those entering or starting there). Failure: the damage and Restrained (Strength save at the end of each of its turns).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d8",
+                "type": "bludgeoning"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Difficult terrain. Upcast: +10 feet radius per rank."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5e2FWEAW3yoOE7l",
+                "type": "save",
+                "label": "Binding Metal Chains",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  }
+                ],
+                "text": "Creatures you select in the 20-foot radius (and those entering or starting there). Failure: the damage and Restrained (Strength save at the end of each of its turns).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d8) + (1d8)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e2FWEAW3yoOE7l",
+                "type": "save",
+                "label": "Binding Metal Chains",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  }
+                ],
+                "text": "Creatures you select in the 20-foot radius (and those entering or starting there). Failure: the damage and Restrained (Strength save at the end of each of its turns).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d8) + (2d8)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Alomancy Infusion: relentless (2 Ingots)",
+          "appliesTo": {
+            "namePrefix": "Steel Release: Binding Metal Chains"
+          },
+          "cost": {
+            "pool": "ingots",
+            "amount": 2
+          },
+          "note": "Needs Iron Bulwark, Steel Reinforcement or Superheavy Metals. Creatures that pass remake their saves."
+        }
+      ]
+    },
+    "konjiki-steel-release-impervious-armor": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eKDCQ38VdpmUYk",
+          "type": "effect",
+          "label": "Impervious Armor",
+          "effect": {
+            "name": "Impervious Armor",
+            "target": "self",
+            "changes": [],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Resistance to the triggering damage type (not lightning) for the round (add it)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "C-Rank or higher: cast it on a Strength or Constitution save for advantage on it."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Alomancy Infusion: for an ally (1 Ingot)",
+          "appliesTo": {
+            "namePrefix": "Steel Release: Impervious Armor"
+          },
+          "cost": {
+            "pool": "ingots",
+            "amount": 1
+          },
+          "note": "Needs Iron Bulwark. Cast it as an ally within 30 feet takes damage, on them too."
+        }
+      ]
+    },
+    "konjiki-steel-release-metal-prison": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eDk5k3fp7hA5py",
+          "type": "save",
+          "label": "Metal Prison",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            }
+          ],
+          "text": "A creature within 30 feet. Failure: Restrained inside a 10-foot cage (total cover from outside, heavily obscured out).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Inside walls: AC 20, 100 hit points, 20 DR; outside: AC 10, 50 hit points, 10 DR; either at 0 ends it. Area effects on both hit the prison only."
+        }
+      ]
+    },
+    "konjiki-steel-release-steel-projectile": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e50dC10hoyXLsT",
+          "type": "attack",
+          "label": "Steel Projectile",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "Piercing, slashing or bludgeoning.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d10",
+                "type": "piercing"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5egltU7i3H630IZ",
+          "type": "roll",
+          "label": "Its next save",
+          "roll": {
+            "formula": "1d4",
+            "note": "Subtract this from its next saving throw (doesn't stack)."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "B-Rank and S-Rank: +1 attack each."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Alomancy Infusion: shrapnel (1 Ingot)",
+          "appliesTo": {
+            "namePrefix": "Steel Release: Steel Projectile"
+          },
+          "cost": {
+            "pool": "ingots",
+            "amount": 1
+          },
+          "note": "Needs Metallic Thorns. Per attack: Metallic Thorns in a 5-foot radius around the target."
+        }
+      ]
+    },
+    "konjiki-steel-release-steel-rain": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRewFlzn4Mfl3u",
+          "type": "save",
+          "label": "Steel Rain",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            }
+          ],
+          "text": "A 15-foot sphere within 60 feet. Failure: the damage and 1 rank of Weakened; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d10",
+                "type": "piercing"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Add your [Weapons Damage] (a weapon die and modifier) to the roll."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eRewFlzn4Mfl3u",
+                "type": "save",
+                "label": "Steel Rain",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "A 15-foot sphere within 60 feet. Failure: the damage and 1 rank of Weakened; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d10) + (1d10)",
+                      "type": "piercing"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eRewFlzn4Mfl3u",
+                "type": "save",
+                "label": "Steel Rain",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "A 15-foot sphere within 60 feet. Failure: the damage and 1 rank of Weakened; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d10) + (2d10)",
+                      "type": "piercing"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eRewFlzn4Mfl3u",
+                "type": "save",
+                "label": "Steel Rain",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "A 15-foot sphere within 60 feet. Failure: the damage and 1 rank of Weakened; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d10) + (3d10)",
+                      "type": "piercing"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eRewFlzn4Mfl3u",
+                "type": "save",
+                "label": "Steel Rain",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  }
+                ],
+                "text": "A 15-foot sphere within 60 feet. Failure: the damage and 1 rank of Weakened; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d10) + (4d10)",
+                      "type": "piercing"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Alomancy Infusion: heavy (1 Ingot)",
+          "appliesTo": {
+            "namePrefix": "Steel Release: Steel Rain"
+          },
+          "cost": {
+            "pool": "ingots",
+            "amount": 1
+          },
+          "note": "Needs Superheavy Metals or Metallic Fan. Failing creatures are knocked Prone."
+        }
+      ]
+    },
+    "konjiki-steel-release-steel-spear": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eAIbX2FpsF7kQG",
+          "type": "attack",
+          "label": "Steel Spear",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "A critical hit triples the damage dice instead of doubling them.",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "5d8",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eAIbX2FpsF7kQG",
+                "type": "attack",
+                "label": "Steel Spear",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "A critical hit triples the damage dice instead of doubling them.",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "(5d8) + (1d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eAIbX2FpsF7kQG",
+                "type": "attack",
+                "label": "Steel Spear",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "A critical hit triples the damage dice instead of doubling them.",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "(5d8) + (2d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eAIbX2FpsF7kQG",
+                "type": "attack",
+                "label": "Steel Spear",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "A critical hit triples the damage dice instead of doubling them.",
+                "damage": {
+                  "parts": []
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "(5d8) + (3d8)",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Alomancy Infusion: keen (1 Ingot)",
+          "appliesTo": {
+            "namePrefix": "Steel Release: Steel Spear"
+          },
+          "cost": {
+            "pool": "ingots",
+            "choose": true
+          },
+          "note": "Needs Steel Reinforcement or Supersharp. +1 critical range per Ingot (up to 2)."
+        }
+      ]
+    },
+    "konjiki-steel-release-steel-suit": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUCKfU0ctM8L9Q",
+          "type": "heal",
+          "label": "Steel Suit",
+          "heal": {
+            "formula": "8d6",
+            "pool": "tempHp"
+          },
+          "text": "A willing ally: these temporary hit points, and 5 DR while they last (an Earthen Artifact). It ends when they reach 0."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "S-Rank: d10s."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5eUCKfU0ctM8L9Q",
+                "type": "heal",
+                "label": "Steel Suit",
+                "heal": {
+                  "formula": "9d6",
+                  "pool": "tempHp"
+                },
+                "text": "A willing ally: these temporary hit points, and 5 DR while they last."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eUCKfU0ctM8L9Q",
+                "type": "heal",
+                "label": "Steel Suit",
+                "heal": {
+                  "formula": "10d10",
+                  "pool": "tempHp"
+                },
+                "text": "A willing ally: these temporary hit points, and 5 DR while they last."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "konjiki-steel-release-steel-telekinesis": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e3ZZv4I2KQaf1g",
+          "type": "save",
+          "label": "Steel Telekinesis",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            }
+          ],
+          "text": "A creature within 30 feet in metal armor. Failure: Restrained and moved up to 30 feet; a Bonus action moves it again; it resaves at the end of each of its turns.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "B-Rank and S-Rank: +1 target each."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Alomancy Infusion: interrupt (1 Ingot)",
+          "appliesTo": {
+            "namePrefix": "Steel Release: Steel Telekinesis"
+          },
+          "cost": {
+            "pool": "ingots",
+            "amount": 1
+          },
+          "note": "Needs Metallic Step. Cast it as an ally casts an area jutsu (as if Interrupt): failing creatures move up to 30 feet toward its area; Instant."
+        }
+      ]
+    },
+    "konjiki-steel-release-steel-wall": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5el3GET2VzeZGPv",
+          "type": "heal",
+          "label": "Steel Wall",
+          "heal": {
+            "formula": "4d8 + 10",
+            "pool": "tempHp"
+          },
+          "text": "A wall of ten 10-foot panels (or around a 20-foot sphere), 2 feet thick, AC 20: its hit points."
+        },
+        {
+          "id": "n5e1cboAYp1XO3nm",
+          "type": "save",
+          "label": "Steel Wall: spikes",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Bonus action: creatures within 10 feet of one side. Failure: the damage; success: half.",
+          "activation": "bonus",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "piercing"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Spending an Alomancy Ingot: the wall regains 2d8 hit points. Upcast: +1d8 + 2 hit points per rank."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Alomancy Infusion: serrated (1 Ingot)",
+          "appliesTo": {
+            "namePrefix": "Steel Release: Steel Wall"
+          },
+          "cost": {
+            "pool": "ingots",
+            "amount": 1
+          },
+          "note": "Needs Metallic Thorns or Supersharp. Creatures in the area when it's made, wall running on it or attacking it in melee make a Dexterity save or gain 2 ranks of Bleed."
+        }
+      ]
+    },
+    "konjiki-steel-release-storm-of-steel": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5esuh1DhPRiOtMB",
+          "type": "save",
+          "label": "Storm of Steel",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            },
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            },
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            }
+          ],
+          "text": "Hostile creatures starting or first entering the 30-foot radius. Failure: 5d6 and an effect by type (bludgeoning: Dazed; piercing: 1 rank of Weakened; slashing: 1 rank of Bleed); success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "slashing"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Pick the damage type when you roll."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5esuh1DhPRiOtMB",
+                "type": "save",
+                "label": "Storm of Steel",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  },
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "Hostile creatures starting or first entering the 30-foot radius. Failure: 5d6 and an effect by type (bludgeoning: Dazed; piercing: 1 rank of Weakened; slashing: 1 rank of Bleed); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (1d6)",
+                      "type": "slashing"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5esuh1DhPRiOtMB",
+                "type": "save",
+                "label": "Storm of Steel",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  },
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "Hostile creatures starting or first entering the 30-foot radius. Failure: 5d6 and an effect by type (bludgeoning: Dazed; piercing: 1 rank of Weakened; slashing: 1 rank of Bleed); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (2d6)",
+                      "type": "slashing"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5esuh1DhPRiOtMB",
+                "type": "save",
+                "label": "Storm of Steel",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Weakened"
+                  },
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "Hostile creatures starting or first entering the 30-foot radius. Failure: 5d6 and an effect by type (bludgeoning: Dazed; piercing: 1 rank of Weakened; slashing: 1 rank of Bleed); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (3d6)",
+                      "type": "slashing"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Alomancy Infusion: skewer (1 Ingot)",
+          "appliesTo": {
+            "namePrefix": "Steel Release: Storm of Steel"
+          },
+          "cost": {
+            "pool": "ingots",
+            "amount": 1
+          },
+          "note": "Needs Metallic Fan or Metallic Step. Failing creatures are pulled into a space of your choice in the area."
+        }
+      ]
+    }
+  }
+}

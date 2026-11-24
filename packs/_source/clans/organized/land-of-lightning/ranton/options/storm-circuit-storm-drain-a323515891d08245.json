@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "ranton",
       "sourceLine": 6085,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,43 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eehUrf9BL9G2Zk",
+        "type": "roll",
+        "label": "Storm Drain",
+        "roll": {
+          "formula": "1d4",
+          "note": "Bonus action: consume all Shocked from creatures within 30 feet; 1d4 temporary chakra per rank until the end of your next turn (roll them)."
+        },
+        "activation": "bonus",
+        "cost": {
+          "pool": "voltage",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5etXhe4GDqJxr7r",
+        "type": "save",
+        "label": "Storm Drain: dispel (7th)",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "A hostile creature in range with a beneficial Lightning Release jutsu (any nature release at 15th). Failure: it's dispelled.",
+        "damage": {
+          "parts": []
+        },
+        "minLevel": 7
+      }
+    ]
   }
 }

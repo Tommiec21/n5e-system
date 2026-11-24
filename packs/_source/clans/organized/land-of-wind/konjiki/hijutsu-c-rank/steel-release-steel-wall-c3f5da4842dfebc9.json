@@ -17,6 +17,24 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Earth Release, Stable, Barrier",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Spending an Alomancy Ingot: the wall regains 2d8 hit points. Upcast: +1d8 + 2 hit points per rank."
+        }
+      ],
+      "castOption": {
+        "label": "Alomancy Infusion: serrated (1 Ingot)",
+        "appliesTo": {
+          "namePrefix": "Steel Release: Steel Wall"
+        },
+        "cost": {
+          "pool": "ingots",
+          "amount": 1
+        },
+        "note": "Needs Metallic Thorns or Supersharp. Creatures in the area when it's made, wall running on it or attacking it in melee make a Dexterity save or gain 2 ranks of Bleed."
       }
     }
   },
@@ -110,7 +128,44 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5el3GET2VzeZGPv",
+        "type": "heal",
+        "label": "Steel Wall",
+        "heal": {
+          "formula": "4d8 + 10",
+          "pool": "tempHp"
+        },
+        "text": "A wall of ten 10-foot panels (or around a 20-foot sphere), 2 feet thick, AC 20: its hit points."
+      },
+      {
+        "id": "n5e1cboAYp1XO3nm",
+        "type": "save",
+        "label": "Steel Wall: spikes",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Bonus action: creatures within 10 feet of one side. Failure: the damage; success: half.",
+        "activation": "bonus",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "piercing"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

@@ -85,10 +85,14 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5efTbxNxbdIlt0m",
+        "type": "summon",
+        "label": "Ink Oni (two)",
+        "summon": {
+          "uuid": "Compendium.n5e.summons.Actor.n5es31GMQE2JaL5J",
+          "count": 2,
+          "template": ""
+        }
       }
     ],
     "featureType": "active",
@@ -155,9 +159,29 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5efTbxNxbdIlt0m",
+              "type": "summon",
+              "label": "Ink Oni (three)",
+              "summon": {
+                "uuid": "Compendium.n5e.summons.Actor.n5es31GMQE2JaL5J",
+                "count": 3,
+                "template": ""
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Concentration. Command both as a Bonus Action, each with its own action. +1 Oni per rank above A."
+        }
+      ]
     }
   },
   "folder": "cd82d923ec5480f5"

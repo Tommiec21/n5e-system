@@ -58,3 +58,14 @@ export function featureDiscipline(item) {
   if ( m ) return { ninjutsu: "nin", genjutsu: "gen", taijutsu: "tai", bukijutsu: "tai" }[m[1].toLowerCase()];
   return CLASS_DISCIPLINE[item.system?.requirement?.class] ?? "tai";
 }
+
+/**
+ * STD6d Hunter-Nin: has the actor chosen this class level-up option? `spec` is "<key>:<value>"
+ * ("lethalPrecision:tai"). Reads class items' advancement choices. Pure.
+ */
+export function optionChosen(actor, spec) {
+  const [key, value] = String(spec ?? "").split(":");
+  if ( !key ) return false;
+  const items = actor?.items?.filter ? actor.items.filter(i => i.type === "class") : [];
+  return items.some(c => (c.system?.advancement ?? []).some(a => a?.type === "option" && a.key === key && [...(a.chosen ?? [])].includes(value)));
+}

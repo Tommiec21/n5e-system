@@ -17,7 +17,14 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Wind Release",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1 rank of Weakened per rank."
+        }
+      ]
     }
   },
   "ownership": {
@@ -109,7 +116,59 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ef5Ugh11xKxkiX",
+        "type": "attack",
+        "label": "Vacuum Collapse",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d10",
+              "type": "wind"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eP8TnAocGgJBay",
+        "type": "save",
+        "label": "Vacuum Collapse: on a hit",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: 1 rank of Weakened until the end of its next turn.",
+            "failure": "Failure: 1 rank of Weakened.",
+            "critFailure": "Critical Failure: 2 ranks of Weakened."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          }
+        ],
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

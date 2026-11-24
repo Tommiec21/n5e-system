@@ -17,7 +17,14 @@
         "cost": "20 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Medical",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Needs Medical Fist, Defensive Cloak and Offensive Cloak (it ends both cloaks). Your [Unarmed Damage] die is 3d6, poison or necrotic; your melee damage stops healing until the end of its next turn; critical Medical or Taijutsu hits triple your unarmed die. When it ends, you can't mold chakra until you rest."
+        }
+      ]
     }
   },
   "ownership": {
@@ -108,7 +115,22 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eR0C8Hue1kBE9H",
+        "type": "damage",
+        "label": "Falling Blossom: melee attacker",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d12",
+              "type": "necrotic"
+            }
+          ]
+        },
+        "text": "A creature that hits you in melee; you regain as many hit points."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

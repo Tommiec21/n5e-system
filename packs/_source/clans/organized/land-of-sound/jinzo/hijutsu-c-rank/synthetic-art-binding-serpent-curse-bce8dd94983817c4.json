@@ -17,6 +17,203 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Fuinjutsu, Bio Serpent",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Bio-Serpent] Its upcast adds ranks of Envenomed it never inflicts."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5e8Bjn5OenUdGWa",
+              "type": "save",
+              "label": "Binding Serpent Curse",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                },
+                {
+                  "key": "jinzo-stupor",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Stupor"
+                }
+              ],
+              "text": "Reaction, your Bio-Pet active: the triggering creature. Failure: Grappled by your Large Bio-Pet (speed 0), the bite and Stupor for the duration; resave at the end of each of its turns.",
+              "activation": "reaction",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "chakra"
+                  },
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eVCCLc1xXvJ72j",
+              "type": "damage",
+              "label": "Bite again (Bonus action)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "chakra"
+                  },
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e8Bjn5OenUdGWa",
+              "type": "save",
+              "label": "Binding Serpent Curse",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                },
+                {
+                  "key": "jinzo-stupor",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Stupor"
+                }
+              ],
+              "text": "Reaction, your Bio-Pet active: the triggering creature. Failure: Grappled by your Large Bio-Pet (speed 0), the bite and Stupor for the duration; resave at the end of each of its turns.",
+              "activation": "reaction",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "chakra"
+                  },
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eVCCLc1xXvJ72j",
+              "type": "damage",
+              "label": "Bite again (Bonus action)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "chakra"
+                  },
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e8Bjn5OenUdGWa",
+              "type": "save",
+              "label": "Binding Serpent Curse",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                },
+                {
+                  "key": "jinzo-stupor",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Stupor"
+                }
+              ],
+              "text": "Reaction, your Bio-Pet active: the triggering creature. Failure: Grappled by your Large Bio-Pet (speed 0), the bite and Stupor for the duration; resave at the end of each of its turns.",
+              "activation": "reaction",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (3d6)",
+                    "type": "chakra"
+                  },
+                  {
+                    "formula": "(3d6) + (3d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eVCCLc1xXvJ72j",
+              "type": "damage",
+              "label": "Bite again (Bonus action)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (3d6)",
+                    "type": "chakra"
+                  },
+                  {
+                    "formula": "(3d6) + (3d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +307,68 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e8Bjn5OenUdGWa",
+        "type": "save",
+        "label": "Binding Serpent Curse",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "grappled",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Grappled"
+          },
+          {
+            "key": "jinzo-stupor",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Stupor"
+          }
+        ],
+        "text": "Reaction, your Bio-Pet active: the triggering creature. Failure: Grappled by your Large Bio-Pet (speed 0), the bite and Stupor for the duration; resave at the end of each of its turns.",
+        "activation": "reaction",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "chakra"
+            },
+            {
+              "formula": "3d6",
+              "type": "poison"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eVCCLc1xXvJ72j",
+        "type": "damage",
+        "label": "Bite again (Bonus action)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "chakra"
+            },
+            {
+              "formula": "3d6",
+              "type": "poison"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

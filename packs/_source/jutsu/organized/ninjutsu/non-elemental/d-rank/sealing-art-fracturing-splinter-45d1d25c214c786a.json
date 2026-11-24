@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eGRgAPHh5iDBHx",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Fracturing Splinter",
         "save": {
           "abilities": [
             "cha"
@@ -97,21 +96,21 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "A creature within 60 feet (B-Rank: +1). Failure: the damage (C-Rank: and 1 Sealed; A-Rank: no hand seals until the start of its next turn).",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d8",
-        "roll": {
-          "formula": "2d8",
-          "note": "On a failed save the target creature takes 2d8 Force damage and 2d8 Chakra damage."
+          "parts": [
+            {
+              "formula": "2d8",
+              "type": "force"
+            },
+            {
+              "formula": "2d8",
+              "type": "chakra"
+            }
+          ]
         }
       }
     ],
@@ -199,9 +198,163 @@
           "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically.",
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eGRgAPHh5iDBHx",
+              "type": "save",
+              "label": "Fracturing Splinter",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "sealed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Sealed"
+                }
+              ],
+              "text": "A creature within 60 feet (B-Rank: +1). Failure: the damage (C-Rank: and 1 Sealed; A-Rank: no hand seals until the start of its next turn).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (1d8)",
+                    "type": "force"
+                  },
+                  {
+                    "formula": "(2d8) + (1d8)",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eGRgAPHh5iDBHx",
+              "type": "save",
+              "label": "Fracturing Splinter",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "sealed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Sealed"
+                }
+              ],
+              "text": "A creature within 60 feet (B-Rank: +1). Failure: the damage (C-Rank: and 1 Sealed; A-Rank: no hand seals until the start of its next turn).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (2d8)",
+                    "type": "force"
+                  },
+                  {
+                    "formula": "(2d8) + (2d8)",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eGRgAPHh5iDBHx",
+              "type": "save",
+              "label": "Fracturing Splinter",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "sealed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Sealed"
+                }
+              ],
+              "text": "A creature within 60 feet (B-Rank: +1). Failure: the damage (C-Rank: and 1 Sealed; A-Rank: no hand seals until the start of its next turn).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (3d8)",
+                    "type": "force"
+                  },
+                  {
+                    "formula": "(2d8) + (3d8)",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eGRgAPHh5iDBHx",
+              "type": "save",
+              "label": "Fracturing Splinter",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "sealed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Sealed"
+                }
+              ],
+              "text": "A creature within 60 feet (B-Rank: +1). Failure: the damage (C-Rank: and 1 Sealed; A-Rank: no hand seals until the start of its next turn).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (4d8)",
+                    "type": "force"
+                  },
+                  {
+                    "formula": "(2d8) + (4d8)",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5eDpY0QdrV0NfEW"

@@ -17,7 +17,171 @@
         "cost": "7 Chakra or 4 Calories",
         "keywords": "Hijutsu, Taijutsu, Clash",
         "components": "HS, CM, M"
-      }
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5e4FdTRU6n7Pk13",
+              "type": "save",
+              "label": "Multi-Size Arm Missile",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                }
+              ],
+              "text": "A 30-foot line (Expansion Crash: a 30-foot cone). Failure: [Unarmed Damage] + 2d8, Bruised, pushed 10 feet and Prone (A-Rank: Staggered); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (1d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e4FdTRU6n7Pk13",
+              "type": "save",
+              "label": "Multi-Size Arm Missile",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                }
+              ],
+              "text": "A 30-foot line (Expansion Crash: a 30-foot cone). Failure: [Unarmed Damage] + 2d8, Bruised, pushed 10 feet and Prone (A-Rank: Staggered); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (2d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e4FdTRU6n7Pk13",
+              "type": "save",
+              "label": "Multi-Size Arm Missile",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                }
+              ],
+              "text": "A 30-foot line (Expansion Crash: a 30-foot cone). Failure: [Unarmed Damage] + 2d8, Bruised, pushed 10 feet and Prone (A-Rank: Staggered); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (3d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Pay with Calories (4)",
+          "appliesTo": {
+            "namePrefix": "Multi-Size Arm Missile"
+          },
+          "note": "Cast it for 4 Calories instead of chakra (its upcast may add Calories: spend them by hand).",
+          "costDelta": "zero",
+          "cost": {
+            "pool": "calories",
+            "amount": 4
+          }
+        },
+        {
+          "label": "Expansion Crash",
+          "appliesTo": {
+            "namePrefix": "Multi-Size Arm Missile"
+          },
+          "note": "In your Expansion Technique stance: Self (30-foot cone)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -108,7 +272,52 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e4FdTRU6n7Pk13",
+        "type": "save",
+        "label": "Multi-Size Arm Missile",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          },
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          },
+          {
+            "key": "staggered",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Staggered"
+          }
+        ],
+        "text": "A 30-foot line (Expansion Crash: a 30-foot cone). Failure: [Unarmed Damage] + 2d8, Bruised, pushed 10 feet and Prone (A-Rank: Staggered); success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d8",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

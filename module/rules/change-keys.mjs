@@ -15,6 +15,7 @@
  *   n5e.damage.<weapon|unarmed>   +damage on weapon or unarmed attacks
  *   n5e.disciplineAbility.<disc>  sets the discipline's ability (value: ability key)
  *   n5e.keywordAbility.<keyword>  jutsu with this keyword may use this ability when it is higher (STD6d;
+ *                                 "discipline:gen": every jutsu cast as Genjutsu, Actualization;
  *                                 Medical Release: medical = wis)
  *   n5e.saveTier.shift            moves four-tier results by N steps (+/-)
  *   n5e.concentration.max         +max concentration jutsu
@@ -27,6 +28,7 @@
  *   n5e.fury.max                  + max Fury (Fury is a single state unless a feat lets it stack)
  *   n5e.reinforced                Titan Fist: armor Reinforced + value, or Reinforced = Taijutsu mod without armor
  *   n5e.resist / n5e.immune       adds a damage resistance or immunity (value: damage type; NPC3 Freeform Jutsu)
+ *   n5e.vulnerable                adds a damage vulnerability (value: damage type; AMP1f Investitures)
  *   n5e.conditionResist           condition resistance (King 2026-11-16): advantage on saves against a condition
  *                                 (value: its key) or a condition group (value: group:physical, group:mental...)
  *   n5e.conditionImmune           condition immunity: it can't be applied (a key or a group, as above)
@@ -50,7 +52,7 @@ export const CHANGE_KEY_PREFIX = "n5e.";
 export function emptyModifiers() {
   return {
     mastery: [], dr: 0, pierce: 0, critRange: {}, cost: [], saveDC: {}, attack: {}, damage: {}, disciplineAbility: {}, keywordAbility: {},
-    saveTierShift: 0, concentrationMax: 0, upkeep: [], diceAll: 0, unarmedDice: [], unarmedDie: [], unarmedStep: 0, furyMax: 0, reinforced: 0, resist: [], immune: [], conditionResist: [], conditionImmune: [], rollBonus: [], stateResist: [], stateImmune: [], rankCost: [], unknown: []
+    saveTierShift: 0, concentrationMax: 0, upkeep: [], diceAll: 0, unarmedDice: [], unarmedDie: [], unarmedStep: 0, furyMax: 0, reinforced: 0, resist: [], immune: [], vulnerable: [], conditionResist: [], conditionImmune: [], rollBonus: [], stateResist: [], stateImmune: [], rankCost: [], unknown: []
   };
 }
 
@@ -81,12 +83,19 @@ export function parseN5eChanges(changes) {
     const sub = rest.join(".");
     const label = change.effect?.name ?? "Effect";
     switch ( group ) {
-      case "mastery":
-        if ( sub ) out.mastery.push({ target: sub, source: String(change.value || label) });
+      case "mastery": {
+        if ( !sub ) break;
+        // AMP1e: "Source ×N" raises N steps from one source (Coordinated: 1, 2 at 7th, 3 at 15th).
+        const source = String(change.value || label);
+        const m = source.match(/^(.*?)\s*[×x]\s*(\d+)$/);
+        if ( !m ) { out.mastery.push({ target: sub, source }); break; }
+        for ( let n = 1; n <= Number(m[2]); n++ ) out.mastery.push({ target: sub, source: Number(m[2]) > 1 ? `${m[1]} ${n}` : m[1] });
         break;
+      }
       case "dr": out.dr += num(change.value); break;
       case "resist": if ( change.value ) out.resist.push(String(change.value)); break;
       case "immune": if ( change.value ) out.immune.push(String(change.value)); break;
+      case "vulnerable": if ( change.value ) out.vulnerable.push(String(change.value)); break;
       case "conditionResist": case "conditionImmune": case "stateResist": case "stateImmune":
         if ( change.value ) out[group].push(String(change.value));
         break;
@@ -186,6 +195,7 @@ export function changeKeyCatalog(N5E) {
   add("Defense", "n5e.dr", "Damage Reduction: + number");
   add("Defense", "n5e.resist", "Damage resistance: value = damage type");
   add("Defense", "n5e.immune", "Damage immunity: value = damage type");
+  add("Defense", "n5e.vulnerable", "Damage vulnerability: value = damage type");
   add("Defense", "n5e.conditionResist", "Condition resistance: value = condition key or group:<tag>");
   add("Defense", "n5e.conditionImmune", "Condition immunity: value = condition key or group:<tag>");
   add("Defense", "n5e.stateResist", "State resistance: value = state key");

@@ -85,12 +85,12 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
+        "id": "n5ey9RZoxbw9LA2C",
         "type": "roll",
-        "label": "4d6",
+        "label": "Pride: parry",
         "roll": {
           "formula": "4d6",
-          "note": "When you would take damage, roll your weapons damage+4d6 and reduce the damage by the rolled amount as you parry some or all of the impact. If you reduce the damage to 0, the triggering creature gains a rank of Demoralized."
+          "note": "Reaction to Weapon, Ninjutsu, Taijutsu or Bukijutsu damage (Chain 2: also psychic): your [Weapon damage] (roll it and add) + this reduces it; at 0 the trigger gains 1 Demoralized (S-Rank: hostile creatures within 20 feet). A-Rank: hostile creatures you choose within 5 feet take half the result."
         }
       }
     ],
@@ -171,9 +171,33 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5ey9RZoxbw9LA2C",
+              "type": "roll",
+              "label": "Pride: parry",
+              "roll": {
+                "formula": "(4d6) + (1d6)",
+                "note": "Reaction to Weapon, Ninjutsu, Taijutsu or Bukijutsu damage (Chain 2: also psychic): your [Weapon damage] (roll it and add) + this reduces it; at 0 the trigger gains 1 Demoralized (S-Rank: hostile creatures within 20 feet). A-Rank: hostile creatures you choose within 5 feet take half the result."
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ey9RZoxbw9LA2C",
+              "type": "roll",
+              "label": "Pride: parry",
+              "roll": {
+                "formula": "(4d6) + (2d6)",
+                "note": "Reaction to Weapon, Ninjutsu, Taijutsu or Bukijutsu damage (Chain 2: also psychic): your [Weapon damage] (roll it and add) + this reduces it; at 0 the trigger gains 1 Demoralized (S-Rank: hostile creatures within 20 feet). A-Rank: hostile creatures you choose within 5 feet take half the result."
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "850448e8be1ed23c"

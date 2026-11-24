@@ -84,23 +84,31 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e3nNOJvkVTxyTz",
         "type": "attack",
-        "label": "Attack",
+        "label": "1000 Years of Death",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "You must be hidden from the target.",
         "damage": {
           "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eWgA5hDzaB09ia",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Shame",
         "save": {
           "abilities": [
             "cha"
@@ -109,10 +117,10 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "On a hit. Failure: pushed 15 feet; the next melee attack against it before the end of its next turn has advantage.",
         "damage": {
           "parts": []
         }
@@ -182,7 +190,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "4c88a69b38014936"

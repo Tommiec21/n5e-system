@@ -17,6 +17,189 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu, Water Release, Lightning Release, Storm Branch",
         "components": "CM, M, W (Any Melee)"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Storm Branch] Upcast: +5 feet to the cone per rank."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eZv4xyLaJKA2x5",
+              "type": "attack",
+              "label": "Nukite Sword",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "One attack roll against each creature in a 15-foot cone: [Unarmed Damage] or [Weapon Damage] + 2d6 lightning.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eGbBRH0yIMaqxz",
+              "type": "damage",
+              "label": "Nukite Sword: through a reaction",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "text": "A target used its reaction for temporary hit points or AC and you still hit."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eZv4xyLaJKA2x5",
+              "type": "attack",
+              "label": "Nukite Sword",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "One attack roll against each creature in a 15-foot cone: [Unarmed Damage] or [Weapon Damage] + 2d6 lightning.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eGbBRH0yIMaqxz",
+              "type": "damage",
+              "label": "Nukite Sword: through a reaction",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "text": "A target used its reaction for temporary hit points or AC and you still hit."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eZv4xyLaJKA2x5",
+              "type": "attack",
+              "label": "Nukite Sword",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "One attack roll against each creature in a 15-foot cone: [Unarmed Damage] or [Weapon Damage] + 2d6 lightning.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (3d6)",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eGbBRH0yIMaqxz",
+              "type": "damage",
+              "label": "Nukite Sword: through a reaction",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "text": "A target used its reaction for temporary hit points or AC and you still hit."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eZv4xyLaJKA2x5",
+              "type": "attack",
+              "label": "Nukite Sword",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "One attack roll against each creature in a 15-foot cone: [Unarmed Damage] or [Weapon Damage] + 2d6 lightning.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (4d6)",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eGbBRH0yIMaqxz",
+              "type": "damage",
+              "label": "Nukite Sword: through a reaction",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "text": "A target used its reaction for temporary hit points or AC and you still hit."
+            }
+          ]
+        }
       }
     }
   },
@@ -112,7 +295,49 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eZv4xyLaJKA2x5",
+        "type": "attack",
+        "label": "Nukite Sword",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "One attack roll against each creature in a 15-foot cone: [Unarmed Damage] or [Weapon Damage] + 2d6 lightning.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "lightning"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eGbBRH0yIMaqxz",
+        "type": "damage",
+        "label": "Nukite Sword: through a reaction",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "lightning"
+            }
+          ]
+        },
+        "text": "A target used its reaction for temporary hit points or AC and you still hit."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

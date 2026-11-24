@@ -17,7 +17,14 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Water Release, Bio Serpent",
         "components": "HS, CM, W (Any Armor)"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Bio-Serpent]"
+        }
+      ]
     }
   },
   "ownership": {
@@ -110,7 +117,35 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e4H32lqGPXkVXT",
+        "type": "save",
+        "label": "Armor-Eater",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "jinzo-stupor",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Stupor"
+          }
+        ],
+        "text": "A creature within 30 feet (+1 per rank). Failure: −20 speed; below half its speed, Stupor until the end of your next turn. C-Rank or higher: −2 AC and DR until the end of your next turn (−1 more per rank above C).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

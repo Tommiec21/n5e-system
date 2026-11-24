@@ -50,17 +50,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eByln76XrO4Lbq",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "prone",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Prone"
-          }
-        ],
+        "label": "Leaf Hurricane",
         "save": {
           "abilities": [
             "dex"
@@ -69,10 +61,17 @@
             "source": "discipline"
           },
           "onSuccess": "half",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "A 15-foot radius on you. Failure: Prone, pulled 10 feet toward you; success: half.",
         "damage": {
           "parts": [
             {
@@ -83,9 +82,28 @@
         }
       },
       {
-        "id": "finisher-parsed1",
-        "type": "damage",
-        "label": "Finisher: Damage",
+        "id": "n5eM0Gk8uhWwjE1R",
+        "type": "save",
+        "label": "Finisher: Leaf Hurricane",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Finisher: two kicks. Failure: Prone, pushed 30 feet away; success: half.",
         "damage": {
           "parts": [
             {
@@ -226,9 +244,209 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eByln76XrO4Lbq",
+              "type": "save",
+              "label": "Leaf Hurricane",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 15-foot radius on you. Failure: Prone, pulled 10 feet toward you; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed + 2d6) + (1d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eM0Gk8uhWwjE1R",
+              "type": "save",
+              "label": "Finisher: Leaf Hurricane",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Finisher: two kicks. Failure: Prone, pushed 30 feet away; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed + 4d6) + (1d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eByln76XrO4Lbq",
+              "type": "save",
+              "label": "Leaf Hurricane",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 15-foot radius on you. Failure: Prone, pulled 10 feet toward you; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed + 2d6) + (2d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eM0Gk8uhWwjE1R",
+              "type": "save",
+              "label": "Finisher: Leaf Hurricane",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Finisher: two kicks. Failure: Prone, pushed 30 feet away; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed + 4d6) + (2d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eByln76XrO4Lbq",
+              "type": "save",
+              "label": "Leaf Hurricane",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 15-foot radius on you. Failure: Prone, pulled 10 feet toward you; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed + 2d6) + (3d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eM0Gk8uhWwjE1R",
+              "type": "save",
+              "label": "Finisher: Leaf Hurricane",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Finisher: two kicks. Failure: Prone, pushed 30 feet away; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed + 4d6) + (3d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "aee26bc2434fe738"

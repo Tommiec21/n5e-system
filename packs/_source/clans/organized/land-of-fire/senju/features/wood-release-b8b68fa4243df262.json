@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "senju",
-      "sourceLine": 1966
+      "sourceLine": 1966,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "You gain the other Wood Release Affinity release (set it on the sheet); Earth jutsu can deal earth and Water jutsu cold instead."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,30 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5et4KAlu6ENzUzq",
+        "type": "save",
+        "label": "Wood Release: pull or push",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Once per turn, Bonus action: a creature within 30 feet Grappled or Restrained by a Senju Hijutsu, or Drained. Failure: pulled or pushed 20 feet.",
+        "activation": "bonus",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

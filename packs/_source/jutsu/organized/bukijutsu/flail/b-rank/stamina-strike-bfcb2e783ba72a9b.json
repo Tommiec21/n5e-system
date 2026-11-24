@@ -85,30 +85,31 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5erO9AgrRABuSR6",
         "type": "attack",
-        "label": "Attack",
+        "label": "Stamina Strike",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Chain 2: one more creature.",
         "damage": {
           "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "6d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5e8464Lv7orRIXI",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "dazed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Dazed"
-          }
-        ],
+        "label": "Stamina: Dazed",
         "save": {
           "abilities": [
             "con"
@@ -117,21 +118,19 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "On a hit (a critical hit: automatic failure). Failure: Dazed and its next jutsu before the end of your next turn costs 8 more.",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "6d6",
-        "roll": {
-          "formula": "6d6",
-          "note": "Make a melee Taijutsu attack against a creature in range, dealing your weapons damage+6d6 damage and the target creature must make a Constitution Saving Throw. If the attack is a critical hit, the target creature automatically fails this save."
         }
       }
     ],
@@ -212,9 +211,113 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5erO9AgrRABuSR6",
+              "type": "attack",
+              "label": "Stamina Strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Chain 2: one more creature.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "6d6 + 1d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5e8464Lv7orRIXI",
+              "type": "save",
+              "label": "Stamina: Dazed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "On a hit (a critical hit: automatic failure). Failure: Dazed and its next jutsu before the end of your next turn costs 8 more.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5erO9AgrRABuSR6",
+              "type": "attack",
+              "label": "Stamina Strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Chain 2: one more creature.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "6d6 + 2d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5e8464Lv7orRIXI",
+              "type": "save",
+              "label": "Stamina: Dazed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "On a hit (a critical hit: automatic failure). Failure: Dazed and its next jutsu before the end of your next turn costs 8 more.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "a56cd4d54013a971"

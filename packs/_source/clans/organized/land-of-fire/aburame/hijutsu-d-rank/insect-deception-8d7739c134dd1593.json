@@ -17,6 +17,157 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Poison or chakra (your choice)."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5euq8PiwgOno9BB",
+              "type": "save",
+              "label": "Insect Deception",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "Bonus action: an invisible 10-foot radius trap within 40 feet (+5 at B and S) for 1 hour, while you're within 120 feet. A hostile creature moving in or out triggers it: creatures you choose in it. Failure: the damage and Restrained for 1 minute (concentration from then; resave at the end of its turns, taking the damage again on a failure).",
+              "activation": "bonus",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5euq8PiwgOno9BB",
+              "type": "save",
+              "label": "Insect Deception",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "Bonus action: an invisible 10-foot radius trap within 40 feet (+5 at B and S) for 1 hour, while you're within 120 feet. A hostile creature moving in or out triggers it: creatures you choose in it. Failure: the damage and Restrained for 1 minute (concentration from then; resave at the end of its turns, taking the damage again on a failure).",
+              "activation": "bonus",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5euq8PiwgOno9BB",
+              "type": "save",
+              "label": "Insect Deception",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "Bonus action: an invisible 10-foot radius trap within 40 feet (+5 at B and S) for 1 hour, while you're within 120 feet. A hostile creature moving in or out triggers it: creatures you choose in it. Failure: the damage and Restrained for 1 minute (concentration from then; resave at the end of its turns, taking the damage again on a failure).",
+              "activation": "bonus",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (3d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5euq8PiwgOno9BB",
+              "type": "save",
+              "label": "Insect Deception",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "Bonus action: an invisible 10-foot radius trap within 40 feet (+5 at B and S) for 1 hour, while you're within 120 feet. A hostile creature moving in or out triggers it: creatures you choose in it. Failure: the damage and Restrained for 1 minute (concentration from then; resave at the end of its turns, taking the damage again on a failure).",
+              "activation": "bonus",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (4d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -107,7 +258,41 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5euq8PiwgOno9BB",
+        "type": "save",
+        "label": "Insect Deception",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "Bonus action: an invisible 10-foot radius trap within 40 feet (+5 at B and S) for 1 hour, while you're within 120 feet. A hostile creature moving in or out triggers it: creatures you choose in it. Failure: the damage and Restrained for 1 minute (concentration from then; resave at the end of its turns, taking the damage again on a failure).",
+        "activation": "bonus",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "poison"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

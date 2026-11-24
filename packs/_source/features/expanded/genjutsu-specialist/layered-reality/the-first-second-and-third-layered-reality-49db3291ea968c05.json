@@ -39,7 +39,26 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Merge Genjutsu: the cast dialog option spends 1 or 2 Actualization Dice; add the other Genjutsu's base cost and apply its effects on a failed save."
+        }
+      ],
+      "castOption": {
+        "label": "The First, Second and Third: merge Genjutsu (1–2 dice)",
+        "appliesTo": {
+          "discipline": "gen",
+          "maxRank": "lvl(6:D,14:C)"
+        },
+        "note": "Merged with @amount more Genjutsu of the same rank that deal no damage: add their base costs; on a failed save the target also suffers them.",
+        "cost": {
+          "pool": "actualizationDice",
+          "choose": true
+        }
+      }
     }
   },
   "ownership": {

@@ -1,0 +1,353 @@
+{
+  "_id": "n5epYHEhmCuPnXGi",
+  "_key": "!actors!n5epYHEhmCuPnXGi",
+  "name": "Doki (Claw)",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "mutant",
+      "blurb": "Kashu: Doki (Claw)",
+      "summonRole": "Doki (Claw)",
+      "biography": "<p><em>Conductors Throne (Kashu, Harmonic Branch).</em> Your Doki act as a bonus action on your turn. They use your proficiency bonus and your highest jutsu attack bonus or save DC.</p><p><strong>Large Mutant.</strong> <strong>Armor Class</strong> 16 + 2 at 7th and 15th levels · <strong>Hit Points</strong> 20 + (Twice your Level) · <strong>Speed</strong> 40 ft. STR +4, DEX +4, CON +3, INT −2, WIS +0, CHA +0. <strong>Condition Immunities</strong> All Mental, Exhaustion. <strong>Saving Throws</strong> Str, Dex. <strong>Skills</strong> Athletics, Acrobatics (Mastery 2), Perception. <strong>Senses</strong> Blindsight 30 ft.</p><p><strong>Linked to you when summoned:</strong> hit points, proficiency bonus, highest jutsu attack bonus and save DC, and your level. Add the AC increases at 7th and 15th by hand.</p>"
+    },
+    "abilities": {
+      "str": {
+        "value": 18
+      },
+      "dex": {
+        "value": 18
+      },
+      "con": {
+        "value": 16
+      },
+      "int": {
+        "value": 6
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 10
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 16,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "large",
+      "conditionImmune": [
+        "berserk",
+        "charmed",
+        "confused",
+        "demoralized",
+        "shaken",
+        "concussed",
+        "exhaustion"
+      ],
+      "speed": {
+        "walk": 40,
+        "climb": 0,
+        "swim": 0,
+        "fly": 0,
+        "burrow": 0,
+        "hover": false
+      },
+      "senses": {
+        "blindsight": 30
+      }
+    },
+    "hpMax": 22,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5eeDoBCWalhHaQJ",
+      "_key": "!actors.items!n5epYHEhmCuPnXGi.n5eeDoBCWalhHaQJ",
+      "name": "Demonic Immunity",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>Doki are immune to negative effects and damage inflicted by jutsu cast with the Auditory Ninja Tool.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eKtaVb8aOyzjm2",
+      "_key": "!actors.items!n5epYHEhmCuPnXGi.n5eKtaVb8aOyzjm2",
+      "name": "Shared Proficiency",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Doki’s proficiency bonus is equal to yours and uses it calculate its saving throws and it uses its summoners highest jutsu attack bonus or save DC for its calculations.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5ebWTTzsOKqiVg7",
+      "_key": "!actors.items!n5epYHEhmCuPnXGi.n5ebWTTzsOKqiVg7",
+      "name": "Revolt of the Demon World",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Ranged Genjutsu Attack:</em> +Your attack bonus to hit, reach 30 ft., one target. <em>Hit:</em> 3d8 Psychic damage, and half as much chakra damage. This increases by +1d8 at 7th and 15th levels.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eiRH9wbkGwTJz2",
+            "type": "attack",
+            "label": "Revolt of the Demon World",
+            "attack": {
+              "discipline": "gen",
+              "range": "ranged",
+              "count": 1,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "3d8",
+                  "type": "psychic"
+                }
+              ]
+            },
+            "text": "Half as much chakra damage too; +1d8 at your 7th and 15th levels."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eKS13BDVy86kU7",
+      "_key": "!actors.items!n5epYHEhmCuPnXGi.n5eKS13BDVy86kU7",
+      "name": "Predatory Endurance",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>At the start of its summoners turns, if an allied Doki creature within 30 feet took damage since the summoners previous turn, All Doki creatures gains 10 temporary hit points. This increases by +5 at 7th and 15th levels.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eBRAMw0RQHKKzP",
+      "_key": "!actors.items!n5epYHEhmCuPnXGi.n5eBRAMw0RQHKKzP",
+      "name": "Claw",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Multiattack.</em> Doki (Claw) can make 2 attacks with Claw. <em>Melee Weapon Attack:</em> +Your attack bonus to hit, reach 5 ft., one target. <em>Hit:</em> 1d6+4 Slashing damage. This attack scores a critical hit on a roll of 19-20. If you score at least one attack, you force the target to make a Constitution saving throw. On a failure, they gain 1 rank of Disorient.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eOWt4Mpf21xSu5",
+            "type": "attack",
+            "label": "Claw",
+            "attack": {
+              "discipline": "tai",
+              "range": "melee",
+              "count": 2,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "1d6 + 4",
+                  "type": "slashing"
+                }
+              ]
+            },
+            "text": "Critical hit on 19–20."
+          },
+          {
+            "id": "n5eXAdWvliw7FQ7K",
+            "type": "save",
+            "label": "Claw: disorient",
+            "save": {
+              "abilities": [
+                "con"
+              ],
+              "dc": {
+                "source": "gen"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "inflicts": [
+              {
+                "key": "kashu-disoriented",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Disoriented"
+              }
+            ],
+            "text": "At least one hit. Failure: 1 rank of Disoriented."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5eYvQAP73QpC5QJ",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "hpMax": "20 + 2 * @level",
+        "bonuses.attack.gen": "max(@attack.nin, @attack.tai, @attack.gen) - @prof",
+        "bonuses.attack.tai": "max(@attack.nin, @attack.tai, @attack.gen) - @prof",
+        "bonuses.saveDC.gen": "max(@dc.nin, @dc.tai, @dc.gen) - 8 - @prof"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Doki (Claw)",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.93.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

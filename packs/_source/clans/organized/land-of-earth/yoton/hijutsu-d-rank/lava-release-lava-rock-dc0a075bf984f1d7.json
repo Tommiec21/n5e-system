@@ -17,6 +17,171 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Earth Release, Fire Release, Clash",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eSSi6yrVC4FCor",
+              "type": "attack",
+              "label": "Lava Rock",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (1d8)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEiVzhCGaI8kxH",
+              "type": "save",
+              "label": "Lava Rock: splash",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Creatures within 5 feet of the target. Failure: half speed until the end of their next turns (speed 0 at B-Rank or higher).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eSSi6yrVC4FCor",
+              "type": "attack",
+              "label": "Lava Rock",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (2d8)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEiVzhCGaI8kxH",
+              "type": "save",
+              "label": "Lava Rock: splash",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Creatures within 5 feet of the target. Failure: half speed until the end of their next turns (speed 0 at B-Rank or higher).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eSSi6yrVC4FCor",
+              "type": "attack",
+              "label": "Lava Rock",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (3d8)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEiVzhCGaI8kxH",
+              "type": "save",
+              "label": "Lava Rock: splash",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Creatures within 5 feet of the target. Failure: half speed until the end of their next turns (speed 0 at B-Rank or higher).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eSSi6yrVC4FCor",
+              "type": "attack",
+              "label": "Lava Rock",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (4d8)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEiVzhCGaI8kxH",
+              "type": "save",
+              "label": "Lava Rock: splash",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Creatures within 5 feet of the target. Failure: half speed until the end of their next turns (speed 0 at B-Rank or higher).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +275,46 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eSSi6yrVC4FCor",
+        "type": "attack",
+        "label": "Lava Rock",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eEiVzhCGaI8kxH",
+        "type": "save",
+        "label": "Lava Rock: splash",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Creatures within 5 feet of the target. Failure: half speed until the end of their next turns (speed 0 at B-Rank or higher).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

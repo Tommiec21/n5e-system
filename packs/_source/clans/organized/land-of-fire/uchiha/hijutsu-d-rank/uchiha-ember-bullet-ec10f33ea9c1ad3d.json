@@ -17,6 +17,265 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fire Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Higher ranks: +1d6+1 per rank (the button adds the dice; add the +1 per rank)."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eZobKIFZUIWIyD",
+              "type": "attack",
+              "label": "Ember Bullet",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet. Off-Guard target: moving more than 5 feet on its next turn deals 3d6 fire.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6+4) + (1d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5exChByFif6wbh0",
+              "type": "save",
+              "label": "Ember Bullet: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "Failure: Burned.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eUuGY2u4ovEAVg",
+              "type": "damage",
+              "label": "Off-Guard: flames",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "text": "It moved more than 5 feet."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eZobKIFZUIWIyD",
+              "type": "attack",
+              "label": "Ember Bullet",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet. Off-Guard target: moving more than 5 feet on its next turn deals 3d6 fire.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6+4) + (2d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5exChByFif6wbh0",
+              "type": "save",
+              "label": "Ember Bullet: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "Failure: Burned.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eUuGY2u4ovEAVg",
+              "type": "damage",
+              "label": "Off-Guard: flames",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "text": "It moved more than 5 feet."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eZobKIFZUIWIyD",
+              "type": "attack",
+              "label": "Ember Bullet",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet. Off-Guard target: moving more than 5 feet on its next turn deals 3d6 fire.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6+4) + (3d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5exChByFif6wbh0",
+              "type": "save",
+              "label": "Ember Bullet: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "Failure: Burned.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eUuGY2u4ovEAVg",
+              "type": "damage",
+              "label": "Off-Guard: flames",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "text": "It moved more than 5 feet."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eZobKIFZUIWIyD",
+              "type": "attack",
+              "label": "Ember Bullet",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet. Off-Guard target: moving more than 5 feet on its next turn deals 3d6 fire.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6+4) + (4d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5exChByFif6wbh0",
+              "type": "save",
+              "label": "Ember Bullet: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "Failure: Burned.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eUuGY2u4ovEAVg",
+              "type": "damage",
+              "label": "Off-Guard: flames",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "text": "It moved more than 5 feet."
+            }
+          ]
+        }
       }
     }
   },
@@ -108,7 +367,68 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eZobKIFZUIWIyD",
+        "type": "attack",
+        "label": "Ember Bullet",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "60 feet. Off-Guard target: moving more than 5 feet on its next turn deals 3d6 fire.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6+4",
+              "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5exChByFif6wbh0",
+        "type": "save",
+        "label": "Ember Bullet: on a hit",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Burned"
+          }
+        ],
+        "text": "Failure: Burned.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eUuGY2u4ovEAVg",
+        "type": "damage",
+        "label": "Off-Guard: flames",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "fire"
+            }
+          ]
+        },
+        "text": "It moved more than 5 feet."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

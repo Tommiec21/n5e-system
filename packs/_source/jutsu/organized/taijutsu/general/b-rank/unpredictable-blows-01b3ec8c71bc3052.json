@@ -84,14 +84,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ey39euye1HV2vt",
         "type": "attack",
-        "label": "Attack",
+        "label": "Unpredictable Blows",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Engaged with 2+ hostile creatures: one attack against each. Each hit: +1 AC until the start of your next turn; it can't make opportunity attacks against you.",
         "damage": {
           "parts": []
         },
@@ -103,6 +104,44 @@
           "maximize": false,
           "attacks": "1"
         }
+      },
+      {
+        "id": "n5ehfia27VIitmQc",
+        "type": "effect",
+        "label": "+1 AC per hit",
+        "effect": {
+          "name": "Unpredictable Blows",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "1",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Apply once per hit."
+      },
+      {
+        "id": "n5e2XmkbLjfJs14P",
+        "type": "effect",
+        "label": "Speed and saves",
+        "effect": {
+          "name": "Unpredictable Blows: footwork",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "10",
+              "mode": 2
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 0
+        },
+        "text": "+10 speed and +1 on saves against Physical conditions until the end of the turn (the +1: by hand)."
       }
     ],
     "featureType": "active",
@@ -191,53 +230,132 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5ey39euye1HV2vt",
               "type": "attack",
-              "label": "Attack",
+              "label": "Unpredictable Blows",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Engaged with 2+ hostile creatures: one attack against each. Each hit: +1 AC until the start of your next turn; it can't make opportunity attacks against you.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(3d8) + (1d8)",
+                "extraDice": "3d8 + 1d8",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
                 "attacks": "1"
               }
+            },
+            {
+              "id": "n5ehfia27VIitmQc",
+              "type": "effect",
+              "label": "+1 AC per hit",
+              "effect": {
+                "name": "Unpredictable Blows",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "1",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Apply once per hit."
+            },
+            {
+              "id": "n5e2XmkbLjfJs14P",
+              "type": "effect",
+              "label": "Speed and saves",
+              "effect": {
+                "name": "Unpredictable Blows: footwork",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.speed",
+                    "value": "10",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "+10 speed and +1 on saves against Physical conditions until the end of the turn (the +1: by hand)."
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5ey39euye1HV2vt",
               "type": "attack",
-              "label": "Attack",
+              "label": "Unpredictable Blows",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Engaged with 2+ hostile creatures: one attack against each. Each hit: +1 AC until the start of your next turn; it can't make opportunity attacks against you.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(3d8) + (2d8)",
+                "extraDice": "3d8 + 2d8",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
                 "attacks": "1"
               }
+            },
+            {
+              "id": "n5ehfia27VIitmQc",
+              "type": "effect",
+              "label": "+1 AC per hit",
+              "effect": {
+                "name": "Unpredictable Blows",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "1",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Apply once per hit."
+            },
+            {
+              "id": "n5e2XmkbLjfJs14P",
+              "type": "effect",
+              "label": "Speed and saves",
+              "effect": {
+                "name": "Unpredictable Blows: footwork",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.speed",
+                    "value": "10",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "+10 speed and +1 on saves against Physical conditions until the end of the turn (the +1: by hand)."
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "64b78902f2631880"

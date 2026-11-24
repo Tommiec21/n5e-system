@@ -17,7 +17,14 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Water Release, Wind Release",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Cast from a mirror: conjure up to 3 mirrors in range (extras past your limit melt at the end of the turn)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -109,7 +116,62 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e4v3cYZCxjRrly",
+        "type": "save",
+        "label": "Frozen Capturing Field",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "yuki-frostbite",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Frostbite"
+          }
+        ],
+        "text": "A 30-foot cube from you (+10 feet per rank). Failure: −20 speed and a rank of Frostbite (a Strength save as an Action escapes).",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5ebjBJEHyooiqCM",
+        "type": "save",
+        "label": "Frozen field: entering",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Difficult terrain for the duration; a creature entering it. Failure: Prone.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

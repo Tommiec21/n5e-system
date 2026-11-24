@@ -17,6 +17,113 @@
         "cost": "6 Chakra",
         "keywords": "Hijutsu, Genjutsu (Auditory, Tactile, Unaware)",
         "components": "HS, CM, W (Shinobi Instrument)"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5en1BCvydT0mv7v",
+              "type": "save",
+              "label": "Forceful Interrogation",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "confused",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Confused"
+                }
+              ],
+              "text": "A creature within 60 feet. Failure: for the duration it answers truthfully or takes the damage and is Confused; it resaves after each answer (advantage if truthful, disadvantage if not).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (1d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5en1BCvydT0mv7v",
+              "type": "save",
+              "label": "Forceful Interrogation",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "confused",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Confused"
+                }
+              ],
+              "text": "A creature within 60 feet. Failure: for the duration it answers truthfully or takes the damage and is Confused; it resaves after each answer (advantage if truthful, disadvantage if not).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (2d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5en1BCvydT0mv7v",
+              "type": "save",
+              "label": "Forceful Interrogation",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "confused",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Confused"
+                }
+              ],
+              "text": "A creature within 60 feet. Failure: for the duration it answers truthfully or takes the damage and is Confused; it resaves after each answer (advantage if truthful, disadvantage if not).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (3d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +217,40 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5en1BCvydT0mv7v",
+        "type": "save",
+        "label": "Forceful Interrogation",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "confused",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Confused"
+          }
+        ],
+        "text": "A creature within 60 feet. Failure: for the duration it answers truthfully or takes the damage and is Confused; it resaves after each answer (advantage if truthful, disadvantage if not).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d8",
+              "type": "psychic"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "gen"

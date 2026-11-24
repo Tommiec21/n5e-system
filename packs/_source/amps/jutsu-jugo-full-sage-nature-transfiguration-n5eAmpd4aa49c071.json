@@ -1,0 +1,132 @@
+{
+  "_id": "n5eAmpd4aa49c071",
+  "name": "Full Sage: Nature Transfiguration",
+  "type": "amp",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "n5eAmpFoldOther1",
+  "sort": 104300,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jutsu-jugo-full-sage-nature-transfiguration",
+    "description": "<p><b>Full Sage: Nature Transfiguration</b> · cast at B-Rank to S-Rank · no type</p><p>AC increases by +2.</p><p>Resistance to bludgeoning, piercing and slashing damage.</p><p>Jugo Clan Hijutsu with a casting time of Special halve the Nature Energy cost of their Amplify effects (minimum 1).</p><p>With the Nature Endurance bonus: advantage on Strength and Constitution saving throws.</p><p>With the Feral Endurance instinct: hostile creatures can't reduce your DR, ignore your resistances or treat your immunities as resistance.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 6439; contextual rules require adjudication."
+    },
+    "ampType": "",
+    "namedType": "",
+    "owner": {
+      "kind": "jutsu",
+      "id": "jugo-full-sage-nature-transfiguration",
+      "subclass": ""
+    },
+    "summary": "AC increases by +2. Resistance to bludgeoning, piercing and slashing damage. Jugo Clan Hijutsu with a casting time of Special halve the Nature Energy cost of their Amplify effects (minimum 1). With the Nature Endurance bonus: advantage on Strength and Constitution saving throws. With the Feral Endur",
+    "activation": "",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": true
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "system.bonuses.ac",
+        "value": "2",
+        "mode": 2
+      },
+      {
+        "key": "n5e.resist",
+        "value": "bludgeoning",
+        "mode": 2
+      },
+      {
+        "key": "n5e.resist",
+        "value": "piercing",
+        "mode": 2
+      },
+      {
+        "key": "n5e.resist",
+        "value": "slashing",
+        "mode": 2
+      }
+    ],
+    "aura": {},
+    "outsideLimits": false,
+    "series": "",
+    "level": 0,
+    "rank": "B",
+    "choose": {
+      "prompt": "Nature Transfiguration: was it Amplified?",
+      "count": 1,
+      "changeable": false,
+      "options": [
+        {
+          "label": "Not Amplified (concentration, up to 1 minute)",
+          "changes": [],
+          "rules": [],
+          "duration": {
+            "seconds": 60,
+            "until": "",
+            "concentration": true
+          }
+        },
+        {
+          "label": "Amplified: 6 Natural Energy (1 minute, no concentration)",
+          "changes": [],
+          "rules": [],
+          "duration": {
+            "seconds": 60,
+            "until": "",
+            "concentration": false
+          }
+        }
+      ]
+    },
+    "buttons": [],
+    "onEnd": {
+      "condition": ""
+    },
+    "statuses": [],
+    "endsWith": ""
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "Jugo Clan Hijutsu with a casting time of Special: Amplify costs half the Nature Energy (minimum 1)."
+        },
+        {
+          "key": "note",
+          "text": "With the Nature Endurance bonus: advantage on Strength and Constitution saving throws (at the table)."
+        },
+        {
+          "key": "note",
+          "text": "With the Feral Endurance instinct: your DR, resistances and immunities can't be reduced or ignored."
+        }
+      ],
+      "amp1f": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.70.0"
+  },
+  "_key": "!items!n5eAmpd4aa49c071"
+}

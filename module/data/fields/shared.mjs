@@ -67,7 +67,7 @@ export const rank = (initial = "D", options = {}) => new (F().StringField)({
  *  - steps: die-step mode (ammo die: [8,6,4,1,0]); `step` is the current index
  *  - recovery: [{on, amount, formula, requires}]
  *      on: sr | lr | fr | rest (any rest) | rest10m (10 minutes of rest) | day | event | never
- *      amount: all | half (regain half the max) | setHalf (a Short Rest raises it to half)
+ *      amount: all | half (regain half the max) | setHalf (a Short Rest raises it to half) | formula | empty (drops to 0)
  *      requires: a feature identifier the owner must have (Focus on a Short Rest: tenketsu-refinement)
  *      (rest handling: rules/rest.mjs)
  *  - castsJutsu: can pay jutsu costs instead of chakra (clan resources)
@@ -89,6 +89,8 @@ export function resourcePoolFields({ label = "", max = "", recoveryOn = "lr" } =
     })),
     castsJutsu: bool(),
     countsAsChakraSpend: bool(),
+    // King Q-E6: each unit lasts this many seconds unless spent (Primes, Pressure: 60); 0 = no limit.
+    lifetime: int(0, { min: 0 }),
     sort: int(0)
   };
 }
@@ -209,7 +211,8 @@ export function riderFields() {
  * Unknown fields are dropped when the item is saved, so every field an activity needs must be here.
  */
 export function activityFields() {
-  const damageParts = () => arr(obj({ formula: formula(), type: str() }));
+  // alsoAs (King Q-E20): the same rolled result is dealt again as this second type (10d12 poison and chakra).
+  const damageParts = () => arr(obj({ formula: formula(), type: str(), alsoAs: str() }));
   return {
     id: str(),
     type: str({ initial: "utility", choices: Object.keys(activityKinds) }),
@@ -246,7 +249,9 @@ export function activityFields() {
     oncePerTurn: bool(),
     activation: str(),                   // overrides the item's activation for this activity
     // Pool cost paid when the button is clicked (roll: roll the pool's die and post it).
-    cost: obj({ pool: str(), amount: int(1, { min: 0 }), roll: bool(), gain: bool(), choose: bool() }),
+    // STD6d Weapon Specialist: formula, an amount by level ("lvl(1:1,11:2)") or rolled ("1d12": the
+    // Obsidian Ward regains a Flurry Die); it replaces amount when set.
+    cost: obj({ pool: str(), amount: int(1, { min: 0 }), roll: bool(), gain: bool(), choose: bool(), formula: str() }),
     strike: obj({
       kind: str(),                       // unarmed|weapon ("" = not a strike)
       dieSteps: int(0),                  // step the damage die up (+) or down (-)
@@ -267,6 +272,8 @@ export function activityFields() {
       ampType: str(),                    // makes it an Amp (battle|reflex|fortitude|will|clan)
       limit: str(),                      // ENG1a mark: at most this many (formula) from one caster; the oldest ends
       condition: str(),                  // CCOND1: apply this class or clan condition card instead
+      // STD6f F-D3: conditions and states put on the targets with no save (workflow/trackers.mjs inflictOn).
+      inflicts: arr(obj({ key: str(), kind: str({ initial: "condition" }), ranks: int(1, { min: 0 }), label: str() })),
       amp: str(),                        // AMP1a: start this Amp card instead (workflow/amp-cards.mjs)
       // ENG1d: an aura {radius, who, includeSelf, effect: {name, changes, rules, state}} (rules/auras.mjs)
       aura: new (F().ObjectField)(),

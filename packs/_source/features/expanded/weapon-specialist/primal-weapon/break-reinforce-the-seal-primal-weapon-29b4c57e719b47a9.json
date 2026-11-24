@@ -33,13 +33,58 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eTyXoGfiHcED3E",
+        "type": "save",
+        "label": "Break the Seal",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": true
+        },
+        "inflicts": [],
+        "text": "A [Weapon Damage] Flurry Technique costing 4 or less, paid at 4 (this button is the whole cost). Failure, for 1 minute: double chakra costs and half its jutsu damage dice. Resaves each turn; immune until your rest after a success.",
+        "cost": {
+          "pool": "discipline",
+          "amount": 4
+        }
+      },
+      {
+        "id": "n5esLbaKmoWLcysd",
+        "type": "save",
+        "label": "Reinforce the Seal",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": true
+        },
+        "inflicts": [],
+        "text": "As Break the Seal. Failure, for 1 minute: it can't cast jutsu costing more than 12 chakra or concentrate on ones with a concentration cost above 6. Resaves each turn; immune until your rest after a success.",
+        "cost": {
+          "pool": "discipline",
+          "amount": 4
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

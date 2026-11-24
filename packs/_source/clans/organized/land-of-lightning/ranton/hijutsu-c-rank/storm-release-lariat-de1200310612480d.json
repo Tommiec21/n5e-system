@@ -17,6 +17,221 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu Water Release, Lightning Release, Storm Branch",
         "components": "CM, M, W (Any Melee)"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Storm Branch]"
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5esQWMbsnX4OozM",
+              "type": "attack",
+              "label": "Lariat",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Move next to a creature within your speed: [Unarmed Damage] or [Weapon Damage] + 5d12 lightning.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d12) + (1d12)",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ejVngkBICWUYE6",
+              "type": "save",
+              "label": "Lariat: on a hit",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Failure: Dazed and Prone; failing by 5 or more, Bruised too.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5esQWMbsnX4OozM",
+              "type": "attack",
+              "label": "Lariat",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Move next to a creature within your speed: [Unarmed Damage] or [Weapon Damage] + 5d12 lightning.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d12) + (2d12)",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ejVngkBICWUYE6",
+              "type": "save",
+              "label": "Lariat: on a hit",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Failure: Dazed and Prone; failing by 5 or more, Bruised too.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5esQWMbsnX4OozM",
+              "type": "attack",
+              "label": "Lariat",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Move next to a creature within your speed: [Unarmed Damage] or [Weapon Damage] + 5d12 lightning.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d12) + (3d12)",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ejVngkBICWUYE6",
+              "type": "save",
+              "label": "Lariat: on a hit",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Failure: Dazed and Prone; failing by 5 or more, Bruised too.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -112,7 +327,74 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5esQWMbsnX4OozM",
+        "type": "attack",
+        "label": "Lariat",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Move next to a creature within your speed: [Unarmed Damage] or [Weapon Damage] + 5d12 lightning.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d12",
+              "type": "lightning"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5ejVngkBICWUYE6",
+        "type": "save",
+        "label": "Lariat: on a hit",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          },
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          },
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "Failure: Dazed and Prone; failing by 5 or more, Bruised too.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

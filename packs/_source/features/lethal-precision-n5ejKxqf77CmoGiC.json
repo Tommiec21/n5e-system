@@ -31,7 +31,74 @@
     "tags": [],
     "resourcePools": []
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5ePeAYdywB5AmqV",
+      "name": "Lethal Precision: Taijutsu with Dexterity",
+      "type": "generic",
+      "img": "icons/svg/upgrade.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "n5e.keywordAbility.taijutsu",
+          "value": "dex",
+          "mode": 2,
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true,
+          "requiresOption": "lethalPrecision:tai"
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5ejKxqf77CmoGiC.n5ePeAYdywB5AmqV"
+    },
+    {
+      "_id": "n5eT6TPXPdaLL40x",
+      "name": "Lethal Precision: Bukijutsu with Dexterity",
+      "type": "generic",
+      "img": "icons/svg/upgrade.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "n5e.keywordAbility.bukijutsu",
+          "value": "dex",
+          "mode": 2,
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true,
+          "requiresOption": "lethalPrecision:buki"
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5ejKxqf77CmoGiC.n5eT6TPXPdaLL40x"
+    }
+  ],
   "folder": "n5emPsUcf0eHBnja",
   "sort": 0,
   "ownership": {
@@ -39,7 +106,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your level-up choice (Taijutsu or Bukijutsu) can be cast with Dexterity in place of Strength (its effect turns on for that choice). You also gain the Silent Fist (Taijutsu) or Silent Killing (Bukijutsu) stance: add it from the Fighting Stances compendium."
+        }
+      ]
     }
   },
   "_stats": {

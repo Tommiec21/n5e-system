@@ -85,10 +85,38 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5eF169F6qOQzLrq",
+        "type": "effect",
+        "label": "Still Earth: Reverb",
+        "effect": {
+          "name": "Still Earth: Reverb",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "10",
+              "mode": 2
+            },
+            {
+              "key": "system.bonuses.ac",
+              "value": "1",
+              "mode": 2
+            },
+            {
+              "key": "n5e.save.str",
+              "value": "1",
+              "mode": 2
+            },
+            {
+              "key": "n5e.save.dex",
+              "value": "1",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 600
+        },
+        "text": "A willing creature you touch (not you; A-Rank: two), once per long rest, 10 minutes: +10 speed, +1 AC and Strength and Dexterity saves, one more use of a limited clan feature or resource; Weakened ends it."
       }
     ],
     "featureType": "active",
@@ -157,7 +185,14 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its cost can't be reduced."
+        }
+      ]
     }
   },
   "folder": "64b78902f2631880"

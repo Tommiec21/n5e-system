@@ -85,23 +85,9 @@
     },
     "activities": [
       {
-        "id": "finisher-parsed1",
+        "id": "n5eCijqhd2e62i7n",
         "type": "save",
-        "label": "Finisher: Save",
-        "inflicts": [
-          {
-            "key": "prone",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Prone"
-          },
-          {
-            "key": "dazed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Dazed"
-          }
-        ],
+        "label": "Finisher: Break Spiral",
         "save": {
           "abilities": [
             "dex"
@@ -110,15 +96,42 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Finisher only. Within 5 feet (+5 per rank). Failure: Prone; failing by 5+: also Dazed and standing takes its Action. No half damage on a success.",
         "damage": {
           "parts": [
             {
               "formula": "@unarmed + 6d6",
               "type": "bludgeoning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e8WmiU7Yvv1vSY",
+        "type": "effect",
+        "label": "Failed by 5+: Dazed",
+        "effect": {
+          "name": "Dazed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
             }
           ]
         }
@@ -203,7 +216,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "aee26bc2434fe738"

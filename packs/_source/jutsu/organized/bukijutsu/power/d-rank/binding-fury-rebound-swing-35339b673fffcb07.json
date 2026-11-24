@@ -83,14 +83,7 @@
       "per": "",
       "staminaEligible": false
     },
-    "activities": [
-      {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
-      }
-    ],
+    "activities": [],
     "featureType": "active",
     "ability": "",
     "upcast": {
@@ -155,7 +148,17 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus action, after a miss: remake the missed attack against the same creature. Fury: spend it, the cost is 2 less."
+        }
+      ],
+      "trackers": [
+        "fury"
+      ]
     }
   },
   "folder": "c0a6a06641c5a7be"

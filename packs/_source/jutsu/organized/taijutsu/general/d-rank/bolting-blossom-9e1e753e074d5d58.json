@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eWevhfBkoLQ020",
         "type": "attack",
-        "label": "Attack",
+        "label": "Bolting Blossom",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
+        "text": "Both hits on one target: Prone (no save; the effect button).",
         "damage": {
           "parts": [
             {
@@ -101,6 +102,27 @@
             }
           ]
         }
+      },
+      {
+        "id": "n5ejmV3yxbc3eOCh",
+        "type": "effect",
+        "label": "Both hit: Prone",
+        "effect": {
+          "name": "Prone",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ]
+        },
+        "text": "Both attacks hit one target."
       }
     ],
     "featureType": "active",
@@ -198,9 +220,185 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eWevhfBkoLQ020",
+              "type": "attack",
+              "label": "Bolting Blossom",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Both hits on one target: Prone (no save; the effect button).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d8",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ejmV3yxbc3eOCh",
+              "type": "effect",
+              "label": "Both hit: Prone",
+              "effect": {
+                "name": "Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
+              },
+              "text": "Both attacks hit one target."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eWevhfBkoLQ020",
+              "type": "attack",
+              "label": "Bolting Blossom",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "text": "Both hits on one target: Prone (no save; the effect button).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d10",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ejmV3yxbc3eOCh",
+              "type": "effect",
+              "label": "Both hit: Prone",
+              "effect": {
+                "name": "Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
+              },
+              "text": "Both attacks hit one target."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eWevhfBkoLQ020",
+              "type": "attack",
+              "label": "Bolting Blossom",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "text": "Both hits on one target: Prone (no save; the effect button).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d12",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ejmV3yxbc3eOCh",
+              "type": "effect",
+              "label": "Both hit: Prone",
+              "effect": {
+                "name": "Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
+              },
+              "text": "Both attacks hit one target."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eWevhfBkoLQ020",
+              "type": "attack",
+              "label": "Bolting Blossom",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "text": "Both hits on one target: Prone (no save; the effect button).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d12",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ejmV3yxbc3eOCh",
+              "type": "effect",
+              "label": "Both hit: Prone",
+              "effect": {
+                "name": "Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
+              },
+              "text": "Both attacks hit one target."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "S-Rank: add your Taijutsu modifier to each damage roll (add by hand)."
+        }
+      ]
     }
   },
   "folder": "b31b1b0d97c02089"

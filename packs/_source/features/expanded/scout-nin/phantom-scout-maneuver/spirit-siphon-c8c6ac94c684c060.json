@@ -36,13 +36,44 @@
       "scout-maneuver"
     ],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eMkLfTCXnkF3pN",
+        "type": "save",
+        "label": "Spirit Siphon",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1
+        },
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "slowed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Slowed"
+          }
+        ],
+        "text": "Dealing chakra damage. Failure: 1 rank of Slowed. With a Mental condition, it saves at disadvantage."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

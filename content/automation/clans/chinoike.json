@@ -1,0 +1,1957 @@
+{
+  "clan": "chinoike",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "chinoike-blood-bubble": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eb7p8jB7oKswq7",
+          "type": "save",
+          "label": "Blinding Bubble",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            }
+          ],
+          "text": "A creature within 60 feet. Failure: Blinded until the end of its next turn.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eloHx0sFtMUl2I",
+          "type": "save",
+          "label": "Drowning Bubble",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            },
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "A creature within 60 feet. Failure: Dazed and Prone.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eTBrbsD4dQbIIX",
+          "type": "save",
+          "label": "Slime Bubble",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Creatures within 5 feet of a point within 60 feet. Failure: speed 0 until the end of its next turn.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5e9DgQKQcNkfytB",
+          "type": "effect",
+          "label": "Drift Bubble (C-Rank+)",
+          "effect": {
+            "name": "Drift Bubble",
+            "target": "self",
+            "changes": [],
+            "expires": "nextTurnEnd",
+            "seconds": 0
+          },
+          "text": "Fly 60 feet until the end of your next turn; damage pops it."
+        },
+        {
+          "id": "n5eSCBtVSSAWIuP6",
+          "type": "heal",
+          "label": "Shield Bubble (B-Rank+)",
+          "heal": {
+            "formula": "20 + 4d6",
+            "pool": "tempHp"
+          },
+          "text": "Reaction: you or an ally within 10 feet taking damage; until the start of your next turn.",
+          "activation": "reaction"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Pick one application. A-Rank or higher: one more target or point."
+        }
+      ]
+    },
+    "chinoike-blood-clot-spikes": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ecMvmmrVKG7n1W",
+          "type": "save",
+          "label": "Blood Clot Spikes",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 3,
+              "label": "Bleed"
+            }
+          ],
+          "text": "Reaction: a creature casts a Mobility (M) jutsu. Failure: speed 0 until the end of its next turn, its jutsu fails (chakra wasted) and the damage (3 ranks of Bleed with Blood Detonation).",
+          "activation": "reaction",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d8",
+                "type": "necrotic"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5ecMvmmrVKG7n1W",
+                "type": "save",
+                "label": "Blood Clot Spikes",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 3,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "Reaction: a creature casts a Mobility (M) jutsu. Failure: speed 0 until the end of its next turn, its jutsu fails (chakra wasted) and the damage (3 ranks of Bleed with Blood Detonation).",
+                "activation": "reaction",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d8) + (1d8)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5ecMvmmrVKG7n1W",
+                "type": "save",
+                "label": "Blood Clot Spikes",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 3,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "Reaction: a creature casts a Mobility (M) jutsu. Failure: speed 0 until the end of its next turn, its jutsu fails (chakra wasted) and the damage (3 ranks of Bleed with Blood Detonation).",
+                "activation": "reaction",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d8) + (2d8)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Blood Detonation (2 Crimson Charges)",
+          "appliesTo": {
+            "namePrefix": "Blood Clot Spikes"
+          },
+          "cost": {
+            "pool": "crimsonCharges",
+            "amount": 2
+          },
+          "note": "Needs your Ketsuryugan active. Failure: also 3 ranks of Bleed."
+        }
+      ]
+    },
+    "chinoike-blood-dragon-ascension": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eKVefvExUY2H3n",
+          "type": "summon",
+          "label": "Blood Dragon",
+          "summon": {
+            "uuid": "Compendium.n5e.summons.Actor.n5e6xblImso76jRj",
+            "count": 1,
+            "template": ""
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Needs your Ketsuryugan and a sufficient source of water. The Blood Dragon (Class & Clan Summons › Chinoike) takes its turn after yours and listens only to you; it uses your highest jutsu attack bonus and save DC."
+        }
+      ]
+    },
+    "chinoike-blood-drain": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUr245YJEQMcoL",
+          "type": "save",
+          "label": "Blood Drain",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A damaged creature with Bleed or Bruised. Failure: 1d6 necrotic per rank of Bleed and Bruised (roll them), then both drop to 0; with your Ketsuryugan active you gain that many Crimson Charges.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eq4wTq00Wfpyrh",
+          "type": "roll",
+          "label": "Crimson Charges from ranks",
+          "roll": {
+            "formula": "",
+            "note": "With your Ketsuryugan active: the ranks reduced to 0."
+          },
+          "cost": {
+            "pool": "crimsonCharges",
+            "choose": true,
+            "gain": true
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1 target per rank; +1d6 per condition rank at B and again at S."
+        }
+      ]
+    },
+    "chinoike-blood-missiles": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eyxTERC8bhESgS",
+          "type": "attack",
+          "label": "Blood Missiles",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "Bonus action each turn, a creature within 60 feet.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": "necrotic"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eNeSxjbZkqIXvb",
+          "type": "save",
+          "label": "Blood Missiles: on a hit",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            }
+          ],
+          "text": "Failure: 1 rank of Bleed (2 at C-Rank or higher).",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5emsXKLZEI5Fvug",
+          "type": "save",
+          "label": "Blood Detonation: shrapnel",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            }
+          ],
+          "text": "On a hit, with Blood Detonation: creatures within 5 feet of the target but it. Failure: 1 rank of Bleed (2 at C-Rank or higher).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "B-Rank or higher: two targets per attack."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eyxTERC8bhESgS",
+                "type": "attack",
+                "label": "Blood Missiles",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "Bonus action each turn, a creature within 60 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (1d6)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eNeSxjbZkqIXvb",
+                "type": "save",
+                "label": "Blood Missiles: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "Failure: 1 rank of Bleed (2 at C-Rank or higher).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5emsXKLZEI5Fvug",
+                "type": "save",
+                "label": "Blood Detonation: shrapnel",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "On a hit, with Blood Detonation: creatures within 5 feet of the target but it. Failure: 1 rank of Bleed (2 at C-Rank or higher).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eyxTERC8bhESgS",
+                "type": "attack",
+                "label": "Blood Missiles",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "Bonus action each turn, a creature within 60 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (2d6)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eNeSxjbZkqIXvb",
+                "type": "save",
+                "label": "Blood Missiles: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "Failure: 1 rank of Bleed (2 at C-Rank or higher).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5emsXKLZEI5Fvug",
+                "type": "save",
+                "label": "Blood Detonation: shrapnel",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "On a hit, with Blood Detonation: creatures within 5 feet of the target but it. Failure: 1 rank of Bleed (2 at C-Rank or higher).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eyxTERC8bhESgS",
+                "type": "attack",
+                "label": "Blood Missiles",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "Bonus action each turn, a creature within 60 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (3d6)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eNeSxjbZkqIXvb",
+                "type": "save",
+                "label": "Blood Missiles: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "Failure: 1 rank of Bleed (2 at C-Rank or higher).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5emsXKLZEI5Fvug",
+                "type": "save",
+                "label": "Blood Detonation: shrapnel",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "On a hit, with Blood Detonation: creatures within 5 feet of the target but it. Failure: 1 rank of Bleed (2 at C-Rank or higher).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eyxTERC8bhESgS",
+                "type": "attack",
+                "label": "Blood Missiles",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "Bonus action each turn, a creature within 60 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (4d6)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eNeSxjbZkqIXvb",
+                "type": "save",
+                "label": "Blood Missiles: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "Failure: 1 rank of Bleed (2 at C-Rank or higher).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5emsXKLZEI5Fvug",
+                "type": "save",
+                "label": "Blood Detonation: shrapnel",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "On a hit, with Blood Detonation: creatures within 5 feet of the target but it. Failure: 1 rank of Bleed (2 at C-Rank or higher).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Blood Detonation (2 Crimson Charges)",
+          "appliesTo": {
+            "namePrefix": "Blood Missiles"
+          },
+          "cost": {
+            "pool": "crimsonCharges",
+            "amount": 2
+          },
+          "note": "Needs your Ketsuryugan active. On a hit, shrapnel: the Blood Detonation save button."
+        }
+      ]
+    },
+    "chinoike-crimson-architect": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ep6wz22c3DECGb",
+          "type": "effect",
+          "label": "Crimson Domain",
+          "effect": {
+            "name": "Crimson Domain",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Action, with your Ketsuryugan active, once per long rest: a 40-foot radius on you for 1 minute.",
+          "activation": "action"
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "lr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "In the domain: creatures with Bleed regain half the hit points they would (you gain the rest); a creature with Bleed starting its turn there moves 30 feet or loses its Reaction until its next turn; an ally gaining hit points or temporary hit points gives half to another ally; Reaction, a creature with 2+ ranks of Bleed leaving the domain: its speed drops to 0 and it moves 15 feet toward you."
+        }
+      ]
+    },
+    "chinoike-crimson-pact": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eC7M2FZs8eZQvF",
+          "type": "effect",
+          "label": "Crimson Pact",
+          "effect": {
+            "name": "Crimson Pact",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "amp": "crimson-pact"
+          },
+          "text": "Over a long rest, with a willing creature you can reach: both gain the Crimson Pact (one bond at a time). Ends when dismissed, on death, or by a dispel of B-Rank or lower."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonded Lifeforce: you fall to 0; your bonded creature can lose 20 maximum hit points until both of you long rest, and you fall to 20 instead."
+        }
+      ]
+    },
+    "chinoike-crimson-release-manifestation": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "You gain the release you didn't pick for Blood Release Affinity (set it on the sheet). Water or Medical jutsu: change the damage to necrotic when you roll. 1 minute of focus: end an Envenomed creature's (or a disease's or foreign substance's) hostile effects."
+        }
+      ]
+    },
+    "chinoike-crimson-weaponry": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "When initiative is rolled: conjure a Blade, Thrown or Flail weapon of blood, with the Critical and Blood Bound properties; you are proficient with it until initiative ends. Blood Bound: attacks can use your Hijutsu Flexibility ability; you can't be disarmed; it can stand in for a Combat Scroll for a Chakra Stance; once per turn a C-Rank or lower Bukijutsu with it can use your Ninjutsu or Genjutsu modifier. With the ammunition property, its ammunition die doesn't drop a step on a 1 or 2 (King Q-E16)."
+        }
+      ]
+    },
+    "chinoike-enhanced-circulation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eVyEBaeKdA4BnC",
+          "type": "effect",
+          "label": "Enhanced Circulation",
+          "effect": {
+            "name": "Enhanced Circulation",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "4",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Reaction: +4 AC (against the trigger too) and advantage on Constitution saves until the start of your next turn.",
+          "activation": "reaction"
+        },
+        {
+          "id": "n5ezhG5JMhZF7v00",
+          "type": "attack",
+          "label": "Blood Detonation: spear",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "You still take damage: the triggering creature within 60 feet.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d10",
+                "type": "necrotic"
+              }
+            ]
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Blood Detonation (2 Crimson Charges)",
+          "appliesTo": {
+            "namePrefix": "Enhanced Circulation"
+          },
+          "cost": {
+            "pool": "crimsonCharges",
+            "amount": 2
+          },
+          "note": "Needs your Ketsuryugan active. You still take damage: a spear at the triggering creature (the spear button)."
+        }
+      ]
+    },
+    "chinoike-genjutsu-blood-lake": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e4p9CFAvLCA7Nf",
+          "type": "save",
+          "label": "Blood Lake",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists.",
+              "success": "Success: resists.",
+              "failure": "Failure: Restrained, 3d8 psychic and 1 rank of Exhaustion.",
+              "critFailure": "Critical Failure: 5d8 psychic and 2 ranks of Exhaustion."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            },
+            {
+              "key": "exhaustion",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Exhaustion"
+            }
+          ],
+          "text": "One creature within 30 feet (two with Blood Detonation). Resave at the end of each of its turns; it keeps the Exhaustion until the end of its following turn.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eE1Gkuv8kKlMzL",
+          "type": "damage",
+          "label": "Blood Lake: failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "psychic"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5euKgg8NunHo35H",
+          "type": "damage",
+          "label": "Blood Lake: critical failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d8",
+                "type": "psychic"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1 rank of Exhaustion per rank."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5e4p9CFAvLCA7Nf",
+                "type": "save",
+                "label": "Blood Lake",
+                "save": {
+                  "abilities": [
+                    "wis"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: resists.",
+                    "success": "Success: resists.",
+                    "failure": "Failure: Restrained, 3d8 psychic and 1 rank of Exhaustion.",
+                    "critFailure": "Critical Failure: 5d8 psychic and 2 ranks of Exhaustion."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  },
+                  {
+                    "key": "exhaustion",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Exhaustion"
+                  }
+                ],
+                "text": "One creature within 30 feet (two with Blood Detonation). Resave at the end of each of its turns; it keeps the Exhaustion until the end of its following turn.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eE1Gkuv8kKlMzL",
+                "type": "damage",
+                "label": "Blood Lake: failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (1d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5euKgg8NunHo35H",
+                "type": "damage",
+                "label": "Blood Lake: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (1d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5e4p9CFAvLCA7Nf",
+                "type": "save",
+                "label": "Blood Lake",
+                "save": {
+                  "abilities": [
+                    "wis"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: resists.",
+                    "success": "Success: resists.",
+                    "failure": "Failure: Restrained, 3d8 psychic and 1 rank of Exhaustion.",
+                    "critFailure": "Critical Failure: 5d8 psychic and 2 ranks of Exhaustion."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  },
+                  {
+                    "key": "exhaustion",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Exhaustion"
+                  }
+                ],
+                "text": "One creature within 30 feet (two with Blood Detonation). Resave at the end of each of its turns; it keeps the Exhaustion until the end of its following turn.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eE1Gkuv8kKlMzL",
+                "type": "damage",
+                "label": "Blood Lake: failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (2d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5euKgg8NunHo35H",
+                "type": "damage",
+                "label": "Blood Lake: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (2d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e4p9CFAvLCA7Nf",
+                "type": "save",
+                "label": "Blood Lake",
+                "save": {
+                  "abilities": [
+                    "wis"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: resists.",
+                    "success": "Success: resists.",
+                    "failure": "Failure: Restrained, 3d8 psychic and 1 rank of Exhaustion.",
+                    "critFailure": "Critical Failure: 5d8 psychic and 2 ranks of Exhaustion."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  },
+                  {
+                    "key": "exhaustion",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Exhaustion"
+                  }
+                ],
+                "text": "One creature within 30 feet (two with Blood Detonation). Resave at the end of each of its turns; it keeps the Exhaustion until the end of its following turn.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eE1Gkuv8kKlMzL",
+                "type": "damage",
+                "label": "Blood Lake: failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (3d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5euKgg8NunHo35H",
+                "type": "damage",
+                "label": "Blood Lake: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (3d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Blood Detonation (2 Crimson Charges)",
+          "appliesTo": {
+            "namePrefix": "Genjutsu: Blood Lake"
+          },
+          "cost": {
+            "pool": "crimsonCharges",
+            "amount": 2
+          },
+          "note": "Needs your Ketsuryugan active. Up to two creatures."
+        }
+      ]
+    },
+    "chinoike-genjutsu-ichorous-illusions": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ep54REeME9JkdN",
+          "type": "save",
+          "label": "Ichorous Illusions",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists.",
+              "success": "Success: a headache; it resists, ending the jutsu.",
+              "failure": "Failure: it sees enemies as allies and allies as enemies, and can't omit creatures from its attacks or jutsu.",
+              "critFailure": "Critical Failure: as a failure, and it can only move, Attack or cast a C-Rank or lower jutsu."
+            }
+          },
+          "inflicts": [],
+          "text": "Needs your Ketsuryugan. Resave at the end of each of its turns and once per turn when it takes damage; resistant or immune to Demoralized: advantage.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1 target per rank."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Blood Detonation (2 Crimson Charges)",
+          "appliesTo": {
+            "namePrefix": "Genjutsu: Ichorous Illusions"
+          },
+          "cost": {
+            "pool": "crimsonCharges",
+            "amount": 2
+          },
+          "note": "Needs your Ketsuryugan active. Creatures failing by 2 or more treat it as a Critical Failure."
+        }
+      ]
+    },
+    "chinoike-genjutsu-ketsuryugan": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eFUWQhZ1ue7agS",
+          "type": "roll",
+          "label": "Blood Boon",
+          "roll": {
+            "formula": "",
+            "note": "Cast with a 1-Action Genjutsu (same rank or higher, Ketsuryugan active): Sharp Thoughts (a rank of Mastery to its attack, +1 critical range), Lethal Punishment (a critical success counts as a success, a success as a failure) or Delayed Assault (failing creatures make their next d20 at disadvantage)."
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Blood Detonation (2 Crimson Charges)",
+          "appliesTo": {
+            "namePrefix": "Genjutsu: Ketsuryūgan!"
+          },
+          "cost": {
+            "pool": "crimsonCharges",
+            "amount": 2
+          },
+          "note": "Needs your Ketsuryugan active. Two Blood Boons instead of one."
+        }
+      ]
+    },
+    "chinoike-genjutsu-numbing-blood-spear": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eYTZxr9oihYxMm",
+          "type": "save",
+          "label": "Numbing Blood Spear",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: half damage.",
+              "success": "Success: half of 3d10 necrotic and 3d10 psychic.",
+              "failure": "Failure: 3d10 necrotic and 3d10 psychic; its DR is 2 lower each time it uses it for the duration (below 0: that much psychic, up to 10).",
+              "critFailure": "Critical Failure: as a failure, but 4 lower."
+            }
+          },
+          "inflicts": [],
+          "text": "A 5 by 60-foot line (a 30-foot cone with Blood Detonation).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d10",
+                "type": "necrotic"
+              },
+              {
+                "formula": "3d10",
+                "type": "psychic"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5eYTZxr9oihYxMm",
+                "type": "save",
+                "label": "Numbing Blood Spear",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half damage.",
+                    "success": "Success: half of 3d10 necrotic and 3d10 psychic.",
+                    "failure": "Failure: 3d10 necrotic and 3d10 psychic; its DR is 2 lower each time it uses it for the duration (below 0: that much psychic, up to 10).",
+                    "critFailure": "Critical Failure: as a failure, but 4 lower."
+                  }
+                },
+                "inflicts": [],
+                "text": "A 5 by 60-foot line (a 30-foot cone with Blood Detonation).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (1d10)",
+                      "type": "necrotic"
+                    },
+                    {
+                      "formula": "(3d10) + (1d10)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eYTZxr9oihYxMm",
+                "type": "save",
+                "label": "Numbing Blood Spear",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half damage.",
+                    "success": "Success: half of 3d10 necrotic and 3d10 psychic.",
+                    "failure": "Failure: 3d10 necrotic and 3d10 psychic; its DR is 2 lower each time it uses it for the duration (below 0: that much psychic, up to 10).",
+                    "critFailure": "Critical Failure: as a failure, but 4 lower."
+                  }
+                },
+                "inflicts": [],
+                "text": "A 5 by 60-foot line (a 30-foot cone with Blood Detonation).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d10) + (2d10)",
+                      "type": "necrotic"
+                    },
+                    {
+                      "formula": "(3d10) + (2d10)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Blood Detonation (2 Crimson Charges)",
+          "appliesTo": {
+            "namePrefix": "Genjutsu: Numbing Blood Spear"
+          },
+          "cost": {
+            "pool": "crimsonCharges",
+            "amount": 2
+          },
+          "note": "Needs your Ketsuryugan active. The range becomes a 30-foot cone."
+        }
+      ]
+    },
+    "chinoike-ketsuryugan": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5etrMjAopSJuF1Q",
+          "type": "effect",
+          "label": "Ketsuryugan",
+          "effect": {
+            "name": "Ketsuryugan",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 600,
+            "amp": "ketsuryugan"
+          },
+          "text": "Bonus action: up to 10 minutes, then 10 minutes of non-use before it activates again.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5efhCbVCstilcqC",
+          "type": "effect",
+          "label": "Ketsuryugan (11th)",
+          "effect": {
+            "name": "Ketsuryugan (11th)",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 600,
+            "amp": "ketsuryugan-11"
+          },
+          "text": "At 11th level: Blood Sight 60 feet.",
+          "activation": "bonus",
+          "minLevel": 11
+        }
+      ],
+      "pools": [
+        {
+          "id": "crimsonCharges",
+          "label": "Crimson Charges",
+          "value": 0,
+          "max": "1 + @prof",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "sr",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            },
+            {
+              "on": "lr",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Crimson Charges: 1 + proficiency bonus (the pool), back on a short or long rest. Two Crimson Evocations (more at 7th and 15th), usable only while the Ketsuryugan is active. Lifeforce Casting: a Chinoike Hijutsu's Blood Detonation for 2 Crimson Charges (a cast dialog option on each). Blood As A Resource: consume 1 rank of Bleed within 30 feet as a sufficient source of water for a Water Release jutsu."
+        }
+      ]
+    },
+    "chinoike-ketsuryugan-bloody-resilience": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eVeWrOnCXxZBnG",
+          "type": "effect",
+          "label": "Bloody Resilience",
+          "effect": {
+            "name": "Bloody Resilience",
+            "target": "self",
+            "changes": [
+              {
+                "key": "n5e.resist",
+                "value": "acid",
+                "mode": 2
+              },
+              {
+                "key": "n5e.resist",
+                "value": "poison",
+                "mode": 2
+              },
+              {
+                "key": "n5e.resist",
+                "value": "necrotic",
+                "mode": 2
+              },
+              {
+                "key": "n5e.conditionResist",
+                "value": "bleed",
+                "mode": 2
+              },
+              {
+                "key": "n5e.conditionResist",
+                "value": "envenomed",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Start of your turn: 1 minute. From 7th, a willing ally within 30 feet instead (two creatures at once; a third ends the oldest).",
+          "cost": {
+            "pool": "crimsonCharges",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5epZFCBfxz3Qq7O",
+          "type": "roll",
+          "label": "Bloody Resilience: clot (15th)",
+          "roll": {
+            "formula": "1d8",
+            "note": "You or a creature within 30 feet with Bleed: its Bleed drops to 0; temporary hit points 1d8 per rank removed (roll once per rank)."
+          },
+          "cost": {
+            "pool": "crimsonCharges",
+            "amount": 1
+          },
+          "minLevel": 15
+        }
+      ]
+    },
+    "chinoike-ketsuryugan-circulatory-supercharge": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eLeqdRsKqtZvBh",
+          "type": "effect",
+          "label": "Circulatory Supercharge",
+          "effect": {
+            "name": "Circulatory Supercharge",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "1",
+                "mode": 2
+              },
+              {
+                "key": "system.bonuses.speed",
+                "value": "20",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Action: willing allies of your choice in a 20-foot radius, until the start of your next turn: +1 AC, +20 speed and the Surge special action (Dash, Disengage, or one Unarmed or Weapon attack). 7th: a rank of Mastery to their attacks. 15th: Surge can fulfil an Action (2 ranks of Exhaustion).",
+          "activation": "action",
+          "cost": {
+            "pool": "crimsonCharges",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "chinoike-ketsuryugan-cold-blooded": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ebh6ePUUDBIvWd",
+          "type": "roll",
+          "label": "Cold Blooded",
+          "roll": {
+            "formula": "",
+            "note": "Casting a Water Release jutsu: its damage becomes necrotic; affected creatures with Bleed save against it at a penalty equal to their ranks."
+          },
+          "cost": {
+            "pool": "crimsonCharges",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eMB7GCYQGb1TBU",
+          "type": "save",
+          "label": "Cold Blooded: infiltrate (11th)",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "stunned",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Stunned"
+            }
+          ],
+          "text": "A creature fails its save against your Hijutsu. Failure: Stunned until the end of its next turn (then immune until you rest).",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "crimsonCharges",
+            "amount": 2
+          },
+          "minLevel": 11
+        }
+      ]
+    },
+    "chinoike-ketsuryugan-illusory-pain-receptor": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eDAQgN8wX62Tiv",
+          "type": "save",
+          "label": "Illusory Pain Receptor",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Bonus action, a creature you can see within 60 feet. Failure: for 1 minute, damage from its conditions is +2 per rank (+4 at 15th).",
+          "activation": "bonus",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "It spends no Crimson Charges in its text."
+        }
+      ]
+    },
+    "chinoike-ketsuryugan-life-force-drain": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eECBC9ZOFlRf3z",
+          "type": "heal",
+          "label": "Life Force Drain",
+          "heal": {
+            "formula": "@level",
+            "pool": "tempHp"
+          },
+          "text": "Bonus action, casting a Water or Medical jutsu: temporary hit points (twice your level with the 11th-level barrier drain).",
+          "activation": "bonus",
+          "cost": {
+            "pool": "crimsonCharges",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eEanDtbug23lPk",
+          "type": "save",
+          "label": "Life Force Drain: drain",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Affected creatures (on a failure of the jutsu's own save, if it has one). Failure: chakra damage equal to your temporary hit points; you gain that much temporary chakra.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "@level",
+                "type": "chakra"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eiBEscmJPousPL",
+          "type": "roll",
+          "label": "Life Force Drain: barrier (11th)",
+          "roll": {
+            "formula": "@level",
+            "note": "A target behind a Barrier with hit points: the Barrier loses hit points equal to your level."
+          },
+          "cost": {
+            "pool": "crimsonCharges",
+            "amount": 1
+          },
+          "minLevel": 11
+        }
+      ]
+    },
+    "chinoike-ketsuryugan-mental-acuity-boost": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezEI6yDFMkXTmn",
+          "type": "roll",
+          "label": "Mental Acuity Boost",
+          "roll": {
+            "formula": "",
+            "note": "You or an ally within 30 feet fails a save: a rank of Mastery to the result (two at 7th) and it can move half its speed away from the source. 7th: psychic damage taken gives half as temporary hit points for 1 minute."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "crimsonCharges",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5eQS2t9uXVXp0Yn",
+          "type": "roll",
+          "label": "Mental Acuity Boost: Mental conditions (15th)",
+          "roll": {
+            "formula": "",
+            "note": "The failed save would inflict a Mental condition: each gains 2 fewer ranks."
+          },
+          "cost": {
+            "pool": "crimsonCharges",
+            "amount": 1
+          },
+          "minLevel": 15
+        }
+      ]
+    },
+    "chinoike-ketsuryugan-sanguine-illusions": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eapXFl2Lz9gO4K",
+          "type": "roll",
+          "label": "Sanguine Illusions",
+          "roll": {
+            "formula": "",
+            "note": "Casting a Visual Genjutsu: its keyword becomes Inhale and its save Constitution; on a failure, also 1 rank of Bleed. 11th: while it lasts, a failed creature casting a Mobility (M) jutsu saves Constitution or gains a rank of Bleed."
+          },
+          "cost": {
+            "pool": "crimsonCharges",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "chinoike-rivers-of-blood": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eluL1x7nvWEnWg",
+          "type": "attack",
+          "label": "Rivers of Blood",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 3
+          },
+          "text": "Three melee or ranged attacks against one creature: [Weapon Damage] + 1d10 necrotic each.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d10",
+                "type": "necrotic"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "3"
+          }
+        },
+        {
+          "id": "n5e1iQDsBbP2VRmJ",
+          "type": "save",
+          "label": "Rivers of Blood: bleed",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            }
+          ],
+          "text": "A damaged creature, −1 per hit. Failure: 1 rank of Bleed per hit.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A-Rank or higher: +1d10 damage (add it)."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Blood Detonation (any Crimson Charges)",
+          "appliesTo": {
+            "namePrefix": "Rivers of Blood"
+          },
+          "cost": {
+            "pool": "crimsonCharges",
+            "choose": true
+          },
+          "note": "Needs your Ketsuryugan active. Up to three times: +1 attack against the same creature for every 2 Crimson Charges."
+        }
+      ]
+    },
+    "chinoike-sanguine-sphere": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eNHME9ffo7o484",
+          "type": "save",
+          "label": "Sanguine Sphere",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Bleed"
+            }
+          ],
+          "text": "Creatures of your choice within 20 feet of the sphere (30 with Blood Detonation). Failure: the damage and 2 ranks of Bleed.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "necrotic"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eNHME9ffo7o484",
+                "type": "save",
+                "label": "Sanguine Sphere",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "Creatures of your choice within 20 feet of the sphere (30 with Blood Detonation). Failure: the damage and 2 ranks of Bleed.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (1d6)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eNHME9ffo7o484",
+                "type": "save",
+                "label": "Sanguine Sphere",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "Creatures of your choice within 20 feet of the sphere (30 with Blood Detonation). Failure: the damage and 2 ranks of Bleed.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (2d6)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eNHME9ffo7o484",
+                "type": "save",
+                "label": "Sanguine Sphere",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "Creatures of your choice within 20 feet of the sphere (30 with Blood Detonation). Failure: the damage and 2 ranks of Bleed.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (3d6)",
+                      "type": "necrotic"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Blood Detonation (2 Crimson Charges)",
+          "appliesTo": {
+            "namePrefix": "Sanguine Sphere"
+          },
+          "cost": {
+            "pool": "crimsonCharges",
+            "amount": 2
+          },
+          "note": "Needs your Ketsuryugan active. +10 feet to the area, and up to 3 creatures are unaffected."
+        }
+      ]
+    }
+  }
+}

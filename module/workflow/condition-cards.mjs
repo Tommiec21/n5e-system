@@ -8,8 +8,11 @@
  *     when the applier has no matching class or clan). On a creature the user doesn't own it goes
  *     through the GM's client as an owner intent, with no approval step (King Q-CC4).
  *   - It ends when its applier dies or leaves the combat (King Q-CC5): the active GM removes it.
+ *   - AMP1e: lvl() in its changes is read from the applier's character level (King Q-E5); a card with
+ *     a choice (Diplomatic Coordinated) asks the bearer's owners to pick one in chat.
  */
-import { cardDefinition, cardKey, ownsCondition, cardResave, appliedBy } from "../rules/condition-cards.mjs";
+import { cardDefinition, cardKey, ownsCondition, cardResave, appliedBy, resolveCardLevels } from "../rules/condition-cards.mjs";
+import { effectFormulaData } from "../rules/effect-services.mjs";
 import { canModify } from "../automation/authority.mjs";
 import { registerIntentHandler, submitIntent } from "../automation/owner-intents.mjs";
 import { gmWhisper } from "./npc-privacy.mjs";
@@ -75,13 +78,42 @@ export async function placeCondition(target, key, { applier = null, ranks = 1 } 
   const def = registry()[key];
   const resave = cardResave(def, applier);
   const now = game.combat?.started ? { round: game.combat.round, turn: game.combat.turn } : null;
-  const effect = await target.addCondition(key, ranks, { manual: true, origin: def.card ?? undefined,
+  const levels = resolveCardLevels(def, applier ? effectFormulaData(applier).level : null);
+  const effect = await target.addCondition(key, ranks, { manual: true, origin: def.card ?? undefined, changes: levels.changes,
     flags: { appliedBy: applier?.uuid ?? null, ...(resave ? { resave: { ...resave, applied: now } } : {}) } });
   if ( !effect ) return null;
+  if ( levels.choose && effect.documentName === "ActiveEffect" ) await postChoice(target, effect, levels.choose);
   const ChatMessage = CONFIG.ChatMessage.documentClass;
   await ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor: applier ?? undefined }), ...gmWhisper(target, "hideNpcConditions"),
     content: `<div class="n5e-roll-card"><b>${esc(applier?.name ?? game.user.name)}</b> applies <b>${esc(def.label)}</b> to ${esc(target.name)}.</div>` });
   return { applied: target.name, key };
+}
+
+/**
+ * AMP1e: a card with a choice: the bearer's owners (and the GM) pick one option in chat; it is added
+ * to the condition's changes.
+ */
+async function postChoice(target, effect, choose) {
+  const ChatMessage = CONFIG.ChatMessage.documentClass;
+  const owners = game.users.filter(u => u.isGM || target.testUserPermission(u, "OWNER")).map(u => u.id);
+  const buttons = choose.options.map((o, i) => `<button type="button" data-n5e-cond-choose="${i}">${esc(o.label)}</button>`).join("");
+  await ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor: target }), whisper: owners,
+    content: `<div class="n5e-roll-card"><b>${esc(target.name)}</b>: ${esc(choose.prompt)}<div class="card-buttons">${buttons}</div></div>`,
+    flags: { n5e: { conditionChoice: { effectUuid: effect.uuid, options: choose.options } } } });
+}
+
+/** A choice button: add the picked change to the condition (once). */
+async function choose(message, index) {
+  const data = message.flags?.n5e?.conditionChoice;
+  const option = data?.options?.[index];
+  const effect = data?.effectUuid ? await fromUuid(data.effectUuid) : null;
+  if ( !option || !effect ) throw new Error("That condition has ended.");
+  if ( effect.flags?.n5e?.chosen != null ) throw new Error(`Already chosen: ${data.options[effect.flags.n5e.chosen]?.label ?? ""}.`);
+  if ( !canModify(game.user, effect.parent) ) throw new Error("Only the creature's owner or the GM can choose.");
+  await effect.update({ changes: [...effect.changes, { key: option.key, value: option.value, mode: option.mode ?? 2 }], "flags.n5e.chosen": index });
+  const ChatMessage = CONFIG.ChatMessage.documentClass;
+  await ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor: effect.parent }), whisper: message.whisper,
+    content: `<div class="n5e-turn-card"><b>${esc(effect.parent.name)}</b>: ${esc(effect.name)}, ${esc(option.label)}.</div>` });
 }
 
 /** King Q-CC5: remove every card condition this applier put on anyone (active GM only). */
@@ -98,6 +130,12 @@ export async function endConditionsOf(applierUuid) {
 
 /** Hooks: drops on the canvas, the GM's intent handler, cards edited in the world, Q-CC5 endings. */
 export function registerConditionCards() {
+  Hooks.on("renderChatMessageHTML", (message, html) => {
+    if ( !message.flags?.n5e?.conditionChoice ) return;
+    for ( const button of html.querySelectorAll("[data-n5e-cond-choose]") ) {
+      button.addEventListener("click", () => choose(message, Number(button.dataset.n5eCondChoose)).catch(e => ui.notifications.warn(e.message)));
+    }
+  });
   Hooks.on("dropCanvasData", (cnv, data) => {
     if ( data?.type !== "Item" || !data.uuid ) return undefined;
     const key = keyForCard(data.uuid) ?? (globalThis.fromUuidSync?.(data.uuid)?.type === "condition" ? cardKey(fromUuidSync(data.uuid)) : null);
@@ -107,6 +145,14 @@ export function registerConditionCards() {
     if ( !token ) return undefined;
     void applyConditionCard(token.actor, key, { applier: applierFor() }).catch(e => ui.notifications.warn(e.message));
     return false;
+  });
+  // STD6f F-D3: an effect activity's conditions and states with no save, on a creature the user doesn't own.
+  registerIntentHandler("inflictConditions", async (actor, data) => {
+    const doc = await fromUuid(data.targetUuid);
+    const target = doc?.actor ?? doc;
+    if ( !(target instanceof Actor) ) throw new Error("That creature no longer exists.");
+    const { inflictOn } = await import("./trackers.mjs");
+    return inflictOn(target, data.inflicts);
   });
   registerIntentHandler("applyCondition", async (actor, data) => {
     const doc = await fromUuid(data.targetUuid);

@@ -25,7 +25,7 @@ import { canDualWieldLight } from "../rules/weapon-properties.mjs";
 import { attacksPerAction } from "../rules/features.mjs";
 import { furyMax, gateLimit, jutsuTrackers, usesStamina } from "../rules/trackers.mjs";
 import { innerGates } from "../config/combat.mjs";
-import { ampCardsFor, ampTypeLabel, ampEffectView } from "../rules/amp-cards.mjs";
+import { ampCardsFor, ampTypeLabel, ampEffectView, ampDefFor } from "../rules/amp-cards.mjs";
 import { n5eConfig } from "../rules/host.mjs";
 import { resolveFormula } from "../rules/unarmed.mjs";
 
@@ -346,18 +346,17 @@ function comboVM(actor, combo) {
 /*  Phase 6 trackers                            */
 /* -------------------------------------------- */
 
-// Does any owned item's name or text mention this? Used to show a tracker only to characters who
-// have something that uses it (Fury).
-const mentions = (actor, re) => list(actor.items).some(i => re.test(i.name) || re.test(String(i.system?.description ?? "")));
+// STD6f F-D2: does something the character has use this tracker? Its data says so
+// (flags.n5e.trackers: ["fury"]), not its name or text.
+const usesTracker = (actor, key) => list(actor.items).some(i => [].concat(i.flags?.n5e?.trackers ?? []).includes(key));
 
-/** Fury tracker: value / max boxes; shown when Fury > 0 or something the character has mentions Fury. */
+/** Fury tracker: value / max boxes; shown when Fury > 0, Fury's maximum is raised, or an item uses Fury. */
 function furyVM(actor) {
   const value = actor.system.combat?.fury ?? 0;
   const max = furyMax(actor);
-  const stance = list(actor.items).find(i => i.id === actor.system.combat?.activeStance);
-  return { show: value > 0 || mentions(actor, /\bfury\b/i), value, max, boxes: pips(value, max),
-    // STD6a: "gains Fury on weapon damage" is a trigger element on the active stance (STD4), not its name.
-    binding: !!stance && triggersFor(actor, "damageDealt", { spec: { kind: "damage", type: "damage", scope: "weapon" } }).some(t => t.element.pool === "fury") };
+  return { show: value > 0 || max > 1 || usesTracker(actor, "fury"), value, max, boxes: pips(value, max),
+    // STD6a: "gains Fury on weapon damage" is a trigger element (STD4): Binding Fury Stance's effect.
+    binding: triggersFor(actor, "damageDealt", { spec: { kind: "damage", type: "damage", scope: "weapon" } }).some(t => t.element.pool === "fury") };
 }
 
 /**
@@ -391,7 +390,11 @@ function marksVM(actor) {
 export function ampsVM(actor, registry = n5eConfig().amps ?? {}, { worldTime = globalThis.game?.time?.worldTime ?? 0 } = {}) {
   // King 2026-11-16: the card's current name, and a hover listing what the Amp changes.
   const rows = list(actor.effects).filter(e => e.type === "amp").map(e => ({ id: e.id, ...ampEffectView(e, registry, n5eConfig()), disabled: !!e.disabled,
-    type: ampTypeLabel(e.system?.ampType), typeKey: e.system?.ampType || "none", typeless: !e.system?.ampType, remaining: e.duration?.label ?? "", key: e.system?.key ?? "" }));
+    type: ampTypeLabel(e.system?.ampType), typeKey: e.system?.ampType || "none", typeless: !e.system?.ampType, remaining: e.duration?.label ?? "", key: e.system?.key ?? "",
+    // AMP1f (King Q-F9): a pick that can change while active (Score's tempo).
+    canChange: !!ampDefFor(e, registry)?.choose?.changeable,
+    // AMP1f batch 3 (King Q-F11): the card's buttons (Blade Heart: Parrying stance).
+    buttons: (ampDefFor(e, registry)?.buttons ?? []).map((b, index) => ({ index, label: b.label, tip: [b.activation && `${b.activation[0].toUpperCase()}${b.activation.slice(1)}`, b.text].filter(Boolean).join(": ") })) }));
   const resolve = v => Number(resolveFormula(String(v), actor)) || 0;
   const available = ampCardsFor(actor, registry, { worldTime, resolve }).map(c => ({ ...c,
     cooling: c.cooldown > 0 ? `${Math.ceil(c.cooldown / 60)} min` : "", spent: !!c.uses && c.uses.left <= 0 }));

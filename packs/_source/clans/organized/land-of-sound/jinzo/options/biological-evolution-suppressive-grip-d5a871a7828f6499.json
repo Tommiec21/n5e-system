@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "jinzo",
       "sourceLine": 7238,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,40 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ecZENvOEr9P2vG",
+        "type": "save",
+        "label": "Suppressive Grip",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "sealed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Sealed"
+          }
+        ],
+        "text": "A creature you grapple, at the start of each of its turns (your choice). Failure: the damage and 1 rank of Sealed (2 at 11th) while grappled.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(3:3d6,7:4d6,15:5d6)",
+              "type": "chakra"
+            }
+          ]
+        }
+      }
+    ]
   }
 }

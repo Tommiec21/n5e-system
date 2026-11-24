@@ -17,7 +17,7 @@ export function effectFieldCatalog(config) {
     else if ( /^n5e\.(discipline|keyword)Ability\./.test(field.key) ) { type = "ability"; choices = ["str", "dex", "con", "int", "wis", "cha"]; example = "wis"; }
     else if ( ["n5e.unarmed.dice", "n5e.unarmed.die"].includes(field.key) ) { type = "dice"; example = field.key.endsWith("die") ? "1d12" : "1d8"; }
     else if ( /^n5e\.(cost|upkeep)\./.test(field.key) ) { type = "adjustment"; example = "-2, *0.5 or /2"; }
-    else if ( ["n5e.resist", "n5e.immune"].includes(field.key) ) { type = "damageType"; choices = Object.keys(config?.damageTypes ?? {}); example = "fire"; }
+    else if ( ["n5e.resist", "n5e.immune", "n5e.vulnerable"].includes(field.key) ) { type = "damageType"; choices = Object.keys(config?.damageTypes ?? {}); example = "fire"; }
     else if ( field.key.startsWith("n5e.rankCost.") ) { type = "text"; example = "D:3,C:5,B:9,A:14,S:20"; }
     else if ( /^n5e\.(attack\.\w+|save\.\w+|check\.\w+|initiative)$/.test(field.key) ) { type = "bonus"; example = "1d4"; }
     else if ( ["n5e.conditionResist", "n5e.conditionImmune"].includes(field.key) ) { type = "condition"; example = "group:physical"; }
@@ -83,7 +83,7 @@ const FIELDS = {
   attacks: ["value", "implementsOnly", "text"], initiativeOptions: ["skills", "text"],
   modifier: ["value"], degreeShift: ["value"], critRange: ["value"], maximizeDice: ["value"], minimumDie: ["value"], addRanks: ["value"], rerollBelow: ["value"], critAbilityMod: ["value"], maximizeAfter: ["value"],
   advantage: [], disadvantage: [], autoFail: [], autoSucceed: [], noAdvantage: [], costReduction: ["value"],
-  reroll: ["mode"], damage: ["formula", "damageType", "who", "unreducible"], heal: ["formula", "pool", "who"], resave: ["ability", "dc"], areaSize: ["value", "shapes"], ignoreComponent: ["component"], damageHandling: ["ignoreResistance", "immunityAsResistance", "drMultiplier", "resistAll"],
+  reroll: ["mode"], damage: ["formula", "damageType", "who", "unreducible", "optional"], heal: ["formula", "pool", "who"], resave: ["ability", "dc"], areaSize: ["value", "shapes"], ignoreComponent: ["component"], damageHandling: ["ignoreResistance", "immunityAsResistance", "drMultiplier", "resistAll"],
   inflict: ["condition", "ranks", "who"], effect: ["effect"], resource: ["pool", "amount"], note: ["text"]
 };
 export function validateConditionalRules(rules) {
@@ -100,6 +100,9 @@ export function validateConditionalRules(rules) {
       || /^mod\((\s*(str|dex|con|int|wis|cha)\s*,?)+\)$/.test(r.value)
       // CCOND1: so much per rank of the condition carrying it ("ranks(-2)").
       || /^ranks\(-?\d+\)$/.test(r.value)
+      // STD6d Scout-Nin: a value fixed from the caster when an activity places the effect (an aura's
+      // child effect: "floor(@abilities.con.mod / 2)", Elemental Aura); workflow/trackers.mjs resolves it.
+      || /^(?:[-+*/\d\s().]|floor|ceil|@prof\b|@abilities\.(str|dex|con|int|wis|cha)\.mod|@disciplines\.\w+\.mod)+$/.test(r.value) && /@/.test(r.value)
       // King 2026-11-16 (Bless): a modifier can be dice ("1d4", "-1d4").
       || (r.key === "modifier" && /^[+-]?\d*d\d+$/i.test(r.value.replace(/\s+/g, ""))));
     if ( NUMERIC.has(r.key) && !rankValued ) {
@@ -125,6 +128,7 @@ export function validateConditionalRules(rules) {
     if ( r.key === "resource" && (typeof r.pool !== "string" || !/^[a-zA-Z][\w-]{0,59}$/.test(r.pool) || !Number.isFinite(Number(r.amount))) ) throw new Error("resource needs a pool and an amount.");
     if ( r.key === "inflict" && r.who !== undefined && !["self", "target"].includes(r.who) ) throw new Error("inflict who is self or target.");
     if ( r.label !== undefined && (typeof r.label !== "string" || r.label.length > 120) ) throw new Error("label is text of at most 120 characters.");
+    if ( r.optional !== undefined && (r.key !== "damage" || typeof r.optional !== "boolean") ) throw new Error("optional (true or false) is for damage elements: an unticked row in the damage window.");
   }
   return rules;
 }

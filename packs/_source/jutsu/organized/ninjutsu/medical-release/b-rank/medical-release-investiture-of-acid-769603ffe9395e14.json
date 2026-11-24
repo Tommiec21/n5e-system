@@ -87,9 +87,30 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "ampd1b8363193a27",
+        "type": "effect",
+        "label": "Medical Release: Investiture of Acid",
+        "effect": {
+          "name": "Medical Release: Investiture of Acid",
+          "target": "self",
+          "amp": "jutsu-medical-release-investiture-of-acid"
+        },
+        "text": "Starts the jutsu's Amp at the rank it was cast at."
+      },
+      {
+        "id": "n5ehyZMTwfUlwdA3",
         "type": "save",
-        "label": "Save",
+        "label": "Acid blast",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "corroded",
@@ -98,18 +119,7 @@
             "label": "Corroded"
           }
         ],
-        "save": {
-          "abilities": [
-            "con"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "An Action: a 15-foot cone. Failure: Corroded; success: half, nothing else.",
         "damage": {
           "parts": [
             {
@@ -191,7 +201,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "d1f8f3baa49a3e3a"

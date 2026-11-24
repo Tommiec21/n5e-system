@@ -17,7 +17,434 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu",
         "components": "CS, M, W"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Weaving: on a hit, move your speed and make one unarmed attack (+1 at B and S)."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eyBYWQiAew2s7d",
+              "type": "attack",
+              "label": "Paper Shuriken",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet (Angel/Demon: a 30-foot cone).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d4) + (2d4)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ezkIuJ5SCvxOsA",
+              "type": "save",
+              "label": "Explosive",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit: the target and everyone within 10 feet; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eCGjPecKy9KK8p",
+              "type": "save",
+              "label": "Serrated",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "On a hit. Failure: Bleed (+1 at B, +1 at S).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eV44jHOjxREtAc",
+              "type": "save",
+              "label": "Binding",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "sealed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Sealed"
+                }
+              ],
+              "text": "On a hit. Failure: Sealed (+1 at B, +1 at S).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eyBYWQiAew2s7d",
+              "type": "attack",
+              "label": "Paper Shuriken",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet (Angel/Demon: a 30-foot cone).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d4) + (4d4)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ezkIuJ5SCvxOsA",
+              "type": "save",
+              "label": "Explosive",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit: the target and everyone within 10 feet; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eCGjPecKy9KK8p",
+              "type": "save",
+              "label": "Serrated",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "On a hit. Failure: Bleed (+1 at B, +1 at S).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eV44jHOjxREtAc",
+              "type": "save",
+              "label": "Binding",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "sealed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Sealed"
+                }
+              ],
+              "text": "On a hit. Failure: Sealed (+1 at B, +1 at S).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eyBYWQiAew2s7d",
+              "type": "attack",
+              "label": "Paper Shuriken",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet (Angel/Demon: a 30-foot cone).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d4) + (6d4)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ezkIuJ5SCvxOsA",
+              "type": "save",
+              "label": "Explosive",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit: the target and everyone within 10 feet; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (3d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eCGjPecKy9KK8p",
+              "type": "save",
+              "label": "Serrated",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "On a hit. Failure: Bleed (+1 at B, +1 at S).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eV44jHOjxREtAc",
+              "type": "save",
+              "label": "Binding",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "sealed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Sealed"
+                }
+              ],
+              "text": "On a hit. Failure: Sealed (+1 at B, +1 at S).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eyBYWQiAew2s7d",
+              "type": "attack",
+              "label": "Paper Shuriken",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet (Angel/Demon: a 30-foot cone).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d4) + (8d4)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ezkIuJ5SCvxOsA",
+              "type": "save",
+              "label": "Explosive",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit: the target and everyone within 10 feet; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (4d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eCGjPecKy9KK8p",
+              "type": "save",
+              "label": "Serrated",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "On a hit. Failure: Bleed (+1 at B, +1 at S).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eV44jHOjxREtAc",
+              "type": "save",
+              "label": "Binding",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "sealed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Sealed"
+                }
+              ],
+              "text": "On a hit. Failure: Sealed (+1 at B, +1 at S).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Paper Veil",
+          "appliesTo": {
+            "namePrefix": "Origami Technique: Paper Shuriken"
+          },
+          "note": "Paper Veil active, your first Canvas Type's effect: Explosive, Serrated or Binding button, or Weaving's move and attack."
+        },
+        {
+          "label": "Origami Angel/Demon",
+          "appliesTo": {
+            "namePrefix": "Origami Technique: Paper Shuriken"
+          },
+          "note": "In your Origami Angel/Demon state: Self (30-foot cone) against every AC."
+        }
+      ]
     }
   },
   "ownership": {
@@ -108,7 +535,106 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eyBYWQiAew2s7d",
+        "type": "attack",
+        "label": "Paper Shuriken",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "60 feet (Angel/Demon: a 30-foot cone).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d4",
+              "type": "slashing"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ezkIuJ5SCvxOsA",
+        "type": "save",
+        "label": "Explosive",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "On a hit: the target and everyone within 10 feet; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eCGjPecKy9KK8p",
+        "type": "save",
+        "label": "Serrated",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "text": "On a hit. Failure: Bleed (+1 at B, +1 at S).",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eV44jHOjxREtAc",
+        "type": "save",
+        "label": "Binding",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "sealed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Sealed"
+          }
+        ],
+        "text": "On a hit. Failure: Sealed (+1 at B, +1 at S).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

@@ -17,6 +17,233 @@
         "cost": "6 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu, Fuinjutsu, Wind Release, Lightning Release.",
         "components": "HS, M, W (Any, Optional)"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5ebOKAWqi6kh3Id",
+              "type": "attack",
+              "label": "Shadowless Flight (Ninjutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "One attack against every creature marked with your Speed Seal within 120 feet; wind or lightning. B-Rank: teleport next to one damaged creature.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (1d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ed32sDAW8bEzGC",
+              "type": "attack",
+              "label": "Shadowless Flight (Taijutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eyAnbyxPNmwPTg",
+              "type": "save",
+              "label": "Shadowless Flight: save",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Concussed"
+                }
+              ],
+              "text": "Each affected creature. Failure: Concussed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ebOKAWqi6kh3Id",
+              "type": "attack",
+              "label": "Shadowless Flight (Ninjutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "One attack against every creature marked with your Speed Seal within 120 feet; wind or lightning. B-Rank: teleport next to one damaged creature.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (2d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ed32sDAW8bEzGC",
+              "type": "attack",
+              "label": "Shadowless Flight (Taijutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eyAnbyxPNmwPTg",
+              "type": "save",
+              "label": "Shadowless Flight: save",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Concussed"
+                }
+              ],
+              "text": "Each affected creature. Failure: Concussed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ebOKAWqi6kh3Id",
+              "type": "attack",
+              "label": "Shadowless Flight (Ninjutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "One attack against every creature marked with your Speed Seal within 120 feet; wind or lightning. B-Rank: teleport next to one damaged creature.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (3d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ed32sDAW8bEzGC",
+              "type": "attack",
+              "label": "Shadowless Flight (Taijutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (3d6)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eyAnbyxPNmwPTg",
+              "type": "save",
+              "label": "Shadowless Flight: save",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Concussed"
+                }
+              ],
+              "text": "Each affected creature. Failure: Concussed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -112,7 +339,80 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ebOKAWqi6kh3Id",
+        "type": "attack",
+        "label": "Shadowless Flight (Ninjutsu)",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "One attack against every creature marked with your Speed Seal within 120 feet; wind or lightning. B-Rank: teleport next to one damaged creature.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "wind"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ed32sDAW8bEzGC",
+        "type": "attack",
+        "label": "Shadowless Flight (Taijutsu)",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "wind"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eyAnbyxPNmwPTg",
+        "type": "save",
+        "label": "Shadowless Flight: save",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "concussed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Concussed"
+          }
+        ],
+        "text": "Each affected creature. Failure: Concussed.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

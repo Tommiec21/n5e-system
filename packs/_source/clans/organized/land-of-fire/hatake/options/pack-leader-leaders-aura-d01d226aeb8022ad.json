@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "hatake",
       "sourceLine": 854,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "In/famous is printed inside this option's text (a text issue)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,38 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eYVeTdDP6FzPc8",
+        "type": "effect",
+        "label": "Leaders Aura",
+        "effect": {
+          "name": "Leaders Aura",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "1 minute, a 15-foot radius (20 at 7th, 25 at 15th): the first failed d20 of an ally (not you) can be rerolled, taking the second (once per your turn).",
+        "cost": {
+          "pool": "commandDice",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eGpafxAqj90ThO",
+        "type": "roll",
+        "label": "In/famous",
+        "roll": {
+          "formula": "1d20 + @level + max(@abilities.str.mod, @abilities.dex.mod, @abilities.con.mod, @abilities.int.mod, @abilities.wis.mod, @abilities.cha.mod)",
+          "note": "Rolling initiative: your Command Die + your level + highest modifier, contested by hostile History checks; success: 2 ranks of Demoralized until the start of their following turn (3 at 11th)."
+        },
+        "cost": {
+          "pool": "commandDice",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

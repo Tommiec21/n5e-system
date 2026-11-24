@@ -9,7 +9,8 @@
   "flags": {
     "n5e": {
       "clanPackage": "hatake",
-      "sourceLine": 891
+      "sourceLine": 891,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -42,6 +43,60 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eRWJoVOitSG2dC",
+        "type": "roll",
+        "label": "Advance (White Chakra)",
+        "roll": {
+          "formula": "",
+          "note": "Start of your turn, an ally within 30 feet: your damage gives it a bonus to its next attack or save DC (beating AC or the save by 5: a rank of Mastery)."
+        },
+        "cost": {
+          "pool": "whiteChakra",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5e62kIFPoVgybtM",
+        "type": "roll",
+        "label": "Advance (Command Die)",
+        "roll": {
+          "formula": "",
+          "note": "It moves as far as you; when you Attack or cast, it can use its Reaction to do the same."
+        },
+        "cost": {
+          "pool": "commandDice",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eg477AeekoW69W",
+        "type": "roll",
+        "label": "Evade (White Chakra)",
+        "roll": {
+          "formula": "",
+          "note": "Either of you taking damage can swap places and intercept it; the save or attack is remade."
+        },
+        "cost": {
+          "pool": "whiteChakra",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5ecZJmtec5GrdMY",
+        "type": "roll",
+        "label": "Evade (Command Die)",
+        "roll": {
+          "formula": "",
+          "note": "When either of you uses a reaction, the other gets the same benefit."
+        },
+        "cost": {
+          "pool": "commandDice",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

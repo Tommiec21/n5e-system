@@ -17,7 +17,8 @@
         "cost": "10 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Visual), Lightning Release, Sensory",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -111,7 +112,35 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ev3bGU5rq0rhiy",
+        "type": "save",
+        "label": "Data Visualization",
+        "save": {
+          "abilities": [
+            "int"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: a memory from the past day (it forgets that span for 24 hours); you and willing creatures within 15 feet can relive it for 24 hours.",
+            "failure": "Failure: as a success, the past week.",
+            "critFailure": "Critical Failure: as a success, the past month."
+          }
+        },
+        "inflicts": [],
+        "text": "A willing or incapacitated creature you touch (an unconscious one saves).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ejE6V5kU7I3jn8",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Fatal Blow",
         "save": {
           "abilities": [
             "dex"
@@ -97,21 +96,24 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "stunned",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Stunned"
+          }
+        ],
+        "text": "A Prone, Restrained or Incapacitated target (Chain 2: any, with advantage). Failure: also triggers its damaging Elemental and Physical conditions at once; Chain 3: Stunned until the end of its next turn. Success: nothing.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "8d10",
-        "roll": {
-          "formula": "8d10",
-          "note": "The target creature must make a Dexterity saving throw, taking your [Weapons damage] + 8d10 and triggering all Elemental and Physical conditions that deal damage at once on a failed save. On a success, the target completely avoids your weapon as they move narrowly out of the way."
+          "parts": [
+            {
+              "formula": "@weapon + 8d10",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -198,9 +200,51 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5ejE6V5kU7I3jn8",
+              "type": "save",
+              "label": "Fatal Blow",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "stunned",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Stunned"
+                }
+              ],
+              "text": "A Prone, Restrained or Incapacitated target (Chain 2: any, with advantage). Failure: also triggers its damaging Elemental and Physical conditions at once; Chain 3: Stunned until the end of its next turn. Success: nothing.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 8d10) + (1d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Stunned is Chain 3 only."
+        }
+      ]
     }
   },
   "folder": "7116760d98edc24e"

@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "genwa",
       "sourceLine": 3789,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Casting a Genwa Hijutsu: a 20-foot radius within 30 feet gives a rank of Mastery against hostile environments and area jutsu. An area concentration jutsu can gain Sensory (tremorsense in it)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,17 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eR80lsK0uN67WY",
+        "type": "roll",
+        "label": "Hidden Sand: DR",
+        "roll": {
+          "formula": "max(@str, @dex, @con, @int, @wis, @cha)",
+          "note": "Start of your turn, concentrating on a Lightning jutsu: DR against the first damage before your next turn (twice that with two or more)."
+        }
+      }
+    ]
   }
 }

@@ -94,8 +94,8 @@ const typeLabel = types => types.map(t => CONFIG.N5E.damageTypes?.[t]?.label ?? 
 export function damageButtons(parts, { label = "Damage", abilityMod = null, genjutsu = false, weapon = false, pierce = 0, cost = null,
   weaponId = "", activity = null, itemId = "", critExtra = "" } = {}) {
   if ( !parts?.length ) return "";
-  const json = JSON.stringify(parts.map(p => ({ formula: p.formula, type: p.type ?? "" })));
-  const shown = parts.map(p => `${p.formula.replace(/@unarmed/g, "[Unarmed]")}${p.type ? ` ${typeLabel([p.type])}` : ""}`).join(" + ");
+  const json = JSON.stringify(parts.map(p => ({ formula: p.formula, type: p.type ?? "", ...(p.alsoAs ? { alsoAs: p.alsoAs } : {}) })));
+  const shown = parts.map(p => `${p.formula.replace(/@unarmed/g, "[Unarmed]").replace(/@weapon/g, "[Weapon]").replace(/@wdie/g, "[Weapon die]")}${p.type ? ` ${typeLabel([p.type])}` : ""}${p.alsoAs ? ` and the same ${typeLabel([p.alsoAs])}` : ""}`).join(" + ");
   const common = `${activity ? attr("activity", activity.id || activity.label || activity.type) + attr("once", activity.oncePerTurn ? 1 : "") + attr("activation", activity.activation || "") + attr("item", itemId) : ""}${attr("parts", json)}${attr("weapon-id", weaponId)}${attr("mod", abilityMod)}${attr("gen", genjutsu ? 1 : "")}${attr("weapon", weapon ? 1 : "")}${attr("pierce", pierce || "")}${cost?.pool ? attr("cost", JSON.stringify(cost)) : ""}${attr("crit-extra", critExtra)}`;
   return `<button type="button" data-n5e-act="damage"${common}><i class="fa-solid fa-burst"></i> ${esc(label)}: ${esc(shown)}</button>
     <button type="button" class="crit" data-n5e-act="damage" data-crit="1"${common}>Critical</button>`;
@@ -139,6 +139,8 @@ export function activityButtons(actor, item, activities, { flags = {}, disciplin
     const src = a.save?.dc?.source;
     // A tool's own DC (FIN2b, Chakra Suppression Tag DC 15/17/19): source "fixed", the number in formula.
     if ( src === "fixed" ) return Number(a.save.dc.formula) || 0;
+    // STD6e: "your highest jutsu save DC" (clan features): the best of the casting disciplines.
+    if ( src === "highest" ) return highestDiscipline(actor, "dc").value;
     const disc = ["nin", "tai", "gen"].includes(src) ? src : (item.system.discipline || featureDiscipline(item));
     return actor.system.disciplines?.[disc === "buki" ? "tai" : disc]?.dc;
   };
@@ -218,7 +220,8 @@ export function activityButtons(actor, item, activities, { flags = {}, disciplin
     // Parsed kinds. Attack bonus: a jutsu's own live bonus (ability, Hijutsu, effects); otherwise the
     // discipline's (Bukijutsu attacks use the Taijutsu numbers).
     if ( a.type === "attack" ) {
-      const disc = a.attack?.discipline || item.system.discipline;
+      // STD6e: "your highest jutsu attack bonus" (clan features: Clay Bombings) uses the best discipline.
+      const disc = a.attack?.discipline === "highest" ? highestDiscipline(actor, "attack").key : (a.attack?.discipline || item.system.discipline);
       // A Freeform Strike on the Weapon/Freeform line reads the adversary's own line (NPC3).
       const own = disc === "freeform" ? actor.system.adversaryBuild?.freeform?.attack ?? 0
         : actor.system.disciplines?.[disc === "buki" ? "tai" : disc]?.attack ?? 0;
@@ -314,7 +317,9 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       if ( !caster?.isOwner ) return fail("warn", "Only the summoner's owner can summon from this card.");
       const { summonTokens } = await import("./automation.mjs");
       try {
-        return await summonTokens(caster, caster?.items.get(d.item), { ...JSON.parse(d.summon || "{}"), seconds: Number(d.seconds), concentration: !!d.concentration });
+        return await summonTokens(caster, caster?.items.get(d.item), { ...JSON.parse(d.summon || "{}"), seconds: Number(d.seconds), concentration: !!d.concentration,
+          // STD6e: the cast rank, for summons whose statistics grow by rank (Clay constructs).
+          rank: message?.getFlag?.("n5e", "cast")?.rank ?? "" });
       } catch (error) { return fail("warn", error.message); }
     }
     case "strike": {
@@ -340,7 +345,8 @@ async function executeActivityClick(message, button, event, { healingTargets = n
     case "effect": {
       if ( !caster?.isOwner ) return fail("warn", "Only the owner can use this.");
       const { applyActivityEffect } = await import("./trackers.mjs");
-      return applyActivityEffect(caster, JSON.parse(d.effect || "{}"), { label: d.label, item: caster.items.get(d.item), poolRoll });
+      // AMP1f: the cast rank picks a jutsu Amp's version.
+      return applyActivityEffect(caster, JSON.parse(d.effect || "{}"), { label: d.label, item: caster.items.get(d.item), poolRoll, rank: message?.getFlag?.("n5e", "cast")?.rank ?? "" });
     }
     case "attack": {
       if ( !caster?.isOwner ) return fail("warn", "Only the caster's owner can roll this attack.");
@@ -374,7 +380,10 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       const oneTarget = targets.length === 1 ? targets[0].actor : null;
       const cardCtx = cardActionContext(message?.id, actor);
       const shaped = actor ? contextualRoll(actor, dmgSpec, oneTarget, cardCtx.extra) : { damage: [], handling: null, maximizeDice: 0, minimumDie: 0, rerollBelow: 0, critAbilityMod: 0, maximizeAfter: 0, sources: [] };
-      parts.push(...shaped.damage.map(p => ({ formula: p.formula, type: p.type, label: p.label, abilityMod: 0 })));
+      // King Q-D25: an optional damage element (Lethal Attack) is an unticked row the roller ticks when it
+      // applies; without a type of its own it takes the roll's first damage type.
+      parts.push(...shaped.damage.map(p => ({ formula: p.formula, type: p.type || (p.optional ? parts[0]?.type ?? "" : ""), label: p.optional ? `${p.label} (${p.formula})` : p.label, abilityMod: 0,
+        ...(p.optional ? { optional: true } : {}) })));
       const modifiers = actor ? contextualModifiers(actor, dmgSpec, oneTarget, cardCtx.extra) : { parts: [], bonus: 0 };
       // The damage dialog (ROLL1b): each part and effect modifier with a tick, added typed damage,
       // Critical (preset from the attack) and the mode. Flat modifiers fold into the first part.
@@ -388,6 +397,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       const crit = picked.crit;
       const instances = [];
       const rolls = [], rollMetadata = [], advNotes = [];
+      let heldWeapon = null;
       for ( const [index, p] of parts.entries() ) {
         // ENG1a: "@target.ranks.envenomed" and the like read the one target.
         let formula = targetFormula(level(p.formula), oneTarget);
@@ -399,6 +409,29 @@ async function executeActivityClick(message, button, event, { healingTargets = n
           formula = formula.replace(/@unarmed/g, `(${unarmedFormula(actor)})`);
           p.type = unarmedSpec(actor).type;
           abilityMod = abilityMod ?? unarmedSpec(actor).mod;
+        }
+        // STD6f F-D5: "@weapon" is the wielded weapon's damage ([Weapon damage]): its die, extra dice and
+        // flat bonus; the part takes the weapon's type unless it names one, and the weapon's modifier.
+        if ( formula.includes("@weapon") ) {
+          const { pickWeapon, weaponAttackSpec } = await import("./attack.mjs");
+          heldWeapon ??= await pickWeapon(actor, null);
+          if ( !heldWeapon ) return null;
+          const ws = weaponAttackSpec(actor, heldWeapon);
+          const flat = Number(ws.damage.flat) || 0;
+          const wf = `${ws.damage.die}${ws.damage.extra.map(x => ` + ${x}`).join("")}${flat ? ` ${flat < 0 ? "-" : "+"} ${Math.abs(flat)}` : ""}`;
+          formula = formula.replace(/@weapon/g, `(${wf})`);
+          p.type ||= ws.damage.types[0] ?? "";
+          abilityMod = abilityMod ?? ws.abilityMod;
+        }
+        // STD6f F-D5: "@wdie" is the wielded weapon's damage die alone ("your weapon damage die + 2d8"):
+        // no extra dice, bonus or modifier; the part takes the weapon's type unless it names one.
+        if ( formula.includes("@wdie") ) {
+          const { pickWeapon, weaponAttackSpec } = await import("./attack.mjs");
+          heldWeapon ??= await pickWeapon(actor, null);
+          if ( !heldWeapon ) return null;
+          const ws = weaponAttackSpec(actor, heldWeapon);
+          formula = formula.replace(/@wdie/g, ws.damage.die.replace(/min\d+|r<\d+/g, ""));
+          p.type ||= ws.damage.types[0] ?? "";
         }
         // Advantage on these named damage dice (rule elements, King 2026-11-13): roll twice, keep one.
         // Deadly X: a crit adds the weapon's own dice after doubling (first part only).
@@ -421,6 +454,8 @@ async function executeActivityClick(message, button, event, { healingTargets = n
           if ( after ) advNotes.push(`${shaped.sources.join(", ")}: +${after} (up to ${shaped.maximizeAfter} dice counted as their maximum)`);
         }
         instances.push({ amount: roll.total + after, type: p.type });
+        // King Q-E20: the same result again as a second type (Parasitic Giant Insect: 50 poison and 50 chakra).
+        if ( p.alsoAs ) instances.push({ amount: roll.total + after, type: p.alsoAs });
       }
       const rollTrace = { ...damageRollTrace(rolls, instances, rollMetadata), critical: crit };
       const total = instances.reduce((t, i) => t + i.amount, 0);
@@ -453,9 +488,13 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       let rolled = 0;
       // Genjutsu Stimuli (GEN1): immune creatures don't roll; the card says why.
       const immune = await stimuliImmune(message, targets);
+      // AMP1f batch 4 (King Q-F15): the saver's rules can name what it saves against
+      // ("against:jutsu:discipline:nin": Aura of Power's saves against Ninjutsu).
+      const against = (await castFacts(message)).map(f => `against:${f}`);
+      const saveSpec = t => { const sp = rollSpec(t, "save", d.ability); return against.length ? { ...sp, facts: [...(sp.facts ?? []), ...against] } : sp; };
       // Several creatures: one roll dialog for the group (King Q-R2).
       const rollers = targets.filter(t => t.isOwner && !immune.has(t));
-      const prepared = await groupRollChoice(rollers.map(t => ({ actor: t, spec: rollSpec(t, "save", d.ability) })),
+      const prepared = await groupRollChoice(rollers.map(t => ({ actor: t, spec: saveSpec(t) })),
         `${abilities[d.ability]?.label ?? d.ability} save vs ${d.label}`);
       if ( prepared === null ) return null;
       for ( const t of targets ) {
@@ -465,7 +504,7 @@ async function executeActivityClick(message, button, event, { healingTargets = n
             content: `<div class="n5e-roll-card"><b>${esc(t.name)}: immune to ${esc(d.label)}</b><div class="note">${esc(immune.get(t).join(", "))}</div></div>` });
           continue;
         }
-        const spec = { ...rollSpec(t, "save", d.ability), label: `${abilities[d.ability]?.label ?? d.ability} save vs ${d.label}` };
+        const spec = { ...saveSpec(t), label: `${abilities[d.ability]?.label ?? d.ability} save vs ${d.label}` };
         // What a failure inflicts becomes Apply buttons on the save card (not automatic: many jutsu
         // only inflict under conditions in their text). With a resave, the applied condition remembers
         // the save so the end-of-turn card can offer it again (workflow/trackers.mjs).
@@ -490,7 +529,8 @@ async function executeActivityClick(message, button, event, { healingTargets = n
       const healCtx = caster ? cardActionContext(message?.id, caster) : { extra: [] };
       const healShape = caster ? contextualRoll(caster, healSpec, null, healCtx.extra) : { maximizeDice: 0, minimumDie: 0, rerollBelow: 0 };
       const healMods = caster ? contextualModifiers(caster, healSpec, null, healCtx.extra) : { bonus: 0 };
-      let healFormula = shapeDice(level(d.formula), { maximize: healShape.maximizeDice, minimum: healShape.minimumDie, rerollBelow: healShape.rerollBelow });
+      // STD6f: "[Unarmed damage]" in a heal (Iron Guard's temporary hit points) is the caster's current unarmed damage.
+      let healFormula = shapeDice(level(d.formula).replace(/@unarmed/g, () => `(${unarmedFormula(caster)})`), { maximize: healShape.maximizeDice, minimum: healShape.minimumDie, rerollBelow: healShape.rerollBelow });
       if ( healMods.bonus ) healFormula = `${healFormula} ${healMods.bonus < 0 ? "-" : "+"} ${Math.abs(healMods.bonus)}`;
       for ( const p of healMods.parts ?? [] ) if ( p.dice ) healFormula = `${healFormula} ${p.dice.startsWith("-") ? `- ${p.dice.slice(1)}` : `+ ${p.dice.replace(/^\+/, "")}`}`;
       const rolled = await rollFormula(caster, healFormula, { title: `${caster?.name ?? ""}: ${d.label || "Healing"}`, ...healSpec });
@@ -537,4 +577,14 @@ function fail(level, message) {
 /** All activity kinds share validation, turn limits, resource refund and hook handling. */
 export async function onActivityClick(message, button, event, options = {}) {
   return executeActivity(message, button, event, executeActivityClick, targetsOrSelf, options);
+}
+
+/** STD6e: the casting discipline with the highest number ("dc" or "attack"): {key, value}. */
+export function highestDiscipline(actor, field = "dc") {
+  let best = { key: "nin", value: 0 };
+  for ( const key of ["nin", "tai", "gen"] ) {
+    const v = Number(actor?.system?.disciplines?.[key]?.[field]) || 0;
+    if ( v > best.value ) best = { key, value: v };
+  }
+  return best;
 }

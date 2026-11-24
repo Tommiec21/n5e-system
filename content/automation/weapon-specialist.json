@@ -1,0 +1,3004 @@
+{
+  "class": "weapon-specialist",
+  "spec": "docs/STD6d_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "aggressive-reprisal-fang-breaker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eDEjNeUt5AdCPK",
+          "type": "roll",
+          "label": "Aggressive Reprisal",
+          "roll": {
+            "formula": "",
+            "note": "In Battle Trance, with Temporary Discipline, reaction to damage from a hostile creature within your weapon attack's range: cast a C-Rank or lower 1-Action Bukijutsu at it."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "In Battle Trance: 1 Temporary Discipline each time you take damage (up to 4), lost at the start of your next turn, spent like Discipline (track it at the table)."
+        }
+      ]
+    },
+    "augmentation": {
+      "status": "none",
+      "rules": []
+    },
+    "aura-of-protection-obsidian-guard": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eSWxDEJMvv2WYR",
+          "type": "effect",
+          "label": "Aura of Protection",
+          "effect": {
+            "name": "Aura of Protection",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 3600,
+            "aura": {
+              "radius": 15,
+              "who": "friendly",
+              "includeSelf": false,
+              "effect": {
+                "name": "Aura of Protection",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "lvl(6:1,14:2)",
+                    "mode": 2
+                  },
+                  {
+                    "key": "n5e.save.all",
+                    "value": "lvl(6:1,14:2)",
+                    "mode": 2
+                  }
+                ]
+              }
+            }
+          },
+          "text": "While your Obsidian Ward has hit points: allies within 15 feet get +1 AC and saves (+2 at 14th). End it when the ward drops to 0."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Obsidian Ward can also regain hit points on other creatures' turns (still once per turn)."
+        }
+      ]
+    },
+    "battle-boast": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eOJuJhyQhCcYHp",
+          "type": "save",
+          "label": "Battle Boast",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Once per turn, in place of an attack of the Attack action or a Bukijutsu you cast: hostile creatures in a 20-foot cone. Failure: until the start of your next turn, their next attack has disadvantage if you aren't its target, and creatures other than you get a rank of Mastery on saves they force.",
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          },
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "battle-medic": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ejCZz1qdL1Vzty",
+          "type": "roll",
+          "label": "Battle Medic",
+          "roll": {
+            "formula": "2d12",
+            "note": "One willing creature. 10 or more: remove 1 rank of a Physical condition; the same value on both dice: all ranks of it. Twice per rest for each creature."
+          },
+          "activation": "bonus",
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          },
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "berserkers-frenzy-fang-breaker": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "note",
+          "text": "The 6th-level Battle Trance card (its version at 6th level) carries the Level 6 benefits and the immunity to Charmed, Demoralized and Shaken."
+        }
+      ]
+    },
+    "boundless-guardian-obsidian-guard": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRufnwCMvx1FaT",
+          "type": "roll",
+          "label": "Provoked: ally bonus damage",
+          "roll": {
+            "formula": "1d12",
+            "note": "An ally starting its turn in your Aura of Protection deals this much more damage to a Provoked creature."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "An extra reaction for this Doctrine's features only. Provoked creatures stay Provoked until they target or damage you with an attack or jutsu."
+        }
+      ]
+    },
+    "break-reinforce-the-seal-primal-weapon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eTyXoGfiHcED3E",
+          "type": "save",
+          "label": "Break the Seal",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": true
+          },
+          "inflicts": [],
+          "text": "A [Weapon Damage] Flurry Technique costing 4 or less, paid at 4 (this button is the whole cost). Failure, for 1 minute: double chakra costs and half its jutsu damage dice. Resaves each turn; immune until your rest after a success.",
+          "cost": {
+            "pool": "discipline",
+            "amount": 4
+          }
+        },
+        {
+          "id": "n5esLbaKmoWLcysd",
+          "type": "save",
+          "label": "Reinforce the Seal",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": true
+          },
+          "inflicts": [],
+          "text": "As Break the Seal. Failure, for 1 minute: it can't cast jutsu costing more than 12 chakra or concentrate on ones with a concentration cost above 6. Resaves each turn; immune until your rest after a success.",
+          "cost": {
+            "pool": "discipline",
+            "amount": 4
+          }
+        }
+      ]
+    },
+    "calming-strike": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e0cbCoEdEqQMTV",
+          "type": "roll",
+          "label": "Calming Strike",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, when you hit with an attack of opportunity: the creature gains 3 ranks of Slowed until the end of the current turn."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          },
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "chained-cascade-primal-weapon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5etHtLCKlRMhMuM",
+          "type": "effect",
+          "label": "Enter Chained Cascade",
+          "effect": {
+            "name": "Chained Cascade",
+            "target": "self",
+            "amp": "chained-cascade"
+          },
+          "activation": "",
+          "cost": {
+            "pool": "discipline",
+            "amount": 3
+          },
+          "text": "Casting a C-Rank or lower Ninjutsu as an Action (B-Rank from 14th): cast a Bukijutsu of the same rank at no action cost, then enter Chained Cascade until the end of your next turn (entering again extends it a round)."
+        }
+      ]
+    },
+    "chaining-adept": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eNaFap651ojCqt",
+          "type": "roll",
+          "label": "Chaining Adept: Chain 3",
+          "roll": {
+            "formula": "lvl(7:1d12,11:2d12,15:3d12)",
+            "note": "Allies (not you) within 10 feet gain this as temporary HP (2 Flurry Dice at 11th, 3 at 15th); you gain half."
+          },
+          "oncePerTurn": true
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Chaining Adept: Chain 2 (cost −1 a rank)",
+          "appliesTo": {
+            "keywords": [
+              "chain"
+            ]
+          },
+          "oncePerTurn": true,
+          "costDelta": "-rank",
+          "note": "Only when cast at Chain 2."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Once per turn, a Bukijutsu with the Chain keyword, by the Chain rank cast: Chain 1, remake one missed attack; Chain 2, the cost reduction (the cast dialog option); Chain 3, the temporary hit points (the button)."
+        }
+      ]
+    },
+    "chakra-sunder": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eJdZmL1d2dqWfH",
+          "type": "roll",
+          "label": "Chakra Sunder",
+          "roll": {
+            "formula": "",
+            "note": "Reaction: a creature within 60 feet casts a jutsu that will affect you. Cast a 1-Action Bukijutsu; it gains the Clash keyword and clashes with the triggering jutsu (your Clash check at advantage if yours is the same rank or higher)."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "discipline",
+            "amount": 3
+          }
+        }
+      ]
+    },
+    "circle-of-protection-reaver": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e6HDpLhhUIrwIX",
+          "type": "roll",
+          "label": "Circle of Protection",
+          "roll": {
+            "formula": "2d12",
+            "note": "Reaction: you and an ally within 20 feet would take damage from the same source. Move up to your speed next to an ally; the damage is reduced by this for willing allies within 10 feet."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "discipline",
+            "amount": 3
+          }
+        }
+      ]
+    },
+    "combat-doctrine": {
+      "status": "none",
+      "rules": []
+    },
+    "controlled-positioning": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e0ZaTHDRTVP7se",
+          "type": "roll",
+          "label": "Controlled Positioning",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, when you deal [Weapon Damage] to a hostile creature: up to 2 Discipline; push it 10 feet for each, to a space you can see (not vertically)."
+          },
+          "cost": {
+            "pool": "discipline",
+            "choose": true
+          },
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "converging-vector": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e5q1hNScn9a2JW",
+          "type": "effect",
+          "label": "Vector Seal",
+          "effect": {
+            "name": "Vector Seal",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "state": "vector-seal",
+            "limit": "lvl(3:1,10:2)"
+          },
+          "activation": "bonus",
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          },
+          "text": "Mark one creature within 90 feet for 1 minute (two from 10th level, with one bonus action)."
+        },
+        {
+          "id": "n5eFcPzAO4rXUeDG",
+          "type": "roll",
+          "label": "Course Correction",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, missing the marked creature by 5 or less: remake the attack (it can't be a critical hit)."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          },
+          "oncePerTurn": true
+        }
+      ],
+      "effects": [
+        {
+          "name": "Vector Seal: Triangulation",
+          "rules": [
+            {
+              "key": "modifier",
+              "selector": "attack",
+              "predicate": [
+                "target:state:vector-seal",
+                "jutsu:keyword:bukijutsu",
+                "attack:ranged"
+              ],
+              "value": 1,
+              "label": "Triangulation"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Always Enough: no Ammunition Die against the marked creature. Triangulation: +1 to hit is on its effect for ranged Bukijutsu attacks; with an ally within 15 feet of it, a rank of Mastery instead (at the table). Zeroing In: if it ends its turn without moving 5 feet, advantage on your next attack at it before the end of your next turn."
+        }
+      ]
+    },
+    "creating-maintaining-distance-seeker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eO7Wp34e38ldEJ",
+          "type": "roll",
+          "label": "Creating Distance",
+          "roll": {
+            "formula": "",
+            "note": "Reaction to a melee attack (not grabbed, prone or restrained): a Dexterity save against the attack roll. Success: it misses, you move 20 feet away (no opportunity attacks) and make a ranged weapon attack at it."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5eElcu22qDk0Uzl",
+          "type": "roll",
+          "label": "Maintaining Distance",
+          "roll": {
+            "formula": "",
+            "note": "Starting your turn with a Vector Seal creature, having moved 5 feet or less since your last turn: advantage on your first ranged attack at it this turn; reroll a 1 or 2 on either d20."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "critical-focus": {
+      "status": "automated",
+      "dropEffects": [
+        "Critical Focus"
+      ],
+      "effects": [
+        {
+          "name": "Critical Focus",
+          "rules": [
+            {
+              "key": "critRange",
+              "selector": "attack",
+              "predicate": {
+                "any": [
+                  {
+                    "all": [
+                      "option:weaponFocus:blade",
+                      {
+                        "any": [
+                          "weapon:group:blade"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      "option:weaponFocus:flail",
+                      {
+                        "any": [
+                          "weapon:group:flail"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      "option:weaponFocus:polearm",
+                      {
+                        "any": [
+                          "weapon:group:polearm"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      "option:weaponFocus:power",
+                      {
+                        "any": [
+                          "weapon:group:power"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      "option:weaponFocus:thrown-ammunition",
+                      {
+                        "any": [
+                          "weapon:group:thrown",
+                          "weapon:group:ammunition"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "value": "lvl(5:1,11:2,18:3)",
+              "label": "Critical Focus"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "+1 critical range with your Weapon Focus, weapon and Taijutsu attacks alike (+2 at 11th, +3 at 18th), from the Weapon Focus group you chose."
+        }
+      ]
+    },
+    "critical-movement": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eEXU9UDE3xOdKC",
+          "type": "roll",
+          "label": "Critical Movement",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, on a critical hit: Dash at no action cost; this turn, one weapon attack against each creature you pass with this movement (once per creature)."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          },
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "crossfire-aim": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5epHe0fgWiOtV3g",
+          "type": "roll",
+          "label": "Critical Aperture",
+          "roll": {
+            "formula": "",
+            "note": "A ranged weapon or Bukijutsu Taijutsu attack crit: −1 to the creature's AC or saves (pick; −2 from 10th) until the end of your next turn."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5eWBjNlG6YeHWTc",
+          "type": "roll",
+          "label": "Snap Volley",
+          "roll": {
+            "formula": "1d12",
+            "note": "After the action that dealt [Weapon Damage], bonus action: two ranged weapon attacks (three at 10th, four at 17th), each 1 Flurry Die of your weapon's type."
+          },
+          "activation": "bonus",
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5eSvoHHCLL3iNu6",
+          "type": "roll",
+          "label": "Threaded Relay",
+          "roll": {
+            "formula": "1d12",
+            "note": "Once per turn, when an ally damages your Vector Seal creature: one ranged weapon attack at it, 1 Flurry Die of your weapon's type."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          },
+          "oncePerTurn": true
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "While wielding an Ammunition-group weapon or a Thrown weapon."
+        }
+      ]
+    },
+    "dance-of-the-dawn-battle-dancer": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eXLMDyvRgHiw9F",
+          "type": "effect",
+          "label": "Dance of the Dawn",
+          "effect": {
+            "name": "Dance of the Dawn",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "state": "dance-of-the-dawn"
+          },
+          "text": "Samba and Waltz together for 1 minute (start both dance cards), with two of: Guiding Rhythm (Partners starting within 10 feet: +1 to attacks and critical range), Rejuvenating Step (4 HP for each Discipline spent, you and your Partners), Spotlight's Call, Synchronous Steps.",
+          "cost": {
+            "pool": "discipline",
+            "amount": 4
+          },
+          "activation": "bonus"
+        }
+      ]
+    },
+    "dauntless": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eNts4UfuKLnEHD",
+          "type": "roll",
+          "label": "Dauntless: regain",
+          "roll": {
+            "formula": "",
+            "note": "At the start of each of your turns: regain 1 Discipline."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 1,
+            "gain": true
+          }
+        },
+        {
+          "id": "n5ey5WjnAaE1Gany",
+          "type": "roll",
+          "label": "Dauntless: reroll a save",
+          "roll": {
+            "formula": "",
+            "note": "An ally within 15 feet fails a save for the first time: it rerolls. Once per ally until it rests."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Katas cost 1 less Discipline (minimum 1): pay one less at the table."
+        }
+      ]
+    },
+    "dazzling-dances": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eadfmbHYiF2Xt3",
+          "type": "effect",
+          "label": "Waltz",
+          "effect": {
+            "name": "Waltz",
+            "target": "self",
+            "amp": "waltz"
+          },
+          "activation": "bonus"
+        },
+        {
+          "id": "n5ese7RGYCmqlcle",
+          "type": "effect",
+          "label": "Samba",
+          "effect": {
+            "name": "Samba",
+            "target": "self",
+            "amp": "samba"
+          },
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eHKBZswEI9b2mv",
+          "type": "roll",
+          "label": "Move in Tandem",
+          "roll": {
+            "formula": "",
+            "note": "Waltz: you and your Partner take your turns together this round (the later one's turn is skipped)."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eDsCe7qw9uFuZP",
+          "type": "save",
+          "label": "Cascade Step",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Waltz: with the Attack action or an attack jutsu. Failure: −2 AC until the start of your next turn.",
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5ee82BtfOarIqAf",
+          "type": "roll",
+          "label": "Defensive Dance",
+          "roll": {
+            "formula": "",
+            "note": "Waltz, reaction: you or your Partner gain resistance to the triggering damage."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Waltz and Samba Amp cards carry the dances. A Partner without Discipline spends yours (1 for Defensive Dance, with their reaction)."
+        }
+      ]
+    },
+    "defensive-draw": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eeou5Ayn5ouCf1",
+          "type": "roll",
+          "label": "Defensive Draw",
+          "roll": {
+            "formula": "",
+            "note": "With Deflection against a ranged attack, or an effect from a hostile creature not adjacent but within 60 feet: redirect the reduced damage. Ranged weapon attack with your held weapon at a creature within 30 feet: on a hit, your [Weapon Damage] plus the damage Deflection reduced."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "delayed-displacement-reaver": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQsSeIBetKvLDk",
+          "type": "roll",
+          "label": "Delayed Displacement",
+          "roll": {
+            "formula": "",
+            "note": "Action, or in place of an attack of a Bukijutsu: hostile creatures of your choice within 30 feet detonate their Reaver Echoes; one creature in that radius gains as many as detonated."
+          },
+          "activation": "action",
+          "cost": {
+            "pool": "discipline",
+            "amount": 4
+          }
+        }
+      ]
+    },
+    "discipline": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQTiMqwakO7E5q",
+          "type": "roll",
+          "label": "Deflection",
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          },
+          "activation": "reaction",
+          "roll": {
+            "formula": "lvl(1:1d12,11:2d12,20:3d12)",
+            "note": "Reduce the triggering damage by this (apply the reduced damage)."
+          }
+        },
+        {
+          "id": "n5eFESWrwEtZLhfQ",
+          "type": "damage",
+          "label": "Chakra Strike",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:1d12,5:2d12,11:3d12,15:4d12,20:5d12)",
+                "type": ""
+              }
+            ]
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          },
+          "oncePerTurn": true,
+          "text": "Once per turn, with a Bukijutsu's [Weapon Damage]: the first time it deals damage. Half the dice if it affects an area (minimum 1). Counts as [Weapon Damage]."
+        },
+        {
+          "id": "n5eeJDa0za6ki8U7",
+          "type": "roll",
+          "label": "Chained Momentum",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn: a Bukijutsu without the Chain keyword gains it, and you maintain your current Chain value."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          },
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5eCYvCBTYeyJ3By",
+          "type": "roll",
+          "label": "Chained Momentum: shift Chain",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, a Bukijutsu with the Chain keyword: raise or lower your current Chain rank by 1."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          },
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5enI7zdWGYMrg1j",
+          "type": "roll",
+          "label": "Regain Discipline (Chain)",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, casting a Bukijutsu with the Chain keyword: regain Discipline equal to the Chain rank effect you benefited from."
+          },
+          "cost": {
+            "pool": "discipline",
+            "choose": true,
+            "gain": true
+          },
+          "oncePerTurn": true
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Discipline: 2 at 1st level (the class table); all of it back on a short or long rest. The Flurry Die is a d12; Flurry Technique saves use your Taijutsu save DC."
+        }
+      ]
+    },
+    "disciplined-illusions": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eWrdRaFGiSz6Po",
+          "type": "roll",
+          "label": "Gain Discipline (Genjutsu)",
+          "cost": {
+            "pool": "discipline",
+            "choose": true,
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, casting a Genjutsu: D/C-Rank 1, B/A-Rank 2, S-Rank 3. Not in a turn you regained Discipline from a Chain Bukijutsu, or used Disciplined Ninshou."
+          },
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "disciplined-maneuvers": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5elK2QzdFgFJiIy",
+          "type": "roll",
+          "label": "Gain Discipline (skill action)",
+          "cost": {
+            "pool": "discipline",
+            "amount": 1,
+            "formula": "lvl(1:1,11:2,20:3)",
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, taking Trip, Grapple, Shove, Disarm, Maintain Focus, Feint, Demoralize or Read the Enemy on your turn. Not in a turn you regained Discipline from a Chain Bukijutsu, or used Disciplined Strikes."
+          },
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "disciplined-ninshou": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZxLlylcF8JIqj",
+          "type": "roll",
+          "label": "Gain Discipline (Ninjutsu)",
+          "cost": {
+            "pool": "discipline",
+            "choose": true,
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, casting a Ninjutsu: D/C-Rank 1, B/A-Rank 2, S-Rank 3. Not in a turn you regained Discipline from a Chain Bukijutsu, or used Disciplined Illusions."
+          },
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "disciplined-strikes": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eajS6ZouoadXtl",
+          "type": "roll",
+          "label": "Gain Discipline (attacks)",
+          "cost": {
+            "pool": "discipline",
+            "choose": true,
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, taking the Attack action: 1 for each attack of the action (not extra attacks from Multiattack or Light). Not in a turn you regained Discipline from a Chain Bukijutsu, or used Disciplined Maneuvers."
+          },
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "disorienting-strike": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ecMfHqEobdwn3e",
+          "type": "save",
+          "label": "Disorienting Strike",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": true
+          },
+          "inflicts": [],
+          "text": "Once per turn, when you deal [Weapon Damage]. Failure, for 1 minute (your pick): speed halved and no reactions against a Bukijutsu; or −2 AC; or no bonus actions on its turn. It resaves at the end of each of its turns; once it ends the effect it is immune until your long rest.",
+          "cost": {
+            "pool": "discipline",
+            "amount": 3
+          },
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "dread-ambusher-seeker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eSX6MsklBYVt1W",
+          "type": "roll",
+          "label": "Siphoning Seal",
+          "roll": {
+            "formula": "",
+            "note": "[Weapon Damage] to a Vector Seal creature: this and each later [Weapon Damage] reduces every marked creature's speed by 10 feet, and they can't gain speed bonuses, until the start of your next turn."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 3
+          }
+        },
+        {
+          "id": "n5ec9d36IZPwbeKV",
+          "type": "roll",
+          "label": "Point Blank Shot",
+          "roll": {
+            "formula": "",
+            "note": "A ranged weapon or Taijutsu attack at an adjacent creature: no disadvantage, and advantage; against a Vector Seal creature it's a critical hit if it beats AC by 10."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 3
+          }
+        },
+        {
+          "id": "n5ewOtAaFZERCj1n",
+          "type": "save",
+          "label": "Tethering Shot",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "[Weapon Damage] to a Vector Seal creature: the other marked creature saves; on a failure each is pulled 15 feet toward the other (the failed one first).",
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Vector Seals at once, marked with one bonus action (the Vector Seal button); only B-Rank Genjutsu dispelling ends them."
+        }
+      ]
+    },
+    "duelist-retribution": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUPhJUS7Q57WjK",
+          "type": "roll",
+          "label": "Duelist Retribution",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, when a creature hits you with a melee attack: a weapon attack against it."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          },
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "efficient-bukijutsu": {
+      "status": "automated",
+      "castOptions": [
+        {
+          "label": "Efficient Bukijutsu (1 Discipline: cost −1 a rank)",
+          "appliesTo": {
+            "keywords": [
+              "bukijutsu"
+            ]
+          },
+          "oncePerTurn": true,
+          "costDelta": "-rank",
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "efficient-chain": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eNCZktzVMvnM0l",
+          "type": "roll",
+          "label": "Gain Discipline (sustained Chain)",
+          "cost": {
+            "pool": "discipline",
+            "choose": true,
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, a Bukijutsu with the Chain keyword: skip its Chain effects but sustain your Chain rank; gain Discipline equal to that rank."
+          },
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "elemental-armaments": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Choose a nature release (you can learn its jutsu). Manifest or dismiss your Primal Weapon once per turn at no action cost: a weapon of your Weapon Focus group, dealing your release's damage type (two if Light). After a long rest, infuse Weapon Enhancement Seals: 2 D-Rank, plus 1 C-Rank at 6th, B at 10th, A at 14th, S at 17th. Make the Primal Weapon as a weapon item."
+        }
+      ]
+    },
+    "elite-focus": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eu66SxPACxFc6u",
+          "type": "effect",
+          "label": "Elite Focus",
+          "effect": {
+            "name": "Elite Focus",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "activation": "bonus",
+          "text": "Concentration as a B-Rank jutsu. Pick two: +20 speed, +2 AC, advantage on one saving throw, or one more Action each turn (a skill action, Dash, Disengage or one weapon attack). 2 Discipline at the start of each of your turns to keep it.",
+          "cost": {
+            "pool": "discipline",
+            "amount": 4
+          }
+        },
+        {
+          "id": "n5evpnTIwrfS4DMm",
+          "type": "roll",
+          "label": "Elite Focus: maintain",
+          "roll": {
+            "formula": "",
+            "note": "At the start of each of your turns, to keep Elite Focus."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The two benefits are picked at the table and tracked on the effect (add +20 speed or +2 AC to the effect's changes)."
+        }
+      ]
+    },
+    "enduring-augmentation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ey2qoqI8FnMWzc",
+          "type": "roll",
+          "label": "Enduring Augmentation",
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          },
+          "roll": {
+            "formula": "",
+            "note": "Advantage on this Strength or Constitution save."
+          }
+        }
+      ]
+    },
+    "enduring-fortitude": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eOd5BV6KSptYSD",
+          "type": "roll",
+          "label": "Enduring Fortitude",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, reaction to being hit: a rank of Mastery to your AC against the triggering attack until the end of the turn."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          },
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5eQ1HaOWVHKT051",
+          "type": "roll",
+          "label": "Enduring Fortitude: turn a critical",
+          "roll": {
+            "formula": "",
+            "note": "Reaction to a critical hit against you: it becomes a normal hit."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "discipline",
+            "amount": 3
+          }
+        }
+      ]
+    },
+    "executioner": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e18OZsXqOS5K1b",
+          "type": "roll",
+          "label": "Executioner",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, casting a Bukijutsu (no Discipline gained from it this turn). On a hit or failed save — Kill: a Standard adversary left at 50 or fewer HP drops to 0. Cripple: a Standard or Elite adversary left at 50 or fewer HP makes a Strength save or is Staggered for 1 minute (resave each turn). Once per creature per long rest."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 4
+          },
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5e3A7eTvJyHvkxO",
+          "type": "save",
+          "label": "Executioner: Cripple",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": true
+          },
+          "inflicts": [
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            }
+          ],
+          "text": "The Cripple save (Discipline already spent)."
+        }
+      ]
+    },
+    "extra-attack": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "attacks",
+          "value": 2,
+          "label": "Extra Attack"
+        },
+        {
+          "key": "note",
+          "text": "When you Dash or Disengage with your action, one weapon attack as part of it (at the table)."
+        }
+      ]
+    },
+    "eye-for-skill": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A rank of Mastery on the check if you've dealt damage to the creature this turn (add it in the roll dialog). Success: learn one of AC, condition immunities/resistances, damage immunities/resistances, highest or lowest ability score, one trait, or one special action. Failure: not on the same creature again until you hit it on your next turn."
+        }
+      ]
+    },
+    "fang-breaker-fury": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e5nhsTpFsd256u",
+          "type": "effect",
+          "label": "Enter Battle Trance",
+          "effect": {
+            "name": "Battle Trance",
+            "target": "self",
+            "amp": "battle-trance"
+          },
+          "activation": "bonus",
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          },
+          "text": "1 minute or until you fall unconscious. 10 minutes of meditation before reuse, or +1 Discipline for each use beyond the first (the second button)."
+        },
+        {
+          "id": "n5egXRxH27CDe8lU",
+          "type": "effect",
+          "label": "Enter Battle Trance (again)",
+          "effect": {
+            "name": "Battle Trance",
+            "target": "self",
+            "amp": "battle-trance"
+          },
+          "text": "Without the 10 minutes of meditation: 1 Discipline plus 1 for each use beyond the first.",
+          "cost": {
+            "pool": "discipline",
+            "choose": true
+          },
+          "activation": "bonus"
+        }
+      ]
+    },
+    "flourish": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eY90ZFbFQhlLho",
+          "type": "roll",
+          "label": "Echo Step",
+          "roll": {
+            "formula": "",
+            "note": "On a weapon or Taijutsu hit: push it 10 feet and move up to 10 feet (no opportunity attacks). Waltz: your Partner moves with you and can make a weapon attack at it. Samba: also Prone or disarmed (pick)."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5ep9QVmg0ZXEeVE",
+          "type": "roll",
+          "label": "Shifting Rhythm",
+          "roll": {
+            "formula": "1d12",
+            "note": "Starting your turn with a Physical or Mental condition: 10 or higher removes all its ranks, else 1. Waltz: on your Partner instead. Samba: Elemental conditions too."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5ehF0f3TXoi3dLH",
+          "type": "roll",
+          "label": "Inspiring Flourish",
+          "roll": {
+            "formula": "",
+            "note": "In place of an attack of the Attack action or a Bukijutsu: one ally for each Discipline gets a special reaction (move, two weapon attacks, or a D-Rank jutsu; C-Rank in the Samba, B-Rank at 14th). Waltz: your Partner can get two (different uses)."
+          },
+          "cost": {
+            "pool": "discipline",
+            "choose": true
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "While wielding weapons with the Thrown, Finesse, Reach, Multiattack, Light or Ranged property."
+        }
+      ]
+    },
+    "flurry-attack": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZ489fg2tXy6oC",
+          "type": "roll",
+          "label": "Flurry Attack",
+          "roll": {
+            "formula": "",
+            "note": "Once per round, taking the Attack action: one additional attack as part of it."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          },
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "forced-separation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ehsPoYVx4ogI8O",
+          "type": "roll",
+          "label": "Forced Separation",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, making a melee attack at a hostile creature: hit or miss, it can't make opportunity attacks against you until the end of the turn."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          },
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "guardian-force-obsidian-guard": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eeiTl01wSoo2lF",
+          "type": "roll",
+          "label": "Guardian Force: ward",
+          "roll": {
+            "formula": "",
+            "note": "In combat, at the start of each of your turns: the ward regains 1 Flurry Die."
+          },
+          "cost": {
+            "pool": "obsidianWard",
+            "amount": 1,
+            "formula": "1d12",
+            "gain": true
+          }
+        },
+        {
+          "id": "n5e29g1qmChcgL04",
+          "type": "roll",
+          "label": "Guardian Force: intercept",
+          "roll": {
+            "formula": "",
+            "note": "An ally in your Aura of Protection makes a Strength, Dexterity or Constitution save against a hostile creature's jutsu: you become the new target."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "gut-feeling-fang-breaker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eCqBpMWpGQJwKv",
+          "type": "roll",
+          "label": "Gut Feeling",
+          "roll": {
+            "formula": "",
+            "note": "Exploring or in a social situation: ask the GM one question; the answer is one word: Safe, Risky, Trap, Honest, Deceptive, Warning, Advantageous or Exposed."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 3
+          }
+        }
+      ]
+    },
+    "hidden-hand": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eWH0R8FECkrwsl",
+          "type": "roll",
+          "label": "Tricky Escape: detonate",
+          "roll": {
+            "formula": "",
+            "note": "Detonate the explosive tool you set as part of the Hide action, before the start of your next turn; doesn't reveal you."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5e2IjbTtZ9H7Xxs",
+          "type": "roll",
+          "label": "Parting Gift",
+          "roll": {
+            "formula": "",
+            "note": "As part of the Hide action: attach the explosive tool to a Thrown weapon and make a ranged weapon attack; it detonates on a hit (the attack comes before the Hide attempt)."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A rank of Mastery in Stealth is on its effect."
+        }
+      ]
+    },
+    "horrid-aggression": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e4817c0aqiQ0qz",
+          "type": "save",
+          "label": "Horrid Aggression",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Bonus action: this turn, the first time you deal [Weapon Damage] with an Attack-action attack. Failure: one of Bruised, Weakened, Dazzled or Concussed (your pick; apply it).",
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          },
+          "activation": "bonus"
+        }
+      ]
+    },
+    "in-the-spotlight-battle-dancer": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eDLD0TBHUqtHzB",
+          "type": "roll",
+          "label": "In the Spotlight",
+          "roll": {
+            "formula": "1d12",
+            "note": "Social encounter, reaction on an opposing creature's turn: take the Spotlight until the end of its turn. Each time it makes a Charisma or Wisdom check, roll this: 7 or higher, the check is at disadvantage."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "infectious-determination": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQc6bCwDnML7MZ",
+          "type": "roll",
+          "label": "Infectious Determination",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, when you pass a saving throw: allies who can see or hear you get a rank of Mastery on their next save before the end of your or their next turn (whichever is last)."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          },
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "inspiring-words": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5etU5fitFWwjekZ",
+          "type": "roll",
+          "label": "Inspiring Words",
+          "roll": {
+            "formula": "1d12",
+            "note": "In combat, Action: allies within 30 feet regain this plus one of their Hit Dice (rolled, not spent)."
+          },
+          "activation": "action",
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "katas": {
+      "status": "none",
+      "rules": []
+    },
+    "kenjutsu": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e0dhnZR3JTS9DP",
+          "type": "roll",
+          "label": "Frenetic Counter",
+          "roll": {
+            "formula": "",
+            "note": "Reaction: a creature with Reaver Echoes would damage you or an ally within 30 feet. Detonate them: no damage; reduce its damage by the dice they roll (no reaction if its action would detonate them anyway)."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5edyqHDY3VwThxw",
+          "type": "roll",
+          "label": "New Moon",
+          "roll": {
+            "formula": "",
+            "note": "[Weapon Damage] to two or more creatures with one jutsu, applying Reaver Echoes to one: 1 Reaver Echo on each instead (2 at 10th, 3 at 17th), Quarry or not."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5enxe8KxkphWXhd",
+          "type": "roll",
+          "label": "Sundering Detonation",
+          "roll": {
+            "formula": "",
+            "note": "A hostile creature's Barrier jutsu intercepts your [Weapon Damage]: 3 Reaver Echoes on the barrier; they detonate the next time it takes damage."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "While wielding a Blade or Power weapon."
+        }
+      ]
+    },
+    "mobile-augmentation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eMcsjIXcR0anwB",
+          "type": "roll",
+          "label": "Mobile Augmentation",
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "5 * 1d12",
+            "note": "On your turn: extra speed (feet) and Dash as a Bonus action until the end of the turn."
+          }
+        }
+      ]
+    },
+    "muted-strike": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ehAh9tCVt6ZzgB",
+          "type": "save",
+          "label": "Muted Strike",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Once per turn, when you deal [Weapon Damage]. Failure: it can't cast jutsu of D-Rank or lower until the end of its next turn (C-Rank at 9th, B-Rank at 17th).",
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          },
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "obsidian-bulwark-obsidian-guard": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ew52bw5CSd68NC",
+          "type": "roll",
+          "label": "Stonewall Reprisal",
+          "roll": {
+            "formula": "",
+            "note": "When your ward takes damage, with your reaction: until the start of your next turn, each time a creature damages the ward, a weapon attack; add your [Weapon Damage] die to the ward's hit points."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5ew6xCYkEhSZVKs",
+          "type": "roll",
+          "label": "Shackle Guard",
+          "roll": {
+            "formula": "2d12",
+            "note": "Reaction: an ally within 15 feet takes damage. Move 10 feet toward the attacker and make a weapon attack: [Weapon Damage] plus this, and a Strength save or Slowed and Prone."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5e7PahEtF0jgeRm",
+          "type": "effect",
+          "label": "Intimidating Presence",
+          "effect": {
+            "name": "Provoked",
+            "target": "targets",
+            "condition": "provoked",
+            "changes": [],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Hostile creatures within your Aura of Protection are Provoked until the start of your next turn (target them first).",
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          },
+          "activation": "bonus"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The ward's maximum + proficiency bonus is on the Obsidian Ward pool; roll Ward Restoration dice twice and keep the higher (at the table)."
+        }
+      ]
+    },
+    "obsidian-ward": {
+      "status": "partial",
+      "pools": [
+        {
+          "id": "obsidianWard",
+          "label": "Obsidian Ward",
+          "value": 0,
+          "max": "11 + @level + lvl(1:0,10:@prof)",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "sr",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            },
+            {
+              "on": "lr",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "id": "n5ePHJrjwhIR03B7",
+          "type": "roll",
+          "label": "Ward Restoration",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn on your turn (any turn from 6th) when you spend Discipline: the ward regains this (from 10th, roll each die twice and keep the higher)."
+          },
+          "cost": {
+            "pool": "obsidianWard",
+            "amount": 1,
+            "formula": "lvl(3:1d12,10:2d12,17:3d12)",
+            "gain": true
+          },
+          "oncePerTurn": true
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Obsidian Ward pool is its hit points (11 + your level; + your proficiency bonus from 10th); it is full after any rest. At the table: it takes all damage before your temporary and normal hit points (excess carries over), with your resistances, immunities and DR — spend the pool for the damage it takes."
+        }
+      ]
+    },
+    "overwhelming-malice": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eHkaiD8KrOh3Ih",
+          "type": "effect",
+          "label": "Overflowing Malice stance",
+          "effect": {
+            "name": "Overflowing Malice",
+            "target": "self",
+            "changes": [],
+            "expires": "turnStart",
+            "seconds": 0,
+            "state": "overflowing-malice"
+          },
+          "text": "Action: the stance until the start of your next turn.",
+          "activation": "action"
+        },
+        {
+          "id": "n5epEI3ElFLt8uVk",
+          "type": "roll",
+          "label": "Retributive Strike",
+          "roll": {
+            "formula": "1d12",
+            "note": "Once per turn in the stance, melee weapon: a creature enters or leaves your weapon's range. Weapon attack: [Weapon Damage] + 1 Flurry Die, and a Dexterity save or Prone."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 3
+          },
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5euFFalVQ9Jpswj",
+          "type": "roll",
+          "label": "Pensive Shot",
+          "roll": {
+            "formula": "2d12",
+            "note": "Once per turn in the stance, ranged weapon: a creature moves within 15 feet of you. Weapon attack: 2 Flurry Dice of your weapon's damage type, and a Dexterity save or Restrained until the start of its next turn."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 3
+          },
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "persistent-will": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5enMkNzvFFlxzmu",
+          "type": "roll",
+          "label": "Persistent Will",
+          "roll": {
+            "formula": "1d12",
+            "note": "Add to your concentration check against damage. Succeed by 5 or more: regain 1 Discipline; by 10 or more: also the next cost to maintain one jutsu is 0."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "pressure-build": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eAqP66WU4QrbtF",
+          "type": "effect",
+          "label": "Pressure Build",
+          "effect": {
+            "name": "Pressure Build",
+            "target": "self",
+            "changes": [
+              {
+                "key": "n5e.dr",
+                "value": "1",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "+1 DR for each instance of [Weapon Damage] you deal."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Press the button once for each instance of [Weapon Damage] you deal (each creature of an area counts); the effects stack until the start of your next turn."
+        }
+      ]
+    },
+    "primal-strikes": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQ0PqeQBnBy08J",
+          "type": "roll",
+          "label": "Cross Synergy",
+          "roll": {
+            "formula": "",
+            "note": "Casting a Ninjutsu with a nature release keyword: it gains the Chain keyword and the Primal Chain effect (counts as Chain 1, 2 or 3)."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5eariu459OELo5L",
+          "type": "roll",
+          "label": "Elemental Augmentation",
+          "roll": {
+            "formula": "1d12",
+            "note": "An ally within 15 feet with an Elemental condition: 10+ removes all its ranks, 7+ removes 2, else 1. Until the end of your next turn, your Primal Weapon adds 1 Flurry Die of that condition's damage type (Force if none)."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eI64c7UlSFffoz",
+          "type": "roll",
+          "label": "Disperse Chakra",
+          "roll": {
+            "formula": "1d20 + 1d12",
+            "note": "[Weapon Damage] with your Primal Weapon: d20 + 1 Flurry Die against the caster's save DC (or the Standard ability check DC) to Dispel one Ninjutsu or Genjutsu effect on it."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "While wielding your Primal Weapon."
+        }
+      ]
+    },
+    "primal-weapon-mastery-primal-weapon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ec0z5ZzaZVvHYn",
+          "type": "effect",
+          "label": "Elemental Mark",
+          "effect": {
+            "name": "Elemental Mark",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "limit": 1
+          },
+          "text": "One creature within 60 feet: you sense it as an elemental effect; its jutsu casting can provoke your opportunity attack, which can be a Ninjutsu instead. Ends when you mark another, it dies or leaves your senses.",
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          },
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eyV4iHg1vMpFCz",
+          "type": "roll",
+          "label": "Primal Break",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, a Bukijutsu with your Primal Weapon's nature release keyword: its range becomes Self (20-foot radius)."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          },
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5eQ1zdPBJ86LA8F",
+          "type": "save",
+          "label": "Chakra Network Overload",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "[Weapon Damage] with your Primal Weapon. Failure: chakra damage equal to that [Weapon Damage] plus Chakra Strike's bonus (no Discipline for it), and its concentration check from it at disadvantage.",
+          "cost": {
+            "pool": "discipline",
+            "amount": 3
+          }
+        }
+      ]
+    },
+    "psyche-augmentation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eM07t9PtoKd6aw",
+          "type": "roll",
+          "label": "Psyche Augmentation",
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          },
+          "roll": {
+            "formula": "",
+            "note": "Advantage on this Wis/Cha save against a Genjutsu or mental effect."
+          }
+        }
+      ]
+    },
+    "reavers-instincts-reaver": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eqnZYoNSmKgKEh",
+          "type": "roll",
+          "label": "Viper's Tongue",
+          "roll": {
+            "formula": "1d12",
+            "note": "Lie or Impersonate: add this to the check. Success: the lie passes as genuine; beat the DC by 5: accepted as absolute truth."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5eyy3wNyDnf5Iiq",
+          "type": "roll",
+          "label": "Apex Glare",
+          "roll": {
+            "formula": "1d12",
+            "note": "Coerce or Gather Information: add this to the check. Gathering information takes 1 hour on a success, 10 minutes if you beat the DC by 5."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "reavers-judgement-reaver": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eciYa4wGzoWaIK",
+          "type": "roll",
+          "label": "Reaver's Judgement: regain",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, when your Reaver Echoes detonate: regain 1 Discipline for each, up to 3."
+          },
+          "cost": {
+            "pool": "discipline",
+            "choose": true,
+            "gain": true
+          },
+          "oncePerTurn": true
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Quarries (the Quarry button marks two from 17th); Reaver Echoes twice per turn."
+        }
+      ]
+    },
+    "reavers-quarry": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5efReX6C2uEr0m5",
+          "type": "effect",
+          "label": "Mark your Quarry",
+          "effect": {
+            "name": "Quarry",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "state": "quarry",
+            "limit": "lvl(3:1,17:2)"
+          },
+          "activation": "bonus",
+          "text": "One creature within 60 feet for 1 minute (two from 17th level). When your Quarry drops to 0 HP, mark a new one at no action cost."
+        },
+        {
+          "id": "n5eq1YdNaGEPG1VL",
+          "type": "effect",
+          "label": "Reaver Echoes",
+          "effect": {
+            "name": "Reaver Echo",
+            "target": "targets",
+            "condition": "reaver-echo",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Once per turn (twice from 17th) dealing [Weapon Damage] to your Quarry: Reaver Echoes by the Bukijutsu's rank (weapon attack or D 1, C 2, B 3, A 4, S 5). They dispel at the start of your next turn if not detonated."
+        }
+      ],
+      "effects": [
+        {
+          "name": "Quarry: weapon damage",
+          "rules": [
+            {
+              "key": "modifier",
+              "selector": "damage",
+              "predicate": [
+                "weapon",
+                "target:state:quarry"
+              ],
+              "value": "lvl(3:1,10:2,17:3)",
+              "label": "Reaver's Quarry"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The +1 [Weapon Damage] against your Quarry (+2 at 10th, +3 at 17th) is on its effect."
+        }
+      ]
+    },
+    "reflective-sunder-primal-weapon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUR5ULrHQKoczn",
+          "type": "roll",
+          "label": "Reflective Sunder",
+          "roll": {
+            "formula": "",
+            "note": "After winning Chakra Sunder's Clash: redirect the jutsu at its caster. An attack: your Taijutsu attack (melee or ranged as the jutsu). A save: its save against your Taijutsu save DC."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "resonant-jaunt-primal-weapon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ep1cTn2COCP0gN",
+          "type": "roll",
+          "label": "Resonant Jaunt",
+          "roll": {
+            "formula": "",
+            "note": "Out of combat, after 1 minute focused on an elemental source within your sense: teleport within 10 feet of it. 1 Discipline for each other creature you bring (0 alone). Once per rest of any type."
+          },
+          "cost": {
+            "pool": "discipline",
+            "choose": true
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "You sense elemental material or effects (flame, a body of water, 20+ MPH wind, a 5-foot cube of stone, visible electricity) up to 1 mile, not through chakra barriers or structures. The GM decides what qualifies."
+        }
+      ]
+    },
+    "restorative-augmentation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5egUcBVQE9bBV6l",
+          "type": "heal",
+          "label": "Restorative Augmentation",
+          "heal": {
+            "formula": "lvl(1:1d12,9:2d12,15:3d12)",
+            "pool": "hp"
+          },
+          "activation": "bonus",
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          },
+          "text": "On your turn, in combat only. Not again until the end of your next turn."
+        }
+      ]
+    },
+    "retributive-words-obsidian-guard": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ebXJwlR7z5XxZH",
+          "type": "roll",
+          "label": "Retributive Argument",
+          "roll": {
+            "formula": "",
+            "note": "Reaction: a creature makes a Charisma check against an ally. Intimidation using your Taijutsu ability modifier, contested by its check; on a success its check's benefits are nullified."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "riposte": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e7HIF2HDQVJZWE",
+          "type": "roll",
+          "label": "Riposte",
+          "roll": {
+            "formula": "",
+            "note": "Reaction: a creature within 30 feet casts a Taijutsu or Bukijutsu that deals damage. Cast a 1-Action Bukijutsu you know: a special Clash (the loser's jutsu is only Interrupted)."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "savage-assault": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5espAT6Ze5MItWm",
+          "type": "save",
+          "label": "Okuri-Inu Fang",
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          },
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "okuri-inu-shaken",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shaken (Okuri-Inu Fang)"
+            }
+          ],
+          "text": "When you deal [Weapon Damage] to a hostile creature: all affected creatures. Failure: Shaken (the condition card)."
+        },
+        {
+          "id": "n5edGNikz8bP5uTq",
+          "type": "save",
+          "label": "Hachiman's Brutality",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "hobbled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Hobbled"
+            }
+          ],
+          "text": "When you deal [Weapon Damage] to a hostile creature: all affected creatures. Failure: Hobbled (the condition card).",
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5egXoklyeiKTbql",
+          "type": "effect",
+          "label": "Koyane's Awareness",
+          "effect": {
+            "name": "Fracture Sense",
+            "target": "self",
+            "changes": [],
+            "expires": "turnEnd",
+            "seconds": 12
+          },
+          "text": "60 feet of Fracture Sense until the end of your next turn: aware of every creature in range with a Physical, Mental or Elemental condition.",
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          },
+          "activation": "bonus"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "While wielding a Polearm or Flail weapon, or a weapon with Reach, Disarm or Deadly."
+        }
+      ]
+    },
+    "savage-exploits-fang-breaker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e6mOm8s00YxwSo",
+          "type": "save",
+          "label": "Okuninushi Frenzy",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "stunned",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Stunned"
+            }
+          ],
+          "text": "A critical hit dealing [Weapon Damage]: one creature. Failure: Stunned until the end of its next turn.",
+          "cost": {
+            "pool": "discipline",
+            "amount": 1,
+            "formula": "lvl(10:2,17:1)"
+          }
+        },
+        {
+          "id": "n5eGF9TH1NycWspr",
+          "type": "save",
+          "label": "Raijin's Terror",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": true
+          },
+          "inflicts": [],
+          "text": "A critical hit dealing [Weapon Damage] to a creature concentrating on a jutsu: for 1 minute, disadvantage on Int, Wis and Cha saves and only one concentration at a time. It resaves (Con) at the end of each of its turns.",
+          "cost": {
+            "pool": "discipline",
+            "amount": 1,
+            "formula": "lvl(10:2,17:1)"
+          }
+        },
+        {
+          "id": "n5eL4RmVfDi9K4EI",
+          "type": "roll",
+          "label": "Fujin Cleave",
+          "roll": {
+            "formula": "",
+            "note": "[Weapon Damage] to a hostile creature: the same [Weapon Damage] to creatures of your choice adjacent to it."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 1,
+            "formula": "lvl(10:2,17:1)"
+          }
+        },
+        {
+          "id": "n5eskiTwRSeLrFuI",
+          "type": "roll",
+          "label": "Shuten-Doji Dismantling",
+          "roll": {
+            "formula": "1d4",
+            "note": "[Weapon Damage] to hostile creatures: 1 Discipline for each (one less each from 17th): each one picked takes −1d4 on its next save or attack before the start of your next turn."
+          },
+          "cost": {
+            "pool": "discipline",
+            "choose": true
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Titanic Wrath (17th) reduces these costs by 1; the buttons already do."
+        }
+      ]
+    },
+    "seeker-of-the-end-seeker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e0d5VTFrtdZGg3",
+          "type": "save",
+          "label": "Seeker of the End",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A hit on a Vector Seal creature: your [Weapon Damage] is its maximum. A Standard or Elite left at 50 or fewer HP saves or drops to 0; a Solo saves at advantage.",
+          "cost": {
+            "pool": "discipline",
+            "amount": 3
+          }
+        }
+      ]
+    },
+    "sensory-augmentation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ebn8yyaAoIVbbg",
+          "type": "effect",
+          "label": "Sensory Augmentation: blindsight",
+          "effect": {
+            "name": "Sensory Augmentation",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.traits.senses.blindsight",
+                "value": "30",
+                "mode": 4
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          },
+          "text": "Blindsight shown; pick Tremor Sense instead if you prefer. Out of combat it lasts 1 minute."
+        },
+        {
+          "id": "n5esjhR0KD4fafuC",
+          "type": "effect",
+          "label": "Sensory Augmentation: tremorsense",
+          "effect": {
+            "name": "Sensory Augmentation (tremorsense)",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.traits.senses.tremorsense",
+                "value": "30",
+                "mode": 4
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "",
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "In combat the sense lasts until the start of your next turn (the buttons); out of combat it lasts 1 minute (end it then)."
+        }
+      ]
+    },
+    "severance-reaver": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezfHXBEiwHNTzn",
+          "type": "roll",
+          "label": "Extend Reaver Echoes",
+          "roll": {
+            "formula": "",
+            "note": "When a Reaver Echo would detonate or dispel: Reaver Echoes of your choice last until the start of your next turn (or spend your reaction instead of the Discipline)."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eoBpDmqYJXcSXm",
+          "type": "roll",
+          "label": "Reaver Gambit",
+          "roll": {
+            "formula": "",
+            "note": "Attacking a creature with Reaver Echoes: dispel one for advantage. Both d20s the same: a critical hit, and you regain all spent Discipline."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5eSeun4cAx7yxrA",
+          "type": "roll",
+          "label": "Wounding Scar",
+          "roll": {
+            "formula": "",
+            "note": "When Reaver Echoes detonate: each affected creature takes −1 AC per Echo it had, until the end of its next turn."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 3
+          }
+        },
+        {
+          "id": "n5eVD0bjbLNeHWpE",
+          "type": "damage",
+          "label": "Burst Echo",
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d12",
+                "type": ""
+              }
+            ]
+          },
+          "text": "In place of an attack of the Attack action or a Bukijutsu's Taijutsu attack: a point within 60 feet; each creature within 5 feet takes 2d12 of your held weapon's damage type (no save) and gains a Reaver Echo (apply it from the Reaver Echoes button)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A Reaver Echo creature spending its Bonus Action now detonates them. While wielding a Blade or Power weapon."
+        }
+      ]
+    },
+    "sharpshooting-savant-seeker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e6QGEvEnkPEYLE",
+          "type": "roll",
+          "label": "Sharpshooting Savant",
+          "roll": {
+            "formula": "",
+            "note": "Your first turn in combat (not surprised), Action: 1 Discipline for each creature within 90 feet that hasn't acted; a ranged Taijutsu attack at each."
+          },
+          "activation": "action",
+          "cost": {
+            "pool": "discipline",
+            "choose": true
+          }
+        },
+        {
+          "id": "n5e6kV4DoBF2JdlH",
+          "type": "save",
+          "label": "Chakra Rope",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Once on each of your turns, a ranged weapon or Taijutsu attack hits: you may flip up to 20 feet away; failure: it is pulled 20 feet toward you, to a space you pick.",
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          },
+          "oncePerTurn": true
+        }
+      ]
+    },
+    "spectacular-form-battle-dancer": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRAFbBlyPyvrk9",
+          "type": "roll",
+          "label": "Encore",
+          "roll": {
+            "formula": "",
+            "note": "Samba: rolling the maximum on a [Weapon Damage] die: roll one more [Weapon Damage] die and add it (it can chain)."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5emiIKpfSKRE6E7",
+          "type": "roll",
+          "label": "Blazing Rhythm",
+          "roll": {
+            "formula": "",
+            "note": "Samba, on a weapon or Taijutsu hit: 1 Discipline, plus 1 for each successful attack; +1 to all later attack rolls this turn for each (up to +3)."
+          },
+          "cost": {
+            "pool": "discipline",
+            "choose": true
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Waltz: up to two Partners."
+        }
+      ]
+    },
+    "strider": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eNrD5hkERuJrKD",
+          "type": "roll",
+          "label": "Strider: natural terrain",
+          "roll": {
+            "formula": "",
+            "note": "At the start of your turn: ignore difficult terrain from natural environments until the start of your next turn."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eCrriCAXb2Yhpe",
+          "type": "roll",
+          "label": "Strider: jutsu terrain",
+          "roll": {
+            "formula": "",
+            "note": "At the start of your turn: ignore difficult terrain from jutsu effects (natural too) until the start of your next turn."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "superior-discipline": {
+      "status": "none",
+      "rules": []
+    },
+    "superior-discipline-assault": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Chakra Strike as part of the Attack action: roll 1 Flurry Die and add it to every attack of the action."
+        }
+      ]
+    },
+    "superior-discipline-blitz": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUhTWb4OYuenZ0",
+          "type": "damage",
+          "label": "Chakra Strike (Blitz)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(9:1d12,11:2d12,15:2d12,20:3d12)",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "Chakra Strike without the Discipline cost: half the Flurry Dice (rounded up)."
+        }
+      ]
+    },
+    "superior-discipline-impulse": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Chained Momentum works when casting any jutsu without the Chain keyword, not only Bukijutsu."
+        }
+      ]
+    },
+    "superior-discipline-persistence": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Deflection without a reaction, but then only once per turn."
+        }
+      ]
+    },
+    "superior-discipline-raid": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Reaction to an ally casting a Taijutsu or Bukijutsu: your Chakra Strike applies to theirs (counts against your once per turn)."
+        }
+      ]
+    },
+    "superior-discipline-redirect": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Deflection also deals the reduced amount to the triggering creature, of your held weapon's damage type."
+        }
+      ]
+    },
+    "superior-discipline-stimulus": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eveHTvgaUPF3uc",
+          "type": "heal",
+          "label": "Stimulus: temporary chakra",
+          "heal": {
+            "formula": "2 * @amount",
+            "pool": "tempCp"
+          },
+          "text": "After Chained Momentum: temporary chakra equal to twice your current Chain rank (enter it when asked)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Enter your current Chain rank for @amount."
+        }
+      ]
+    },
+    "superior-discipline-warden": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Deflection also when an ally within 10 feet takes damage, reducing theirs."
+        }
+      ]
+    },
+    "tactical-augmentation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ekQCNL2Ifn7W5E",
+          "type": "roll",
+          "label": "Tactical Augmentation",
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "Advantage on this Intelligence or Wisdom skill check."
+          }
+        }
+      ]
+    },
+    "titanic-wrath-fang-breaker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eCUOm3x0sfGbr3",
+          "type": "roll",
+          "label": "Titanic Wrath: succeed",
+          "roll": {
+            "formula": "",
+            "note": "Failing a save with your Taijutsu ability: it succeeds instead. 1 Discipline, +1 for each use beyond the first before a short rest."
+          },
+          "cost": {
+            "pool": "discipline",
+            "choose": true
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Enter Battle Trance at the start of your turn without a bonus action and without meditation between uses (use the Enter Battle Trance button). Savage Exploits cost 1 less (on its buttons)."
+        }
+      ]
+    },
+    "trapper": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eIis288sRxaPIU",
+          "type": "roll",
+          "label": "Trapper",
+          "roll": {
+            "formula": "1d12",
+            "note": "10 minutes: build a mundane trap (as with a Trapper's Kit), up to the highest rank of jutsu you know. With a Trapper's Kit: add the Flurry Die to the crafting check."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "twin-step-battle-dancer": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e60HkPjO8u73iQ",
+          "type": "roll",
+          "label": "Twin Step",
+          "roll": {
+            "formula": "",
+            "note": "Casting a Bukijutsu that forces a hostile creature's save. Waltz: your Partner makes a weapon attack at it first; on a hit it saves at disadvantage. Samba: cast a second Bukijutsu of the same or lower rank forcing a different save, on the original target only; failing either applies both."
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 3
+          }
+        }
+      ]
+    },
+    "unbound-ferocity": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e0eplA5hmRvebj",
+          "type": "effect",
+          "label": "Unbound Ferocity",
+          "effect": {
+            "name": "Unbound Ferocity",
+            "target": "targets",
+            "changes": [],
+            "expires": "turnStart",
+            "seconds": 0,
+            "state": "unbound-ferocity"
+          },
+          "text": "Target one hostile creature within 60 feet. Until the start of your next turn you have advantage on Taijutsu attacks against it, and it has advantage on attacks against you.",
+          "cost": {
+            "pool": "discipline",
+            "amount": 3
+          },
+          "activation": "bonus"
+        }
+      ],
+      "effects": [
+        {
+          "name": "Unbound Ferocity: advantage",
+          "rules": [
+            {
+              "key": "advantage",
+              "selector": "attack",
+              "predicate": [
+                "jutsu:discipline:tai",
+                "target:state:unbound-ferocity"
+              ],
+              "label": "Unbound Ferocity"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its advantage on attacks against you is at the table."
+        }
+      ]
+    },
+    "unfettered-attention": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eshgm319mzaJ2G",
+          "type": "effect",
+          "label": "Unfettered Attention",
+          "effect": {
+            "name": "Unfettered Attention",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "limit": 1
+          },
+          "text": "One creature within 60 feet, for 1 minute: it can't benefit from being hidden or unseen by you while within 120 feet. One at a time.",
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          },
+          "activation": "bonus"
+        }
+      ]
+    },
+    "vector-mapping-seeker": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "After 1 minute of meditation in a structure: a mental map of a 200-foot radius for 1 hour (entrances, exits, corridors, shafts, doors; that something is off about a hazard). Not through chakra barriers; no creatures, illusions or hidden compartments. Each use before a rest takes ten times longer; back to 1 minute after any rest."
+        }
+      ]
+    },
+    "warden-techniques": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ex6S32YrOxtVKG",
+          "type": "effect",
+          "label": "Provoke",
+          "effect": {
+            "name": "Provoked",
+            "target": "targets",
+            "condition": "provoked",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "limit": "lvl(3:1,6:2,14:3)"
+          },
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          },
+          "text": "In place of an attack of the Attack action, or a bonus action: one hostile creature within 30 feet that can see or hear you is Provoked until the start of your next turn (2 creatures at 6th, 3 at 14th)."
+        },
+        {
+          "id": "n5ew9JEmCPQ9WIPs",
+          "type": "roll",
+          "label": "Obsidian Projection",
+          "roll": {
+            "formula": "",
+            "note": "Reaction: an ally within 15 feet would take damage; your ward takes it instead (excess to you). Not while the ward has 0 hit points."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "discipline",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eT6ch5EuryMKMQ",
+          "type": "save",
+          "label": "Punishing Guardian",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "concussed",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Concussed"
+            }
+          ],
+          "text": "[Weapon Damage] to a hostile creature that damaged an ally since the end of your last turn. Failure: 2 ranks of Concussed; success: 1 rank.",
+          "cost": {
+            "pool": "discipline",
+            "amount": 2
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "While wielding a Power or Flail weapon, or a weapon with the Blocking property."
+        }
+      ]
+    },
+    "weapon-focus": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Chosen at level-up (Weapon Focus: weapon group); the choice is a roll fact other features read. At the table: proficiency in Exotic weapons of the group; while wielding your Weapon Focus, Bukijutsu cast with it as a component can use Dexterity in place of Strength as the Taijutsu ability, and Martial Arts checks can use Dexterity. Weapon properties from the table (another at 7th and 13th) go on the weapon item."
+        }
+      ]
+    },
+    "weapon-stance": {
+      "status": "none",
+      "rules": []
+    },
+    "whirlwind-pirouette-battle-dancer": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ehuD0RMjDKQHDX",
+          "type": "save",
+          "label": "Whirlwind Pirouette",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            },
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 3,
+              "label": "Dazzled"
+            }
+          ],
+          "text": "Action: 1 Discipline for each creature within 15 feet you pick; one melee Taijutsu attack as a B-Rank Bukijutsu against each AC. On a hit, [Weapon Damage] + Chakra Strike's damage, then a Strength save or Prone and 3 ranks of Dazzled.",
+          "cost": {
+            "pool": "discipline",
+            "choose": true
+          },
+          "activation": "action"
+        }
+      ]
+    }
+  }
+}

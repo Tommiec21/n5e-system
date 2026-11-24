@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "hozuki",
-      "sourceLine": 4054
+      "sourceLine": 4054,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Hydration: 1 + your highest ability modifier (the pool). Hydrofication: a Hozuki Hijutsu's effect for 1 Hydration (a cast dialog option on each)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,160 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eFdV1ZQQmpEPKS",
+        "type": "roll",
+        "label": "Regain 1 Hydration",
+        "roll": {
+          "formula": "",
+          "note": "A long rest refills it; regain 1 (King Q-E17) when a Water Release jutsu damages you, you start your turn half submerged, or your Water jutsu uses a sufficient source of water."
+        },
+        "cost": {
+          "pool": "hydration",
+          "amount": 1,
+          "gain": true
+        }
+      },
+      {
+        "id": "n5erpnD6qvZJ80kC",
+        "type": "roll",
+        "label": "Lose 2 Hydration (lightning)",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, when you take lightning damage."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "hydration",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5eTXCQeR312w9Fz",
+        "type": "roll",
+        "label": "Capillary Infiltration",
+        "roll": {
+          "formula": "",
+          "note": "On your turn, until it ends: squeeze through 1-inch gaps; immune to Grappled and Restrained."
+        },
+        "cost": {
+          "pool": "hydration",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5edZBIVjKPf2tKz",
+        "type": "roll",
+        "label": "Liquid Evasion",
+        "roll": {
+          "formula": "",
+          "note": "Reaction to bludgeoning, piercing, slashing, cold or earth damage: resistance to it and move 10 feet without provoking. Cold: temporary hit points by the jutsu's rank instead of the damage (D 5 ... S 25)."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "hydration",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5e2oMGp820JN5Ax",
+        "type": "roll",
+        "label": "Liquid Impact",
+        "roll": {
+          "formula": "",
+          "note": "A hostile creature's critical hit on you becomes a normal hit."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "hydration",
+          "amount": 3
+        }
+      },
+      {
+        "id": "n5eehz9ZT2BTMK99",
+        "type": "effect",
+        "label": "Water Pistol",
+        "effect": {
+          "name": "Water Pistol",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "On your turn, for 1 minute: the Attack action can make one Water Bullet (two at 7th, three at 15th), as casting a Hozuki Hijutsu (Ninjutsu, Water Release) at your highest rank.",
+        "cost": {
+          "pool": "hydration",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5eP1XFjC2fcoVc6",
+        "type": "attack",
+        "label": "Water Bullet",
+        "attack": {
+          "discipline": "highest",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "A creature you can see within 30 feet: bludgeoning, piercing or cold (pick). Pierce 6 at 7th, 12 at 15th.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:1d8,11:2d8) + max(@mod.nin, @mod.tai, @mod.gen)",
+              "type": "piercing"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5euMH6qlCnN4A1H",
+        "type": "effect",
+        "label": "Water Muscles",
+        "effect": {
+          "name": "Water Muscles",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.damage.weapon",
+              "value": "lvl(1:2,7:4,15:6)",
+              "mode": 2
+            },
+            {
+              "key": "n5e.damage.unarmed",
+              "value": "lvl(1:2,7:4,15:6)",
+              "mode": 2
+            }
+          ],
+          "expires": "nextTurnEnd",
+          "seconds": 0
+        },
+        "text": "Dealing [Weapon Damage] or [Unarmed Damage]: +2 to it until the end of your next turn (+4 at 7th, +6 at 15th; the effect raises both).",
+        "cost": {
+          "pool": "hydration",
+          "amount": 1
+        }
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "hydration",
+        "label": "Hydration",
+        "value": 0,
+        "max": "1 + max(@str, @dex, @con, @int, @wis, @cha)",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "lr",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ]
   }
 }

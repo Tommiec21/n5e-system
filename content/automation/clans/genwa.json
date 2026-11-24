@@ -1,0 +1,1873 @@
+{
+  "clan": "genwa",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "genwa-data-break": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Firewalled creatures show you one of: an attack bonus, a save DC, their lowest save, current hit points, current chakra, or Tenacity Dice / Legendary Resistances (pick)."
+        }
+      ]
+    },
+    "genwa-data-channels": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "After a long rest pick a Data Channel (two at 7th; 15th: swap them on a short rest): the option items."
+        }
+      ]
+    },
+    "genwa-data-channels-hidden-cloud-channel": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eBEOzr8VvQcYgG",
+          "type": "effect",
+          "label": "Hidden Cloud: +AC",
+          "effect": {
+            "name": "Hidden Cloud Channel",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "lvl(1:1,11:2)",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Once per turn, casting a Genwa Hijutsu: +1 AC (+2 at 11th) until the start of your next turn; also a rank of Mastery against nature release jutsu.",
+          "oncePerTurn": true
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Sensory jutsu also tell you when another Sensory effect is within 60 feet (or its range)."
+        }
+      ]
+    },
+    "genwa-data-channels-hidden-leaf-channel": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e7QRSY34C4cfzQ",
+          "type": "roll",
+          "label": "Hidden Leaf: ally bonus",
+          "roll": {
+            "formula": "lvl(1:1d4,11:1d6)",
+            "note": "Once per turn, casting a jutsu: an ally within 30 feet adds this to its next save or check (once a minute per creature)."
+          },
+          "oncePerTurn": true
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Damaging Genwa jutsu deal +1 per die rolled (up to +10; add it). Your Sensory jutsu make you invisible to cameras, sensors and electronic detection."
+        }
+      ]
+    },
+    "genwa-data-channels-hidden-mist-channel": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Genwa jutsu cost 1 less inside or after a Lightning jutsu's effect (2 within 30 feet of a Shocked, Signal Boosted or Firewalled creature). Once per turn, leaving your or an ally's obscuring jutsu, a Bonus action recenters it on you until your next turn. Your structure or obscuring jutsu make you heavily obscured to sight-based special senses until your next turn."
+        }
+      ]
+    },
+    "genwa-data-channels-hidden-rain-channel": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Genwa Hijutsu ignore either their HS or CS component (pick one). Concentrating on a Lightning jutsu at the start of your turn: spend all your movement to teleport to a space within 60 feet. Your Sensory jutsu cover +15 feet (+30 at 11th)."
+        }
+      ]
+    },
+    "genwa-data-channels-hidden-sand-channel": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eR80lsK0uN67WY",
+          "type": "roll",
+          "label": "Hidden Sand: DR",
+          "roll": {
+            "formula": "max(@str, @dex, @con, @int, @wis, @cha)",
+            "note": "Start of your turn, concentrating on a Lightning jutsu: DR against the first damage before your next turn (twice that with two or more)."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Casting a Genwa Hijutsu: a 20-foot radius within 30 feet gives a rank of Mastery against hostile environments and area jutsu. An area concentration jutsu can gain Sensory (tremorsense in it)."
+        }
+      ]
+    },
+    "genwa-data-channels-hidden-stone-channel": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Constructs from your Genwa Hijutsu gain hit points by rank (D +10, C +15, B +20, A +25, S +30). Once per turn, dispel your Signal Boosted or a Shocked (all ranks) or Firewalled creature within 30 feet: an extra reaction to cast a D-Rank (C at 7th, B at 15th) Lightning construct jutsu. Lightning constructs gain Sensory and share 60 feet of vision."
+        }
+      ]
+    },
+    "genwa-data-leak": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eqLPQS4dpq6uJX",
+          "type": "save",
+          "label": "Data Leak",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "genwa-data-leak",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Data Leak"
+            }
+          ],
+          "text": "A creature fails a save against your Hijutsu that inflicts Firewalled: Data Leak instead (once per long rest per creature): vulnerability to a type you pick, jutsu cost 8 more; taking that type, it saves Constitution to end it.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "genwa-data-release-antivirus": {
+      "status": "note",
+      "activities": [],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A Neon Antivirus construct you command as a Bonus action (two at B-Rank or higher; the second uses the other Link). Its statistics aren't in the text: held for King's stat block (H2)."
+        }
+      ]
+    },
+    "genwa-data-release-data-crash": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ebHAEHqLSHiOjt",
+          "type": "attack",
+          "label": "Data Crash",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d8",
+                "type": "force"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eqq8Uix67WRMCe",
+          "type": "save",
+          "label": "Data Crash: on a hit",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists.",
+              "success": "Success: −10 speed until the end of its next turn.",
+              "failure": "Failure: Prone and grappled in place.",
+              "critFailure": "Critical Failure: as a failure, and Restrained."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            },
+            {
+              "key": "grappled",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Grappled"
+            },
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            },
+            {
+              "key": "genwa-firewalled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Firewalled"
+            }
+          ],
+          "text": "Resave at the end of each of its turns.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5ebHAEHqLSHiOjt",
+                "type": "attack",
+                "label": "Data Crash",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (1d8)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eqq8Uix67WRMCe",
+                "type": "save",
+                "label": "Data Crash: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: resists.",
+                    "success": "Success: −10 speed until the end of its next turn.",
+                    "failure": "Failure: Prone and grappled in place.",
+                    "critFailure": "Critical Failure: as a failure, and Restrained."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  },
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  },
+                  {
+                    "key": "genwa-firewalled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Firewalled"
+                  }
+                ],
+                "text": "Resave at the end of each of its turns.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5ebHAEHqLSHiOjt",
+                "type": "attack",
+                "label": "Data Crash",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (2d8)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eqq8Uix67WRMCe",
+                "type": "save",
+                "label": "Data Crash: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: resists.",
+                    "success": "Success: −10 speed until the end of its next turn.",
+                    "failure": "Failure: Prone and grappled in place.",
+                    "critFailure": "Critical Failure: as a failure, and Restrained."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  },
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  },
+                  {
+                    "key": "genwa-firewalled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Firewalled"
+                  }
+                ],
+                "text": "Resave at the end of each of its turns.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5ebHAEHqLSHiOjt",
+                "type": "attack",
+                "label": "Data Crash",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (3d8)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eqq8Uix67WRMCe",
+                "type": "save",
+                "label": "Data Crash: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: resists.",
+                    "success": "Success: −10 speed until the end of its next turn.",
+                    "failure": "Failure: Prone and grappled in place.",
+                    "critFailure": "Critical Failure: as a failure, and Restrained."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  },
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  },
+                  {
+                    "key": "genwa-firewalled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Firewalled"
+                  }
+                ],
+                "text": "Resave at the end of each of its turns.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5ebHAEHqLSHiOjt",
+                "type": "attack",
+                "label": "Data Crash",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (4d8)",
+                      "type": "force"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eqq8Uix67WRMCe",
+                "type": "save",
+                "label": "Data Crash: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: resists.",
+                    "success": "Success: −10 speed until the end of its next turn.",
+                    "failure": "Failure: Prone and grappled in place.",
+                    "critFailure": "Critical Failure: as a failure, and Restrained."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  },
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  },
+                  {
+                    "key": "genwa-firewalled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Firewalled"
+                  }
+                ],
+                "text": "Resave at the end of each of its turns.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Angel Link (Uplink)",
+          "appliesTo": {
+            "namePrefix": "Data Release: Data Crash"
+          },
+          "note": "In your Uplink stance: range 30 feet (10-foot radius): the damage to the target on a hit, all creatures within 10 feet of it save."
+        },
+        {
+          "label": "Demon Link (Downlink)",
+          "appliesTo": {
+            "namePrefix": "Data Release: Data Crash"
+          },
+          "note": "In your Downlink stance: range 5 feet: on a hit and a failed save, Firewalled until the end of your next turn."
+        }
+      ]
+    },
+    "genwa-data-release-data-visualization": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ev3bGU5rq0rhiy",
+          "type": "save",
+          "label": "Data Visualization",
+          "save": {
+            "abilities": [
+              "int"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: as a success.",
+              "success": "Success: a memory from the past day (it forgets that span for 24 hours); you and willing creatures within 15 feet can relive it for 24 hours.",
+              "failure": "Failure: as a success, the past week.",
+              "critFailure": "Critical Failure: as a success, the past month."
+            }
+          },
+          "inflicts": [],
+          "text": "A willing or incapacitated creature you touch (an unconscious one saves).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "genwa-data-release-ddos-attack": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eq9lgmZyR46BNv",
+          "type": "save",
+          "label": "DDoS Attack",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: half of 5d12 lightning.",
+              "success": "Success: half of 5d12 lightning and Shocked until the end of its next turn.",
+              "failure": "Failure: 5d12 lightning; Shocked, Firewalled, Blinded and Deafened for 1 minute.",
+              "critFailure": "Critical Failure: as a failure, but 6d12 lightning."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "shocked",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shocked"
+            },
+            {
+              "key": "genwa-firewalled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Firewalled"
+            },
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            },
+            {
+              "key": "deafened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Deafened"
+            }
+          ],
+          "text": "A 90-foot cone. Each end of its turns it saves (1d4: Con, Int, Wis, Cha; you pick on a critical failure) to end one condition.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eM2eoIURbuixjU",
+          "type": "damage",
+          "label": "DDoS Attack: damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d12",
+                "type": "lightning"
+              }
+            ]
+          },
+          "text": "Halve it on a success."
+        },
+        {
+          "id": "n5e8LnPy3EXB5ILk",
+          "type": "damage",
+          "label": "DDoS Attack: critical failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d12",
+                "type": "lightning"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eJBocBJiVZdcf1",
+          "type": "roll",
+          "label": "DDoS Attack: which save",
+          "roll": {
+            "formula": "1d4",
+            "note": "1 Constitution, 2 Intelligence, 3 Wisdom, 4 Charisma."
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "S": [
+              {
+                "id": "n5eq9lgmZyR46BNv",
+                "type": "save",
+                "label": "DDoS Attack",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 5d12 lightning.",
+                    "success": "Success: half of 5d12 lightning and Shocked until the end of its next turn.",
+                    "failure": "Failure: 5d12 lightning; Shocked, Firewalled, Blinded and Deafened for 1 minute.",
+                    "critFailure": "Critical Failure: as a failure, but 6d12 lightning."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  },
+                  {
+                    "key": "genwa-firewalled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Firewalled"
+                  },
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  },
+                  {
+                    "key": "deafened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deafened"
+                  }
+                ],
+                "text": "A 90-foot cone. Each end of its turns it saves (1d4: Con, Int, Wis, Cha; you pick on a critical failure) to end one condition.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eM2eoIURbuixjU",
+                "type": "damage",
+                "label": "DDoS Attack: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d12) + (1d12)",
+                      "type": "lightning"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5e8LnPy3EXB5ILk",
+                "type": "damage",
+                "label": "DDoS Attack: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d12) + (1d12)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eJBocBJiVZdcf1",
+                "type": "roll",
+                "label": "DDoS Attack: which save",
+                "roll": {
+                  "formula": "1d4",
+                  "note": "1 Constitution, 2 Intelligence, 3 Wisdom, 4 Charisma."
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Angel Link (Uplink)",
+          "appliesTo": {
+            "namePrefix": "Data Release: DDos Attack"
+          },
+          "note": "In your Uplink stance: it can't affect allies."
+        },
+        {
+          "label": "Demon Link (Downlink)",
+          "appliesTo": {
+            "namePrefix": "Data Release: DDos Attack"
+          },
+          "note": "In your Downlink stance: failing creatures lose any jutsu they concentrate on."
+        }
+      ]
+    },
+    "genwa-data-release-firewall": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQUAOzhEVfiEd4",
+          "type": "heal",
+          "label": "Firewall: barrier",
+          "heal": {
+            "formula": "2d10 + 8",
+            "pool": "tempHp"
+          },
+          "text": "Reaction, you take damage: a Barrier against it.",
+          "activation": "reaction"
+        },
+        {
+          "id": "n5erGvD1vFLzhMcO",
+          "type": "roll",
+          "label": "Firewall: shield",
+          "roll": {
+            "formula": "2d10",
+            "note": "For the duration, the first damage you take each turn is reduced by this (Demon Link: deal that much lightning to a creature within 30 feet)."
+          }
+        },
+        {
+          "id": "n5ekHgDLBiDqeTIp",
+          "type": "effect",
+          "label": "Signal Boosted (Angel Link)",
+          "effect": {
+            "name": "Signal Boosted",
+            "target": "targets",
+            "changes": [],
+            "expires": "turnEnd",
+            "seconds": 0,
+            "amp": "signal-boosted"
+          },
+          "text": "Angel Link: the protected ally."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eQUAOzhEVfiEd4",
+                "type": "heal",
+                "label": "Firewall: barrier",
+                "heal": {
+                  "formula": "2d10 + 8",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction, you take damage: a Barrier against it.",
+                "activation": "reaction"
+              },
+              {
+                "id": "n5erGvD1vFLzhMcO",
+                "type": "roll",
+                "label": "Firewall: shield",
+                "roll": {
+                  "formula": "(2d10) + (1d10)",
+                  "note": "For the duration, the first damage you take each turn is reduced by this (Demon Link: deal that much lightning to a creature within 30 feet)."
+                }
+              },
+              {
+                "id": "n5ekHgDLBiDqeTIp",
+                "type": "effect",
+                "label": "Signal Boosted (Angel Link)",
+                "effect": {
+                  "name": "Signal Boosted",
+                  "target": "targets",
+                  "changes": [],
+                  "expires": "turnEnd",
+                  "seconds": 0,
+                  "amp": "signal-boosted"
+                },
+                "text": "Angel Link: the protected ally."
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eQUAOzhEVfiEd4",
+                "type": "heal",
+                "label": "Firewall: barrier",
+                "heal": {
+                  "formula": "2d10 + 8",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction, you take damage: a Barrier against it.",
+                "activation": "reaction"
+              },
+              {
+                "id": "n5erGvD1vFLzhMcO",
+                "type": "roll",
+                "label": "Firewall: shield",
+                "roll": {
+                  "formula": "(2d10) + (2d10)",
+                  "note": "For the duration, the first damage you take each turn is reduced by this (Demon Link: deal that much lightning to a creature within 30 feet)."
+                }
+              },
+              {
+                "id": "n5ekHgDLBiDqeTIp",
+                "type": "effect",
+                "label": "Signal Boosted (Angel Link)",
+                "effect": {
+                  "name": "Signal Boosted",
+                  "target": "targets",
+                  "changes": [],
+                  "expires": "turnEnd",
+                  "seconds": 0,
+                  "amp": "signal-boosted"
+                },
+                "text": "Angel Link: the protected ally."
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eQUAOzhEVfiEd4",
+                "type": "heal",
+                "label": "Firewall: barrier",
+                "heal": {
+                  "formula": "2d10 + 8",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction, you take damage: a Barrier against it.",
+                "activation": "reaction"
+              },
+              {
+                "id": "n5erGvD1vFLzhMcO",
+                "type": "roll",
+                "label": "Firewall: shield",
+                "roll": {
+                  "formula": "(2d10) + (3d10)",
+                  "note": "For the duration, the first damage you take each turn is reduced by this (Demon Link: deal that much lightning to a creature within 30 feet)."
+                }
+              },
+              {
+                "id": "n5ekHgDLBiDqeTIp",
+                "type": "effect",
+                "label": "Signal Boosted (Angel Link)",
+                "effect": {
+                  "name": "Signal Boosted",
+                  "target": "targets",
+                  "changes": [],
+                  "expires": "turnEnd",
+                  "seconds": 0,
+                  "amp": "signal-boosted"
+                },
+                "text": "Angel Link: the protected ally."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eQUAOzhEVfiEd4",
+                "type": "heal",
+                "label": "Firewall: barrier",
+                "heal": {
+                  "formula": "2d10 + 8",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction, you take damage: a Barrier against it.",
+                "activation": "reaction"
+              },
+              {
+                "id": "n5erGvD1vFLzhMcO",
+                "type": "roll",
+                "label": "Firewall: shield",
+                "roll": {
+                  "formula": "(2d10) + (4d10)",
+                  "note": "For the duration, the first damage you take each turn is reduced by this (Demon Link: deal that much lightning to a creature within 30 feet)."
+                }
+              },
+              {
+                "id": "n5ekHgDLBiDqeTIp",
+                "type": "effect",
+                "label": "Signal Boosted (Angel Link)",
+                "effect": {
+                  "name": "Signal Boosted",
+                  "target": "targets",
+                  "changes": [],
+                  "expires": "turnEnd",
+                  "seconds": 0,
+                  "amp": "signal-boosted"
+                },
+                "text": "Angel Link: the protected ally."
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Angel Link (Uplink)",
+          "appliesTo": {
+            "namePrefix": "Data Release: Firewall"
+          },
+          "note": "In your Uplink stance: it can also trigger when an ally within 30 feet takes damage; the ally gets it and is Signal Boosted."
+        },
+        {
+          "label": "Demon Link (Downlink)",
+          "appliesTo": {
+            "namePrefix": "Data Release: Firewall"
+          },
+          "note": "In your Downlink stance: each shield reduction also deals that much lightning to a creature within 30 feet."
+        }
+      ]
+    },
+    "genwa-data-release-jack-in": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5evNZ5ugnkUBF9Q",
+          "type": "roll",
+          "label": "Jack-In",
+          "roll": {
+            "formula": "",
+            "note": "Technological items in a 10-foot radius: Ninshou check vs DC 20 (the GM can raise it up to +10). Success: control them telepathically for 1 minute (1 hour at A, 24 hours at S) with connected systems."
+          }
+        }
+      ]
+    },
+    "genwa-data-release-system-break": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e6PAxO0JS8Dq7W",
+          "type": "save",
+          "label": "System Break",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: half of 5d6 lightning.",
+              "success": "Success: half of 5d6 lightning and Dazzled until the end of its next turn.",
+              "failure": "Failure: 5d6 lightning and the d6 condition until the end of your next turn (1–2 Blinded, 3–4 Deafened, 5–6 both).",
+              "critFailure": "Critical Failure: as a failure, but 1 minute (Constitution save at the end of each of its turns)."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            },
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            },
+            {
+              "key": "deafened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Deafened"
+            }
+          ],
+          "text": "A creature within 90 feet (two more with Angel Link).",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5epE4AmfQAr0EO8",
+          "type": "damage",
+          "label": "System Break: damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "lightning"
+              }
+            ]
+          },
+          "text": "Halve it on a success."
+        },
+        {
+          "id": "n5emVCOp4kc03VnL",
+          "type": "roll",
+          "label": "System Break: condition",
+          "roll": {
+            "formula": "1d6",
+            "note": "1–2 Blinded, 3–4 Deafened, 5–6 both."
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5e6PAxO0JS8Dq7W",
+                "type": "save",
+                "label": "System Break",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 5d6 lightning.",
+                    "success": "Success: half of 5d6 lightning and Dazzled until the end of its next turn.",
+                    "failure": "Failure: 5d6 lightning and the d6 condition until the end of your next turn (1–2 Blinded, 3–4 Deafened, 5–6 both).",
+                    "critFailure": "Critical Failure: as a failure, but 1 minute (Constitution save at the end of each of its turns)."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  },
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  },
+                  {
+                    "key": "deafened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deafened"
+                  }
+                ],
+                "text": "A creature within 90 feet (two more with Angel Link).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5epE4AmfQAr0EO8",
+                "type": "damage",
+                "label": "System Break: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (1d6)",
+                      "type": "lightning"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5emVCOp4kc03VnL",
+                "type": "roll",
+                "label": "System Break: condition",
+                "roll": {
+                  "formula": "1d6",
+                  "note": "1–2 Blinded, 3–4 Deafened, 5–6 both."
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5e6PAxO0JS8Dq7W",
+                "type": "save",
+                "label": "System Break",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 5d6 lightning.",
+                    "success": "Success: half of 5d6 lightning and Dazzled until the end of its next turn.",
+                    "failure": "Failure: 5d6 lightning and the d6 condition until the end of your next turn (1–2 Blinded, 3–4 Deafened, 5–6 both).",
+                    "critFailure": "Critical Failure: as a failure, but 1 minute (Constitution save at the end of each of its turns)."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  },
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  },
+                  {
+                    "key": "deafened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deafened"
+                  }
+                ],
+                "text": "A creature within 90 feet (two more with Angel Link).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5epE4AmfQAr0EO8",
+                "type": "damage",
+                "label": "System Break: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (2d6)",
+                      "type": "lightning"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5emVCOp4kc03VnL",
+                "type": "roll",
+                "label": "System Break: condition",
+                "roll": {
+                  "formula": "1d6",
+                  "note": "1–2 Blinded, 3–4 Deafened, 5–6 both."
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e6PAxO0JS8Dq7W",
+                "type": "save",
+                "label": "System Break",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 5d6 lightning.",
+                    "success": "Success: half of 5d6 lightning and Dazzled until the end of its next turn.",
+                    "failure": "Failure: 5d6 lightning and the d6 condition until the end of your next turn (1–2 Blinded, 3–4 Deafened, 5–6 both).",
+                    "critFailure": "Critical Failure: as a failure, but 1 minute (Constitution save at the end of each of its turns)."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  },
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  },
+                  {
+                    "key": "deafened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deafened"
+                  }
+                ],
+                "text": "A creature within 90 feet (two more with Angel Link).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5epE4AmfQAr0EO8",
+                "type": "damage",
+                "label": "System Break: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (3d6)",
+                      "type": "lightning"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5emVCOp4kc03VnL",
+                "type": "roll",
+                "label": "System Break: condition",
+                "roll": {
+                  "formula": "1d6",
+                  "note": "1–2 Blinded, 3–4 Deafened, 5–6 both."
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Angel Link (Uplink)",
+          "appliesTo": {
+            "namePrefix": "Data Release: System Break"
+          },
+          "note": "In your Uplink stance: two more targets."
+        },
+        {
+          "label": "Demon Link (Downlink)",
+          "appliesTo": {
+            "namePrefix": "Data Release: System Break"
+          },
+          "note": "In your Downlink stance: while the condition lasts, once per turn a hit on it adds 1 rank of Concussed."
+        }
+      ]
+    },
+    "genwa-data-release-torrent": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5enmKhgshEqs9tC",
+          "type": "save",
+          "label": "Torrent",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: half of 3d8 lightning.",
+              "success": "Success: half of 3d8 lightning and Shocked until the end of its next turn.",
+              "failure": "Failure: 3d8 lightning and 1 rank of Shocked.",
+              "critFailure": "Critical Failure: 5d8 lightning, 1 rank of Shocked and Firewalled."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "shocked",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shocked"
+            },
+            {
+              "key": "genwa-firewalled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Firewalled"
+            }
+          ],
+          "text": "A 30-foot cone.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eqZAiOuWUS87CV",
+          "type": "damage",
+          "label": "Torrent: damage",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "lightning"
+              }
+            ]
+          },
+          "text": "Halve it on a success."
+        },
+        {
+          "id": "n5e1vimJEaZrP9i3",
+          "type": "damage",
+          "label": "Torrent: critical failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d8",
+                "type": "lightning"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eyHdyHFNlHboMw",
+          "type": "roll",
+          "label": "Torrent: link bonus",
+          "roll": {
+            "formula": "1d8",
+            "note": "Angel Link: allies in range gain this temporary chakra and Signal Boosted. Demon Link: their next damage +this. (+1d8 at B and again at S.)"
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5enmKhgshEqs9tC",
+                "type": "save",
+                "label": "Torrent",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 3d8 lightning.",
+                    "success": "Success: half of 3d8 lightning and Shocked until the end of its next turn.",
+                    "failure": "Failure: 3d8 lightning and 1 rank of Shocked.",
+                    "critFailure": "Critical Failure: 5d8 lightning, 1 rank of Shocked and Firewalled."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  },
+                  {
+                    "key": "genwa-firewalled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Firewalled"
+                  }
+                ],
+                "text": "A 30-foot cone.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eqZAiOuWUS87CV",
+                "type": "damage",
+                "label": "Torrent: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (1d8)",
+                      "type": "lightning"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5e1vimJEaZrP9i3",
+                "type": "damage",
+                "label": "Torrent: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (1d8)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eyHdyHFNlHboMw",
+                "type": "roll",
+                "label": "Torrent: link bonus",
+                "roll": {
+                  "formula": "1d8",
+                  "note": "Angel Link: allies in range gain this temporary chakra and Signal Boosted. Demon Link: their next damage +this. (+1d8 at B and again at S.)"
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5enmKhgshEqs9tC",
+                "type": "save",
+                "label": "Torrent",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 3d8 lightning.",
+                    "success": "Success: half of 3d8 lightning and Shocked until the end of its next turn.",
+                    "failure": "Failure: 3d8 lightning and 1 rank of Shocked.",
+                    "critFailure": "Critical Failure: 5d8 lightning, 1 rank of Shocked and Firewalled."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  },
+                  {
+                    "key": "genwa-firewalled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Firewalled"
+                  }
+                ],
+                "text": "A 30-foot cone.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eqZAiOuWUS87CV",
+                "type": "damage",
+                "label": "Torrent: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (2d8)",
+                      "type": "lightning"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5e1vimJEaZrP9i3",
+                "type": "damage",
+                "label": "Torrent: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (2d8)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eyHdyHFNlHboMw",
+                "type": "roll",
+                "label": "Torrent: link bonus",
+                "roll": {
+                  "formula": "1d8",
+                  "note": "Angel Link: allies in range gain this temporary chakra and Signal Boosted. Demon Link: their next damage +this. (+1d8 at B and again at S.)"
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5enmKhgshEqs9tC",
+                "type": "save",
+                "label": "Torrent",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 3d8 lightning.",
+                    "success": "Success: half of 3d8 lightning and Shocked until the end of its next turn.",
+                    "failure": "Failure: 3d8 lightning and 1 rank of Shocked.",
+                    "critFailure": "Critical Failure: 5d8 lightning, 1 rank of Shocked and Firewalled."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  },
+                  {
+                    "key": "genwa-firewalled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Firewalled"
+                  }
+                ],
+                "text": "A 30-foot cone.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eqZAiOuWUS87CV",
+                "type": "damage",
+                "label": "Torrent: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (3d8)",
+                      "type": "lightning"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5e1vimJEaZrP9i3",
+                "type": "damage",
+                "label": "Torrent: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (3d8)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eyHdyHFNlHboMw",
+                "type": "roll",
+                "label": "Torrent: link bonus",
+                "roll": {
+                  "formula": "1d8",
+                  "note": "Angel Link: allies in range gain this temporary chakra and Signal Boosted. Demon Link: their next damage +this. (+1d8 at B and again at S.)"
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5enmKhgshEqs9tC",
+                "type": "save",
+                "label": "Torrent",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: half of 3d8 lightning.",
+                    "success": "Success: half of 3d8 lightning and Shocked until the end of its next turn.",
+                    "failure": "Failure: 3d8 lightning and 1 rank of Shocked.",
+                    "critFailure": "Critical Failure: 5d8 lightning, 1 rank of Shocked and Firewalled."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "shocked",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shocked"
+                  },
+                  {
+                    "key": "genwa-firewalled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Firewalled"
+                  }
+                ],
+                "text": "A 30-foot cone.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eqZAiOuWUS87CV",
+                "type": "damage",
+                "label": "Torrent: damage",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (4d8)",
+                      "type": "lightning"
+                    }
+                  ]
+                },
+                "text": "Halve it on a success."
+              },
+              {
+                "id": "n5e1vimJEaZrP9i3",
+                "type": "damage",
+                "label": "Torrent: critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (4d8)",
+                      "type": "lightning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eyHdyHFNlHboMw",
+                "type": "roll",
+                "label": "Torrent: link bonus",
+                "roll": {
+                  "formula": "1d8",
+                  "note": "Angel Link: allies in range gain this temporary chakra and Signal Boosted. Demon Link: their next damage +this. (+1d8 at B and again at S.)"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Angel Link (Uplink)",
+          "appliesTo": {
+            "namePrefix": "Data Release: Torrent"
+          },
+          "note": "In your Uplink stance: allies in range (not you) are unharmed, gain 1d8 temporary chakra and Signal Boosted until the end of their next turn."
+        },
+        {
+          "label": "Demon Link (Downlink)",
+          "appliesTo": {
+            "namePrefix": "Data Release: Torrent"
+          },
+          "note": "In your Downlink stance: allies in range (not you) are unharmed; their next damage +1d8."
+        }
+      ]
+    },
+    "genwa-data-release-vpn": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eGGJDEgbUDLAYt",
+          "type": "effect",
+          "label": "VPN",
+          "effect": {
+            "name": "VPN",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 600
+          },
+          "text": "A willing creature you touch (+1 per rank): silent and Invisible (an attack, jutsu or hostile action breaks it); it can talk with you and others under it as by radio link.",
+          "activation": "bonus"
+        }
+      ]
+    },
+    "genwa-network-integration": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ePfKmkvx2C1nX9",
+          "type": "roll",
+          "label": "Ride the signal",
+          "roll": {
+            "formula": "",
+            "note": "10 minutes on a signal your Radio Tower senses: you and up to 3 willing creatures teleport up to 10 miles toward its source (not into structures, barriers or machinery). Once per short or long rest."
+          }
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "rest",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "Hacker's Kit DCs are 2 lower. (Its copy of Signal Boosted's Amp is removed, as King Q-E12.)"
+        }
+      ]
+    },
+    "genwa-stable-frequency": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e8BQAOAr7C2Qvq",
+          "type": "effect",
+          "label": "Uplink",
+          "effect": {
+            "name": "Uplink",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Bonus action: the Uplink chakra stance (ends Downlink). Angel Link on your Hijutsu; your Genwa Hijutsu can come from a Signal Boosted space or creature.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5ek0Q4ylcIdZoWk",
+          "type": "effect",
+          "label": "Downlink",
+          "effect": {
+            "name": "Downlink",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Bonus action: the Downlink Bukijutsu stance (ends Uplink). Demon Link on your Hijutsu; a Genwa Hijutsu on a Shocked creature turns 1 rank of Shocked into Firewalled.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eDX18P3R9F5DJa",
+          "type": "attack",
+          "label": "Radiant Beam (Uplink)",
+          "attack": {
+            "discipline": "highest",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "A creature you can see within 30 feet (60 at 7th). An 8 on the damage die: you or an ally within 30 feet of it is Signal Boosted until the end of your next turn.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:1d8,15:2d8) + max(@mod.nin, @mod.tai, @mod.gen)",
+                "type": "lightning"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5ez1MrqLBpGKmMt",
+          "type": "effect",
+          "label": "Signal Boosted",
+          "effect": {
+            "name": "Signal Boosted",
+            "target": "targets",
+            "changes": [],
+            "expires": "turnEnd",
+            "seconds": 0,
+            "amp": "signal-boosted"
+          },
+          "text": "From a Radiant Beam's 8: you or an ally within 30 feet of the target, until the end of your next turn."
+        },
+        {
+          "id": "n5ezu1eFRUksZYtL",
+          "type": "attack",
+          "label": "Radiant Saber (Downlink)",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "A creature within 5 feet: your [Weapon Damage] as lightning. On a hit, Firewalled until the end of your next turn. 15th: +1 critical range.",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Attack action can use Radiant Beam (Uplink) or Radiant Saber (Downlink) in place of its attacks (two at 7th without Extra Attack). Radiant Beam and Saber add your highest jutsu ability modifier."
+        }
+      ]
+    }
+  }
+}

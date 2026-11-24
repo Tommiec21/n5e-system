@@ -87,11 +87,21 @@
     },
     "activities": [
       {
-        "id": "parsed1",
-        "type": "damage",
-        "label": "Damage",
+        "id": "n5eL9rKLfFcVoNJB",
+        "type": "attack",
+        "label": "Breath of Earth: Bipolar",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Against every creature in your weapon's range. Chain 1: beating AC by 5+: Pierce 4 DR. A-Rank: +4 DR until the start of your next turn.",
         "damage": {
           "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
             {
               "formula": "2d6",
               "type": "earth"
@@ -100,17 +110,9 @@
         }
       },
       {
-        "id": "chain-2-parsed1",
+        "id": "n5etCtZM2j8sgvB4",
         "type": "save",
-        "label": "Chain 2: Save",
-        "inflicts": [
-          {
-            "key": "bruised",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bruised"
-          }
-        ],
+        "label": "Chain 2: Bruised",
         "save": {
           "abilities": [
             "con"
@@ -119,10 +121,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "Chain 2. Failure: Bruised.",
         "damage": {
           "parts": []
         }
@@ -208,11 +217,21 @@
         "activitiesByRank": {
           "B": [
             {
-              "id": "parsed1",
-              "type": "damage",
-              "label": "Damage",
+              "id": "n5eL9rKLfFcVoNJB",
+              "type": "attack",
+              "label": "Breath of Earth: Bipolar",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Against every creature in your weapon's range. Chain 1: beating AC by 5+: Pierce 4 DR. A-Rank: +4 DR until the start of your next turn.",
               "damage": {
                 "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
                   {
                     "formula": "(2d6) + (1d6)",
                     "type": "earth"
@@ -221,17 +240,9 @@
               }
             },
             {
-              "id": "chain-2-parsed1",
+              "id": "n5etCtZM2j8sgvB4",
               "type": "save",
-              "label": "Chain 2: Save",
-              "inflicts": [
-                {
-                  "key": "bruised",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bruised"
-                }
-              ],
+              "label": "Chain 2: Bruised",
               "save": {
                 "abilities": [
                   "con"
@@ -240,10 +251,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Chain 2. Failure: Bruised.",
               "damage": {
                 "parts": []
               }
@@ -251,11 +269,21 @@
           ],
           "A": [
             {
-              "id": "parsed1",
-              "type": "damage",
-              "label": "Damage",
+              "id": "n5eL9rKLfFcVoNJB",
+              "type": "attack",
+              "label": "Breath of Earth: Bipolar",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Against every creature in your weapon's range. Chain 1: beating AC by 5+: Pierce 4 DR. A-Rank: +4 DR until the start of your next turn.",
               "damage": {
                 "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
                   {
                     "formula": "(2d6) + (2d6)",
                     "type": "earth"
@@ -264,17 +292,9 @@
               }
             },
             {
-              "id": "chain-2-parsed1",
+              "id": "n5etCtZM2j8sgvB4",
               "type": "save",
-              "label": "Chain 2: Save",
-              "inflicts": [
-                {
-                  "key": "bruised",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bruised"
-                }
-              ],
+              "label": "Chain 2: Bruised",
               "save": {
                 "abilities": [
                   "con"
@@ -283,10 +303,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Chain 2. Failure: Bruised.",
               "damage": {
                 "parts": []
               }
@@ -294,11 +321,21 @@
           ],
           "S": [
             {
-              "id": "parsed1",
-              "type": "damage",
-              "label": "Damage",
+              "id": "n5eL9rKLfFcVoNJB",
+              "type": "attack",
+              "label": "Breath of Earth: Bipolar",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Against every creature in your weapon's range. Chain 1: beating AC by 5+: Pierce 4 DR. A-Rank: +4 DR until the start of your next turn.",
               "damage": {
                 "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
                   {
                     "formula": "(2d6) + (3d6)",
                     "type": "earth"
@@ -307,17 +344,9 @@
               }
             },
             {
-              "id": "chain-2-parsed1",
+              "id": "n5etCtZM2j8sgvB4",
               "type": "save",
-              "label": "Chain 2: Save",
-              "inflicts": [
-                {
-                  "key": "bruised",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bruised"
-                }
-              ],
+              "label": "Chain 2: Bruised",
               "save": {
                 "abilities": [
                   "con"
@@ -326,10 +355,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Chain 2. Failure: Bruised.",
               "damage": {
                 "parts": []
               }
@@ -337,7 +373,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0032efe7c08875b9"

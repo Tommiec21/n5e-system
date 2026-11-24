@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5enNFmhsBcSY5ud",
         "type": "attack",
-        "label": "Attack",
+        "label": "Iron Knuckle",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Iron Fist stance only.",
         "damage": {
           "parts": []
         },
@@ -106,10 +107,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5ejfo3dujRC5hfS",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Iron Knuckle: knockback",
         "save": {
           "abilities": [
             "str"
@@ -118,39 +118,68 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
+        },
+        "inflicts": [],
+        "text": "On a hit. Failure: knocked back 5 × Strength modifier feet.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eIDaBUsXZKAH15",
+        "type": "attack",
+        "label": "Finisher: Iron Knuckle",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
         },
         "damage": {
           "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "4d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       },
       {
-        "id": "finisher-parsed1",
-        "type": "damage",
-        "label": "Finisher: Damage",
+        "id": "n5eirYkqO6f4YLv7",
+        "type": "save",
+        "label": "Finisher: knockback",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Failure: knocked back 10 × Strength modifier feet; through a surface under 5 feet thick with 10+ feet left: 3d6.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll4",
-        "type": "roll",
-        "label": "Finisher: 4d6",
-        "roll": {
-          "formula": "4d6",
-          "note": "Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage."
-        }
-      },
-      {
-        "id": "sourceRoll5",
-        "type": "roll",
-        "label": "Finisher: 3d6",
-        "roll": {
-          "formula": "3d6",
-          "note": "Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage."
-        }
+        "id": "n5e9yjdDYLCbM8WW",
+        "type": "damage",
+        "label": "Finisher: breaks through",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "bludgeoning"
+            }
+          ]
+        },
+        "text": "It broke through a surface."
       }
     ],
     "featureType": "active",
@@ -257,20 +286,21 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5enNFmhsBcSY5ud",
               "type": "attack",
-              "label": "Attack",
+              "label": "Iron Knuckle",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Iron Fist stance only.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(2d6) + (1d6)",
+                "extraDice": "2d6 + 1d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -278,10 +308,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5ejfo3dujRC5hfS",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Iron Knuckle: knockback",
               "save": {
                 "abilities": [
                   "str"
@@ -290,57 +319,92 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit. Failure: knocked back 5 × Strength modifier feet.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eIDaBUsXZKAH15",
+              "type": "attack",
+              "label": "Finisher: Iron Knuckle",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
               },
               "damage": {
                 "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "4d6 + 1d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
               }
             },
             {
-              "id": "finisher-parsed1",
-              "type": "damage",
-              "label": "Finisher: Damage",
+              "id": "n5eirYkqO6f4YLv7",
+              "type": "save",
+              "label": "Finisher: knockback",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Failure: knocked back 10 × Strength modifier feet; through a surface under 5 feet thick with 10+ feet left: 3d6.",
               "damage": {
                 "parts": []
               }
             },
             {
-              "id": "sourceRoll4",
-              "type": "roll",
-              "label": "Finisher: 4d6",
-              "roll": {
-                "formula": "4d6",
-                "note": "Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage."
-              }
-            },
-            {
-              "id": "sourceRoll5",
-              "type": "roll",
-              "label": "Finisher: 3d6",
-              "roll": {
-                "formula": "3d6",
-                "note": "Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage."
+              "id": "n5e9yjdDYLCbM8WW",
+              "type": "attack",
+              "label": "Finisher: breaks through",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "It broke through a surface.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "bludgeoning"
+                  }
+                ]
               }
             }
           ],
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5enNFmhsBcSY5ud",
               "type": "attack",
-              "label": "Attack",
+              "label": "Iron Knuckle",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Iron Fist stance only.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(2d6) + (2d6)",
+                "extraDice": "2d6 + 2d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -348,10 +412,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5ejfo3dujRC5hfS",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Iron Knuckle: knockback",
               "save": {
                 "abilities": [
                   "str"
@@ -360,57 +423,92 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit. Failure: knocked back 5 × Strength modifier feet.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eIDaBUsXZKAH15",
+              "type": "attack",
+              "label": "Finisher: Iron Knuckle",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
               },
               "damage": {
                 "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "4d6 + 2d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
               }
             },
             {
-              "id": "finisher-parsed1",
-              "type": "damage",
-              "label": "Finisher: Damage",
+              "id": "n5eirYkqO6f4YLv7",
+              "type": "save",
+              "label": "Finisher: knockback",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Failure: knocked back 10 × Strength modifier feet; through a surface under 5 feet thick with 10+ feet left: 3d6.",
               "damage": {
                 "parts": []
               }
             },
             {
-              "id": "sourceRoll4",
-              "type": "roll",
-              "label": "Finisher: 4d6",
-              "roll": {
-                "formula": "4d6",
-                "note": "Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage."
-              }
-            },
-            {
-              "id": "sourceRoll5",
-              "type": "roll",
-              "label": "Finisher: 3d6",
-              "roll": {
-                "formula": "3d6",
-                "note": "Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage."
+              "id": "n5e9yjdDYLCbM8WW",
+              "type": "attack",
+              "label": "Finisher: breaks through",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "It broke through a surface.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "bludgeoning"
+                  }
+                ]
               }
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5enNFmhsBcSY5ud",
               "type": "attack",
-              "label": "Attack",
+              "label": "Iron Knuckle",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Iron Fist stance only.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(2d6) + (3d6)",
+                "extraDice": "2d6 + 3d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -418,10 +516,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5ejfo3dujRC5hfS",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Iron Knuckle: knockback",
               "save": {
                 "abilities": [
                   "str"
@@ -430,57 +527,92 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit. Failure: knocked back 5 × Strength modifier feet.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eIDaBUsXZKAH15",
+              "type": "attack",
+              "label": "Finisher: Iron Knuckle",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
               },
               "damage": {
                 "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "4d6 + 3d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
               }
             },
             {
-              "id": "finisher-parsed1",
-              "type": "damage",
-              "label": "Finisher: Damage",
+              "id": "n5eirYkqO6f4YLv7",
+              "type": "save",
+              "label": "Finisher: knockback",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Failure: knocked back 10 × Strength modifier feet; through a surface under 5 feet thick with 10+ feet left: 3d6.",
               "damage": {
                 "parts": []
               }
             },
             {
-              "id": "sourceRoll4",
-              "type": "roll",
-              "label": "Finisher: 4d6",
-              "roll": {
-                "formula": "4d6",
-                "note": "Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage."
-              }
-            },
-            {
-              "id": "sourceRoll5",
-              "type": "roll",
-              "label": "Finisher: 3d6",
-              "roll": {
-                "formula": "3d6",
-                "note": "Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage."
+              "id": "n5e9yjdDYLCbM8WW",
+              "type": "attack",
+              "label": "Finisher: breaks through",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "It broke through a surface.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "bludgeoning"
+                  }
+                ]
               }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5enNFmhsBcSY5ud",
               "type": "attack",
-              "label": "Attack",
+              "label": "Iron Knuckle",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Iron Fist stance only.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(2d6) + (4d6)",
+                "extraDice": "2d6 + 4d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -488,10 +620,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5ejfo3dujRC5hfS",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Iron Knuckle: knockback",
               "save": {
                 "abilities": [
                   "str"
@@ -500,44 +631,79 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit. Failure: knocked back 5 × Strength modifier feet.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eIDaBUsXZKAH15",
+              "type": "attack",
+              "label": "Finisher: Iron Knuckle",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
               },
               "damage": {
                 "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "4d6 + 4d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
               }
             },
             {
-              "id": "finisher-parsed1",
-              "type": "damage",
-              "label": "Finisher: Damage",
+              "id": "n5eirYkqO6f4YLv7",
+              "type": "save",
+              "label": "Finisher: knockback",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Failure: knocked back 10 × Strength modifier feet; through a surface under 5 feet thick with 10+ feet left: 3d6.",
               "damage": {
                 "parts": []
               }
             },
             {
-              "id": "sourceRoll4",
-              "type": "roll",
-              "label": "Finisher: 4d6",
-              "roll": {
-                "formula": "4d6",
-                "note": "Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage."
-              }
-            },
-            {
-              "id": "sourceRoll5",
-              "type": "roll",
-              "label": "Finisher: 3d6",
-              "roll": {
-                "formula": "3d6",
-                "note": "Finisher: you instead deal your [Unarmed damage] + 4d6 and on a failed save they are knocked back a number of feet equal to 10 x your Strength ability modifier and if they strike a solid surface that is less than 5 feet thick, they break through it if they have 10 or more feet remaining to be knocked back, taking 3d6 bludgeoning damage."
+              "id": "n5e9yjdDYLCbM8WW",
+              "type": "attack",
+              "label": "Finisher: breaks through",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "It broke through a surface.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "bludgeoning"
+                  }
+                ]
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

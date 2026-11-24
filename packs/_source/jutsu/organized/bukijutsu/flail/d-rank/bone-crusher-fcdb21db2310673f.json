@@ -86,38 +86,43 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eaQCudQwaYznK8",
         "type": "attack",
-        "label": "Attack",
+        "label": "Bone Crusher",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "On a hit: Grappled by you; you can force the save. No damage on the attack itself.",
         "damage": {
           "parts": []
-        },
-        "strike": {
-          "kind": "weapon",
-          "extraDice": "2d4",
-          "dieSteps": 0,
-          "pierce": 0,
-          "maximize": false,
-          "attacks": "1"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5etDY4vfQkfv83E",
+        "type": "effect",
+        "label": "On a hit: Grappled",
+        "effect": {
+          "name": "On a hit: Grappled",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "grappled",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Grappled"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ePWpRBIQu8nigO",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "bruised",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bruised"
-          }
-        ],
+        "label": "Bone Crusher: crush",
         "save": {
           "abilities": [
             "str"
@@ -126,12 +131,28 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "Failure: the damage and Bruised (C-Rank: also Prone; B-Rank: no Hand Sign jutsu). Chain 1: disarmed; can't hold items until the end of its next turn.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "2d4",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -212,9 +233,329 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eaQCudQwaYznK8",
+              "type": "attack",
+              "label": "Bone Crusher",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "On a hit: Grappled by you; you can force the save. No damage on the attack itself.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5etDY4vfQkfv83E",
+              "type": "effect",
+              "label": "On a hit: Grappled",
+              "effect": {
+                "name": "On a hit: Grappled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ePWpRBIQu8nigO",
+              "type": "save",
+              "label": "Bone Crusher: crush",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Failure: the damage and Bruised (C-Rank: also Prone; B-Rank: no Hand Sign jutsu). Chain 1: disarmed; can't hold items until the end of its next turn.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "2d4",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eaQCudQwaYznK8",
+              "type": "attack",
+              "label": "Bone Crusher",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "On a hit: Grappled by you; you can force the save. No damage on the attack itself.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5etDY4vfQkfv83E",
+              "type": "effect",
+              "label": "On a hit: Grappled",
+              "effect": {
+                "name": "On a hit: Grappled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ePWpRBIQu8nigO",
+              "type": "save",
+              "label": "Bone Crusher: crush",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Failure: the damage and Bruised (C-Rank: also Prone; B-Rank: no Hand Sign jutsu). Chain 1: disarmed; can't hold items until the end of its next turn.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "2d4",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eaQCudQwaYznK8",
+              "type": "attack",
+              "label": "Bone Crusher",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "On a hit: Grappled by you; you can force the save. No damage on the attack itself.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5etDY4vfQkfv83E",
+              "type": "effect",
+              "label": "On a hit: Grappled",
+              "effect": {
+                "name": "On a hit: Grappled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ePWpRBIQu8nigO",
+              "type": "save",
+              "label": "Bone Crusher: crush",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Failure: the damage and Bruised (C-Rank: also Prone; B-Rank: no Hand Sign jutsu). Chain 1: disarmed; can't hold items until the end of its next turn.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "2d4",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eaQCudQwaYznK8",
+              "type": "attack",
+              "label": "Bone Crusher",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "On a hit: Grappled by you; you can force the save. No damage on the attack itself.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5etDY4vfQkfv83E",
+              "type": "effect",
+              "label": "On a hit: Grappled",
+              "effect": {
+                "name": "On a hit: Grappled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ePWpRBIQu8nigO",
+              "type": "save",
+              "label": "Bone Crusher: crush",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Failure: the damage and Bruised (C-Rank: also Prone; B-Rank: no Hand Sign jutsu). Chain 1: disarmed; can't hold items until the end of its next turn.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "2d4",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "+1 creature per rank above D."
+        }
+      ]
     }
   },
   "folder": "405b2bbb2a52157d"

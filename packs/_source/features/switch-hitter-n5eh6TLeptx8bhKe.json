@@ -40,9 +40,10 @@
           "target": "targets",
           "changes": [],
           "expires": "nextTurnEnd",
-          "seconds": 0
+          "seconds": 0,
+          "state": "follow-up"
         },
-        "text": "+1 (11th +2, 19th +3) to hit or to your save DC against it with your next non-Primary jutsu."
+        "text": "One affected creature, until the end of your next turn: +1 to hit it (+2 at 11th, +3 at 19th) with your next jutsu that isn't your Primary."
       },
       {
         "id": "n5eF64gU8lB8jcQm",
@@ -59,8 +60,10 @@
             }
           ],
           "expires": "turnStart",
-          "seconds": 0
-        }
+          "seconds": 0,
+          "state": "set-up"
+        },
+        "text": "All affected creatures: −AC against the next jutsu one of your allies (not you) casts before the start of your next turn."
       },
       {
         "id": "n5efo7RI5X8L4Mnb",
@@ -77,12 +80,94 @@
             }
           ],
           "expires": "turnStart",
-          "seconds": 0
-        }
+          "seconds": 0,
+          "state": "set-up"
+        },
+        "text": "All affected creatures: −saves against the next jutsu one of your allies (not you) casts before the start of your next turn."
       }
     ]
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5e9NeOWdeGghFNf",
+      "name": "Follow Up: to hit",
+      "type": "generic",
+      "img": "icons/svg/sun.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true,
+          "rules": [
+            {
+              "key": "modifier",
+              "selector": "attack",
+              "predicate": [
+                "target:state:follow-up",
+                "kind:attack",
+                {
+                  "not": [
+                    {
+                      "any": [
+                        {
+                          "all": [
+                            "option:primaryDiscipline:nin",
+                            "jutsu:discipline:nin"
+                          ]
+                        },
+                        {
+                          "all": [
+                            "option:primaryDiscipline:gen",
+                            "jutsu:discipline:gen"
+                          ]
+                        },
+                        {
+                          "all": [
+                            "option:primaryDiscipline:tai",
+                            "jutsu:discipline:tai"
+                          ],
+                          "not": [
+                            "jutsu:keyword:bukijutsu"
+                          ]
+                        },
+                        {
+                          "all": [
+                            "option:primaryDiscipline:buki",
+                            "jutsu:keyword:bukijutsu"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "any": [
+                    "jutsu:discipline:nin",
+                    "jutsu:discipline:gen",
+                    "jutsu:discipline:tai"
+                  ]
+                }
+              ],
+              "value": "lvl(2:1,11:2,19:3)",
+              "label": "Follow Up"
+            }
+          ]
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5eh6TLeptx8bhKe.n5e9NeOWdeGghFNf"
+    }
+  ],
   "folder": "n5ehfgGuQzHIOKKd",
   "sort": 0,
   "ownership": {
@@ -99,7 +184,14 @@
           "tai": "Taijutsu",
           "buki": "Bukijutsu"
         }
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Primary casting discipline is the level-up choice. Follow Up's +1 to hit is automatic for non-Primary jutsu attacks against the marked creature; its save DC option is at the table. End Follow Up and Set-Up after the next jutsu."
+        }
+      ]
     }
   },
   "_stats": {

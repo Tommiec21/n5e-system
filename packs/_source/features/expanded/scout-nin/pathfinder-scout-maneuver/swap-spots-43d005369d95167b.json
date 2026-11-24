@@ -36,13 +36,47 @@
       "scout-maneuver"
     ],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e4rz2Ai4yjP1vu",
+        "type": "roll",
+        "label": "Swap Spots",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1,
+          "roll": true
+        },
+        "roll": {
+          "formula": "",
+          "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). In Flash: swap with a creature in teleport range. Willing ally: + the die to its AC against the next attack. Unwilling: a Charisma save; failure swaps, and −2 AC until the end of its next turn."
+        }
+      },
+      {
+        "id": "n5e5wF4utE7bWJCM",
+        "type": "save",
+        "label": "Swap Spots: unwilling",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "nin"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "The unwilling creature's save (die already spent)."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

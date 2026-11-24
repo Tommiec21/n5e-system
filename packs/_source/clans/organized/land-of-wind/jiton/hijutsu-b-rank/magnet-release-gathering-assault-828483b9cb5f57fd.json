@@ -17,6 +17,113 @@
         "cost": "11 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fuinjutsu, Earth Release, Wind Release.",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "On a space: destroys the ground (falls through if under 5 feet thick); a 15 by 20-foot structure lands. Upcast: +1 structure or attack per rank."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eoSmcNsCHtvdWM",
+              "type": "attack",
+              "label": "Gathering Assault",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "A creature: it lands on top of the target.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(8d10) + (1d10)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eyCFAfKnXOJuyu",
+              "type": "save",
+              "label": "Gathering Assault: weapons",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "Creatures within 40 feet wielding metallic weapons. Failure: the weapon merges into the structure; a target that was hit is also Restrained under it (resave at the end of each of its turns).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eoSmcNsCHtvdWM",
+              "type": "attack",
+              "label": "Gathering Assault",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "A creature: it lands on top of the target.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(8d10) + (2d10)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eyCFAfKnXOJuyu",
+              "type": "save",
+              "label": "Gathering Assault: weapons",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "Creatures within 40 feet wielding metallic weapons. Failure: the weapon merges into the structure; a target that was hit is also Restrained under it (resave at the end of each of its turns).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +217,54 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eoSmcNsCHtvdWM",
+        "type": "attack",
+        "label": "Gathering Assault",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "A creature: it lands on top of the target.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "8d10",
+              "type": "earth"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eyCFAfKnXOJuyu",
+        "type": "save",
+        "label": "Gathering Assault: weapons",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "Creatures within 40 feet wielding metallic weapons. Failure: the weapon merges into the structure; a target that was hit is also Restrained under it (resave at the end of each of its turns).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

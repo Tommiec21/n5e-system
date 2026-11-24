@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "keton",
       "sourceLine": 5850,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,45 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eKNtN41J1qqW6Q",
+        "type": "effect",
+        "label": "Urashima – The Fisherman",
+        "effect": {
+          "name": "Urashima",
+          "target": "targets",
+          "changes": [],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Bonus action, an ally within 60 feet (two at 15th) until the start of your next turn: it rerolls one attack or check; 7th: +2 AC and to its next save (add them).",
+        "activation": "bonus",
+        "cost": {
+          "pool": "stellarCharges",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5ee8uEUJe0Fdpa4",
+        "type": "attack",
+        "label": "Urashima: Starlight Plasma Bursts",
+        "attack": {
+          "discipline": "highest",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "Reaction, a hostile creature attacks the ally in melee: one Plasma Burst per Starlight within 60 feet (15th: an extra Reaction just for this).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d12",
+              "type": "fire"
+            }
+          ]
+        }
+      }
+    ]
   }
 }

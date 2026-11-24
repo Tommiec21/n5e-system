@@ -107,6 +107,8 @@
         <div class="amp-row amp-{{typeKey}} {{#if disabled}}off{{/if}}" data-effect-id="{{id}}" data-tooltip-html="{{tip}}" data-tooltip-direction="LEFT">
           <span class="amp-badge">{{type}}</span><span class="nm">{{name}}</span><span class="amp-time">{{remaining}}</span>
           {{#if @root.editable}}<a class="ctl" data-action="toggleEffect" data-tooltip="{{#if disabled}}Make this the one that applies{{else}}Switch off{{/if}}"><i class="fa-solid {{#if disabled}}fa-toggle-off{{else}}fa-toggle-on{{/if}}"></i></a>
+          {{#each buttons}}<button type="button" class="amp-btn" data-action="ampButton" data-index="{{index}}" data-tooltip="{{tip}}">{{label}}</button>{{/each}}
+          {{#if canChange}}<a class="ctl" data-action="changeAmpChoice" data-tooltip="Change the pick" aria-label="Change {{name}}"><i class="fa-solid fa-arrows-rotate"></i></a>{{/if}}
           <a class="ctl" data-action="endAmp" data-tooltip="End this Amp" aria-label="End {{name}}"><i class="fa-solid fa-xmark"></i></a>{{/if}}
         </div>
       {{/each}}
@@ -115,7 +117,7 @@
         {{#each vm.amps.available}}
           <div class="amp-card amp-{{#if type}}{{type}}{{else}}none{{/if}} {{#if active}}on{{/if}}" draggable="true" data-amp-card="{{card}}" data-amp-key="{{key}}" {{#if summary}}data-tooltip-text="{{summary}}"{{/if}}>
             <img src="{{icon}}" alt="" width="28" height="28">
-            <div class="amp-text"><b>{{label}}</b><span class="sub">{{typeLabel}}{{#if namedType}} (box: {{namedType}}){{/if}}{{#if cooling}} · cooling {{cooling}}{{/if}}</span>
+            <div class="amp-text"><b>{{label}}</b><span class="sub">{{typeLabel}}{{#if namedType}} (box: {{namedType}}){{/if}}{{#if outsideLimits}} · Doesn't count toward Rule of 3's{{/if}}{{#if cooling}} · cooling {{cooling}}{{/if}}</span>
               {{#if pips.length}}<span class="amp-pips">{{#each pips}}<i class="pip {{#if this}}full{{/if}}"></i>{{/each}}</span>{{/if}}</div>
             <button type="button" data-action="activateAmp" {{#unless @root.editable}}disabled{{/unless}} {{#if active}}aria-pressed="true"{{/if}}>{{#if active}}On{{else}}Activate{{/if}}</button>
           </div>

@@ -17,6 +17,166 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Earth Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Pick the damage type when you roll."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5esuh1DhPRiOtMB",
+              "type": "save",
+              "label": "Storm of Steel",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                },
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Hostile creatures starting or first entering the 30-foot radius. Failure: 5d6 and an effect by type (bludgeoning: Dazed; piercing: 1 rank of Weakened; slashing: 1 rank of Bleed); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (1d6)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5esuh1DhPRiOtMB",
+              "type": "save",
+              "label": "Storm of Steel",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                },
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Hostile creatures starting or first entering the 30-foot radius. Failure: 5d6 and an effect by type (bludgeoning: Dazed; piercing: 1 rank of Weakened; slashing: 1 rank of Bleed); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (2d6)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5esuh1DhPRiOtMB",
+              "type": "save",
+              "label": "Storm of Steel",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                },
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Hostile creatures starting or first entering the 30-foot radius. Failure: 5d6 and an effect by type (bludgeoning: Dazed; piercing: 1 rank of Weakened; slashing: 1 rank of Bleed); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (3d6)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Alomancy Infusion: skewer (1 Ingot)",
+        "appliesTo": {
+          "namePrefix": "Steel Release: Storm of Steel"
+        },
+        "cost": {
+          "pool": "ingots",
+          "amount": 1
+        },
+        "note": "Needs Metallic Fan or Metallic Step. Failing creatures are pulled into a space of your choice in the area."
       }
     }
   },
@@ -108,7 +268,52 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5esuh1DhPRiOtMB",
+        "type": "save",
+        "label": "Storm of Steel",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          },
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          },
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Hostile creatures starting or first entering the 30-foot radius. Failure: 5d6 and an effect by type (bludgeoning: Dazed; piercing: 1 rank of Weakened; slashing: 1 rank of Bleed); success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "slashing"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

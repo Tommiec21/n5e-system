@@ -85,17 +85,9 @@
     },
     "activities": [
       {
-        "id": "chain-1-parsed1",
+        "id": "n5eozZvfTPfL66Dy",
         "type": "save",
-        "label": "Chain 1: Save",
-        "inflicts": [
-          {
-            "key": "demoralized",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Demoralized"
-          }
-        ],
+        "label": "Chain 1: Abyssal Aura",
         "save": {
           "abilities": [
             "wis"
@@ -104,26 +96,18 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Creatures in your weapon's range. Failure: Demoralized the next time it takes Flail damage (the effect button).",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "chain-2-parsed1",
+        "id": "n5eKGwkIrFo4UDGc",
         "type": "save",
-        "label": "Chain 2: Save",
-        "inflicts": [
-          {
-            "key": "concussed",
-            "kind": "condition",
-            "ranks": 2,
-            "label": "Concussed"
-          }
-        ],
+        "label": "Chain 2: Abyssal Aura",
         "save": {
           "abilities": [
             "wis"
@@ -132,26 +116,18 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Failure: 2 Concussed the next time it takes Flail damage.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "chain-3-parsed1",
+        "id": "n5ewD5TW9pGwJgMR",
         "type": "save",
-        "label": "Chain 3: Save",
-        "inflicts": [
-          {
-            "key": "dazzled",
-            "kind": "condition",
-            "ranks": 3,
-            "label": "Dazzled"
-          }
-        ],
+        "label": "Chain 3: Abyssal Aura",
         "save": {
           "abilities": [
             "wis"
@@ -160,12 +136,72 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Failure: 3 Dazzled the next time it takes Flail damage.",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5eiHbd52Dzf1zdM",
+        "type": "effect",
+        "label": "Chain 1: Demoralized",
+        "effect": {
+          "name": "Chain 1: Demoralized",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "demoralized",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Demoralized"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e70a6AgBBziGwN",
+        "type": "effect",
+        "label": "Chain 2: Concussed",
+        "effect": {
+          "name": "Chain 2: Concussed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "concussed",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Concussed"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eUrpSK1TImPV9x",
+        "type": "effect",
+        "label": "Chain 3: Dazzled",
+        "effect": {
+          "name": "Chain 3: Dazzled",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 3,
+              "label": "Dazzled"
+            }
+          ]
         }
       }
     ],
@@ -235,7 +271,14 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The conditions land on its next Flail damage, not on the failed save: use the effect buttons then."
+        }
+      ]
     }
   },
   "folder": "0e415a5f84ce5a5f"

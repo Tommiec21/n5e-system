@@ -85,30 +85,31 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e0AyDtyHXotpLx",
         "type": "attack",
-        "label": "Attack",
+        "label": "Monkey Kings Cunning",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
+        "text": "Chain 1: pushed 10 feet (not up).",
         "damage": {
           "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "1d12",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "2"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eeZle4KmSlJYgT",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "weakened",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Weakened"
-          }
-        ],
+        "label": "Cunning: Weakened",
         "save": {
           "abilities": [
             "con"
@@ -117,21 +118,19 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          }
+        ],
+        "text": "Failure: 1 Weakened (Chain 2: 2).",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "1d12",
-        "roll": {
-          "formula": "1d12",
-          "note": "Make two melee taijutsu attacks using your weapon, dealing your weapons damage + 1d12. Affected creatures must make a Constitution saving throw. On a failed save they gain a rank of Weakened."
         }
       }
     ],
@@ -212,9 +211,164 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5e0AyDtyHXotpLx",
+              "type": "attack",
+              "label": "Monkey Kings Cunning",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Chain 1: pushed 10 feet (not up).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "1d12 + 1d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eeZle4KmSlJYgT",
+              "type": "save",
+              "label": "Cunning: Weakened",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Failure: 1 Weakened (Chain 2: 2).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e0AyDtyHXotpLx",
+              "type": "attack",
+              "label": "Monkey Kings Cunning",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Chain 1: pushed 10 feet (not up).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "1d12 + 2d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eeZle4KmSlJYgT",
+              "type": "save",
+              "label": "Cunning: Weakened",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Failure: 1 Weakened (Chain 2: 2).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e0AyDtyHXotpLx",
+              "type": "attack",
+              "label": "Monkey Kings Cunning",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Chain 1: pushed 10 feet (not up).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "1d12 + 3d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eeZle4KmSlJYgT",
+              "type": "save",
+              "label": "Cunning: Weakened",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Failure: 1 Weakened (Chain 2: 2).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ff1cfb282039b6a7"

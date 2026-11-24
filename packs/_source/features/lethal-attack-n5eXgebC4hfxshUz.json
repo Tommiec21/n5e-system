@@ -30,37 +30,7 @@
     },
     "tags": [],
     "resourcePools": [],
-    "activities": [
-      {
-        "id": "n5emnGoVsKeoYbB3",
-        "type": "damage",
-        "label": "Lethal Attack",
-        "damage": {
-          "parts": [
-            {
-              "formula": "(@scale.hunterNin.lethalAttack)d8",
-              "type": ""
-            }
-          ]
-        },
-        "oncePerTurn": true,
-        "text": "On a hit with advantage, or with an ally within 5 ft of the target."
-      },
-      {
-        "id": "n5e9zFzaPGw6cG27",
-        "type": "damage",
-        "label": "Lethal Attack (Attack action / weapon: half)",
-        "damage": {
-          "parts": [
-            {
-              "formula": "(ceil(@scale.hunterNin.lethalAttack/2))d8",
-              "type": ""
-            }
-          ]
-        },
-        "oncePerTurn": true
-      }
-    ]
+    "activities": []
   },
   "effects": [],
   "folder": "n5emPsUcf0eHBnja",
@@ -70,7 +40,28 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "damage",
+          "selector": "damage",
+          "formula": "(@scale.hunterNin.lethalAttack)d8",
+          "optional": true,
+          "label": "Lethal Attack"
+        },
+        {
+          "key": "damage",
+          "selector": "damage",
+          "formula": "(ceil(@scale.hunterNin.lethalAttack/2))d8",
+          "optional": true,
+          "label": "Lethal Attack (half: Attack action or weapon attack)"
+        },
+        {
+          "key": "note",
+          "text": "Lethal Attack (King Q-D25): two unticked rows in the damage window of every attack and jutsu, full and half. Tick one when it applies: once per turn, on a hit with advantage, or with an ally within 5 feet of the target, or a condition your Creed adds (Bruised or Weakened; Envenomed or Corroded; Demoralized, Shaken or Dazzled; Sealed; Dazed or Confused). Half the dice, rounded up, for an attack of the Attack action or a weapon attack. Combat Exploits forgo dice: their buttons roll Lethal Attack with those dice taken off."
+        }
+      ]
     }
   },
   "_stats": {

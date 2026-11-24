@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "hozuki",
-      "sourceLine": 4088
+      "sourceLine": 4088,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "After a long rest pick a Tidal State (the option items); enter it for 1 minute as a Bonus action for 4 Hydration, once per rest."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,83 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5egcXJTVUGtgJBg",
+        "type": "heal",
+        "label": "Heir of the Mist (D-Rank)",
+        "heal": {
+          "formula": "5",
+          "pool": "tempHp"
+        },
+        "text": "Once per turn, a Water Release jutsu that costs chakra: until the start of your next turn.",
+        "cost": {
+          "pool": "hydration",
+          "amount": 2
+        },
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5eEvVbkIKexcWaI",
+        "type": "heal",
+        "label": "Heir of the Mist (C-Rank)",
+        "heal": {
+          "formula": "10",
+          "pool": "tempHp"
+        },
+        "text": "Once per turn, a Water Release jutsu that costs chakra: until the start of your next turn.",
+        "cost": {
+          "pool": "hydration",
+          "amount": 2
+        },
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5epSFqSTi5JtB3q",
+        "type": "heal",
+        "label": "Heir of the Mist (B-Rank)",
+        "heal": {
+          "formula": "15",
+          "pool": "tempHp"
+        },
+        "text": "Once per turn, a Water Release jutsu that costs chakra: until the start of your next turn.",
+        "cost": {
+          "pool": "hydration",
+          "amount": 2
+        },
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5efhQuXL300xTbk",
+        "type": "heal",
+        "label": "Heir of the Mist (A-Rank)",
+        "heal": {
+          "formula": "20",
+          "pool": "tempHp"
+        },
+        "text": "Once per turn, a Water Release jutsu that costs chakra: until the start of your next turn.",
+        "cost": {
+          "pool": "hydration",
+          "amount": 2
+        },
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5eBotsL2ZAMhgkj",
+        "type": "heal",
+        "label": "Heir of the Mist (S-Rank)",
+        "heal": {
+          "formula": "25",
+          "pool": "tempHp"
+        },
+        "text": "Once per turn, a Water Release jutsu that costs chakra: until the start of your next turn.",
+        "cost": {
+          "pool": "hydration",
+          "amount": 2
+        },
+        "oncePerTurn": true
+      }
+    ]
   }
 }

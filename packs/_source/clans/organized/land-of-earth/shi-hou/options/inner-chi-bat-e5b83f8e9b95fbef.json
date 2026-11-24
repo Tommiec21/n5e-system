@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "shi-hou",
       "sourceLine": 5274,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,32 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ezqHSQQrAkdpbb",
+        "type": "effect",
+        "label": "Bat: Search",
+        "effect": {
+          "name": "Bat",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.traits.senses.blindsight",
+              "value": "15",
+              "mode": 4
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 0
+        },
+        "text": "Bonus action: the Search skill action with 15 feet of blindsight this turn and a rank of Mastery on the check.",
+        "activation": "bonus",
+        "cost": {
+          "pool": "innerChi",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

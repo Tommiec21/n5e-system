@@ -33,13 +33,55 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eSWxDEJMvv2WYR",
+        "type": "effect",
+        "label": "Aura of Protection",
+        "effect": {
+          "name": "Aura of Protection",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 3600,
+          "aura": {
+            "radius": 15,
+            "who": "friendly",
+            "includeSelf": false,
+            "effect": {
+              "name": "Aura of Protection",
+              "changes": [
+                {
+                  "key": "system.bonuses.ac",
+                  "value": "lvl(6:1,14:2)",
+                  "mode": 2
+                },
+                {
+                  "key": "n5e.save.all",
+                  "value": "lvl(6:1,14:2)",
+                  "mode": 2
+                }
+              ]
+            }
+          }
+        },
+        "text": "While your Obsidian Ward has hit points: allies within 15 feet get +1 AC and saves (+2 at 14th). End it when the ward drops to 0."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Obsidian Ward can also regain hit points on other creatures' turns (still once per turn)."
+        }
+      ]
     }
   },
   "ownership": {

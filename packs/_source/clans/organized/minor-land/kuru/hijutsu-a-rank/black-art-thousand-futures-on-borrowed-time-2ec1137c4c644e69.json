@@ -17,7 +17,8 @@
         "cost": "25 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile), Fuinjutsu, Yin Release",
         "components": "HS, CM, CS"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -111,7 +112,54 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eRP8BlfVALpa6x",
+        "type": "save",
+        "label": "Thousand Futures",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Resists.",
+            "success": "Confused.",
+            "failure": "Confused and Staggered.",
+            "critFailure": "As failure, and Dazed."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "confused",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Confused"
+          },
+          {
+            "key": "staggered",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Staggered"
+          },
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "Miraigan active. Hostile creatures within 60 feet; resave at the end of each turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

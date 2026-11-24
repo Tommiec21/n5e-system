@@ -17,7 +17,8 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile, Auditory, Unaware), Fuinjutsu",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -112,7 +113,56 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eFJkXheou2C14W",
+        "type": "save",
+        "label": "Mental Dance",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "No further effects.",
+            "success": "Confused until the end of its next turn.",
+            "failure": "Dances: all its movement, disadvantage on ranged attacks.",
+            "critFailure": "As failure, and its Bonus action too."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "confused",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Confused"
+          }
+        ],
+        "text": "A 15-foot cube within 30 feet (B: 60 feet; S: a 30-foot cube). Resave at the end of each turn; ending it gives 1 Mental Overwrite.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5e0jN6ab0zmlwP5",
+        "type": "effect",
+        "label": "Mental Overwrite",
+        "effect": {
+          "name": "Mental Overwrite",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "condition": "yamanaka-mental-overwrite"
+        },
+        "text": "A dancing creature succeeds its resave."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

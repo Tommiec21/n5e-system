@@ -17,6 +17,131 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Water Release, Wind Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5ezJimpuKEH685s",
+              "type": "save",
+              "label": "Certain-Kill Ice Spears",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Chilled"
+                },
+                {
+                  "key": "yuki-frostbite",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Frostbite"
+                }
+              ],
+              "text": "Creatures but you in a 10-foot radius (or from a mirror you can see); it becomes difficult terrain. Failure: the damage and 1 rank of Chilled and Frostbite; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (1d10)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ezJimpuKEH685s",
+              "type": "save",
+              "label": "Certain-Kill Ice Spears",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Chilled"
+                },
+                {
+                  "key": "yuki-frostbite",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Frostbite"
+                }
+              ],
+              "text": "Creatures but you in a 10-foot radius (or from a mirror you can see); it becomes difficult terrain. Failure: the damage and 1 rank of Chilled and Frostbite; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (2d10)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ezJimpuKEH685s",
+              "type": "save",
+              "label": "Certain-Kill Ice Spears",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Chilled"
+                },
+                {
+                  "key": "yuki-frostbite",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Frostbite"
+                }
+              ],
+              "text": "Creatures but you in a 10-foot radius (or from a mirror you can see); it becomes difficult terrain. Failure: the damage and 1 rank of Chilled and Frostbite; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (3d10)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -109,7 +234,46 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ezJimpuKEH685s",
+        "type": "save",
+        "label": "Certain-Kill Ice Spears",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "chilled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Chilled"
+          },
+          {
+            "key": "yuki-frostbite",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Frostbite"
+          }
+        ],
+        "text": "Creatures but you in a 10-foot radius (or from a mirror you can see); it becomes difficult terrain. Failure: the damage and 1 rank of Chilled and Frostbite; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d10",
+              "type": "cold"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

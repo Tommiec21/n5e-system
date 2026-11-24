@@ -85,25 +85,25 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eTVJQCSNF2DPf8",
         "type": "attack",
-        "label": "Attack",
+        "label": "Arrow Notch Slash",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Only the target can react. Chain 1: on a hit, move 10 feet away.",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d10",
-        "roll": {
-          "formula": "2d10",
-          "note": "On a hit, you deal your weapon’s damage+2d10."
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "2d10",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       }
     ],
@@ -184,9 +184,107 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eTVJQCSNF2DPf8",
+              "type": "attack",
+              "label": "Arrow Notch Slash",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Only the target can react. Chain 1: on a hit, move 10 feet away.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "2d10 + 1d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eTVJQCSNF2DPf8",
+              "type": "attack",
+              "label": "Arrow Notch Slash",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Only the target can react. Chain 1: on a hit, move 10 feet away.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "2d10 + 2d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eTVJQCSNF2DPf8",
+              "type": "attack",
+              "label": "Arrow Notch Slash",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Only the target can react. Chain 1: on a hit, move 10 feet away.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "2d10 + 3d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eTVJQCSNF2DPf8",
+              "type": "attack",
+              "label": "Arrow Notch Slash",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Only the target can react. Chain 1: on a hit, move 10 feet away.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "2d10 + 4d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c23989398aafdb46"

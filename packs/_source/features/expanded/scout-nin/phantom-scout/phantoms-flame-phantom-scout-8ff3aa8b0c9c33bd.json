@@ -32,14 +32,133 @@
       }
     },
     "tags": [],
-    "resourcePools": [],
-    "advancement": []
+    "resourcePools": [
+      {
+        "id": "ghostfire",
+        "label": "Ghostfire",
+        "value": 0,
+        "max": "lvl(3:3,10:5)",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": []
+      }
+    ],
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eXecNng3rTVuhu",
+        "type": "roll",
+        "label": "Gain Ghostfire",
+        "cost": {
+          "pool": "ghostfire",
+          "amount": 1,
+          "gain": true
+        },
+        "oncePerTurn": true,
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, benefiting from Follow Up or performing a skill-based action (each lasts 1 minute)."
+        }
+      },
+      {
+        "id": "n5eRVyfh15GkrUWD",
+        "type": "save",
+        "label": "Phantasm's Grip",
+        "cost": {
+          "pool": "ghostfire",
+          "amount": 1
+        },
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "nin"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "concussed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Concussed"
+          }
+        ],
+        "text": "The Attack action or an attack jutsu: it counts as Genjutsu for class features, deals psychic or chakra damage, and conditions it inflicts become Concussed. With the Attack action: a Wisdom save or 1 rank of Concussed. Beating AC by 5: regain 1 Superiority Die."
+      },
+      {
+        "id": "n5ekibSa6wI6tKEA",
+        "type": "effect",
+        "label": "Ghost Walk",
+        "cost": {
+          "pool": "ghostfire",
+          "amount": 1
+        },
+        "effect": {
+          "name": "Ghost Walk (incorporeal)",
+          "target": "self",
+          "changes": [],
+          "expires": "turnEnd",
+          "seconds": 6,
+          "state": "incorporeal"
+        },
+        "text": "As part of your movement: incorporeal until the end of your turn; move through objects and walls not made or reinforced by jutsu. Ending inside one: shunted out, 10 necrotic per 5 feet (can't be reduced)."
+      },
+      {
+        "id": "n5eysc1KGNaog0l4",
+        "type": "effect",
+        "label": "Gravesight",
+        "cost": {
+          "pool": "ghostfire",
+          "amount": 1
+        },
+        "activation": "bonus",
+        "effect": {
+          "name": "Gravesight",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.traits.senses.blindsight",
+              "value": "30",
+              "mode": 4
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 12
+        },
+        "text": "Bonus action, until the end of your next turn: 30 feet of blindsight, see invisible creatures, and tell clones, constructs and undead."
+      },
+      {
+        "id": "n5e6oHg1P1LGUQ60",
+        "type": "roll",
+        "label": "Phantasm's Grip: regain a die",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1,
+          "gain": true
+        },
+        "roll": {
+          "formula": "",
+          "note": "The attack beat the target's AC by 5 or more."
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Ghostfire pool (3, 5 from 10th) is on this feature; each Ghostfire lasts 1 minute (empty it at the table)."
+        }
+      ]
     }
   },
   "ownership": {

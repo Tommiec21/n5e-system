@@ -1,0 +1,466 @@
+{
+  "_id": "n5eAlLuGNsHQujqh",
+  "_key": "!actors!n5eAlLuGNsHQujqh",
+  "name": "Bunshin",
+  "type": "npc",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "clone",
+      "creatureType": "humanoid",
+      "blurb": "Cloning Scout: Superior Clones",
+      "biography": "<p><em>Superior Clones (Cloning Scout, 3rd level).</em> When you summon a clone, you can summon a Bunshin instead, using this stat block. Up to 4 at once (6 at 10th, 8 at 17th); while you have Bunshins, you can't have clones from Clone jutsu. A Bunshin lasts 1 minute in combat or 1 hour outside it, can be up to 1 mile from you, and is dispelled if it enters combat in any other way. When one is dispelled, you learn what it knew.</p><p><strong>Armor Class</strong> your Ninjutsu save DC · <strong>Hit Points</strong> 1 · <strong>Speed</strong> 30 ft.</p><p><strong>Abilities</strong> STR, DEX, CON, INT, WIS, CHA: no modifier; saves +0. <strong>Skills</strong> uses its summoner's skills. <strong>Senses</strong> uses its summoner's senses.</p><p><strong>Commands</strong> (yours): Where I say (once per turn, no action: all Bunshin move), Clone Strike (in place of an attack of your Attack action: a Bunshin Strike or Bunshins Cast), Split Focus (once per turn, Bonus action: a skill-based action or the Help action for an ally).</p><p><strong>Linked to you when summoned:</strong> its level, AC, attack bonuses, save DCs, skills and senses are set from yours.</p>",
+      "summonRole": "Bunshin"
+    },
+    "abilities": {
+      "str": {
+        "value": 10
+      },
+      "dex": {
+        "value": 10
+      },
+      "con": {
+        "value": 10
+      },
+      "int": {
+        "value": 10
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 10
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 10,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "medium",
+      "speed": {
+        "walk": 30,
+        "climb": 0,
+        "swim": 0,
+        "fly": 0,
+        "burrow": 0,
+        "hover": false
+      }
+    },
+    "hpMax": 1,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5eAr6zPBRPT1g42",
+      "_key": "!actors.items!n5eAlLuGNsHQujqh.n5eAr6zPBRPT1g42",
+      "name": "Limited Casting I",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Bunshin can cast 1 jutsu from its caster's known list, after which it is dispelled. This increases to 2 at 10th and 3 at 17th level. Bunshins can only make one attack with a jutsu per casting, regardless of the number of attacks a jutsu asks for, and they can maintain concentration on jutsu they cast until the beginning of your next turn, after which they lose concentration.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eFs8sCPqXh3NyX",
+      "_key": "!actors.items!n5eAlLuGNsHQujqh.n5eFs8sCPqXh3NyX",
+      "name": "Placement",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>Bunshin you summon must be in a space within 60 feet of you.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eZzz1k1hxJzNeW",
+      "_key": "!actors.items!n5eAlLuGNsHQujqh.n5eZzz1k1hxJzNeW",
+      "name": "Basic Tools",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Bunshin has a basic version of one weapon its summoner has, void of any weapon seals. It uses this weapon (if any) as part of its Bunshin Strike. Its Bunshin Strike shares the range of this weapon. If no weapon, then it strikes unarmed.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eJpSvmskNX3EkC",
+      "_key": "!actors.items!n5eAlLuGNsHQujqh.n5eJpSvmskNX3EkC",
+      "name": "Gang Up",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>When more than one Bunshin is attacking or targeting the same target, you do not make multiple attacks and the target does not make multiple saving throws; instead consolidate their attacks into a single attack roll or saving throw. Increase Bunshin Strike's or Bunshins Cast damage by +4 for each Bunshin beyond the first.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5etr73TiDY1mn7h",
+      "_key": "!actors.items!n5eAlLuGNsHQujqh.n5etr73TiDY1mn7h",
+      "name": "Hiding In Plain Sight",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>Bunshin are indiscernible from their summoner, so much so that not even Chakra Sight can tell them apart. When one or more Bunshin are active, hostile creatures must perform the Search action at disadvantage vs the summoner's Stealth DC to determine that the Bunshins are clones.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eZF2VFfT46YCg4",
+      "_key": "!actors.items!n5eAlLuGNsHQujqh.n5eZF2VFfT46YCg4",
+      "name": "Bunshin Strike",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Melee or Ranged Weapon Attack:</em> your attack bonus with the Bunshin's cloned weapon to hit, reach (the weapon's range), one creature. <em>Hit:</em> 1d6 damage (the weapon's damage type). Gang Up: +4 damage for each Bunshin beyond the first.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eDQZ8oCBEF2XfH",
+            "type": "attack",
+            "label": "Bunshin Strike",
+            "attack": {
+              "discipline": "tai",
+              "range": "melee",
+              "count": 1,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "1d6",
+                  "type": ""
+                }
+              ]
+            }
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5ewpm0k8aDPha25",
+      "_key": "!actors.items!n5eAlLuGNsHQujqh.n5ewpm0k8aDPha25",
+      "name": "Bunshins Cast",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Bunshin casts a jutsu on its summoner's known list of C-Rank or lower that doesn't have the Fuinjutsu or Combination keyword, using the caster's statistics to determine its attack bonus or save DC. If the jutsu deals damage, it deals an amount of damage by the rank the jutsu is cast at: D-Rank 2d6, C-Rank 3d6, B-Rank 4d6, A-Rank 5d6, S-Rank 6d6.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eWIyE6Du5ppnGz",
+            "type": "damage",
+            "label": "D-Rank damage",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "2d6",
+                  "type": ""
+                }
+              ]
+            },
+            "text": "The jutsu's damage at D-Rank."
+          },
+          {
+            "id": "n5eEPxFI2IJHPER3",
+            "type": "damage",
+            "label": "C-Rank damage",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "3d6",
+                  "type": ""
+                }
+              ]
+            },
+            "text": "The jutsu's damage at C-Rank."
+          },
+          {
+            "id": "n5eZ1Y4NKFzNwPSR",
+            "type": "damage",
+            "label": "B-Rank damage",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "4d6",
+                  "type": ""
+                }
+              ]
+            },
+            "text": "The jutsu's damage at B-Rank."
+          },
+          {
+            "id": "n5eGIGaHdanZZTY7",
+            "type": "damage",
+            "label": "A-Rank damage",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "5d6",
+                  "type": ""
+                }
+              ]
+            },
+            "text": "The jutsu's damage at A-Rank."
+          },
+          {
+            "id": "n5eC274O2jeBsSyh",
+            "type": "damage",
+            "label": "S-Rank damage",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "6d6",
+                  "type": ""
+                }
+              ]
+            },
+            "text": "The jutsu's damage at S-Rank."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5eiQP6BtXZUwGIN",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "attributes.ac.flat": "@dc.nin",
+        "bonuses.attack.tai": "max(@str, @dex) + @bonuses.attack.weapon",
+        "bonuses.attack.nin": "@attack.nin - @prof",
+        "bonuses.attack.gen": "@attack.gen - @prof",
+        "bonuses.saveDC.nin": "@dc.nin - 8 - @prof",
+        "bonuses.saveDC.gen": "@dc.gen - 8 - @prof",
+        "bonuses.saveDC.tai": "@dc.tai - 8 - @prof",
+        "bonuses.save": "0 - floor(@prof / 2)",
+        "skills.acr.bonus": "@skills.acr.total",
+        "skills.ani.bonus": "@skills.ani.total",
+        "skills.ath.bonus": "@skills.ath.total",
+        "skills.cha.bonus": "@skills.cha.total",
+        "skills.dec.bonus": "@skills.dec.total",
+        "skills.his.bonus": "@skills.his.total",
+        "skills.ill.bonus": "@skills.ill.total",
+        "skills.ins.bonus": "@skills.ins.total",
+        "skills.itm.bonus": "@skills.itm.total",
+        "skills.inv.bonus": "@skills.inv.total",
+        "skills.mar.bonus": "@skills.mar.total",
+        "skills.med.bonus": "@skills.med.total",
+        "skills.nat.bonus": "@skills.nat.total",
+        "skills.nin.bonus": "@skills.nin.total",
+        "skills.prc.bonus": "@skills.prc.total",
+        "skills.prf.bonus": "@skills.prf.total",
+        "skills.per.bonus": "@skills.per.total",
+        "skills.slt.bonus": "@skills.slt.total",
+        "skills.ste.bonus": "@skills.ste.total",
+        "skills.sur.bonus": "@skills.sur.total",
+        "traits.senses.blindsight": "@senses.blindsight",
+        "traits.senses.chakraSensing": "@senses.chakraSensing",
+        "traits.senses.chakraSight": "@senses.chakraSight",
+        "traits.senses.darkvision": "@senses.darkvision",
+        "traits.senses.tremorSense": "@senses.tremorSense",
+        "traits.senses.trueSight": "@senses.trueSight",
+        "traits.senses.heatSense": "@senses.heatSense",
+        "traits.senses.waterSense": "@senses.waterSense"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Bunshin",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.93.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

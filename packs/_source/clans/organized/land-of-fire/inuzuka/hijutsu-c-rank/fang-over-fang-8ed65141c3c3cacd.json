@@ -17,6 +17,204 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Taijutsu, Bukijutsu, Tag-Team, Clash",
         "components": "CM, M, W (Melee Blade, Optional)"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5ela33SATpiAbbx",
+              "type": "attack",
+              "label": "Fang Over Fang",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Move your speed through creatures; one attack at each (once each): [Unarmed Damage] (or [Weapon Damage]) + 4d6.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "slashing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5etNtrGymkHFGpA",
+              "type": "save",
+              "label": "Fang Over Fang: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "Failure: Bruised; the Nin-Dog's Tag-Team damage on it: Dazed too.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ela33SATpiAbbx",
+              "type": "attack",
+              "label": "Fang Over Fang",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Move your speed through creatures; one attack at each (once each): [Unarmed Damage] (or [Weapon Damage]) + 4d6.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "slashing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5etNtrGymkHFGpA",
+              "type": "save",
+              "label": "Fang Over Fang: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "Failure: Bruised; the Nin-Dog's Tag-Team damage on it: Dazed too.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ela33SATpiAbbx",
+              "type": "attack",
+              "label": "Fang Over Fang",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Move your speed through creatures; one attack at each (once each): [Unarmed Damage] (or [Weapon Damage]) + 4d6.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (3d6)",
+                    "type": "slashing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5etNtrGymkHFGpA",
+              "type": "save",
+              "label": "Fang Over Fang: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "Failure: Bruised; the Nin-Dog's Tag-Team damage on it: Dazed too.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Tag-Team (Nin-Dog)",
+        "appliesTo": {
+          "namePrefix": "Fang Over Fang"
+        },
+        "note": "Your Nin-Dog synchronizes (spending a jutsu slot or its reaction): it moves its speed through creatures, biting each (+2d6, +1d6 per rank)."
       }
     }
   },
@@ -110,7 +308,68 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ela33SATpiAbbx",
+        "type": "attack",
+        "label": "Fang Over Fang",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Move your speed through creatures; one attack at each (once each): [Unarmed Damage] (or [Weapon Damage]) + 4d6.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "slashing"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5etNtrGymkHFGpA",
+        "type": "save",
+        "label": "Fang Over Fang: on a hit",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          },
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "Failure: Bruised; the Nin-Dog's Tag-Team damage on it: Dazed too.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

@@ -1,0 +1,400 @@
+{
+  "_id": "n5eb2WwgDK4N1W25",
+  "_key": "!actors!n5eb2WwgDK4N1W25",
+  "name": "Steam Imp",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Hozuki: Steam Imp",
+      "summonRole": "Steam Imp",
+      "biography": "<p><em>Steaming Danger: Tyranny (Hozuki Hijutsu).</em> You can command the imp as a bonus action on your turns. It uses your Ninjutsu attack bonus and Save DC for effects that require an attack or saving throw. Strength, Dexterity and Constitution saving throws this creature makes use your Ninjutsu ability modifier as its proficiency bonus.</p><p><strong>Medium Construct, unaligned.</strong> <strong>Armor Class</strong> 14 + Your Ninjutsu Ability Modifier · <strong>Hit Points</strong> 10 · <strong>Speed</strong> 30 ft.</p><p><strong>Abilities</strong> STR +7, DEX +3, CON +4, INT −5, WIS +0, CHA −5. <strong>Damage Immunities</strong> Cold, Fire. <strong>Condition Immunities</strong> All Mental, All Sensory, Chilled, Bleed, Envenomed. <strong>Senses</strong> passive Perception 10.</p><p><strong>Linked to you when summoned:</strong> its AC (14 + your Ninjutsu ability modifier), Ninjutsu attack bonus and save DC.</p>"
+    },
+    "abilities": {
+      "str": {
+        "value": 24
+      },
+      "dex": {
+        "value": 16
+      },
+      "con": {
+        "value": 18
+      },
+      "int": {
+        "value": 1
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 1
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 14,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "medium",
+      "immune": [
+        "cold",
+        "fire"
+      ],
+      "conditionImmune": [
+        "chilled",
+        "bleed",
+        "envenomed",
+        "berserk",
+        "charmed",
+        "confused",
+        "demoralized",
+        "shaken",
+        "concussed",
+        "blinded",
+        "dazzled",
+        "deafened"
+      ],
+      "speed": {
+        "walk": 30,
+        "climb": 0,
+        "swim": 0,
+        "fly": 0,
+        "burrow": 0,
+        "hover": false
+      }
+    },
+    "hpMax": 10,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5e3L8f6YuLZzvAg",
+      "_key": "!actors.items!n5eb2WwgDK4N1W25.n5e3L8f6YuLZzvAg",
+      "name": "Mists Tyranny",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>When the Steam Imp is reduced to 0 Hit points, it uses its Detonation ability.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5ehjAPc8dEK7R53",
+      "_key": "!actors.items!n5eb2WwgDK4N1W25.n5ehjAPc8dEK7R53",
+      "name": "Looping Destruction (B-Rank)",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>At the beginning of your following turn, if the Steam Imp has detonated since the beginning of your last turn and you are concentrating on the jutsu used to summon the Steam Imp and either the Misty Hallucination, Water Balloon, or Demonic Illusion: Steaming Mirage Hijutsu, the Steam Imp is summoned again at no additional cost.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eejedUof22lXbt",
+      "_key": "!actors.items!n5eb2WwgDK4N1W25.n5eejedUof22lXbt",
+      "name": "Growing Pains",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>At the end of each of your turns, following the turn used to summon this Steam Imp, the Steam Imp grows in size by 1 stage. If the Steam Imp grows to be Huge, it uses the Detonation ability.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eh7x9MN0ijley2",
+      "_key": "!actors.items!n5eb2WwgDK4N1W25.n5eh7x9MN0ijley2",
+      "name": "Arm Blade",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Multiattack (B-Rank).</em> The Steam can attack 2 times with its Arm Blade. <em>Melee Weapon Attack:</em> reach 5 ft., one creature. <em>Hit:</em> 1d12 + 7 Slashing damage. Beginning at A-Rank, this attack deals an additional +1d12 cold damage.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5e024DeFUeughP3",
+            "type": "attack",
+            "label": "Arm Blade",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 1,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "1d12 + 7",
+                  "type": "slashing"
+                }
+              ]
+            },
+            "text": "Two attacks at B-Rank or higher."
+          },
+          {
+            "id": "n5eczNWbBaKzSigo",
+            "type": "damage",
+            "label": "Arm Blade: A-Rank cold",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "1d12",
+                  "type": "cold"
+                }
+              ]
+            },
+            "text": "Summoned at A-Rank or higher."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5evkubkqPnkAlwF",
+      "_key": "!actors.items!n5eb2WwgDK4N1W25.n5evkubkqPnkAlwF",
+      "name": "Detonation",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Steam Imp cannot spend an action to use this ability. When the Steam Imp Detonates, its hit points are reduced to 0 and all creatures within 15 feet of it must make a Dexterity saving throw. On a failure, they take 6d6 cold damage and constructs and structures treat damage from this effect as if they are vulnerable. This increases by +1d6 for every rank beyond C-Rank.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eBymitCMqdctDa",
+            "type": "save",
+            "label": "Detonation",
+            "save": {
+              "abilities": [
+                "dex"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "text": "Creatures within 15 feet. Failure: cold damage by rank (constructs and structures as if vulnerable)."
+          },
+          {
+            "id": "n5e9wcoOfqnoA35F",
+            "type": "damage",
+            "label": "Detonation: C-Rank",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "6d6",
+                  "type": "cold"
+                }
+              ]
+            },
+            "text": "Summoned at C-Rank."
+          },
+          {
+            "id": "n5eFmiL117O6FjCx",
+            "type": "damage",
+            "label": "Detonation: B-Rank",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "7d6",
+                  "type": "cold"
+                }
+              ]
+            },
+            "text": "Summoned at B-Rank."
+          },
+          {
+            "id": "n5e0FMBBlj1bZJQ4",
+            "type": "damage",
+            "label": "Detonation: A-Rank",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "8d6",
+                  "type": "cold"
+                }
+              ]
+            },
+            "text": "Summoned at A-Rank."
+          },
+          {
+            "id": "n5ekfUjiahrBFuyF",
+            "type": "damage",
+            "label": "Detonation: S-Rank",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "9d6",
+                  "type": "cold"
+                }
+              ]
+            },
+            "text": "Summoned at S-Rank."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5e6O7FLk8ryCle9",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "attributes.ac.flat": "14 + (@dc.nin - 8 - @prof)",
+        "bonuses.saveDC.nin": "@dc.nin - 8 - @prof",
+        "bonuses.attack.nin": "@attack.nin - @prof"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Steam Imp",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.93.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

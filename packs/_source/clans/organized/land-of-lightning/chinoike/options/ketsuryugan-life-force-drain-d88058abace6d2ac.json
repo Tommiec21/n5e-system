@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "chinoike",
       "sourceLine": 5574,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,62 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eECBC9ZOFlRf3z",
+        "type": "heal",
+        "label": "Life Force Drain",
+        "heal": {
+          "formula": "@level",
+          "pool": "tempHp"
+        },
+        "text": "Bonus action, casting a Water or Medical jutsu: temporary hit points (twice your level with the 11th-level barrier drain).",
+        "activation": "bonus",
+        "cost": {
+          "pool": "crimsonCharges",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eEanDtbug23lPk",
+        "type": "save",
+        "label": "Life Force Drain: drain",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Affected creatures (on a failure of the jutsu's own save, if it has one). Failure: chakra damage equal to your temporary hit points; you gain that much temporary chakra.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "@level",
+              "type": "chakra"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eiBEscmJPousPL",
+        "type": "roll",
+        "label": "Life Force Drain: barrier (11th)",
+        "roll": {
+          "formula": "@level",
+          "note": "A target behind a Barrier with hit points: the Barrier loses hit points equal to your level."
+        },
+        "cost": {
+          "pool": "crimsonCharges",
+          "amount": 1
+        },
+        "minLevel": 11
+      }
+    ]
   }
 }

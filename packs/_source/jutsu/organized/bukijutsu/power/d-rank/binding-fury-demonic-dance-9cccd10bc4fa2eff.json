@@ -86,26 +86,45 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e0JytDv8rFacbI",
         "type": "attack",
-        "label": "Attack",
+        "label": "Binding Fury: Demonic Dance",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "One roll against every creature in your weapon's range. Chain 1: no opportunity attacks against you until the start of their next turn.",
         "damage": {
           "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "1d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "1d6",
-        "roll": {
-          "formula": "1d6",
-          "note": "On a hit, you deal your weapon damage+1d6. If you have Fury, you can spend it to increase this jutsu’s critical threat range by +2."
-        }
+        "id": "n5etMZXjoZCYIJ8y",
+        "type": "effect",
+        "label": "Fury: +2 critical range",
+        "effect": {
+          "name": "Fury",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.critRange.weapon",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 0
+        },
+        "text": "Spend Fury, before the attack."
       }
     ],
     "featureType": "active",
@@ -185,9 +204,186 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5e0JytDv8rFacbI",
+              "type": "attack",
+              "label": "Binding Fury: Demonic Dance",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "One roll against every creature in your weapon's range. Chain 1: no opportunity attacks against you until the start of their next turn.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "1d6 + 1d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5etMZXjoZCYIJ8y",
+              "type": "effect",
+              "label": "Fury: +2 critical range",
+              "effect": {
+                "name": "Fury",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.critRange.weapon",
+                    "value": "2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "Spend Fury, before the attack."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5e0JytDv8rFacbI",
+              "type": "attack",
+              "label": "Binding Fury: Demonic Dance",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "One roll against every creature in your weapon's range. Chain 1: no opportunity attacks against you until the start of their next turn.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "1d6 + 2d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5etMZXjoZCYIJ8y",
+              "type": "effect",
+              "label": "Fury: +2 critical range",
+              "effect": {
+                "name": "Fury",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.critRange.weapon",
+                    "value": "2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "Spend Fury, before the attack."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e0JytDv8rFacbI",
+              "type": "attack",
+              "label": "Binding Fury: Demonic Dance",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "One roll against every creature in your weapon's range. Chain 1: no opportunity attacks against you until the start of their next turn.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "1d6 + 3d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5etMZXjoZCYIJ8y",
+              "type": "effect",
+              "label": "Fury: +2 critical range",
+              "effect": {
+                "name": "Fury",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.critRange.weapon",
+                    "value": "2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "Spend Fury, before the attack."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e0JytDv8rFacbI",
+              "type": "attack",
+              "label": "Binding Fury: Demonic Dance",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "One roll against every creature in your weapon's range. Chain 1: no opportunity attacks against you until the start of their next turn.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "1d6 + 4d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5etMZXjoZCYIJ8y",
+              "type": "effect",
+              "label": "Fury: +2 critical range",
+              "effect": {
+                "name": "Fury",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.critRange.weapon",
+                    "value": "2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "Spend Fury, before the attack."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "trackers": [
+        "fury"
+      ]
     }
   },
   "folder": "c0a6a06641c5a7be"

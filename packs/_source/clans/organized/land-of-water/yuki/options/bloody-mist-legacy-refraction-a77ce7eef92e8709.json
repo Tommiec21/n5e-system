@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "yuki",
       "sourceLine": 4724,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Double Pane: each Ice Mirror makes 2 (gain 2), immune to poison. Truth in Passing: a rank of Mastery on Investigation (two at 11th); Study takes an Action."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,35 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5endNFqLa2qVGHL",
+        "type": "save",
+        "label": "Frostbane",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Inflicting Frostbite on a creature within 10 feet of a mirror. Failure: it's dragged in and expelled Prone within 5 feet of another mirror.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

@@ -17,7 +17,8 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fire Release, Lightning Release",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -109,7 +110,36 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eGpPwGNWyzXLWp",
+        "type": "save",
+        "label": "Plasma Flash",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          }
+        ],
+        "text": "Reaction, you are struck by an attack: all creatures in a 10-foot radius. Failure: Blinded until the start of your next turn (an action ends it early).",
+        "activation": "reaction",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

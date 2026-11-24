@@ -33,13 +33,44 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eyHvoCSpaOzAi1",
+        "type": "save",
+        "label": "Betray Yourself",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "gen"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "identity-crisis",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Identity Crisis"
+          }
+        ],
+        "text": "3 Actualization Dice: a creature under your Genjutsu whose appearance your Duplicity matches (Betray Your Friend). Failure: an Identity Crisis for 1 minute; it remakes the save at the end of each of its turns.",
+        "cost": {
+          "pool": "actualizationDice",
+          "amount": 3
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

@@ -86,12 +86,12 @@
     },
     "activities": [
       {
-        "id": "sourceRoll2",
+        "id": "n5esMnFUKo3nrqaK",
         "type": "roll",
-        "label": "3d12",
+        "label": "Wall of force",
         "roll": {
           "formula": "3d12",
-          "note": "Roll your [Weapons damage] + 3d12, recording the result. Until the end of the current turn, you manifest a wall of force generated purely by the distortions your swings make. This wall of force has a number of hit points equal to the result and intercepts all damage."
+          "note": "Reaction to damage: your [Weapon damage] (roll it and add) + this; a wall with that many hit points intercepts all damage until the end of the turn. Chain 2: a melee attacker it intercepts takes slashing equal to its hit points; Chain 3: broken, creatures within 10 feet take the recorded result."
         }
       }
     ],
@@ -178,9 +178,22 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5esMnFUKo3nrqaK",
+              "type": "roll",
+              "label": "Wall of force",
+              "roll": {
+                "formula": "(3d12) + (1d12)",
+                "note": "Reaction to damage: your [Weapon damage] (roll it and add) + this; a wall with that many hit points intercepts all damage until the end of the turn. Chain 2: a melee attacker it intercepts takes slashing equal to its hit points; Chain 3: broken, creatures within 10 feet take the recorded result."
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "7116760d98edc24e"

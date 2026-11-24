@@ -17,6 +17,92 @@
         "cost": "10 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Water Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5ecMvmmrVKG7n1W",
+              "type": "save",
+              "label": "Blood Clot Spikes",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 3,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Reaction: a creature casts a Mobility (M) jutsu. Failure: speed 0 until the end of its next turn, its jutsu fails (chakra wasted) and the damage (3 ranks of Bleed with Blood Detonation).",
+              "activation": "reaction",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d8) + (1d8)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ecMvmmrVKG7n1W",
+              "type": "save",
+              "label": "Blood Clot Spikes",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 3,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Reaction: a creature casts a Mobility (M) jutsu. Failure: speed 0 until the end of its next turn, its jutsu fails (chakra wasted) and the damage (3 ranks of Bleed with Blood Detonation).",
+              "activation": "reaction",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d8) + (2d8)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Blood Detonation (2 Crimson Charges)",
+        "appliesTo": {
+          "namePrefix": "Blood Clot Spikes"
+        },
+        "cost": {
+          "pool": "crimsonCharges",
+          "amount": 2
+        },
+        "note": "Needs your Ketsuryugan active. Failure: also 3 ranks of Bleed."
       }
     }
   },
@@ -108,7 +194,41 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ecMvmmrVKG7n1W",
+        "type": "save",
+        "label": "Blood Clot Spikes",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 3,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Reaction: a creature casts a Mobility (M) jutsu. Failure: speed 0 until the end of its next turn, its jutsu fails (chakra wasted) and the damage (3 ranks of Bleed with Blood Detonation).",
+        "activation": "reaction",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d8",
+              "type": "necrotic"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

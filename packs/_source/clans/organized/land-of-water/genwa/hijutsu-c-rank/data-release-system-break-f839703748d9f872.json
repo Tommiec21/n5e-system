@@ -17,7 +17,241 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Visual, Tactile), Lightning Release",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5e6PAxO0JS8Dq7W",
+              "type": "save",
+              "label": "System Break",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 5d6 lightning.",
+                  "success": "Success: half of 5d6 lightning and Dazzled until the end of its next turn.",
+                  "failure": "Failure: 5d6 lightning and the d6 condition until the end of your next turn (1–2 Blinded, 3–4 Deafened, 5–6 both).",
+                  "critFailure": "Critical Failure: as a failure, but 1 minute (Constitution save at the end of each of its turns)."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                },
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                },
+                {
+                  "key": "deafened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Deafened"
+                }
+              ],
+              "text": "A creature within 90 feet (two more with Angel Link).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5epE4AmfQAr0EO8",
+              "type": "damage",
+              "label": "System Break: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (1d6)",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5emVCOp4kc03VnL",
+              "type": "roll",
+              "label": "System Break: condition",
+              "roll": {
+                "formula": "1d6",
+                "note": "1–2 Blinded, 3–4 Deafened, 5–6 both."
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e6PAxO0JS8Dq7W",
+              "type": "save",
+              "label": "System Break",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 5d6 lightning.",
+                  "success": "Success: half of 5d6 lightning and Dazzled until the end of its next turn.",
+                  "failure": "Failure: 5d6 lightning and the d6 condition until the end of your next turn (1–2 Blinded, 3–4 Deafened, 5–6 both).",
+                  "critFailure": "Critical Failure: as a failure, but 1 minute (Constitution save at the end of each of its turns)."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                },
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                },
+                {
+                  "key": "deafened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Deafened"
+                }
+              ],
+              "text": "A creature within 90 feet (two more with Angel Link).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5epE4AmfQAr0EO8",
+              "type": "damage",
+              "label": "System Break: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (2d6)",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5emVCOp4kc03VnL",
+              "type": "roll",
+              "label": "System Break: condition",
+              "roll": {
+                "formula": "1d6",
+                "note": "1–2 Blinded, 3–4 Deafened, 5–6 both."
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e6PAxO0JS8Dq7W",
+              "type": "save",
+              "label": "System Break",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 5d6 lightning.",
+                  "success": "Success: half of 5d6 lightning and Dazzled until the end of its next turn.",
+                  "failure": "Failure: 5d6 lightning and the d6 condition until the end of your next turn (1–2 Blinded, 3–4 Deafened, 5–6 both).",
+                  "critFailure": "Critical Failure: as a failure, but 1 minute (Constitution save at the end of each of its turns)."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                },
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                },
+                {
+                  "key": "deafened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Deafened"
+                }
+              ],
+              "text": "A creature within 90 feet (two more with Angel Link).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5epE4AmfQAr0EO8",
+              "type": "damage",
+              "label": "System Break: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (3d6)",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5emVCOp4kc03VnL",
+              "type": "roll",
+              "label": "System Break: condition",
+              "roll": {
+                "formula": "1d6",
+                "note": "1–2 Blinded, 3–4 Deafened, 5–6 both."
+              }
+            }
+          ]
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Angel Link (Uplink)",
+          "appliesTo": {
+            "namePrefix": "Data Release: System Break"
+          },
+          "note": "In your Uplink stance: two more targets."
+        },
+        {
+          "label": "Demon Link (Downlink)",
+          "appliesTo": {
+            "namePrefix": "Data Release: System Break"
+          },
+          "note": "In your Downlink stance: while the condition lasts, once per turn a hit on it adds 1 rank of Concussed."
+        }
+      ]
     }
   },
   "ownership": {
@@ -111,7 +345,77 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e6PAxO0JS8Dq7W",
+        "type": "save",
+        "label": "System Break",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: half of 5d6 lightning.",
+            "success": "Success: half of 5d6 lightning and Dazzled until the end of its next turn.",
+            "failure": "Failure: 5d6 lightning and the d6 condition until the end of your next turn (1–2 Blinded, 3–4 Deafened, 5–6 both).",
+            "critFailure": "Critical Failure: as a failure, but 1 minute (Constitution save at the end of each of its turns)."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          },
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          },
+          {
+            "key": "deafened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Deafened"
+          }
+        ],
+        "text": "A creature within 90 feet (two more with Angel Link).",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5epE4AmfQAr0EO8",
+        "type": "damage",
+        "label": "System Break: damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "lightning"
+            }
+          ]
+        },
+        "text": "Halve it on a success."
+      },
+      {
+        "id": "n5emVCOp4kc03VnL",
+        "type": "roll",
+        "label": "System Break: condition",
+        "roll": {
+          "formula": "1d6",
+          "note": "1–2 Blinded, 3–4 Deafened, 5–6 both."
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

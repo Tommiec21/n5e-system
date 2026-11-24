@@ -17,6 +17,20 @@
         "cost": "14 Chakra (or 6 Star Chakra)",
         "keywords": "Hijutsu, Ninjutsu",
         "components": "HS, CM"
+      },
+      "notAmp": "A wall (King, AMP1f batch 3).",
+      "reviewed": true,
+      "castOption": {
+        "label": "Irradiated (Star Chakra)",
+        "appliesTo": {
+          "namePrefix": "Kujaku Art: Star Wall"
+        },
+        "note": "Pay 6 Star Chakra instead of chakra (+2 per rank above; spend the extra by hand): the wall pulls (the gravity button).",
+        "costDelta": "zero",
+        "cost": {
+          "pool": "starChakra",
+          "amount": 6
+        }
       }
     }
   },
@@ -107,7 +121,60 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5easmeueuLQmJA9",
+        "type": "save",
+        "label": "Star Wall",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "hoshi-star-sickness",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Star Sickness"
+          }
+        ],
+        "text": "A 60-foot wall within 120 feet (10-foot segments: AC your Ninjutsu save DC, 40 hit points (+15 per rank), immune to force, chakra, poison and psychic). Starting a turn within 10 feet or passing through. Failure: 2 Star Sickness; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": "force"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e7fCjUqagCgKUj",
+        "type": "save",
+        "label": "Irradiated: gravity",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Within 10 feet, moving away. Failure: speed 0 until the end of the turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

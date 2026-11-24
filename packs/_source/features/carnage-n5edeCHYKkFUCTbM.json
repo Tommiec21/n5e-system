@@ -89,6 +89,19 @@
           "formula": "",
           "note": "On a hit: 30 ft of bonus movement."
         }
+      },
+      {
+        "id": "n5evivc9005ptX4a",
+        "type": "roll",
+        "label": "Casket Breaker",
+        "roll": {
+          "formula": "",
+          "note": "On a hit that dealt less to hit points than you rolled: one weapon attack at the same creature, piercing 6 DR."
+        },
+        "cost": {
+          "pool": "carnage",
+          "amount": 1
+        }
       }
     ]
   },
@@ -100,7 +113,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Executioners Drive from initiative to the end of the encounter: gain 1 Carnage once per turn when you deal or take damage from a creature (max 3). Empty Carnage when the encounter ends."
+        }
+      ]
     }
   },
   "_stats": {

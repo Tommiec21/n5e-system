@@ -86,23 +86,27 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eg6oXpuBi7Q60g",
         "type": "attack",
-        "label": "Attack",
+        "label": "Infernal Slash",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "@weapon + 3d6",
+              "type": "slashing"
+            }
+          ]
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5e0I1aERWrdojEB",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Infernal flames",
         "save": {
           "abilities": [
             "dex"
@@ -110,31 +114,18 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "The target and creatures you choose in your weapon's range (the target: no damage on a success). Chain 2: failure DR −4 until the end of your next turn. Chain 3: cast as a Bonus action, back to Chain 1. Success: half.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "3d6",
-        "roll": {
-          "formula": "3d6",
-          "note": "Make two melee taijutsu attacks against a target creature in range, dealing your [Weapons damage] +3d6 slashing damage. The shockwave of your attack generates enough friction to spark a flame."
-        }
-      },
-      {
-        "id": "sourceRoll4",
-        "type": "roll",
-        "label": "Chain 3: 1d6",
-        "roll": {
-          "formula": "1d6",
-          "note": "Rank, increase the cost by 3 and the damage by 1d6."
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "fire"
+            }
+          ]
         }
       }
     ],
@@ -228,9 +219,56 @@
           "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically.",
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5eg6oXpuBi7Q60g",
+              "type": "attack",
+              "label": "Infernal Slash",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 3d6) + (1d6)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e0I1aERWrdojEB",
+              "type": "save",
+              "label": "Infernal flames",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "The target and creatures you choose in your weapon's range (the target: no damage on a success). Chain 2: failure DR −4 until the end of your next turn. Chain 3: cast as a Bonus action, back to Chain 1. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "00a31a843def3e70"

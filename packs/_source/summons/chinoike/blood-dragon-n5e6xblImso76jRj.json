@@ -1,0 +1,404 @@
+{
+  "_id": "n5e6xblImso76jRj",
+  "_key": "!actors!n5e6xblImso76jRj",
+  "name": "Blood Dragon",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Chinoike: Blood Dragon",
+      "summonRole": "Blood Dragon",
+      "biography": "<p><em>Blood Dragon Ascension (Chinoike Hijutsu).</em> You command the Dragon, and it only listens to you (no action needed). It uses your highest jutsu attack bonus or Save DC. It takes its turn immediately after yours.</p><p><strong>Gargantuan Construct, Unaligned.</strong> <strong>Armor Class</strong> 21 · <strong>Hit Points</strong> 100 · <strong>Speed</strong> 40 ft.</p><p><strong>Abilities</strong> STR +6 (save +11), DEX +1 (+7), CON +6 (+11), INT −5, WIS +0, CHA −5 (−5). <strong>Damage Vulnerabilities</strong> Earth. <strong>Damage Resistances</strong> Bludgeoning, Piercing, Slashing. <strong>Damage Immunities</strong> Fire, Poison. <strong>Condition Immunities</strong> Bleeding, Bruised, All Mental and Sensory, Paralyzed, Petrified, Envenomed. <strong>Senses</strong> Blindsight 60 ft., Passive Perception 10.</p><p><strong>Linked to you when summoned:</strong> its attack bonus and save DC (your highest jutsu ones).</p>"
+    },
+    "abilities": {
+      "str": {
+        "value": 22
+      },
+      "dex": {
+        "value": 12
+      },
+      "con": {
+        "value": 22
+      },
+      "int": {
+        "value": 1
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 1
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 21,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "gargantuan",
+      "vuln": [
+        "earth"
+      ],
+      "resist": [
+        "bludgeoning",
+        "piercing",
+        "slashing"
+      ],
+      "immune": [
+        "fire",
+        "poison"
+      ],
+      "conditionImmune": [
+        "bleed",
+        "bruised",
+        "envenomed",
+        "petrified",
+        "berserk",
+        "charmed",
+        "confused",
+        "demoralized",
+        "shaken",
+        "concussed",
+        "blinded",
+        "dazzled",
+        "deafened"
+      ],
+      "speed": {
+        "walk": 40,
+        "climb": 0,
+        "swim": 0,
+        "fly": 0,
+        "burrow": 0,
+        "hover": false
+      },
+      "senses": {
+        "blindsight": 60
+      }
+    },
+    "hpMax": 100,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5elSBKEgRCSDdIC",
+      "_key": "!actors.items!n5e6xblImso76jRj.n5elSBKEgRCSDdIC",
+      "name": "Ineffable Makeup",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Blood Dragon cannot be dispelled by any jutsu of A-Rank or Lower.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5ewx62ycfFX4C42",
+      "_key": "!actors.items!n5e6xblImso76jRj.n5ewx62ycfFX4C42",
+      "name": "Liquid Body",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>Creatures are able to pass through the body of the Blood Dragon at its summoner's discretion. If a creature ends their turn in your space, they are immediately ejected out of you in a space that can hold them.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eg8mOXAUWcwVnN",
+      "_key": "!actors.items!n5e6xblImso76jRj.n5eg8mOXAUWcwVnN",
+      "name": "Bite",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Multiattack.</em> The Blood Dragon can attack 2 times with its Bite or Hydra Bullet. <em>Melee Weapon Attack:</em> reach 10 ft., one creature. <em>Hit:</em> 3d10 + 6 Cold or Necrotic damage (pick one).",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eLY3l62ZTuBpWG",
+            "type": "attack",
+            "label": "Bite",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 2,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "3d10 + 6",
+                  "type": "necrotic"
+                }
+              ]
+            },
+            "text": "Cold or necrotic (pick one)."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eSbCOYSUk2aXpH",
+      "_key": "!actors.items!n5e6xblImso76jRj.n5eSbCOYSUk2aXpH",
+      "name": "Hydra Bullet",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Ranged Weapon Attack:</em> Range (60/120), one creature. <em>Hit:</em> 4d6+6 Cold or Necrotic damage (pick one).",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eJ38fdA5uXBICB",
+            "type": "attack",
+            "label": "Hydra Bullet",
+            "attack": {
+              "discipline": "nin",
+              "range": "ranged",
+              "count": 2,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "4d6 + 6",
+                  "type": "necrotic"
+                }
+              ]
+            },
+            "text": "Cold or necrotic (pick one)."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5e3hb7JA3BaCylV",
+      "_key": "!actors.items!n5e6xblImso76jRj.n5e3hb7JA3BaCylV",
+      "name": "Vicious Vortex",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The heads of the dragon converge and form into a gargantuan torrent of water, ripping everything it touches to shreds. The dragon travels to a space within its movement speed, taking a specific path that you designate. Each creature within this path must make a Dexterity saving throw, taking 8d6 cold or necrotic damage (pick one) and having their movement speed reduced by half until the end of their next turn on a failure, or half as much damage and no further effects on a success.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5e2PsztSjGswrp0",
+            "type": "save",
+            "label": "Vicious Vortex",
+            "save": {
+              "abilities": [
+                "dex"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "half",
+              "resave": false
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "8d6",
+                  "type": "necrotic"
+                }
+              ]
+            },
+            "text": "Cold or necrotic (pick one). Failure: half speed until the end of its next turn."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5e942FoGT5qFP3Y",
+      "_key": "!actors.items!n5e6xblImso76jRj.n5e942FoGT5qFP3Y",
+      "name": "Blood Ocean",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>(Recharge 9-10).</em> The Blood Dragon casts Genjutsu: Numbing Blood Spear at B-Rank as if you had cast it twice, at two different locations. These castings cannot trigger their Blood Detonation, effects.",
+        "category": "npcAbilities",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5ehsvET0OEOKHz0",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "bonuses.saveDC.nin": "max(@dc.nin, @dc.tai, @dc.gen) - 8 - @prof",
+        "bonuses.attack.nin": "max(@attack.nin, @attack.tai, @attack.gen) - @prof"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Blood Dragon",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.93.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

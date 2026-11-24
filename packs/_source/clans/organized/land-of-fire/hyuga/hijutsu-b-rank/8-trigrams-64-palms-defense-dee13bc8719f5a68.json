@@ -17,6 +17,128 @@
         "cost": "14 Chakra",
         "keywords": "Hijutsu, Main Branch, Taijutsu, Barrier, Clash",
         "components": "CM, M"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5evz5s0iTTlS1cH",
+              "type": "save",
+              "label": "Offensive",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "hyuga-network-distortion",
+                  "kind": "condition",
+                  "ranks": 3,
+                  "label": "Network Distortion"
+                }
+              ],
+              "text": "[Main Branch] Action: creatures you choose in your unarmed reach (Eight Trigram: up to this jutsu's ability modifier within 30 feet, +3 ranks of Network Distortion on a failure). [Unarmed Damage] + 4d8 force and pushed 5 feet.",
+              "activation": "action",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (1d8)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eDHoIi2b6fgBuv",
+              "type": "effect",
+              "label": "Defensive",
+              "effect": {
+                "name": "64 Palms Defense",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "4",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction to damage: +4 AC until the start of your next turn; a Clash adds 1d6. Eight Trigram: twice your [Unarmed Damage] as temporary hit points.",
+              "activation": "reaction"
+            }
+          ],
+          "S": [
+            {
+              "id": "n5evz5s0iTTlS1cH",
+              "type": "save",
+              "label": "Offensive",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "hyuga-network-distortion",
+                  "kind": "condition",
+                  "ranks": 3,
+                  "label": "Network Distortion"
+                }
+              ],
+              "text": "[Main Branch] Action: creatures you choose in your unarmed reach (Eight Trigram: up to this jutsu's ability modifier within 30 feet, +3 ranks of Network Distortion on a failure). [Unarmed Damage] + 4d8 force and pushed 5 feet.",
+              "activation": "action",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (2d8)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eDHoIi2b6fgBuv",
+              "type": "effect",
+              "label": "Defensive",
+              "effect": {
+                "name": "64 Palms Defense",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "4",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction to damage: +4 AC until the start of your next turn; a Clash adds 1d6. Eight Trigram: twice your [Unarmed Damage] as temporary hit points.",
+              "activation": "reaction"
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Eight Trigram",
+        "appliesTo": {
+          "namePrefix": "8-Trigrams 64 Palms Defense"
+        },
+        "note": "In your Gentle Fist stance: Offensive: 30 feet and Network Distortion; Defensive: temporary hit points."
       }
     }
   },
@@ -110,7 +232,61 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5evz5s0iTTlS1cH",
+        "type": "save",
+        "label": "Offensive",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "hyuga-network-distortion",
+            "kind": "condition",
+            "ranks": 3,
+            "label": "Network Distortion"
+          }
+        ],
+        "text": "[Main Branch] Action: creatures you choose in your unarmed reach (Eight Trigram: up to this jutsu's ability modifier within 30 feet, +3 ranks of Network Distortion on a failure). [Unarmed Damage] + 4d8 force and pushed 5 feet.",
+        "activation": "action",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "force"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eDHoIi2b6fgBuv",
+        "type": "effect",
+        "label": "Defensive",
+        "effect": {
+          "name": "64 Palms Defense",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "4",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Reaction to damage: +4 AC until the start of your next turn; a Clash adds 1d6. Eight Trigram: twice your [Unarmed Damage] as temporary hit points.",
+        "activation": "reaction"
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

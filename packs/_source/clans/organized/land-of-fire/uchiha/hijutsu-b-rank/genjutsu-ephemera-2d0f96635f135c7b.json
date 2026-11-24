@@ -17,7 +17,8 @@
         "cost": "12 Chakra",
         "keywords": "Hijutsu, Genjutsu, Visual, Unaware",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -109,7 +110,68 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5emQCDEpqe7hgma",
+        "type": "save",
+        "label": "Ephemera",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "",
+            "success": "It resists; the jutsu ends.",
+            "failure": "Confused; 5d10 psychic each turn it starts not obeying.",
+            "critFailure": "As failure, 5d12."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "confused",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Confused"
+          }
+        ],
+        "text": "Sharingan active: a one-word command to a creature within 60 feet; obeying repeats it; a harmful command ends the jutsu. Resisting: the save; resave at the end of each of its turns.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eTJCSf85SHaEYx",
+        "type": "damage",
+        "label": "Not obeying",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d10",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eV5mWRVlrgo5x4",
+        "type": "damage",
+        "label": "Not obeying (critical failure)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d12",
+              "type": "psychic"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "gen"

@@ -17,6 +17,236 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Genjutsu (Tactile), Fuinjutsu, Yin Release, Finisher",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eZ3rRSYX4Eru23",
+              "type": "attack",
+              "label": "Dark Drain",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Touch. Finisher: + [Unarmed Damage] (roll it), and its save has disadvantage.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d10) + (1d10)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eQIWYndhZaGiN6",
+              "type": "save",
+              "label": "Dark Drain: save",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Resists.",
+                  "success": "2d6 chakra if Yin-Sealed.",
+                  "failure": "1d6 chakra per Sealed rank, +2d6 if Yin-Sealed.",
+                  "critFailure": "As failure; you gain 2 temporary chakra per Sealed rank, +4 if Yin-Sealed."
+                }
+              },
+              "inflicts": [],
+              "text": "Sealed or Yin-Sealed targets.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ebNBfDx1cO46Yp",
+              "type": "damage",
+              "label": "Yin-Sealed",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eev0VRiUWldk08",
+              "type": "damage",
+              "label": "Per Sealed rank",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d6",
+                    "type": "chakra"
+                  }
+                ]
+              },
+              "text": "Roll once per rank."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eZ3rRSYX4Eru23",
+              "type": "attack",
+              "label": "Dark Drain",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Touch. Finisher: + [Unarmed Damage] (roll it), and its save has disadvantage.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d10) + (2d10)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eQIWYndhZaGiN6",
+              "type": "save",
+              "label": "Dark Drain: save",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Resists.",
+                  "success": "2d6 chakra if Yin-Sealed.",
+                  "failure": "1d6 chakra per Sealed rank, +2d6 if Yin-Sealed.",
+                  "critFailure": "As failure; you gain 2 temporary chakra per Sealed rank, +4 if Yin-Sealed."
+                }
+              },
+              "inflicts": [],
+              "text": "Sealed or Yin-Sealed targets.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ebNBfDx1cO46Yp",
+              "type": "damage",
+              "label": "Yin-Sealed",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eev0VRiUWldk08",
+              "type": "damage",
+              "label": "Per Sealed rank",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d6",
+                    "type": "chakra"
+                  }
+                ]
+              },
+              "text": "Roll once per rank."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eZ3rRSYX4Eru23",
+              "type": "attack",
+              "label": "Dark Drain",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Touch. Finisher: + [Unarmed Damage] (roll it), and its save has disadvantage.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d10) + (3d10)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eQIWYndhZaGiN6",
+              "type": "save",
+              "label": "Dark Drain: save",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Resists.",
+                  "success": "2d6 chakra if Yin-Sealed.",
+                  "failure": "1d6 chakra per Sealed rank, +2d6 if Yin-Sealed.",
+                  "critFailure": "As failure; you gain 2 temporary chakra per Sealed rank, +4 if Yin-Sealed."
+                }
+              },
+              "inflicts": [],
+              "text": "Sealed or Yin-Sealed targets.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ebNBfDx1cO46Yp",
+              "type": "damage",
+              "label": "Yin-Sealed",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eev0VRiUWldk08",
+              "type": "damage",
+              "label": "Per Sealed rank",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d6",
+                    "type": "chakra"
+                  }
+                ]
+              },
+              "text": "Roll once per rank."
+            }
+          ]
+        }
       }
     }
   },
@@ -113,7 +343,81 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eZ3rRSYX4Eru23",
+        "type": "attack",
+        "label": "Dark Drain",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Touch. Finisher: + [Unarmed Damage] (roll it), and its save has disadvantage.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d10",
+              "type": "necrotic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eQIWYndhZaGiN6",
+        "type": "save",
+        "label": "Dark Drain: save",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Resists.",
+            "success": "2d6 chakra if Yin-Sealed.",
+            "failure": "1d6 chakra per Sealed rank, +2d6 if Yin-Sealed.",
+            "critFailure": "As failure; you gain 2 temporary chakra per Sealed rank, +4 if Yin-Sealed."
+          }
+        },
+        "inflicts": [],
+        "text": "Sealed or Yin-Sealed targets.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5ebNBfDx1cO46Yp",
+        "type": "damage",
+        "label": "Yin-Sealed",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "chakra"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eev0VRiUWldk08",
+        "type": "damage",
+        "label": "Per Sealed rank",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d6",
+              "type": "chakra"
+            }
+          ]
+        },
+        "text": "Roll once per rank."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

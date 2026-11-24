@@ -17,7 +17,14 @@
         "cost": "20 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu, Water Release, Lightning Release, Storm Branch",
         "components": "CM, M"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Storm Branch] Beating its AC by 10: a critical hit. Two or more of the conditions: it takes the damage as if vulnerable."
+        }
+      ]
     }
   },
   "ownership": {
@@ -112,7 +119,35 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eTLLvSb3SZLHKE",
+        "type": "attack",
+        "label": "Liger Bomb",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "In Spear Form, a creature you have Dazed, Stunned, Incapacitated, Staggered or Grappled: [Unarmed Damage] or [Weapon Damage] + 6d12 lightning.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d12",
+              "type": "lightning"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

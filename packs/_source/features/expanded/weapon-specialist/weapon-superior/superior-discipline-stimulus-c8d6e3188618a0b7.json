@@ -35,13 +35,32 @@
       "weapon-superior"
     ],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eveHTvgaUPF3uc",
+        "type": "heal",
+        "label": "Stimulus: temporary chakra",
+        "heal": {
+          "formula": "2 * @amount",
+          "pool": "tempCp"
+        },
+        "text": "After Chained Momentum: temporary chakra equal to twice your current Chain rank (enter it when asked)."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Enter your current Chain rank for @amount."
+        }
+      ]
     }
   },
   "ownership": {

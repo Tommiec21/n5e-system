@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "keton",
-      "sourceLine": 5828
+      "sourceLine": 5828,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Starlights: up to 4 (5 at 7th, 6 at 15th), the pool; each lasts 1 minute and all end with combat. While one is active, enter the Solar Flare chakra stance as a Bonus action (the clan's stance item)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,57 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e16ZePiWWAWHmj",
+        "type": "roll",
+        "label": "Manifest Starlight",
+        "roll": {
+          "formula": "",
+          "note": "In combat, once per turn at the start of your turn: a Starlight at a point within 30 feet (60 at 11th) for up to 1 minute; bright light 20 feet, dim 20 more. Over your maximum the oldest is dispelled (spend one first)."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "starlights",
+          "amount": 1,
+          "gain": true
+        }
+      },
+      {
+        "id": "n5e1zm79ULyxAAHU",
+        "type": "roll",
+        "label": "Dismiss Starlights",
+        "roll": {
+          "formula": "",
+          "note": "Bonus action, or you end your movement more than 120 feet from them."
+        },
+        "activation": "bonus",
+        "cost": {
+          "pool": "starlights",
+          "choose": true
+        }
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "starlights",
+        "label": "Starlights",
+        "value": 0,
+        "max": "lvl(1:4,7:5,15:6)",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "encounter",
+            "amount": "empty",
+            "formula": "",
+            "requires": ""
+          }
+        ],
+        "lifetime": 60
+      }
+    ]
   }
 }

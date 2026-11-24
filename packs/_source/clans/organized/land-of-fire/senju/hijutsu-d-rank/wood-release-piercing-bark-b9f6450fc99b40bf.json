@@ -17,6 +17,231 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Fuinjutsu,  Earth Release, Water Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5er7ZLHGM9vmAuc",
+              "type": "attack",
+              "label": "Piercing Bark",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Every creature in a 5-foot cube within 60 feet (+5 feet at B and S); earth, cold or chakra.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eOmx9fzr4NAAN0",
+              "type": "save",
+              "label": "Piercing Bark: roots",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "",
+                  "success": "",
+                  "failure": "Grappled.",
+                  "critFailure": "Restrained (failed by 5 or more)."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "On a hit. Failure: Grappled (by 5 or more: Restrained); Strength save at the end of each of its turns.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5er7ZLHGM9vmAuc",
+              "type": "attack",
+              "label": "Piercing Bark",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Every creature in a 5-foot cube within 60 feet (+5 feet at B and S); earth, cold or chakra.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eOmx9fzr4NAAN0",
+              "type": "save",
+              "label": "Piercing Bark: roots",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "",
+                  "success": "",
+                  "failure": "Grappled.",
+                  "critFailure": "Restrained (failed by 5 or more)."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "On a hit. Failure: Grappled (by 5 or more: Restrained); Strength save at the end of each of its turns.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5er7ZLHGM9vmAuc",
+              "type": "attack",
+              "label": "Piercing Bark",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Every creature in a 5-foot cube within 60 feet (+5 feet at B and S); earth, cold or chakra.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (3d6)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eOmx9fzr4NAAN0",
+              "type": "save",
+              "label": "Piercing Bark: roots",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "",
+                  "success": "",
+                  "failure": "Grappled.",
+                  "critFailure": "Restrained (failed by 5 or more)."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "On a hit. Failure: Grappled (by 5 or more: Restrained); Strength save at the end of each of its turns.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5er7ZLHGM9vmAuc",
+              "type": "attack",
+              "label": "Piercing Bark",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Every creature in a 5-foot cube within 60 feet (+5 feet at B and S); earth, cold or chakra.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (4d6)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eOmx9fzr4NAAN0",
+              "type": "save",
+              "label": "Piercing Bark: roots",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "",
+                  "success": "",
+                  "failure": "Grappled.",
+                  "critFailure": "Restrained (failed by 5 or more)."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "On a hit. Failure: Grappled (by 5 or more: Restrained); Strength save at the end of each of its turns.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -111,7 +336,61 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5er7ZLHGM9vmAuc",
+        "type": "attack",
+        "label": "Piercing Bark",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "Every creature in a 5-foot cube within 60 feet (+5 feet at B and S); earth, cold or chakra.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "earth"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eOmx9fzr4NAAN0",
+        "type": "save",
+        "label": "Piercing Bark: roots",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "",
+            "success": "",
+            "failure": "Grappled.",
+            "critFailure": "Restrained (failed by 5 or more)."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "grappled",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Grappled"
+          }
+        ],
+        "text": "On a hit. Failure: Grappled (by 5 or more: Restrained); Strength save at the end of each of its turns.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

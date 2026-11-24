@@ -17,6 +17,18 @@
         "cost": "12 Chakra",
         "keywords": "Hijutsu, Genjutsu (Visual, Auditory, Inhale, Tactile), Water Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Hydrofication (1 Hydration)",
+        "appliesTo": {
+          "namePrefix": "Demonic Illusion: Steaming Mirage"
+        },
+        "note": "You count as invisible to creatures that fail.",
+        "cost": {
+          "pool": "hydration",
+          "amount": 1
+        }
       }
     }
   },
@@ -112,7 +124,42 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ewEVRL4uTfz9qV",
+        "type": "save",
+        "label": "Steaming Mirage",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: Confused.",
+            "failure": "Failure: it sees every other creature as you (resave at the end of its turns).",
+            "critFailure": "Critical Failure: as a failure, with no resave."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "confused",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Confused"
+          }
+        ],
+        "text": "A 20-foot radius within 90 feet (+10 per rank); ending a turn there, it saves again.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "gen"

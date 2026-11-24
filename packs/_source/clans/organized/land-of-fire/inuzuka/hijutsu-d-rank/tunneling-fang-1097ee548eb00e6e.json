@@ -17,6 +17,134 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Taijutsu, Bukijutsu, Tag-Team",
         "components": "M, W (Melee Blade, Optional)"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eDWqBoKr8p9bpb",
+              "type": "attack",
+              "label": "Tunneling Fang",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Move to a space within 30 feet without provoking; one attack roll against every adjacent hostile creature: [Unarmed Damage] (or [Weapon Damage]) + 2d6.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eDWqBoKr8p9bpb",
+              "type": "attack",
+              "label": "Tunneling Fang",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Move to a space within 30 feet without provoking; one attack roll against every adjacent hostile creature: [Unarmed Damage] (or [Weapon Damage]) + 2d6.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eDWqBoKr8p9bpb",
+              "type": "attack",
+              "label": "Tunneling Fang",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Move to a space within 30 feet without provoking; one attack roll against every adjacent hostile creature: [Unarmed Damage] (or [Weapon Damage]) + 2d6.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (3d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eDWqBoKr8p9bpb",
+              "type": "attack",
+              "label": "Tunneling Fang",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Move to a space within 30 feet without provoking; one attack roll against every adjacent hostile creature: [Unarmed Damage] (or [Weapon Damage]) + 2d6.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (4d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Tag-Team (Nin-Dog)",
+        "appliesTo": {
+          "namePrefix": "Tunneling Fang"
+        },
+        "note": "Your Nin-Dog synchronizes (spending a jutsu slot or its reaction): it moves 30 feet to one of them and bites (+1d6, +1d6 per rank) and becomes Feral."
       }
     }
   },
@@ -109,7 +237,35 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eDWqBoKr8p9bpb",
+        "type": "attack",
+        "label": "Tunneling Fang",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Move to a space within 30 feet without provoking; one attack roll against every adjacent hostile creature: [Unarmed Damage] (or [Weapon Damage]) + 2d6.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "bludgeoning"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

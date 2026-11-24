@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "jiton",
       "sourceLine": 3193,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Potency II: Brined creatures can't regain hit or chakra points, the DC to end their conditions is 5 higher, and their conditions count as B-Rank."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,48 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5en7uwBeSQAUmFq",
+        "type": "save",
+        "label": "Salt in the wounds",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "A creature below its maximum hit points starting its turn within 15 feet. Failure: it loses its reaction or takes 1d6 earth or poison per rank of its Physical conditions.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d6",
+              "type": "earth"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eF0muhc3jC2VgH",
+        "type": "effect",
+        "label": "Potency I: Brined",
+        "effect": {
+          "name": "Brined",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "condition": "jiton-brined"
+        },
+        "text": "Once per turn, damaging a creature with a Jiton Hijutsu.",
+        "oncePerTurn": true
+      }
+    ]
   }
 }

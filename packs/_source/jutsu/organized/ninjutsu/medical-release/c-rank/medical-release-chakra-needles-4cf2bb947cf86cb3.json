@@ -85,21 +85,13 @@
     },
     "activities": [
       {
-        "id": "parsed1",
-        "type": "save",
-        "label": "Save",
-        "inflicts": [],
-        "save": {
-          "abilities": [
-            "con"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
+        "id": "n5eDjrxInCM9zwtn",
+        "type": "attack",
+        "label": "Chakra Needles",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
         },
         "damage": {
           "parts": [
@@ -108,6 +100,26 @@
               "type": "necrotic"
             }
           ]
+        }
+      },
+      {
+        "id": "n5ec77D0DloCFlfJ",
+        "type": "save",
+        "label": "Needles: slowed",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "On a hit. Failure: −10 speed until the end of its next turn (−5 more per rank).",
+        "damage": {
+          "parts": []
         }
       }
     ],
@@ -191,21 +203,13 @@
         "activitiesByRank": {
           "B": [
             {
-              "id": "parsed1",
-              "type": "save",
-              "label": "Save",
-              "inflicts": [],
-              "save": {
-                "abilities": [
-                  "con"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
+              "id": "n5eDjrxInCM9zwtn",
+              "type": "attack",
+              "label": "Chakra Needles",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
               },
               "damage": {
                 "parts": [
@@ -215,14 +219,11 @@
                   }
                 ]
               }
-            }
-          ],
-          "A": [
+            },
             {
-              "id": "parsed1",
+              "id": "n5ec77D0DloCFlfJ",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Needles: slowed",
               "save": {
                 "abilities": [
                   "con"
@@ -231,9 +232,24 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit. Failure: −10 speed until the end of its next turn (−5 more per rank).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eDjrxInCM9zwtn",
+              "type": "attack",
+              "label": "Chakra Needles",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
               },
               "damage": {
                 "parts": [
@@ -243,14 +259,11 @@
                   }
                 ]
               }
-            }
-          ],
-          "S": [
+            },
             {
-              "id": "parsed1",
+              "id": "n5ec77D0DloCFlfJ",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Needles: slowed",
               "save": {
                 "abilities": [
                   "con"
@@ -259,9 +272,24 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit. Failure: −10 speed until the end of its next turn (−5 more per rank).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eDjrxInCM9zwtn",
+              "type": "attack",
+              "label": "Chakra Needles",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
               },
               "damage": {
                 "parts": [
@@ -271,11 +299,32 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5ec77D0DloCFlfJ",
+              "type": "save",
+              "label": "Needles: slowed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit. Failure: −10 speed until the end of its next turn (−5 more per rank).",
+              "damage": {
+                "parts": []
+              }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0359bedeffa2100b"

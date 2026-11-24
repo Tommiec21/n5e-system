@@ -17,6 +17,24 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Inhale, Tactile), Shin Branch",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Shin Branch]"
+        }
+      ],
+      "castOption": {
+        "label": "Shin-Seal (dispel one)",
+        "appliesTo": {
+          "namePrefix": "Synthetic Art: False Smog Technique"
+        },
+        "note": "An affected creature with your Shin-Seal: on a failure, also Blinded until the end of its next turn.",
+        "cost": {
+          "pool": "shinSeals",
+          "amount": 1
+        }
       }
     }
   },
@@ -111,7 +129,55 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e9zWsFyKrAI4Ej",
+        "type": "save",
+        "label": "False Smog",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: no effect.",
+            "success": "Success: Dazzled; the smoke is light obscurement this turn.",
+            "failure": "Failure: 2 ranks of Dazzled this turn; light obscurement while it lasts.",
+            "critFailure": "Critical Failure: as a failure, and Stupor while it lasts."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          },
+          {
+            "key": "jinzo-stupor",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Stupor"
+          },
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          }
+        ],
+        "text": "Reaction, a creature comes within 10 feet (+5 per rank): the cloud lasts until the end of your next turn.",
+        "activation": "reaction",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

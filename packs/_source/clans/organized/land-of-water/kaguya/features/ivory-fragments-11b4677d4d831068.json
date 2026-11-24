@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "kaguya",
-      "sourceLine": 4263
+      "sourceLine": 4263,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Traveling: your caltrop trail (trackers succeed but go at half speed). A climbing speed equal to your speed; allies using your holds suffer no penalties."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,24 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eXjnLM505FZ3uf",
+        "type": "roll",
+        "label": "Bone slivers",
+        "roll": {
+          "formula": "@abilities.con.mod",
+          "note": "Once per rest: up to your Constitution modifier slivers on creatures, objects or surfaces; each works as Sealing Art: Chakra Mark (D-Rank) for 10 minutes."
+        }
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "rest",
+      "recharge": "",
+      "staminaEligible": false
+    }
   }
 }

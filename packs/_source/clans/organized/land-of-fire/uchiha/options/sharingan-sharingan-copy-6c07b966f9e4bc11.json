@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "uchiha",
       "sourceLine": 2188,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Sharingan: Genjutsu! is printed inside this evolution's text (see the spec's text issues)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,35 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e0Hadr7BY2JY83",
+        "type": "roll",
+        "label": "Sharingan Copy",
+        "roll": {
+          "formula": "",
+          "note": "Reaction, a creature you see casts a non-Hijutsu HS or M jutsu up to your highest rank: add it to your Imprint List (2; 4 at 7th, 6 at 15th), cast only with the Sharingan active; without its release's affinity it costs more (D +4, C +6, B +8, A +10, S +12)."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "ocularCharges",
+          "amount": 3
+        }
+      },
+      {
+        "id": "n5eWUWapTLRn3vim",
+        "type": "roll",
+        "label": "Sharingan: Genjutsu!",
+        "roll": {
+          "formula": "",
+          "note": "Action: cast a Memorized Illusion (2 slots, +1 at 7th and 11th; 1-Action or Bonus action Genjutsu picked on each rest; a slot is spent until a rest); range 30 feet with eye contact; doesn't reveal you."
+        },
+        "cost": {
+          "pool": "ocularCharges",
+          "amount": 2
+        }
+      }
+    ]
   }
 }

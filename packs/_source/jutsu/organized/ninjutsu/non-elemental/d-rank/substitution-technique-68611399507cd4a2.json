@@ -84,10 +84,23 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5eZkPnDESgeVhGi",
+        "type": "effect",
+        "label": "Substitution: +3 AC",
+        "effect": {
+          "name": "Substitution Technique",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "3",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Reaction to an attack's damage: against it and later attacks until the start of your next turn; a miss lets you move half your speed (C-Rank, with the tag: your full speed)."
       }
     ],
     "featureType": "active",
@@ -167,9 +180,195 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eZkPnDESgeVhGi",
+              "type": "effect",
+              "label": "Substitution: +3 AC",
+              "effect": {
+                "name": "Substitution Technique",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "3",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction to an attack's damage: against it and later attacks until the start of your next turn; a miss lets you move half your speed (C-Rank, with the tag: your full speed)."
+            },
+            {
+              "id": "n5eAcO4mi8x7huHy",
+              "type": "save",
+              "label": "Paper tag",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "C-Rank: creatures within 20 feet of where you were. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "6d6",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eZkPnDESgeVhGi",
+              "type": "effect",
+              "label": "Substitution: +3 AC",
+              "effect": {
+                "name": "Substitution Technique",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "4",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction to an attack's damage: against it and later attacks until the start of your next turn; a miss lets you move half your speed (C-Rank, with the tag: your full speed)."
+            },
+            {
+              "id": "n5eAcO4mi8x7huHy",
+              "type": "save",
+              "label": "Paper tag",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "C-Rank: creatures within 20 feet of where you were. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "6d6",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eZkPnDESgeVhGi",
+              "type": "effect",
+              "label": "Substitution: +3 AC",
+              "effect": {
+                "name": "Substitution Technique",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "4",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction to an attack's damage: against it and later attacks until the start of your next turn; a miss lets you move half your speed (C-Rank, with the tag: your full speed)."
+            },
+            {
+              "id": "n5eAcO4mi8x7huHy",
+              "type": "save",
+              "label": "Paper tag",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "C-Rank: creatures within 20 feet of where you were. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "8d6",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eZkPnDESgeVhGi",
+              "type": "effect",
+              "label": "Substitution: +3 AC",
+              "effect": {
+                "name": "Substitution Technique",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "5",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction to an attack's damage: against it and later attacks until the start of your next turn; a miss lets you move half your speed (C-Rank, with the tag: your full speed)."
+            },
+            {
+              "id": "n5eAcO4mi8x7huHy",
+              "type": "save",
+              "label": "Paper tag",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "C-Rank: creatures within 20 feet of where you were. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "8d6",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5eDpY0QdrV0NfEW"

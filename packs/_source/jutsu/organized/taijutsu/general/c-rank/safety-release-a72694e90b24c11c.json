@@ -85,13 +85,28 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "1d4",
-        "roll": {
-          "formula": "1d4",
-          "note": "+1d4 bonus to Dexterity Saving throws."
-        }
+        "id": "n5eNaH3oGDyWmgnA",
+        "type": "effect",
+        "label": "Safety Release",
+        "effect": {
+          "name": "Safety Release",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "10",
+              "mode": 2
+            },
+            {
+              "key": "n5e.save.dex",
+              "value": "1d4",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "A creature you touch (not you), one at a time, 1 minute: +10 speed, +1d4 Dexterity saves; can't lose its Bonus action or Reaction while it can act; Shocked ends it."
       }
     ],
     "featureType": "active",
@@ -165,7 +180,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "aee26bc2434fe738"

@@ -5,11 +5,52 @@
   "name": "Four-Legs",
   "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
   "folder": "d953b39b4de77a85",
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5eEsHtikE93bhyx",
+      "name": "Four-Legs: speed",
+      "type": "generic",
+      "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "system.bonuses.speed",
+          "value": "10",
+          "mode": 2,
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!a0c3b1d03ba956ba.n5eEsHtikE93bhyx"
+    }
+  ],
   "flags": {
     "n5e": {
       "clanPackage": "inuzuka",
-      "sourceLine": 1322
+      "sourceLine": 1322,
+      "textFrom": "inuzuka-four-legs-technique (King Q-E9)",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Four-Legs Taijutsu stance (its text is Four-Legs Technique's, as King Q-E9): [Unarmed Damage] 2d4 slashing (4d4 at 11th); your Hijutsu Flexibility ability in place of Strength for attacks and damage; +10 speed; no extra movement Wall or Water Walking; Dash as a Bonus action. Set 4d4 at 11th on the sheet."
+        }
+      ]
     }
   },
   "ownership": {
@@ -17,7 +58,7 @@
   },
   "system": {
     "identifier": "inuzuka-stance-four-legs",
-    "description": "<p>7th Level Clan Feature</p>\n<p>When initiative is rolled, your Nin-Dog uses the advanced transformation technique, transforming to look exactly like you, with notable differences. While transformed, creatures cannot discern between either of you without Chakra Sight and your Nin-Dog gains the benefit of your Four-Legs Taijutsu stance and can become Feral when you do.</p>",
+    "description": "<p>Your clans unique fighting style has you fighting like a rabid beast with claws and fangs. Sharpened nails and teeth allows you to fight like a hunter, a predator, a Dog. While in combat, you can drop down on all fours and enter the Four-Legs Taijutsu stance. While in this stance, you gain the following benefits:</p>\n<p>Your [Unarmed Damage] becomes 2d4, and damage type becomes Slashing. This becomes 4d4 at 11th level.</p>\n<p>You can use your Hijutsu Flexibility ability mod in place of strength for attacks and damage.</p>\n<p>Your speed increased by +10, and you don’t spend extra movement when Wall or Water Walking.</p>\n<p>You can take the Dash action as a Bonus Action.</p>",
     "source": {
       "book": "Tsunade's Studies Compendium",
       "page": "",
@@ -29,6 +70,8 @@
     ],
     "clan": "inuzuka",
     "featureType": "passive",
-    "requirement": "Inuzuka clan"
+    "requirement": "Inuzuka clan",
+    "unarmedDie": "2d4",
+    "unarmedType": "slashing"
   }
 }

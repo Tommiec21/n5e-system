@@ -33,10 +33,12 @@ test("counter pools: Carnage starts empty and has gain and spend buttons", () =>
   assert.ok(c.activities.some(x => x.cost.pool === "carnage" && !x.cost.gain));
 });
 
-test("Rending Thoughts: a Wisdom save on the Genjutsu DC plus one damage button per tier", () => {
+test("Rending Thoughts: a Wisdom save on the Genjutsu DC plus one damage button per tier (by level) and the penalty die", () => {
   const acts = load("features", "rending-thoughts").system.activities;
   assert.deepEqual([acts[0].save.abilities[0], acts[0].save.dc.source], ["wis", "gen"]);
-  assert.deepEqual(acts.slice(1).map(x => x.damage.parts[0].formula), ["1d6", "2d6", "3d6"]);
+  assert.deepEqual(acts.filter(x => x.type === "damage").map(x => x.damage.parts[0].formula),
+    ["lvl(1:1d6,6:2d6,10:3d6,14:4d6)", "lvl(1:2d6,6:3d6,10:4d6,14:5d6)", "lvl(1:3d6,6:4d6,10:5d6,14:6d6)"]);
+  assert.equal(acts.find(x => x.type === "roll").roll.formula, "lvl(1:1d4,6:1d6,10:1d8,14:1d10)");
 });
 
 test("cast options: Channeled Healing (medical healing, once per turn) and Tyrant (Taijutsu stance)", () => {
@@ -49,9 +51,9 @@ test("cast options: Channeled Healing (medical healing, once per turn) and Tyran
   assert.equal(ty.damage.formula, "lvl(1:2,11:4)");
 });
 
-test("transfer effects: Critical Focus widens the Bukijutsu crit range; Demon Sight grants darkvision", () => {
-  const cf = load("features", "critical-focus").effects[0].changes[0];
-  assert.deepEqual([cf.key, cf.value], ["n5e.critRange.buki", "1"]);
+test("transfer effects: Critical Focus widens the crit range with the Weapon Focus (STD6d); Demon Sight grants darkvision", () => {
+  const cf = load("features", "critical-focus").effects[0].flags.n5e.rules[0];
+  assert.deepEqual([cf.key, cf.value], ["critRange", "lvl(5:1,11:2,18:3)"]);
   const ds = load("features", "demon-sight").effects[0].changes[0];
   assert.deepEqual([ds.key, ds.value, ds.mode], ["system.traits.senses.darkvision", "120", 4]);
 });

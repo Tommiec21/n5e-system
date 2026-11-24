@@ -17,6 +17,106 @@
         "cost": "3 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fuinjutsu",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5ebRgrPAMiHX2y7",
+              "type": "heal",
+              "label": "Ablative Seal",
+              "heal": {
+                "formula": "(4) + 2",
+                "pool": "tempHp"
+              },
+              "text": "A willing creature within 30 feet, at the start of each of its turns (+2 per rank)."
+            },
+            {
+              "id": "n5eHTyj8MnAR1GZX",
+              "type": "heal",
+              "label": "Seal Break: temporary chakra",
+              "heal": {
+                "formula": "6",
+                "pool": "tempCp"
+              },
+              "text": "With Seal Break."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5ebRgrPAMiHX2y7",
+              "type": "heal",
+              "label": "Ablative Seal",
+              "heal": {
+                "formula": "(4) + 4",
+                "pool": "tempHp"
+              },
+              "text": "A willing creature within 30 feet, at the start of each of its turns (+2 per rank)."
+            },
+            {
+              "id": "n5eHTyj8MnAR1GZX",
+              "type": "heal",
+              "label": "Seal Break: temporary chakra",
+              "heal": {
+                "formula": "6",
+                "pool": "tempCp"
+              },
+              "text": "With Seal Break."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ebRgrPAMiHX2y7",
+              "type": "heal",
+              "label": "Ablative Seal",
+              "heal": {
+                "formula": "(4) + 6",
+                "pool": "tempHp"
+              },
+              "text": "A willing creature within 30 feet, at the start of each of its turns (+2 per rank)."
+            },
+            {
+              "id": "n5eHTyj8MnAR1GZX",
+              "type": "heal",
+              "label": "Seal Break: temporary chakra",
+              "heal": {
+                "formula": "6",
+                "pool": "tempCp"
+              },
+              "text": "With Seal Break."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ebRgrPAMiHX2y7",
+              "type": "heal",
+              "label": "Ablative Seal",
+              "heal": {
+                "formula": "(4) + 8",
+                "pool": "tempHp"
+              },
+              "text": "A willing creature within 30 feet, at the start of each of its turns (+2 per rank)."
+            },
+            {
+              "id": "n5eHTyj8MnAR1GZX",
+              "type": "heal",
+              "label": "Seal Break: temporary chakra",
+              "heal": {
+                "formula": "6",
+                "pool": "tempCp"
+              },
+              "text": "With Seal Break."
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Seal Break",
+        "appliesTo": {
+          "namePrefix": "Uzumaki Art: Ablative Seal"
+        },
+        "note": "In your Binding Chain stance, dispel 1 rank of Sealed from a creature within 30 feet: the target also gains 6 temporary chakra points."
       }
     }
   },
@@ -108,7 +208,28 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ebRgrPAMiHX2y7",
+        "type": "heal",
+        "label": "Ablative Seal",
+        "heal": {
+          "formula": "4",
+          "pool": "tempHp"
+        },
+        "text": "A willing creature within 30 feet, at the start of each of its turns (+2 per rank)."
+      },
+      {
+        "id": "n5eHTyj8MnAR1GZX",
+        "type": "heal",
+        "label": "Seal Break: temporary chakra",
+        "heal": {
+          "formula": "6",
+          "pool": "tempCp"
+        },
+        "text": "With Seal Break."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

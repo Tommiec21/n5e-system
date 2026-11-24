@@ -85,23 +85,30 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eGhXZFNTXer94D",
         "type": "attack",
-        "label": "Attack",
+        "label": "Great Dragon Shockwave",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
         "damage": {
           "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "2d10",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       },
       {
-        "id": "chain-1-parsed1",
+        "id": "n5eyncNIDKqAqqf4",
         "type": "save",
-        "label": "Chain 1: Save",
-        "inflicts": [],
+        "label": "Chain 1: pushed",
         "save": {
           "abilities": [
             "str"
@@ -110,21 +117,12 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Chain 1: every other creature (not you or the target). Failure: pushed 15 feet from the target.",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d10",
-        "roll": {
-          "formula": "2d10",
-          "note": "On a hit, you deal your weapon’s damage+2d10."
         }
       }
     ],
@@ -205,9 +203,183 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eGhXZFNTXer94D",
+              "type": "attack",
+              "label": "Great Dragon Shockwave",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "2d10 + 1d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eyncNIDKqAqqf4",
+              "type": "save",
+              "label": "Chain 1: pushed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Chain 1: every other creature (not you or the target). Failure: pushed 15 feet from the target.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eGhXZFNTXer94D",
+              "type": "attack",
+              "label": "Great Dragon Shockwave",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "2d10 + 2d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eyncNIDKqAqqf4",
+              "type": "save",
+              "label": "Chain 1: pushed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Chain 1: every other creature (not you or the target). Failure: pushed 15 feet from the target.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eGhXZFNTXer94D",
+              "type": "attack",
+              "label": "Great Dragon Shockwave",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "2d10 + 3d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eyncNIDKqAqqf4",
+              "type": "save",
+              "label": "Chain 1: pushed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Chain 1: every other creature (not you or the target). Failure: pushed 15 feet from the target.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eGhXZFNTXer94D",
+              "type": "attack",
+              "label": "Great Dragon Shockwave",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "2d10 + 4d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eyncNIDKqAqqf4",
+              "type": "save",
+              "label": "Chain 1: pushed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Chain 1: every other creature (not you or the target). Failure: pushed 15 feet from the target.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c23989398aafdb46"

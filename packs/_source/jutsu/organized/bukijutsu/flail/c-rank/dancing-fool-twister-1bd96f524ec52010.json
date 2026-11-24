@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eDJsnQUJe6KCOh",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Dancing Fool Twister",
         "save": {
           "abilities": [
             "str"
@@ -97,22 +96,43 @@
             "source": "discipline"
           },
           "onSuccess": "half",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Every creature in your weapon's range. Failure: thrown 20 feet (Chain 2: 30, and −15 speed until the end of its next turn); success: half, nothing else.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "2d6",
+              "type": ""
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "On a failed save, they take your [Weapons damage+2d6] and are thrown 20-feet into a direction of your choice (excluding up) or half as much damage on a success and no further effect."
-        }
+        "id": "n5e1WiA1m96v01sV",
+        "type": "effect",
+        "label": "Chain 1: Prone",
+        "effect": {
+          "name": "Chain 1: Prone",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ]
+        },
+        "text": "Chain 1: a thrown creature (−15 speed until the end of its next turn)."
       }
     ],
     "featureType": "active",
@@ -192,9 +212,167 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eDJsnQUJe6KCOh",
+              "type": "save",
+              "label": "Dancing Fool Twister",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Every creature in your weapon's range. Failure: thrown 20 feet (Chain 2: 30, and −15 speed until the end of its next turn); success: half, nothing else.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e1WiA1m96v01sV",
+              "type": "effect",
+              "label": "Chain 1: Prone",
+              "effect": {
+                "name": "Chain 1: Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
+              },
+              "text": "Chain 1: a thrown creature (−15 speed until the end of its next turn)."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eDJsnQUJe6KCOh",
+              "type": "save",
+              "label": "Dancing Fool Twister",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Every creature in your weapon's range. Failure: thrown 20 feet (Chain 2: 30, and −15 speed until the end of its next turn); success: half, nothing else.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e1WiA1m96v01sV",
+              "type": "effect",
+              "label": "Chain 1: Prone",
+              "effect": {
+                "name": "Chain 1: Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
+              },
+              "text": "Chain 1: a thrown creature (−15 speed until the end of its next turn)."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eDJsnQUJe6KCOh",
+              "type": "save",
+              "label": "Dancing Fool Twister",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Every creature in your weapon's range. Failure: thrown 20 feet (Chain 2: 30, and −15 speed until the end of its next turn); success: half, nothing else.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d6) + (3d6)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e1WiA1m96v01sV",
+              "type": "effect",
+              "label": "Chain 1: Prone",
+              "effect": {
+                "name": "Chain 1: Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
+              },
+              "text": "Chain 1: a thrown creature (−15 speed until the end of its next turn)."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0e415a5f84ce5a5f"

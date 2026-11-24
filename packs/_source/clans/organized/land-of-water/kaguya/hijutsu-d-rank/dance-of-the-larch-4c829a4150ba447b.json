@@ -17,7 +17,14 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Taijutsu, Bukijutsu, Chain",
         "components": "M"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +8 temporary hit points and +4 piercing per rank (add them)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -109,7 +116,64 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eAk0cyluCET3BK",
+        "type": "heal",
+        "label": "Larch",
+        "heal": {
+          "formula": "12",
+          "pool": "tempHp"
+        },
+        "text": "Bonus action, 1 minute.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5eVHgrM6LXj1AIE",
+        "type": "damage",
+        "label": "Larch: melee retaliation",
+        "damage": {
+          "parts": [
+            {
+              "formula": "8",
+              "type": "piercing"
+            }
+          ]
+        },
+        "text": "A creature hits you in melee while you have them; it ignores DR."
+      },
+      {
+        "id": "n5e5OzvmSIcOQrBt",
+        "type": "save",
+        "label": "Battle Lust: bleed",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Failure: a rank of Bleed.",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "battleLust",
+          "amount": 1
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

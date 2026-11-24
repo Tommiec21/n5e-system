@@ -17,6 +17,47 @@
         "cost": "17 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Water Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5essI3c8jejVaGv",
+              "type": "attack",
+              "label": "Demon Wave Sniper",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 8
+              },
+              "text": "Up to 8 creatures within 120 feet, once each, even unseen; never at disadvantage.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(10d6) + (1d6)",
+                    "type": "piercing"
+                  },
+                  {
+                    "formula": "(5d6) + (1d6)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Hydrofication (1 Hydration)",
+        "appliesTo": {
+          "namePrefix": "Demon Wave Sniper"
+        },
+        "note": "+2 critical range on these attacks.",
+        "cost": {
+          "pool": "hydration",
+          "amount": 1
+        }
       }
     }
   },
@@ -108,7 +149,31 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5essI3c8jejVaGv",
+        "type": "attack",
+        "label": "Demon Wave Sniper",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 8
+        },
+        "text": "Up to 8 creatures within 120 feet, once each, even unseen; never at disadvantage.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "10d6",
+              "type": "piercing"
+            },
+            {
+              "formula": "5d6",
+              "type": "cold"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

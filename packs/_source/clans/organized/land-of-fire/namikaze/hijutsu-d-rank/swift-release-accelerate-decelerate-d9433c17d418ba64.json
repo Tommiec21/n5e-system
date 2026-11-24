@@ -17,6 +17,202 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile, Visual), Fuinjutsu, Wind Release, Lightning Release.",
         "components": "HS, M"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eoVBNjQm63aA7L",
+              "type": "damage",
+              "label": "Accelerate",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (1d10)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Reaction, a damage instance within 60 feet: +2d10 wind or lightning."
+            },
+            {
+              "id": "n5e6AU7NCfr15ygX",
+              "type": "roll",
+              "label": "Decelerate",
+              "roll": {
+                "formula": "(2d10) + (1d10)",
+                "note": "Reaction: reduce the damage instance by this."
+              },
+              "activation": "reaction"
+            },
+            {
+              "id": "n5eoO4oqfyiySy68",
+              "type": "save",
+              "label": "Interdiction Seal: chains",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A marked creature it affects. Failure: until the end of its next turn it can't move more than 5 feet from its space and −1 on Dexterity saves.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eoVBNjQm63aA7L",
+              "type": "damage",
+              "label": "Accelerate",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (2d10)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Reaction, a damage instance within 60 feet: +2d10 wind or lightning."
+            },
+            {
+              "id": "n5e6AU7NCfr15ygX",
+              "type": "roll",
+              "label": "Decelerate",
+              "roll": {
+                "formula": "(2d10) + (2d10)",
+                "note": "Reaction: reduce the damage instance by this."
+              },
+              "activation": "reaction"
+            },
+            {
+              "id": "n5eoO4oqfyiySy68",
+              "type": "save",
+              "label": "Interdiction Seal: chains",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A marked creature it affects. Failure: until the end of its next turn it can't move more than 5 feet from its space and −1 on Dexterity saves.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eoVBNjQm63aA7L",
+              "type": "damage",
+              "label": "Accelerate",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (3d10)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Reaction, a damage instance within 60 feet: +2d10 wind or lightning."
+            },
+            {
+              "id": "n5e6AU7NCfr15ygX",
+              "type": "roll",
+              "label": "Decelerate",
+              "roll": {
+                "formula": "(2d10) + (3d10)",
+                "note": "Reaction: reduce the damage instance by this."
+              },
+              "activation": "reaction"
+            },
+            {
+              "id": "n5eoO4oqfyiySy68",
+              "type": "save",
+              "label": "Interdiction Seal: chains",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A marked creature it affects. Failure: until the end of its next turn it can't move more than 5 feet from its space and −1 on Dexterity saves.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eoVBNjQm63aA7L",
+              "type": "damage",
+              "label": "Accelerate",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (4d10)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Reaction, a damage instance within 60 feet: +2d10 wind or lightning."
+            },
+            {
+              "id": "n5e6AU7NCfr15ygX",
+              "type": "roll",
+              "label": "Decelerate",
+              "roll": {
+                "formula": "(2d10) + (4d10)",
+                "note": "Reaction: reduce the damage instance by this."
+              },
+              "activation": "reaction"
+            },
+            {
+              "id": "n5eoO4oqfyiySy68",
+              "type": "save",
+              "label": "Interdiction Seal: chains",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A marked creature it affects. Failure: until the end of its next turn it can't move more than 5 feet from its space and −1 on Dexterity saves.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Interdiction Seal",
+        "appliesTo": {
+          "namePrefix": "Swift Release: Accelerate/Decelerate"
+        },
+        "note": "On a creature marked with your Speed Seal: the Charisma save: chains."
       }
     }
   },
@@ -113,7 +309,52 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eoVBNjQm63aA7L",
+        "type": "damage",
+        "label": "Accelerate",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d10",
+              "type": "wind"
+            }
+          ]
+        },
+        "text": "Reaction, a damage instance within 60 feet: +2d10 wind or lightning."
+      },
+      {
+        "id": "n5e6AU7NCfr15ygX",
+        "type": "roll",
+        "label": "Decelerate",
+        "roll": {
+          "formula": "2d10",
+          "note": "Reaction: reduce the damage instance by this."
+        },
+        "activation": "reaction"
+      },
+      {
+        "id": "n5eoO4oqfyiySy68",
+        "type": "save",
+        "label": "Interdiction Seal: chains",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "A marked creature it affects. Failure: until the end of its next turn it can't move more than 5 feet from its space and −1 on Dexterity saves.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

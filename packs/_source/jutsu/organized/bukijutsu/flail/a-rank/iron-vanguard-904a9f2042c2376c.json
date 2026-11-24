@@ -85,34 +85,59 @@
     },
     "activities": [
       {
-        "id": "chain-3-parsed1",
+        "id": "n5ejzhffpiDEVMJH",
+        "type": "effect",
+        "label": "Iron Vanguard: +2 AC",
+        "effect": {
+          "name": "Iron Vanguard",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Reaction: you or an ally in range takes damage; +4 against the trigger (add 2 by hand), +2 until the start of your next turn."
+      },
+      {
+        "id": "n5e3EWFK2H0O0AbL",
+        "type": "roll",
+        "label": "Chain 2: ally's damage reduced",
+        "roll": {
+          "formula": "2d8",
+          "note": "Chain 2, an ally's trigger: + your [Weapon damage] (roll and add)."
+        }
+      },
+      {
+        "id": "n5eL2KqVKl7PZVee",
+        "type": "roll",
+        "label": "Chain 3: redirected",
+        "roll": {
+          "formula": "2d6",
+          "note": "Chain 3, your trigger: + your [Weapon damage]; reduce the damage by it."
+        }
+      },
+      {
+        "id": "n5emL1WJPF8uXjbV",
         "type": "attack",
-        "label": "Chain 3: Attack",
+        "label": "Chain 3: strike back",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Another creature in range: + the redirected result (add by hand).",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "Chain 2: 2d8",
-        "roll": {
-          "formula": "2d8",
-          "note": "Chain 2: If an allied creature taking damage triggers this jutsu, reduce the triggering damage by an amount equal to your [Weapons damage] + 2d8."
-        }
-      },
-      {
-        "id": "sourceRoll4",
-        "type": "roll",
-        "label": "Chain 3: 2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "Chain 3: If the damage you take triggers this jutsu, redirect some of the triggering damage by an amount equal to you [Weapons damage] + 2d6. Reduce the damage taken by the result and then select another creature in range and make a melee taijutsu attack dealing your [Weapons damage] + the result to that creature."
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -213,7 +238,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "3d2e2375a5c550b3"

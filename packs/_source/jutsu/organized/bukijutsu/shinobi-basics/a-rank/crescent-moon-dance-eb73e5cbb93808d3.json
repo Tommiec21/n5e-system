@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5etXhRAHsmYGDWq",
         "type": "attack",
-        "label": "Attack",
+        "label": "Crescent Moon Dance",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 3
         },
+        "text": "One target. Chain 2: the next creature to target you rolls a d20; 11+ it misses. Chain 3: your Attack action makes 2 more attacks until the end of your next turn.",
         "damage": {
           "parts": []
         },
@@ -102,16 +103,16 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "3"
         }
       },
       {
-        "id": "sourceRoll3",
+        "id": "n5eb9HayUlrxe9x6",
         "type": "roll",
-        "label": "Chain 2: d20",
+        "label": "Chain 2: afterimage",
         "roll": {
-          "formula": "d20",
-          "note": "Until the end of your next turn, the next creature that target you, must roll a d20. On a roll of 11 or more, they target your afterimage, causing the attack or effect to miss entirely."
+          "formula": "1d20",
+          "note": "11+: it hits the afterimage."
         }
       }
     ],
@@ -207,39 +208,41 @@
         "activitiesByRank": {
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5etXhRAHsmYGDWq",
               "type": "attack",
-              "label": "Attack",
+              "label": "Crescent Moon Dance",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 3
               },
+              "text": "One target. Chain 2: the next creature to target you rolls a d20; 11+ it misses. Chain 3: your Attack action makes 2 more attacks until the end of your next turn.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d8) + (1d8)",
+                "extraDice": "2d8 + 1d8",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
-                "attacks": "1"
+                "attacks": "3"
               }
             },
             {
-              "id": "sourceRoll3",
+              "id": "n5eb9HayUlrxe9x6",
               "type": "roll",
-              "label": "Chain 2: d20",
+              "label": "Chain 2: afterimage",
               "roll": {
-                "formula": "d20",
-                "note": "Until the end of your next turn, the next creature that target you, must roll a d20. On a roll of 11 or more, they target your afterimage, causing the attack or effect to miss entirely."
+                "formula": "1d20",
+                "note": "11+: it hits the afterimage."
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "7116760d98edc24e"

@@ -17,6 +17,19 @@
         "cost": "12 Chakra (or 6 Star Chakra)",
         "keywords": "Hijutsu, Ninjutsu, Fuinjutsu, Stable",
         "components": "CM"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Irradiated (Star Chakra)",
+        "appliesTo": {
+          "namePrefix": "Kujaku Art: Cosmic Pressure"
+        },
+        "note": "Pay 6 Star Chakra instead of chakra (+2 per rank above; spend the extra by hand): a concentrated jutsu entering the area loses Stable and Efficient.",
+        "costDelta": "zero",
+        "cost": {
+          "pool": "starChakra",
+          "amount": 6
+        }
       }
     }
   },
@@ -109,7 +122,28 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eh6CD3zcuYnZA5",
+        "type": "save",
+        "label": "Cosmic Pressure",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "A construct starting its (or its summoner's) turn in 20 feet (+5 per rank). Failure: Destabilized for 1 minute; already Destabilized: dispelled (resummon only 1 rank higher).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "genwa",
       "sourceLine": 3769,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Sensory jutsu also tell you when another Sensory effect is within 60 feet (or its range)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,28 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eBEOzr8VvQcYgG",
+        "type": "effect",
+        "label": "Hidden Cloud: +AC",
+        "effect": {
+          "name": "Hidden Cloud Channel",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "lvl(1:1,11:2)",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Once per turn, casting a Genwa Hijutsu: +1 AC (+2 at 11th) until the start of your next turn; also a rank of Mastery against nature release jutsu.",
+        "oncePerTurn": true
+      }
+    ]
   }
 }

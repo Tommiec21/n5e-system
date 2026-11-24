@@ -85,21 +85,43 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d4",
-        "roll": {
-          "formula": "2d4",
-          "note": "On a hit, you deal your unarmed damage + 2d4 on a hit. For each step you magnify this jutsu by, increase the bonus damage by 2d4."
+        "id": "n5eqnakvwSeRu3NR",
+        "type": "attack",
+        "label": "Straight Impact",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "5 chakra; magnify by steps: Bonus action + 5 chakra, Reaction + 5 chakra, Stunned on yourself at the end of your turn (+2d4 each; Finisher +4d4).",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "2d4",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       },
       {
-        "id": "sourceRoll3",
+        "id": "n5em9UYoH0b8k4T0",
         "type": "roll",
-        "label": "Finisher: 4d4",
+        "label": "Magnify: +2d4",
+        "roll": {
+          "formula": "2d4",
+          "note": "Per step (roll once per step)."
+        }
+      },
+      {
+        "id": "n5epZ7qObPIrERur",
+        "type": "roll",
+        "label": "Finisher magnify: +4d4",
         "roll": {
           "formula": "4d4",
-          "note": "Finisher: for each step you magnify this jutsu by, increase the bonus damage by 4d4."
+          "note": "Finisher: per step."
         }
       }
     ],
@@ -210,9 +232,185 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eqnakvwSeRu3NR",
+              "type": "attack",
+              "label": "Straight Impact",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "5 chakra; magnify by steps: Bonus action + 5 chakra, Reaction + 5 chakra, Stunned on yourself at the end of your turn (+2d4 each; Finisher +4d4).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d4",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5em9UYoH0b8k4T0",
+              "type": "roll",
+              "label": "Magnify: +2d4",
+              "roll": {
+                "formula": "2d4",
+                "note": "Per step (roll once per step)."
+              }
+            },
+            {
+              "id": "n5epZ7qObPIrERur",
+              "type": "roll",
+              "label": "Finisher magnify: +4d4",
+              "roll": {
+                "formula": "4d4",
+                "note": "Finisher: per step."
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eqnakvwSeRu3NR",
+              "type": "attack",
+              "label": "Straight Impact",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "5 chakra; magnify by steps: Bonus action + 5 chakra, Reaction + 5 chakra, Stunned on yourself at the end of your turn (+2d4 each; Finisher +4d4).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d4",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5em9UYoH0b8k4T0",
+              "type": "roll",
+              "label": "Magnify: +2d4",
+              "roll": {
+                "formula": "2d4",
+                "note": "Per step (roll once per step)."
+              }
+            },
+            {
+              "id": "n5epZ7qObPIrERur",
+              "type": "roll",
+              "label": "Finisher magnify: +4d4",
+              "roll": {
+                "formula": "4d4",
+                "note": "Finisher: per step."
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eqnakvwSeRu3NR",
+              "type": "attack",
+              "label": "Straight Impact",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "5 chakra; magnify by steps: Bonus action + 5 chakra, Reaction + 5 chakra, Stunned on yourself at the end of your turn (+2d4 each; Finisher +4d4).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5em9UYoH0b8k4T0",
+              "type": "roll",
+              "label": "Magnify: +2d4",
+              "roll": {
+                "formula": "2d6",
+                "note": "Per step (roll once per step)."
+              }
+            },
+            {
+              "id": "n5epZ7qObPIrERur",
+              "type": "roll",
+              "label": "Finisher magnify: +4d4",
+              "roll": {
+                "formula": "4d6",
+                "note": "Finisher: per step."
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eqnakvwSeRu3NR",
+              "type": "attack",
+              "label": "Straight Impact",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "5 chakra; magnify by steps: Bonus action + 5 chakra, Reaction + 5 chakra, Stunned on yourself at the end of your turn (+2d4 each; Finisher +4d4).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5em9UYoH0b8k4T0",
+              "type": "roll",
+              "label": "Magnify: +2d4",
+              "roll": {
+                "formula": "2d8",
+                "note": "Per step (roll once per step)."
+              }
+            },
+            {
+              "id": "n5epZ7qObPIrERur",
+              "type": "roll",
+              "label": "Finisher magnify: +4d4",
+              "roll": {
+                "formula": "4d8",
+                "note": "Finisher: per step."
+              }
+            }
+          ]
+        },
         "manualCost": true
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Costs (Special): 5 chakra (+3 per rank) to start, 5 more per step. Spend the chakra and actions by hand."
+        }
+      ]
     }
   },
   "folder": "b31b1b0d97c02089"

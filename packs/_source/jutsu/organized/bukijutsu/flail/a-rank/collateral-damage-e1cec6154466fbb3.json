@@ -85,23 +85,30 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eQ2zmt6HhdaCvo",
         "type": "attack",
-        "label": "Attack",
+        "label": "Collateral Damage",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
         "damage": {
           "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "6d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5e7ZtkAvGAxZbCW",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Collateral: thrown",
         "save": {
           "abilities": [
             "str"
@@ -110,30 +117,57 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "On a hit (Chain 2: at disadvantage if its speed has a penalty). Failure: thrown 10 feet × your Taijutsu modifier.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "6d6",
-        "roll": {
-          "formula": "6d6",
-          "note": "Make a melee Taijutsu attack dealing your [Weapons damage] + 6d6 and they must make a Strength saving throw to resist being thrown a number of feet backwards equal to 10 x your Taijutsu ability modifier on a failed save."
+        "id": "n5eXi7KvBC6Nt2Bj",
+        "type": "save",
+        "label": "Collision",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "A creature it hits. Failure: both take the damage; success: the target takes it, this creature half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "bludgeoning"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "4d6",
-        "roll": {
-          "formula": "4d6",
-          "note": "If the target collides with another creature, that creature must make a Dexterity Saving thrown, on a failure both creatures take 4d6 bludgeoning damage."
+        "id": "n5eG8Xe2JCBDFxNq",
+        "type": "effect",
+        "label": "Chain 3: hits a wall: Staggered",
+        "effect": {
+          "name": "Chain 3: hits a wall: Staggered",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            }
+          ]
         }
       }
     ],
@@ -233,9 +267,105 @@
           "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically.",
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5eQ2zmt6HhdaCvo",
+              "type": "attack",
+              "label": "Collateral Damage",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "6d6 + 1d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5e7ZtkAvGAxZbCW",
+              "type": "save",
+              "label": "Collateral: thrown",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit (Chain 2: at disadvantage if its speed has a penalty). Failure: thrown 10 feet × your Taijutsu modifier.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eXi7KvBC6Nt2Bj",
+              "type": "save",
+              "label": "Collision",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A creature it hits. Failure: both take the damage; success: the target takes it, this creature half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eG8Xe2JCBDFxNq",
+              "type": "effect",
+              "label": "Chain 3: hits a wall: Staggered",
+              "effect": {
+                "name": "Chain 3: hits a wall: Staggered",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "S-Rank: failing by 5+: recast it at A-Rank for 0 chakra at another creature."
+        }
+      ]
     }
   },
   "folder": "3d2e2375a5c550b3"

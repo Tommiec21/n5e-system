@@ -84,23 +84,51 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eHDVWVxPMAPtnU",
         "type": "attack",
-        "label": "Attack",
+        "label": "Burning Fire: Drum",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Reaction, a creature within 5 feet deals melee damage to you or an ally. On a hit: 1 minute, its lung swells (+1 creature per rank).",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5emSCKZoxJuWhZw",
+        "type": "damage",
+        "label": "Casts a Mobility jutsu",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "necrotic"
+            }
+          ]
+        },
+        "text": "Ignores resistance, immunity, DR and temporary hit points."
+      },
+      {
+        "id": "n5enEGjRuyYU26JG",
+        "type": "damage",
+        "label": "Lung ruptures (5th time)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "10d6",
+              "type": "necrotic"
+            }
+          ]
+        },
+        "text": "2 Exhaustion for 24 hours; the jutsu ends (A-Rank: 15d6)."
+      },
+      {
+        "id": "n5eYhkQfOh5bLLfJ",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "End it (its Action)",
         "save": {
           "abilities": [
             "con"
@@ -109,30 +137,12 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Success ends it (S-Rank: disadvantage). Medical jutsu removing C-Rank conditions also end it.",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "For the next minute, when the affected creature casts a Jutsu with the Mobility (M) component, they take 2d6 necrotic damage, which ignores resistance, immunity, DR (damage reduction) and temporary hit points, as their lung swells more."
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "10d6",
-        "roll": {
-          "formula": "10d6",
-          "note": "A creature who would trigger this Jutsu's damaging effect 5 or more times while under its effects has their lung rupture, dealing 10d6 necrotic damage, which ignores resistance, immunity, DR (damage reduction) and temporary hit points and they gain 2 ranks of Exhaustion for the next 24 hours, this jutsu then immediately ends."
         }
       }
     ],
@@ -220,9 +230,209 @@
           "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically.",
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eHDVWVxPMAPtnU",
+              "type": "attack",
+              "label": "Burning Fire: Drum",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Reaction, a creature within 5 feet deals melee damage to you or an ally. On a hit: 1 minute, its lung swells (+1 creature per rank).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5emSCKZoxJuWhZw",
+              "type": "damage",
+              "label": "Casts a Mobility jutsu",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "necrotic"
+                  }
+                ]
+              },
+              "text": "Ignores resistance, immunity, DR and temporary hit points."
+            },
+            {
+              "id": "n5enEGjRuyYU26JG",
+              "type": "damage",
+              "label": "Lung ruptures (5th time)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "10d6",
+                    "type": "necrotic"
+                  }
+                ]
+              },
+              "text": "2 Exhaustion for 24 hours; the jutsu ends (A-Rank: 15d6)."
+            },
+            {
+              "id": "n5eYhkQfOh5bLLfJ",
+              "type": "save",
+              "label": "End it (its Action)",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Success ends it (S-Rank: disadvantage). Medical jutsu removing C-Rank conditions also end it.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eHDVWVxPMAPtnU",
+              "type": "attack",
+              "label": "Burning Fire: Drum",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Reaction, a creature within 5 feet deals melee damage to you or an ally. On a hit: 1 minute, its lung swells (+1 creature per rank).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5emSCKZoxJuWhZw",
+              "type": "damage",
+              "label": "Casts a Mobility jutsu",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "necrotic"
+                  }
+                ]
+              },
+              "text": "Ignores resistance, immunity, DR and temporary hit points."
+            },
+            {
+              "id": "n5enEGjRuyYU26JG",
+              "type": "damage",
+              "label": "Lung ruptures (5th time)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "15d6",
+                    "type": "necrotic"
+                  }
+                ]
+              },
+              "text": "2 Exhaustion for 24 hours; the jutsu ends (A-Rank: 15d6)."
+            },
+            {
+              "id": "n5eYhkQfOh5bLLfJ",
+              "type": "save",
+              "label": "End it (its Action)",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Success ends it (S-Rank: disadvantage). Medical jutsu removing C-Rank conditions also end it.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eHDVWVxPMAPtnU",
+              "type": "attack",
+              "label": "Burning Fire: Drum",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Reaction, a creature within 5 feet deals melee damage to you or an ally. On a hit: 1 minute, its lung swells (+1 creature per rank).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5emSCKZoxJuWhZw",
+              "type": "damage",
+              "label": "Casts a Mobility jutsu",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "necrotic"
+                  }
+                ]
+              },
+              "text": "Ignores resistance, immunity, DR and temporary hit points."
+            },
+            {
+              "id": "n5enEGjRuyYU26JG",
+              "type": "damage",
+              "label": "Lung ruptures (5th time)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "15d6",
+                    "type": "necrotic"
+                  }
+                ]
+              },
+              "text": "2 Exhaustion for 24 hours; the jutsu ends (A-Rank: 15d6)."
+            },
+            {
+              "id": "n5eYhkQfOh5bLLfJ",
+              "type": "save",
+              "label": "End it (its Action)",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Success ends it (S-Rank: disadvantage). Medical jutsu removing C-Rank conditions also end it.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Damage ignoring resistance, immunity, DR and temporary hit points: apply it by hand."
+        }
+      ]
     }
   },
   "folder": "aee26bc2434fe738"

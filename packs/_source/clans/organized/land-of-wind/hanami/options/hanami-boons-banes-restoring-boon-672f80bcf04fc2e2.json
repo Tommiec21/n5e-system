@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "hanami",
       "sourceLine": 2969,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,22 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eE3Jk3uAZCBStH",
+        "type": "heal",
+        "label": "Restoring Boon",
+        "heal": {
+          "formula": "lvl(3:2,7:3,15:4)d8",
+          "pool": "hp"
+        },
+        "text": "It rolls two of its own Hit Dice (three at 7th, four at 15th) + its Constitution modifier: use its die size and modifier.",
+        "cost": {
+          "pool": "boonsBanes",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

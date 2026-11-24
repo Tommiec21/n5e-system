@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eLuZjcPn6Rjpp7",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Shadow Shuriken",
         "save": {
           "abilities": [
             "dex"
@@ -96,22 +95,22 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "A 30-foot cone. Success: half. C-Rank: a paper bomb: fire damage (set it) and −1 on the save (A-Rank: −2 and Dazed on a failure; S-Rank: −3); a Greater or better bomb: one die step up and constructs and structures vulnerable.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "3d6",
-        "roll": {
-          "formula": "3d6",
-          "note": "Creatures within this jutsu’s range must make a Dexterity saving throw taking the thrown [Weapons damage] + 3d6 on a failed save, or half as much on a success."
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "3d6",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -199,9 +198,135 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eLuZjcPn6Rjpp7",
+              "type": "save",
+              "label": "Shadow Shuriken",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 30-foot cone. Success: half. C-Rank: a paper bomb: fire damage (set it) and −1 on the save (A-Rank: −2 and Dazed on a failure; S-Rank: −3); a Greater or better bomb: one die step up and constructs and structures vulnerable.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "3d6",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eLuZjcPn6Rjpp7",
+              "type": "save",
+              "label": "Shadow Shuriken",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 30-foot cone. Success: half. C-Rank: a paper bomb: fire damage (set it) and −1 on the save (A-Rank: −2 and Dazed on a failure; S-Rank: −3); a Greater or better bomb: one die step up and constructs and structures vulnerable.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "3d6 + 1d6",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eLuZjcPn6Rjpp7",
+              "type": "save",
+              "label": "Shadow Shuriken",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 30-foot cone. Success: half. C-Rank: a paper bomb: fire damage (set it) and −1 on the save (A-Rank: −2 and Dazed on a failure; S-Rank: −3); a Greater or better bomb: one die step up and constructs and structures vulnerable.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "3d6 + 2d6",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eLuZjcPn6Rjpp7",
+              "type": "save",
+              "label": "Shadow Shuriken",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 30-foot cone. Success: half. C-Rank: a paper bomb: fire damage (set it) and −1 on the save (A-Rank: −2 and Dazed on a failure; S-Rank: −3); a Greater or better bomb: one die step up and constructs and structures vulnerable.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "3d6 + 3d6",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5eDpY0QdrV0NfEW"

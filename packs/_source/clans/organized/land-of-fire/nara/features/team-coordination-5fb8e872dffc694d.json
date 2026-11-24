@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "nara",
-      "sourceLine": 1773
+      "sourceLine": 1773,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Combat and Diplomatic Coordinated are the condition items, until initiative or the social encounter ends."
+        }
+      ]
     }
   },
   "ownership": {
@@ -30,7 +37,7 @@
       "class": "",
       "clan": "nara"
     },
-    "featureType": "passive",
+    "featureType": "active",
     "activation": {
       "type": "none",
       "value": 1,
@@ -42,6 +49,30 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e8e7c9f7967a1b",
+        "type": "effect",
+        "label": "Combat Coordinated",
+        "effect": {
+          "name": "Combat Coordinated",
+          "target": "targets",
+          "condition": "nara-combat-coordinated"
+        },
+        "text": "When you roll initiative: target your allies. Until initiative ends."
+      },
+      {
+        "id": "n5e3f713d62df707",
+        "type": "effect",
+        "label": "Diplomatic Coordinated",
+        "effect": {
+          "name": "Diplomatic Coordinated",
+          "target": "targets",
+          "condition": "nara-diplomatic-coordinated"
+        },
+        "text": "When a social encounter begins: target your allies. Each picks a skill in chat."
+      }
+    ]
   }
 }

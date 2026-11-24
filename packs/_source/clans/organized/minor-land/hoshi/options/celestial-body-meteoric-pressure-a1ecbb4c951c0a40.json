@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "hoshi",
       "sourceLine": 7884,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,46 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eQfdJbNEMlPgWB",
+        "type": "save",
+        "label": "Meteoric Pressure",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Weakened"
+          },
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "Reaction, a hostile creature moves within 20 feet: everyone within 20 feet. Failure: speed 0 until the end of the turn, 2 Weakened and Bruised.",
+        "activation": "reaction",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "starChakra",
+          "amount": 4
+        }
+      }
+    ]
   }
 }

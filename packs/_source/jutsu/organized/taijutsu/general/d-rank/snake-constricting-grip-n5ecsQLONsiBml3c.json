@@ -50,17 +50,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e9mmTbjyzmnDkh",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "restrained",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Restrained"
-          }
-        ],
+        "label": "Snake Constricting Grip",
         "save": {
           "abilities": [
             "str"
@@ -69,17 +61,19 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "Cast as part of an unarmed attack that dealt [Unarmed damage]. Failure: Restrained (concentration); its Action: a Strength save to escape.",
         "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed",
-              "type": "bludgeoning"
-            }
-          ]
+          "parts": []
         }
       }
     ],
@@ -189,7 +183,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "tsuchigumo",
       "sourceLine": 7589,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Once per turn, setting an anchor with a Bulk 1 weapon (you're disarmed of it) or an explosive tool (one charge)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,39 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5edBaIJtaf5Nlvw",
+        "type": "attack",
+        "label": "Trap Silk: weapon trap",
+        "attack": {
+          "discipline": "highest",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "Dispel the anchor when crossed: one attack roll against the creature and all within 5 feet; [Weapons Damage] (twice at 7th, three times at 15th).",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eKLAyeXBzS2yMN",
+        "type": "roll",
+        "label": "Trap Silk: explosive",
+        "roll": {
+          "formula": "",
+          "note": "Dispel the anchor when crossed: they save Dexterity at disadvantage against the explosive tool."
+        }
+      }
+    ]
   }
 }

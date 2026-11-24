@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "shakuton",
-      "sourceLine": 3620
+      "sourceLine": 3620,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Scorch Charges up to twice per turn; always in your Scorching Heat state."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,35 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ewrkFdBuWZcUjo",
+        "type": "roll",
+        "label": "Shift Immolation or Burned",
+        "roll": {
+          "formula": "",
+          "note": "A creature within 20 feet: its Immolation or Burned goes up or down 1 rank (not again until the end of your next turn)."
+        },
+        "cost": {
+          "pool": "scorchCharges",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5e9gED8sKGgQyzq",
+        "type": "roll",
+        "label": "Thaw Chilled",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, a creature within 20 feet: 2 fewer ranks of Chilled."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "scorchCharges",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

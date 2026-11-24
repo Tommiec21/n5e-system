@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5esj98DdJAL0to7",
         "type": "attack",
-        "label": "Attack",
+        "label": "Maximum Entry",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Up to 5 creatures in range (+1 per rank); then teleport within 5 feet of one.",
         "damage": {
           "parts": []
         },
@@ -104,6 +105,27 @@
           "maximize": false,
           "attacks": "1"
         }
+      },
+      {
+        "id": "n5eVABLxbC5fhRJ2",
+        "type": "effect",
+        "label": "On a hit: Bruised",
+        "effect": {
+          "name": "Bruised",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            }
+          ]
+        },
+        "text": "Each creature hit."
       }
     ],
     "featureType": "active",
@@ -185,7 +207,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "64b78902f2631880"

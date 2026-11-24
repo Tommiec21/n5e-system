@@ -36,13 +36,50 @@
       "scout-maneuver"
     ],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eDrDp1zN87WMDB",
+        "type": "effect",
+        "label": "Team Guard",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1,
+          "roll": true
+        },
+        "effect": {
+          "name": "Team Guard",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "2",
+              "mode": 2
+            },
+            {
+              "key": "n5e.save.all",
+              "value": "2",
+              "mode": 2
+            },
+            {
+              "key": "n5e.dr",
+              "value": "@poolRoll",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Within 10 feet of an ally: allies within 10 feet, you included, get +2 AC and saves, and reduce damage taken by the die, until the start of your next turn while within 10 feet. Target them."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

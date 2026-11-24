@@ -1,0 +1,2574 @@
+{
+  "class": "hunter-nin",
+  "spec": "docs/STD6d_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "a-walking-shadow-grave-stalker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eMHwPW6N86C0tH",
+          "type": "roll",
+          "label": "Fade Step",
+          "roll": {
+            "formula": "",
+            "note": "Bonus action: teleport into the space of a creature within 30 feet that casts a shadow; ending your turn there, you're pushed to within 5 feet."
+          },
+          "cost": {
+            "pool": "dreadArsenal",
+            "amount": 1
+          },
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eHnizrFLgL4GwY",
+          "type": "roll",
+          "label": "Silent Execution",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, dropping a creature to 0: 30 feet of movement and one more Dread Weapon attack this turn (Lethal Attack again on a new creature)."
+          },
+          "cost": {
+            "pool": "dreadArsenal",
+            "amount": 1
+          },
+          "oncePerTurn": true
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Hidden from a creature you Stalk: +2 critical range against it (at the table)."
+        }
+      ]
+    },
+    "aggressive-attack-blade-warden": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "attacks",
+          "value": 2,
+          "label": "Aggressive Attack"
+        },
+        {
+          "key": "initiativeOptions",
+          "skills": [
+            "itm"
+          ],
+          "text": "Your Intimidation bonus in place of initiative.",
+          "label": "Aggressive Attack"
+        }
+      ]
+    },
+    "aim": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eoNWItsztApqMz",
+          "type": "check",
+          "label": "Aim: Perception check",
+          "check": {
+            "skill": "prc"
+          },
+          "activation": "bonus",
+          "text": "Bonus action: Perception against the target's AC. Success: the first attack against it has advantage; beating it by 10: that attack's critical range +1.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "analyze": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eAnhKKvFDMudfZ",
+          "type": "check",
+          "label": "Analyze: Investigation check",
+          "check": {
+            "skill": "inv"
+          },
+          "activation": "bonus",
+          "text": "Bonus action: Investigation contested by its Deception. Success: two of its traits; if its level is yours or lower, its highest save bonus. Once per creature per rest.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "anatomical-studies-necrotic-hand": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eYN0IYGC1Y3D38",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 1)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, @scale.hunterNin.lethalAttack - 1))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+        },
+        {
+          "id": "n5eicNcCWBqjHBWW",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 1): Attack action or weapon",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 1))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+        },
+        {
+          "id": "n5epHFtD4lojgbve",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 2)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, @scale.hunterNin.lethalAttack - 2))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+        },
+        {
+          "id": "n5evRkVJwgpIaxhV",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 2): Attack action or weapon",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 2))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+        },
+        {
+          "id": "n5eroLOzWffSplMd",
+          "type": "roll",
+          "label": "Anatomical Studies: Weakened",
+          "roll": {
+            "formula": "",
+            "note": "Forgo 1: 1 rank of Weakened (apply it)."
+          }
+        },
+        {
+          "id": "n5eqgCEreHKAZp9M",
+          "type": "effect",
+          "label": "Anatomical Studies: next save",
+          "effect": {
+            "name": "Anatomical Studies",
+            "target": "targets",
+            "changes": [],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Forgo 2: its next save against a creature other than you, before the start of your next turn, is at disadvantage."
+        }
+      ]
+    },
+    "assassinate": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Lethal Attack against up to two creatures per turn, once each."
+        }
+      ]
+    },
+    "battle-cry": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ekV4RhlCnBEitT",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 1)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, @scale.hunterNin.lethalAttack - 1))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+        },
+        {
+          "id": "n5ebVOActjITf8p6",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 1): Attack action or weapon",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 1))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+        },
+        {
+          "id": "n5eAuzGRYtm5ITDM",
+          "type": "save",
+          "label": "Battle Cry",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "The target and hostile creatures within 10 feet of it. Failure: 1 rank of Demoralized or Shaken (pick)."
+        }
+      ]
+    },
+    "blades-aggression-blade-warden": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "With your Warden Weapon, a Combat Exploit that forgoes 2 or more dice forgoes 1 fewer (use the button for one die fewer)."
+        }
+      ]
+    },
+    "blades-prey": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Lethal Attack with your Warden Weapon twice per turn against the same creature. You gain Wardens Assault (not counting against your exploits)."
+        }
+      ]
+    },
+    "botany": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezPBrFGgsAEI6H",
+          "type": "effect",
+          "label": "Botany: Nature and Survival Mastery",
+          "effect": {
+            "name": "Botany",
+            "target": "self",
+            "changes": [
+              {
+                "key": "n5e.mastery.skill.nat",
+                "value": "Botany",
+                "mode": 2
+              },
+              {
+                "key": "n5e.mastery.skill.sur",
+                "value": "Botany",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "After a long rest: within the two lands you chose, until your next Full-Rest (end it when you leave them).",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "brutal-proficiency": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Proficiency in Athletics and Demolitions Kits (Str or Dex for them), and the Great Weapon Stance. Lethal Attack also against creatures with Bruised or Weakened. Savage Attack (not counting against your exploits). +10 speed is on its effect."
+        }
+      ]
+    },
+    "brute": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e8SslEk6mgkjPO",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 1)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, @scale.hunterNin.lethalAttack - 1))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+        },
+        {
+          "id": "n5eK6t5mOInNfXHn",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 1): Attack action or weapon",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 1))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+        },
+        {
+          "id": "n5eXURs0uuKZYxCx",
+          "type": "save",
+          "label": "Brute",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            },
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            }
+          ],
+          "text": "Failure: Prone and 1 rank of Weakened."
+        }
+      ]
+    },
+    "carnage": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ep1nIccBO8KVSg",
+          "type": "roll",
+          "label": "Gain Carnage",
+          "cost": {
+            "pool": "carnage",
+            "amount": 1,
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "When you deal or take damage from a creature (Executioners Drive)."
+          },
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5ej7XGgI4xghZdm",
+          "type": "roll",
+          "label": "Guillotine Cleave",
+          "cost": {
+            "pool": "carnage",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "A melee weapon attack against every creature in reach."
+          }
+        },
+        {
+          "id": "n5eBHrenFyxYm84n",
+          "type": "roll",
+          "label": "Butchers Momentum",
+          "cost": {
+            "pool": "carnage",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "On a hit: 30 ft of bonus movement."
+          }
+        },
+        {
+          "id": "n5evivc9005ptX4a",
+          "type": "roll",
+          "label": "Casket Breaker",
+          "roll": {
+            "formula": "",
+            "note": "On a hit that dealt less to hit points than you rolled: one weapon attack at the same creature, piercing 6 DR."
+          },
+          "cost": {
+            "pool": "carnage",
+            "amount": 1
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Executioners Drive from initiative to the end of the encounter: gain 1 Carnage once per turn when you deal or take damage from a creature (max 3). Empty Carnage when the encounter ends."
+        }
+      ]
+    },
+    "chakra-recoil": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ePvVQ0tepE9Rhi",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 2)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, @scale.hunterNin.lethalAttack - 2))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+        },
+        {
+          "id": "n5eChzjWFmp0a7ll",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 2): Attack action or weapon",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 2))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+        },
+        {
+          "id": "n5eluuimzMj1RXw0",
+          "type": "roll",
+          "label": "Chakra Recoil",
+          "roll": {
+            "formula": "2d8kh",
+            "note": "Roll the dice you forwent (1 or 2): temporary chakra equal to the highest. Once every 10 minutes, in combat."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Forgo 1 or 2 dice; with 1, roll 1d8."
+        }
+      ]
+    },
+    "clinical-appraisal-necrotic-hand": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e2yWokxoIifAGQ",
+          "type": "check",
+          "label": "Clinical Appraisal: Medicine check",
+          "check": {
+            "skill": "med"
+          },
+          "text": "After 1 minute observing or interacting: Medicine or Perception contested by its Deception. Success: whether it has a condition or disease, and one of: drugs or chemicals in it, its heritage, or its vulnerability."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Medicine in place of Insight for See Through Lies and Sense Motive."
+        }
+      ]
+    },
+    "confuse-beast": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ewWLgiKL3MqIBO",
+          "type": "check",
+          "label": "Confuse Beast: Animal Handling check",
+          "check": {
+            "skill": "ani"
+          },
+          "activation": "action",
+          "text": "Action: a beast within 30 feet; Animal Handling contested by its Wisdom save. Success: no actions or reactions until the end of your next turn.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "cunning-action": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e4c3S5y7zKbT0Y",
+          "type": "check",
+          "label": "Stealth (Hide/Sneak/Conceal, +2)",
+          "check": {
+            "skill": "ste"
+          },
+          "text": "Concealing an object, Hide or Sneak: +2 to the Stealth check (add it in the dialog)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "While Sneaking, your full speed, and your Hide result can stand for later Sneak checks. Dash, Disengage or Hide as a Bonus action."
+        }
+      ]
+    },
+    "decaying-compound": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eeSNe39Ae7cS52",
+          "type": "roll",
+          "label": "Infuse a jutsu",
+          "cost": {
+            "pool": "blackMedicineArray",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "A Poison or Necrotic save jutsu gains a Decaying Compound effect."
+          }
+        },
+        {
+          "id": "n5eeX9Cgcz23l6cD",
+          "type": "roll",
+          "label": "Putrefy a weapon",
+          "cost": {
+            "pool": "blackMedicineArray",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "1 minute: the weapon deals necrotic or poison damage; once per turn, beating AC by 5 with it or a Taijutsu attack inflicts Sepsis (1 Corroded) or Viral (1 Envenomed)."
+          },
+          "activation": "bonus"
+        },
+        {
+          "id": "n5e2MybWcRxVBkqn",
+          "type": "roll",
+          "label": "Sepsis",
+          "roll": {
+            "formula": "",
+            "note": "Putrefy, beating AC by 5: 1 rank of Corroded (apply it)."
+          }
+        },
+        {
+          "id": "n5eeMRQ7ZMEyaICC",
+          "type": "roll",
+          "label": "Viral",
+          "roll": {
+            "formula": "",
+            "note": "Putrefy, beating AC by 5: 1 rank of Envenomed (apply it)."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Infuse compounds: Cell Failure (a creature failing the save can't regain hit points until the start of your next turn) or Overdose (one more rank of a condition the jutsu inflicts). The Black Medicine Array (4 ampoules) is full after any rest."
+        }
+      ]
+    },
+    "deceptive-exchange": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5erSui32hUAsiU8",
+          "type": "check",
+          "label": "Deceptive Exchange: Deception check",
+          "check": {
+            "skill": "dec"
+          },
+          "activation": "reaction",
+          "text": "Reaction, a creature tries to deceive you: contested Deception. Success: one truthful piece of information from the lie.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "defensive-tactics": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "One at 11th, a second at 17th: Escaping Danger (opportunity and reaction attacks against you at disadvantage), Unbroken Will (advantage on saves against Mental and Sensory conditions) or Evasion (no damage on a successful Dexterity save for half, half on a failure)."
+        }
+      ]
+    },
+    "diplomacy": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5exbwpUdfcf8Q5t",
+          "type": "check",
+          "label": "Diplomacy: Persuasion check",
+          "check": {
+            "skill": "per"
+          },
+          "activation": "action",
+          "text": "Action: a creature within 30 feet who can hear and understand you; Persuasion contested by its Insight (advantage for it if you damaged it in the last hour). Success: its disposition toward you improves.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "distraction": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eEkBFn7xkVEcxf",
+          "type": "check",
+          "label": "Distraction: Deception check",
+          "check": {
+            "skill": "dec"
+          },
+          "activation": "reaction",
+          "text": "Reaction on an ally's turn: a creature within 30 feet who can hear you; Deception contested by its Wisdom save. Success: Confused.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "dr-death-necrotic-hand": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Medical jutsu that make an attack: D-Rank cost 0 chakra, C-Rank cost 5 (pay that at the table)."
+        }
+      ]
+    },
+    "elusive": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "No attack roll has advantage against you while you aren't incapacitated."
+        }
+      ]
+    },
+    "emulate-predator": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eghE7Can1XEPbQ",
+          "type": "check",
+          "label": "Emulate Predator: Nature check",
+          "check": {
+            "skill": "nat"
+          },
+          "activation": "action",
+          "text": "Action, hidden from a creature within 60 feet: Nature contested by its Wisdom save. Success: Demoralized or Shaken, and on its turn it Dashes away by the safest route.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "eyes-of-a-shinobi-wolves-legacy": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e0j01GhCgMzVm7",
+          "type": "check",
+          "label": "Shinobi's Awareness: Survival check",
+          "check": {
+            "skill": "sur"
+          },
+          "text": "Bonus action, against the passive Stealth of creatures within 60 feet: for 1 minute you know if a creature is observing or targeting you (even hidden, invisible or remote), and sense armed or combat-stressed creatures (not where). Meanwhile you can't be surprised or take initiative penalties.",
+          "activation": "bonus"
+        }
+      ]
+    },
+    "false-faces": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e8VK08SRmsPgbV",
+          "type": "check",
+          "label": "False Faces: Performance check",
+          "check": {
+            "skill": "prf"
+          },
+          "activation": "action",
+          "text": "Action: Performance contested by observers' Insight. Success: imitate a humanoid you've spent 10 minutes with, for up to 1 hour; advantage on Deception to keep it up. Doesn't copy Kekkei Genkai or chakra, or fool jutsu senses.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "feint": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e9ZxOtonOeQO35",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 2)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, @scale.hunterNin.lethalAttack - 2))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+        },
+        {
+          "id": "n5eixjxcT1iU6gNX",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 2): Attack action or weapon",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 2))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+        },
+        {
+          "id": "n5e8PkFm2YZ8KKgg",
+          "type": "save",
+          "label": "Feint",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A target within 30 feet. Failure: it can't target you until the end of its next turn. Once per creature every 10 minutes."
+        }
+      ]
+    },
+    "festering-siphonage": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUGTtcOA8MteBs",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 1)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, @scale.hunterNin.lethalAttack - 1))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+        },
+        {
+          "id": "n5efiEDC7ss1JDdl",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 1): Attack action or weapon",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 1))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+        },
+        {
+          "id": "n5eqiCz6Z3B19nSR",
+          "type": "save",
+          "label": "Festering Siphonage",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Necrotic Hand. Failure: −1 AC and saves until the end of your next turn; +2 to your next attack on it."
+        },
+        {
+          "id": "n5e9u2RJeA38USeX",
+          "type": "effect",
+          "label": "Festering Siphonage: weakened",
+          "effect": {
+            "name": "Festering Siphonage",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "-1",
+                "mode": 2
+              },
+              {
+                "key": "system.bonuses.save",
+                "value": "-1",
+                "mode": 2
+              }
+            ],
+            "expires": "turnEnd",
+            "seconds": 12
+          },
+          "text": "On a failed save (until the end of your next turn)."
+        }
+      ],
+      "effects": []
+    },
+    "harvest-undertaker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e4sAxuAa7PTEIl",
+          "type": "save",
+          "label": "Red Harvest",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            },
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "Dealing [Weapon Damage]: maximize it and trigger Lethal Attack regardless of requirements. Failure: Staggered, disadvantage on its next save against someone else, and Prone; success: only Prone.",
+          "cost": {
+            "pool": "carnage",
+            "amount": 3
+          }
+        }
+      ]
+    },
+    "hinder": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezglYQpr2tUnee",
+          "type": "check",
+          "label": "Hinder: Sleight of Hand check",
+          "check": {
+            "skill": "slt"
+          },
+          "activation": "reaction",
+          "text": "Reaction to a creature within 30 feet attacking or casting: Sleight of Hand contested by its Constitution save. Success: Dazzled.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hunted-target": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Primary Target is Hunted: casting a Hand Sign jutsu or standing from Prone provokes your opportunity attack. From 11th, Hunters Strike: a special reaction only for opportunity attacks."
+        }
+      ]
+    },
+    "hunter-creed": {
+      "status": "none",
+      "rules": []
+    },
+    "hunters-exploits": {
+      "status": "partial",
+      "pools": [
+        {
+          "id": "skilledExploits",
+          "label": "Skilled Exploits",
+          "value": 0,
+          "max": "1 + @prof",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "lr",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two exploits at 2nd, more by the Exploits column. Combat Exploits forgo Lethal Attack dice (their buttons); Skilled Exploits are skill checks (their buttons)."
+        }
+      ]
+    },
+    "i-wouldnt-do-that": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e08pMr68dX9BL7",
+          "type": "check",
+          "label": "I wouldn’t Do that: Intimidation check",
+          "check": {
+            "skill": "itm"
+          },
+          "activation": "reaction",
+          "text": "Reaction, a creature would turn hostile in a social encounter: Intimidation contested by its Wisdom save. Failure (theirs): Demoralized or Shaken, and it seeks another way; if combat starts anyway, it acts last.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "instruct": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eOOpoMpNYwcS6z",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 3)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, @scale.hunterNin.lethalAttack - 3))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+        },
+        {
+          "id": "n5eHPvNyOojUBnWj",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 3): Attack action or weapon",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 3))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+        },
+        {
+          "id": "n5eeAPr6k6SGtNx2",
+          "type": "effect",
+          "label": "Instruct",
+          "effect": {
+            "name": "Instructed",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "10th level. Each ally's next attack against the target has advantage (end it after)."
+        }
+      ]
+    },
+    "intuit": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e7iVVebbMXuuJ2",
+          "type": "check",
+          "label": "Intuit: Insight check",
+          "check": {
+            "skill": "ins"
+          },
+          "activation": "action",
+          "text": "Action: a creature within 30 feet; Insight contested by its Deception. Success: See Through Lies and Sense Motive against it.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "kages-die-twice-wolves-legacy": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5enZ99tobN5rHGC",
+          "type": "roll",
+          "label": "Kage's Die Twice",
+          "roll": {
+            "formula": "",
+            "note": "Once per Full-Rest, dropping to 0: stay up with 1 hit point, gain 3 Posture (the button) and regain your reaction."
+          },
+          "cost": {
+            "pool": "posture",
+            "amount": 3,
+            "gain": true
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "You gain Shadow Execution."
+        }
+      ]
+    },
+    "kleptomaniac": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eVzeutpM8iYJDY",
+          "type": "effect",
+          "label": "Kleptomaniac",
+          "effect": {
+            "name": "Kleptomaniac target",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 3600
+          },
+          "text": "Bonus action: mark a lock or creature; the DC to pick it or pickpocket it is 4 lower.",
+          "activation": "bonus",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "lethal-attack": {
+      "status": "partial",
+      "activities": [],
+      "rules": [
+        {
+          "key": "damage",
+          "selector": "damage",
+          "formula": "(@scale.hunterNin.lethalAttack)d8",
+          "optional": true,
+          "label": "Lethal Attack"
+        },
+        {
+          "key": "damage",
+          "selector": "damage",
+          "formula": "(ceil(@scale.hunterNin.lethalAttack/2))d8",
+          "optional": true,
+          "label": "Lethal Attack (half: Attack action or weapon attack)"
+        },
+        {
+          "key": "note",
+          "text": "Lethal Attack (King Q-D25): two unticked rows in the damage window of every attack and jutsu, full and half. Tick one when it applies: once per turn, on a hit with advantage, or with an ally within 5 feet of the target, or a condition your Creed adds (Bruised or Weakened; Envenomed or Corroded; Demoralized, Shaken or Dazzled; Sealed; Dazed or Confused). Half the dice, rounded up, for an attack of the Attack action or a weapon attack. Combat Exploits forgo dice: their buttons roll Lethal Attack with those dice taken off."
+        }
+      ]
+    },
+    "lethal-precision": {
+      "status": "automated",
+      "effects": [
+        {
+          "name": "Lethal Precision: Taijutsu with Dexterity",
+          "requiresOption": "lethalPrecision:tai",
+          "changes": [
+            {
+              "key": "n5e.keywordAbility.taijutsu",
+              "value": "dex",
+              "mode": 2
+            }
+          ]
+        },
+        {
+          "name": "Lethal Precision: Bukijutsu with Dexterity",
+          "requiresOption": "lethalPrecision:buki",
+          "changes": [
+            {
+              "key": "n5e.keywordAbility.bukijutsu",
+              "value": "dex",
+              "mode": 2
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your level-up choice (Taijutsu or Bukijutsu) can be cast with Dexterity in place of Strength (its effect turns on for that choice). You also gain the Silent Fist (Taijutsu) or Silent Killing (Bukijutsu) stance: add it from the Fighting Stances compendium."
+        }
+      ]
+    },
+    "lustful-assumptions": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eHLrywxfbFVzhg",
+          "type": "check",
+          "label": "Lustful Assumptions: Persuasion check",
+          "check": {
+            "skill": "per"
+          },
+          "activation": "action",
+          "text": "Action, social encounter with a creature that isn't negative or hostile toward you: Persuasion contested by its Insight. Success: Charmed by you for 1 hour.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "marked-for-death-grave-stalker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eF0yMeo3WmGppD",
+          "type": "roll",
+          "label": "Marked for Death",
+          "roll": {
+            "formula": "",
+            "note": "With your Dread Weapon, a Ninjutsu or Genjutsu that forces a save: −2 to the save (a Stalked target saves at disadvantage instead)."
+          },
+          "cost": {
+            "pool": "dreadArsenal",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "master-ambusher-grave-stalker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eCLBK6ebVKFbNA",
+          "type": "check",
+          "label": "Interject: Deception check",
+          "check": {
+            "skill": "dec"
+          },
+          "text": "You or an ally within 30 feet would fail a Charisma check in a social encounter: Deception contested by their Insight; success: the failure never happened. Once every 10 minutes."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Smoke Bombs as a Bonus action. Starting combat hidden or unseen: your Stealth bonus for your and your allies' initiative; out of stealth, advantage on initiative."
+        }
+      ]
+    },
+    "mastery-hunter-nin": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A rank of Mastery in a skill or toolkit you're proficient in; another at 10th and 15th. Choose at level-up (add it on the character)."
+        }
+      ]
+    },
+    "medical-proficiency": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Proficiency in Medicine and Medicine Kits (Int or Wis for them); you can learn Medical jutsu. Lethal Attack also against creatures with Envenomed or Corroded. Festering Siphonage (not counting against your exploits)."
+        }
+      ]
+    },
+    "mortal-rhythm-wolves-legacy": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5elo8w7VXFkilCX",
+          "type": "save",
+          "label": "Mortal Rhythm",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Hunters Strike with Deflect, Parry or Retaliate (2 Posture). Failure: the rest of its Action is Interrupted; failing by 5: also Dazed, and you gain 1 Posture.",
+          "cost": {
+            "pool": "posture",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "mortal-wound-necrotic-hand": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "You have blindsight against creatures with a Physical or Mental condition within 60 feet."
+        }
+      ]
+    },
+    "one-with-the-darkness-grave-stalker": {
+      "status": "partial",
+      "effects": [
+        {
+          "name": "One with the Darkness: blindsight",
+          "changes": [
+            {
+              "key": "system.traits.senses.blindsight",
+              "value": "30",
+              "mode": 4
+            }
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "id": "n5eAq0L9GCraR8WR",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 1)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, @scale.hunterNin.lethalAttack - 1))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+        },
+        {
+          "id": "n5ej6kGRPt9cMm4E",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 1): Attack action or weapon",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 1))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+        },
+        {
+          "id": "n5epDVkFQggbVLLr",
+          "type": "roll",
+          "label": "Strike the Eyes",
+          "roll": {
+            "formula": "",
+            "note": "Forgo 1 die: 2 ranks of Dazzled (apply them)."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Blindsight 30 feet (its effect). In dim light or darkness, Chakra Sight and darkvision can't perceive you."
+        }
+      ]
+    },
+    "owls-teachings": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eKulWm813iTCIS",
+          "type": "check",
+          "label": "Owls Teachings: Insight check",
+          "check": {
+            "skill": "ins"
+          },
+          "text": "10th level. Action, observing a creature: Insight contested by its Deception. Success: you learn whether it means harm to you or those near it.",
+          "activation": "action",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "posture-break": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eCYfGXgMUbSj1d",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 1)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, @scale.hunterNin.lethalAttack - 1))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+        },
+        {
+          "id": "n5e3hHPeqj1PDlgJ",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 1): Attack action or weapon",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 1))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+        },
+        {
+          "id": "n5erAxbnukHYgY7S",
+          "type": "effect",
+          "label": "Posture Break",
+          "effect": {
+            "name": "Posture Broken",
+            "target": "targets",
+            "changes": [],
+            "expires": "turnEnd",
+            "seconds": 12
+          },
+          "text": "Wolves Legacy. Until the end of your next turn it can't cast jutsu that raise its AC or give it DR. With Retaliate: no dice forgone (use the plain Lethal Attack button)."
+        }
+      ]
+    },
+    "primary-target": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eSP4abL2PTB6o2",
+          "type": "effect",
+          "label": "Mark Primary Target",
+          "effect": {
+            "name": "Primary Target",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 3600,
+            "state": "primaryTarget",
+            "limit": 1
+          },
+          "text": "When rolling initiative (no action), a creature within 60 feet; later a Bonus action marks another. One at a time, until it drops to 0 HP."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Advantage on Wisdom checks to track or search for it within the same country's borders. Learn one damage immunity, one resistance, or its current DR (again after a short rest)."
+        }
+      ]
+    },
+    "savage-attack": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e7AYM9FrIp4olF",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 1)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, @scale.hunterNin.lethalAttack - 1))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+        },
+        {
+          "id": "n5eyuK1UDuGxGcIG",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 1): Attack action or weapon",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 1))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+        },
+        {
+          "id": "n5e9duLbm3syMbkg",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 2)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, @scale.hunterNin.lethalAttack - 2))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+        },
+        {
+          "id": "n5eDji4aIJnk7jy6",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 2): Attack action or weapon",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 2))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+        },
+        {
+          "id": "n5eXQE79UpnuaQ44",
+          "type": "save",
+          "label": "Savage Attack (1 die)",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            }
+          ],
+          "text": "Undertaker. Failure: 1 rank of Weakened and disadvantage on its next attack before the start of your next turn."
+        },
+        {
+          "id": "n5e0LMpbFY9T9uSH",
+          "type": "save",
+          "label": "Savage Attack (2 dice)",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "Failure: Prone and no reactions."
+        }
+      ]
+    },
+    "savage-inflection-undertaker": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Once per turn, spending Carnage: a Combat Exploit needs 1 fewer Lethal Attack die (use the button for one die fewer)."
+        }
+      ]
+    },
+    "sealing-arts-void-walker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eePDlDiqCOMJ6K",
+          "type": "check",
+          "label": "Sealing Arts: Ninshou check",
+          "check": {
+            "skill": "nin"
+          },
+          "text": "Action, within 60 feet: place 3 Anchors and make a Ninshou check against the effect's save DC (a non-jutsu effect by rank: D 10, C 14, B 18, A 22, S 26). Success: the effect is dispelled. Once every 10 minutes.",
+          "activation": "action"
+        }
+      ]
+    },
+    "shadow-assassination-grave-stalker": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Attacking a creature you Stalk while it's in darkness: roll one more d20 and take the highest (with disadvantage, take the middle)."
+        }
+      ]
+    },
+    "shadow-execution": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eFhYnIl1BV4KIK",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 5)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, @scale.hunterNin.lethalAttack - 5))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+        },
+        {
+          "id": "n5eRTFmLavKRII1T",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 5): Attack action or weapon",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 5))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+        },
+        {
+          "id": "n5eqASEHxF6M1q6X",
+          "type": "save",
+          "label": "Shadow Execution",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "stunned",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Stunned"
+            }
+          ],
+          "text": "17th level, Wolves Legacy, on a critical hit with Lethal Attack. Failure: Stunned until the end of your next turn."
+        }
+      ]
+    },
+    "shadow-stalker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eaDTdMrPmarqJj",
+          "type": "roll",
+          "label": "Summon a Dread Weapon",
+          "cost": {
+            "pool": "dreadArsenal",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "Lasts 1 minute; a W component for Shinobi Basics and Blade Bukijutsu."
+          },
+          "activation": "bonus"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Dread Weapon: a d6 chakra weapon (psychic or necrotic, Finesse and Light), a W component for Shinobi Basics and Blade Bukijutsu; 1 minute or until you're incapacitated. Arsenal charges: your proficiency bonus, all back after a long rest, 2 after a short rest."
+        }
+      ]
+    },
+    "shadow-step": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5etkbCEuLNdWlyH",
+          "type": "check",
+          "label": "Shadow Step: Stealth check",
+          "check": {
+            "skill": "ste"
+          },
+          "activation": "bonus",
+          "text": "Grave Stalker. Bonus action, in dim light, darkness or obscurement: teleport to another such space, then Stealth against hostile passive Perception; success: undetectable by Sensory jutsu until the end of your next turn.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "shinobis-flow-state-wolves-legacy": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5epE5Y6zxeDs6zU",
+          "type": "roll",
+          "label": "Deflect (2 Posture)",
+          "roll": {
+            "formula": "",
+            "note": "Reduce the triggering and all later damage this turn by 10."
+          },
+          "cost": {
+            "pool": "posture",
+            "amount": 2
+          },
+          "activation": "reaction"
+        },
+        {
+          "id": "n5eqMxIe0guPuICM",
+          "type": "effect",
+          "label": "Parry (2 Posture)",
+          "effect": {
+            "name": "Parry",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "n5e.resist",
+                "value": "all",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Resistance until the start of your next turn, for you or a willing ally in your weapon's range.",
+          "activation": "reaction",
+          "cost": {
+            "pool": "posture",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5ePdRUCG1fdFrZu",
+          "type": "roll",
+          "label": "Retaliate (2 Posture)",
+          "roll": {
+            "formula": "",
+            "note": "Cast a 1-Action Bukijutsu you know instead of the Attack action (uses your reaction)."
+          },
+          "cost": {
+            "pool": "posture",
+            "amount": 2
+          },
+          "activation": "reaction"
+        }
+      ]
+    },
+    "shinobis-prosthetic": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eMVKdr11NR9Jhz",
+          "type": "roll",
+          "label": "Use a Prosthetic Tool",
+          "cost": {
+            "pool": "prostheticUses",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "No more than 4 times every 10 minutes."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Prosthetic Tools at 3rd, another at 7th, 10th and 14th; attacks and saves use your Taijutsu or Ninjutsu numbers (your choice). Any tool, no more than 4 times every 10 minutes."
+        }
+      ]
+    },
+    "stalkers-proficiency": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e0jKWa7Li5GLCO",
+          "type": "effect",
+          "label": "Stalk your Primary Target",
+          "effect": {
+            "name": "Stalked",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 3600,
+            "state": "stalked"
+          },
+          "text": "Your Primary Target is Stalked: −2 to its Perception and Insight checks against you (at the table)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Proficiency in Sleight of Hand and Deception (Dex or Cha). 20 feet of blindsight (its effect); in dim light or darkness, blindsight and tremorsense can't perceive you. A Stalked creature that's isolated (no allies within 10 feet) takes +1 Lethal Attack die. Lethal Attack also against Demoralized, Shaken or Dazzled. Shadow Step (not counting against your exploits)."
+        }
+      ]
+    },
+    "study": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e346OZtu7LLMT5",
+          "type": "check",
+          "label": "Study: History check",
+          "check": {
+            "skill": "his"
+          },
+          "activation": "reaction",
+          "text": "Reaction to a creature casting or attacking you: History contested by its Charisma save. Success: advantage on your first check or save against it before the end of your next turn.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "sunder": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUYDZ843YTYEFO",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 2)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, @scale.hunterNin.lethalAttack - 2))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+        },
+        {
+          "id": "n5eWCce29DiQYpOQ",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 2): Attack action or weapon",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 2))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+        },
+        {
+          "id": "n5eulTU4MaS4xknD",
+          "type": "save",
+          "label": "Sunder",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "10th level. Failure: −4 AC until the end of its next turn."
+        },
+        {
+          "id": "n5eLK4v0C3CWa7fV",
+          "type": "effect",
+          "label": "Sunder: −4 AC",
+          "effect": {
+            "name": "Sundered",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "-4",
+                "mode": 2
+              }
+            ],
+            "expires": "turnEnd",
+            "seconds": 12
+          },
+          "text": "On a failed save."
+        }
+      ]
+    },
+    "superior-offense-blade-warden": {
+      "status": "partial",
+      "effects": [
+        {
+          "name": "Superior Offense: blindsight",
+          "changes": [
+            {
+              "key": "system.traits.senses.blindsight",
+              "value": "30",
+              "mode": 4
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your attacks can't be made at disadvantage or take jutsu penalties (at the table). 30 feet of blindsight (its effect)."
+        }
+      ]
+    },
+    "swift-response": {
+      "status": "partial",
+      "effects": [
+        {
+          "name": "Swift Response: second Mastery",
+          "levels": {
+            "min": 9
+          },
+          "changes": [
+            {
+              "key": "n5e.mastery.initiative",
+              "value": "Swift Response 2",
+              "mode": 2
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "You ignore difficult terrain (at the table). A rank of Mastery in Initiative; a second at 9th (its effect)."
+        }
+      ]
+    },
+    "the-butchers-promise-undertaker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5enWxy7RHfaRPJK",
+          "type": "save",
+          "label": "The Butcher's Promise",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "Your Primary Target provokes: your opportunity attack has advantage; with Hunters Strike, on a hit, a Strength save or Prone (or stays Prone if standing)."
+        }
+      ]
+    },
+    "tumble": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e9Yjgvs99Mkr7I",
+          "type": "check",
+          "label": "Tumble: Acrobatics check",
+          "check": {
+            "skill": "acr"
+          },
+          "activation": "reaction",
+          "text": "Reaction to an attack: Acrobatics against its attack roll. Success: it deals 2 fewer damage dice.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "twisted-medicine-necrotic-hand": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eVeKBy2FCQ5p1f",
+          "type": "heal",
+          "label": "Rejuvenation",
+          "heal": {
+            "formula": "4d10",
+            "pool": "hp"
+          },
+          "cost": {
+            "pool": "blackMedicineArray",
+            "amount": 1
+          },
+          "activation": "bonus",
+          "text": "A willing creature you touch regains 4d10 hit points (once per short rest for each creature)."
+        },
+        {
+          "id": "n5eK8mBcisZ9qh2E",
+          "type": "save",
+          "label": "Suppression",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "nin"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "suppressed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Suppressed"
+            }
+          ],
+          "text": "Action: a 20-foot radius on a point within 30 feet; DC 19 or your Ninjutsu DC, whichever is higher. Failure: Suppressed.",
+          "activation": "action",
+          "cost": {
+            "pool": "blackMedicineArray",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5e0pJH6U9gf8TLs",
+          "type": "roll",
+          "label": "Refresh 2 ampoules",
+          "roll": {
+            "formula": "",
+            "note": "10 minutes of work."
+          },
+          "cost": {
+            "pool": "blackMedicineArray",
+            "amount": 2,
+            "gain": true
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Suppression's DC: use 19 if it's higher than your Ninjutsu DC (at the table)."
+        }
+      ]
+    },
+    "uncanny-dodge": {
+      "status": "automated",
+      "rules": []
+    },
+    "unspoken-threat-undertaker": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A non-hostile creature makes a Charisma or Wisdom check against you or your allies: 1 Social Carnage (max 1, 1 minute); spend it when you or an ally respond with a Charisma or Wisdom check for advantage."
+        }
+      ]
+    },
+    "vanish": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eCJ44abOe4ULqe",
+          "type": "check",
+          "label": "Vanish: Stealth check",
+          "check": {
+            "skill": "ste"
+          },
+          "activation": "action",
+          "text": "Action, while observed: Stealth contested by their Perception. Success: move your speed into concealment and count it as a Hide attempt.",
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "void-anchor": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e9HsCTdg82Z7mS",
+          "type": "effect",
+          "label": "Place a Void Anchor",
+          "effect": {
+            "name": "Void Anchor",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "state": "void-anchor",
+            "limit": 4
+          },
+          "activation": "bonus",
+          "text": "Bonus action: a creature, surface or unattended object within 60 feet, 1 minute (up to 4; the oldest fades)."
+        },
+        {
+          "id": "n5e06bmscooAlC13",
+          "type": "damage",
+          "label": "Flash Step (forgo 1)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, @scale.hunterNin.lethalAttack - 1))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+        },
+        {
+          "id": "n5eUzY4QJzLOXrRV",
+          "type": "damage",
+          "label": "Flash Step (forgo 1): Attack action or weapon",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 1))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+        },
+        {
+          "id": "n5eqDqzvawqP5LLX",
+          "type": "damage",
+          "label": "Displacement Strike (forgo 2)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, @scale.hunterNin.lethalAttack - 2))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+        },
+        {
+          "id": "n5eKAWyZF0ttLPVh",
+          "type": "damage",
+          "label": "Displacement Strike (forgo 2): Attack action or weapon",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 2))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+        },
+        {
+          "id": "n5eLxntI5fOa19Mh",
+          "type": "save",
+          "label": "Displacement Strike",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "nin"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Failure: teleported to a space next to another of your Anchors."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Teleporting within 10 feet of a creature with an Anchor: a weapon attack at it as a Bonus action. Flash Step (forgo 1): teleport up to 30 feet."
+        }
+      ]
+    },
+    "void-proficiency": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Proficiency in Ninshou (Dex or Int); Ninjutsu Scrolls take 2 less downtime. When you or a creature you can see teleports within 10 feet of the other, you can trigger Lethal Attack against it regardless of the usual requirements. Lethal Attack also against Sealed. Void Step (not counting against your exploits)."
+        }
+      ]
+    },
+    "void-sense-void-walker": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Anchors placed out of combat last 10 minutes; you see and hear through them (30 feet), and they hum when a chakra or jutsu effect is within 30 feet."
+        }
+      ]
+    },
+    "void-step": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eKvMv86Tiad6tI",
+          "type": "roll",
+          "label": "Void Step",
+          "activation": "",
+          "roll": {
+            "formula": "",
+            "note": "Void Hunter. All your movement: teleport within 5 feet of one of your Anchors; next to a creature with an Anchor, your next attack against it can trigger Lethal Attack."
+          },
+          "cost": {
+            "pool": "skilledExploits",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "vorpal-blade-void-walker": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "An Anchored weapon's Lethal Attack bypasses structures, constructs or barriers that would intercept it; on a critical hit with it, Flash Step or Displacement Strike without forgoing dice."
+        }
+      ]
+    },
+    "vorpal-strike-void-walker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5evt5rpLhYfASGZ",
+          "type": "save",
+          "label": "Reverse Summoning",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "nin"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Action, a creature with a Layered Anchor (two Anchors). Failure: summoned next to you, both seals gone; success: one Anchor breaks.",
+          "activation": "action"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Vorpal Passthrough: with an attack jutsu or the Attack action, teleport next to the double-anchored creature as part of it."
+        }
+      ]
+    },
+    "vorpal-technique-void-walker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eWQhm0b58DvHNZ",
+          "type": "roll",
+          "label": "Vorpal Technique",
+          "roll": {
+            "formula": "",
+            "note": "Action: teleport to every Anchor; one melee Taijutsu or Ninjutsu attack against each chosen creature within 10 feet of them; hits take your [Weapon Damage] and Lethal Attack (a critical applies to one). Your Anchors are then dispelled; reappear within 30 feet of one target."
+          },
+          "activation": "action"
+        }
+      ]
+    },
+    "wardens-assault": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e3PrvQvg9VeMxI",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 1)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, @scale.hunterNin.lethalAttack - 1))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+        },
+        {
+          "id": "n5exMwzxktu69hB3",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 1): Attack action or weapon",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 1))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+        },
+        {
+          "id": "n5e5x1AoFOqM5C09",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 2)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, @scale.hunterNin.lethalAttack - 2))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+        },
+        {
+          "id": "n5eQ73MzPZhVy59T",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 2): Attack action or weapon",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 2))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+        },
+        {
+          "id": "n5eWWe211k9rGoOS",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 3)",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, @scale.hunterNin.lethalAttack - 3))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+        },
+        {
+          "id": "n5eq306yClVOkPFT",
+          "type": "damage",
+          "label": "Lethal Attack (forgo 3): Attack action or weapon",
+          "damage": {
+            "parts": [
+              {
+                "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 3))d8",
+                "type": ""
+              }
+            ]
+          },
+          "oncePerTurn": true,
+          "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Blade Warden, with your Warden Weapon: forgo up to 3 dice; repeat the attack once against each creature of your choice in range, each taking the original damage plus the remaining Lethal Attack dice."
+        }
+      ]
+    },
+    "wardens-presence-blade-warden": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Out of combat, Intimidation in place of Deception or Persuasion. Creatures not allied with you take −2 to Wisdom and Charisma checks against you or your allies."
+        }
+      ]
+    },
+    "wardens-proficiency": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Proficiency in Athletics, Intimidation (Str or Dex for them) and all Blade weapons. Your Warden Weapon (one proficient weapon, not Two-Handed or Heavy) gets a property: Flurry Attack (a Bonus action weapon attack), Mortal (ignores temporary hit points) or Fatal (its [Weapon Damage] pierces 4 DR); switch after any rest; a second at 10th. Set it on the weapon item."
+        }
+      ]
+    },
+    "wardens-retaliation-blade-warden": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezKdgFlZWMAYls",
+          "type": "roll",
+          "label": "Wardens Retaliation",
+          "roll": {
+            "formula": "",
+            "note": "Reaction: your Primary Target forces you to save. One weapon attack at it first; on a hit, advantage on the save."
+          },
+          "activation": "reaction"
+        }
+      ]
+    },
+    "weight-of-violence-undertaker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e2vFAsTT7dEetU",
+          "type": "roll",
+          "label": "Demonic Aura",
+          "roll": {
+            "formula": "",
+            "note": "At the start of your turn: until the end of your next turn, creatures attacking or targeting you take your Lethal Attack when you strike them, even past its limit."
+          },
+          "cost": {
+            "pool": "carnage",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5eGte1XCu0BzRgd",
+          "type": "save",
+          "label": "Murderous Aura",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "At the start of your turn: creatures within 15 feet. Failure: 2 ranks of Demoralized or Shaken (pick).",
+          "cost": {
+            "pool": "carnage",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "wolf-techniques-wolves-legacy": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eIdVbH8Foo5Rih",
+          "type": "roll",
+          "label": "Prosthetic Tool (no action)",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn: use a Prosthetic Tool at no action cost."
+          },
+          "cost": {
+            "pool": "posture",
+            "amount": 2
+          },
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5ecwO9g0EWhXEcU",
+          "type": "roll",
+          "label": "Lethal Prosthetic",
+          "roll": {
+            "formula": "",
+            "note": "A Prosthetic Tool that deals damage or attacks: Lethal Attack against every affected creature (if you haven't used it this turn)."
+          },
+          "cost": {
+            "pool": "posture",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "wolfs-proficiency": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eCZYx2mgYa22sK",
+          "type": "roll",
+          "label": "Gain Posture",
+          "cost": {
+            "pool": "posture",
+            "amount": 1,
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, when you reduce or resist damage with a reaction feature or jutsu."
+          }
+        },
+        {
+          "id": "n5eTLzxFCgXd9aZ5",
+          "type": "roll",
+          "label": "Deflect",
+          "roll": {
+            "formula": "",
+            "note": "Reaction to damage: reduce it by 4 (10 with 1 Posture: use the Posture button)."
+          },
+          "activation": "reaction"
+        },
+        {
+          "id": "n5eed6VnfSBTewSF",
+          "type": "roll",
+          "label": "Deflect (1 Posture)",
+          "roll": {
+            "formula": "",
+            "note": "Reduce the damage by 10."
+          },
+          "cost": {
+            "pool": "posture",
+            "amount": 1
+          },
+          "activation": "reaction"
+        },
+        {
+          "id": "n5eT3hlhANqgGAcF",
+          "type": "effect",
+          "label": "Parry",
+          "effect": {
+            "name": "Parry",
+            "target": "self",
+            "changes": [],
+            "expires": "turnEnd",
+            "seconds": 6
+          },
+          "text": "Reaction to a critical hit: resistance to its damage.",
+          "activation": "reaction"
+        },
+        {
+          "id": "n5eof1uyiYZejnBs",
+          "type": "effect",
+          "label": "Parry (1 Posture)",
+          "effect": {
+            "name": "Parry",
+            "target": "self",
+            "changes": [
+              {
+                "key": "n5e.resist",
+                "value": "all",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Resistance to all damage until the start of your next turn.",
+          "activation": "reaction",
+          "cost": {
+            "pool": "posture",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5egLUppj2q9gT42",
+          "type": "roll",
+          "label": "Retaliate",
+          "roll": {
+            "formula": "",
+            "note": "Reaction to damage: the Attack action against the creature, if in your weapon's range (1 Posture: without using your reaction)."
+          },
+          "activation": "reaction"
+        },
+        {
+          "id": "n5eFK6d8326kqnB7",
+          "type": "roll",
+          "label": "Retaliate (1 Posture)",
+          "roll": {
+            "formula": "",
+            "note": "Retaliate without using your reaction."
+          },
+          "cost": {
+            "pool": "posture",
+            "amount": 1
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Proficiency in Martial Arts and Survival (Str or Dex). Posture lasts 1 minute (max 3). Lethal Attack also against Dazed or Confused. Posture Break (not counting against your exploits)."
+        }
+      ]
+    }
+  }
+}

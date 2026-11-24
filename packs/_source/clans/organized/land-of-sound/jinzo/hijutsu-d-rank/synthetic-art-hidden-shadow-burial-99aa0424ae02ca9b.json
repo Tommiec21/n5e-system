@@ -17,7 +17,14 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bio Branch",
         "components": "M"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Bio Branch]"
+        }
+      ]
     }
   },
   "ownership": {
@@ -109,7 +116,35 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ewxuucbRHCJpBW",
+        "type": "save",
+        "label": "Hidden Shadow Burial",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "A creature within 30 feet (+5 per rank). Failure: Restrained until the end of its next turn (S-Rank: until it spends an Action); an ally (B-Rank: or you) can use its Reaction to attack it with an Action jutsu or the Attack action.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

@@ -33,13 +33,60 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ebUlTo6mWCJ3M7",
+        "type": "roll",
+        "label": "Summon Bunshin",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1
+        },
+        "activation": "bonus",
+        "roll": {
+          "formula": "",
+          "note": "Bonus action: 1 Bunshin (2 at 10th, 3 at 17th). Then place them with the Bunshin button (once per Bunshin)."
+        }
+      },
+      {
+        "id": "n5eb0S4KHHVx9RU5",
+        "type": "summon",
+        "label": "Bunshin",
+        "summon": {
+          "uuid": "Compendium.n5e.summons.Actor.n5eAlLuGNsHQujqh",
+          "count": 1,
+          "template": ""
+        }
+      },
+      {
+        "id": "n5eOVCVFRdMV2xOL",
+        "type": "roll",
+        "label": "Clone summon: regain a die",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1,
+          "gain": true
+        },
+        "roll": {
+          "formula": "",
+          "note": "Summoning 2 or more clones or Bunshin at once with a Clone Ninjutsu."
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Bunshin use your Cloning maneuvers, Switch Hitter and Jack of All with your limits."
+        }
+      ]
     }
   },
   "ownership": {

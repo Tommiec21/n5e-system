@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "hebi",
-      "sourceLine": 8279
+      "sourceLine": 8279,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Viper Blood: 1 + proficiency bonus (the pool), back on any rest."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,68 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ejHGPxvVcEE3MR",
+        "type": "heal",
+        "label": "Regeneration",
+        "heal": {
+          "formula": "floor(@level / 2)",
+          "pool": "hp"
+        },
+        "text": "In combat, start of each of your turns with 1+ Viper Blood (off with 3+ combined Physical or Elemental ranks; at 0 hit points also a failed Death save). Virulent Blood at 11th: +2 per Envenomed rank."
+      },
+      {
+        "id": "n5exvAkZXYXoe5OF",
+        "type": "roll",
+        "label": "Poisoner's Kit",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, Bonus action: consume a charge."
+        },
+        "activation": "bonus",
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "viperBlood",
+          "amount": 1,
+          "gain": true
+        }
+      },
+      {
+        "id": "n5eX9HxFgzzpknvx",
+        "type": "roll",
+        "label": "Melee damage to an Envenomed creature",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "viperBlood",
+          "amount": 1,
+          "gain": true
+        }
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "viperBlood",
+        "label": "Viper Blood",
+        "value": 0,
+        "max": "1 + @prof",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "rest",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ]
   }
 }

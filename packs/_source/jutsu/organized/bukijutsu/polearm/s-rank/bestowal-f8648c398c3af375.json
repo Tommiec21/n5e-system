@@ -85,30 +85,44 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eOD31shU1uwiWS",
         "type": "attack",
-        "label": "Attack",
+        "label": "Bestowal",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
         "damage": {
           "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "4d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       },
       {
-        "id": "chain-3-parsed1",
+        "id": "n5eyQjMFaoqG7Nbd",
+        "type": "damage",
+        "label": "Chain 2/3: blood-coated",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "necrotic"
+            }
+          ]
+        },
+        "text": "Concentration: your weapon's hits, twice per turn. Chain 2: once per turn also triggers its Bleed damage."
+      },
+      {
+        "id": "n5e1JtbwH3s0FzBX",
         "type": "save",
-        "label": "Chain 3: Save",
-        "inflicts": [
-          {
-            "key": "weakened",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Weakened"
-          }
-        ],
+        "label": "Chain 3: Weakened",
         "save": {
           "abilities": [
             "str"
@@ -117,30 +131,19 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          }
+        ],
+        "text": "Chain 3: once per turn, on a hit. Failure: 1 Weakened.",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "4d6",
-        "roll": {
-          "formula": "4d6",
-          "note": "On a hit, you deal your [Weapon’s damage] + 4d6."
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "Chain 2: 2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "For the duration, your weapon deals 2d6 bonus Necrotic damage on a hit, twice per turn and once per turn, triggers all Bleed ranks conditional damage a creature has."
         }
       }
     ],
@@ -229,7 +232,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b84ef5a229ff9738"

@@ -84,10 +84,22 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e9vnbaJYFvA0eZ",
+        "type": "effect",
+        "label": "Seikuken Goitsu",
+        "effect": {
+          "name": "Seikuken Goitsu",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "In a Taijutsu stance, concentration: melee attacks against you −1d4."
+      },
+      {
+        "id": "n5eh2st2G8KiCcdz",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Exposed",
         "save": {
           "abilities": [
             "con"
@@ -96,21 +108,12 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Once per turn, your melee damage to it. Failure: Exposed until the start of your next turn (no AC or DR bonuses).",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "1d4",
-        "roll": {
-          "formula": "1d4",
-          "note": "For the duration, creatures who make a melee attack targeting you suffer a 1d4 penalty to their attack rolls."
         }
       }
     ],
@@ -185,7 +188,14 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The −1d4 on attacks against you and Exposed are applied by hand (Exposed isn't a condition card)."
+        }
+      ]
     }
   },
   "folder": "aee26bc2434fe738"

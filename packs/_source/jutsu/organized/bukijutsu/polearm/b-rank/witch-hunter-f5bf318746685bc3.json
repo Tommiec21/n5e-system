@@ -86,14 +86,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5efce8EZYnrFHip",
         "type": "attack",
-        "label": "Attack",
+        "label": "Witch Hunter",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "It cast a Ninjutsu or Genjutsu since your last turn: +1 rank of Mastery. On a hit, it loses concentration on a lower-rank Ninjutsu or Genjutsu.",
         "damage": {
           "parts": []
         },
@@ -107,17 +108,9 @@
         }
       },
       {
-        "id": "chain-2-parsed1",
+        "id": "n5eTivthi75EXr6M",
         "type": "save",
-        "label": "Chain 2: Save",
-        "inflicts": [
-          {
-            "key": "sealed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Sealed"
-          }
-        ],
+        "label": "Chain 2: Sealed",
         "save": {
           "abilities": [
             "con"
@@ -126,10 +119,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "sealed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Sealed"
+          }
+        ],
+        "text": "Chain 2. Failure: 1 Sealed per jutsu it was concentrating on (set the ranks).",
         "damage": {
           "parts": []
         }
@@ -221,20 +221,21 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5efce8EZYnrFHip",
               "type": "attack",
-              "label": "Attack",
+              "label": "Witch Hunter",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "It cast a Ninjutsu or Genjutsu since your last turn: +1 rank of Mastery. On a hit, it loses concentration on a lower-rank Ninjutsu or Genjutsu.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(5d6) + (1d6)",
+                "extraDice": "5d6 + 1d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -242,17 +243,9 @@
               }
             },
             {
-              "id": "chain-2-parsed1",
+              "id": "n5eTivthi75EXr6M",
               "type": "save",
-              "label": "Chain 2: Save",
-              "inflicts": [
-                {
-                  "key": "sealed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Sealed"
-                }
-              ],
+              "label": "Chain 2: Sealed",
               "save": {
                 "abilities": [
                   "con"
@@ -261,10 +254,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "sealed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Sealed"
+                }
+              ],
+              "text": "Chain 2. Failure: 1 Sealed per jutsu it was concentrating on (set the ranks).",
               "damage": {
                 "parts": []
               }
@@ -272,20 +272,21 @@
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5efce8EZYnrFHip",
               "type": "attack",
-              "label": "Attack",
+              "label": "Witch Hunter",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "It cast a Ninjutsu or Genjutsu since your last turn: +1 rank of Mastery. On a hit, it loses concentration on a lower-rank Ninjutsu or Genjutsu.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(5d6) + (2d6)",
+                "extraDice": "5d6 + 2d6",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -293,17 +294,9 @@
               }
             },
             {
-              "id": "chain-2-parsed1",
+              "id": "n5eTivthi75EXr6M",
               "type": "save",
-              "label": "Chain 2: Save",
-              "inflicts": [
-                {
-                  "key": "sealed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Sealed"
-                }
-              ],
+              "label": "Chain 2: Sealed",
               "save": {
                 "abilities": [
                   "con"
@@ -312,10 +305,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "sealed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Sealed"
+                }
+              ],
+              "text": "Chain 2. Failure: 1 Sealed per jutsu it was concentrating on (set the ranks).",
               "damage": {
                 "parts": []
               }
@@ -323,7 +323,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "df4eaad46b8ce1b6"

@@ -524,7 +524,53 @@ Additive atlas slice based on 55f5a70; 13 new entries, 20 total, relationships o
 ## GM04c — Codex, 2026-11-20
 
 Additive selective-import batch based on 2d04d62. Seven new entries (27 total), opt-in missing-link additions and screenshot-driven contrast correction. No recent work deleted or regenerated. Five focused tests/lint passed; PR/main reserved. No live testing or installed changes. GM04d additional geography/figures and GM06 design polish remain documented; GM05 next.
+- 2026-11-20 (King, standing rule): a feature's level always means the character level of the character who has the feature, never a clan or class level. Don't ask which level again.
+
+## AMP1e — Claude, 2026-11-20 (0.69.0-alpha.1)
+- Amp card `outsideLimits`: the Amp limits skip it. DYNAMIC FORM! and Flawless use it. Ending `finisherCast` ends Amps when a Finisher is cast (workflow/cast.mjs).
+- Stances are audit status `stance`; `flags.n5e.notAmp` keeps a document out of the Amp audit.
+- Condition cards: `system.choose` (bearer picks in chat), `lvl()` in changes read from the applier's character level at placement. Mastery value "Source ×N" = N ranks.
+- Coordinated is a condition (King Q-E4): `nara-combat-coordinated`, `nara-diplomatic-coordinated`; no Combat Coordinated Amp cards.
+
+## AMP1f batch 1 — Claude, 2026-11-20 (0.70.0-alpha.1)
+- Jutsu Amps: owner kind `jutsu`, typeless (Hijutsu too, King Q-F2/Q-F3), a card per cast rank (`system.rank`, King Q-F1), picked by the cast card's rank. Options menu: `system.choose` on the card.
+- Rebuild with tools/content/build-jutsu-amp-cards.py after the other Amp builders. Rejected jutsu carry `flags.n5e.notAmp`.
+- Batch 4 (0.73.0-alpha.1) finishes AMP1f's review (all 4 batches). New: `system.endsWith` on Amp cards (ends with another Amp, frees its concentration), a pause button (`end: "pause"`, no aftermath), aura `also` groups (rules/auras.mjs `expandAuras`), condition cards' `statuses` and `endsAt: "fullRest"`, and saves against a cast card carry `against:<jutsu fact>`. Codex's Journal Desk files untouched.
+
+## STD6d Weapon Specialist — Claude, 2026-11-21 (0.74.0-alpha.1)
+- `content/automation/weapon-specialist.json` (101 features), applied by `tools/content/apply-automation.mjs`; review table `docs/classes/weapon-specialist-automation.md`.
+- Engine: class level-up options as roll facts (`option:<key>:<value>`, rules/elements.mjs rollOptions), activity cost `formula` (by level or rolled; workflow/resources.mjs), table `dropEffects`.
+- Codex's Journal Desk files untouched.
+
+## STD6d Scout-Nin — Claude, 2026-11-21 (0.75.0-alpha.1)
+- `content/automation/scout-nin.json` (187 features); review table `docs/classes/scout-nin-automation.md`. New feature pools: chakraBarrier, ghostfire, tacticalInsight.
+- Engine: placed effect values resolve the caster's `@prof` and `@abilities.<a>.mod` (workflow/trackers.mjs; aura child rules too); the rule validator accepts those forms.
+- Codex's Journal Desk files untouched.
+
+## Class & Clan Summons — Claude, 2026-11-21 (0.76.0-alpha.1)
+- New Actor compendium `summons` (packs/_source/summons, built by tools/content/build-summons.mjs): Bunshin (Scout-Nin › Cloning Scout) and Void Soul (Scout-Nin › Void Heart Scout).
+- Summoner links: `flags.n5e.fromSummoner` on an Allied NPC template (rules/summoner-links.mjs), applied by workflow/allied.mjs placeAllied; compendium templates are imported once and reused. tools/check.mjs now checks Actor packs.
+- Codex's Journal Desk files untouched.
+
+## STD6d Hunter-Nin and Class & Clan Limits — Claude, 2026-11-21 (0.77.0-alpha.1)
+- `content/automation/hunter-nin.json` (86 features); Skilled Exploits pool 1 + prof per Long Rest (King Q-D24).
+- New world setting `limitRecovery` and menu `limitsConfig` (applications/settings/limits-config.mjs, templates/apps/limits-config.hbs, rules/recovery-overrides.mjs); applied in data/actor/creature.mjs (pools) and workflow/amp-cards.mjs (Amp uses). Option-gated effects: `flags.n5e.requiresOption` (documents/active-effect.mjs, rules/features.mjs optionChosen).
+- Only lines were added to shared files (module/settings.mjs). Codex's Journal Desk files untouched.
+- 0.77.1-alpha.1 (King Q-D25): damage rule elements take `optional: true`: an unticked row in the damage window (rules/roll-math.mjs diceParts/composeDice `on`, dice/roll-dialog.mjs). Lethal Attack uses it.
+
+## STD6d Genjutsu Specialist — Claude, 2026-11-21 (0.78.0-alpha.1)
+- `content/automation/genjutsu-specialist.json` (107 features). Summons pack: Duplicity and Phantasm (tools/content/build-summons.mjs; folders Genjutsu Specialist › Beguiler / Illusionist). New condition card Mentally Compromised.
+- Engine: `jutsu:id:<identifier>` roll fact (rules/jutsu-facts.mjs); `n5e.keywordAbility.discipline:<d>` (data/item/jutsu.mjs, config/effect-fields.mjs).
+- Codex's Journal Desk files untouched.
+
+## STD6e E1 Land of Earth — Claude, 2026-11-21 (0.79.0-alpha.1)
+- Clan tables `content/automation/clans/*.json` (bakuton, futton, shi-hou, yoton), applied by tools/content/apply-automation.mjs (clanItems); review tables docs/clans/. Summons: Clay Spider, Bird, Centipede, Dragon (folder Bakuton).
+- Engine: save DC source / attack discipline "highest" (workflow/activity-buttons.mjs highestDiscipline); summon rank → `@rankValue` in summoner links (workflow/allied.mjs, rules/summoner-links.mjs); table entry `system` fields.
+- Codex's Journal Desk files untouched.
+- 0.80.0-alpha.1 STD6e E2 Land of Wind: clan tables fushin, hanami, jiton, konjiki, shakuton. Hijutsu can carry their own cast options (Scorch, Alomancy Infusion, Monstrous Burst/Healers Touch).
 
 ## GM05 — Codex, 2026-11-20
 
 Native idea library and existing-tool entry points implemented on 7f344c0. Existing campaign data/gameplay logic preserved. Three focused offline tests/lint passed; no live testing. PR/main checks reserved. docs/GM_WORKSPACE.md records exact integration behavior, GM05b expansion and remaining batches. GM04c release confirmed v0.68.1-alpha.3.
+
+2026-11-24: reconciled with 0682cbff / 0.93.0-alpha.1; all newer gameplay work retained. Earlier merge was not executed because approval review hit a usage limit. GM05 now targets 0.93.1-alpha.1. No local tests repeated.

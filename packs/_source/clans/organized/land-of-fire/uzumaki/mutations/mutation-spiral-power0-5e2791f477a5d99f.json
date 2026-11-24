@@ -15,7 +15,41 @@
           "Mutated Feature: Binding Chains"
         ],
         "manualReplacement": true
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutates Binding Chains. Once per turn, casting a jutsu: one benefit (two at 7th, all at 15th): cast dialog options."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Full Power",
+          "appliesTo": {
+            "inflictsCondition": true
+          },
+          "note": "Once per turn: +1 rank of the inflicted condition.",
+          "cost": {
+            "pool": "spiralCells",
+            "amount": 1
+          }
+        },
+        {
+          "label": "Controlled Power",
+          "appliesTo": {},
+          "note": "Once per turn, a concentration jutsu: it counts as two jutsu you concentrate on; once-per-casting class or clan triggers happen twice.",
+          "cost": {
+            "pool": "spiralCells",
+            "amount": 2
+          }
+        },
+        {
+          "label": "Energizing Power",
+          "appliesTo": {},
+          "note": "Once per turn: a creature failing its save by 5 or more gives back 1 Spiral Cell (use the gain button)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -48,6 +82,22 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e4QvoUmuma8IXK",
+        "type": "roll",
+        "label": "Energizing Power: regain",
+        "roll": {
+          "formula": "",
+          "note": "A creature failed by 5 or more."
+        },
+        "cost": {
+          "pool": "spiralCells",
+          "amount": 1,
+          "gain": true
+        }
+      }
+    ]
   }
 }

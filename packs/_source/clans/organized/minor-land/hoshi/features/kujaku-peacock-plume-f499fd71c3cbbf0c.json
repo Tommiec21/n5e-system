@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "hoshi",
-      "sourceLine": 7863
+      "sourceLine": 7863,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The clan item's copy of Kujaku Mode is the Amp card's text."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,77 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eCxaSv2xCJVyIM",
+        "type": "effect",
+        "label": "Kujaku Mode",
+        "effect": {
+          "name": "Kujaku Mode",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "amp": "kujaku-mode"
+        },
+        "text": "Bonus action, 1 minute, once per short rest; Star Sickness's penalties are suppressed.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5ek1WNmMOOXggd3",
+        "type": "effect",
+        "label": "Kujaku Mode (7th)",
+        "effect": {
+          "name": "Kujaku Mode (7th)",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "amp": "kujaku-mode-7"
+        },
+        "text": "From 7th level.",
+        "activation": "bonus",
+        "minLevel": 7
+      },
+      {
+        "id": "n5eFnsdoQiueFKSK",
+        "type": "effect",
+        "label": "Kujaku Mode (11th)",
+        "effect": {
+          "name": "Kujaku Mode (11th)",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "amp": "kujaku-mode-11"
+        },
+        "text": "From 11th level.",
+        "activation": "bonus",
+        "minLevel": 11
+      },
+      {
+        "id": "n5eggq3u9TkJSSvP",
+        "type": "effect",
+        "label": "Kujaku Mode (15th)",
+        "effect": {
+          "name": "Kujaku Mode (15th)",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "amp": "kujaku-mode-15"
+        },
+        "text": "From 15th level.",
+        "activation": "bonus",
+        "minLevel": 15
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "sr",
+      "recovery": []
+    }
   }
 }

@@ -85,9 +85,19 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eiSUyClGtgq4fF",
         "type": "save",
-        "label": "Save",
+        "label": "Demonic Culling: Eye Basket",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "prone",
@@ -102,29 +112,18 @@
             "label": "Restrained"
           }
         ],
-        "save": {
-          "abilities": [
-            "str"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Within 10 feet of a point in range. Failure: Prone and Restrained (resave at the start of its turns); success: half, nothing else. Chain 2: Bonus action: move Restrained creatures 20 feet, staying in your weapon's range.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "3d8",
-        "roll": {
-          "formula": "3d8",
-          "note": "All creatures in range must make a Strength saving throw taking your [Weapons damage] +3d8 and are knocked Prone and Restrained on a failed save, and only half damage with no conditions on a success. At the start of a Restrained creatures turn, they remake the save, ending the conditions on a success."
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "3d8",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -211,9 +210,99 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eiSUyClGtgq4fF",
+              "type": "save",
+              "label": "Demonic Culling: Eye Basket",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "Within 10 feet of a point in range. Failure: Prone and Restrained (resave at the start of its turns); success: half, nothing else. Chain 2: Bonus action: move Restrained creatures 20 feet, staying in your weapon's range.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(3d8) + (1d8)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eiSUyClGtgq4fF",
+              "type": "save",
+              "label": "Demonic Culling: Eye Basket",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "Within 10 feet of a point in range. Failure: Prone and Restrained (resave at the start of its turns); success: half, nothing else. Chain 2: Bonus action: move Restrained creatures 20 feet, staying in your weapon's range.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(3d8) + (2d8)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "a56cd4d54013a971"

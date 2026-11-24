@@ -85,16 +85,20 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5elyJd4fZ8dQAnC",
         "type": "attack",
-        "label": "Attack",
+        "label": "Living Force",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
         "damage": {
           "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
             {
               "formula": "7d12",
               "type": "fire"
@@ -103,10 +107,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5e1Zy9GC3srHqhH",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Living Force: ground",
         "save": {
           "abilities": [
             "dex"
@@ -114,13 +117,22 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "Creatures within 15 feet: the damage dealt (roll it or use the attack's total). Success: half. Chain 3: regain 4 chakra per failure (up to the cost).",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "7d12",
+              "type": "fire"
+            }
+          ]
         }
       }
     ],
@@ -197,7 +209,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "8a9c91a8d73fad43"

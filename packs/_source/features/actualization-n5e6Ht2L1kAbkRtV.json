@@ -67,11 +67,45 @@
         "roll": {
           "formula": "",
           "note": "Add it to a Deception, Insight, Perception or Persuasion check."
-        }
+        },
+        "text": "Add the die to a Deception, Insight, Perception or Persuasion check."
       }
     ]
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5eVKiEDrn5YJGKX",
+      "name": "Actualization: Genjutsu with Charisma",
+      "type": "generic",
+      "img": "icons/svg/daze.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "n5e.keywordAbility.discipline:gen",
+          "value": "cha",
+          "mode": 2,
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5e6Ht2L1kAbkRtV.n5eVKiEDrn5YJGKX"
+    }
+  ],
   "folder": "n5eDeleFmTVw509J",
   "sort": 0,
   "ownership": {
@@ -80,6 +114,13 @@
   "flags": {
     "n5e": {
       "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Genjutsu you cast may use Charisma in place of Wisdom (its effect: Charisma when it's higher). Illusion checks may use Charisma too: pick it when you roll. Actualization Dice: 1 + proficiency bonus per Long Rest (the pool). The cast dialog's options spend them: +rank d6 damage, or −1 to the targets' save per die (subtract it from each save). Mastery in Illusions at 1st, 7th and 13th comes from leveling up."
+        }
+      ],
       "castOptions": [
         {
           "label": "Actualization: +rank d6 damage (1 die)",

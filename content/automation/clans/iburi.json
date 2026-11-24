@@ -1,0 +1,2041 @@
+{
+  "clan": "iburi",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "iburi-aberration-of-smoke": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eLviBPZXNoS9FG",
+          "type": "effect",
+          "label": "Aberration of Smoke",
+          "effect": {
+            "name": "Aberration of Smoke",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.traits.speed.fly",
+                "value": "20",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Action, 1 minute (then 10 minutes before again): fly 20 feet, fit through any gap smoke could; resistance to all damage but vulnerability to wind; no HS jutsu, Taijutsu or Bukijutsu. End it free where you fit; trapped, 4d6 bludgeoning each turn.",
+          "activation": "action"
+        }
+      ]
+    },
+    "iburi-ashen-monarch": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e3A5jaM0z0E0CA",
+          "type": "roll",
+          "label": "Ashen Monarch",
+          "roll": {
+            "formula": "1d20 + max(@abilities.con.mod, @abilities.int.mod)",
+            "note": "Reaction, entering or starting your turn in a cloud, gas, haze or smoke: Ninshou with your Hijutsu Flexibility ability vs its jutsu save DC (or its Standard Level DC). Success: you control it (immune; Bonus action: move it 20 feet or reshape to a 20-foot radius; your highest save DC); its caster loses concentration and you concentrate free for up to 1 minute."
+          },
+          "activation": "reaction"
+        }
+      ]
+    },
+    "iburi-black-lung": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5es7ayrAYM6YEf4",
+          "type": "save",
+          "label": "Black Lung",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "exhaustion",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Exhaustion"
+            }
+          ],
+          "text": "Action: a 20-foot radius within 60 feet for 1 minute (or Reaction: turn a cloud you control black). Obscured, difficult terrain for creatures you choose (a Bonus action moves it 30 feet). Creatures you choose starting or ending their turn there or first entering it. Failure: a rank of Exhaustion (lost after 1 minute outside). Once per rest.",
+          "activation": "action",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "rest",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      }
+    },
+    "iburi-body-oxidation-technique": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5emH0YrePZSxl7d",
+          "type": "save",
+          "label": "Body Oxidation",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "incapacitated",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Incapacitated"
+            }
+          ],
+          "text": "A creature within 30 feet. Failure: you enter it (Incapacitated, can't move); you act through its body; harm to you hits it; its damage makes it resave and you take half as necrotic. It resaves at the start of each of its turns.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "iburi-burning-sweep": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ewNZR8Yjo2asT5",
+          "type": "save",
+          "label": "Burning Sweep",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "burned",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Burned"
+            },
+            {
+              "key": "envenomed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Envenomed"
+            },
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            }
+          ],
+          "text": "A 60-foot cone (speed 0: advantage). Failure: the damage and two of 1 rank of Burned, Envenomed or Dazzled (the same twice is allowed).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d8",
+                "type": "fire"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5ewNZR8Yjo2asT5",
+                "type": "save",
+                "label": "Burning Sweep",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  },
+                  {
+                    "key": "envenomed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Envenomed"
+                  },
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "text": "A 60-foot cone (speed 0: advantage). Failure: the damage and two of 1 rank of Burned, Envenomed or Dazzled (the same twice is allowed).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d8) + (1d8)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5ewNZR8Yjo2asT5",
+                "type": "save",
+                "label": "Burning Sweep",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  },
+                  {
+                    "key": "envenomed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Envenomed"
+                  },
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ],
+                "text": "A 60-foot cone (speed 0: advantage). Failure: the damage and two of 1 rank of Burned, Envenomed or Dazzled (the same twice is allowed).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d8) + (2d8)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Smoke Style",
+          "appliesTo": {
+            "namePrefix": "Burning Sweep"
+          },
+          "note": "In your Smoke Style stance: Corroded is also a choice (acid or poison resistance gives no advantage)."
+        }
+      ]
+    },
+    "iburi-chimney-dance": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5evbbV0pgqhdTkg",
+          "type": "effect",
+          "label": "Chimney Dance",
+          "effect": {
+            "name": "Chimney Dance",
+            "target": "self",
+            "changes": [
+              {
+                "key": "n5e.damage.weapon",
+                "value": "1d8",
+                "mode": 2
+              },
+              {
+                "key": "n5e.damage.unarmed",
+                "value": "1d8",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action, concentration: your weapon or unarmed damage becomes poison or fire, +1d8 (+1d8 at B and at S). A critical hit: 1 rank of Envenomed or Blinded until the end of its next turn.",
+          "activation": "bonus"
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Smoke Style",
+          "appliesTo": {
+            "namePrefix": "Chimney Dance"
+          },
+          "note": "In your Smoke Style stance: your attacks of opportunity have advantage."
+        }
+      ]
+    },
+    "iburi-cinder-field": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eAScnBrtIVAbJ4",
+          "type": "damage",
+          "label": "Cinder Field: entering or starting",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d8",
+                "type": "fire"
+              }
+            ]
+          },
+          "text": "Others entering or starting their turn in your 15-foot radius (not with a breathing apparatus); +4 fire per 5 feet they willingly move in it."
+        },
+        {
+          "id": "n5ePtCS8u05FPcL9",
+          "type": "damage",
+          "label": "Cinder Field: moving",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4",
+                "type": "fire"
+              }
+            ]
+          },
+          "text": "Per 5 feet a creature willingly moves inside."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your fire damage to creatures inside +2 (+4 at A). It heavily obscures you. B-Rank: cast it as a Reaction to an attack of opportunity."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eAScnBrtIVAbJ4",
+                "type": "damage",
+                "label": "Cinder Field: entering or starting",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (1d8)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "Others entering or starting their turn in your 15-foot radius (not with a breathing apparatus); +4 fire per 5 feet they willingly move in it."
+              },
+              {
+                "id": "n5ePtCS8u05FPcL9",
+                "type": "damage",
+                "label": "Cinder Field: moving",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "4",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "Per 5 feet a creature willingly moves inside."
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eAScnBrtIVAbJ4",
+                "type": "damage",
+                "label": "Cinder Field: entering or starting",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (2d8)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "Others entering or starting their turn in your 15-foot radius (not with a breathing apparatus); +4 fire per 5 feet they willingly move in it."
+              },
+              {
+                "id": "n5ePtCS8u05FPcL9",
+                "type": "damage",
+                "label": "Cinder Field: moving",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "4",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "Per 5 feet a creature willingly moves inside."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eAScnBrtIVAbJ4",
+                "type": "damage",
+                "label": "Cinder Field: entering or starting",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (3d8)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "Others entering or starting their turn in your 15-foot radius (not with a breathing apparatus); +4 fire per 5 feet they willingly move in it."
+              },
+              {
+                "id": "n5ePtCS8u05FPcL9",
+                "type": "damage",
+                "label": "Cinder Field: moving",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "4",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "Per 5 feet a creature willingly moves inside."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "iburi-fume-substitution": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e5ZjaFxe9R4T1g",
+          "type": "effect",
+          "label": "Fume Substitution",
+          "effect": {
+            "name": "Fume Substitution",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "4",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Reaction: +4 AC against the trigger and every attack until the start of your next turn.",
+          "activation": "reaction"
+        },
+        {
+          "id": "n5eWUfglo59YAeD0",
+          "type": "save",
+          "label": "Fume Substitution: missed",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            },
+            {
+              "key": "envenomed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Envenomed"
+            }
+          ],
+          "text": "Each attacker that misses. Failure: a rank of Dazzled or Envenomed (your choice).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Smoke Style",
+          "appliesTo": {
+            "namePrefix": "Fume Substitution"
+          },
+          "note": "In your Smoke Style stance: move up to 10 feet each time an attack misses you."
+        }
+      ]
+    },
+    "iburi-incinerating-burst": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e6e11ZFJFMahie",
+          "type": "attack",
+          "label": "Incinerating Burst (Ninjutsu)",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Move half your speed next to a hostile creature. Beating AC by 5: one more attack on another creature (up to twice); Chain 2: no need to beat it by 5. Chain 1: after a hit, move half your speed without provoking. B-Rank: a Reaction for an attack of opportunity.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d12",
+                "type": "fire"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eHxxRFNWqAsddl",
+          "type": "attack",
+          "label": "Incinerating Burst (Taijutsu)",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "[Unarmed Damage] or [Weapon Damage] + 1d12 fire.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d12",
+                "type": "fire"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eJRk988BKUL5hp",
+          "type": "save",
+          "label": "Incinerating Burst: on a hit",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "burned",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Burned"
+            }
+          ],
+          "text": "Failure: Burned.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "It has no cost increase in its upcast."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5e6e11ZFJFMahie",
+                "type": "attack",
+                "label": "Incinerating Burst (Ninjutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Move half your speed next to a hostile creature. Beating AC by 5: one more attack on another creature (up to twice); Chain 2: no need to beat it by 5. Chain 1: after a hit, move half your speed without provoking. B-Rank: a Reaction for an attack of opportunity.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d12) + (1d12)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eHxxRFNWqAsddl",
+                "type": "attack",
+                "label": "Incinerating Burst (Taijutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "[Unarmed Damage] or [Weapon Damage] + 1d12 fire.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d12) + (1d12)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eJRk988BKUL5hp",
+                "type": "save",
+                "label": "Incinerating Burst: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "Failure: Burned.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5e6e11ZFJFMahie",
+                "type": "attack",
+                "label": "Incinerating Burst (Ninjutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Move half your speed next to a hostile creature. Beating AC by 5: one more attack on another creature (up to twice); Chain 2: no need to beat it by 5. Chain 1: after a hit, move half your speed without provoking. B-Rank: a Reaction for an attack of opportunity.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d12) + (2d12)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eHxxRFNWqAsddl",
+                "type": "attack",
+                "label": "Incinerating Burst (Taijutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "[Unarmed Damage] or [Weapon Damage] + 1d12 fire.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d12) + (2d12)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eJRk988BKUL5hp",
+                "type": "save",
+                "label": "Incinerating Burst: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "Failure: Burned.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5e6e11ZFJFMahie",
+                "type": "attack",
+                "label": "Incinerating Burst (Ninjutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Move half your speed next to a hostile creature. Beating AC by 5: one more attack on another creature (up to twice); Chain 2: no need to beat it by 5. Chain 1: after a hit, move half your speed without provoking. B-Rank: a Reaction for an attack of opportunity.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d12) + (3d12)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eHxxRFNWqAsddl",
+                "type": "attack",
+                "label": "Incinerating Burst (Taijutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "[Unarmed Damage] or [Weapon Damage] + 1d12 fire.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d12) + (3d12)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eJRk988BKUL5hp",
+                "type": "save",
+                "label": "Incinerating Burst: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "Failure: Burned.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e6e11ZFJFMahie",
+                "type": "attack",
+                "label": "Incinerating Burst (Ninjutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Move half your speed next to a hostile creature. Beating AC by 5: one more attack on another creature (up to twice); Chain 2: no need to beat it by 5. Chain 1: after a hit, move half your speed without provoking. B-Rank: a Reaction for an attack of opportunity.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d12) + (4d12)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eHxxRFNWqAsddl",
+                "type": "attack",
+                "label": "Incinerating Burst (Taijutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "[Unarmed Damage] or [Weapon Damage] + 1d12 fire.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d12) + (4d12)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eJRk988BKUL5hp",
+                "type": "save",
+                "label": "Incinerating Burst: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "Failure: Burned.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "iburi-incinerating-missile": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eXqXQZjTYqQ37q",
+          "type": "attack",
+          "label": "Incinerating Missile (Ninjutsu)",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Chain 3: beating AC by 5 regains the Action or Bonus action.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d12",
+                "type": "fire"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eqkDz2apgPQaFN",
+          "type": "attack",
+          "label": "Incinerating Missile (Taijutsu)",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "[Unarmed Damage] or [Weapon Damage] + 3d12 fire.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d12",
+                "type": "fire"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "unarmed",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eCT6JFzjLGTLh9",
+          "type": "save",
+          "label": "Incinerating Missile: on a hit",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            },
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            },
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            }
+          ],
+          "text": "Failure: pushed 20 feet, Prone and Blinded until the end of its next turn. Finisher: at disadvantage, and Confused for 1 minute (a Constitution save ends it).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eXqXQZjTYqQ37q",
+                "type": "attack",
+                "label": "Incinerating Missile (Ninjutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Chain 3: beating AC by 5 regains the Action or Bonus action.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d12) + (1d12)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eqkDz2apgPQaFN",
+                "type": "attack",
+                "label": "Incinerating Missile (Taijutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "[Unarmed Damage] or [Weapon Damage] + 3d12 fire.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d12) + (1d12)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eCT6JFzjLGTLh9",
+                "type": "save",
+                "label": "Incinerating Missile: on a hit",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  },
+                  {
+                    "key": "confused",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Confused"
+                  }
+                ],
+                "text": "Failure: pushed 20 feet, Prone and Blinded until the end of its next turn. Finisher: at disadvantage, and Confused for 1 minute (a Constitution save ends it).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eXqXQZjTYqQ37q",
+                "type": "attack",
+                "label": "Incinerating Missile (Ninjutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Chain 3: beating AC by 5 regains the Action or Bonus action.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d12) + (2d12)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eqkDz2apgPQaFN",
+                "type": "attack",
+                "label": "Incinerating Missile (Taijutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "[Unarmed Damage] or [Weapon Damage] + 3d12 fire.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d12) + (2d12)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eCT6JFzjLGTLh9",
+                "type": "save",
+                "label": "Incinerating Missile: on a hit",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  },
+                  {
+                    "key": "confused",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Confused"
+                  }
+                ],
+                "text": "Failure: pushed 20 feet, Prone and Blinded until the end of its next turn. Finisher: at disadvantage, and Confused for 1 minute (a Constitution save ends it).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eXqXQZjTYqQ37q",
+                "type": "attack",
+                "label": "Incinerating Missile (Ninjutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Chain 3: beating AC by 5 regains the Action or Bonus action.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d12) + (3d12)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eqkDz2apgPQaFN",
+                "type": "attack",
+                "label": "Incinerating Missile (Taijutsu)",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "[Unarmed Damage] or [Weapon Damage] + 3d12 fire.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d12) + (3d12)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "unarmed",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eCT6JFzjLGTLh9",
+                "type": "save",
+                "label": "Incinerating Missile: on a hit",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  },
+                  {
+                    "key": "confused",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Confused"
+                  }
+                ],
+                "text": "Failure: pushed 20 feet, Prone and Blinded until the end of its next turn. Finisher: at disadvantage, and Confused for 1 minute (a Constitution save ends it).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "iburi-orbital-drop": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5elWsu13HTah2Iz",
+          "type": "save",
+          "label": "Orbital Drop",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "burned",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Burned"
+            },
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            }
+          ],
+          "text": "Move your speed, then a 60-foot radius at a point within 60 feet. Failure: the damage, 2 ranks of Burned and Blinded for 1 minute (a Bonus action and a Constitution save ends it); success: half. The area becomes difficult terrain.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "7d10",
+                "type": "fire"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "iburi-smoke-aegis": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eJ6rYZG7t4jcbS",
+          "type": "heal",
+          "label": "Smoke Aegis: barrier",
+          "heal": {
+            "formula": "2d6 + 8",
+            "pool": "tempHp"
+          },
+          "text": "Reaction, an ally within your movement: take its space, push it up to 10 feet. Against an attack: it hits you; a smoke barrier intercepts it.",
+          "activation": "reaction"
+        },
+        {
+          "id": "n5eEqJNO5AdQ0HuF",
+          "type": "roll",
+          "label": "Smoke Aegis: save in its place",
+          "roll": {
+            "formula": "",
+            "note": "Against a failed save: you roll it with a rank of Mastery (+1 per rank). Reducing the damage to 0 or succeeding: cast a 1-Action Iburi Hijutsu at the trigger."
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eJ6rYZG7t4jcbS",
+                "type": "heal",
+                "label": "Smoke Aegis: barrier",
+                "heal": {
+                  "formula": "2d6 + 8",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction, an ally within your movement: take its space, push it up to 10 feet. Against an attack: it hits you; a smoke barrier intercepts it.",
+                "activation": "reaction"
+              },
+              {
+                "id": "n5eEqJNO5AdQ0HuF",
+                "type": "roll",
+                "label": "Smoke Aegis: save in its place",
+                "roll": {
+                  "formula": "",
+                  "note": "Against a failed save: you roll it with a rank of Mastery (+1 per rank). Reducing the damage to 0 or succeeding: cast a 1-Action Iburi Hijutsu at the trigger."
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eJ6rYZG7t4jcbS",
+                "type": "heal",
+                "label": "Smoke Aegis: barrier",
+                "heal": {
+                  "formula": "2d6 + 8",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction, an ally within your movement: take its space, push it up to 10 feet. Against an attack: it hits you; a smoke barrier intercepts it.",
+                "activation": "reaction"
+              },
+              {
+                "id": "n5eEqJNO5AdQ0HuF",
+                "type": "roll",
+                "label": "Smoke Aegis: save in its place",
+                "roll": {
+                  "formula": "",
+                  "note": "Against a failed save: you roll it with a rank of Mastery (+1 per rank). Reducing the damage to 0 or succeeding: cast a 1-Action Iburi Hijutsu at the trigger."
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eJ6rYZG7t4jcbS",
+                "type": "heal",
+                "label": "Smoke Aegis: barrier",
+                "heal": {
+                  "formula": "2d6 + 8",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction, an ally within your movement: take its space, push it up to 10 feet. Against an attack: it hits you; a smoke barrier intercepts it.",
+                "activation": "reaction"
+              },
+              {
+                "id": "n5eEqJNO5AdQ0HuF",
+                "type": "roll",
+                "label": "Smoke Aegis: save in its place",
+                "roll": {
+                  "formula": "",
+                  "note": "Against a failed save: you roll it with a rank of Mastery (+1 per rank). Reducing the damage to 0 or succeeding: cast a 1-Action Iburi Hijutsu at the trigger."
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "iburi-smoke-dragon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eEAMKRpmB1xL9R",
+          "type": "save",
+          "label": "Smoke Dragon",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            },
+            {
+              "key": "envenomed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Envenomed"
+            }
+          ],
+          "text": "A 60 by 10-foot line (its range line says 90; you choose where it stops). Failure: the damage and 1 rank of Dazzled and Envenomed (+1 each at A).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "fire"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eEAMKRpmB1xL9R",
+                "type": "save",
+                "label": "Smoke Dragon",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  },
+                  {
+                    "key": "envenomed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Envenomed"
+                  }
+                ],
+                "text": "A 60 by 10-foot line (its range line says 90; you choose where it stops). Failure: the damage and 1 rank of Dazzled and Envenomed (+1 each at A).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (1d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eEAMKRpmB1xL9R",
+                "type": "save",
+                "label": "Smoke Dragon",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  },
+                  {
+                    "key": "envenomed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Envenomed"
+                  }
+                ],
+                "text": "A 60 by 10-foot line (its range line says 90; you choose where it stops). Failure: the damage and 1 rank of Dazzled and Envenomed (+1 each at A).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (2d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eEAMKRpmB1xL9R",
+                "type": "save",
+                "label": "Smoke Dragon",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  },
+                  {
+                    "key": "envenomed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Envenomed"
+                  }
+                ],
+                "text": "A 60 by 10-foot line (its range line says 90; you choose where it stops). Failure: the damage and 1 rank of Dazzled and Envenomed (+1 each at A).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (3d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Smoke Style",
+          "appliesTo": {
+            "namePrefix": "Smoke Dragon"
+          },
+          "note": "In your Smoke Style stance: travel with the dragon without spending movement; creatures within 10 feet where you stop provoke attacks of opportunity."
+        }
+      ]
+    },
+    "iburi-smoke-style": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus action: the Smoke Style chakra stance (the clan's stance item)."
+        }
+      ]
+    },
+    "iburi-stance-smoke-style": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e6kCfshNm6VyF2",
+          "type": "effect",
+          "label": "Dancing Cinder",
+          "effect": {
+            "name": "Dancing Cinder",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.bonuses.speed",
+                "value": "lvl(1:5,7:10,15:15)",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Variant (swap as a Bonus action): the Cinder Bow; once per round an attack of opportunity without your reaction; creatures moving within 10 feet provoke.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eTChKUn0mHE5Ra",
+          "type": "attack",
+          "label": "Cinder Bow",
+          "attack": {
+            "discipline": "highest",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "A Longbow with a d12 fire die using your Hijutsu Flexibility ability. Beating AC by 5, once per turn: a rank of Dazzled.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d12 + max(@abilities.con.mod, @abilities.int.mod)",
+                "type": "fire"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eCDZzWmbeZZHHO",
+          "type": "effect",
+          "label": "Fume Brawler",
+          "effect": {
+            "name": "Fume Brawler",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.bonuses.speed",
+                "value": "lvl(1:5,7:10,15:15)",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Variant: Smoke Chains; once per round Dash or Disengage free on your turn; a Fire jutsu or a passed Strength or Dexterity save lets you smoke-step 15 feet (opportunity attacks at disadvantage).",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eRu59KSpMPhGxK",
+          "type": "attack",
+          "label": "Smoke Chains",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "A Whip with a d10 fire die using your Hijutsu Flexibility ability. Beating AC by 5, once per turn: a rank of Envenomed.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d10 + max(@abilities.con.mod, @abilities.int.mod)",
+                "type": "fire"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Smoke Style chakra stance: alongside a Taijutsu or Bukijutsu stance; +5 speed (+10 at 7th, +15 at 15th; the variant effects add it). At 7th, without Extra Attack, the Attack action attacks twice. Iburi Hijutsu with a Smoke Style line have it as a cast dialog option."
+        }
+      ]
+    },
+    "iburi-sulfur-bomb": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezGfR6N9BtvyxL",
+          "type": "save",
+          "label": "Sulfur Bomb",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "A 15-foot radius within 60 feet. Failure: the damage and Prone; success: half. The smoke stays 1 minute (heavily obscured; you see through it); 10 minutes at B, or dispersed free.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "fire"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5etPAv2LNfs8IMT",
+          "type": "damage",
+          "label": "Sulfur Bomb: end of turn",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d8",
+                "type": "poison"
+              }
+            ]
+          },
+          "text": "A creature ending its turn in the smoke."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5ezGfR6N9BtvyxL",
+                "type": "save",
+                "label": "Sulfur Bomb",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A 15-foot radius within 60 feet. Failure: the damage and Prone; success: half. The smoke stays 1 minute (heavily obscured; you see through it); 10 minutes at B, or dispersed free.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (1d8)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5etPAv2LNfs8IMT",
+                "type": "damage",
+                "label": "Sulfur Bomb: end of turn",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "1d8",
+                      "type": "poison"
+                    }
+                  ]
+                },
+                "text": "A creature ending its turn in the smoke."
+              }
+            ],
+            "B": [
+              {
+                "id": "n5ezGfR6N9BtvyxL",
+                "type": "save",
+                "label": "Sulfur Bomb",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A 15-foot radius within 60 feet. Failure: the damage and Prone; success: half. The smoke stays 1 minute (heavily obscured; you see through it); 10 minutes at B, or dispersed free.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (2d8)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5etPAv2LNfs8IMT",
+                "type": "damage",
+                "label": "Sulfur Bomb: end of turn",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "1d8",
+                      "type": "poison"
+                    }
+                  ]
+                },
+                "text": "A creature ending its turn in the smoke."
+              }
+            ],
+            "A": [
+              {
+                "id": "n5ezGfR6N9BtvyxL",
+                "type": "save",
+                "label": "Sulfur Bomb",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A 15-foot radius within 60 feet. Failure: the damage and Prone; success: half. The smoke stays 1 minute (heavily obscured; you see through it); 10 minutes at B, or dispersed free.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (3d8)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5etPAv2LNfs8IMT",
+                "type": "damage",
+                "label": "Sulfur Bomb: end of turn",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "1d8",
+                      "type": "poison"
+                    }
+                  ]
+                },
+                "text": "A creature ending its turn in the smoke."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5ezGfR6N9BtvyxL",
+                "type": "save",
+                "label": "Sulfur Bomb",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A 15-foot radius within 60 feet. Failure: the damage and Prone; success: half. The smoke stays 1 minute (heavily obscured; you see through it); 10 minutes at B, or dispersed free.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (4d8)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5etPAv2LNfs8IMT",
+                "type": "damage",
+                "label": "Sulfur Bomb: end of turn",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "1d8",
+                      "type": "poison"
+                    }
+                  ]
+                },
+                "text": "A creature ending its turn in the smoke."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "iburi-will-o-wisps": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Will-O-Wisps (+1 at 7th and 15th): the option items. Their saves use your highest jutsu save DC."
+        }
+      ]
+    },
+    "iburi-will-o-wisps-ashen-resilience": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A rank of Mastery on saves against clouds, gas, smoke and Inhaled effects (two at 11th)."
+        }
+      ]
+    },
+    "iburi-will-o-wisps-ashen-simplicity": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Creating or learning Fire Release jutsu takes half the time."
+        }
+      ]
+    },
+    "iburi-will-o-wisps-smoke-burst": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Punishing Smog (Cinder Bow): +1 critical range; target a point for a 10-foot cube of smoke (heavily obscured, unseen from outside) until the start of your next turn. Incapacitating Smoke (Smoke Chains): Reach 3 and the Battle Wire special property; a Trip can test every creature within 5 feet of the target, each success dealing [Weapon Damage] + [Weapon Damage]."
+        }
+      ]
+    },
+    "iburi-will-o-wisps-smoke-haze": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5egeZvA4tWsddu1",
+          "type": "save",
+          "label": "Smoke Haze",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            }
+          ],
+          "text": "Once per turn, a Fire jutsu that attacks: creatures within 5 feet of the target(s). Failure: 1 rank of Dazzled (2 at 7th, 3 at 15th).",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "iburi-will-o-wisps-soot-lung": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Fire jutsu ranks of Burned can be Envenomed instead (poison resistance or immunity gives no advantage against it)."
+        }
+      ]
+    },
+    "iburi-will-o-wisps-the-unburned": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e8GgjnDceELmar",
+          "type": "roll",
+          "label": "Siphon heat (7th)",
+          "roll": {
+            "formula": "1d20 + max(@mod.nin, @mod.tai, @mod.gen)",
+            "note": "Bonus action, an ally within 15 feet with Burned: a check with your highest jutsu ability modifier vs the lower of the condition's DC or its save DC; success ends it (Mastery at 11th, two at 15th)."
+          },
+          "activation": "bonus"
+        }
+      ],
+      "effects": [
+        {
+          "name": "The Unburned",
+          "changes": [
+            {
+              "key": "n5e.resist",
+              "value": "fire",
+              "mode": 2
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Advantage against extreme heat; 11th: immunity to Burned."
+        }
+      ]
+    }
+  }
+}

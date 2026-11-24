@@ -84,42 +84,23 @@
     },
     "activities": [
       {
-        "id": "parsed1",
-        "type": "save",
-        "label": "Save",
-        "inflicts": [],
-        "save": {
-          "abilities": [
-            "str"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
+        "id": "ampcc9477ffe1f46",
+        "type": "effect",
+        "label": "Overcomer",
+        "effect": {
+          "name": "Overcomer",
+          "target": "self",
+          "amp": "jutsu-overcomer"
         },
-        "damage": {
-          "parts": []
-        }
+        "text": "Starts the jutsu's Amp at the rank it was cast at."
       },
       {
-        "id": "parsed2",
-        "type": "heal",
-        "label": "Temporary HP",
-        "heal": {
-          "formula": "10",
-          "pool": "tempHp"
-        }
-      },
-      {
-        "id": "sourceRoll1",
+        "id": "n5eLg9Cdha7Geeu3",
         "type": "roll",
-        "label": "1d4",
+        "label": "Strength save bonus",
         "roll": {
           "formula": "1d4",
-          "note": "For the duration, if you would make a Strength saving throw you gain a +1d4 bonus to the roll."
+          "note": "Add to a Strength saving throw."
         }
       }
     ],
@@ -194,7 +175,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "405991324385ff7a"

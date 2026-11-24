@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "kurama",
-      "sourceLine": 1460
+      "sourceLine": 1460,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Oni-Coils: 1 + proficiency bonus (the pool), back on a rest. Two Onijutsu (+1 at 7th and 15th): the option items; each appears in the cast dialog of your Genjutsu (once per turn, up to 2 per casting)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -47,8 +54,11 @@
       {
         "id": "oniCoils",
         "label": "Oni-Coils",
+        "value": 0,
         "max": "1 + @prof",
         "die": "",
+        "steps": [],
+        "step": 0,
         "recovery": [
           {
             "on": "rest",
@@ -56,9 +66,7 @@
             "formula": "",
             "requires": ""
           }
-        ],
-        "castsJutsu": false,
-        "countsAsChakraSpend": false
+        ]
       }
     ]
   }

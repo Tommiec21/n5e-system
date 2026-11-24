@@ -1,0 +1,168 @@
+{
+  "_id": "n5eAmpe74c8a9c4f",
+  "name": "Sealing Art: Gift of the Apex",
+  "type": "amp",
+  "img": "icons/svg/book.svg",
+  "folder": "n5eAmpFoldOther1",
+  "sort": 105200,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jutsu-sealing-art-gift-of-the-apex",
+    "description": "<p><b>Sealing Art: Gift of the Apex</b> · cast at B-Rank to S-Rank · no type</p><p>You gain one beast's traits: advantage on one kind of saving throw and that beast's ability (Bear, Bull, Cat, Eagle, Fox or Lion).</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1091",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "ampType": "",
+    "namedType": "",
+    "owner": {
+      "kind": "jutsu",
+      "id": "sealing-art-gift-of-the-apex",
+      "subclass": ""
+    },
+    "summary": "You gain one beast's traits: advantage on one kind of saving throw and that beast's ability (Bear, Bull, Cat, Eagle, Fox or Lion).",
+    "activation": "",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": true
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [],
+    "aura": {},
+    "outsideLimits": false,
+    "series": "",
+    "level": 0,
+    "rank": "B",
+    "choose": {
+      "prompt": "Gift of the Apex: which beast?",
+      "count": 1,
+      "changeable": false,
+      "options": [
+        {
+          "label": "Bear's Endurance",
+          "changes": [],
+          "rules": [
+            {
+              "key": "advantage",
+              "selector": "save:con",
+              "label": "Bear's Endurance"
+            },
+            {
+              "key": "note",
+              "text": "Kuma Fortitude (reaction): when saving against a Physical, Elemental or Sensory condition, gain 1 rank fewer of one condition type that can have ranks."
+            }
+          ]
+        },
+        {
+          "label": "Bull's Strength",
+          "changes": [],
+          "rules": [
+            {
+              "key": "advantage",
+              "selector": "save:str",
+              "label": "Bull's Strength"
+            },
+            {
+              "key": "note",
+              "text": "Bulls Rush: in place of an attack, an unarmed attack within 5 feet for 2d12 + Strength piercing; the target makes a Strength save against the damage or is knocked Prone."
+            }
+          ]
+        },
+        {
+          "label": "Cat's Grace",
+          "changes": [],
+          "rules": [
+            {
+              "key": "advantage",
+              "selector": "save:dex",
+              "label": "Cat's Grace"
+            },
+            {
+              "key": "note",
+              "text": "Cats Pounce (once per turn, with the Attack action): an unarmed attack for 2d8 + Dexterity slashing; the target makes a Dexterity save against the damage or gains 1 rank of Bleed."
+            }
+          ]
+        },
+        {
+          "label": "Eagle's Splendor",
+          "changes": [],
+          "rules": [
+            {
+              "key": "advantage",
+              "selector": "save:wis",
+              "label": "Eagle's Splendor"
+            },
+            {
+              "key": "note",
+              "text": "Eagle Eye: the Search skill action as a Bonus action, seeing clearly up to 500 feet without obstructions."
+            }
+          ]
+        },
+        {
+          "label": "Fox's Cunning",
+          "changes": [],
+          "rules": [
+            {
+              "key": "advantage",
+              "selector": "save:int",
+              "label": "Fox's Cunning"
+            },
+            {
+              "key": "note",
+              "text": "You can concentrate on one additional jutsu."
+            }
+          ]
+        },
+        {
+          "label": "Lion's Presence",
+          "changes": [],
+          "rules": [
+            {
+              "key": "advantage",
+              "selector": "save:cha",
+              "label": "Lion's Presence"
+            },
+            {
+              "key": "note",
+              "text": "Tora Growl: Coerce, Demoralize and Make an Impression can't be made at disadvantage; creatures contesting them take a −2 penalty."
+            }
+          ]
+        }
+      ]
+    },
+    "buttons": [],
+    "onEnd": {
+      "condition": ""
+    },
+    "statuses": [],
+    "endsWith": ""
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [],
+      "amp1f": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.70.0"
+  },
+  "_key": "!items!n5eAmpe74c8a9c4f"
+}

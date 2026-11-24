@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e3PqwFdTk9wjRz",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Scattering Wave",
         "save": {
           "abilities": [
             "str"
@@ -97,10 +96,10 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Within 15 feet (+5 feet per rank; B-Rank: creatures you choose within 5 feet are immune). Failure: pushed to the edge. No half damage on a success.",
         "damage": {
           "parts": [
             {
@@ -111,13 +110,18 @@
         }
       },
       {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "1d6",
-        "roll": {
-          "formula": "1d6",
-          "note": "If the creatures are stopped from moving by a wall or structure, they take 1d6 damage for every 10 feet of movement they had left (min 1d6)"
-        }
+        "id": "n5e5MwbXtZ9DHIYH",
+        "type": "damage",
+        "label": "Hits a wall",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d6",
+              "type": "bludgeoning"
+            }
+          ]
+        },
+        "text": "1d6 per 10 feet left (min 1d6)."
       }
     ],
     "featureType": "active",
@@ -218,10 +222,9 @@
         "activitiesByRank": {
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5e3PqwFdTk9wjRz",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Scattering Wave",
               "save": {
                 "abilities": [
                   "str"
@@ -230,10 +233,10 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Within 15 feet (+5 feet per rank; B-Rank: creatures you choose within 5 feet are immune). Failure: pushed to the edge. No half damage on a success.",
               "damage": {
                 "parts": [
                   {
@@ -244,21 +247,25 @@
               }
             },
             {
-              "id": "sourceRoll3",
-              "type": "roll",
-              "label": "1d6",
-              "roll": {
-                "formula": "1d6",
-                "note": "If the creatures are stopped from moving by a wall or structure, they take 1d6 damage for every 10 feet of movement they had left (min 1d6)"
-              }
+              "id": "n5e5MwbXtZ9DHIYH",
+              "type": "damage",
+              "label": "Hits a wall",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d6",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "text": "1d6 per 10 feet left (min 1d6)."
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5e3PqwFdTk9wjRz",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Scattering Wave",
               "save": {
                 "abilities": [
                   "str"
@@ -267,10 +274,10 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Within 15 feet (+5 feet per rank; B-Rank: creatures you choose within 5 feet are immune). Failure: pushed to the edge. No half damage on a success.",
               "damage": {
                 "parts": [
                   {
@@ -281,21 +288,25 @@
               }
             },
             {
-              "id": "sourceRoll3",
-              "type": "roll",
-              "label": "1d6",
-              "roll": {
-                "formula": "1d6",
-                "note": "If the creatures are stopped from moving by a wall or structure, they take 1d6 damage for every 10 feet of movement they had left (min 1d6)"
-              }
+              "id": "n5e5MwbXtZ9DHIYH",
+              "type": "damage",
+              "label": "Hits a wall",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d6",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "text": "1d6 per 10 feet left (min 1d6)."
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5e3PqwFdTk9wjRz",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Scattering Wave",
               "save": {
                 "abilities": [
                   "str"
@@ -304,10 +315,10 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Within 15 feet (+5 feet per rank; B-Rank: creatures you choose within 5 feet are immune). Failure: pushed to the edge. No half damage on a success.",
               "damage": {
                 "parts": [
                   {
@@ -318,18 +329,24 @@
               }
             },
             {
-              "id": "sourceRoll3",
-              "type": "roll",
-              "label": "1d6",
-              "roll": {
-                "formula": "1d6",
-                "note": "If the creatures are stopped from moving by a wall or structure, they take 1d6 damage for every 10 feet of movement they had left (min 1d6)"
-              }
+              "id": "n5e5MwbXtZ9DHIYH",
+              "type": "damage",
+              "label": "Hits a wall",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d6",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "text": "1d6 per 10 feet left (min 1d6)."
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "aee26bc2434fe738"

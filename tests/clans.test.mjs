@@ -45,7 +45,18 @@ test("every source level-feature heading is present with the full body and the s
       const doc = docs.find(d => d.type === "feat" && d.flags?.n5e?.clanPackage === byName(clan.name).system.identifier && d.flags.n5e.sourceLine === at + 1 && d.system.category === "clanFeature");
       assert.ok(doc, `${clan.name}: ${source[at]}`);
       const body = b.lines.filter(s => !/^\[\/?BOX\]$/.test(s.trim())).join("\n");
-      assert.equal(norm(doc.system.description), norm(body), doc.name);
+      // King Q-E12: a copied Amp table was removed from the text (the Amp card holds it); the rest is unchanged.
+      if ( doc.flags.n5e.ampCopyRemoved ) {
+        // Every paragraph left is in the source, and only the copied Amp paragraph is gone.
+        const paras = doc.system.description.split(/<\/p>/).map(norm).filter(Boolean);
+        for ( const p of paras ) assert.ok(norm(body).includes(p), `${doc.name}: ${p.slice(0, 40)}`);
+        const ampName = norm(doc.flags.n5e.ampCopyRemoved.replace(/\s*\(.*$/, ""));
+        assert.ok(!norm(doc.system.description).includes(`${ampName}${norm("Fortitude Amp")}`) && !norm(doc.system.description).includes(`${ampName}${norm("Battle Amp")}`), doc.name);
+        let rest = norm(body);
+        for ( const p of paras ) rest = rest.replace(p, "");
+        assert.ok(rest.startsWith(ampName) || rest.includes(`${ampName}${norm("Battle Amp")}`) || rest.includes(`${ampName}${norm("Fortitude Amp")}`) || rest.includes(`${ampName}${norm("Will Amp")}`), `${doc.name}: only the Amp copy is gone`);
+      }
+      else assert.equal(norm(doc.system.description), norm(body), doc.name);
       assert.ok(byName(clan.name).system.advancement.some(a => a.type === "feature" && a.level === Number(level[1]) && a.uuids.includes(doc.uuid)), doc.name);
       count++;
     }
@@ -53,15 +64,18 @@ test("every source level-feature heading is present with the full body and the s
   assert.equal(count, 266);
 });
 
-test("all 408 clan Hijutsu retain their rules and usable rank, cost and component data", () => {
+test("all 410 clan Hijutsu retain their rules and usable rank, cost and component data", () => {
   const jutsu = docs.filter(d => d.type === "jutsu");
-  assert.equal(jutsu.length, 408);
+  // 408 imported, plus 2 split out of Absolute Death Bombing's text (King Q-E5, 2026-11-21).
+  assert.equal(jutsu.length, 410);
   for ( const j of jutsu ) {
     assert.ok(["E", "D", "C", "B", "A", "S"].includes(j.system.rank));
     assert.ok(clans.some(c => c.system.identifier === j.system.hijutsu.clan));
+    if ( j.flags.n5e.splitFrom ) { assert.ok(j.system.description, j.name); continue; }
     const at = j.flags.n5e.sourceLine - 1, body = block(at, 4).lines.join("\n").match(/Description:\s*([\s\S]*)/i)?.[1];
     assert.ok(body, j.name);
-    assert.equal(norm(j.system.description), norm(body.replace(/\[\/?BOX\]/g, "")), j.name);
+    if ( j.flags.n5e.splitInto ) assert.ok(norm(body.replace(/\[\/?BOX\]/g, "")).startsWith(norm(j.system.description)), j.name);
+    else assert.equal(norm(j.system.description), norm(body.replace(/\[\/?BOX\]/g, "")), j.name);
     assert.ok(j.flags.n5e.sourceHeader.keywords, j.name);
     assert.ok(j.system.cost.mode === "special" || j.system.cost.value >= 0);
   }

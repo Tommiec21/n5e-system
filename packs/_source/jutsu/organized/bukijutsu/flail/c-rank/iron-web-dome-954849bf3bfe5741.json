@@ -86,10 +86,32 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5ekwqjcXmmnQ3t7",
+        "type": "damage",
+        "label": "Dome: melee attacker",
+        "damage": {
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            }
+          ]
+        },
+        "text": "A creature that hits the dome in melee without breaking it. The dome: AC your Taijutsu save DC, hit points twice your [Weapon damage] (+4 per rank above C)."
+      },
+      {
+        "id": "n5ezc8Cpv3J80Vcm",
+        "type": "damage",
+        "label": "Chain 2: clash",
+        "damage": {
+          "parts": [
+            {
+              "formula": "@weapon + @weapon",
+              "type": ""
+            }
+          ]
+        },
+        "text": "Chain 2: a hostile creature that wins a clash."
       }
     ],
     "featureType": "active",
@@ -175,9 +197,143 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5ekwqjcXmmnQ3t7",
+              "type": "damage",
+              "label": "Dome: melee attacker",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "A creature that hits the dome in melee without breaking it. The dome: AC your Taijutsu save DC, hit points twice your [Weapon damage] (+4 per rank above C)."
+            },
+            {
+              "id": "n5ezc8Cpv3J80Vcm",
+              "type": "damage",
+              "label": "Chain 2: clash",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon + @weapon",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "Chain 2: a hostile creature that wins a clash."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ekwqjcXmmnQ3t7",
+              "type": "damage",
+              "label": "Dome: melee attacker",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "1d8",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "A creature that hits the dome in melee without breaking it. The dome: AC your Taijutsu save DC, hit points twice your [Weapon damage] (+4 per rank above C)."
+            },
+            {
+              "id": "n5ezc8Cpv3J80Vcm",
+              "type": "damage",
+              "label": "Chain 2: clash",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon + @weapon",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "Chain 2: a hostile creature that wins a clash."
+            },
+            {
+              "id": "n5e9bh0EjQr9w8XX",
+              "type": "damage",
+              "label": "A-Rank: dome broken",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon + @weapon",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "A-Rank: creatures you choose within 5 feet of its walls."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ekwqjcXmmnQ3t7",
+              "type": "damage",
+              "label": "Dome: melee attacker",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "1d8",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "A creature that hits the dome in melee without breaking it. The dome: AC your Taijutsu save DC, hit points twice your [Weapon damage] (+4 per rank above C)."
+            },
+            {
+              "id": "n5ezc8Cpv3J80Vcm",
+              "type": "damage",
+              "label": "Chain 2: clash",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon + @weapon",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "Chain 2: a hostile creature that wins a clash."
+            },
+            {
+              "id": "n5e9bh0EjQr9w8XX",
+              "type": "damage",
+              "label": "A-Rank: dome broken",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon + @weapon",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "A-Rank: creatures you choose within 5 feet of its walls."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Chain 1: an ally inside can use its reaction to restore your dome by its [Weapon damage]."
+        }
+      ]
     }
   },
   "folder": "0e415a5f84ce5a5f"

@@ -17,7 +17,8 @@
         "cost": "25 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile), Bukijutsu, Fuinjutsu",
         "components": "HS, CM, M, W (Any Blade)"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -111,7 +112,56 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5euxPkMvEXvJfAm",
+        "type": "attack",
+        "label": "Mark of the Basilisk",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "On a hit, the save; pick Basilisks Edict (it can only target you; its areas only affect you) or Blood Override (no B-Rank+ Hijutsu; 3rd-level clan features or clan traits suppressed).",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eaabF4zvwKMqgs",
+        "type": "save",
+        "label": "Mark: save",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Resists.",
+            "success": "The chosen effect until the start of your next turn.",
+            "failure": "The chosen effect for the duration; resave at the end of each turn.",
+            "critFailure": "Both effects."
+          }
+        },
+        "inflicts": [],
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

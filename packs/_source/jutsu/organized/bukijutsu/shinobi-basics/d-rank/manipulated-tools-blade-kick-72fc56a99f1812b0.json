@@ -85,17 +85,28 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eXFWboZCS6bQxn",
+        "type": "attack",
+        "label": "Blade Kick",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "30 feet (+1 creature per rank).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "piercing"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eugetp7dQWoX4W",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "bleed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bleed"
-          }
-        ],
+        "label": "Blade Kick: Bleed",
         "save": {
           "abilities": [
             "con"
@@ -104,17 +115,19 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "text": "On a hit. Failure: 1 Bleed; Chain 1: also speed 0 until the end of its turn.",
         "damage": {
-          "parts": [
-            {
-              "formula": "4d8",
-              "type": "piercing"
-            }
-          ]
+          "parts": []
         }
       }
     ],
@@ -191,7 +204,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "1b8bbde86064544a"

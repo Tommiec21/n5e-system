@@ -33,13 +33,43 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eIdVbH8Foo5Rih",
+        "type": "roll",
+        "label": "Prosthetic Tool (no action)",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn: use a Prosthetic Tool at no action cost."
+        },
+        "cost": {
+          "pool": "posture",
+          "amount": 2
+        },
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5ecwO9g0EWhXEcU",
+        "type": "roll",
+        "label": "Lethal Prosthetic",
+        "roll": {
+          "formula": "",
+          "note": "A Prosthetic Tool that deals damage or attacks: Lethal Attack against every affected creature (if you haven't used it this turn)."
+        },
+        "cost": {
+          "pool": "posture",
+          "amount": 1
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

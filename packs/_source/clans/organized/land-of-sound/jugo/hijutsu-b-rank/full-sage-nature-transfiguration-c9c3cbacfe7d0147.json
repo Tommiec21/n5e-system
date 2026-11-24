@@ -17,6 +17,24 @@
         "cost": "14 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Stable",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its Amp button stays."
+        }
+      ],
+      "castOption": {
+        "label": "Amplify (6 Nature Energy)",
+        "appliesTo": {
+          "namePrefix": "Full Sage: Nature Transfiguration"
+        },
+        "note": "No concentration; it lasts 1 minute.",
+        "cost": {
+          "pool": "natureEnergy",
+          "amount": 6
+        }
       }
     }
   },
@@ -108,7 +126,19 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "ampcaac49eb104df",
+        "type": "effect",
+        "label": "Full Sage: Nature Transfiguration",
+        "effect": {
+          "name": "Full Sage: Nature Transfiguration",
+          "target": "self",
+          "amp": "jutsu-jugo-full-sage-nature-transfiguration"
+        },
+        "text": "Starts the jutsu's Amp at the rank it was cast at."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

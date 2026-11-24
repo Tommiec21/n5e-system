@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "vesper",
-      "sourceLine": 4396
+      "sourceLine": 4396,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "One at 3rd, the other at 11th."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,90 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eUnyI9FTyHmECG",
+        "type": "save",
+        "label": "Hypnotic Voice",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: Confused until the end of its next turn.",
+            "failure": "Failure: Confused and Dazed.",
+            "critFailure": "Critical Failure: as a failure, and Slowed."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "confused",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Confused"
+          },
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          },
+          {
+            "key": "slowed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Slow"
+          }
+        ],
+        "text": "Action: creatures of your choice in a 20-foot cone (40 at 11th). A Genjutsu of your highest rank.",
+        "activation": "action",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5e3SPxZGfCH8G2C",
+        "type": "save",
+        "label": "Hypnotic Gaze",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: Charmed until the end of its next turn.",
+            "failure": "Failure: Charmed, and for 1 minute it spends its Movement and Actions obeying one command.",
+            "critFailure": "Critical Failure: as a failure, obeying new orders you give as a Bonus action for 1 minute; damage lets it resave once per turn."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "charmed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Charmed"
+          }
+        ],
+        "text": "Action, concentration: a creature you can see within 30 feet. A Genjutsu of your highest rank; a failure or worse can't recur on it until you rest.",
+        "activation": "action",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

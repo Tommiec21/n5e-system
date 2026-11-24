@@ -40,10 +40,89 @@
           "target": "targets",
           "changes": [],
           "expires": "",
-          "seconds": 60
+          "seconds": 60,
+          "state": "void-anchor",
+          "limit": 4
         },
         "activation": "bonus",
-        "text": "Up to 4 at a time; the oldest fades when you place a fifth."
+        "text": "Bonus action: a creature, surface or unattended object within 60 feet, 1 minute (up to 4; the oldest fades)."
+      },
+      {
+        "id": "n5e06bmscooAlC13",
+        "type": "damage",
+        "label": "Flash Step (forgo 1)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(max(0, @scale.hunterNin.lethalAttack - 1))d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true,
+        "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+      },
+      {
+        "id": "n5eUzY4QJzLOXrRV",
+        "type": "damage",
+        "label": "Flash Step (forgo 1): Attack action or weapon",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 1))d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true,
+        "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+      },
+      {
+        "id": "n5eqDqzvawqP5LLX",
+        "type": "damage",
+        "label": "Displacement Strike (forgo 2)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(max(0, @scale.hunterNin.lethalAttack - 2))d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true,
+        "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+      },
+      {
+        "id": "n5eKAWyZF0ttLPVh",
+        "type": "damage",
+        "label": "Displacement Strike (forgo 2): Attack action or weapon",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 2))d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true,
+        "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+      },
+      {
+        "id": "n5eLxntI5fOa19Mh",
+        "type": "save",
+        "label": "Displacement Strike",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "nin"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Failure: teleported to a space next to another of your Anchors."
       }
     ]
   },
@@ -55,7 +134,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Teleporting within 10 feet of a creature with an Anchor: a weapon attack at it as a Bonus action. Flash Step (forgo 1): teleport up to 30 feet."
+        }
+      ]
     }
   },
   "_stats": {

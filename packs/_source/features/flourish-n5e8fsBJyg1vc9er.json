@@ -29,7 +29,48 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5eY90ZFbFQhlLho",
+        "type": "roll",
+        "label": "Echo Step",
+        "roll": {
+          "formula": "",
+          "note": "On a weapon or Taijutsu hit: push it 10 feet and move up to 10 feet (no opportunity attacks). Waltz: your Partner moves with you and can make a weapon attack at it. Samba: also Prone or disarmed (pick)."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5ep9QVmg0ZXEeVE",
+        "type": "roll",
+        "label": "Shifting Rhythm",
+        "roll": {
+          "formula": "1d12",
+          "note": "Starting your turn with a Physical or Mental condition: 10 or higher removes all its ranks, else 1. Waltz: on your Partner instead. Samba: Elemental conditions too."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5ehF0f3TXoi3dLH",
+        "type": "roll",
+        "label": "Inspiring Flourish",
+        "roll": {
+          "formula": "",
+          "note": "In place of an attack of the Attack action or a Bukijutsu: one ally for each Discipline gets a special reaction (move, two weapon attacks, or a D-Rank jutsu; C-Rank in the Samba, B-Rank at 14th). Waltz: your Partner can get two (different uses)."
+        },
+        "cost": {
+          "pool": "discipline",
+          "choose": true
+        }
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eatbwhnvBFRxgR",
@@ -39,7 +80,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "While wielding weapons with the Thrown, Finesse, Reach, Multiattack, Light or Ranged property."
+        }
+      ]
     }
   },
   "_stats": {

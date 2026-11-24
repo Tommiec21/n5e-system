@@ -17,6 +17,171 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Medical, Chain",
         "components": "M, W (Any Blade)"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eyG7UANoWOZF0c",
+              "type": "save",
+              "label": "Venomous Stinger",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 15-foot line: [Weapon Damage] (roll it) + 1d8 poison and Envenomed (+1 at B, +1 more at S); success: half. Serpent Coil: move 10 feet to one that failed and throw it 20 feet, Prone and Disarmed.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d8) + (1d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eyG7UANoWOZF0c",
+              "type": "save",
+              "label": "Venomous Stinger",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 15-foot line: [Weapon Damage] (roll it) + 1d8 poison and Envenomed (+1 at B, +1 more at S); success: half. Serpent Coil: move 10 feet to one that failed and throw it 20 feet, Prone and Disarmed.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d8) + (2d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eyG7UANoWOZF0c",
+              "type": "save",
+              "label": "Venomous Stinger",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 15-foot line: [Weapon Damage] (roll it) + 1d8 poison and Envenomed (+1 at B, +1 more at S); success: half. Serpent Coil: move 10 feet to one that failed and throw it 20 feet, Prone and Disarmed.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d8) + (3d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eyG7UANoWOZF0c",
+              "type": "save",
+              "label": "Venomous Stinger",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 15-foot line: [Weapon Damage] (roll it) + 1d8 poison and Envenomed (+1 at B, +1 more at S); success: half. Serpent Coil: move 10 feet to one that failed and throw it 20 feet, Prone and Disarmed.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d8) + (4d6)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +275,46 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eyG7UANoWOZF0c",
+        "type": "save",
+        "label": "Venomous Stinger",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "envenomed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Envenomed"
+          },
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "A 15-foot line: [Weapon Damage] (roll it) + 1d8 poison and Envenomed (+1 at B, +1 more at S); success: half. Serpent Coil: move 10 feet to one that failed and throw it 20 feet, Prone and Disarmed.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d8",
+              "type": "poison"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

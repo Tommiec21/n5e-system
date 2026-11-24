@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "uchiha",
       "sourceLine": 2199,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "You're aware of Genjutsu with a DC up to your passive Illusions or Genjutsu save DC (higher); they and their targets show a haze. A Bonus action: Identify Genjutsu on one."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,35 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e6pxXEGSC4rmaW",
+        "type": "roll",
+        "label": "Dispel Genjutsu (Action)",
+        "roll": {
+          "formula": "1d20 + max(@mod.nin, @mod.tai, @mod.gen)",
+          "note": "You or an ally/willing creature under a Genjutsu: your highest jutsu ability check (Illusions if you're aware of it) against its DC; success dispels it."
+        },
+        "cost": {
+          "pool": "ocularCharges",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eFNmZGGH3IYZzs",
+        "type": "roll",
+        "label": "Dispel Genjutsu (Bonus action)",
+        "roll": {
+          "formula": "1d20 + max(@mod.nin, @mod.tai, @mod.gen)",
+          "note": "As above, as a Bonus action."
+        },
+        "activation": "bonus",
+        "cost": {
+          "pool": "ocularCharges",
+          "amount": 2
+        }
+      }
+    ]
   }
 }

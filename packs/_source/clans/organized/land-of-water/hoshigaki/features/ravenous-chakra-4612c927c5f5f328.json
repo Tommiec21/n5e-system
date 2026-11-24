@@ -9,7 +9,15 @@
   "flags": {
     "n5e": {
       "clanPackage": "hoshigaki",
-      "sourceLine": 3971
+      "sourceLine": 3971,
+      "ampCopyRemoved": "Apex Predator (King Q-E12)",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "15th: in a Clash, the opposing jutsu counts one rank lower; win and the chakra dice double. (Its copy of Apex Predator's Amp is removed, as King Q-E12.)"
+        }
+      ]
     }
   },
   "ownership": {
@@ -17,7 +25,7 @@
   },
   "system": {
     "identifier": "hoshigaki-ravenous-chakra",
-    "description": "<p>| #### Apex Predator / Battle Amp / You embody the power of the Apex of the sea. / Ocean Bond. When Water Walking or swimming, double your movement speed. / Cold Blooded. Creatures with the following conditions, increase the damage they take from you by +2. This increases to +4 at 7th level and +6 at 15th levels (Bleed, Concussed, Dazed, Demoralized, Grappled, Restrained or Shaken) / Ravenous Aura. [Unarmed Damage] and [Weapon Damage] you deal can trigger your Ravenous Chakra clan feature, as if it were a C-Rank Jutsu. You cannot gain temporary chakra using Ravenous Chakra this way. / Limitless Blue. Jutsu you cast with the Water Release keyword gain their additional effects as if near a sufficient source of Water. / Efficient Recovery. Once per turn, increase Temporary Hit points gained from allied or self-sourced effects by +4. This increases to +6 at 7th level and +8 at 15th level. |</p>\n<p>1st Level Clan Feature</p>\n<p>As a Hoshigaki, your body yearns to consume the Chakra of others. The stronger your enemies, the stronger you can become, using their energy to fuel you. Beginning at 1st level, once per turn, when you cast a Jutsu with a nature release keyword, you deal additional chakra damage to the affected creatures equal to the rank of the jutsu cast; D-Rank: 2d6, C-Rank: 3d6, B-Rank: 4d6,  A-Rank: 5d6, S-Rank: 6d6.</p>\n<p>When you reach 7th level, when you deal chakra damage as a result of this feature, you gain temporary chakra equal to the number of dice rolled.</p>\n<p>Beginning at 15th level, if your jutsu would clash with an opposing creatures jutsu, you treat the opposing jutsu as if it’s one rank lower for the purposes of the clash check. If you win this clash, you double the chakra damage dice rolled as part of this feature.</p>",
+    "description": "<p>1st Level Clan Feature</p>\n<p>As a Hoshigaki, your body yearns to consume the Chakra of others. The stronger your enemies, the stronger you can become, using their energy to fuel you. Beginning at 1st level, once per turn, when you cast a Jutsu with a nature release keyword, you deal additional chakra damage to the affected creatures equal to the rank of the jutsu cast; D-Rank: 2d6, C-Rank: 3d6, B-Rank: 4d6,  A-Rank: 5d6, S-Rank: 6d6.</p>\n<p>When you reach 7th level, when you deal chakra damage as a result of this feature, you gain temporary chakra equal to the number of dice rolled.</p>\n<p>Beginning at 15th level, if your jutsu would clash with an opposing creatures jutsu, you treat the opposing jutsu as if it’s one rank lower for the purposes of the clash check. If you win this clash, you double the chakra damage dice rolled as part of this feature.</p>",
     "source": {
       "book": "Tsunade's Studies Compendium",
       "page": "",
@@ -42,6 +50,83 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eeBW47X77JdJCF",
+        "type": "damage",
+        "label": "Ravenous Chakra (D-Rank)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "chakra"
+            }
+          ]
+        },
+        "text": "Once per turn, a nature release jutsu: to the affected creatures. 7th: temporary chakra equal to the dice rolled.",
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5e6oCDgiLdDbTUU",
+        "type": "damage",
+        "label": "Ravenous Chakra (C-Rank)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "chakra"
+            }
+          ]
+        },
+        "text": "Once per turn, a nature release jutsu: to the affected creatures. 7th: temporary chakra equal to the dice rolled.",
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5eS5HLbsjFjufBL",
+        "type": "damage",
+        "label": "Ravenous Chakra (B-Rank)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "chakra"
+            }
+          ]
+        },
+        "text": "Once per turn, a nature release jutsu: to the affected creatures. 7th: temporary chakra equal to the dice rolled.",
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5emvAwAdHN6pacH",
+        "type": "damage",
+        "label": "Ravenous Chakra (A-Rank)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "chakra"
+            }
+          ]
+        },
+        "text": "Once per turn, a nature release jutsu: to the affected creatures. 7th: temporary chakra equal to the dice rolled.",
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5eqGWKq4bZzuyYp",
+        "type": "damage",
+        "label": "Ravenous Chakra (S-Rank)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": "chakra"
+            }
+          ]
+        },
+        "text": "Once per turn, a nature release jutsu: to the affected creatures. 7th: temporary chakra equal to the dice rolled.",
+        "oncePerTurn": true
+      }
+    ]
   }
 }

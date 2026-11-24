@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "shikigami",
-      "sourceLine": 8122
+      "sourceLine": 8122,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Rei: up to 4, made in combat; once per turn spend them on one ability (more Rei add the upgrades)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,125 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eVXeYFWtMAk8Zv",
+        "type": "roll",
+        "label": "Make a Rei",
+        "roll": {
+          "formula": "",
+          "note": "Start of each of your turns, or the first Shikigami Hijutsu each turn (the turn gain is automatic; out of combat an Action)."
+        },
+        "cost": {
+          "pool": "rei",
+          "amount": 1,
+          "gain": true
+        }
+      },
+      {
+        "id": "n5eL4RrpYnyWHaZB",
+        "type": "heal",
+        "label": "Origami Turtle",
+        "heal": {
+          "formula": "1d10 + floor(@level / 2)",
+          "pool": "tempHp"
+        },
+        "text": "An ally within 30 feet takes hostile damage: interpose a barrier. 7th: 2 Rei +1d10; 15th: 3 Rei +1d10 more (roll the extra).",
+        "cost": {
+          "pool": "rei",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5ehAfCHMoxjYrpy",
+        "type": "save",
+        "label": "Origami Snake",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Bonus action, a creature within 30 feet. Failure: half speed, can't move beyond 30 feet of you until the end of its next turn (its Action tears it). 7th, 2 Rei: Prone; 15th, 3 Rei: speed 0.",
+        "activation": "bonus",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "rei",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5etgZLoSy6zRPuH",
+        "type": "roll",
+        "label": "Origami Bird",
+        "roll": {
+          "formula": "",
+          "note": "Bonus action, a creature within 60 feet, 10 minutes: you always know where it is (Search finds it). 7th, 2 Rei: no advantage on attacks on you; 15th, 3 Rei: your single-target Shikigami effects reach it within 120 feet."
+        },
+        "activation": "bonus",
+        "cost": {
+          "pool": "rei",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eq72cXeZsjfrlK",
+        "type": "save",
+        "label": "Origami Rabbit",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Reaction, a hostile creature summons or commands a construct. Failure: the command is wasted (7th: it follows your command this turn; 15th: you command it on your turn).",
+        "activation": "reaction",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "rei",
+          "amount": 1
+        }
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "rei",
+        "label": "Rei",
+        "value": 0,
+        "max": "4",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "turn",
+            "amount": "formula",
+            "formula": "1",
+            "requires": ""
+          },
+          {
+            "on": "encounter",
+            "amount": "empty",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ]
   }
 }

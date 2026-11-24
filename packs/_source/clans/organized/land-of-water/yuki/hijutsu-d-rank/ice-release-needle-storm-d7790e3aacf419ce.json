@@ -17,6 +17,119 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Water Release, Wind Release",
         "components": "HS, W (Any Melee), M, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eY1Mv73G3Y3ohi",
+              "type": "save",
+              "label": "Needle Storm",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "From a mirror: a 60 by 5-foot line dash (it can turn once at a mirror, up to 30 feet from it). Failure: [Weapons Damage] + 1d8 cold (+1d8 per extra crossing); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d8) + (1d8)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eY1Mv73G3Y3ohi",
+              "type": "save",
+              "label": "Needle Storm",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "From a mirror: a 60 by 5-foot line dash (it can turn once at a mirror, up to 30 feet from it). Failure: [Weapons Damage] + 1d8 cold (+1d8 per extra crossing); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d8) + (2d8)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eY1Mv73G3Y3ohi",
+              "type": "save",
+              "label": "Needle Storm",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "From a mirror: a 60 by 5-foot line dash (it can turn once at a mirror, up to 30 feet from it). Failure: [Weapons Damage] + 1d8 cold (+1d8 per extra crossing); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d8) + (3d8)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eY1Mv73G3Y3ohi",
+              "type": "save",
+              "label": "Needle Storm",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "From a mirror: a 60 by 5-foot line dash (it can turn once at a mirror, up to 30 feet from it). Failure: [Weapons Damage] + 1d8 cold (+1d8 per extra crossing); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d8) + (4d8)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +223,33 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eY1Mv73G3Y3ohi",
+        "type": "save",
+        "label": "Needle Storm",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "From a mirror: a 60 by 5-foot line dash (it can turn once at a mirror, up to 30 feet from it). Failure: [Weapons Damage] + 1d8 cold (+1d8 per extra crossing); success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d8",
+              "type": "cold"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

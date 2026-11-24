@@ -17,6 +17,220 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Taijutsu",
         "components": "CM, M"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "B-Rank: Disrupt gives 2 ranks."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eSnLW6XiFY7jI9",
+              "type": "damage",
+              "label": "Palm Strike",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (1d8)",
+                    "type": "chakra"
+                  }
+                ]
+              },
+              "text": "Once per turn, with your [Unarmed Damage]."
+            },
+            {
+              "id": "n5ebS33DXFuslHCB",
+              "type": "save",
+              "label": "Eight Trigram: Disrupt / Block",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "hyuga-network-distortion",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Network Distortion"
+                },
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Failure, pick: Disrupt (1 rank of Network Distortion) or Block (1 rank of Weakened).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eSnLW6XiFY7jI9",
+              "type": "damage",
+              "label": "Palm Strike",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (2d8)",
+                    "type": "chakra"
+                  }
+                ]
+              },
+              "text": "Once per turn, with your [Unarmed Damage]."
+            },
+            {
+              "id": "n5ebS33DXFuslHCB",
+              "type": "save",
+              "label": "Eight Trigram: Disrupt / Block",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "hyuga-network-distortion",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Network Distortion"
+                },
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Failure, pick: Disrupt (1 rank of Network Distortion) or Block (1 rank of Weakened).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eSnLW6XiFY7jI9",
+              "type": "damage",
+              "label": "Palm Strike",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (3d8)",
+                    "type": "chakra"
+                  }
+                ]
+              },
+              "text": "Once per turn, with your [Unarmed Damage]."
+            },
+            {
+              "id": "n5ebS33DXFuslHCB",
+              "type": "save",
+              "label": "Eight Trigram: Disrupt / Block",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "hyuga-network-distortion",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Network Distortion"
+                },
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Failure, pick: Disrupt (1 rank of Network Distortion) or Block (1 rank of Weakened).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eSnLW6XiFY7jI9",
+              "type": "damage",
+              "label": "Palm Strike",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (4d8)",
+                    "type": "chakra"
+                  }
+                ]
+              },
+              "text": "Once per turn, with your [Unarmed Damage]."
+            },
+            {
+              "id": "n5ebS33DXFuslHCB",
+              "type": "save",
+              "label": "Eight Trigram: Disrupt / Block",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "hyuga-network-distortion",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Network Distortion"
+                },
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Failure, pick: Disrupt (1 rank of Network Distortion) or Block (1 rank of Weakened).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Eight Trigram",
+        "appliesTo": {
+          "namePrefix": "Palm Strike"
+        },
+        "note": "In your Gentle Fist stance: the Disrupt / Block save."
       }
     }
   },
@@ -107,7 +321,55 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eSnLW6XiFY7jI9",
+        "type": "damage",
+        "label": "Palm Strike",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "chakra"
+            }
+          ]
+        },
+        "text": "Once per turn, with your [Unarmed Damage]."
+      },
+      {
+        "id": "n5ebS33DXFuslHCB",
+        "type": "save",
+        "label": "Eight Trigram: Disrupt / Block",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "hyuga-network-distortion",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Network Distortion"
+          },
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          }
+        ],
+        "text": "Failure, pick: Disrupt (1 rank of Network Distortion) or Block (1 rank of Weakened).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

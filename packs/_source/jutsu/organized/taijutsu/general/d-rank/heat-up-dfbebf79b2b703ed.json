@@ -84,10 +84,23 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5eyoOiOs9QOrPQ9",
+        "type": "effect",
+        "label": "Heat Up",
+        "effect": {
+          "name": "Heat Up",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.critRange.tai",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Bonus action: your next attack-roll Taijutsu +2 critical range; the next damage you take +5 (+5 per rank) until the start of your next turn."
       }
     ],
     "featureType": "active",
@@ -163,7 +176,14 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The critical range lasts until the start of your next turn here; it's meant for the next Taijutsu with an attack roll (end it after that one). C-Rank: reroll 1s and 2s on damage; B-Rank: +2d12 on a critical hit; A-Rank: that Taijutsu ignores resistance and immunity; S-Rank: +1 Action this turn. The extra damage you take: add it by hand."
+        }
+      ]
     }
   },
   "folder": "b31b1b0d97c02089"

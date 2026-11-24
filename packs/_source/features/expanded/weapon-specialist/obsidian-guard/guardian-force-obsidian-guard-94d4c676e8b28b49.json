@@ -33,13 +33,44 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eeiTl01wSoo2lF",
+        "type": "roll",
+        "label": "Guardian Force: ward",
+        "roll": {
+          "formula": "",
+          "note": "In combat, at the start of each of your turns: the ward regains 1 Flurry Die."
+        },
+        "cost": {
+          "pool": "obsidianWard",
+          "amount": 1,
+          "formula": "1d12",
+          "gain": true
+        }
+      },
+      {
+        "id": "n5e29g1qmChcgL04",
+        "type": "roll",
+        "label": "Guardian Force: intercept",
+        "roll": {
+          "formula": "",
+          "note": "An ally in your Aura of Protection makes a Strength, Dexterity or Constitution save against a hostile creature's jutsu: you become the new target."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

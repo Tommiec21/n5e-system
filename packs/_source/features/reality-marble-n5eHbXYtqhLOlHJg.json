@@ -45,12 +45,63 @@
           "seconds": 60
         },
         "activation": "bonus",
-        "text": "Each Genjutsu stores a Reality Mote; spend one to mark a reality relay."
+        "text": "Bonus action, for 1 minute: each Genjutsu you cast stores a Reality Mote. Spend one when casting to mark the target as a reality relay: Genjutsu targeting it can pick up to 2 more creatures within 30 feet of it, which save as if the target; the mark then ends; failing creatures share the worst result. Once per creature every 10 minutes; 10 minutes before reawakening."
+      },
+      {
+        "id": "n5eDgDK2sNb6ebx1",
+        "type": "roll",
+        "label": "Force a relay's remade save",
+        "roll": {
+          "formula": "",
+          "note": "11th level: a creature marked as your relay passes a save. It remakes it and takes the new result."
+        },
+        "cost": {
+          "pool": "actualizationDice",
+          "amount": 1
+        },
+        "minLevel": 11
       }
     ],
     "prerequisites": []
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5eSgWTGOWCwCLIT",
+      "name": "Reality Marble: concentration",
+      "type": "generic",
+      "img": "icons/svg/upgrade.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "n5e.upkeep.gen",
+          "value": "-2",
+          "mode": 2,
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true,
+          "levels": {
+            "min": 7,
+            "max": 0
+          }
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5eHbXYtqhLOlHJg.n5eSgWTGOWCwCLIT"
+    }
+  ],
   "folder": "n5eB7tSpFehjOruK",
   "sort": 0,
   "ownership": {
@@ -58,7 +109,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "At 7th, Genjutsu you concentrate on cost 2 less to concentrate (minimum 1)."
+        }
+      ]
     }
   },
   "_stats": {

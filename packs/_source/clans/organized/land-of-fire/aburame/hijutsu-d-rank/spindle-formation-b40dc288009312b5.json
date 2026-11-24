@@ -17,6 +17,14 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu",
         "components": "HS"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Swarm active",
+        "appliesTo": {
+          "namePrefix": "Spindle Formation"
+        },
+        "note": "With your Swarm released: affected creatures make the skill check at disadvantage."
       }
     }
   },
@@ -107,7 +115,35 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5emRg27jeByobLf",
+        "type": "save",
+        "label": "Spindle Formation",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "A 30 by 5-foot line (+5 per rank; B: or a 30-foot cone; S: a 40-foot radius). Failure: Prone and no HS jutsu until the end of its next turn unless it passes a Ninshou or Illusions check against your save DC (at disadvantage with your Swarm).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

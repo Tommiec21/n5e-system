@@ -5,12 +5,52 @@
   "name": "Deep Sea Predator: Shark Skinned",
   "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
   "folder": "9a22fb7e244949a0",
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5e8UZfPmGiBvpSn",
+      "name": "Shark Skinned: DR",
+      "type": "generic",
+      "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "n5e.dr",
+          "value": "@abilities.con.mod",
+          "mode": 2,
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!e53a56b2379c6588.n5e8UZfPmGiBvpSn"
+    }
+  ],
   "flags": {
     "n5e": {
       "clanPackage": "hoshigaki",
       "sourceLine": 3960,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus DR equal to your Constitution modifier while not in Heavy Armor (turn the effect off in Heavy Armor)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +85,22 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5em5wG1IeFaBL2C",
+        "type": "damage",
+        "label": "Shark Skinned: melee retaliation (11th)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "@con",
+              "type": "slashing"
+            }
+          ]
+        },
+        "text": "11th: a creature damaging you with a melee attack."
+      }
+    ]
   }
 }

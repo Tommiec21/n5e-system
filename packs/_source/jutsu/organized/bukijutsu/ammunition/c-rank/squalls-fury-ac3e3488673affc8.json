@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ejfYTASLeFKVZ4",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Squall's Fury",
         "save": {
           "abilities": [
             "dex"
@@ -97,21 +96,21 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "A 15-foot cube in range. Failure: the damage, Pierce 4 DR (Chain 1: 6; Chain 2: it can't reduce damage until the end of its next turn).",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "On a failed save, they take your [Weapons damage] + 2d6, Pierce 4 DR."
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "2d6",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -198,9 +197,104 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5ejfYTASLeFKVZ4",
+              "type": "save",
+              "label": "Squall's Fury",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 15-foot cube in range. Failure: the damage, Pierce 4 DR (Chain 1: 6; Chain 2: it can't reduce damage until the end of its next turn).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ejfYTASLeFKVZ4",
+              "type": "save",
+              "label": "Squall's Fury",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 15-foot cube in range. Failure: the damage, Pierce 4 DR (Chain 1: 6; Chain 2: it can't reduce damage until the end of its next turn).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ejfYTASLeFKVZ4",
+              "type": "save",
+              "label": "Squall's Fury",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 15-foot cube in range. Failure: the damage, Pierce 4 DR (Chain 1: 6; Chain 2: it can't reduce damage until the end of its next turn).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d6) + (3d6)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "f8211708ba076b1c"

@@ -36,13 +36,41 @@
       "scout-maneuver"
     ],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ec8N7y5bTC7UfI",
+        "type": "effect",
+        "label": "Back Off!",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1,
+          "roll": true
+        },
+        "activation": "bonus",
+        "effect": {
+          "name": "Back Off!",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "n5e.dr",
+              "value": "@poolRoll",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Bonus action: your Squad moves up to half speed away from a hostile creature (no opportunity attacks) and gains DR equal to the die until the start of your next turn. Target them."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

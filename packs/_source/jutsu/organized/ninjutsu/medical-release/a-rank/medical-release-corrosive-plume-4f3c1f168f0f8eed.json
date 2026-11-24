@@ -85,23 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e0aOVPfyVBaOdO",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "corroded",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Corroded"
-          },
-          {
-            "key": "envenomed",
-            "kind": "condition",
-            "ranks": 5,
-            "label": "Envenomed"
-          }
-        ],
+        "label": "Corrosive Plume",
         "save": {
           "abilities": [
             "dex"
@@ -110,10 +96,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "corroded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Corroded"
+          }
+        ],
+        "text": "Every creature within 30 feet of a point within 120 feet. Failure: the damage and Corroded (5 Envenomed: vulnerable to it). Unheld items without an A-Rank seal dissolve; at 0 hit points it can't be revived.",
         "damage": {
           "parts": [
             {
@@ -195,7 +188,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "49121ed59e0d3922"

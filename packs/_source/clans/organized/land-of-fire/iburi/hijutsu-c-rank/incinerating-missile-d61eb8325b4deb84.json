@@ -17,6 +17,272 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Fire Release, Finisher, Chain",
         "components": "CM, M, W (Any melee)"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eXqXQZjTYqQ37q",
+              "type": "attack",
+              "label": "Incinerating Missile (Ninjutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Chain 3: beating AC by 5 regains the Action or Bonus action.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d12) + (1d12)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eqkDz2apgPQaFN",
+              "type": "attack",
+              "label": "Incinerating Missile (Taijutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "[Unarmed Damage] or [Weapon Damage] + 3d12 fire.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d12) + (1d12)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eCT6JFzjLGTLh9",
+              "type": "save",
+              "label": "Incinerating Missile: on a hit",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                },
+                {
+                  "key": "confused",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Confused"
+                }
+              ],
+              "text": "Failure: pushed 20 feet, Prone and Blinded until the end of its next turn. Finisher: at disadvantage, and Confused for 1 minute (a Constitution save ends it).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eXqXQZjTYqQ37q",
+              "type": "attack",
+              "label": "Incinerating Missile (Ninjutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Chain 3: beating AC by 5 regains the Action or Bonus action.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d12) + (2d12)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eqkDz2apgPQaFN",
+              "type": "attack",
+              "label": "Incinerating Missile (Taijutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "[Unarmed Damage] or [Weapon Damage] + 3d12 fire.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d12) + (2d12)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eCT6JFzjLGTLh9",
+              "type": "save",
+              "label": "Incinerating Missile: on a hit",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                },
+                {
+                  "key": "confused",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Confused"
+                }
+              ],
+              "text": "Failure: pushed 20 feet, Prone and Blinded until the end of its next turn. Finisher: at disadvantage, and Confused for 1 minute (a Constitution save ends it).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eXqXQZjTYqQ37q",
+              "type": "attack",
+              "label": "Incinerating Missile (Ninjutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Chain 3: beating AC by 5 regains the Action or Bonus action.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d12) + (3d12)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eqkDz2apgPQaFN",
+              "type": "attack",
+              "label": "Incinerating Missile (Taijutsu)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "[Unarmed Damage] or [Weapon Damage] + 3d12 fire.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d12) + (3d12)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eCT6JFzjLGTLh9",
+              "type": "save",
+              "label": "Incinerating Missile: on a hit",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                },
+                {
+                  "key": "confused",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Confused"
+                }
+              ],
+              "text": "Failure: pushed 20 feet, Prone and Blinded until the end of its next turn. Finisher: at disadvantage, and Confused for 1 minute (a Constitution save ends it).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -111,7 +377,93 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eXqXQZjTYqQ37q",
+        "type": "attack",
+        "label": "Incinerating Missile (Ninjutsu)",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Chain 3: beating AC by 5 regains the Action or Bonus action.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d12",
+              "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eqkDz2apgPQaFN",
+        "type": "attack",
+        "label": "Incinerating Missile (Taijutsu)",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "[Unarmed Damage] or [Weapon Damage] + 3d12 fire.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d12",
+              "type": "fire"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eCT6JFzjLGTLh9",
+        "type": "save",
+        "label": "Incinerating Missile: on a hit",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          },
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          },
+          {
+            "key": "confused",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Confused"
+          }
+        ],
+        "text": "Failure: pushed 20 feet, Prone and Blinded until the end of its next turn. Finisher: at disadvantage, and Confused for 1 minute (a Constitution save ends it).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

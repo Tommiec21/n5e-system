@@ -27,6 +27,8 @@ const FIXED = {
     enter: "Pick a damage type.", example: "fire", stacks: "Add one change per damage type." },
   "n5e.immune": { name: "Damage Immunity", category: "Defense", words: "immune immunity", what: "You take no damage from one damage type.",
     enter: "Pick a damage type.", example: "poison", stacks: "Add one change per damage type." },
+  "n5e.vulnerable": { name: "Damage Vulnerability", category: "Defense", words: "vulnerable vulnerability double weak", what: "You take double damage from one damage type.",
+    enter: "Pick a damage type.", example: "cold", stacks: "Add one change per damage type." },
   "n5e.conditionResist": { name: "Condition Resistance", category: "Defense", words: "condition resist resistance advantage save physical mental sensory elemental fatigue",
     what: "You make saving throws against this condition, or any condition in this group, with advantage.",
     enter: "Pick a condition or a condition group.", example: "group:physical", stacks: "Add one change per condition or group." },
@@ -127,6 +129,10 @@ export function fieldInfo(key, N5E = {}) {
   if ( (m = key.match(/^n5e\.disciplineAbility\.(nin|tai|gen)$/)) ) {
     return { name: `${discName[m[1]]} Ability`, category: "Saves & DCs", words: "ability modifier casting", what: `Your ${discName[m[1]]} use this ability for attacks and DCs.`,
       enter: "Pick an ability.", example: "wis", stacks: LARGEST };
+  }
+  if ( (m = key.match(/^n5e\.keywordAbility\.discipline:(nin|tai|gen)$/)) ) {
+    return { name: `${discName[m[1]]} Ability (when higher)`, category: "Saves & DCs", words: "ability modifier casting higher", what: `Your ${discName[m[1]]} can use this ability when it's higher than their usual one.`,
+      enter: "Pick an ability.", example: "cha", stacks: LARGEST };
   }
   if ( (m = key.match(/^n5e\.keywordAbility\.(.+)$/)) ) {
     const label = N5E.keywords?.[m[1]]?.label ?? cap(m[1]);

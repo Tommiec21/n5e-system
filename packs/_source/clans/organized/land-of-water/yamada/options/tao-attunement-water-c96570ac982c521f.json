@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "yamada",
       "sourceLine": 4537,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "A creature in your Instrument's reach trying to dash, disengage, grapple, disarm, shove or move you: one weapon attack against it."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,19 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eXuBuWetmAJmPc",
+        "type": "roll",
+        "label": "Water: parry",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, Reaction: an attack on an ally within 30 feet by a creature within 30 feet: move up to your speed next to the ally, add half this roll (your [Weapon Damage] die) to its AC; on a miss deal your [Weapon Damage] to the attacker."
+        },
+        "activation": "reaction",
+        "oncePerTurn": true
+      }
+    ]
   }
 }

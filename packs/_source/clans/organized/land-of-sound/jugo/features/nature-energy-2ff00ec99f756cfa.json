@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "jugo",
-      "sourceLine": 6250
+      "sourceLine": 6250,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Nature Energy: 1 + your proficiency bonus (the pool); 0 after a long rest; it carries between encounters. One expenditure per turn. Amplify: a Jūgo Hijutsu's Amplified effect (cast dialog options). Reaching your maximum makes you Manic (Flesh Crafting)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,56 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eSckVMCyaxM1WH",
+        "type": "roll",
+        "label": "Gain Nature Energy",
+        "roll": {
+          "formula": "",
+          "note": "In combat, 1 per trigger per turn: you damage a hostile creature, a hostile creature damages you, or you start your turn within 10 feet of a hostile creature (Feral Hunger: 2 for its trigger; Natural Mutant: +1)."
+        },
+        "cost": {
+          "pool": "natureEnergy",
+          "amount": 1,
+          "gain": true
+        }
+      },
+      {
+        "id": "n5emaC99o0bwZvKN",
+        "type": "heal",
+        "label": "Heal",
+        "heal": {
+          "formula": "1d6",
+          "pool": "hp"
+        },
+        "text": "Action: an ally you touch (not you) regains 1d6 per Nature Energy spent, up to 4 (6 at 11th; roll once per point).",
+        "activation": "action",
+        "cost": {
+          "pool": "natureEnergy",
+          "choose": true
+        }
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "natureEnergy",
+        "label": "Nature Energy",
+        "value": 0,
+        "max": "1 + @prof",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "lr",
+            "amount": "empty",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ]
   }
 }

@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "yamanaka",
-      "sourceLine": 2598
+      "sourceLine": 2598,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mind Body Transfer as a Bonus action instead of an Action (Pulse and Wave here; the Beam: your stance's button as a Bonus action)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,81 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eOBBIoeOfhX6T5",
+        "type": "save",
+        "label": "Pulse",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "yamanaka-mental-overwrite",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Mental Overwrite"
+          }
+        ],
+        "text": "7th: doesn't reveal you if hidden. Failure: 2 ranks of Mental Overwrite (3 at 15th).",
+        "activation": "bonus",
+        "damage": {
+          "parts": []
+        },
+        "minLevel": 7
+      },
+      {
+        "id": "n5eFIe1DZyE2fUk6",
+        "type": "save",
+        "label": "Wave",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "yamanaka-mental-overwrite",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Mental Overwrite"
+          }
+        ],
+        "text": "15th: creatures you choose within 30 feet (half the range). Failure: 5d6 psychic and 1 rank of Mental Overwrite.",
+        "activation": "bonus",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "psychic"
+            }
+          ]
+        },
+        "minLevel": 15
+      },
+      {
+        "id": "n5ecy1VQsuc77IXh",
+        "type": "roll",
+        "label": "Hold the Dominated",
+        "roll": {
+          "formula": "",
+          "note": "Reaction, a creature you Dominate succeeds its save to end it: −1 rank of Mental Overwrite and the status lasts another round (0 ranks ends it)."
+        },
+        "activation": "reaction"
+      }
+    ]
   }
 }

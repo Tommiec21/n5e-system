@@ -9,7 +9,15 @@
   "flags": {
     "n5e": {
       "clanPackage": "vesper",
-      "sourceLine": 4448
+      "sourceLine": 4448,
+      "textFrom": "vesper-claws-of-night (King Q-E9)",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Claws of Night Taijutsu stance (its text is Claws of Night's stance part, as King Q-E9): [Unarmed Damage] 1d8 slashing; once per turn a Bruised you inflict can be 1 rank of Bleed instead; once per turn, [Weapon Damage] with a one-handed Blade or [Unarmed Damage]: the save for Crimson Hemorrhage. At 7th, without Extra Attack, the Attack action attacks twice."
+        }
+      ]
     }
   },
   "ownership": {
@@ -17,7 +25,7 @@
   },
   "system": {
     "identifier": "vesper-stance-claws-of-night",
-    "description": "<p>15th Level Clan Feature</p>\n<p>You’ve become the perfect symbol for the Vespers. A lodestar to aspire to become. A myth among the living and a legend for those not yet born. But this perfection isn’t absolute. You must make a choice. When you reach this level, choose between Dominion and Requiem. An Ultimatum in choice for which part of your clan you wish to represent. Once you make this choice, you can only change it by completing a ritual to do so, which can be done as part of a Full-Rest.</p>\n<p>Dominion</p>\n<p>You embody the shadows and fear, and the ability to compel at will.</p>\n<p>When you roll initiative, you begin to radiate a small aura of shadows around yourself as the range of your blind sight from the Echolocation ability is increased to 40 feet.</p>\n<p>Additionally, If you would ever teleport into a space that is dimly lit or in darkness that is adjacent to a creature that is Berserked, Charmed, Confused, Demoralized or Shaken, you can, as part of the same action used to teleport, force them to make a Wisdom saving throw vs your highest jutsu save DC. On a failure, select one creature they can see that is in initiative. They must spend their movement, action and bonus action to harm the select creature. When they have dealt damage to the target creature 3 times, this effect ends on them. A creature that passes their save by 5 or more, becomes immune to this effect until you complete a rest.</p>\n<p>| #### Art Link / Pinterest Link |</p>\n<p>Requiem</p>\n<p>You embody the concept whispered about in your clan, the Apex Vampyr. A predator and stalker of the night that feeds on crimson ichor to sustain themselves.</p>\n<p>When you roll initiative, your claws become crimson red and grow in length. While in the Claws of Night stance, or while in your Umbral Monarch state, you gain a +15 bonus to your movement speed and when you take the Attack action, can make one additional attack as part of that Action.</p>\n<p>Also, creatures with ranks of Bleed or Crimson Hemorrhage, grant you a +1 bonus to your unarmed attacks or weapon attacks critical threat range.</p>\n<p>Additionally, as a Bonus Action, creatures with ranks of Bleed or Crimson Hemorrhage within 30 feet of you have their blood siphoned from them, as they lose all ranks of the listed conditions. For every rank of the listed conditions removed, you regain 1d6 hit points or gain 6 Temporary hit points, your choice.</p>",
+    "description": "<p>One of the Vesper Clans defining physical traits are their nails, black as midnight and able to be sharpened to rival the edge of a Kunai. The Clan has developed a special combat style utilizing their claws, or their claws in conjunction with a weapon from the Blade weapon group. While in combat you can sharpen and elongate your claws and enter your Claws of Night Taijutsu stance. While in this stance, you gain the following benefits:</p>\n<p>Your [Unarmed Damage] die becomes 1d8 and your [Unarmed Damage] type becomes Slashing.</p>\n<p>Once per turn, when inflicting the Bruised condition, you can change it to be 1 rank of Bleed instead.</p>\n<p>Once per turn, if you deal [Weapon Damage], with a weapon from the Blade weapon group that doesn’t have the Two-Handed property or [Unarmed Damage], you can force the affected creature to make a Constitution saving throw vs your highest jutsu save, gaining a rank of Crimson Hemorrhage on a failure.</p>\n<p>Beginning at 7th level, if you do not have the Extra Attack class feature, you can attack twice while in this stance when you take the Attack action.</p>",
     "source": {
       "book": "Tsunade's Studies Compendium",
       "page": "",
@@ -29,6 +37,38 @@
     ],
     "clan": "vesper",
     "featureType": "passive",
-    "requirement": "Vesper clan"
+    "requirement": "Vesper clan",
+    "activities": [
+      {
+        "id": "n5eAMVCpshpKfYLB",
+        "type": "save",
+        "label": "Crimson Hemorrhage",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "vesper-claws-of-night",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Crimson Hemorrhage"
+          }
+        ],
+        "text": "Once per turn, [Weapon Damage] with a one-handed Blade or [Unarmed Damage]. Failure: a rank of Crimson Hemorrhage.",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "unarmedDie": "1d8",
+    "unarmedType": "slashing"
   }
 }

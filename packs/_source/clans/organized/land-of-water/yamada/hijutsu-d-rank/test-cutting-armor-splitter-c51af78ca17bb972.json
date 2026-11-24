@@ -17,7 +17,252 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Taijutsu, Bukijutsu, Chain",
         "components": "W (Any Melee), M"
-      }
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5e0UigNkqC6Iswr",
+              "type": "attack",
+              "label": "Armor Splitter",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Reaction: the triggering creature. [Weapon Damage] + 2d6.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": "slashing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eFLgqZDszv4ZCa",
+              "type": "save",
+              "label": "Armor Splitter: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "yamada-asaemon-discipline",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Severed"
+                }
+              ],
+              "text": "Failure: Severed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5e0UigNkqC6Iswr",
+              "type": "attack",
+              "label": "Armor Splitter",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Reaction: the triggering creature. [Weapon Damage] + 2d6.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": "slashing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eFLgqZDszv4ZCa",
+              "type": "save",
+              "label": "Armor Splitter: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "yamada-asaemon-discipline",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Severed"
+                }
+              ],
+              "text": "Failure: Severed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e0UigNkqC6Iswr",
+              "type": "attack",
+              "label": "Armor Splitter",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Reaction: the triggering creature. [Weapon Damage] + 2d6.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (3d6)",
+                    "type": "slashing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eFLgqZDszv4ZCa",
+              "type": "save",
+              "label": "Armor Splitter: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "yamada-asaemon-discipline",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Severed"
+                }
+              ],
+              "text": "Failure: Severed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e0UigNkqC6Iswr",
+              "type": "attack",
+              "label": "Armor Splitter",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Reaction: the triggering creature. [Weapon Damage] + 2d6.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (4d6)",
+                    "type": "slashing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eFLgqZDszv4ZCa",
+              "type": "save",
+              "label": "Armor Splitter: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "yamada-asaemon-discipline",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Severed"
+                }
+              ],
+              "text": "Failure: Severed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Ideal Cut",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Armor Splitter"
+          },
+          "note": "With your Executioners Instrument: Empty Blade as if forgoing 2 attacks (its d6s decide)."
+        },
+        {
+          "label": "Tao (7th)",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Armor Splitter"
+          },
+          "note": "With your Executioners Instrument, from 7th level (not with Ideal Cut, unless The Middle Path's Bonus action): +1 critical range; a critical hit refunds your Reaction to cast it again at the same creature for free."
+        }
+      ]
     }
   },
   "ownership": {
@@ -109,7 +354,62 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e0UigNkqC6Iswr",
+        "type": "attack",
+        "label": "Armor Splitter",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Reaction: the triggering creature. [Weapon Damage] + 2d6.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "slashing"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eFLgqZDszv4ZCa",
+        "type": "save",
+        "label": "Armor Splitter: on a hit",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "yamada-asaemon-discipline",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Severed"
+          }
+        ],
+        "text": "Failure: Severed.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

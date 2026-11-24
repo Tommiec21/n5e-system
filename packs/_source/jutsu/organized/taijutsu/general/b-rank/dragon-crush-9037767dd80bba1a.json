@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eida2oJuH9boJh",
         "type": "attack",
-        "label": "Attack",
+        "label": "Dragon Crush",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "A Dazed or Stunned target.",
         "damage": {
           "parts": []
         },
@@ -106,10 +107,30 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5egE7e9jv1gVqe1",
+        "type": "attack",
+        "label": "Finisher: Dragon Crush",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 2
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "8d10",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "2"
+        }
+      },
+      {
+        "id": "n5esdJYEWMLn8nti",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Prolong",
         "save": {
           "abilities": [
             "con"
@@ -118,10 +139,10 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "On a hit. Failure: its Dazed or Stunned lasts 1 more round.",
         "damage": {
           "parts": []
         }
@@ -213,20 +234,21 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eida2oJuH9boJh",
               "type": "attack",
-              "label": "Attack",
+              "label": "Dragon Crush",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "A Dazed or Stunned target.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(8d10) + (1d10)",
+                "extraDice": "8d10 + 1d10",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -234,10 +256,30 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5egE7e9jv1gVqe1",
+              "type": "attack",
+              "label": "Finisher: Dragon Crush",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "8d10 + 1d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5esdJYEWMLn8nti",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Prolong",
               "save": {
                 "abilities": [
                   "con"
@@ -246,10 +288,10 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "On a hit. Failure: its Dazed or Stunned lasts 1 more round.",
               "damage": {
                 "parts": []
               }
@@ -257,20 +299,21 @@
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eida2oJuH9boJh",
               "type": "attack",
-              "label": "Attack",
+              "label": "Dragon Crush",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "A Dazed or Stunned target.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(8d10) + (2d10)",
+                "extraDice": "8d10 + 2d10",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -278,10 +321,30 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5egE7e9jv1gVqe1",
+              "type": "attack",
+              "label": "Finisher: Dragon Crush",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "8d10 + 2d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5esdJYEWMLn8nti",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Prolong",
               "save": {
                 "abilities": [
                   "con"
@@ -290,10 +353,10 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "On a hit. Failure: its Dazed or Stunned lasts 1 more round.",
               "damage": {
                 "parts": []
               }
@@ -301,7 +364,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "64b78902f2631880"

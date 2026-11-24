@@ -17,7 +17,8 @@
         "cost": "12 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -108,7 +109,30 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eZq9kD3a95ohQ8",
+        "type": "effect",
+        "label": "Wolf Pack",
+        "effect": {
+          "name": "Wolf Pack",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Concentration, a 30-foot radius of clones. Pack Die d8: once per turn a missed attack by you or the dog is rerolled (roll the Pack Die); once per turn damage to either of you drops by twice the Pack Die. A 1 or 2 shrinks it a step; at d4 it ends."
+      },
+      {
+        "id": "n5ervSu5b9MjHe5C",
+        "type": "roll",
+        "label": "Pack Die",
+        "roll": {
+          "formula": "1d8",
+          "note": "Shrinks a step on 1 or 2 (d8 > d6 > d4 > ends)."
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

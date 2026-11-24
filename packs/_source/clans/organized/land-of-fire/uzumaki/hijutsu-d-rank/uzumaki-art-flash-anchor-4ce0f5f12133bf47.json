@@ -17,6 +17,14 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fuinjutsu",
         "components": "CM, CS"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Seal Break",
+        "appliesTo": {
+          "namePrefix": "Uzumaki Art: Flash Anchor"
+        },
+        "note": "In your Binding Chain stance, dispel 1 rank of Sealed from a creature within 30 feet: it lasts until the start of your next turn."
       }
     }
   },
@@ -108,7 +116,22 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eDhQZv7wDcfs56",
+        "type": "effect",
+        "label": "Flash Anchor",
+        "effect": {
+          "name": "Flash Anchor",
+          "target": "self",
+          "changes": [],
+          "expires": "turnEnd",
+          "seconds": 0
+        },
+        "text": "Reaction, until the end of the turn: a rank of Mastery (2 at B, 3 at S) to AC and saves against the trigger and later effects; can't be moved or teleported against your will.",
+        "activation": "reaction"
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

@@ -86,11 +86,11 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eqbqLIUf4Si5H9",
         "type": "attack",
-        "label": "Attack",
+        "label": "Hammer",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
@@ -107,17 +107,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eVe8jKoDr6OstU",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "concussed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Concussed"
-          }
-        ],
+        "label": "Hammer: Concussed",
         "save": {
           "abilities": [
             "str"
@@ -126,25 +118,67 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "concussed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Concussed"
+          }
+        ],
+        "text": "On a hit. Failure: 1 Concussed.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "finisher-parsed1",
-        "type": "damage",
-        "label": "Finisher: Damage",
+        "id": "n5eI0JIqaQOBEQoM",
+        "type": "attack",
+        "label": "Finisher: Hammer",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
         "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed + 3d12",
-              "type": "bludgeoning"
-            }
-          ]
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "3d12",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eRBLEJSkD98OKe",
+        "type": "save",
+        "label": "Finisher: Concussed",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "concussed",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Concussed"
+          }
+        ],
+        "text": "On a hit. Failure: 2 Concussed.",
+        "damage": {
+          "parts": []
         }
       }
     ],
@@ -243,9 +277,403 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eqbqLIUf4Si5H9",
+              "type": "attack",
+              "label": "Hammer",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "1d12 + 1d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eVe8jKoDr6OstU",
+              "type": "save",
+              "label": "Hammer: Concussed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Concussed"
+                }
+              ],
+              "text": "On a hit. Failure: 1 Concussed.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eI0JIqaQOBEQoM",
+              "type": "attack",
+              "label": "Finisher: Hammer",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d12 + 1d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eRBLEJSkD98OKe",
+              "type": "save",
+              "label": "Finisher: Concussed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Concussed"
+                }
+              ],
+              "text": "On a hit. Failure: 2 Concussed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eqbqLIUf4Si5H9",
+              "type": "attack",
+              "label": "Hammer",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "1d12 + 2d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eVe8jKoDr6OstU",
+              "type": "save",
+              "label": "Hammer: Concussed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Concussed"
+                }
+              ],
+              "text": "On a hit. Failure: 1 Concussed.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eI0JIqaQOBEQoM",
+              "type": "attack",
+              "label": "Finisher: Hammer",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d12 + 2d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eRBLEJSkD98OKe",
+              "type": "save",
+              "label": "Finisher: Concussed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Concussed"
+                }
+              ],
+              "text": "On a hit. Failure: 2 Concussed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eqbqLIUf4Si5H9",
+              "type": "attack",
+              "label": "Hammer",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "1d12 + 3d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eVe8jKoDr6OstU",
+              "type": "save",
+              "label": "Hammer: Concussed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Concussed"
+                }
+              ],
+              "text": "On a hit. Failure: 1 Concussed.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eI0JIqaQOBEQoM",
+              "type": "attack",
+              "label": "Finisher: Hammer",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d12 + 3d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eRBLEJSkD98OKe",
+              "type": "save",
+              "label": "Finisher: Concussed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Concussed"
+                }
+              ],
+              "text": "On a hit. Failure: 2 Concussed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eqbqLIUf4Si5H9",
+              "type": "attack",
+              "label": "Hammer",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "1d12 + 4d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eVe8jKoDr6OstU",
+              "type": "save",
+              "label": "Hammer: Concussed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Concussed"
+                }
+              ],
+              "text": "On a hit. Failure: 1 Concussed.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eI0JIqaQOBEQoM",
+              "type": "attack",
+              "label": "Finisher: Hammer",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d12 + 4d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eRBLEJSkD98OKe",
+              "type": "save",
+              "label": "Finisher: Concussed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Concussed"
+                }
+              ],
+              "text": "On a hit. Failure: 2 Concussed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

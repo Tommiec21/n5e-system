@@ -36,13 +36,53 @@
       "scout-maneuver"
     ],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5efSopKAVzpTtqU",
+        "type": "roll",
+        "label": "Debilitate: Focus",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1
+        },
+        "roll": {
+          "formula": "",
+          "note": "An attack or jutsu affecting a hostile creature: a creature failing the jutsu's save gains 1 rank of Dazzled."
+        }
+      },
+      {
+        "id": "n5eOEXJzPWmPsGT4",
+        "type": "save",
+        "label": "Debilitate: Focus: Charisma save",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          }
+        ],
+        "text": "When the attack forces no save (Discipline already spent): a Charisma save (the jutsu's DC; Taijutsu for weapons or unarmed). Failure: 1 rank of Dazzled."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

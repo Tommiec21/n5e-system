@@ -86,17 +86,23 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5etuQBH2bY4SGrV",
+        "type": "damage",
+        "label": "Corrupted Weapon: +1d6",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d6",
+              "type": ""
+            }
+          ]
+        },
+        "text": "Concentration: twice per turn; your [Weapon damage] becomes poison or acid (set it). A-Rank: willing creatures within 15 feet each pick a weapon."
+      },
+      {
+        "id": "n5evzuSBMyefIKbL",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "envenomed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Envenomed"
-          }
-        ],
+        "label": "Corrupted Weapon: Envenomed",
         "save": {
           "abilities": [
             "con"
@@ -105,21 +111,19 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "envenomed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Envenomed"
+          }
+        ],
+        "text": "Once per turn, damaged by it. Failure: Envenomed (C-Rank: or Corroded; S-Rank: 2 Envenomed).",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "1d6",
-        "roll": {
-          "formula": "1d6",
-          "note": "Additionally, this weapon deals +1d6 damage twice per turn. Once per turn a creature damaged by this weapon must make a Constitution saving throw gaining a rank of Envenomed on a failed save."
         }
       }
     ],
@@ -206,9 +210,183 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5etuQBH2bY4SGrV",
+              "type": "damage",
+              "label": "Corrupted Weapon: +1d6",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d6",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "Concentration: twice per turn; your [Weapon damage] becomes poison or acid (set it). A-Rank: willing creatures within 15 feet each pick a weapon."
+            },
+            {
+              "id": "n5evzuSBMyefIKbL",
+              "type": "save",
+              "label": "Corrupted Weapon: Envenomed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "Once per turn, damaged by it. Failure: Envenomed (C-Rank: or Corroded; S-Rank: 2 Envenomed).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5etuQBH2bY4SGrV",
+              "type": "damage",
+              "label": "Corrupted Weapon: +1d6",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "Concentration: twice per turn; your [Weapon damage] becomes poison or acid (set it). A-Rank: willing creatures within 15 feet each pick a weapon."
+            },
+            {
+              "id": "n5evzuSBMyefIKbL",
+              "type": "save",
+              "label": "Corrupted Weapon: Envenomed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "Once per turn, damaged by it. Failure: Envenomed (C-Rank: or Corroded; S-Rank: 2 Envenomed).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5etuQBH2bY4SGrV",
+              "type": "damage",
+              "label": "Corrupted Weapon: +1d6",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "Concentration: twice per turn; your [Weapon damage] becomes poison or acid (set it). A-Rank: willing creatures within 15 feet each pick a weapon."
+            },
+            {
+              "id": "n5evzuSBMyefIKbL",
+              "type": "save",
+              "label": "Corrupted Weapon: Envenomed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "Once per turn, damaged by it. Failure: Envenomed (C-Rank: or Corroded; S-Rank: 2 Envenomed).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5etuQBH2bY4SGrV",
+              "type": "damage",
+              "label": "Corrupted Weapon: +1d6",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "Concentration: twice per turn; your [Weapon damage] becomes poison or acid (set it). A-Rank: willing creatures within 15 feet each pick a weapon."
+            },
+            {
+              "id": "n5evzuSBMyefIKbL",
+              "type": "save",
+              "label": "Corrupted Weapon: Envenomed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "Once per turn, damaged by it. Failure: Envenomed (C-Rank: or Corroded; S-Rank: 2 Envenomed).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c44c91ecdf316b93"

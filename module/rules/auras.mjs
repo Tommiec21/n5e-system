@@ -2,6 +2,8 @@
  * Auras and zones (ENG1d; docs/ENG1_SPEC.md). An Active Effect with flags.n5e.aura on a creature
  * gives its child effect to the creatures within its radius:
  *   aura {radius (ft), who: "hostile" | "friendly" | "all", includeSelf, effect: {name, changes, rules}}
+ *   also [{who, effect}]  AMP1f batch 4 (King Q-F15): more creatures the same aura gives another effect to
+ *               (Aura of Power: allies get the Amp, hostile creatures a −2 penalty); never the bearer
  * The child carries flags.n5e.auraFrom = the aura effect's uuid; it is added when a creature is in
  * range and removed when it leaves or the aura ends. Pure: what should change, from plain data.
  */
@@ -12,6 +14,15 @@ export function auraCounts(who, sourceDisposition, otherDisposition) {
   const same = sourceDisposition === otherDisposition;
   if ( who === "friendly" ) return same;
   return !same && otherDisposition !== 0 && sourceDisposition !== 0;
+}
+
+/**
+ * AMP1f batch 4: an aura's `also` groups as auras of their own ("<uuid>#also<i>"), so the plan below
+ * handles each like any aura. Pure.
+ */
+export function expandAuras(auras) {
+  return auras.flatMap(a => [a, ...(Array.isArray(a.aura?.also) ? a.aura.also : []).map((x, i) => ({
+    ...a, uuid: `${a.uuid}#also${i}`, aura: { radius: a.aura.radius, who: x.who ?? "hostile", includeSelf: false, effect: x.effect ?? {} } }))]);
 }
 
 /**

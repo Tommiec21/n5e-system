@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "tsuchigumo",
-      "sourceLine": 7576
+      "sourceLine": 7576,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Web Anchors: up to 4 (5 at 7th, 6 at 15th), the pool; each lasts 1 minute in combat (1 hour outside it: track by hand). A hostile creature entering one within your held ranged weapon's range: you know where it is and can target it even unseen or through full cover (disadvantage); your ranged weapon and Taijutsu attacks treat its AC as 2 lower."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,48 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e9b8w7UYlF5JBl",
+        "type": "roll",
+        "label": "Place Web Anchors",
+        "roll": {
+          "formula": "",
+          "note": "The Attack action: one Web Anchor per attack replaced (two for a single attack at 7th): a 10-foot cube on a surface within 60 feet; Stealth DC your highest jutsu save DC; 10 AC, 15 hit points, immune to bludgeoning. Over your maximum the oldest goes (spend one first)."
+        },
+        "cost": {
+          "pool": "webAnchors",
+          "choose": true,
+          "gain": true
+        }
+      },
+      {
+        "id": "n5eoxuMmv7FpA6Rd",
+        "type": "roll",
+        "label": "Web Anchor gone",
+        "roll": {
+          "formula": "",
+          "note": "Destroyed, dispelled by a weave, or dissolved."
+        },
+        "cost": {
+          "pool": "webAnchors",
+          "choose": true
+        }
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "webAnchors",
+        "label": "Web Anchors",
+        "value": 0,
+        "max": "lvl(1:4,7:5,15:6)",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [],
+        "lifetime": 60
+      }
+    ]
   }
 }

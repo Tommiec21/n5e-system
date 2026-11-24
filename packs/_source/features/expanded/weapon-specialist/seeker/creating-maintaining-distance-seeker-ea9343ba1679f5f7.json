@@ -33,13 +33,43 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eO7Wp34e38ldEJ",
+        "type": "roll",
+        "label": "Creating Distance",
+        "roll": {
+          "formula": "",
+          "note": "Reaction to a melee attack (not grabbed, prone or restrained): a Dexterity save against the attack roll. Success: it misses, you move 20 feet away (no opportunity attacks) and make a ranged weapon attack at it."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5eElcu22qDk0Uzl",
+        "type": "roll",
+        "label": "Maintaining Distance",
+        "roll": {
+          "formula": "",
+          "note": "Starting your turn with a Vector Seal creature, having moved 5 feet or less since your last turn: advantage on your first ranged attack at it this turn; reroll a 1 or 2 on either d20."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

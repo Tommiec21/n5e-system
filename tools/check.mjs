@@ -45,8 +45,12 @@ for ( const file of [...walk(path.join(ROOT, "module")), path.join(ROOT, "n5e.mj
 
 const packNames = new Set(system.packs.map(p => p.name));
 const srcRoot = path.join(ROOT, "packs", "_source");
+// A pack's documents and folders are of its type (Item packs; the Actor pack of Class & Clan Summons).
+const packTypes = Object.fromEntries(system.packs.map(p => [p.name, p.type]));
+const modelsFor = { Item: itemModels, Actor: actorModels };
 for ( const dir of fs.existsSync(srcRoot) ? fs.readdirSync(srcRoot) : [] ) {
   if ( !packNames.has(dir) ) errors.push(`packs/_source/${dir} is not a pack in system.json`);
+  const packType = packTypes[dir] ?? "Item";
   for ( const file of walk(path.join(srcRoot, dir)) ) {
     const doc = JSON.parse(fs.readFileSync(file, "utf8"));
     for ( const activity of doc.system?.activities ?? [] ) {
@@ -55,10 +59,17 @@ for ( const dir of fs.existsSync(srcRoot) ? fs.readdirSync(srcRoot) : [] ) {
     }
     for ( const k of ["_id", "_key", "name", "type"] ) if ( !doc[k] ) errors.push(`${path.relative(ROOT, file)}: no ${k}`);
     if ( String(doc._key ?? "").startsWith("!folders!") ) {
-      if ( doc.type !== "Item" ) errors.push(`${path.relative(ROOT, file)}: folder must be type Item`);
+      if ( doc.type !== packType ) errors.push(`${path.relative(ROOT, file)}: folder must be type ${packType}`);
       continue;
     }
-    if ( doc.type && !itemModels[doc.type] ) errors.push(`${path.relative(ROOT, file)}: unknown type ${doc.type}`);
+    if ( doc.type && !(modelsFor[packType] ?? itemModels)[doc.type] ) errors.push(`${path.relative(ROOT, file)}: unknown type ${doc.type}`);
+    for ( const item of doc.items ?? [] ) {
+      if ( !itemModels[item.type] ) errors.push(`${path.relative(ROOT, file)}: embedded item ${item.name} has unknown type ${item.type}`);
+      for ( const activity of item.system?.activities ?? [] ) {
+        if ( !Object.hasOwn(activityKinds, activity.type) ) errors.push(`${file} ${item.name}: unsupported activity type ${activity.type}`);
+        for ( const field of unknownActivityFields(activity, activityFields()) ) errors.push(`${file} ${item.name}: undeclared field ${field}`);
+      }
+    }
   }
 }
 

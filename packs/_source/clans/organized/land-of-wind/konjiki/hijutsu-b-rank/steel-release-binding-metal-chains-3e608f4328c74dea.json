@@ -17,6 +17,96 @@
         "cost": "14 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Earth Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Difficult terrain. Upcast: +10 feet radius per rank."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5e2FWEAW3yoOE7l",
+              "type": "save",
+              "label": "Binding Metal Chains",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "Creatures you select in the 20-foot radius (and those entering or starting there). Failure: the damage and Restrained (Strength save at the end of each of its turns).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d8) + (1d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e2FWEAW3yoOE7l",
+              "type": "save",
+              "label": "Binding Metal Chains",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "Creatures you select in the 20-foot radius (and those entering or starting there). Failure: the damage and Restrained (Strength save at the end of each of its turns).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d8) + (2d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Alomancy Infusion: relentless (2 Ingots)",
+        "appliesTo": {
+          "namePrefix": "Steel Release: Binding Metal Chains"
+        },
+        "cost": {
+          "pool": "ingots",
+          "amount": 2
+        },
+        "note": "Needs Iron Bulwark, Steel Reinforcement or Superheavy Metals. Creatures that pass remake their saves."
       }
     }
   },
@@ -108,7 +198,40 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e2FWEAW3yoOE7l",
+        "type": "save",
+        "label": "Binding Metal Chains",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "Creatures you select in the 20-foot radius (and those entering or starting there). Failure: the damage and Restrained (Strength save at the end of each of its turns).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d8",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

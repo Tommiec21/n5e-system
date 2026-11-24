@@ -9,7 +9,8 @@
   "flags": {
     "n5e": {
       "clanPackage": "hyuga",
-      "sourceLine": 967
+      "sourceLine": 967,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -42,6 +43,37 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eLyBUr8lTdN8FX",
+        "type": "save",
+        "label": "Gentle End",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "[Side Branch] The Attack action's [Unarmed Damage] on a creature with Sealed or Network Distortion: dispel all their ranks (−1 to the save per 2 ranks). Failure: 1d6 necrotic and 1d6 chakra per rank dispelled (roll once per rank). Then not until the end of your next turn.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d6",
+              "type": "necrotic"
+            },
+            {
+              "formula": "1d6",
+              "type": "chakra"
+            }
+          ]
+        }
+      }
+    ]
   }
 }

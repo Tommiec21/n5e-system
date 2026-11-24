@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "keton",
-      "sourceLine": 5880
+      "sourceLine": 5880,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Starlight Fusion: two Starlights fuse at a point within 120 feet until the start of your next turn (light 40 feet, dim 40 more); effects from it gain a rank of Mastery to attacks and +1 to its save DC (2 and +2 by fusing a third). Fission's damage can be fire or lightning."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,60 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e4wT5HTkquhmbC",
+        "type": "save",
+        "label": "Starlight Fission: radiation",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "keton-convergence",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Convergence"
+          }
+        ],
+        "text": "In place of a new Starlight at the start of your turn. Hostile creatures starting their turn within 20 feet. Failure: Convergence and 3 ranks of Dazzled, Weakened or Concussed (pick).",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5echxQaCXypTBKC",
+        "type": "save",
+        "label": "Starlight Fission: explosion",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "At the start of your next turn: all creatures in a 20-foot radius.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "8d6",
+              "type": "fire"
+            }
+          ]
+        }
+      }
+    ]
   }
 }

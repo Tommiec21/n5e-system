@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "uzumaki",
-      "sourceLine": 2357
+      "sourceLine": 2357,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Binding Chain chakra stance for 1 minute, usable with a Taijutsu or Bukijutsu stance: your Uzumaki Hijutsu's Seal Break (cast dialog options); the Attack action can use Binding Chain or Striking Chain (up to two attacks), with your highest jutsu attack bonus."
+        }
+      ]
     }
   },
   "ownership": {
@@ -29,6 +36,126 @@
     ],
     "clan": "uzumaki",
     "featureType": "passive",
-    "requirement": "Uzumaki clan"
+    "requirement": "Uzumaki clan",
+    "activities": [
+      {
+        "id": "n5eALYnNORxlJE9r",
+        "type": "effect",
+        "label": "Binding Chain stance",
+        "effect": {
+          "name": "Binding Chain",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Bonus action, 1 minute.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5exIxsr3pfxTAur",
+        "type": "attack",
+        "label": "Binding Chain (melee)",
+        "attack": {
+          "discipline": "highest",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Half the listed damage; bludgeoning, piercing or chakra. 2 creatures at 7th, 3 at 15th.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "floor((lvl(1:1d8,11:2d8) + max(@mod.nin, @mod.tai, @mod.gen)) / 2)",
+              "type": "chakra"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5epHZogwHJn4FIT",
+        "type": "attack",
+        "label": "Binding Chain (ranged)",
+        "attack": {
+          "discipline": "highest",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "30 feet; half the listed damage.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "floor(lvl(1:1d8,11:2d8) / 2)",
+              "type": "chakra"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eOuC961U9i6DA6",
+        "type": "save",
+        "label": "Binding Chain: Sealed",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "sealed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Sealed"
+          }
+        ],
+        "text": "Once per turn, a creature it hit. Failure: Sealed.",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eipASh5EjQovO8",
+        "type": "attack",
+        "label": "Striking Chain (melee)",
+        "attack": {
+          "discipline": "highest",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Bludgeoning, piercing or chakra. 7th: advantage against Grappled or Prone creatures. 15th: a physical type and chakra at once.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:1d8,11:2d8) + max(@mod.nin, @mod.tai, @mod.gen)",
+              "type": "chakra"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e5ij0CRqXvwo5R",
+        "type": "attack",
+        "label": "Striking Chain (ranged)",
+        "attack": {
+          "discipline": "highest",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "30 feet.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:1d8,11:2d8)",
+              "type": "chakra"
+            }
+          ]
+        }
+      }
+    ]
   }
 }

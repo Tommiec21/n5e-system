@@ -17,6 +17,124 @@
         "cost": "12 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Shin Branch",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Shin Branch]"
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eDSXu9eW7Sa1hN",
+              "type": "attack",
+              "label": "Wild Hair Mane",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "A creature you can see within 60 feet (+1 per rank). A-Rank: Large or larger targets at advantage, damage rolled twice (take the higher).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d10) + (1d10)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eQHBhfn2DWTCp9",
+              "type": "save",
+              "label": "Wild Hair Mane: on a hit",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Failure: 2 ranks of Bleed and pulled up to 30 feet closer.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eDSXu9eW7Sa1hN",
+              "type": "attack",
+              "label": "Wild Hair Mane",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "A creature you can see within 60 feet (+1 per rank). A-Rank: Large or larger targets at advantage, damage rolled twice (take the higher).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d10) + (2d10)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eQHBhfn2DWTCp9",
+              "type": "save",
+              "label": "Wild Hair Mane: on a hit",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Failure: 2 ranks of Bleed and pulled up to 30 feet closer.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Shin-Seal (dispel one)",
+        "appliesTo": {
+          "namePrefix": "Synthetic Art: Wild Hair Mane"
+        },
+        "note": "An affected creature with your Shin-Seal: 2 ranks of Doused.",
+        "cost": {
+          "pool": "shinSeals",
+          "amount": 1
+        }
       }
     }
   },
@@ -108,7 +226,54 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eDSXu9eW7Sa1hN",
+        "type": "attack",
+        "label": "Wild Hair Mane",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "A creature you can see within 60 feet (+1 per rank). A-Rank: Large or larger targets at advantage, damage rolled twice (take the higher).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d10",
+              "type": "slashing"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eQHBhfn2DWTCp9",
+        "type": "save",
+        "label": "Wild Hair Mane: on a hit",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Failure: 2 ranks of Bleed and pulled up to 30 feet closer.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

@@ -1,0 +1,109 @@
+{
+  "_id": "n5eAmp377c0e256f",
+  "name": "Medical Release: Strength of 100",
+  "type": "amp",
+  "img": "icons/svg/book.svg",
+  "folder": "n5eAmpFoldOther1",
+  "sort": 105000,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jutsu-medical-release-strength-of-100",
+    "description": "<p><b>Medical Release: Strength of 100</b> · cast at B-Rank to S-Rank · no type</p><p>Your Strength becomes 20.</p><p>Your jump height and distance are doubled.</p><p>Advantage on Strength and Constitution ability checks, skill checks and saving throws.</p><p>Your [Unarmed Damage] die becomes 2d8.</p><p>When it ends: Strength of 100: Overexerted (disadvantage on Strength ability and skill checks for 1 hour or until a short rest).</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1509",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "ampType": "",
+    "namedType": "",
+    "owner": {
+      "kind": "jutsu",
+      "id": "medical-release-strength-of-100",
+      "subclass": ""
+    },
+    "summary": "Your Strength becomes 20. Your jump height and distance are doubled. Advantage on Strength and Constitution ability checks, skill checks and saving throws. Your [Unarmed Damage] die becomes 2d8. When it ends: Strength of 100: Overexerted (disadvantage on Strength ability and skill checks for 1 hour ",
+    "activation": "",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": true
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "system.abilities.str.value",
+        "value": "20",
+        "mode": 5
+      },
+      {
+        "key": "n5e.unarmed.die",
+        "value": "2d8",
+        "mode": 0
+      }
+    ],
+    "aura": {},
+    "outsideLimits": false,
+    "series": "",
+    "level": 0,
+    "rank": "B",
+    "choose": {
+      "prompt": "",
+      "options": []
+    },
+    "buttons": [],
+    "onEnd": {
+      "condition": "medical-release-strength-of-100-overexerted"
+    },
+    "statuses": [],
+    "endsWith": ""
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "advantage",
+          "selector": [
+            "check",
+            "save"
+          ],
+          "predicate": {
+            "any": [
+              "ability:str",
+              "ability:con"
+            ]
+          },
+          "label": "Strength of 100"
+        },
+        {
+          "key": "note",
+          "text": "Your jump height and distance are doubled."
+        },
+        {
+          "key": "note",
+          "text": "When it ends, you gain the condition Strength of 100: Overexerted (applied automatically)."
+        }
+      ],
+      "amp1f": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.70.0"
+  },
+  "_key": "!items!n5eAmp377c0e256f"
+}

@@ -85,38 +85,31 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eG7KC1saiMskqc",
         "type": "attack",
-        "label": "Attack",
+        "label": "Bite of the Viper",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
         "damage": {
-          "parts": []
-        },
-        "strike": {
-          "kind": "weapon",
-          "extraDice": "4d6",
-          "dieSteps": 0,
-          "pierce": 0,
-          "maximize": false,
-          "attacks": "1"
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "4d6",
+              "type": "poison"
+            }
+          ]
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5etcG7MLZaHuTHc",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "envenomed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Envenomed"
-          }
-        ],
+        "label": "Poison detonates",
         "save": {
           "abilities": [
             "con"
@@ -125,10 +118,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "envenomed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Envenomed"
+          }
+        ],
+        "text": "Hit or miss: the target and everyone within 10 feet (Chain 2: Envenomed creatures at disadvantage). Failure: 1 Envenomed (Chain 1: no speech or hand seals until the end of its next turn).",
         "damage": {
           "parts": []
         }
@@ -220,38 +220,31 @@
         "activitiesByRank": {
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5eG7KC1saiMskqc",
               "type": "attack",
-              "label": "Attack",
+              "label": "Bite of the Viper",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
               "damage": {
-                "parts": []
-              },
-              "strike": {
-                "kind": "weapon",
-                "extraDice": "(4d6) + (1d6)",
-                "dieSteps": 0,
-                "pierce": 0,
-                "maximize": false,
-                "attacks": "1"
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "poison"
+                  }
+                ]
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5etcG7MLZaHuTHc",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "envenomed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Envenomed"
-                }
-              ],
+              "label": "Poison detonates",
               "save": {
                 "abilities": [
                   "con"
@@ -260,10 +253,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "Hit or miss: the target and everyone within 10 feet (Chain 2: Envenomed creatures at disadvantage). Failure: 1 Envenomed (Chain 1: no speech or hand seals until the end of its next turn).",
               "damage": {
                 "parts": []
               }
@@ -271,38 +271,31 @@
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eG7KC1saiMskqc",
               "type": "attack",
-              "label": "Attack",
+              "label": "Bite of the Viper",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
               "damage": {
-                "parts": []
-              },
-              "strike": {
-                "kind": "weapon",
-                "extraDice": "(4d6) + (2d6)",
-                "dieSteps": 0,
-                "pierce": 0,
-                "maximize": false,
-                "attacks": "1"
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "poison"
+                  }
+                ]
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5etcG7MLZaHuTHc",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "envenomed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Envenomed"
-                }
-              ],
+              "label": "Poison detonates",
               "save": {
                 "abilities": [
                   "con"
@@ -311,10 +304,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "Hit or miss: the target and everyone within 10 feet (Chain 2: Envenomed creatures at disadvantage). Failure: 1 Envenomed (Chain 1: no speech or hand seals until the end of its next turn).",
               "damage": {
                 "parts": []
               }
@@ -322,38 +322,31 @@
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eG7KC1saiMskqc",
               "type": "attack",
-              "label": "Attack",
+              "label": "Bite of the Viper",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
               "damage": {
-                "parts": []
-              },
-              "strike": {
-                "kind": "weapon",
-                "extraDice": "(4d6) + (3d6)",
-                "dieSteps": 0,
-                "pierce": 0,
-                "maximize": false,
-                "attacks": "1"
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(4d6) + (3d6)",
+                    "type": "poison"
+                  }
+                ]
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5etcG7MLZaHuTHc",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "envenomed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Envenomed"
-                }
-              ],
+              "label": "Poison detonates",
               "save": {
                 "abilities": [
                   "con"
@@ -362,10 +355,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "Hit or miss: the target and everyone within 10 feet (Chain 2: Envenomed creatures at disadvantage). Failure: 1 Envenomed (Chain 1: no speech or hand seals until the end of its next turn).",
               "damage": {
                 "parts": []
               }
@@ -373,7 +373,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "f8211708ba076b1c"

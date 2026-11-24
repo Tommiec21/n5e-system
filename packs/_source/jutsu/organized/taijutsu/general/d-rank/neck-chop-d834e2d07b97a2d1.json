@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eaV3PcqThR4alS",
         "type": "attack",
-        "label": "Attack",
+        "label": "Neck Chop",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "A humanoid's nape.",
         "damage": {
           "parts": []
         },
@@ -106,17 +107,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eCFwWnFEWWWpKa",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "dazed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Dazed"
-          }
-        ],
+        "label": "Neck Chop: Dazed",
         "save": {
           "abilities": [
             "con"
@@ -125,10 +118,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "On a hit. Failure: Dazed.",
         "damage": {
           "parts": []
         }
@@ -211,7 +211,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

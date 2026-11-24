@@ -42,7 +42,28 @@
         "roll": {
           "formula": "",
           "note": "Its damage becomes poison; Phantom Weapon and Hallucinatory Flurry are available."
-        }
+        },
+        "text": "1 Phantom Vapor Charge: a simple weapon's damage becomes poison, and Phantom Weapon and Hallucinatory Flurry become available (each an Action; either removes the coat)."
+      },
+      {
+        "id": "n5eEpAyAe0EIUs0V",
+        "type": "roll",
+        "label": "Hallucinatory Flurry",
+        "roll": {
+          "formula": "",
+          "note": "Action, coated weapon: cast a Bukijutsu you know; it gains the Genjutsu and Inhaled keywords. Removes the coat."
+        },
+        "activation": "action"
+      },
+      {
+        "id": "n5eG3oL2mfHYUV86",
+        "type": "roll",
+        "label": "Phantom Weapon",
+        "roll": {
+          "formula": "",
+          "note": "Action, coated weapon: a Genjutsu of C-Rank or lower with a 1-Action casting time, as a melee or ranged Genjutsu attack with the weapon. Hit: [Weapons Damage] and the Genjutsu's effect on that creature only. Removes the coat."
+        },
+        "activation": "action"
       }
     ]
   },
@@ -54,7 +75,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Simple weapons with the Thrown property use your Genjutsu attack bonus and Genjutsu ability modifier for damage (at the table)."
+        }
+      ]
     }
   },
   "_stats": {

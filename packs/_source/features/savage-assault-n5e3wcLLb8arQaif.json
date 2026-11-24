@@ -56,7 +56,54 @@
             "ranks": 1,
             "label": "Shaken (Okuri-Inu Fang)"
           }
-        ]
+        ],
+        "text": "When you deal [Weapon Damage] to a hostile creature: all affected creatures. Failure: Shaken (the condition card)."
+      },
+      {
+        "id": "n5edGNikz8bP5uTq",
+        "type": "save",
+        "label": "Hachiman's Brutality",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "hobbled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Hobbled"
+          }
+        ],
+        "text": "When you deal [Weapon Damage] to a hostile creature: all affected creatures. Failure: Hobbled (the condition card).",
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5egXoklyeiKTbql",
+        "type": "effect",
+        "label": "Koyane's Awareness",
+        "effect": {
+          "name": "Fracture Sense",
+          "target": "self",
+          "changes": [],
+          "expires": "turnEnd",
+          "seconds": 12
+        },
+        "text": "60 feet of Fracture Sense until the end of your next turn: aware of every creature in range with a Physical, Mental or Elemental condition.",
+        "cost": {
+          "pool": "discipline",
+          "amount": 1
+        },
+        "activation": "bonus"
       }
     ]
   },
@@ -68,7 +115,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "While wielding a Polearm or Flail weapon, or a weapon with Reach, Disarm or Deadly."
+        }
+      ]
     }
   },
   "_stats": {

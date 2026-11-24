@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eV7c6rpQK1Gd4e",
         "type": "attack",
-        "label": "Attack",
+        "label": "Draupnir Javelin",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "30 feet, thrown. Chain 1: call it back as a reaction.",
         "damage": {
           "parts": []
         },
@@ -106,17 +107,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eF0Q9IRIn4m9Gf",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "restrained",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Restrained"
-          }
-        ],
+        "label": "Draupnir: Restrained",
         "save": {
           "abilities": [
             "con"
@@ -125,21 +118,28 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "On a hit. Failure: Restrained; resave at the start of its turns.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll3",
+        "id": "n5ewhuMt7Kuv4Wp1",
         "type": "roll",
-        "label": "Chain 2: 1d6",
+        "label": "Chain 2: elemental 1d6",
         "roll": {
           "formula": "1d6",
-          "note": "Your weapon can deal an additional 1d6 of the associated conditions damage type when you deal [Weapon damage] with it for the next minute, or until it is no longer held by you, whichever comes first."
+          "note": "Chain 2, a target with an Elemental condition: +1d6 of that damage type on your [Weapon damage] for 1 minute while you hold it."
         }
       }
     ],
@@ -241,20 +241,21 @@
         "activitiesByRank": {
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5eV7c6rpQK1Gd4e",
               "type": "attack",
-              "label": "Attack",
+              "label": "Draupnir Javelin",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "30 feet, thrown. Chain 1: call it back as a reaction.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d12) + (1d12)",
+                "extraDice": "2d12 + 1d12",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -262,17 +263,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eF0Q9IRIn4m9Gf",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "restrained",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Restrained"
-                }
-              ],
+              "label": "Draupnir: Restrained",
               "save": {
                 "abilities": [
                   "con"
@@ -281,40 +274,48 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "On a hit. Failure: Restrained; resave at the start of its turns.",
               "damage": {
                 "parts": []
               }
             },
             {
-              "id": "sourceRoll3",
+              "id": "n5ewhuMt7Kuv4Wp1",
               "type": "roll",
-              "label": "Chain 2: 1d6",
+              "label": "Chain 2: elemental 1d6",
               "roll": {
                 "formula": "1d6",
-                "note": "Your weapon can deal an additional 1d6 of the associated conditions damage type when you deal [Weapon damage] with it for the next minute, or until it is no longer held by you, whichever comes first."
+                "note": "Chain 2, a target with an Elemental condition: +1d6 of that damage type on your [Weapon damage] for 1 minute while you hold it."
               }
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eV7c6rpQK1Gd4e",
               "type": "attack",
-              "label": "Attack",
+              "label": "Draupnir Javelin",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "30 feet, thrown. Chain 1: call it back as a reaction.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d12) + (2d12)",
+                "extraDice": "2d12 + 2d12",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -322,17 +323,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eF0Q9IRIn4m9Gf",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "restrained",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Restrained"
-                }
-              ],
+              "label": "Draupnir: Restrained",
               "save": {
                 "abilities": [
                   "con"
@@ -341,40 +334,48 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "On a hit. Failure: Restrained; resave at the start of its turns.",
               "damage": {
                 "parts": []
               }
             },
             {
-              "id": "sourceRoll3",
+              "id": "n5ewhuMt7Kuv4Wp1",
               "type": "roll",
-              "label": "Chain 2: 1d6",
+              "label": "Chain 2: elemental 1d6",
               "roll": {
                 "formula": "1d6",
-                "note": "Your weapon can deal an additional 1d6 of the associated conditions damage type when you deal [Weapon damage] with it for the next minute, or until it is no longer held by you, whichever comes first."
+                "note": "Chain 2, a target with an Elemental condition: +1d6 of that damage type on your [Weapon damage] for 1 minute while you hold it."
               }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eV7c6rpQK1Gd4e",
               "type": "attack",
-              "label": "Attack",
+              "label": "Draupnir Javelin",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "30 feet, thrown. Chain 1: call it back as a reaction.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d12) + (3d12)",
+                "extraDice": "2d12 + 3d12",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -382,17 +383,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eF0Q9IRIn4m9Gf",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "restrained",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Restrained"
-                }
-              ],
+              "label": "Draupnir: Restrained",
               "save": {
                 "abilities": [
                   "con"
@@ -401,27 +394,35 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "On a hit. Failure: Restrained; resave at the start of its turns.",
               "damage": {
                 "parts": []
               }
             },
             {
-              "id": "sourceRoll3",
+              "id": "n5ewhuMt7Kuv4Wp1",
               "type": "roll",
-              "label": "Chain 2: 1d6",
+              "label": "Chain 2: elemental 1d6",
               "roll": {
                 "formula": "1d6",
-                "note": "Your weapon can deal an additional 1d6 of the associated conditions damage type when you deal [Weapon damage] with it for the next minute, or until it is no longer held by you, whichever comes first."
+                "note": "Chain 2, a target with an Elemental condition: +1d6 of that damage type on your [Weapon damage] for 1 minute while you hold it."
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "f8b8034e73078532"

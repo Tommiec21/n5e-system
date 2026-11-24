@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "chinoike",
       "sourceLine": 5566,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,53 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ebh6ePUUDBIvWd",
+        "type": "roll",
+        "label": "Cold Blooded",
+        "roll": {
+          "formula": "",
+          "note": "Casting a Water Release jutsu: its damage becomes necrotic; affected creatures with Bleed save against it at a penalty equal to their ranks."
+        },
+        "cost": {
+          "pool": "crimsonCharges",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eMB7GCYQGb1TBU",
+        "type": "save",
+        "label": "Cold Blooded: infiltrate (11th)",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "stunned",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Stunned"
+          }
+        ],
+        "text": "A creature fails its save against your Hijutsu. Failure: Stunned until the end of its next turn (then immune until you rest).",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "crimsonCharges",
+          "amount": 2
+        },
+        "minLevel": 11
+      }
+    ]
   }
 }

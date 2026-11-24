@@ -17,6 +17,109 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Earth Release, Wind Release, Barrier",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Barrier resists cold and earth, is vulnerable to lightning. B-Rank or higher: the protected creature can't be moved against its will."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eDjnALfscMSP6T",
+              "type": "heal",
+              "label": "Dust Shield (Action)",
+              "heal": {
+                "formula": "(18) + 8",
+                "pool": "tempHp"
+              },
+              "text": "You or a willing creature within 30 feet: a Barrier until it moves or drops to 0."
+            },
+            {
+              "id": "n5ePOSG43G7pZMBf",
+              "type": "heal",
+              "label": "Dust Shield (Reaction)",
+              "heal": {
+                "formula": "(12) + 8",
+                "pool": "tempHp"
+              },
+              "text": "You or an ally within 30 feet takes damage: a Barrier until the start of its next turn.",
+              "activation": "reaction"
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eDjnALfscMSP6T",
+              "type": "heal",
+              "label": "Dust Shield (Action)",
+              "heal": {
+                "formula": "(18) + 16",
+                "pool": "tempHp"
+              },
+              "text": "You or a willing creature within 30 feet: a Barrier until it moves or drops to 0."
+            },
+            {
+              "id": "n5ePOSG43G7pZMBf",
+              "type": "heal",
+              "label": "Dust Shield (Reaction)",
+              "heal": {
+                "formula": "(12) + 16",
+                "pool": "tempHp"
+              },
+              "text": "You or an ally within 30 feet takes damage: a Barrier until the start of its next turn.",
+              "activation": "reaction"
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eDjnALfscMSP6T",
+              "type": "heal",
+              "label": "Dust Shield (Action)",
+              "heal": {
+                "formula": "(18) + 24",
+                "pool": "tempHp"
+              },
+              "text": "You or a willing creature within 30 feet: a Barrier until it moves or drops to 0."
+            },
+            {
+              "id": "n5ePOSG43G7pZMBf",
+              "type": "heal",
+              "label": "Dust Shield (Reaction)",
+              "heal": {
+                "formula": "(12) + 24",
+                "pool": "tempHp"
+              },
+              "text": "You or an ally within 30 feet takes damage: a Barrier until the start of its next turn.",
+              "activation": "reaction"
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eDjnALfscMSP6T",
+              "type": "heal",
+              "label": "Dust Shield (Action)",
+              "heal": {
+                "formula": "(18) + 32",
+                "pool": "tempHp"
+              },
+              "text": "You or a willing creature within 30 feet: a Barrier until it moves or drops to 0."
+            },
+            {
+              "id": "n5ePOSG43G7pZMBf",
+              "type": "heal",
+              "label": "Dust Shield (Reaction)",
+              "heal": {
+                "formula": "(12) + 32",
+                "pool": "tempHp"
+              },
+              "text": "You or an ally within 30 feet takes damage: a Barrier until the start of its next turn.",
+              "activation": "reaction"
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +213,29 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eDjnALfscMSP6T",
+        "type": "heal",
+        "label": "Dust Shield (Action)",
+        "heal": {
+          "formula": "18",
+          "pool": "tempHp"
+        },
+        "text": "You or a willing creature within 30 feet: a Barrier until it moves or drops to 0."
+      },
+      {
+        "id": "n5ePOSG43G7pZMBf",
+        "type": "heal",
+        "label": "Dust Shield (Reaction)",
+        "heal": {
+          "formula": "12",
+          "pool": "tempHp"
+        },
+        "text": "You or an ally within 30 feet takes damage: a Barrier until the start of its next turn.",
+        "activation": "reaction"
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

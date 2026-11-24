@@ -17,6 +17,224 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Auditory, Tactile), Wind Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Structures and objects treat its damage as if vulnerable. Upcast: +5 feet to the radius."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5euXNe5ULrVBEBq",
+              "type": "save",
+              "label": "Vicious Vortex",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 5d6 wind.",
+                  "success": "Success: half of 5d6 wind and Dazzled until the end of its next turn.",
+                  "failure": "Failure: 5d6 wind and 1 rank of Dazzled (pulled 10 feet and Prone, by its first paragraph).",
+                  "critFailure": "Critical Failure: as a failure, but 7d6 wind."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 15-foot radius on a point within 60 feet.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e7MHTUTpJhAo0Y",
+              "type": "damage",
+              "label": "Vicious Vortex: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (1d6)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5ewSWkOQT9sQhJQ",
+              "type": "damage",
+              "label": "Vicious Vortex: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(7d6) + (1d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5euXNe5ULrVBEBq",
+              "type": "save",
+              "label": "Vicious Vortex",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 5d6 wind.",
+                  "success": "Success: half of 5d6 wind and Dazzled until the end of its next turn.",
+                  "failure": "Failure: 5d6 wind and 1 rank of Dazzled (pulled 10 feet and Prone, by its first paragraph).",
+                  "critFailure": "Critical Failure: as a failure, but 7d6 wind."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 15-foot radius on a point within 60 feet.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e7MHTUTpJhAo0Y",
+              "type": "damage",
+              "label": "Vicious Vortex: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (2d6)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5ewSWkOQT9sQhJQ",
+              "type": "damage",
+              "label": "Vicious Vortex: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(7d6) + (2d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5euXNe5ULrVBEBq",
+              "type": "save",
+              "label": "Vicious Vortex",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 5d6 wind.",
+                  "success": "Success: half of 5d6 wind and Dazzled until the end of its next turn.",
+                  "failure": "Failure: 5d6 wind and 1 rank of Dazzled (pulled 10 feet and Prone, by its first paragraph).",
+                  "critFailure": "Critical Failure: as a failure, but 7d6 wind."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 15-foot radius on a point within 60 feet.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e7MHTUTpJhAo0Y",
+              "type": "damage",
+              "label": "Vicious Vortex: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (3d6)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5ewSWkOQT9sQhJQ",
+              "type": "damage",
+              "label": "Vicious Vortex: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(7d6) + (3d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -111,7 +329,75 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5euXNe5ULrVBEBq",
+        "type": "save",
+        "label": "Vicious Vortex",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: half of 5d6 wind.",
+            "success": "Success: half of 5d6 wind and Dazzled until the end of its next turn.",
+            "failure": "Failure: 5d6 wind and 1 rank of Dazzled (pulled 10 feet and Prone, by its first paragraph).",
+            "critFailure": "Critical Failure: as a failure, but 7d6 wind."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          },
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "A 15-foot radius on a point within 60 feet.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5e7MHTUTpJhAo0Y",
+        "type": "damage",
+        "label": "Vicious Vortex: damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "wind"
+            }
+          ]
+        },
+        "text": "Halve it on a success."
+      },
+      {
+        "id": "n5ewSWkOQT9sQhJQ",
+        "type": "damage",
+        "label": "Vicious Vortex: critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "7d6",
+              "type": "wind"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

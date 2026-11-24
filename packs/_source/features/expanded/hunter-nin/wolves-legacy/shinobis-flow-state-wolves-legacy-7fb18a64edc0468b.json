@@ -33,13 +33,68 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5epE5Y6zxeDs6zU",
+        "type": "roll",
+        "label": "Deflect (2 Posture)",
+        "roll": {
+          "formula": "",
+          "note": "Reduce the triggering and all later damage this turn by 10."
+        },
+        "cost": {
+          "pool": "posture",
+          "amount": 2
+        },
+        "activation": "reaction"
+      },
+      {
+        "id": "n5eqMxIe0guPuICM",
+        "type": "effect",
+        "label": "Parry (2 Posture)",
+        "effect": {
+          "name": "Parry",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "n5e.resist",
+              "value": "all",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Resistance until the start of your next turn, for you or a willing ally in your weapon's range.",
+        "activation": "reaction",
+        "cost": {
+          "pool": "posture",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5ePdRUCG1fdFrZu",
+        "type": "roll",
+        "label": "Retaliate (2 Posture)",
+        "roll": {
+          "formula": "",
+          "note": "Cast a 1-Action Bukijutsu you know instead of the Attack action (uses your reaction)."
+        },
+        "cost": {
+          "pool": "posture",
+          "amount": 2
+        },
+        "activation": "reaction"
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

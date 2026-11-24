@@ -122,10 +122,6 @@ VERSIONS = {
     "battle-lust": dict(tiers=[1, 11], subs=[
         ("is increased by +2. This increases to +4 at 11th level.", ["is increased by +2.", "is increased by +4."]),
         ("+2 damage (+4 at 11th)", ["+2 damage", "+4 damage"])]),
-    "combat-coordinated": dict(tiers=[1, 7, 15], add={7: [mastery("initiative", "Combat Coordinated (2nd rank)")], 15: [mastery("initiative", "Combat Coordinated (2nd rank)"), mastery("initiative", "Combat Coordinated (3rd rank)")]}, subs=[
-        ("you gain a rank of Mastery to your initiative. This becomes 2 ranks at 7th and 3 ranks at 15th level.",
-         ["you gain a rank of Mastery to your initiative.", "you gain 2 ranks of Mastery to your initiative.", "you gain 3 ranks of Mastery to your initiative."]),
-        ("^Coordinated Start: 1 rank of Mastery", ["", "", ""])]),
     "dragons-rage": dict(tiers=[7, 15], subs=[
         ("You gain a +1 bonus to your AC and a +10 bonus to your speed. This increases to +2 AC and +20 speed at 15th level.",
          ["You gain a +1 bonus to your AC and a +10 bonus to your speed.", "You gain a +2 bonus to your AC and a +20 bonus to your speed."]),
@@ -264,7 +260,9 @@ def main():
     cards = card_files()
     # Old version files are rewritten from the base each run.
     for key, (f, d) in list(cards.items()):
-        if d["system"].get("series") and d["system"]["series"] != key:
+        # Only this script's level versions (their base is in VERSIONS); the jutsu rank versions
+        # (build-jutsu-amp-cards.py, AMP1f) also carry a series and must stay.
+        if d["system"].get("series") in VERSIONS and d["system"]["series"] != key and not d["flags"]["n5e"].get("amp1f"):
             os.remove(f)
             del cards[key]
     made = 0

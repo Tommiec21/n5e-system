@@ -17,7 +17,14 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fire Release, Lightning Release",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1 attack per rank."
+        }
+      ]
     }
   },
   "ownership": {
@@ -109,7 +116,53 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ewLGX3rPRFFAk7",
+        "type": "attack",
+        "label": "Plasma Beam",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eORlcUEtnzvHBR",
+        "type": "save",
+        "label": "Plasma Beam: on a hit",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "keton-convergence",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Convergence"
+          }
+        ],
+        "text": "Failure: Convergence until the start of your next turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

@@ -17,7 +17,316 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Visual, Tactile), Lightning Release",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5ebHAEHqLSHiOjt",
+              "type": "attack",
+              "label": "Data Crash",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (1d8)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eqq8Uix67WRMCe",
+              "type": "save",
+              "label": "Data Crash: on a hit",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: −10 speed until the end of its next turn.",
+                  "failure": "Failure: Prone and grappled in place.",
+                  "critFailure": "Critical Failure: as a failure, and Restrained."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                },
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                },
+                {
+                  "key": "genwa-firewalled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Firewalled"
+                }
+              ],
+              "text": "Resave at the end of each of its turns.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5ebHAEHqLSHiOjt",
+              "type": "attack",
+              "label": "Data Crash",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (2d8)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eqq8Uix67WRMCe",
+              "type": "save",
+              "label": "Data Crash: on a hit",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: −10 speed until the end of its next turn.",
+                  "failure": "Failure: Prone and grappled in place.",
+                  "critFailure": "Critical Failure: as a failure, and Restrained."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                },
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                },
+                {
+                  "key": "genwa-firewalled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Firewalled"
+                }
+              ],
+              "text": "Resave at the end of each of its turns.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ebHAEHqLSHiOjt",
+              "type": "attack",
+              "label": "Data Crash",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (3d8)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eqq8Uix67WRMCe",
+              "type": "save",
+              "label": "Data Crash: on a hit",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: −10 speed until the end of its next turn.",
+                  "failure": "Failure: Prone and grappled in place.",
+                  "critFailure": "Critical Failure: as a failure, and Restrained."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                },
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                },
+                {
+                  "key": "genwa-firewalled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Firewalled"
+                }
+              ],
+              "text": "Resave at the end of each of its turns.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ebHAEHqLSHiOjt",
+              "type": "attack",
+              "label": "Data Crash",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (4d8)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eqq8Uix67WRMCe",
+              "type": "save",
+              "label": "Data Crash: on a hit",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: −10 speed until the end of its next turn.",
+                  "failure": "Failure: Prone and grappled in place.",
+                  "critFailure": "Critical Failure: as a failure, and Restrained."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                },
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                },
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                },
+                {
+                  "key": "genwa-firewalled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Firewalled"
+                }
+              ],
+              "text": "Resave at the end of each of its turns.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Angel Link (Uplink)",
+          "appliesTo": {
+            "namePrefix": "Data Release: Data Crash"
+          },
+          "note": "In your Uplink stance: range 30 feet (10-foot radius): the damage to the target on a hit, all creatures within 10 feet of it save."
+        },
+        {
+          "label": "Demon Link (Downlink)",
+          "appliesTo": {
+            "namePrefix": "Data Release: Data Crash"
+          },
+          "note": "In your Downlink stance: range 5 feet: on a hit and a failed save, Firewalled until the end of your next turn."
+        }
+      ]
     }
   },
   "ownership": {
@@ -111,7 +420,78 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ebHAEHqLSHiOjt",
+        "type": "attack",
+        "label": "Data Crash",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "force"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eqq8Uix67WRMCe",
+        "type": "save",
+        "label": "Data Crash: on a hit",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: −10 speed until the end of its next turn.",
+            "failure": "Failure: Prone and grappled in place.",
+            "critFailure": "Critical Failure: as a failure, and Restrained."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          },
+          {
+            "key": "grappled",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Grappled"
+          },
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          },
+          {
+            "key": "genwa-firewalled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Firewalled"
+          }
+        ],
+        "text": "Resave at the end of each of its turns.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

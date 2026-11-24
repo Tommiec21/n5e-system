@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "hebi",
-      "sourceLine": 8297
+      "sourceLine": 8297,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "One Venom Art (+1 at 7th and 15th): the option items. Venom Art Virulent lasts until the start of your next turn (Envenomed: drop its ranks to 0 for 1 minute)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,32 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5epvYIObdF8YXm2",
+        "type": "save",
+        "label": "Suppress a condition",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "End of your turn with Physical or Elemental ranks: DC 15 + 1 per such rank; success removes 1 rank. Roll your Constitution save from the sheet against it.",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "viperBlood",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

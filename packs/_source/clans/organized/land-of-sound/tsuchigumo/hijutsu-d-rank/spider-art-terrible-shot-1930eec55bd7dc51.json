@@ -17,6 +17,127 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu",
         "components": "W (Short or Longbow)"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eaIAHZz9LuI0cD",
+              "type": "attack",
+              "label": "Terrible Shot",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Your bow: [Weapons Damage] + 3d8. In its first range band: a second attack at another creature. B-Rank: +2 critical range, +2d12 on a critical hit; S-Rank: Pierce 12 in its furthest band.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (1d8)",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eaIAHZz9LuI0cD",
+              "type": "attack",
+              "label": "Terrible Shot",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Your bow: [Weapons Damage] + 3d8. In its first range band: a second attack at another creature. B-Rank: +2 critical range, +2d12 on a critical hit; S-Rank: Pierce 12 in its furthest band.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (2d8)",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eaIAHZz9LuI0cD",
+              "type": "attack",
+              "label": "Terrible Shot",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Your bow: [Weapons Damage] + 3d8. In its first range band: a second attack at another creature. B-Rank: +2 critical range, +2d12 on a critical hit; S-Rank: Pierce 12 in its furthest band.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (3d8)",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eaIAHZz9LuI0cD",
+              "type": "attack",
+              "label": "Terrible Shot",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Your bow: [Weapons Damage] + 3d8. In its first range band: a second attack at another creature. B-Rank: +2 critical range, +2d12 on a critical hit; S-Rank: Pierce 12 in its furthest band.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (4d8)",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -108,7 +229,35 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eaIAHZz9LuI0cD",
+        "type": "attack",
+        "label": "Terrible Shot",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "Your bow: [Weapons Damage] + 3d8. In its first range band: a second attack at another creature. B-Rank: +2 critical range, +2d12 on a critical hit; S-Rank: Pierce 12 in its furthest band.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "piercing"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

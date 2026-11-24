@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "shoton",
       "sourceLine": 6999,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Weapon Dance: a Crystal Weapon critical hit regains 4 Hardness; 7th: once per turn, damaging a creature under your Earth jutsu regains 2; 15th: damaging one with an Elemental condition regains 1. Aura: an ally's critical hit regains 4; 7th: once per turn an ally keeping concentration at its turn start regains 2; 15th: once per turn an ally casting in your aura regains 1."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,22 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eRpz3NEKTZD7Pb",
+        "type": "roll",
+        "label": "Topaz: regain Hardness",
+        "roll": {
+          "formula": "",
+          "note": "The listed trigger (4, 2 or 1)."
+        },
+        "cost": {
+          "pool": "hardness",
+          "choose": true,
+          "gain": true
+        }
+      }
+    ]
   }
 }

@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "kashu",
-      "sourceLine": 6549
+      "sourceLine": 6549,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Harmonic Branch] Prepare 2 Harmonies after a long rest (3 at 7th, 4 at 15th). Songs on a Kashu Hijutsu apply on a failed save; without a save, a Wisdom save against your highest jutsu save DC. Pull The Strings: once per turn, a Hijutsu on a creature with a Mental condition: on a failure it uses its reaction to move its speed toward you. Echo Chamber: Kashu Hijutsu can come from up to two Doki (one instance per creature). Aggressive Tempo: allies in a Kashu Hijutsu's range are immune and gain +10 speed (+20 at 7th, +30 at 15th) and +2 jutsu damage (+4, +6) until the end of their next turn. Demonic Chorus: Kashu Genjutsu +2 damage per active Doki. Harmonious Bridge: once per turn, a Doki's hit lets one use Revolt of the Demon World on it."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,61 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5elqWYGzwe27U7E",
+        "type": "save",
+        "label": "Binding Melody",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "sealed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Sealed"
+          }
+        ],
+        "text": "A Doki's ability: hostile creatures within 10 feet. Failure: 1 rank of Sealed (2 at 7th, 3 at 15th) and it can only target that Doki until the end of its next turn.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5enxCfRAzC7lqRm",
+        "type": "damage",
+        "label": "Rhythmic Repeat",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d6",
+              "type": "psychic"
+            }
+          ]
+        },
+        "text": "Once per turn, a Disoriented creature takes damage from another source: 1d6 per rank (roll once per rank).",
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5evyGVcs3Wt8JC2",
+        "type": "heal",
+        "label": "Underworlds Melody",
+        "heal": {
+          "formula": "lvl(3:4d6,7:6d6,15:8d6)",
+          "pool": "hp"
+        },
+        "text": "Action: every Doki within 15 feet (twice per combat per Doki).",
+        "activation": "action"
+      }
+    ]
   }
 }

@@ -36,13 +36,40 @@
       "scout-maneuver"
     ],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eyvdxf1i4DSRzQ",
+        "type": "effect",
+        "label": "Ramp Up: Protection",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1,
+          "roll": true
+        },
+        "effect": {
+          "name": "Ramp Up: Protection",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "In place of an attack of the Attack action: an ally (not you) within 30 feet gets +2 AC against the next attack, or the die to its next save, whichever comes first (end it then)."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

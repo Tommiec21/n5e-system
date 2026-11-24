@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "hoshi",
       "sourceLine": 7886,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,22 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e4qBXlsrJhyGx6",
+        "type": "roll",
+        "label": "Cosmic Siphon",
+        "roll": {
+          "formula": "1d6",
+          "note": "Reaction, a creature within 30 feet casts an HS and CM jutsu: per 2 Star Chakra, its cost +4 and you roll 1d6 for Temporary Star Chakra."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "starChakra",
+          "choose": true
+        }
+      }
+    ]
   }
 }

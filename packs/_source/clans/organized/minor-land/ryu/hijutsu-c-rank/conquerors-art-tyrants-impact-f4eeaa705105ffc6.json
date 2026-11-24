@@ -17,6 +17,155 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Ninjutsu Clash",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5e9n73AXsD6r3Lh",
+              "type": "save",
+              "label": "Tyrants Impact",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "A 30-foot cone. Failure: 1 Weakened; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (1d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eRlQs5SHSltjLr",
+              "type": "damage",
+              "label": "Dragon Rage: failed by 5+",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d10) + (1d10)",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "In place of the 3d10."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e9n73AXsD6r3Lh",
+              "type": "save",
+              "label": "Tyrants Impact",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "A 30-foot cone. Failure: 1 Weakened; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (2d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eRlQs5SHSltjLr",
+              "type": "damage",
+              "label": "Dragon Rage: failed by 5+",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d10) + (2d10)",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "In place of the 3d10."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e9n73AXsD6r3Lh",
+              "type": "save",
+              "label": "Tyrants Impact",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "A 30-foot cone. Failure: 1 Weakened; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (3d10)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eRlQs5SHSltjLr",
+              "type": "damage",
+              "label": "Dragon Rage: failed by 5+",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d10) + (3d10)",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "In place of the 3d10."
+            }
+          ]
+        }
       }
     }
   },
@@ -108,7 +257,54 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e9n73AXsD6r3Lh",
+        "type": "save",
+        "label": "Tyrants Impact",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          }
+        ],
+        "text": "A 30-foot cone. Failure: 1 Weakened; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d10",
+              "type": ""
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eRlQs5SHSltjLr",
+        "type": "damage",
+        "label": "Dragon Rage: failed by 5+",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d10",
+              "type": ""
+            }
+          ]
+        },
+        "text": "In place of the 3d10."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

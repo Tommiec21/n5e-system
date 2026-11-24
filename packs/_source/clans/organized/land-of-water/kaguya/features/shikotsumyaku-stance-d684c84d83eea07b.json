@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "kaguya",
-      "sourceLine": 4238
+      "sourceLine": 4238,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "In the stance: Bone Weapon attacks can use your Hijutsu Flexibility ability for Strength; a hostile creature casting a Hand Sign (HS) jutsu in your weapon's reach provokes an attack of opportunity; at 7th, without Extra Attack, the Attack action attacks twice. Battle Lust: up to 5 ranks (the pool), spent on Kaguya Hijutsu (cast dialog options); you lose a rank if you neither dealt nor took damage by the end of your turn; all end with combat."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,83 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eFYdKxzWKc1cba",
+        "type": "effect",
+        "label": "Shikotsumyaku Stance",
+        "effect": {
+          "name": "Shikotsumyaku Stance",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "The Bukijutsu stance (entering it isn't stated: as any stance)."
+      },
+      {
+        "id": "n5eaLSWqyFUAhJo9",
+        "type": "roll",
+        "label": "Gain Battle Lust (beat AC by 5 / natural 20)",
+        "roll": {
+          "formula": "",
+          "note": "A weapon or Taijutsu attack with a Bone Weapon beats the target's AC by 5 or more, or rolls a natural 20."
+        },
+        "cost": {
+          "pool": "battleLust",
+          "amount": 1,
+          "gain": true
+        }
+      },
+      {
+        "id": "n5e0NPHHDLdD0Jck",
+        "type": "effect",
+        "label": "Battle Lust",
+        "effect": {
+          "name": "Battle Lust",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "amp": "battle-lust"
+        },
+        "text": "The Battle Lust Amp (max rank 5, until combat ends); the Battle Lust pool counts its ranks."
+      },
+      {
+        "id": "n5eeBQuFES4r2dzC",
+        "type": "effect",
+        "label": "Battle Lust (11th)",
+        "effect": {
+          "name": "Battle Lust (11th)",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "amp": "battle-lust-11"
+        },
+        "text": "At 11th level (Violent Desire +4).",
+        "minLevel": 11
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "battleLust",
+        "label": "Battle Lust",
+        "value": 0,
+        "max": "5",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "encounter",
+            "amount": "empty",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ]
   }
 }

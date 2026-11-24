@@ -1,0 +1,505 @@
+{
+  "clan": "hatake",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "hatake-captain-hatake": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRWJoVOitSG2dC",
+          "type": "roll",
+          "label": "Advance (White Chakra)",
+          "roll": {
+            "formula": "",
+            "note": "Start of your turn, an ally within 30 feet: your damage gives it a bonus to its next attack or save DC (beating AC or the save by 5: a rank of Mastery)."
+          },
+          "cost": {
+            "pool": "whiteChakra",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5e62kIFPoVgybtM",
+          "type": "roll",
+          "label": "Advance (Command Die)",
+          "roll": {
+            "formula": "",
+            "note": "It moves as far as you; when you Attack or cast, it can use its Reaction to do the same."
+          },
+          "cost": {
+            "pool": "commandDice",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eg477AeekoW69W",
+          "type": "roll",
+          "label": "Evade (White Chakra)",
+          "roll": {
+            "formula": "",
+            "note": "Either of you taking damage can swap places and intercept it; the save or attack is remade."
+          },
+          "cost": {
+            "pool": "whiteChakra",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5ecZJmtec5GrdMY",
+          "type": "roll",
+          "label": "Evade (Command Die)",
+          "roll": {
+            "formula": "",
+            "note": "When either of you uses a reaction, the other gets the same benefit."
+          },
+          "cost": {
+            "pool": "commandDice",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hatake-enigma": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Out of combat, 1 hour and 5 charges of a Toolkit: appear in a known location normally inaccessible, describing how; the GM decides."
+        }
+      ]
+    },
+    "hatake-last-to-move-loses": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eSUdGdJJROAh6e",
+          "type": "roll",
+          "label": "Initiative: full proficiency",
+          "roll": {
+            "formula": "ceil(@prof / 2)",
+            "note": "Add your full proficiency bonus to initiative instead of half."
+          },
+          "cost": {
+            "pool": "whiteChakra",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eyifdQkJGFrzfT",
+          "type": "roll",
+          "label": "Initiative: assign results",
+          "roll": {
+            "formula": "",
+            "note": "You and your team record your rolls, then choose who gets which."
+          },
+          "cost": {
+            "pool": "commandDice",
+            "amount": 1
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "(Its copy of White Wolf's Amp is removed, as King Q-E12.)"
+        }
+      ]
+    },
+    "hatake-master-of-the-mundane": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Proficiency in two Toolkits of your choice; Toolkit activities of 1 minute or more take one stage less (1 Day > 8 Hours > 1 Hour > 10 Minutes > 1 Minute > 1 Action)."
+        }
+      ]
+    },
+    "hatake-pack-leader": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eEfDhOh8XSAWGR",
+          "type": "roll",
+          "label": "Roll a Command Die",
+          "roll": {
+            "formula": "1d20",
+            "note": "A d20 from your pool."
+          },
+          "cost": {
+            "pool": "commandDice",
+            "amount": 1
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "commandDice",
+          "label": "Command Dice",
+          "value": 0,
+          "max": "max(@abilities.str.mod, @abilities.dex.mod, @abilities.con.mod, @abilities.int.mod, @abilities.wis.mod, @abilities.cha.mod)",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "lr",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Command Dice: d20s equal to your highest ability modifier (the pool), back on a long rest. One Pack Tactic at creation (+1 at 7th and 15th): the option items."
+        }
+      ]
+    },
+    "hatake-pack-leader-defensive-formation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e5e1c0mwBGQnLz",
+          "type": "roll",
+          "label": "Defensive Formation",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, an ally takes damage: allies (you too) who can reach a space next to it move there; split the damage evenly among them."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "commandDice",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hatake-pack-leader-leaders-aura": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eYVeTdDP6FzPc8",
+          "type": "effect",
+          "label": "Leaders Aura",
+          "effect": {
+            "name": "Leaders Aura",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "1 minute, a 15-foot radius (20 at 7th, 25 at 15th): the first failed d20 of an ally (not you) can be rerolled, taking the second (once per your turn).",
+          "cost": {
+            "pool": "commandDice",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eGpafxAqj90ThO",
+          "type": "roll",
+          "label": "In/famous",
+          "roll": {
+            "formula": "1d20 + @level + max(@abilities.str.mod, @abilities.dex.mod, @abilities.con.mod, @abilities.int.mod, @abilities.wis.mod, @abilities.cha.mod)",
+            "note": "Rolling initiative: your Command Die + your level + highest modifier, contested by hostile History checks; success: 2 ranks of Demoralized until the start of their following turn (3 at 11th)."
+          },
+          "cost": {
+            "pool": "commandDice",
+            "amount": 1
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "In/famous is printed inside this option's text (a text issue)."
+        }
+      ]
+    },
+    "hatake-pack-leader-shared-burden": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eAh2PJs8BT87J0",
+          "type": "roll",
+          "label": "Shared Burden: advantage",
+          "roll": {
+            "formula": "",
+            "note": "An ally casting an Action jutsu: its attacks have advantage."
+          },
+          "cost": {
+            "pool": "commandDice",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5exyyIzU60mrrxT",
+          "type": "roll",
+          "label": "Shared Burden: cost",
+          "roll": {
+            "formula": "",
+            "note": "Up to 3 White Chakra: its cost −2 per White Chakra."
+          },
+          "cost": {
+            "pool": "whiteChakra",
+            "choose": true
+          }
+        }
+      ]
+    },
+    "hatake-pack-leader-team-coordination": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eW0fLA7UQbHHOx",
+          "type": "roll",
+          "label": "Team Coordination",
+          "roll": {
+            "formula": "",
+            "note": "One ally is the Assault Leader (once per long rest per creature); willing allies (you too, not summons) spend Reactions: +1 Action per 2, +1 Bonus action for an odd count."
+          },
+          "cost": {
+            "pool": "commandDice",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "hatake-tactical-skill": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eAESG6QJxYFEAp",
+          "type": "roll",
+          "label": "Tactical Skill: White Chakra",
+          "roll": {
+            "formula": "lvl(3:1d4,11:1d6)",
+            "note": "A skill check out of combat."
+          },
+          "cost": {
+            "pool": "whiteChakra",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eLfufZfmNca9KV",
+          "type": "roll",
+          "label": "Tactical Skill: team workshop",
+          "roll": {
+            "formula": "",
+            "note": "A rank of Mastery per ally who can aid (up to 3), past level limits."
+          },
+          "cost": {
+            "pool": "commandDice",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hatake-white-chakra": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eMuQRr4EUyHqUU",
+          "type": "roll",
+          "label": "Area Scanning",
+          "roll": {
+            "formula": "",
+            "note": "Touching a surface: you know where every creature on it within 120 feet is (1 minute of focus, or an Action for 1 White Chakra)."
+          },
+          "activation": "action",
+          "cost": {
+            "pool": "whiteChakra",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5e2HEFmbho04J1V",
+          "type": "roll",
+          "label": "Jutsu Overcharge",
+          "roll": {
+            "formula": "",
+            "note": "Casting a CM jutsu: one benefit by its keyword (Earth construct +4 hit points per rank; Wind Swirl; Fire +1 per die up to +10; Water a source of water; Lightning Overcharge; Medical temporary hit points by rank; Taijutsu Combo or Finisher (+2 dice); Bukijutsu any chain rank effect; Genjutsu critical thresholds 2 easier)."
+          },
+          "cost": {
+            "pool": "whiteChakra",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5eAhXaBP4rEiz5f",
+          "type": "effect",
+          "label": "Silver Weapon",
+          "effect": {
+            "name": "Silver Weapon",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "A weapon you're proficient with, 1 minute: Chakra Edge (your Passive Affinity's damage type; Medical: poison), Flashing Parry, Wolves Prey (marked until the end of your next turn: a rank of Mastery to damage against it; two at 11th).",
+          "cost": {
+            "pool": "whiteChakra",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5ewiM88AxvC0Nco",
+          "type": "roll",
+          "label": "Flashing Parry",
+          "roll": {
+            "formula": "",
+            "note": "Silver Weapon, Reaction to a melee hit: reduce it by [Weapon Damage] + [Weapon Damage], then move 10 feet without provoking."
+          },
+          "activation": "reaction"
+        },
+        {
+          "id": "n5ecsN3dVF5nVt4r",
+          "type": "roll",
+          "label": "Martial Reversal",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, a Taijutsu or Bukijutsu damages you: cast a Taijutsu or Bukijutsu of that rank or lower at the attacker."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "whiteChakra",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5edIGNHJ9kkdq8S",
+          "type": "roll",
+          "label": "Swift Cast",
+          "roll": {
+            "formula": "",
+            "note": "An Action HS jutsu as a Bonus action (that jutsu: once per rest)."
+          },
+          "cost": {
+            "pool": "whiteChakra",
+            "amount": 3
+          }
+        },
+        {
+          "id": "n5eRaEwd6uDc2zWT",
+          "type": "roll",
+          "label": "Pale Perception",
+          "roll": {
+            "formula": "",
+            "note": "A hostile creature casts a jutsu: Read the Enemy or Identify at no reaction cost (once before your next turn)."
+          },
+          "cost": {
+            "pool": "whiteChakra",
+            "amount": 1
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "whiteChakra",
+          "label": "White Chakra",
+          "value": 0,
+          "max": "1 + @prof",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "rest",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "White Chakra: 1 + proficiency bonus (the pool), back on a rest. One White Wolf Art at creation (+1 at 7th and 15th)."
+        }
+      ]
+    },
+    "hatake-white-wolf": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5evNY2v7RjPlTXR",
+          "type": "effect",
+          "label": "White Wolf",
+          "effect": {
+            "name": "White Wolf",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "white-wolf"
+          },
+          "text": "Bonus action, 1 minute, once per long rest.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5e6gQBy4Gw5cTXG",
+          "type": "roll",
+          "label": "Two Steps Ahead: White Chakra",
+          "roll": {
+            "formula": "",
+            "note": "Start of each of your turns (or 1 Command Die instead)."
+          },
+          "cost": {
+            "pool": "whiteChakra",
+            "amount": 2,
+            "gain": true
+          }
+        },
+        {
+          "id": "n5eJJs72cXkC5BcL",
+          "type": "roll",
+          "label": "Limit Break (White Chakra)",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn: an extra action; not again until the end of your next turn."
+          },
+          "cost": {
+            "pool": "whiteChakra",
+            "amount": 3
+          }
+        },
+        {
+          "id": "n5el2VWhpL331ezG",
+          "type": "roll",
+          "label": "Limit Break (Command Dice)",
+          "roll": {
+            "formula": "",
+            "note": "As above."
+          },
+          "cost": {
+            "pool": "commandDice",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5eQELS6ZSybzkaF",
+          "type": "roll",
+          "label": "No Casualties",
+          "roll": {
+            "formula": "@level",
+            "note": "Reaction, an ally within 30 feet takes damage: reduce it by [Weapon Damage] + your level; your weapon lands by the ally."
+          },
+          "activation": "reaction"
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "lr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      }
+    }
+  }
+}

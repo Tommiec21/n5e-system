@@ -17,6 +17,86 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Fire Release, Water Release, Broil Branch",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The extra damage is acid. A Corroded target loses Corroded and gains that many ranks of Scald (by Corroded's rank: D 1 ... S 5). Both attacks on the same creature: you can gain 1 Pressure."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5e9sH0RfBhHcQa9",
+              "type": "attack",
+              "label": "Corrosive Viper Fang",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(2d8) + (1d8)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e9sH0RfBhHcQa9",
+              "type": "attack",
+              "label": "Corrosive Viper Fang",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(2d8) + (2d8)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e9sH0RfBhHcQa9",
+              "type": "attack",
+              "label": "Corrosive Viper Fang",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(2d8) + (3d8)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -111,7 +191,29 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e9sH0RfBhHcQa9",
+        "type": "attack",
+        "label": "Corrosive Viper Fang",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 2
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "2d8",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "2"
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

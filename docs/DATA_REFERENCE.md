@@ -934,3 +934,113 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 - Version cards: identifier `<base>-<level>`, name "<Base name> (<level>th)". Built by `tools/content/build-amp-versions.py` from the base cards (the base keeps its unversioned text in `flags.n5e.versionSource`). Build order: build-amp-cards.py, build-clan-amp-cards.py, build-amp-versions.py.
 - `ampVersionFor(registry, key, level)` (rules/amp-cards.mjs) picks the version; `applyAmp` uses it (the applier's level). `ampCardsFor` shows only the highest reached version per series.
 - Uses and cooldowns: `flags.n5e.ampUses.<series>` (trackKey).
+
+### Self-buff states, stances, Coordinated (AMP1e, 0.69.0-alpha.1)
+
+- Amp card `system.outsideLimits` (bool): the Amp limits ignore it (`ampLimitConflict` skips it as the new Amp and as an active one). Carried to the Amp effect as `system.outsideLimits`. DYNAMIC FORM! (`dynamic-form`) and Flawless (`flawless`) use it (King Q-E3).
+- Ending `finisherCast`: casting a jutsu with the Finisher keyword (`isFinisherCast`, rules/cast-tracking.mjs) ends Amps that list it; it always ends them (it is part of the duration), whatever the `ampEnding` setting.
+- Amp audit status `stance` (label "Stance"): every item of type `stance` (King Q-E1). `flags.n5e.notAmp` (a reason) on any document keeps it out of the audit.
+- Condition card `system.choose` `{prompt, options: [{label, key, value, mode}]}`: the bearer's owners pick one option in chat (`flags.n5e.conditionChoice` on the message); it is added to the condition's changes, once (`flags.n5e.chosen`).
+- Condition cards: `lvl(…)` in `changes` (and `choose` options) is read from the applier's character level when placed (King Q-E5: a feature's level is the character level of the character who has it); with no applier it is left for the bearer.
+- Mastery change value `"Source ×N"`: N steps from one source (`Source 1` … `Source N`).
+- `nara-combat-coordinated` and `nara-diplomatic-coordinated` (conditions pack), applied by Team Coordination's two buttons. The Combat Coordinated Amp cards (`combat-coordinated`, `-7`, `-15`) are gone (King Q-E4).
+
+### Jutsu Amps (AMP1f, 0.70.0-alpha.1)
+
+- Amp card owner kind `jutsu` (`owner.id`: the jutsu's identifier): owned by knowing the jutsu (`ownsAmp`), never offered by `ampCardsFor`; started by the jutsu's effect activity `{amp: key}`.
+- `system.rank` (E–S): the cast rank a version starts at; versions share `system.series`. `ampVersionFor(registry, key, level, rank)` picks the highest rank at or below the cast (no rank: the base). The cast rank comes from the cast card's `flags.n5e.cast.rank` (activity-buttons.mjs → applyActivityEffect `rank` → applyAmp).
+- `system.choose` `{prompt, options: [{label, changes, rules, duration}]}`: `applyAmp` opens the menu (`pickOption`); several targets pick once (`pickAmpOption`). `withChoice(plan, def, choice)` adds the option; an option `duration` replaces the card's. The applyAmp intent carries `choice`.
+- Cards: `tools/content/build-jutsu-amp-cards.py` (keys `jutsu-<identifier>`, `-<rank>` or `-<level>` for versions; folder "Self-buffs and jutsu"). Rejected jutsu: `flags.n5e.notAmp`.
+- AMP1f batch 2 (0.71.0-alpha.1): `choose.count` (picks, King Q-F7), `choose.changeable` (the Amps panel's Change button, `changeAmpChoice`, `ampChoiceUpdate`; King Q-F9), option `tempHp`; the picks are kept in `flags.n5e.ampChoice`. An aura child `{amp: key}` (workflow/auras.mjs) is that card's Amp effect on each creature in range (King Q-F6); the aura card is `outsideLimits`. Build entries may set `key`, `button: false` (the "in the aura" companion cards) and `drop` (activity ids the card replaces).
+
+### Amp card fields added in AMP1f batch 3 (0.72.0-alpha.1)
+
+- `system.buttons`: [{label, activation, text, effect}]; shown on the active Amp's row in the Amps panel; `effect` is an activity effect (changes, expires...) applied to the bearer (`useAmpButton`).
+- `system.onEnd.condition`: a condition card key applied to the bearer when the Amp ends (not on a swap).
+- `system.statuses`: token statuses the Amp effect carries while it lasts (`invisible`).
+- Condition cards: `system.endsAt: "rest"` keeps the duration and also ends on any rest.
+- Change key `n5e.vulnerable` (value: damage type) adds to `traits.vuln`.
+
+### Fields added in AMP1f batch 4 (0.73.0-alpha.1)
+
+- Amp card `system.endsWith`: an Amp key or series; the Amp ends when that Amp ends on its bearer, and starting it clears that Amp's `flags.n5e.dependentOn` and takes its jutsu off `system.combat.concentrating` (`ampsEndingWith`, `activeAmpOfSeries`).
+- Amp card `system.buttons[].end: "pause"`: the button ends the Amp with `{n5eAmpPause: true}`, so `onEnd.condition` isn't applied.
+- Aura `also: [{who, effect}]`: more creatures the same aura gives another child effect (`expandAuras`; children's `auraFrom` is `<uuid>#also<i>`).
+- Condition cards: `system.statuses` (more token statuses the condition carries) and `system.endsAt: "fullRest"` (ends only on a full rest).
+- Saves rolled from a cast card carry the jutsu's facts prefixed `against:` (`against:jutsu:discipline:nin`).
+- Activity effect values: `@disciplines.<d>.mod` and `floor()`/`ceil()` are resolved when the effect is placed.
+
+### Fields added in STD6d Weapon Specialist (0.74.0-alpha.1)
+
+- Roll facts `option:<key>:<value>`: each class item's chosen level-up options (advancement type `option`), value slugged ("Thrown/Ammunition" → `thrown-ammunition`).
+- Activity `cost.formula`: replaces `amount`; `lvl(...)` by level, or dice rolled and posted to chat.
+- Automation table entry `dropEffects`: names of imported (non-`std6d`) effects on the feature to remove.
+
+### Fields added in STD6d Scout-Nin (0.75.0-alpha.1)
+
+- Feature pools `chakraBarrier` (max `2 * @level`, full on any rest), `ghostfire` (max `lvl(3:3,10:5)`), `tacticalInsight` (max 4).
+- Placed effect values (changes, limits, aura child rules): `@prof` and `@abilities.<a>.mod` resolve from the caster when placed; the rule validator accepts them (with `floor()`/`ceil()`).
+
+### Class & Clan Summons (0.76.0-alpha.1)
+
+- Actor pack `summons` ("Class & Clan Summons"); sources from `tools/content/build-summons.mjs`.
+- NPC `flags.n5e.fromSummoner`: `{ "<path under system>": "<formula>" }` over the summoner's numbers (`@level`, `@prof`, `@str`…, `@dc.nin`, `@attack.tai`, `@hp.max`, `@speed`, `@saves.<a>.proficient`, `@skills.<k>.total`, `@senses.<s>`, `@bonuses.attack.<k>`). A single reference keeps its value; otherwise arithmetic with max/min/floor/ceil. Written into the summoned token's `delta.system`, with `details.summoner` (the caster's uuid).
+- Automation table entry `duration`: the feature's `system.duration` (how long its summons last).
+
+### Class & Clan Limits and option-gated effects (0.77.0-alpha.1)
+
+- World setting `limitRecovery`: `{ "<owner identifier>.<pool id>": "<choice>", "amp:<amp key>": "<choice>" }`. Pool choices: rest10m, sr, halfSrFullLr, lr, fr, day, initiative (recovers on encounter), round, turn, never. Amp choices: rest10m, sr, lr, fr, day. A choice replaces the written recovery (rules/recovery-overrides.mjs).
+- Effect `flags.n5e.requiresOption: "<option key>:<value>"`: the effect is suppressed unless a class's level-up option with that key has that value chosen. Automation tables pass `requiresOption` through on effects.
+
+### Optional damage elements (0.77.1-alpha.1)
+
+- Rule element `{key: "damage", selector, formula, optional: true, label}`: shown unticked in the damage roll window and added only when ticked. With no `damageType` it takes the roll's first damage type. Lethal Attack uses two (full and half).
+
+### Genjutsu Specialist additions (0.78.0-alpha.1)
+
+- Roll fact `jutsu:id:<identifier>`: on every roll from a jutsu's cast card (and `against:jutsu:id:<identifier>` on saves against it).
+- Change key `n5e.keywordAbility.discipline:<nin|tai|gen>`: every jutsu cast as that discipline may use this ability when it's higher.
+- Summons: Duplicity (`fromSummoner`: level, AC = `@dc.gen`, speed) and Phantasm (level, Genjutsu attack bonus and save DC, senses).
+- Class item `flags.n5e.abilityChoice.<disc>`: the player's pick of the ability for that discipline's jutsu when an effect offers another ("" = the higher). Read into `system.grants.disciplineAbilityChoice`.
+- Armor category `illusory` (worn over armor) with `system.overlay`: `ability` (replaces Dex in AC: an ability or a discipline nin|tai|gen), `fromDC` (that discipline's save DC is the AC when higher), `whileState` (only in that named state). Rules: `rules/ac.mjs` overlayAC.
+- Summon template `flags.n5e.summonerLook: true`: the placed token takes the summoner's token name, image and size. Summoner data adds `@speeds.<walk|climb|swim|fly|burrow>` and `@size`.
+
+### Clans as data (0.79.0-alpha.1, STD6e)
+
+- Clan tables: `content/automation/clans/<clan>.json` (`{clan, features: {<identifier>: entry}}`), same entry keys as class tables plus `system` (item fields, e.g. a stance's `unarmedDie`, `unarmedType`).
+- Save `dc.source: "highest"` and attack `discipline: "highest"`: the best casting discipline's DC or attack bonus.
+- Summoner links: `@rankValue` (the summoning jutsu's cast rank, D 1 ... S 5; 0 otherwise).
+- Stance `system.unarmedNoMod` (0.79.1-alpha.1): its [Unarmed Damage] adds no ability modifier.
+- Pool `lifetime` (seconds, 0.79.2-alpha.1): each unit lasts that long unless spent; gain times in the actor's `flags.n5e.poolStamps.<id>` (oldest first, spent first). Rules: `rules/pool-expiry.mjs`.
+
+- Pool recovery amounts in combat (0.81.0-alpha.1): turn, round and encounter recovery use the amount too (`formula` regains that many, `half` half the max, `all` refills); `empty` drops the pool to 0 (`rules/recovery.mjs combatRecoveredValue`).
+
+- Pool recovery `empty` on rests (0.83.0-alpha.1): a short or long rest recovery with amount `empty` resets the pool to 0 (`rules/rest.mjs`).
+
+- Damage part `alsoAs` (0.84.1-alpha.1): `{formula, type, alsoAs}` deals the rolled result as `type` and the same amount again as `alsoAs` (King Q-E20).
+
+### Jutsu tables and no-save conditions (STD6f)
+
+- `content/automation/jutsu/<discipline>-<section>.json`: `{section: "taijutsu/general", ranks: ["E", "D", "C"], features: {<identifier>: entry}}`, the same entry keys as the class and clan tables; applied to the section's jutsu of those ranks. A jutsu's per-rank buttons are `flags.n5e.jutsuBookImport.activitiesByRank`.
+- An effect activity's `effect.inflicts`: `[{key, kind: "condition" | "state", ranks, label}]` put on the targets with no save (`workflow/trackers.mjs inflictOn`; owner intent `inflictConditions` for creatures the user doesn't own).
+- A heal's formula may use `@unarmed` (the caster's current [Unarmed damage]).
+
+### [Weapon damage] in damage formulas (STD6f F-D5)
+
+- A damage part's formula may use `@weapon`: the wielded weapon's die, extra dice and flat bonus (`workflow/activity-buttons.mjs`, via `attack.mjs pickWeapon` and `weaponAttackSpec`). A part with no type takes the weapon's first damage type; the weapon's ability modifier is used when the activity sets none.
+
+### Weapon damage die in damage formulas (STD6f F-D5)
+
+- A damage part's formula may use `@wdie`: the wielded weapon's damage die alone, with no extra dice, bonus or modifier (`workflow/activity-buttons.mjs`). A part with no type takes the weapon's first damage type.
+
+### Tracker users (STD6f F-D2)
+
+- `flags.n5e.trackers`: tracker keys an item uses (`["fury"]`). The Fury tracker shows when Fury > 0, the Fury maximum is raised, or an owned item lists `"fury"`.
+
+### Non-Elemental summons (STD6f F6)
+
+- Summons compendium, folder Ninjutsu > Non-Elemental: Ink Bat/Snake, Ink Reptile, Ink Predator, Inanimate Puppet, Ink Oni, Clone. Links: `attributes.ac.flat` and `hpMax` from `@rankValue` (the rank the jutsu was cast at), `bonuses.attack.nin` and `bonuses.saveDC.nin` from yours; the Clone links like the Bunshin (AC your Ninjutsu save DC).
+
+### Medical summons (STD6f F7)
+
+- Summons compendium, folder Ninjutsu > Medical Release: Supreme Poison Deity. Fixed AC and hit points; links `bonuses.attack.nin`, `bonuses.saveDC.nin` and `attributes.init.bonus` (`@attack.nin - 2`: your Ninjutsu modifier + proficiency less its own Dexterity).

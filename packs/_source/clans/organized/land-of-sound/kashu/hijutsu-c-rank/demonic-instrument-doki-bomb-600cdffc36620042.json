@@ -17,6 +17,98 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Genjutsu (Auditory), Harmonic Branch",
         "components": "CM, W (Auditory Ninja Tool)"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Harmonic Branch]"
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5e8Im4YgnwyHrIH",
+              "type": "save",
+              "label": "Doki Bomb",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A Doki moves to a hostile creature, attacks, then explodes: creatures within 20 feet. Failure: the damage. Your Reaction can resummon it.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d12) + (1d12)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e8Im4YgnwyHrIH",
+              "type": "save",
+              "label": "Doki Bomb",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A Doki moves to a hostile creature, attacks, then explodes: creatures within 20 feet. Failure: the damage. Your Reaction can resummon it.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d12) + (2d12)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e8Im4YgnwyHrIH",
+              "type": "save",
+              "label": "Doki Bomb",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A Doki moves to a hostile creature, attacks, then explodes: creatures within 20 feet. Failure: the damage. Your Reaction can resummon it.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d12) + (3d12)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -111,7 +203,33 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e8Im4YgnwyHrIH",
+        "type": "save",
+        "label": "Doki Bomb",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "A Doki moves to a hostile creature, attacks, then explodes: creatures within 20 feet. Failure: the damage. Your Reaction can resummon it.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d12",
+              "type": "force"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

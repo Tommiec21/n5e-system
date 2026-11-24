@@ -17,6 +17,214 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu",
         "components": "CM, M (or W (Blade Group))"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eRApU8dExd4D6h",
+              "type": "attack",
+              "label": "Emperors Claw",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Every creature in a 20-foot cone (+5 feet per rank); [Unarmed] or [Weapon Damage].",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (1d8)",
+                    "type": ""
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eG6WPtLQ083lC9",
+              "type": "save",
+              "label": "Guard shattered",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Beating its AC by 5 or more. Failure: the next attack on it before your next turn has advantage.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eRApU8dExd4D6h",
+              "type": "attack",
+              "label": "Emperors Claw",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Every creature in a 20-foot cone (+5 feet per rank); [Unarmed] or [Weapon Damage].",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (2d8)",
+                    "type": ""
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eG6WPtLQ083lC9",
+              "type": "save",
+              "label": "Guard shattered",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Beating its AC by 5 or more. Failure: the next attack on it before your next turn has advantage.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eRApU8dExd4D6h",
+              "type": "attack",
+              "label": "Emperors Claw",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Every creature in a 20-foot cone (+5 feet per rank); [Unarmed] or [Weapon Damage].",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (3d8)",
+                    "type": ""
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eG6WPtLQ083lC9",
+              "type": "save",
+              "label": "Guard shattered",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Beating its AC by 5 or more. Failure: the next attack on it before your next turn has advantage.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eRApU8dExd4D6h",
+              "type": "attack",
+              "label": "Emperors Claw",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Every creature in a 20-foot cone (+5 feet per rank); [Unarmed] or [Weapon Damage].",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (4d8)",
+                    "type": ""
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eG6WPtLQ083lC9",
+              "type": "save",
+              "label": "Guard shattered",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Beating its AC by 5 or more. Failure: the next attack on it before your next turn has advantage.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Dragon Rage",
+        "appliesTo": {
+          "namePrefix": "Conqueror’s Art: Emperors Claw"
+        },
+        "note": "In your Dragon's Rage: Barrier jutsu an affected creature casts have half their hit points, DR or AC bonus."
       }
     }
   },
@@ -109,7 +317,55 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eRApU8dExd4D6h",
+        "type": "attack",
+        "label": "Emperors Claw",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Every creature in a 20-foot cone (+5 feet per rank); [Unarmed] or [Weapon Damage].",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d8",
+              "type": ""
+            }
+          ]
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eG6WPtLQ083lC9",
+        "type": "save",
+        "label": "Guard shattered",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Beating its AC by 5 or more. Failure: the next attack on it before your next turn has advantage.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

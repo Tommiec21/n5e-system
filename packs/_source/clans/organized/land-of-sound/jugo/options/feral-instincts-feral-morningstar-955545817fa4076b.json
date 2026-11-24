@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "jugo",
       "sourceLine": 6292,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,35 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5effnRudw7xSQXF",
+        "type": "save",
+        "label": "Feral Morningstar",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "With 3+ Nature Energy: [Unarmed Damage] d10 piercing (set it on the sheet); each unarmed hit. Failure: Bruised until the end of your next turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

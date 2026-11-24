@@ -33,13 +33,62 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ezGNLJCI0b5fTj",
+        "type": "roll",
+        "label": "Lasting Affliction",
+        "cost": {
+          "pool": "tacticalInsight",
+          "amount": 2
+        },
+        "roll": {
+          "formula": "",
+          "note": "Tactician: Physical, Mental or Sensory conditions you inflict Persist for 1 minute; ones ending at the end of a creature's next turn now need a Constitution save against your highest DC at the end of its turns."
+        }
+      },
+      {
+        "id": "n5eNfOQKxXRYksQC",
+        "type": "roll",
+        "label": "Always Prepared (Tactician)",
+        "cost": {
+          "pool": "tacticalInsight",
+          "amount": 2
+        },
+        "oncePerTurn": true,
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, inflicting a condition: inflict a Physical, Mental or Sensory condition of your choice instead (not Staggered, Restrained, Lacerated, Berserk, Charmed or Blinded)."
+        }
+      },
+      {
+        "id": "n5eBIQ44K9o6mCDV",
+        "type": "roll",
+        "label": "Never Caught Off Guard",
+        "cost": {
+          "pool": "tacticalInsight",
+          "amount": 2
+        },
+        "roll": {
+          "formula": "",
+          "note": "Superior Momentum for one more reaction (lost if unused by the start of your next turn)."
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "One more maneuver per turn. Tactician is a Generalization (switch to it like the others; its abilities spend Tactical Insight)."
+        }
+      ]
     }
   },
   "ownership": {

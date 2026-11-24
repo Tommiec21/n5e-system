@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "shoton",
-      "sourceLine": 7022
+      "sourceLine": 7022,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Fused: 120 hit points; its size and Strength, Dexterity and Constitution, your mental scores, speed, features and Shoton Hijutsu, its attacks; both Crystal Forms, the aura +10 feet. Ending: you appear nearby and it's dispelled; leftover damage from hitting 0 carries to your recorded hit points."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,33 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ej1kWo3VUNUCWF",
+        "type": "effect",
+        "label": "Crystal Ascension",
+        "effect": {
+          "name": "Crystal Ascension",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Bonus action within 10 feet of your Earth jutsu or class feature summon, once per long rest: fuse into it for 1 minute (or until its 120 hit points drop to 0 or an Action ends it). Record your hit points.",
+        "activation": "bonus",
+        "cost": {
+          "pool": "hardness",
+          "amount": 4
+        }
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "lr",
+      "recharge": "",
+      "staminaEligible": false
+    }
   }
 }

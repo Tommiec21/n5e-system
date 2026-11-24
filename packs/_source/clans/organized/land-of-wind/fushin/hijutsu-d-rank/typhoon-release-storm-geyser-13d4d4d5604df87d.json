@@ -17,6 +17,293 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Wind Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1 target per rank."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eGiXkvghAgBoJS",
+              "type": "save",
+              "label": "Storm Geyser",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 2d8 wind.",
+                  "success": "Success: half of 2d8 wind and Shaken until the end of its next turn.",
+                  "failure": "Failure: 2d8 wind, Shaken, thrown 30 feet and Prone.",
+                  "critFailure": "Critical Failure: as a failure, but 4d8 wind."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A creature you can see within range.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e9Xyb9P8TDg04f",
+              "type": "damage",
+              "label": "Storm Geyser: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (1d8)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5ekP5pTxqbRwQkO",
+              "type": "damage",
+              "label": "Storm Geyser: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (1d8)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eGiXkvghAgBoJS",
+              "type": "save",
+              "label": "Storm Geyser",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 2d8 wind.",
+                  "success": "Success: half of 2d8 wind and Shaken until the end of its next turn.",
+                  "failure": "Failure: 2d8 wind, Shaken, thrown 30 feet and Prone.",
+                  "critFailure": "Critical Failure: as a failure, but 4d8 wind."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A creature you can see within range.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e9Xyb9P8TDg04f",
+              "type": "damage",
+              "label": "Storm Geyser: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (2d8)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5ekP5pTxqbRwQkO",
+              "type": "damage",
+              "label": "Storm Geyser: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (2d8)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eGiXkvghAgBoJS",
+              "type": "save",
+              "label": "Storm Geyser",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 2d8 wind.",
+                  "success": "Success: half of 2d8 wind and Shaken until the end of its next turn.",
+                  "failure": "Failure: 2d8 wind, Shaken, thrown 30 feet and Prone.",
+                  "critFailure": "Critical Failure: as a failure, but 4d8 wind."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A creature you can see within range.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e9Xyb9P8TDg04f",
+              "type": "damage",
+              "label": "Storm Geyser: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (3d8)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5ekP5pTxqbRwQkO",
+              "type": "damage",
+              "label": "Storm Geyser: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (3d8)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eGiXkvghAgBoJS",
+              "type": "save",
+              "label": "Storm Geyser",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 2d8 wind.",
+                  "success": "Success: half of 2d8 wind and Shaken until the end of its next turn.",
+                  "failure": "Failure: 2d8 wind, Shaken, thrown 30 feet and Prone.",
+                  "critFailure": "Critical Failure: as a failure, but 4d8 wind."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                },
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A creature you can see within range.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e9Xyb9P8TDg04f",
+              "type": "damage",
+              "label": "Storm Geyser: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (4d8)",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5ekP5pTxqbRwQkO",
+              "type": "damage",
+              "label": "Storm Geyser: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (4d8)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -108,7 +395,75 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eGiXkvghAgBoJS",
+        "type": "save",
+        "label": "Storm Geyser",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: half of 2d8 wind.",
+            "success": "Success: half of 2d8 wind and Shaken until the end of its next turn.",
+            "failure": "Failure: 2d8 wind, Shaken, thrown 30 feet and Prone.",
+            "critFailure": "Critical Failure: as a failure, but 4d8 wind."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "shaken",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shaken"
+          },
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "A creature you can see within range.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5e9Xyb9P8TDg04f",
+        "type": "damage",
+        "label": "Storm Geyser: damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d8",
+              "type": "wind"
+            }
+          ]
+        },
+        "text": "Halve it on a success."
+      },
+      {
+        "id": "n5ekP5pTxqbRwQkO",
+        "type": "damage",
+        "label": "Storm Geyser: critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "wind"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

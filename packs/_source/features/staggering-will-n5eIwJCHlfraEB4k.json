@@ -45,8 +45,32 @@
         },
         "roll": {
           "formula": "",
-          "note": "Add the die to your failed save; if you now succeed, hostiles within 20 ft make a Wisdom save or are Dazed."
+          "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Failing a save that deals damage and inflicts a condition: add the die; if you now succeed, hostile creatures within 20 feet make a Wisdom save or are Dazed until the start of your next turn."
         }
+      },
+      {
+        "id": "n5ePYII6astteK8l",
+        "type": "save",
+        "label": "Staggering Will: Wisdom save",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "nin"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "When Staggering Will turned the save (die already spent)."
       }
     ],
     "prerequisites": []
@@ -59,7 +83,8 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true
     }
   },
   "_stats": {

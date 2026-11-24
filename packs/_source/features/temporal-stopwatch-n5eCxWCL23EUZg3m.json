@@ -45,7 +45,8 @@
         "roll": {
           "formula": "",
           "note": "Raise or lower one creature's initiative by the roll (once per initiative)."
-        }
+        },
+        "text": "Rolling initiative: one creature you can see; raise or lower its initiative by the roll (once per initiative)."
       },
       {
         "id": "n5euSNCm4pgP46F2",
@@ -59,7 +60,22 @@
           "seconds": 60
         },
         "activation": "bonus",
-        "text": "Once per turn, a Genjutsu cast also grants Dash or Disengage."
+        "text": "Bonus action, for 1 minute: once per turn, a Genjutsu you cast also gives you the Dash or Disengage action after its effect."
+      },
+      {
+        "id": "n5eqhPUNis3NNgCt",
+        "type": "roll",
+        "label": "Lock their saves",
+        "roll": {
+          "formula": "",
+          "note": "11th level, Reaction: a hostile creature under a jutsu you or an ally cast attacks or casts. Until the start of its next turn, it can't remake saves at the end of its turn."
+        },
+        "cost": {
+          "pool": "actualizationDice",
+          "amount": 1
+        },
+        "activation": "reaction",
+        "minLevel": 11
       }
     ],
     "prerequisites": []
@@ -72,7 +88,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "At 7th: Rewind or Fast Forward (level-up choice)."
+        }
+      ]
     }
   },
   "_stats": {

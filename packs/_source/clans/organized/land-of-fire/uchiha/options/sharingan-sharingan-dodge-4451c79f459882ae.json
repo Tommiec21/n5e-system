@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "uchiha",
       "sourceLine": 2179,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,41 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ewY5ZTsxxEuxw4",
+        "type": "effect",
+        "label": "Sharingan Dodge",
+        "effect": {
+          "name": "Sharingan Dodge",
+          "target": "self",
+          "changes": [],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Once per turn, not grappled or prone, an attack's damage or a Dexterity or Constitution save: a rank of Mastery (2 at 7th) to AC or that save until the start of your next turn; doesn't stack.",
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "ocularCharges",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5ej64GOGXHTHSsS",
+        "type": "roll",
+        "label": "Sharingan Dodge: miss or succeed",
+        "roll": {
+          "formula": "",
+          "note": "15th: the attack misses or the save succeeds."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "ocularCharges",
+          "amount": 3
+        },
+        "minLevel": 15
+      }
+    ]
   }
 }

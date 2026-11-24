@@ -17,7 +17,8 @@
         "cost": "20 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fire Release",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -108,7 +109,54 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eRUFCv3sCbTz7T",
+        "type": "save",
+        "label": "Flame Spiral",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Burned"
+          }
+        ],
+        "text": "Three 5-foot, 30-foot tall tornadoes within 120 feet; a Bonus action moves each 30 feet; once per turn per creature. Failure: 2 ranks of Burned, −15 speed until the end of its next turn; success: half. Off-Guard: disadvantage.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d12+5",
+              "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5etSErbhOMaZ9Oj",
+        "type": "damage",
+        "label": "Tornado explodes",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d12+4",
+              "type": "fire"
+            }
+          ]
+        },
+        "text": "A tornado (40 hit points, AC 10) at 0: creatures within 10 feet."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

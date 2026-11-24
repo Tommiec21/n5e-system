@@ -87,34 +87,37 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eI9J1BUwwAmelv",
         "type": "attack",
-        "label": "Attack",
+        "label": "Breath of Water: Flux",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Creatures you choose within 15 feet; move next to the last. Chilled or Dazed target: advantage. A critical hit: one creature you choose.",
         "damage": {
-          "parts": []
-        },
-        "strike": {
-          "kind": "weapon",
-          "extraDice": "4d8",
-          "dieSteps": 0,
-          "pierce": 0,
-          "maximize": false,
-          "attacks": "1"
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "4d8",
+              "type": "cold"
+            }
+          ]
         }
       },
       {
-        "id": "chain-2-parsed1",
+        "id": "n5eKcrAPY42E2PlT",
         "type": "heal",
-        "label": "Chain 2: Temporary HP",
+        "label": "Chain 2: temporary hit points",
         "heal": {
           "formula": "4",
           "pool": "tempHp"
-        }
+        },
+        "text": "Chain 2: per creature you dropped to 0 (max 20; multiply by hand)."
       }
     ],
     "featureType": "active",
@@ -203,71 +206,78 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eI9J1BUwwAmelv",
               "type": "attack",
-              "label": "Attack",
+              "label": "Breath of Water: Flux",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Creatures you choose within 15 feet; move next to the last. Chilled or Dazed target: advantage. A critical hit: one creature you choose.",
               "damage": {
-                "parts": []
-              },
-              "strike": {
-                "kind": "weapon",
-                "extraDice": "(4d8) + (1d8)",
-                "dieSteps": 0,
-                "pierce": 0,
-                "maximize": false,
-                "attacks": "1"
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(4d8) + (1d8)",
+                    "type": "cold"
+                  }
+                ]
               }
             },
             {
-              "id": "chain-2-parsed1",
+              "id": "n5eKcrAPY42E2PlT",
               "type": "heal",
-              "label": "Chain 2: Temporary HP",
+              "label": "Chain 2: temporary hit points",
               "heal": {
                 "formula": "4",
                 "pool": "tempHp"
-              }
+              },
+              "text": "Chain 2: per creature you dropped to 0 (max 20; multiply by hand)."
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eI9J1BUwwAmelv",
               "type": "attack",
-              "label": "Attack",
+              "label": "Breath of Water: Flux",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Creatures you choose within 15 feet; move next to the last. Chilled or Dazed target: advantage. A critical hit: one creature you choose.",
               "damage": {
-                "parts": []
-              },
-              "strike": {
-                "kind": "weapon",
-                "extraDice": "(4d8) + (2d8)",
-                "dieSteps": 0,
-                "pierce": 0,
-                "maximize": false,
-                "attacks": "1"
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(4d8) + (2d8)",
+                    "type": "cold"
+                  }
+                ]
               }
             },
             {
-              "id": "chain-2-parsed1",
+              "id": "n5eKcrAPY42E2PlT",
               "type": "heal",
-              "label": "Chain 2: Temporary HP",
+              "label": "Chain 2: temporary hit points",
               "heal": {
                 "formula": "4",
                 "pool": "tempHp"
-              }
+              },
+              "text": "Chain 2: per creature you dropped to 0 (max 20; multiply by hand)."
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0c3fd08eae955429"

@@ -1,0 +1,357 @@
+{
+  "_id": "n5eTpgfRg959z5WZ",
+  "_key": "!actors!n5eTpgfRg959z5WZ",
+  "name": "Ink Predator",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Non-Elemental: Beast Imitating Art: Predator (C-Rank)",
+      "summonRole": "Ink Predator",
+      "biography": "<p><em>Beast Imitating Art: Predator (C-Rank) (Non-Elemental Ninjutsu).</em> It uses your Ninjutsu attack bonus and save DC. You command it as a Bonus Action; it can take reactions it's able to, such as opportunity attacks.</p><p><strong>Medium Construct.</strong> <strong>Armor Class</strong> 14 + 2 for every rank above D-Rank · <strong>Hit Points</strong> 30 + 10 for every rank above D-Rank · <strong>Speed</strong> 40 ft..</p><p><strong>Abilities</strong> STR +4 (save +2), DEX +4 (save +2), CON +3 (save +1), INT −5 (save −5), WIS +0 (save +0), CHA −5 (save −5). <strong>Condition Immunities</strong> All Mental and Sensory, Incapacitated. <strong>Senses</strong> Darkvision 30 ft., passive Perception 10.</p><p><strong>Linked to you when summoned:</strong> AC and hit points by the rank you cast the jutsu at, and your Ninjutsu attack bonus and save DC.</p>"
+    },
+    "abilities": {
+      "str": {
+        "value": 18
+      },
+      "dex": {
+        "value": 18
+      },
+      "con": {
+        "value": 16
+      },
+      "int": {
+        "value": 0
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 0
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 14,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "medium",
+      "resist": [],
+      "immune": [],
+      "vuln": [],
+      "conditionImmune": [
+        "berserk",
+        "charmed",
+        "confused",
+        "demoralized",
+        "shaken",
+        "blinded",
+        "dazzled",
+        "deafened"
+      ],
+      "stateImmune": [
+        "incapacitated"
+      ],
+      "dr": 0,
+      "speed": {
+        "walk": 40,
+        "climb": 0,
+        "swim": 0,
+        "fly": 0,
+        "burrow": 0,
+        "hover": false
+      },
+      "senses": {
+        "darkvision": 30
+      }
+    },
+    "hpMax": 30,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5e2a2biU7stJ1wr",
+      "_key": "!actors.items!n5eTpgfRg959z5WZ.n5e2a2biU7stJ1wr",
+      "name": "Inky Weapons",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Ink Predator's attacks have a +2 bonus to their critical threat range.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eIsFdT0U3xmX3W",
+      "_key": "!actors.items!n5eTpgfRg959z5WZ.n5eIsFdT0U3xmX3W",
+      "name": "Rend",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Multiattack.</em> The Ink Predator attacks twice with its Rend. <em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 1d12 + 4 slashing damage. If B-Rank or higher, a creature who takes damage from this attack must make a Constitution saving throw, gaining 1 rank of Bleed.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eOZw5QBwbZaCrb",
+            "type": "attack",
+            "label": "Rend",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 2,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "1d12 + 4",
+                  "type": "slashing"
+                }
+              ]
+            },
+            "text": "+2 critical range (Inky Weapons)."
+          },
+          {
+            "id": "n5en9TSVC10MIdBp",
+            "type": "save",
+            "label": "Rend: Bleed (B-Rank+)",
+            "save": {
+              "abilities": [
+                "con"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "inflicts": [
+              {
+                "key": "bleed",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Bleed"
+              }
+            ],
+            "text": "B-Rank or higher, damaged by Rend."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5egdMgVU9lBCYq1",
+      "_key": "!actors.items!n5eTpgfRg959z5WZ.n5egdMgVU9lBCYq1",
+      "name": "Body Block",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>As a reaction, the Ink Predator may interpose an attack targeting an allied creature within 30 feet of it. The triggering attack is treated as if it targeted the Ink Predator.</p>",
+        "category": "npcAbilities",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "reaction",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5edzvVd2SvpnW1F",
+      "_key": "!actors.items!n5eTpgfRg959z5WZ.n5edzvVd2SvpnW1F",
+      "name": "Maul (2 Charges)",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>As a bonus action, the Ink Predator enters a pouncing stance targeting a creature within 15 feet of it and leaps to maul it. Until the end of this turn, its Rend attacks against that creature are made at advantage.</p>",
+        "category": "npcAbilities",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "bonus",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5e6cyC6u62CTDbO",
+      "_key": "!actors.items!n5eTpgfRg959z5WZ.n5e6cyC6u62CTDbO",
+      "name": "Roar (2 Charges, B-Rank+)",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>As a bonus action, the Ink Predator roars. All creatures of your choice within 15 feet of it must make a Charisma saving throw. On a failed save, they gain 2 ranks of Fear.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eNBcIi6Djm3b9V",
+            "type": "save",
+            "label": "Roar",
+            "save": {
+              "abilities": [
+                "cha"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "text": "B-Rank or higher. Failure: 2 ranks of \"Fear\" (not a condition in the rules: apply by hand)."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5eYZQzrhbOq1gNa",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "attributes.ac.flat": "14 + 2 * max(0, @rankValue - 1)",
+        "hpMax": "30 + 10 * max(0, @rankValue - 1)",
+        "bonuses.saveDC.nin": "@dc.nin - 8 - @prof",
+        "bonuses.attack.nin": "@attack.nin - @prof"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Ink Predator",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.93.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

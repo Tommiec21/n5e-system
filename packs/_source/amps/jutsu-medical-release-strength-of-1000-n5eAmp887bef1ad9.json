@@ -1,0 +1,106 @@
+{
+  "_id": "n5eAmp887bef1ad9",
+  "name": "Medical Release: Strength of 1000",
+  "type": "amp",
+  "img": "icons/svg/book.svg",
+  "folder": "n5eAmpFoldOther1",
+  "sort": 106700,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jutsu-medical-release-strength-of-1000",
+    "description": "<p><b>Medical Release: Strength of 1000</b> · cast at S-Rank · no type</p><p>Lasts for the remainder of Strength of 100, which no longer needs concentration.</p><p>Your [Unarmed Damage] die becomes 3d8.</p><p>You regenerate 2d4 + 8 hit points at the start of each of your turns.</p><p>Distortion Impact and Critical Break, once per turn each, in place of an attack from the Attack action or once in addition to a melee Taijutsu attack.</p><p>When it ends: Strength of 1000: Shock (no recasting it, or Medical jutsu that require concentration, until a full rest).</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 1570",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "ampType": "",
+    "namedType": "",
+    "owner": {
+      "kind": "jutsu",
+      "id": "medical-release-strength-of-1000",
+      "subclass": ""
+    },
+    "summary": "Lasts for the remainder of Strength of 100, which no longer needs concentration. Your [Unarmed Damage] die becomes 3d8. You regenerate 2d4 + 8 hit points at the start of each of your turns. Distortion Impact and Critical Break, once per turn each, in place of an attack from the Attack action or once",
+    "activation": "",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "n5e.unarmed.die",
+        "value": "3d8",
+        "mode": 0
+      }
+    ],
+    "aura": {},
+    "outsideLimits": false,
+    "series": "",
+    "level": 0,
+    "rank": "S",
+    "choose": {
+      "prompt": "",
+      "options": []
+    },
+    "buttons": [],
+    "onEnd": {
+      "condition": "medical-release-strength-of-1000-shock"
+    },
+    "statuses": [],
+    "endsWith": "jutsu-medical-release-strength-of-100"
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "heal",
+          "on": "turnStart",
+          "formula": "2d4 + 8",
+          "pool": "hp",
+          "who": "self",
+          "label": "Strength of 1000"
+        },
+        {
+          "key": "note",
+          "text": "Starting it frees Strength of 100 from concentration; it ends when Strength of 100 ends."
+        },
+        {
+          "key": "note",
+          "text": "Distortion Impact (once per turn): on a hit with a melee Unarmed or Taijutsu attack, creatures of your choice within 20 feet of the target make a Dexterity save against your Taijutsu (or Ninjutsu) DC: your unarmed damage, half on a success."
+        },
+        {
+          "key": "note",
+          "text": "Critical Break (once per turn): the melee Unarmed or Taijutsu attack has +2 critical threat range; on a critical hit, triple your unarmed damage dice instead."
+        },
+        {
+          "key": "note",
+          "text": "When it ends, you gain the condition Strength of 1000: Shock (applied automatically)."
+        }
+      ],
+      "amp1f": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.70.0"
+  },
+  "_key": "!items!n5eAmp887bef1ad9"
+}

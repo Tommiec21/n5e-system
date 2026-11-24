@@ -9,7 +9,8 @@
   "flags": {
     "n5e": {
       "clanPackage": "iburi",
-      "sourceLine": 1146
+      "sourceLine": 1146,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -42,6 +43,18 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e3A5jaM0z0E0CA",
+        "type": "roll",
+        "label": "Ashen Monarch",
+        "roll": {
+          "formula": "1d20 + max(@abilities.con.mod, @abilities.int.mod)",
+          "note": "Reaction, entering or starting your turn in a cloud, gas, haze or smoke: Ninshou with your Hijutsu Flexibility ability vs its jutsu save DC (or its Standard Level DC). Success: you control it (immune; Bonus action: move it 20 feet or reshape to a 20-foot radius; your highest save DC); its caster loses concentration and you concentrate free for up to 1 minute."
+        },
+        "activation": "reaction"
+      }
+    ]
   }
 }

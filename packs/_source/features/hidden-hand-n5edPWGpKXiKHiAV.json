@@ -32,7 +32,35 @@
       "weapon-kata"
     ],
     "resourcePools": [],
-    "prerequisites": []
+    "prerequisites": [],
+    "activities": [
+      {
+        "id": "n5eWH0R8FECkrwsl",
+        "type": "roll",
+        "label": "Tricky Escape: detonate",
+        "roll": {
+          "formula": "",
+          "note": "Detonate the explosive tool you set as part of the Hide action, before the start of your next turn; doesn't reveal you."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5e2IjbTtZ9H7Xxs",
+        "type": "roll",
+        "label": "Parting Gift",
+        "roll": {
+          "formula": "",
+          "note": "As part of the Hide action: attach the explosive tool to a Thrown weapon and make a ranged weapon attack; it detonates on a hit (the attack comes before the Hide attempt)."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        }
+      }
+    ]
   },
   "effects": [
     {
@@ -75,7 +103,14 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "optionGroup": "Kata: Versatility"
+      "optionGroup": "Kata: Versatility",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "A rank of Mastery in Stealth is on its effect."
+        }
+      ]
     }
   },
   "_stats": {

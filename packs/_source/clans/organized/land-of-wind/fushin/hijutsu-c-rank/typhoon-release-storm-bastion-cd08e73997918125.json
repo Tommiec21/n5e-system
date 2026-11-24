@@ -17,7 +17,14 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Wind Release, Barrier",
         "components": "CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1d8 + 4 hit points per rank (add them)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -109,7 +116,45 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e74SPcKREkBGPr",
+        "type": "heal",
+        "label": "Storm Bastion",
+        "heal": {
+          "formula": "2d8 + 10",
+          "pool": "tempHp"
+        },
+        "text": "Reaction: a Barrier with these hit points and 2 DR on the protected creature until the start of your next turn."
+      },
+      {
+        "id": "n5eWKdHjfOHnjwBA",
+        "type": "save",
+        "label": "Storm Bastion: burst",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "The Barrier drops to 0: creatures within 10 feet of the protected creature but you. Failure: pushed 20 feet and Dazed.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

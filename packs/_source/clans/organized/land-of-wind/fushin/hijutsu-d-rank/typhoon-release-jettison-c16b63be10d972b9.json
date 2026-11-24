@@ -17,7 +17,14 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Wind Release, Barrier",
         "components": "CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +5 feet to the area per rank."
+        }
+      ]
     }
   },
   "ownership": {
@@ -109,7 +116,52 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eMractk5oo85Qx",
+        "type": "effect",
+        "label": "Jettison: +4 AC",
+        "effect": {
+          "name": "Jettison",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "4",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Until the start of your next turn."
+      },
+      {
+        "id": "n5euykfW71QawICW",
+        "type": "save",
+        "label": "Jettison: blast",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Creatures in the area. Failure: the damage and pushed to its edge.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "wind"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

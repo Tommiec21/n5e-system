@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "kuru",
       "sourceLine": 8494,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,50 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eoHawjJyzz0NEy",
+        "type": "attack",
+        "label": "Time Theft Strike",
+        "attack": {
+          "discipline": "highest",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Once per turn, in place of an opportunity attack.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eQQAxn507tIvGO",
+        "type": "save",
+        "label": "Time Theft: swap",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "On a hit. Failure: swap initiative places at the end of its current or next turn (see the text for missed and extra turns).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

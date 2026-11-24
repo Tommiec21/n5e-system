@@ -34,13 +34,32 @@
     "resourcePools": [],
     "activities": [
       {
-        "id": "n5ekpZKVIbkRMkPl",
-        "type": "check",
-        "label": "Botany: Nature check",
-        "check": {
-          "skill": "nat"
+        "id": "n5ezPBrFGgsAEI6H",
+        "type": "effect",
+        "label": "Botany: Nature and Survival Mastery",
+        "effect": {
+          "name": "Botany",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.mastery.skill.nat",
+              "value": "Botany",
+              "mode": 2
+            },
+            {
+              "key": "n5e.mastery.skill.sur",
+              "value": "Botany",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 0
         },
-        "activation": ""
+        "text": "After a long rest: within the two lands you chose, until your next Full-Rest (end it when you leave them).",
+        "cost": {
+          "pool": "skilledExploits",
+          "amount": 1
+        }
       }
     ],
     "prerequisites": []
@@ -54,7 +73,8 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "optionGroup": "Skilled Exploits"
+      "optionGroup": "Skilled Exploits",
+      "reviewed": true
     }
   },
   "_stats": {

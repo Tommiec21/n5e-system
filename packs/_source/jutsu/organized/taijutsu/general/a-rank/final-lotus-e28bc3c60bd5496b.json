@@ -85,34 +85,64 @@
     },
     "activities": [
       {
-        "id": "finisher-parsed1",
+        "id": "n5ebo4jA5ck34kH4",
         "type": "attack",
-        "label": "Finisher: Attack",
+        "label": "Finisher: Final Lotus",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 5
+        },
+        "text": "Finisher only; 5th Gate; a Restrained or Grappled target. All five hit: the sixth.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "1d12",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "5"
+        }
+      },
+      {
+        "id": "n5eBUDrvPGDCbPq5",
+        "type": "attack",
+        "label": "Finisher: sixth attack",
+        "attack": {
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "On a hit: Prone.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "6d12",
+              "type": "bludgeoning"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "1d12",
-        "roll": {
-          "formula": "1d12",
-          "note": "On a hit, you deal [Unarmed Damage] + 1d12."
-        }
-      },
-      {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "6d12",
-        "roll": {
-          "formula": "6d12",
-          "note": "On a hit with the 6th attack, you deal 6d12 bludgeoning damage and knock the target Prone."
+        "id": "n5eHbXfnsKH4Uo3h",
+        "type": "effect",
+        "label": "Sixth hit: Prone",
+        "effect": {
+          "name": "Prone",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ]
         }
       }
     ],
@@ -201,7 +231,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ee1379d61e3505ec"

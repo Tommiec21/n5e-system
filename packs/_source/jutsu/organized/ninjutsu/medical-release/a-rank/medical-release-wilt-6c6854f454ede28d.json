@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5euy4OcnAyYHN0C",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Wilt",
         "save": {
           "abilities": [
             "con"
@@ -97,11 +96,11 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "Creatures you choose in a 45-foot cube from you (not constructs or undead; plants, celestials and demons at disadvantage). Failure: the seal of extraction for 1 minute; success: half, nothing else.",
         "damage": {
           "parts": [
             {
@@ -110,6 +109,20 @@
             }
           ]
         }
+      },
+      {
+        "id": "n5eKKX4MqFpeILG6",
+        "type": "damage",
+        "label": "Seal of extraction",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5",
+              "type": "necrotic"
+            }
+          ]
+        },
+        "text": "Each time it takes damage (plants, celestials and demons: 10). Its Action: Intelligence (Ninshou) against your Ninjutsu save DC removes it."
       }
     ],
     "featureType": "active",
@@ -183,7 +196,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "49121ed59e0d3922"

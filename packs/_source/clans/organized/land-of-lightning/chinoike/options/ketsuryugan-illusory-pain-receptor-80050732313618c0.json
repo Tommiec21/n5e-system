@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "chinoike",
       "sourceLine": 5584,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "It spends no Crimson Charges in its text."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,29 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eDAQgN8wX62Tiv",
+        "type": "save",
+        "label": "Illusory Pain Receptor",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Bonus action, a creature you can see within 60 feet. Failure: for 1 minute, damage from its conditions is +2 per rank (+4 at 15th).",
+        "activation": "bonus",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

@@ -85,10 +85,27 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5erPpMAxvsAWVAw",
+        "type": "roll",
+        "label": "Rakshasa’s Sole: Clash",
+        "roll": {
+          "formula": "1d20",
+          "note": "Reaction, a Strength or Dexterity save against a sphere, cylinder, cone or line Ninjutsu or Taijutsu: a Clash with advantage, rerolling 1s and 2s."
+        }
+      },
+      {
+        "id": "n5eJfpDeKn9ow4sI",
+        "type": "damage",
+        "label": "Won the Clash",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3 * (@unarmed)",
+              "type": "bludgeoning"
+            }
+          ]
+        },
+        "text": "Three times your [Unarmed damage] (B ×4, A ×5, S ×6)."
       }
     ],
     "featureType": "active",
@@ -174,9 +191,86 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5erPpMAxvsAWVAw",
+              "type": "roll",
+              "label": "Rakshasa’s Sole: Clash",
+              "roll": {
+                "formula": "1d20",
+                "note": "Reaction, a Strength or Dexterity save against a sphere, cylinder, cone or line Ninjutsu or Taijutsu: a Clash with advantage, rerolling 1s and 2s."
+              }
+            },
+            {
+              "id": "n5eJfpDeKn9ow4sI",
+              "type": "damage",
+              "label": "Won the Clash",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4 * (@unarmed)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "text": "Three times your [Unarmed damage] (B ×4, A ×5, S ×6)."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5erPpMAxvsAWVAw",
+              "type": "roll",
+              "label": "Rakshasa’s Sole: Clash",
+              "roll": {
+                "formula": "1d20",
+                "note": "Reaction, a Strength or Dexterity save against a sphere, cylinder, cone or line Ninjutsu or Taijutsu: a Clash with advantage, rerolling 1s and 2s."
+              }
+            },
+            {
+              "id": "n5eJfpDeKn9ow4sI",
+              "type": "damage",
+              "label": "Won the Clash",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "5 * (@unarmed)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "text": "Three times your [Unarmed damage] (B ×4, A ×5, S ×6)."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5erPpMAxvsAWVAw",
+              "type": "roll",
+              "label": "Rakshasa’s Sole: Clash",
+              "roll": {
+                "formula": "1d20",
+                "note": "Reaction, a Strength or Dexterity save against a sphere, cylinder, cone or line Ninjutsu or Taijutsu: a Clash with advantage, rerolling 1s and 2s."
+              }
+            },
+            {
+              "id": "n5eJfpDeKn9ow4sI",
+              "type": "damage",
+              "label": "Won the Clash",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "6 * (@unarmed)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "text": "Three times your [Unarmed damage] (B ×4, A ×5, S ×6)."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "aee26bc2434fe738"

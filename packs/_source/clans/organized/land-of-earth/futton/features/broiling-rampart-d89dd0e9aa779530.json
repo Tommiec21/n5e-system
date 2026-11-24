@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "futton",
-      "sourceLine": 5048
+      "sourceLine": 5048,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "A Taijutsu stance (Broil Branch): unarmed and weapon attacks can use your Hijutsu Flexibility ability in place of Strength (at the table). At 7th, without Extra Attack, the Attack action attacks twice. Pressure: up to 3 (6 in Torque), the pool; each lasts 1 minute unless spent (King Q-E6)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,118 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eHZnDPDRSXiq96",
+        "type": "roll",
+        "label": "Build Pressure",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn: Dash, Disengage, or cast a Fire or Water Release jutsu."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "pressure",
+          "amount": 1,
+          "gain": true
+        }
+      },
+      {
+        "id": "n5eKoGRUyT09GdAK",
+        "type": "save",
+        "label": "Boil Knuckle",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "On your turn, an attack 5 or more over the target's AC. Failure: Dazed.",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "pressure",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5ePEdudrnLMZeGN",
+        "type": "save",
+        "label": "Jet Dash",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "corroded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Corroded"
+          },
+          {
+            "key": "futton-scald",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Scald"
+          }
+        ],
+        "text": "+20 speed this turn; at the end of the turn, adjacent creatures. Failure: Corroded or Scalded (pick). Counts as a Taijutsu of your highest rank.",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "pressure",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5epeWgN7RP672y7",
+        "type": "roll",
+        "label": "Vent Strike",
+        "roll": {
+          "formula": "lvl(1:2,7:4,15:6)",
+          "note": "Once per turn, dealing [Weapon Damage] or [Unarmed Damage]: add this to your damage until the end of the turn."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "pressure",
+          "amount": 1
+        }
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "pressure",
+        "label": "Pressure",
+        "value": 0,
+        "max": "3",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [],
+        "lifetime": 60
+      }
+    ]
   }
 }

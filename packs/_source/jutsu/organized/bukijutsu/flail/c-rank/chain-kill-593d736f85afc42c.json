@@ -85,16 +85,22 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eBhGgdwseVLn9u",
         "type": "attack",
-        "label": "Attack",
+        "label": "Chain Kill",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Twice your [Weapon damage]. Dropping a creature to 0 (Chain 1: any hit): move 10 feet and attack another creature, once per casting (+1 per rank above C). Chain 2: regain 2 chakra per creature dropped.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "@weapon + @weapon",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -164,7 +170,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0e415a5f84ce5a5f"

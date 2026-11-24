@@ -33,13 +33,47 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eDuaNbN0ROTt3e",
+        "type": "effect",
+        "label": "Nightmare Incarnate",
+        "effect": {
+          "name": "Nightmare Incarnate",
+          "target": "targets",
+          "changes": [],
+          "expires": "turnStart",
+          "seconds": 0,
+          "rules": [
+            {
+              "key": "modifier",
+              "selector": "attack",
+              "direction": "against",
+              "value": 1,
+              "uses": 1,
+              "label": "Nightmare Incarnate"
+            },
+            {
+              "key": "critRange",
+              "selector": "attack",
+              "direction": "against",
+              "value": 1,
+              "uses": 1,
+              "label": "Nightmare Incarnate"
+            }
+          ]
+        },
+        "text": "Psychic damage from your Genjutsu: the next attack against it before the start of your next turn has +1 to hit and +1 critical range."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

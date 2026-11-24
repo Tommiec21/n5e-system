@@ -17,6 +17,14 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Main Branch, Taijutsu, Clash, Barrier",
         "components": "CM, M"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Eight Trigram",
+        "appliesTo": {
+          "namePrefix": "Giant Palm Rotation"
+        },
+        "note": "In your Gentle Fist stance: everyone it protects reduces hostile damage by 6."
       }
     }
   },
@@ -110,7 +118,53 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eNqEGysjWndbEQ",
+        "type": "effect",
+        "label": "Giant Palm Rotation",
+        "effect": {
+          "name": "Giant Palm Rotation",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "4",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "[Main Branch] Reaction: you and creatures you choose within 10 feet, until the start of your next turn: +4 AC (no other reaction AC bonuses), advantage on Strength and Dexterity saves against jutsu.",
+        "activation": "reaction"
+      },
+      {
+        "id": "n5eO3A8dGMTNYy08",
+        "type": "save",
+        "label": "Giant Palm Rotation: push",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Hostile creatures within 10 feet. Failure: the damage and pushed 10 feet.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "force"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

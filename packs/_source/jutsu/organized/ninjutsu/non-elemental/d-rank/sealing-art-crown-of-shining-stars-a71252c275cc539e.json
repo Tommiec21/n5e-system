@@ -85,9 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eGeOHDAZS1eSEv",
         "type": "damage",
-        "label": "Damage",
+        "label": "A star",
         "damage": {
           "parts": [
             {
@@ -95,7 +95,8 @@
               "type": "force"
             }
           ]
-        }
+        },
+        "text": "Concentration: 4 spaces within 60 feet when cast (C-Rank: 6; A-Rank: 8), then 2 per Action (C-Rank: 4; A-Rank: 6). A target in several spaces takes at most two stars."
       }
     ],
     "featureType": "active",
@@ -175,9 +176,132 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eGeOHDAZS1eSEv",
+              "type": "damage",
+              "label": "A star",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d12",
+                    "type": "force"
+                  }
+                ]
+              },
+              "text": "Concentration: 4 spaces within 60 feet when cast (C-Rank: 6; A-Rank: 8), then 2 per Action (C-Rank: 4; A-Rank: 6). A target in several spaces takes at most two stars."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eGeOHDAZS1eSEv",
+              "type": "damage",
+              "label": "A star",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d12",
+                    "type": "force"
+                  }
+                ]
+              },
+              "text": "Concentration: 4 spaces within 60 feet when cast (C-Rank: 6; A-Rank: 8), then 2 per Action (C-Rank: 4; A-Rank: 6). A target in several spaces takes at most two stars."
+            },
+            {
+              "id": "n5eN7tuUAFpu6JCh",
+              "type": "attack",
+              "label": "Star strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 2
+              },
+              "text": "B-Rank: instead, up to 2 creatures within 60 feet (A-Rank: 4).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d12",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eGeOHDAZS1eSEv",
+              "type": "damage",
+              "label": "A star",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d12",
+                    "type": "force"
+                  }
+                ]
+              },
+              "text": "Concentration: 4 spaces within 60 feet when cast (C-Rank: 6; A-Rank: 8), then 2 per Action (C-Rank: 4; A-Rank: 6). A target in several spaces takes at most two stars."
+            },
+            {
+              "id": "n5eN7tuUAFpu6JCh",
+              "type": "attack",
+              "label": "Star strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 2
+              },
+              "text": "B-Rank: instead, up to 2 creatures within 60 feet (A-Rank: 4).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d12",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eGeOHDAZS1eSEv",
+              "type": "damage",
+              "label": "A star",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d12",
+                    "type": "force"
+                  }
+                ]
+              },
+              "text": "Concentration: 4 spaces within 60 feet when cast (C-Rank: 6; A-Rank: 8), then 2 per Action (C-Rank: 4; A-Rank: 6). A target in several spaces takes at most two stars."
+            },
+            {
+              "id": "n5eN7tuUAFpu6JCh",
+              "type": "attack",
+              "label": "Star strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 2
+              },
+              "text": "B-Rank: instead, up to 2 creatures within 60 feet (A-Rank: 4).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d12",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5eDpY0QdrV0NfEW"

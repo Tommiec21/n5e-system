@@ -17,7 +17,172 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile)",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5e8SvrhWTYb6Jjx",
+              "type": "save",
+              "label": "Shadow Tendrils",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "nara-shadow-bound",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shadow Bound"
+                }
+              ],
+              "text": "A 15-foot cube within 60 feet; bludgeoning or necrotic. Failure: Shadow Bound for the duration (Strength or Dexterity save at the end of each turn); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (1d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e9BC1FekXtLboZ",
+              "type": "damage",
+              "label": "Ends its turn Shadow Bound",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "text": "Bludgeoning or necrotic; +1d6 from A-Rank."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e8SvrhWTYb6Jjx",
+              "type": "save",
+              "label": "Shadow Tendrils",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "nara-shadow-bound",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shadow Bound"
+                }
+              ],
+              "text": "A 15-foot cube within 60 feet; bludgeoning or necrotic. Failure: Shadow Bound for the duration (Strength or Dexterity save at the end of each turn); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (2d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e9BC1FekXtLboZ",
+              "type": "damage",
+              "label": "Ends its turn Shadow Bound",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "text": "Bludgeoning or necrotic; +1d6 from A-Rank."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e8SvrhWTYb6Jjx",
+              "type": "save",
+              "label": "Shadow Tendrils",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "nara-shadow-bound",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shadow Bound"
+                }
+              ],
+              "text": "A 15-foot cube within 60 feet; bludgeoning or necrotic. Failure: Shadow Bound for the duration (Strength or Dexterity save at the end of each turn); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (3d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e9BC1FekXtLboZ",
+              "type": "damage",
+              "label": "Ends its turn Shadow Bound",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "bludgeoning"
+                  }
+                ]
+              },
+              "text": "Bludgeoning or necrotic; +1d6 from A-Rank."
+            }
+          ]
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Bright",
+          "appliesTo": {
+            "namePrefix": "Shadow Tendrils"
+          },
+          "note": "Bright time of day (GM's call): +5-foot cube."
+        },
+        {
+          "label": "Dimly Lit",
+          "appliesTo": {
+            "namePrefix": "Shadow Tendrils"
+          },
+          "note": "Dimly lit time of day (GM's call): creatures that fail are disarmed; picking a weapon up takes an Athletics check against your jutsu DC."
+        }
+      ]
     }
   },
   "ownership": {
@@ -109,7 +274,54 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e8SvrhWTYb6Jjx",
+        "type": "save",
+        "label": "Shadow Tendrils",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "nara-shadow-bound",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shadow Bound"
+          }
+        ],
+        "text": "A 15-foot cube within 60 feet; bludgeoning or necrotic. Failure: Shadow Bound for the duration (Strength or Dexterity save at the end of each turn); success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e9BC1FekXtLboZ",
+        "type": "damage",
+        "label": "Ends its turn Shadow Bound",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "bludgeoning"
+            }
+          ]
+        },
+        "text": "Bludgeoning or necrotic; +1d6 from A-Rank."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

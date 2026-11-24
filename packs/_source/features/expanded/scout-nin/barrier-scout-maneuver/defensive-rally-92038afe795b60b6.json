@@ -36,13 +36,32 @@
       "scout-maneuver"
     ],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ezeYz4nC1fhbr0",
+        "type": "heal",
+        "label": "Defensive Rally",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1,
+          "roll": true
+        },
+        "activation": "bonus",
+        "heal": {
+          "formula": "@poolRoll",
+          "pool": "hp"
+        },
+        "text": "Bonus action: an ally within 30 feet damaged in the last minute regains the die plus a Hit Die it spends (it rolls the Hit Die)."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

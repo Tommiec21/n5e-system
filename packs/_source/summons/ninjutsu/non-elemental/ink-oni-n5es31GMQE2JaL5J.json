@@ -1,0 +1,301 @@
+{
+  "_id": "n5es31GMQE2JaL5J",
+  "_key": "!actors!n5es31GMQE2JaL5J",
+  "name": "Ink Oni",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Non-Elemental: Beast Imitating Art: Oni Twins (A-Rank)",
+      "summonRole": "Ink Oni",
+      "biography": "<p><em>Beast Imitating Art: Oni Twins (A-Rank) (Non-Elemental Ninjutsu).</em> It uses your Ninjutsu attack bonus and save DC. You command it as a Bonus Action; it can take reactions it's able to, such as opportunity attacks.</p><p><strong>Large Construct.</strong> <strong>Armor Class</strong> 16 + 2 for every rank above B-Rank, DR 6 · <strong>Hit Points</strong> 40 + 15 for every rank above B-Rank · <strong>Speed</strong> 45 ft..</p><p><strong>Abilities</strong> STR +7 (save +7), DEX +2 (save +1), CON +6 (save +6), INT −5 (save −5), WIS +0 (save +0), CHA −5 (save −5). <strong>Condition Immunities</strong> Charmed, Chilled, Exhaustion, Stunned, Envenomed. <strong>Senses</strong> Darkvision 30 ft., passive Perception 10.</p><p><strong>Linked to you when summoned:</strong> AC and hit points by the rank you cast the jutsu at, and your Ninjutsu attack bonus and save DC.</p>"
+    },
+    "abilities": {
+      "str": {
+        "value": 24
+      },
+      "dex": {
+        "value": 14
+      },
+      "con": {
+        "value": 22
+      },
+      "int": {
+        "value": 0
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 0
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 16,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "large",
+      "resist": [],
+      "immune": [],
+      "vuln": [],
+      "conditionImmune": [
+        "charmed",
+        "chilled",
+        "exhaustion",
+        "envenomed"
+      ],
+      "stateImmune": [
+        "stunned"
+      ],
+      "dr": 6,
+      "speed": {
+        "walk": 45,
+        "climb": 0,
+        "swim": 0,
+        "fly": 0,
+        "burrow": 0,
+        "hover": false
+      },
+      "senses": {
+        "darkvision": 30
+      }
+    },
+    "hpMax": 40,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5ehKIrORpettYSa",
+      "_key": "!actors.items!n5es31GMQE2JaL5J.n5ehKIrORpettYSa",
+      "name": "Guard",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>As a reaction, the Ink Oni raises its guard protecting all creatures within 5 feet of it. Until the beginning of your next turn, all attacks that would target a creature within 5 feet of the Oni instead target the Oni.</p>",
+        "category": "npcAbilities",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "reaction",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eo8uYjgqDzWKxF",
+      "_key": "!actors.items!n5es31GMQE2JaL5J.n5eo8uYjgqDzWKxF",
+      "name": "Maul",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Multiattack.</em> The Ink Oni attacks twice with its Mauls. <em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 2d10 + 7 bludgeoning damage. A creature who takes damage from this attack twice must make a Constitution saving throw, being Dazed until the end of its next turn.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5ePeeHJpZ8tdPrs",
+            "type": "attack",
+            "label": "Maul",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 2,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "2d10 + 7",
+                  "type": "bludgeoning"
+                }
+              ]
+            }
+          },
+          {
+            "id": "n5eBH0B9L1RXmpXn",
+            "type": "save",
+            "label": "Maul: Dazed",
+            "save": {
+              "abilities": [
+                "con"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "inflicts": [
+              {
+                "key": "dazed",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Dazed"
+              }
+            ],
+            "text": "Damaged by both Mauls."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5ePRqyJ93Fb8OKX",
+      "_key": "!actors.items!n5es31GMQE2JaL5J.n5ePRqyJ93Fb8OKX",
+      "name": "Twin Oni Slam (2 Charges)",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>As an action, the Ink Oni may withhold its action. If both Ink Oni withhold their action, on the following turn you may command them to perform a Twin Oni Slam on a creature they are both within 10 feet of. Each Oni makes 2 Maul attacks at advantage. Each successful hit increases the damage by 1d10.</p>",
+        "category": "npcAbilities",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5ekmi0l6e4lB8z4",
+      "_key": "!actors.items!n5es31GMQE2JaL5J.n5ekmi0l6e4lB8z4",
+      "name": "Oni Focus (2 Charges)",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>As a bonus action, the Oni focuses. Until the end of your turn, its next Maul attack scores a critical hit on a roll of 19 or 20.</p>",
+        "category": "npcAbilities",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "bonus",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5eYZQzrhbOq1gNa",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "attributes.ac.flat": "16 + 2 * max(0, @rankValue - 3)",
+        "hpMax": "40 + 15 * max(0, @rankValue - 3)",
+        "bonuses.saveDC.nin": "@dc.nin - 8 - @prof",
+        "bonuses.attack.nin": "@attack.nin - @prof"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Ink Oni",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 2,
+    "height": 2
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.93.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

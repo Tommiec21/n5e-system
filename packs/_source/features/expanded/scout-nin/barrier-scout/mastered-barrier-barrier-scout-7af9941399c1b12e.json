@@ -33,13 +33,41 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ebOST3GhXu9Qdz",
+        "type": "effect",
+        "label": "Heavy Guard",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1
+        },
+        "activation": "reaction",
+        "effect": {
+          "name": "Heavy Guard",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "n5e.resist",
+              "value": "all",
+              "mode": 2
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 6,
+          "limit": 4
+        },
+        "text": "Reaction (a Projected Barrier option, 1 Superiority Die): up to 4 willing creatures within 30 feet resist all damage, psychic included, until the end of the turn."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

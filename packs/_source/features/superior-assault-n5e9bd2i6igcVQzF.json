@@ -31,7 +31,72 @@
     "tags": [],
     "resourcePools": []
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5eCLCb9X2wkjsFD",
+      "name": "Superior Assault: critical range",
+      "type": "generic",
+      "img": "icons/svg/sword.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true,
+          "rules": [
+            {
+              "key": "critRange",
+              "selector": "attack",
+              "predicate": {
+                "any": [
+                  {
+                    "all": [
+                      "option:primaryDiscipline:nin",
+                      "jutsu:discipline:nin"
+                    ]
+                  },
+                  {
+                    "all": [
+                      "option:primaryDiscipline:gen",
+                      "jutsu:discipline:gen"
+                    ]
+                  },
+                  {
+                    "all": [
+                      "option:primaryDiscipline:tai",
+                      "jutsu:discipline:tai"
+                    ],
+                    "not": [
+                      "jutsu:keyword:bukijutsu"
+                    ]
+                  },
+                  {
+                    "all": [
+                      "option:primaryDiscipline:buki",
+                      "jutsu:keyword:bukijutsu"
+                    ]
+                  }
+                ]
+              },
+              "value": "lvl(3:1,10:2)",
+              "label": "Superior Assault"
+            }
+          ]
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5e9bd2i6igcVQzF.n5eCLCb9X2wkjsFD"
+    }
+  ],
   "folder": "n5ejKb4Kg2wwu7sh",
   "sort": 0,
   "ownership": {
@@ -39,7 +104,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Assault maneuvers (more by the class table). +1 critical range with attacks of your Primary casting discipline (+2 from 10th, Remarkable Aggression) is on its effect."
+        }
+      ]
     }
   },
   "_stats": {

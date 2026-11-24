@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eDEWWg4bHVS1Uj",
         "type": "attack",
-        "label": "Attack",
+        "label": "Ostrich Whirlwind",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
+        "text": "A Prone target only; then leap 20 feet without provoking.",
         "damage": {
           "parts": []
         },
@@ -102,20 +103,29 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "2"
         }
       },
       {
-        "id": "finisher-parsed1",
-        "type": "damage",
-        "label": "Finisher: Damage",
+        "id": "n5eMGWNYLMWoqs7w",
+        "type": "attack",
+        "label": "Finisher: Ostrich Whirlwind",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 2
+        },
+        "text": "Finisher: you regain your Bonus action if spent.",
         "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed + 4d10",
-              "type": "bludgeoning"
-            }
-          ]
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "4d10",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "2"
         }
       }
     ],
@@ -210,7 +220,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

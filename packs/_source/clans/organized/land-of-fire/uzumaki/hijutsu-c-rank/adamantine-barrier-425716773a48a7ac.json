@@ -17,6 +17,21 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fuinjutsu, Barrier",
         "components": "HS, CM, CS"
+      },
+      "notAmp": "A barrier zone; its 5-Pronged Seal box is a condition (King, AMP1f batch 2).",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The 5-Pronged Seal condition text printed here belongs to Uzumaki Art: 5-Pronged Seal (see the spec's text issues)."
+        }
+      ],
+      "castOption": {
+        "label": "Seal Break",
+        "appliesTo": {
+          "namePrefix": "Adamantine Barrier"
+        },
+        "note": "In your Binding Chain stance, dispel 1 rank of Sealed from a creature within 30 feet: the barrier gains temporary hit points by its rank (D 10, C 16, B 22, A 28, S 34) and takes damage meant for those inside."
       }
     }
   },
@@ -109,7 +124,28 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eGhbYWksK2yGMq",
+        "type": "save",
+        "label": "Adamantine Barrier",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "A 15-foot radius sphere within 60 feet, concentration up to 10 minutes. A hostile creature moving through or targeting inside without permission. Failure: it can't this turn and picks a new target. Area effects pass through.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

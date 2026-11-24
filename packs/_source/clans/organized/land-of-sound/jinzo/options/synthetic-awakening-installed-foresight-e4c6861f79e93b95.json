@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "jinzo",
       "sourceLine": 7267,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "You can't be Surprised."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,19 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eKCz5wrNaDnH5B",
+        "type": "roll",
+        "label": "Installed Foresight",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, Reaction: an attack on you by a creature you can see has disadvantage. 7th: a miss lets you cast a D-Rank Jinzo Hijutsu at it free in the same reaction (C-Rank at 15th)."
+        },
+        "activation": "reaction",
+        "oncePerTurn": true
+      }
+    ]
   }
 }

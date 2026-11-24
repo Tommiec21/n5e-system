@@ -41,14 +41,67 @@
           "changes": [],
           "expires": "",
           "seconds": 60,
-          "state": "quarry"
+          "state": "quarry",
+          "limit": "lvl(3:1,17:2)"
         },
         "activation": "bonus",
-        "text": "+1 [Weapon Damage] against it (+2 at 10th, +3 at 17th)."
+        "text": "One creature within 60 feet for 1 minute (two from 17th level). When your Quarry drops to 0 HP, mark a new one at no action cost."
+      },
+      {
+        "id": "n5eq1YdNaGEPG1VL",
+        "type": "effect",
+        "label": "Reaver Echoes",
+        "effect": {
+          "name": "Reaver Echo",
+          "target": "targets",
+          "condition": "reaver-echo",
+          "changes": [],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "Once per turn (twice from 17th) dealing [Weapon Damage] to your Quarry: Reaver Echoes by the Bukijutsu's rank (weapon attack or D 1, C 2, B 3, A 4, S 5). They dispel at the start of your next turn if not detonated."
       }
     ]
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5ez1jXXmaaxSLhu",
+      "name": "Quarry: weapon damage",
+      "type": "generic",
+      "img": "icons/svg/upgrade.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true,
+          "rules": [
+            {
+              "key": "modifier",
+              "selector": "damage",
+              "predicate": [
+                "weapon",
+                "target:state:quarry"
+              ],
+              "value": "lvl(3:1,10:2,17:3)",
+              "label": "Reaver's Quarry"
+            }
+          ]
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5eUOsd0Dm9cuSCf.n5ez1jXXmaaxSLhu"
+    }
+  ],
   "folder": "n5eH8PwNBAlwIXBY",
   "sort": 0,
   "ownership": {
@@ -56,7 +109,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The +1 [Weapon Damage] against your Quarry (+2 at 10th, +3 at 17th) is on its effect."
+        }
+      ]
     }
   },
   "_stats": {

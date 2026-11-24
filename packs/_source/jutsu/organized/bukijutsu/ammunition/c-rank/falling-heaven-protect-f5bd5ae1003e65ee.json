@@ -85,14 +85,24 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eNDQbIB1XfG58q",
+        "type": "roll",
+        "label": "Damage reduced",
+        "roll": {
+          "formula": "2d6",
+          "note": "Reaction: you or an ally within 30 feet takes damage; + your [Weapon damage] (roll it and add)."
+        }
+      },
+      {
+        "id": "n5eM4pLw73zM60cj",
         "type": "attack",
-        "label": "Attack",
+        "label": "Retaliate",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "The attacker, if in your weapon's range (Chain 2 or 3: two attacks).",
         "damage": {
           "parts": []
         },
@@ -201,9 +211,110 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eNDQbIB1XfG58q",
+              "type": "roll",
+              "label": "Damage reduced",
+              "roll": {
+                "formula": "(2d6) + (1d6)",
+                "note": "Reaction: you or an ally within 30 feet takes damage; + your [Weapon damage] (roll it and add)."
+              }
+            },
+            {
+              "id": "n5eM4pLw73zM60cj",
+              "type": "attack",
+              "label": "Retaliate",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "The attacker, if in your weapon's range (Chain 2 or 3: two attacks).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "2d6 + 1d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eNDQbIB1XfG58q",
+              "type": "roll",
+              "label": "Damage reduced",
+              "roll": {
+                "formula": "(2d6) + (2d6)",
+                "note": "Reaction: you or an ally within 30 feet takes damage; + your [Weapon damage] (roll it and add)."
+              }
+            },
+            {
+              "id": "n5eM4pLw73zM60cj",
+              "type": "attack",
+              "label": "Retaliate",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "The attacker, if in your weapon's range (Chain 2 or 3: two attacks).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "2d6 + 2d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eNDQbIB1XfG58q",
+              "type": "roll",
+              "label": "Damage reduced",
+              "roll": {
+                "formula": "(2d6) + (3d6)",
+                "note": "Reaction: you or an ally within 30 feet takes damage; + your [Weapon damage] (roll it and add)."
+              }
+            },
+            {
+              "id": "n5eM4pLw73zM60cj",
+              "type": "attack",
+              "label": "Retaliate",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "The attacker, if in your weapon's range (Chain 2 or 3: two attacks).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "2d6 + 3d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "f8211708ba076b1c"

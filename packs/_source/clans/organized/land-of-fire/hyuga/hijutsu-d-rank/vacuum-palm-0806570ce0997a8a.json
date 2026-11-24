@@ -17,6 +17,178 @@
         "cost": "3 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu",
         "components": "CM, M"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eapJibGbmmEqxq",
+              "type": "attack",
+              "label": "Vacuum Palm",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (1d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eIIkSVQzMmWS4Q",
+              "type": "save",
+              "label": "Vacuum Palm: B-Rank",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Failure: can't mold chakra until the start of its next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eapJibGbmmEqxq",
+              "type": "attack",
+              "label": "Vacuum Palm",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (2d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eIIkSVQzMmWS4Q",
+              "type": "save",
+              "label": "Vacuum Palm: B-Rank",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Failure: can't mold chakra until the start of its next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eapJibGbmmEqxq",
+              "type": "attack",
+              "label": "Vacuum Palm",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (3d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eIIkSVQzMmWS4Q",
+              "type": "save",
+              "label": "Vacuum Palm: B-Rank",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Failure: can't mold chakra until the start of its next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eapJibGbmmEqxq",
+              "type": "attack",
+              "label": "Vacuum Palm",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (4d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eIIkSVQzMmWS4Q",
+              "type": "save",
+              "label": "Vacuum Palm: B-Rank",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Failure: can't mold chakra until the start of its next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Eight Trigram",
+        "appliesTo": {
+          "namePrefix": "Vacuum Palm"
+        },
+        "note": "In your Gentle Fist stance: the attack has advantage unless the target has Chakra Sight or Sensing."
       }
     }
   },
@@ -108,7 +280,46 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eapJibGbmmEqxq",
+        "type": "attack",
+        "label": "Vacuum Palm",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "force"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eIIkSVQzMmWS4Q",
+        "type": "save",
+        "label": "Vacuum Palm: B-Rank",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Failure: can't mold chakra until the start of its next turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

@@ -1,0 +1,944 @@
+{
+  "clan": "shoton",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "shoton-crown-jewels": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "10 minutes: one crystal regalia that passes as genuine (Chakra Sight or Sensing or a steady eye sees through it) for 24 hours (one at a time). Against creatures swayed by wealth or status (not high authority): the first request gets Persuasion or Intimidation at advantage, and it saves Wisdom against your result or tries to comply; restricted areas may open; first seeing the wearer it saves Wisdom against your highest jutsu save DC or is preoccupied for 1 minute and not hostile at first."
+        }
+      ]
+    },
+    "shoton-crystal-ascension": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ej1kWo3VUNUCWF",
+          "type": "effect",
+          "label": "Crystal Ascension",
+          "effect": {
+            "name": "Crystal Ascension",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action within 10 feet of your Earth jutsu or class feature summon, once per long rest: fuse into it for 1 minute (or until its 120 hit points drop to 0 or an Action ends it). Record your hit points.",
+          "activation": "bonus",
+          "cost": {
+            "pool": "hardness",
+            "amount": 4
+          }
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "lr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "Fused: 120 hit points; its size and Strength, Dexterity and Constitution, your mental scores, speed, features and Shoton Hijutsu, its attacks; both Crystal Forms, the aura +10 feet. Ending: you appear nearby and it's dispelled; leftover damage from hitting 0 carries to your recorded hit points."
+        }
+      ]
+    },
+    "shoton-crystal-form": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eGXOcKLigeyzUW",
+          "type": "roll",
+          "label": "Regain Hardness (Shoton Hijutsu)",
+          "roll": {
+            "formula": "",
+            "note": "Casting a Shoton Hijutsu: by its rank (D 1, C 2, B 3, A 4, S 5)."
+          },
+          "cost": {
+            "pool": "hardness",
+            "choose": true,
+            "gain": true
+          }
+        },
+        {
+          "id": "n5eAYvFx37CR0hDf",
+          "type": "roll",
+          "label": "Crystallize a summon",
+          "roll": {
+            "formula": "",
+            "note": "A jutsu summoning a construct, structure or Barrier: it gains Earth Release and counts as from a Shoton Hijutsu."
+          },
+          "cost": {
+            "pool": "hardness",
+            "amount": 1
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "hardness",
+          "label": "Hardness",
+          "value": 0,
+          "max": "1 + @prof",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "lr",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "On initiative, Crystal Weapon Dance or Crystal Aura (the option items) until combat ends; swap as a Bonus action. Hardness: 1 + proficiency bonus (the pool), back on a long rest."
+        }
+      ]
+    },
+    "shoton-crystal-form-crystal-aura": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eqoGeOgQaTPaJ8",
+          "type": "effect",
+          "label": "Crystal Aura",
+          "effect": {
+            "name": "Crystal Aura",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "A 10-foot aura on you (15 at 7th, 20 at 15th).",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5ephCegBUKYcFmU",
+          "type": "roll",
+          "label": "Crystal Aura: shield",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, creatures in your aura take damage: per Hardness on a creature (up to 2; 4 at 7th, 6 at 15th), remove its highest damage die."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "hardness",
+            "choose": true
+          }
+        }
+      ]
+    },
+    "shoton-crystal-form-crystal-weapon-dance": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUL06ehd43lhiJ",
+          "type": "effect",
+          "label": "Crystal Weapon Dance",
+          "effect": {
+            "name": "Crystal Weapon Dance",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Your Crystal Weapon can deal earth (pick when you roll) and gains Prismatic Edge and Crystalline Structure.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5eyJPtKH7DfoDD9",
+          "type": "save",
+          "label": "Prismatic Edge",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            },
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            }
+          ],
+          "text": "Once per turn per creature, your Crystal Weapon's damage. Failure: Bruised or Weakened (your choice).",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "hardness",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eeuZbQPf1lxPm5",
+          "type": "roll",
+          "label": "Crystalline Structure",
+          "roll": {
+            "formula": "floor(@level / 2)",
+            "note": "Casting a Shoton Hijutsu or Earth Ninjutsu that summons: infuse your weapon into it (DR half your level against its first damage each round; you can't use the weapon; take it back at the start of your turn)."
+          },
+          "cost": {
+            "pool": "hardness",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "shoton-crystal-release-crystal-ammunition": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5euDz5WXDzBlish",
+          "type": "roll",
+          "label": "Crystal Ammunition",
+          "roll": {
+            "formula": "",
+            "note": "Bonus action: a d10 stack of crystal ammunition (no bulk, one stack): weapons below 1d8 become 1d8 earth; Deadly 2; it counts as a Crystal Weapon."
+          },
+          "activation": "bonus"
+        }
+      ]
+    },
+    "shoton-crystal-release-crystal-armor": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "amp2f4244d6a4d9c",
+          "type": "effect",
+          "label": "Crystal Release: Crystal Armor",
+          "effect": {
+            "name": "Crystal Release: Crystal Armor",
+            "target": "self",
+            "amp": "jutsu-shoton-crystal-release-crystal-armor"
+          },
+          "text": "Starts the jutsu's Amp at the rank it was cast at."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its Amp button stays."
+        }
+      ]
+    },
+    "shoton-crystal-release-crystal-deer": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ebn2i0ggMfb97e",
+          "type": "summon",
+          "label": "Crystal Deer",
+          "summon": {
+            "uuid": "Compendium.n5e.summons.Actor.n5eWy26sqIfFAbcM",
+            "count": 1,
+            "template": ""
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Crystal Deer (Class & Clan Summons › Shoton); its Bonus action command also commands your other Shoton summons separately."
+        }
+      ]
+    },
+    "shoton-crystal-release-crystal-lance": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ecGiviQGFlM7TI",
+          "type": "attack",
+          "label": "Crystal Lance",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "8d8",
+                "type": "earth"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eREySBEhMxbu9Q",
+          "type": "save",
+          "label": "Crystal Lance: on a hit",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            }
+          ],
+          "text": "Failure: Staggered.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5ecGiviQGFlM7TI",
+                "type": "attack",
+                "label": "Crystal Lance",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(8d8) + (1d8)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eREySBEhMxbu9Q",
+                "type": "save",
+                "label": "Crystal Lance: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "Failure: Staggered.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5ecGiviQGFlM7TI",
+                "type": "attack",
+                "label": "Crystal Lance",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(8d8) + (2d8)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eREySBEhMxbu9Q",
+                "type": "save",
+                "label": "Crystal Lance: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "Failure: Staggered.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "shoton-crystal-release-crystal-needles": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5euKLcmMVPZqESr",
+          "type": "attack",
+          "label": "Crystal Needles",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 2
+          },
+          "text": "+1 attack per rank. On a hit: −10 speed until the end of its next turn.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "earth"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "shoton-crystal-release-crystal-prison": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eJYDY1PRc6Erfh",
+          "type": "save",
+          "label": "Crystal Prison",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "shoton-crystallization",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Crystallization"
+            }
+          ],
+          "text": "Creatures of your choice in a 20-foot radius. Failure: 1 rank of Crystallization (2 failing by 5; +1 at S).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "shoton-crystal-release-crystal-rabbit": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eS8VFBnCBBHeeP",
+          "type": "summon",
+          "label": "Crystal Rabbits",
+          "summon": {
+            "uuid": "Compendium.n5e.summons.Actor.n5eKTdaq0uvSKabq",
+            "count": 2,
+            "template": ""
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Crystal Rabbits (+1 per rank; Class & Clan Summons › Shoton), commanded together as a Bonus action."
+        }
+      ]
+    },
+    "shoton-crystal-release-crystal-wheel": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "amp21992bc9f02d3",
+          "type": "effect",
+          "label": "Crystal Release: Crystal Wheel",
+          "effect": {
+            "name": "Crystal Release: Crystal Wheel",
+            "target": "self",
+            "amp": "jutsu-shoton-crystal-release-crystal-wheel"
+          },
+          "text": "Starts the jutsu's Amp at the rank it was cast at."
+        },
+        {
+          "id": "n5eDsqBBGgQ7YbTK",
+          "type": "damage",
+          "label": "Crystal Wheel: opportunity attacker",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "earth"
+              }
+            ]
+          },
+          "text": "A creature making an attack of opportunity against you."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its Amp button stays."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "amp21992bc9f02d3",
+                "type": "effect",
+                "label": "Crystal Release: Crystal Wheel",
+                "effect": {
+                  "name": "Crystal Release: Crystal Wheel",
+                  "target": "self",
+                  "amp": "jutsu-shoton-crystal-release-crystal-wheel"
+                },
+                "text": "Starts the jutsu's Amp at the rank it was cast at."
+              },
+              {
+                "id": "n5eDsqBBGgQ7YbTK",
+                "type": "damage",
+                "label": "Crystal Wheel: opportunity attacker",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (1d6)",
+                      "type": "earth"
+                    }
+                  ]
+                },
+                "text": "A creature making an attack of opportunity against you."
+              }
+            ],
+            "A": [
+              {
+                "id": "amp21992bc9f02d3",
+                "type": "effect",
+                "label": "Crystal Release: Crystal Wheel",
+                "effect": {
+                  "name": "Crystal Release: Crystal Wheel",
+                  "target": "self",
+                  "amp": "jutsu-shoton-crystal-release-crystal-wheel"
+                },
+                "text": "Starts the jutsu's Amp at the rank it was cast at."
+              },
+              {
+                "id": "n5eDsqBBGgQ7YbTK",
+                "type": "damage",
+                "label": "Crystal Wheel: opportunity attacker",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (2d6)",
+                      "type": "earth"
+                    }
+                  ]
+                },
+                "text": "A creature making an attack of opportunity against you."
+              }
+            ],
+            "S": [
+              {
+                "id": "amp21992bc9f02d3",
+                "type": "effect",
+                "label": "Crystal Release: Crystal Wheel",
+                "effect": {
+                  "name": "Crystal Release: Crystal Wheel",
+                  "target": "self",
+                  "amp": "jutsu-shoton-crystal-release-crystal-wheel"
+                },
+                "text": "Starts the jutsu's Amp at the rank it was cast at."
+              },
+              {
+                "id": "n5eDsqBBGgQ7YbTK",
+                "type": "damage",
+                "label": "Crystal Wheel: opportunity attacker",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (3d6)",
+                      "type": "earth"
+                    }
+                  ]
+                },
+                "text": "A creature making an attack of opportunity against you."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "shoton-crystal-release-gods-crossing": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eNAD0VK0eAFEep",
+          "type": "save",
+          "label": "Gods Crossing",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            }
+          ],
+          "text": "A 60-foot line (A-Rank: or a 30-foot cone); it becomes difficult terrain (you ignore it at B). Failure: the damage and a rank of Bleed (S: speed 0 until the end of its next turn); success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d8",
+                "type": "earth"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5eNAD0VK0eAFEep",
+                "type": "save",
+                "label": "Gods Crossing",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "A 60-foot line (A-Rank: or a 30-foot cone); it becomes difficult terrain (you ignore it at B). Failure: the damage and a rank of Bleed (S: speed 0 until the end of its next turn); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (1d8)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eNAD0VK0eAFEep",
+                "type": "save",
+                "label": "Gods Crossing",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "A 60-foot line (A-Rank: or a 30-foot cone); it becomes difficult terrain (you ignore it at B). Failure: the damage and a rank of Bleed (S: speed 0 until the end of its next turn); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (2d8)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eNAD0VK0eAFEep",
+                "type": "save",
+                "label": "Gods Crossing",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ],
+                "text": "A 60-foot line (A-Rank: or a 30-foot cone); it becomes difficult terrain (you ignore it at B). Failure: the damage and a rank of Bleed (S: speed 0 until the end of its next turn); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (3d8)",
+                      "type": "earth"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "shoton-crystal-release-hexagonal-pillars": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eJb4XnLHhYXXWo",
+          "type": "effect",
+          "label": "Hexagonal Pillars",
+          "effect": {
+            "name": "Hexagonal Pillars",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "A 60-foot radius on your space: allies casting inside deal +1 damage die; your Shoton summons inside gain Crystal Dynamics (Recharge 5-6; recharges each turn end at S): cast Crystal Needles, Crystal Wheel or Gods Crossing at their base rank."
+        }
+      ]
+    },
+    "shoton-crystal-release-prismatic-dragon-of-heaven": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5epCBZoFBYIFpim",
+          "type": "summon",
+          "label": "Crystal Dragon",
+          "summon": {
+            "uuid": "Compendium.n5e.summons.Actor.n5eNuujawHgtw3s6",
+            "count": 1,
+            "template": ""
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Crystal Dragon (Class & Clan Summons › Shoton); its Bonus action command also commands your other Shoton summons separately."
+        }
+      ]
+    },
+    "shoton-crystal-symbiosis": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Benefit from two Crystal Types at once. Casting a nature release summon jutsu (or a class feature construct): give it a Crystal Body: Amethyst (half area damage), Emerald (its jutsu gains Stable and Efficient), Jade (Action: heal allies 2d6 + your level), Onyx (interposes attacks on allies within 10 feet), Quartz (+2 AC, +1 per rank above its base), Ruby (attack damage die +1 step), Sapphire (once per turn, beating AC by 5 is a critical hit), Topaz (its Recharge use regains you 4 Hardness)."
+        }
+      ]
+    },
+    "shoton-crystals-gems-and-jewels": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "After a long rest pick 2 Crystal Types (3 at 7th, 4 at 15th): the option items; one benefits you at a time (switch at the start of your turn). Aura effects reach only creatures in your Crystal Aura. Attacks and saves use your highest jutsu attack bonus and save DC."
+        }
+      ]
+    },
+    "shoton-crystals-gems-and-jewels-amethyst-ward": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Weapon Dance: summons with your infused weapon gain temporary hit points by their rank each turn (D 4, C 8, B 12, A 16, S 20). Aura: allies gain a rank of Mastery against Mental conditions (two at 11th)."
+        }
+      ]
+    },
+    "shoton-crystals-gems-and-jewels-emerald-lattice": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Weapon Dance: a rank of Mastery on concentration for Shoton Hijutsu (two at 7th; 15th: 2 Hardness keeps a failed one). Aura: allies gain a rank of Mastery on concentration (7th: 1 Hardness adds 1d6 to their concentration or Clash check; 15th: 2 Hardness per jutsu keeps a lost one)."
+        }
+      ]
+    },
+    "shoton-crystals-gems-and-jewels-jade-verdancy": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Weapon Dance: once per turn (twice at 7th, three times at 15th), a Taijutsu or Bukijutsu with a Crystal Weapon heals you by its damage die result. Aura: once per turn, an ally healed by a Medical jutsu regains +4 (+6 at 7th, +8 at 15th)."
+        }
+      ]
+    },
+    "shoton-crystals-gems-and-jewels-onyx-shell": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eNYYwsBjPNVx38",
+          "type": "roll",
+          "label": "Onyx Shell",
+          "roll": {
+            "formula": "lvl(3:1d6,7:3d6,15:5d6)",
+            "note": "Weapon Dance, once per turn, Reaction to damage: reduce it by your [Weapons Damage] + this (+2d6 at 7th and 15th). Reduced to 0: hostile creatures within 10 feet save Dexterity or take that roll as earth (half on a success)."
+          },
+          "activation": "reaction",
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5eQt8gUKeDAHGkC",
+          "type": "save",
+          "label": "Onyx Shell: shards",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "The damage was reduced to 0: hostile creatures within 10 feet take the roll as earth; half on a success.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Weapon Dance: the shell reaction (its button). Aura: Hardness you spend on an ally counts as +1 more (+2 at 11th)."
+        }
+      ]
+    },
+    "shoton-crystals-gems-and-jewels-quartz-veil": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Weapon Dance: your Crystal Weapon gains Blocking 1 (2 at 7th, 3 at 15th). Aura: allies +1 AC (+2 at 7th, +3 at 15th)."
+        }
+      ]
+    },
+    "shoton-crystals-gems-and-jewels-ruby-blaze": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Weapon Dance: a rank of Mastery to your Crystal Weapon's damage (two at 7th, three at 15th). Aura: allies +2 [Weapon] and [Unarmed Damage] (+4 at 11th)."
+        }
+      ]
+    },
+    "shoton-crystals-gems-and-jewels-sapphire-tide": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Weapon Dance: your Crystal Weapon gains Critical 1 (2 at 7th, 3 at 15th). Aura: allies' jutsu +1 critical range (+2 at 7th, +3 at 15th)."
+        }
+      ]
+    },
+    "shoton-crystals-gems-and-jewels-topaz-surge": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRpz3NEKTZD7Pb",
+          "type": "roll",
+          "label": "Topaz: regain Hardness",
+          "roll": {
+            "formula": "",
+            "note": "The listed trigger (4, 2 or 1)."
+          },
+          "cost": {
+            "pool": "hardness",
+            "choose": true,
+            "gain": true
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Weapon Dance: a Crystal Weapon critical hit regains 4 Hardness; 7th: once per turn, damaging a creature under your Earth jutsu regains 2; 15th: damaging one with an Elemental condition regains 1. Aura: an ally's critical hit regains 4; 7th: once per turn an ally keeping concentration at its turn start regains 2; 15th: once per turn an ally casting in your aura regains 1."
+        }
+      ]
+    }
+  }
+}

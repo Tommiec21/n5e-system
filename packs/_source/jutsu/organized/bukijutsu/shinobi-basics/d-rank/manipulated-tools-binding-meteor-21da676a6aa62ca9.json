@@ -85,16 +85,46 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eQW9HTHC8N3ctc",
         "type": "attack",
-        "label": "Attack",
+        "label": "Binding Meteor",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Up to 3 creatures within 30 feet of each other (+1 per rank). On a hit: grappled and chained to each other within 10 feet.",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5ejipRuRO0SSsQN",
+        "type": "effect",
+        "label": "On a hit: grappled",
+        "effect": {
+          "name": "Grappled",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "grappled",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Grappled"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eDjN97qHq3NHI7",
+        "type": "roll",
+        "label": "Escape (its Action)",
+        "roll": {
+          "formula": "",
+          "note": "Acrobatics or Sleight of Hand against your Taijutsu save DC. Chain 1: after one fails, the others −2 until the end of their next turn."
         }
       }
     ],
@@ -164,7 +194,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "1b8bbde86064544a"

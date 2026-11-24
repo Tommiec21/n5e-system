@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eE7EH1EZ4oY3sO",
         "type": "attack",
-        "label": "Attack",
+        "label": "Grass Palm",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Bonus action: every creature within 5 feet.",
         "damage": {
           "parts": []
         },
@@ -106,17 +107,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eRs0FQEGyYP3wF",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "weakened",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Weakened"
-          }
-        ],
+        "label": "Grass Palm: disarm",
         "save": {
           "abilities": [
             "str"
@@ -125,10 +118,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          }
+        ],
+        "text": "Creatures hit. Failure: disarmed and 1 Weakened.",
         "damage": {
           "parts": []
         }
@@ -220,20 +220,21 @@
         "activitiesByRank": {
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5eE7EH1EZ4oY3sO",
               "type": "attack",
-              "label": "Attack",
+              "label": "Grass Palm",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Bonus action: every creature within 5 feet.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(2d10) + (1d10)",
+                "extraDice": "2d10 + 1d10",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -241,17 +242,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eRs0FQEGyYP3wF",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "weakened",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Weakened"
-                }
-              ],
+              "label": "Grass Palm: disarm",
               "save": {
                 "abilities": [
                   "str"
@@ -260,10 +253,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Creatures hit. Failure: disarmed and 1 Weakened.",
               "damage": {
                 "parts": []
               }
@@ -271,20 +271,21 @@
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eE7EH1EZ4oY3sO",
               "type": "attack",
-              "label": "Attack",
+              "label": "Grass Palm",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Bonus action: every creature within 5 feet.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(2d10) + (2d10)",
+                "extraDice": "2d10 + 2d10",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -292,17 +293,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eRs0FQEGyYP3wF",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "weakened",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Weakened"
-                }
-              ],
+              "label": "Grass Palm: disarm",
               "save": {
                 "abilities": [
                   "str"
@@ -311,10 +304,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Creatures hit. Failure: disarmed and 1 Weakened.",
               "damage": {
                 "parts": []
               }
@@ -322,20 +322,21 @@
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eE7EH1EZ4oY3sO",
               "type": "attack",
-              "label": "Attack",
+              "label": "Grass Palm",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Bonus action: every creature within 5 feet.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "unarmed",
-                "extraDice": "(2d10) + (3d10)",
+                "extraDice": "2d10 + 3d10",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
@@ -343,17 +344,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eRs0FQEGyYP3wF",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "weakened",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Weakened"
-                }
-              ],
+              "label": "Grass Palm: disarm",
               "save": {
                 "abilities": [
                   "str"
@@ -362,10 +355,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Creatures hit. Failure: disarmed and 1 Weakened.",
               "damage": {
                 "parts": []
               }
@@ -373,7 +373,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "aee26bc2434fe738"

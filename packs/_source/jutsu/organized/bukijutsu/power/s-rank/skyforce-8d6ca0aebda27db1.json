@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eBT7zirXwQLXNc",
         "type": "attack",
-        "label": "Attack",
+        "label": "Skyforce",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "An airborne target.",
         "damage": {
           "parts": []
         },
@@ -106,17 +107,9 @@
         }
       },
       {
-        "id": "chain-3-parsed1",
+        "id": "n5ejPAErzGD4eSf4",
         "type": "save",
-        "label": "Chain 3: Save",
-        "inflicts": [
-          {
-            "key": "prone",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Prone"
-          }
-        ],
+        "label": "Chain 3: launched",
         "save": {
           "abilities": [
             "str"
@@ -125,12 +118,54 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Chain 3. Failure: pushed 60 feet up; you leap after it.",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5espEaI70yz5ybv",
+        "type": "attack",
+        "label": "Chain 3: slam down",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "On a hit: it falls, taking double falling damage, and lands Prone.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5e3cOc8BZVfQyH4",
+        "type": "effect",
+        "label": "Chain 3: Prone",
+        "effect": {
+          "name": "Chain 3: Prone",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ]
         }
       }
     ],
@@ -213,7 +248,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "3defed4a961f01ae"

@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "kaguya",
       "sourceLine": 4250,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "A rank of Mastery on Athletics or Acrobatics checks (pick one; set it on the sheet)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,18 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e7N9ovUurHcup8",
+        "type": "heal",
+        "label": "Marrow Overflow: short rest",
+        "heal": {
+          "formula": "@level",
+          "pool": "hp"
+        },
+        "text": "At the end of a short rest, in addition to what you regain."
+      }
+    ]
   }
 }

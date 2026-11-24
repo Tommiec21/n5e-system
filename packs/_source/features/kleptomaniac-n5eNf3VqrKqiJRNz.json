@@ -34,13 +34,22 @@
     "resourcePools": [],
     "activities": [
       {
-        "id": "n5ewQCz4QHSMk04V",
-        "type": "check",
-        "label": "Kleptomaniac: Sleight of Hand check",
-        "check": {
-          "skill": "slt"
+        "id": "n5eVzeutpM8iYJDY",
+        "type": "effect",
+        "label": "Kleptomaniac",
+        "effect": {
+          "name": "Kleptomaniac target",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 3600
         },
-        "activation": "bonus"
+        "text": "Bonus action: mark a lock or creature; the DC to pick it or pickpocket it is 4 lower.",
+        "activation": "bonus",
+        "cost": {
+          "pool": "skilledExploits",
+          "amount": 1
+        }
       }
     ],
     "prerequisites": []
@@ -54,7 +63,8 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "optionGroup": "Skilled Exploits"
+      "optionGroup": "Skilled Exploits",
+      "reviewed": true
     }
   },
   "_stats": {

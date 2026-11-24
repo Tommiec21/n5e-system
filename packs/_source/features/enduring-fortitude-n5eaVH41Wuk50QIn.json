@@ -32,7 +32,38 @@
       "weapon-kata"
     ],
     "resourcePools": [],
-    "prerequisites": []
+    "prerequisites": [],
+    "activities": [
+      {
+        "id": "n5eOd5BV6KSptYSD",
+        "type": "roll",
+        "label": "Enduring Fortitude",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, reaction to being hit: a rank of Mastery to your AC against the triggering attack until the end of the turn."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "discipline",
+          "amount": 1
+        },
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5eQ1HaOWVHKT051",
+        "type": "roll",
+        "label": "Enduring Fortitude: turn a critical",
+        "roll": {
+          "formula": "",
+          "note": "Reaction to a critical hit against you: it becomes a normal hit."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "discipline",
+          "amount": 3
+        }
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eKog0rxOOl3K44",
@@ -43,7 +74,8 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "optionGroup": "Kata: Endurance"
+      "optionGroup": "Kata: Endurance",
+      "reviewed": true
     }
   },
   "_stats": {

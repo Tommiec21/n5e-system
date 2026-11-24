@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "keton",
       "sourceLine": 5869,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,31 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eMaYtSI2BB6QCO",
+        "type": "effect",
+        "label": "Karasuki – The Plow",
+        "effect": {
+          "name": "Karasuki",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.damage.unarmed",
+              "value": "lvl(1:2,7:4,15:6)",
+              "mode": 2
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 0
+        },
+        "text": "Stellar Knuckle, Plasma Burst or a damaging Keton Hijutsu: +2 damage until the end of the turn (+4 at 7th, +6 at 15th; add it to Plasma Burst and Hijutsu).",
+        "cost": {
+          "pool": "stellarCharges",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

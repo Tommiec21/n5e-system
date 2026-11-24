@@ -86,14 +86,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eA5AM7ktpDwdFc",
         "type": "attack",
-        "label": "Attack",
+        "label": "Impaler Stab",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "You can leave it impaled: Grappled by you (Strength save at the end of each of its turns, or leave your weapon's range); you can't use the weapon. Chain 1: it can't take reactions.",
         "damage": {
           "parts": []
         },
@@ -105,6 +106,40 @@
           "maximize": false,
           "attacks": "1"
         }
+      },
+      {
+        "id": "n5ejwzQQMC7teDWX",
+        "type": "effect",
+        "label": "Impaled: Grappled",
+        "effect": {
+          "name": "Impaled: Grappled",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "grappled",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Grappled"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eRWH4HVPOPN4vJ",
+        "type": "damage",
+        "label": "Twist (Bonus action)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d12",
+              "type": "piercing"
+            }
+          ]
+        },
+        "text": "An impaled creature."
       }
     ],
     "featureType": "active",
@@ -199,99 +234,240 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5eA5AM7ktpDwdFc",
               "type": "attack",
-              "label": "Attack",
+              "label": "Impaler Stab",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "You can leave it impaled: Grappled by you (Strength save at the end of each of its turns, or leave your weapon's range); you can't use the weapon. Chain 1: it can't take reactions.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d12) + (1d12)",
+                "extraDice": "2d12 + 1d12",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
                 "attacks": "1"
               }
+            },
+            {
+              "id": "n5ejwzQQMC7teDWX",
+              "type": "effect",
+              "label": "Impaled: Grappled",
+              "effect": {
+                "name": "Impaled: Grappled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eRWH4HVPOPN4vJ",
+              "type": "damage",
+              "label": "Twist (Bonus action)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (1d12)",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "text": "An impaled creature."
             }
           ],
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5eA5AM7ktpDwdFc",
               "type": "attack",
-              "label": "Attack",
+              "label": "Impaler Stab",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "You can leave it impaled: Grappled by you (Strength save at the end of each of its turns, or leave your weapon's range); you can't use the weapon. Chain 1: it can't take reactions.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d12) + (2d12)",
+                "extraDice": "2d12 + 2d12",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
                 "attacks": "1"
               }
+            },
+            {
+              "id": "n5ejwzQQMC7teDWX",
+              "type": "effect",
+              "label": "Impaled: Grappled",
+              "effect": {
+                "name": "Impaled: Grappled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eRWH4HVPOPN4vJ",
+              "type": "damage",
+              "label": "Twist (Bonus action)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (2d12)",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "text": "An impaled creature."
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eA5AM7ktpDwdFc",
               "type": "attack",
-              "label": "Attack",
+              "label": "Impaler Stab",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "You can leave it impaled: Grappled by you (Strength save at the end of each of its turns, or leave your weapon's range); you can't use the weapon. Chain 1: it can't take reactions.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d12) + (3d12)",
+                "extraDice": "2d12 + 3d12",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
                 "attacks": "1"
               }
+            },
+            {
+              "id": "n5ejwzQQMC7teDWX",
+              "type": "effect",
+              "label": "Impaled: Grappled",
+              "effect": {
+                "name": "Impaled: Grappled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eRWH4HVPOPN4vJ",
+              "type": "damage",
+              "label": "Twist (Bonus action)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (3d12)",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "text": "An impaled creature."
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eA5AM7ktpDwdFc",
               "type": "attack",
-              "label": "Attack",
+              "label": "Impaler Stab",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "You can leave it impaled: Grappled by you (Strength save at the end of each of its turns, or leave your weapon's range); you can't use the weapon. Chain 1: it can't take reactions.",
               "damage": {
                 "parts": []
               },
               "strike": {
                 "kind": "weapon",
-                "extraDice": "(2d12) + (4d12)",
+                "extraDice": "2d12 + 4d12",
                 "dieSteps": 0,
                 "pierce": 0,
                 "maximize": false,
                 "attacks": "1"
               }
+            },
+            {
+              "id": "n5ejwzQQMC7teDWX",
+              "type": "effect",
+              "label": "Impaled: Grappled",
+              "effect": {
+                "name": "Impaled: Grappled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "grappled",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Grappled"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eRWH4HVPOPN4vJ",
+              "type": "damage",
+              "label": "Twist (Bonus action)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (4d12)",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "text": "An impaled creature."
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "204c67326d5fa509"

@@ -86,10 +86,28 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e8AmgRLHbe79SR",
+        "type": "attack",
+        "label": "Grim Blade",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "A creature within 30 feet, ignoring cover. S-Rank: one attack against each hostile creature in range.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "necrotic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eM2tZKAYSX1w4u",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Grim Blade: bonus dice",
         "save": {
           "abilities": [
             "cha"
@@ -98,17 +116,12 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "On a hit. Failure: it rolls each dice-based bonus it has and takes that much necrotic (A-Rank: twice).",
         "damage": {
-          "parts": [
-            {
-              "formula": "4d8",
-              "type": "necrotic"
-            }
-          ]
+          "parts": []
         }
       }
     ],
@@ -192,22 +205,15 @@
         "activitiesByRank": {
           "B": [
             {
-              "id": "parsed1",
-              "type": "save",
-              "label": "Save",
-              "inflicts": [],
-              "save": {
-                "abilities": [
-                  "cha"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
+              "id": "n5e8AmgRLHbe79SR",
+              "type": "attack",
+              "label": "Grim Blade",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
               },
+              "text": "A creature within 30 feet, ignoring cover. S-Rank: one attack against each hostile creature in range.",
               "damage": {
                 "parts": [
                   {
@@ -216,14 +222,11 @@
                   }
                 ]
               }
-            }
-          ],
-          "A": [
+            },
             {
-              "id": "parsed1",
+              "id": "n5eM2tZKAYSX1w4u",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Grim Blade: bonus dice",
               "save": {
                 "abilities": [
                   "cha"
@@ -232,10 +235,26 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "On a hit. Failure: it rolls each dice-based bonus it has and takes that much necrotic (A-Rank: twice).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e8AmgRLHbe79SR",
+              "type": "attack",
+              "label": "Grim Blade",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "A creature within 30 feet, ignoring cover. S-Rank: one attack against each hostile creature in range.",
               "damage": {
                 "parts": [
                   {
@@ -244,14 +263,11 @@
                   }
                 ]
               }
-            }
-          ],
-          "S": [
+            },
             {
-              "id": "parsed1",
+              "id": "n5eM2tZKAYSX1w4u",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Grim Blade: bonus dice",
               "save": {
                 "abilities": [
                   "cha"
@@ -260,10 +276,26 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "On a hit. Failure: it rolls each dice-based bonus it has and takes that much necrotic (A-Rank: twice).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e8AmgRLHbe79SR",
+              "type": "attack",
+              "label": "Grim Blade",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "A creature within 30 feet, ignoring cover. S-Rank: one attack against each hostile creature in range.",
               "damage": {
                 "parts": [
                   {
@@ -272,11 +304,32 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5eM2tZKAYSX1w4u",
+              "type": "save",
+              "label": "Grim Blade: bonus dice",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit. Failure: it rolls each dice-based bonus it has and takes that much necrotic (A-Rank: twice).",
+              "damage": {
+                "parts": []
+              }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0359bedeffa2100b"

@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "kashu",
       "sourceLine": 6579,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Once per turn, Overtone Burst on a Disoriented target lasts until it has no Disoriented."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,22 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eEVICHxQk2ay1M",
+        "type": "effect",
+        "label": "Overtuned Frequency",
+        "effect": {
+          "name": "Overtuned Frequency",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "Bonus action, concentration as an A-Rank Genjutsu: hold up to 8 Resonance and gain up to 2 per trigger (raise the pool by hand past 4).",
+        "activation": "bonus"
+      }
+    ]
   }
 }

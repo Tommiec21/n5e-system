@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "hanami",
       "sourceLine": 2983,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,39 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ejYgZJKH8BIs5l",
+        "type": "save",
+        "label": "Sluggish Bane",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "slowed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Slow"
+          }
+        ],
+        "text": "Infused: a failing creature is Slowed (ends as Dispirited Bane).",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "boonsBanes",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

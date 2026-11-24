@@ -84,10 +84,22 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5eZBvwwQh0diPnH",
+        "type": "roll",
+        "label": "Royal Shield charges",
+        "roll": {
+          "formula": "3",
+          "note": "Reaction to damage: 3 charges (+1 per rank) until the start of your next turn; each spent reduces a damage instance by 6; at 0 you ignore its effects."
+        }
+      },
+      {
+        "id": "n5eCYy8fOZq4K1B3",
+        "type": "roll",
+        "label": "Spend a charge",
+        "roll": {
+          "formula": "6",
+          "note": "Reduce this damage by 6 per charge spent (by hand)."
+        }
       }
     ],
     "featureType": "active",
@@ -179,9 +191,182 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eZBvwwQh0diPnH",
+              "type": "roll",
+              "label": "Royal Shield charges",
+              "roll": {
+                "formula": "4",
+                "note": "Reaction to damage: 3 charges (+1 per rank) until the start of your next turn; each spent reduces a damage instance by 6; at 0 you ignore its effects."
+              }
+            },
+            {
+              "id": "n5eCYy8fOZq4K1B3",
+              "type": "roll",
+              "label": "Spend a charge",
+              "roll": {
+                "formula": "6",
+                "note": "Reduce this damage by 6 per charge spent (by hand)."
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eZBvwwQh0diPnH",
+              "type": "roll",
+              "label": "Royal Shield charges",
+              "roll": {
+                "formula": "5",
+                "note": "Reaction to damage: 3 charges (+1 per rank) until the start of your next turn; each spent reduces a damage instance by 6; at 0 you ignore its effects."
+              }
+            },
+            {
+              "id": "n5eCYy8fOZq4K1B3",
+              "type": "roll",
+              "label": "Spend a charge",
+              "roll": {
+                "formula": "6",
+                "note": "Reduce this damage by 6 per charge spent (by hand)."
+              }
+            },
+            {
+              "id": "n5eNKpQTKxXO2B5U",
+              "type": "attack",
+              "label": "Release (2 charges)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "B-Rank: the last trigger within 20 feet; +2d6 per charge spent since casting (add by hand); you lose the rest.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eZBvwwQh0diPnH",
+              "type": "roll",
+              "label": "Royal Shield charges",
+              "roll": {
+                "formula": "6",
+                "note": "Reaction to damage: 3 charges (+1 per rank) until the start of your next turn; each spent reduces a damage instance by 6; at 0 you ignore its effects."
+              }
+            },
+            {
+              "id": "n5eCYy8fOZq4K1B3",
+              "type": "roll",
+              "label": "Spend a charge",
+              "roll": {
+                "formula": "6",
+                "note": "Reduce this damage by 6 per charge spent (by hand)."
+              }
+            },
+            {
+              "id": "n5eNKpQTKxXO2B5U",
+              "type": "attack",
+              "label": "Release (2 charges)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "B-Rank: the last trigger within 20 feet; +2d6 per charge spent since casting (add by hand); you lose the rest.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eZBvwwQh0diPnH",
+              "type": "roll",
+              "label": "Royal Shield charges",
+              "roll": {
+                "formula": "7",
+                "note": "Reaction to damage: 3 charges (+1 per rank) until the start of your next turn; each spent reduces a damage instance by 6; at 0 you ignore its effects."
+              }
+            },
+            {
+              "id": "n5eCYy8fOZq4K1B3",
+              "type": "roll",
+              "label": "Spend a charge",
+              "roll": {
+                "formula": "6",
+                "note": "Reduce this damage by 6 per charge spent (by hand)."
+              }
+            },
+            {
+              "id": "n5eNKpQTKxXO2B5U",
+              "type": "attack",
+              "label": "Release (2 charges)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "B-Rank: the last trigger within 20 feet; +2d6 per charge spent since casting (add by hand); you lose the rest.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5e1hhUJ42WI8vAA",
+              "type": "save",
+              "label": "Shockwave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "S-Rank: creatures you choose within 20 feet; +2d10 per charge left (add by hand); you lose the rest. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@unarmed + 2d10",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

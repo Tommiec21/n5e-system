@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "fushin",
-      "sourceLine": 2705
+      "sourceLine": 2705,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Divine Wind chakra stance (Bonus action), with two forms you swap at the start of your turns; in either you float 1 foot up and take no falling damage from 50 feet or less. Pressure Front: High Pressure (the pool), Swirl, and your Hijutsu gain the listed critical effects. Razor Jet: each Wind Release jutsu marks one affected creature with Low Pressure for 1 minute; spend it when you damage it to push it 10 feet; Wind Release area jutsu can be a Jet Needle (5 by 30 feet, −2 to saves, +30 feet at 7th, 11th and 15th) or a Cleave (a line between two points within 60 feet, creatures within 5 feet save; failure: +1 rank of Bleed)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,48 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5efWwkfnZlVnA9j",
+        "type": "roll",
+        "label": "High Pressure (Pressure Front)",
+        "roll": {
+          "formula": "",
+          "note": "Each Wind Release jutsu you cast (not the action that spends it). Up to 4 (6 at 11th); each lasts 1 minute."
+        },
+        "cost": {
+          "pool": "highPressure",
+          "amount": 1,
+          "gain": true
+        }
+      },
+      {
+        "id": "n5e837Yoc3AqaaXy",
+        "type": "roll",
+        "label": "Swirl (1 High Pressure)",
+        "roll": {
+          "formula": "",
+          "note": "As part of casting a Wind Release jutsu: it gains the Swirl effect."
+        },
+        "cost": {
+          "pool": "highPressure",
+          "amount": 1
+        }
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "highPressure",
+        "label": "High Pressure",
+        "value": 0,
+        "max": "lvl(1:4,11:6)",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [],
+        "lifetime": 60
+      }
+    ]
   }
 }

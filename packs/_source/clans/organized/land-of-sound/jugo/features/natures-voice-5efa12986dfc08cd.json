@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "jugo",
-      "sourceLine": 6307
+      "sourceLine": 6307,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "You speak Animal Speak (all land animals)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,28 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eJqG8PAW87Eqlk",
+        "type": "effect",
+        "label": "Nature's Voice",
+        "effect": {
+          "name": "Nature's Voice",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 3600
+        },
+        "text": "10 minutes of focus, once per short rest: for 1 hour, two ranks of Mastery on Charisma checks with animals and terrain, and you learn an area's last-24-hour movements, chakra use, water and shelter, and whether a creature your size or larger hides within 120 feet."
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "sr",
+      "recharge": "",
+      "staminaEligible": false
+    }
   }
 }

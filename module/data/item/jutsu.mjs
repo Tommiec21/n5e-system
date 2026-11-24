@@ -187,9 +187,16 @@ export default class JutsuData extends foundry.abstract.TypeDataModel {
       if ( allowPick && choice && flex.includes(choice) ) abilityKey = choice;
       else abilityKey = flex.reduce((best, a) => ((sys.abilities[a]?.mod ?? -99) > (sys.abilities[best]?.mod ?? -99) ? a : best));
     }
-    // STD6d: a keyword may let the jutsu use another ability when it is higher (Medical Release: Wisdom).
+    // STD6d: a keyword may let the jutsu use another ability when it is higher (Medical Release: Wisdom);
+    // "discipline:<d>" does the same for every jutsu cast as that discipline (Actualization: Genjutsu with Charisma).
+    // King Q-D26: the player can pick one of those abilities on the sheet instead of the higher.
+    const discKey = discipline === "buki" ? "tai" : discipline;
+    const discAlts = sys.modifiers?.keywordAbility?.[`discipline:${discKey}`] ?? [];
+    const picked = sys.grants?.disciplineAbilityChoice?.[discKey];
+    const manual = !this.ability && discAlts.length && picked && (picked === disc?.ability || discAlts.includes(picked));
+    if ( manual ) abilityKey = picked;
     if ( !this.ability ) {
-      for ( const kw of this.keywords ?? [] ) {
+      for ( const kw of [...(this.keywords ?? []), ...(manual ? [] : [`discipline:${discKey}`])] ) {
         for ( const alt of sys.modifiers?.keywordAbility?.[kw] ?? [] ) {
           if ( (sys.abilities?.[alt]?.mod ?? -99) > (sys.abilities?.[abilityKey]?.mod ?? -99) ) abilityKey = alt;
         }

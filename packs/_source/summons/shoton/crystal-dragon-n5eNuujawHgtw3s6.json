@@ -1,0 +1,431 @@
+{
+  "_id": "n5eNuujawHgtw3s6",
+  "_key": "!actors!n5eNuujawHgtw3s6",
+  "name": "Crystal Dragon",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Shoton: Crystal Dragon",
+      "summonRole": "Crystal Dragon",
+      "biography": "<p><em>Shoton Hijutsu (an Earthen Artifact).</em> It uses your highest jutsu attack bonus or Save DC when an effect calls for it. You command it as a Bonus action.</p><p><strong>Large Construct, unaligned.</strong> <strong>Armor Class</strong> 22 + 2 For every rank above A-Rank, <strong>DR</strong> 6 +2 for every rank above A-Rank · <strong>Hit Points</strong> 80 + 20 for every rank above A-Rank · <strong>Speed</strong> 40 ft fly. STR +6 (save +9), DEX +2 (+5), CON +9 (+9), INT −5, WIS +0, CHA +5 (−5). <strong>Damage Immunities</strong> Bludgeoning, Piercing and Slashing. <strong>Condition Immunities</strong> All Mental, All Sensory, Stunned, Petrified, Envenomed. <strong>Senses</strong> Darkvision 60 ft.</p><p><strong>Linked to you when summoned:</strong> AC, DR and hit points by the rank you cast the jutsu at, and your highest jutsu attack bonus and save DC.</p>"
+    },
+    "abilities": {
+      "str": {
+        "value": 22
+      },
+      "dex": {
+        "value": 14
+      },
+      "con": {
+        "value": 28
+      },
+      "int": {
+        "value": 0
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 20
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 22,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "large",
+      "conditionImmune": [
+        "berserk",
+        "charmed",
+        "confused",
+        "demoralized",
+        "shaken",
+        "concussed",
+        "blinded",
+        "dazzled",
+        "deafened",
+        "petrified",
+        "envenomed"
+      ],
+      "stateImmune": [
+        "stunned"
+      ],
+      "speed": {
+        "walk": 0,
+        "climb": 0,
+        "swim": 0,
+        "fly": 40,
+        "burrow": 0,
+        "hover": false
+      },
+      "dr": 6,
+      "immune": [
+        "bludgeoning",
+        "piercing",
+        "slashing"
+      ]
+    },
+    "hpMax": 80,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5enSvCuBE0FxGVH",
+      "_key": "!actors.items!n5eNuujawHgtw3s6.n5enSvCuBE0FxGVH",
+      "name": "Abrasive",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>When a crystal dragon takes damage from a melee attack, the attacking creature must make a Constitution saving throw, gaining a rank of Bleed on a failure.</p>",
+        "category": "npcTraits",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eY2zsHvCY4zG1o",
+            "type": "save",
+            "label": "Abrasive",
+            "save": {
+              "abilities": [
+                "con"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "inflicts": [
+              {
+                "key": "bleed",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Bleed"
+              }
+            ],
+            "text": "A melee attacker that damaged it. Failure: a rank of Bleed."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eHtkPah56skwaH",
+      "_key": "!actors.items!n5eNuujawHgtw3s6.n5eHtkPah56skwaH",
+      "name": "Crystalline Sovereignty",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>All creatures that are summoned as a result of a Shoton Hijutsu, within 20 feet of the Crystal Dragon, except the Dragon itself, gains +2 DR</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eQgR0XEkBxniN6",
+      "_key": "!actors.items!n5eNuujawHgtw3s6.n5eQgR0XEkBxniN6",
+      "name": "Bite",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Multiattack.</em> The Crystal Dragon can attack 2 times. Once with its Bite and once with its tail sweep. <em>melee Weapon Attack:</em> reach 10 ft., one creature. <em>Hit:</em> 4d6+6 Earth damage. Once per turn, a creature hit by this attack must make a Strength Saving throw. On a failed save they are Bruised.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5e0AnkB93YXFTHC",
+            "type": "attack",
+            "label": "Bite",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 1,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "4d6 + 6",
+                  "type": "earth"
+                }
+              ]
+            }
+          },
+          {
+            "id": "n5eDA1FXNAhkt5Mu",
+            "type": "save",
+            "label": "Bite: bruise",
+            "save": {
+              "abilities": [
+                "str"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "inflicts": [
+              {
+                "key": "bruised",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Bruised"
+              }
+            ],
+            "text": "Once per turn, on a hit."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5egFvrghCQ9zFxZ",
+      "_key": "!actors.items!n5eNuujawHgtw3s6.n5egFvrghCQ9zFxZ",
+      "name": "Tail Sweep",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Crystal Dragon sweeps its tail in a 10-foot cone, in front of itself, forcing all creatures in range to make a Dexterity saving throw, taking 3d6+6 earth damage, and being knocked Prone on a failure, or half as much damage on a success.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5ejrzFB4yG5DNZ5",
+            "type": "save",
+            "label": "Tail Sweep",
+            "save": {
+              "abilities": [
+                "dex"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "half",
+              "resave": false
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "3d6 + 6",
+                  "type": "earth"
+                }
+              ]
+            },
+            "inflicts": [
+              {
+                "key": "prone",
+                "kind": "state",
+                "ranks": 1,
+                "label": "Prone"
+              }
+            ]
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eUWZL3NIwzzfRT",
+      "_key": "!actors.items!n5eNuujawHgtw3s6.n5eUWZL3NIwzzfRT",
+      "name": "Crystal Breath",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>(Recharge 5-6):</em> The Crystal Dragon exhales a beam of crystalline energy, compressed into a 90-foot long, 5-foot-wide beam of earth chakra, forcing everyone in range to make a Dexterity saving throw. On a failure, they take 8d6 earth damage, and gain 2 ranks of Crystalize as their body is forcibly shifted into a crystalline molecular structure.",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eON17g3OqMeuCt",
+            "type": "save",
+            "label": "Crystal Breath",
+            "save": {
+              "abilities": [
+                "dex"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "8d6",
+                  "type": "earth"
+                }
+              ]
+            },
+            "inflicts": [
+              {
+                "key": "shoton-crystallization",
+                "kind": "condition",
+                "ranks": 2,
+                "label": "Crystallization"
+              }
+            ]
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5eCbvy0rg2by1rM",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "attributes.ac.flat": "22 + 2 * max(0, @rankValue - 4)",
+        "hpMax": "80 + 20 * max(0, @rankValue - 4)",
+        "bonuses.saveDC.nin": "max(@dc.nin, @dc.tai, @dc.gen) - 8 - @prof",
+        "bonuses.attack.nin": "max(@attack.nin, @attack.tai, @attack.gen) - @prof",
+        "traits.dr": "6 + 2 * max(0, @rankValue - 4)"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Crystal Dragon",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.93.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

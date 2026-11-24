@@ -175,6 +175,12 @@ const DETAILS = {
       F.num(src, "strRequirement", "Str required", { small: true }),
       F.check(src, "proficient", "Proficient")
     ]),
+    ...(armorCategories[src.category]?.overlay ? [section("Worn over armor", [
+      F.select(src, "overlay.ability", "In place of Dex", { "": "—", nin: "Ninjutsu ability", tai: "Taijutsu ability", gen: "Genjutsu ability",
+        ...Object.fromEntries(Object.entries(abilities).map(([k, v]) => [k, v.label])) }),
+      F.select(src, "overlay.fromDC", "Save DC as AC", { "": "—", nin: "Ninjutsu save DC", tai: "Taijutsu save DC", gen: "Genjutsu save DC" }),
+      F.text(src, "overlay.whileState", "Only while in", { placeholder: "a state, e.g. realityShift" })
+    ])] : []),
     section("Properties", [F.props(src, "properties", "", armorProperties)]),
     physical(src)
   ],
@@ -256,7 +262,7 @@ const DETAILS = {
     section("Rules", [
       F.tags(src, "tags", "Counts as", { physical: "Physical", mental: "Mental", sensory: "Sensory", elemental: "Elemental", fatigue: "Fatigue" }),
       F.num(src, "maxRanks", "Max ranks", { small: true, placeholder: "none" }),
-      F.select(src, "endsAt", "Ends", { "": "After its duration (1 minute)", nextTurnEnd: "End of the creature's (next) turn" }),
+      F.select(src, "endsAt", "Ends", { "": "After its duration (1 minute)", nextTurnEnd: "End of the creature's (next) turn", rest: "After its duration, or any rest, whichever comes first", fullRest: "A full rest (no other end)" }),
       F.check(src, "persists", "Persists"),
       F.num(src, "initiativeShift", "Initiative change", { small: true }),
       F.select(src, "resave.ability", "End-of-turn save", { "": "None", str: "Strength", dex: "Dexterity", con: "Constitution", int: "Intelligence", wis: "Wisdom", cha: "Charisma" }),
@@ -301,17 +307,19 @@ const DETAILS = {
       F.check(src, "duration.concentration", "Needs concentration", { hint: "Shown on the card. Tracked automatically only when started from a concentration jutsu." })
     ], { structured: true }),
     section("What ends it early", [
-      F.tags(src, "endsOn", "Ends if you become", { staggered: "Staggered", blinded: "Blinded", unconscious: "Unconscious", noChakra: "Out of chakra (0)", stanceLeave: "Out of your stance" },
+      F.tags(src, "endsOn", "Ends if you become", { staggered: "Staggered", blinded: "Blinded", unconscious: "Unconscious", noChakra: "Out of chakra (0)", stanceLeave: "Out of your stance", finisherCast: "Casting a Finisher" },
         { hint: "The GM's setting decides whether these end it automatically or as a reminder." })
     ], { structured: true }),
     section("Advanced", [
       F.text(src, "identifier", "Identifier", { hint: "The card's key. Activities name it to start this Amp." }),
       F.text(src, "namedType", "Type the book's box names", { hint: "Kept as a note when the limits use another type (a clan Amp is Clan)." }),
+      F.check(src, "outsideLimits", "Outside the Amp limits", { hint: "Doesn't count toward Rule of 3's (DYNAMIC FORM!, Flawless)." }),
       F.text(src, "exclusive", "Exclusive group", { placeholder: "surge", hint: "Starting one Amp of the group ends the others (Crash and Flow)." }),
       F.text(src, "state", "Named state", { placeholder: "crash", hint: "A name other rules check while this is on." }),
       F.text(src, "tempHp", "Temporary HP", { placeholder: "formula", hint: "Temporary HP given when it starts, such as 2d6 + @level." }),
       F.text(src, "series", "Version of", { placeholder: "base Amp identifier", hint: "The identifier of the Amp this is a stronger version of. Blank: not a version." }),
-      F.num(src, "level", "From level", { small: true, hint: "The character level this version starts at. A character gets the highest version their level reaches." })
+      F.num(src, "level", "From level", { small: true, hint: "The character level this version starts at. A character gets the highest version their level reaches." }),
+      F.text(src, "endsWith", "Ends with", { placeholder: "another Amp's identifier", hint: "This Amp ends when that Amp ends, and starting it frees that Amp from concentration. Blank: none." })
     ], { collapsed: true, structured: true })
   ],
   background: src => [
@@ -428,6 +436,7 @@ function summary(item) {
       add("Box names", s.namedType && s.namedType !== type ? s.namedType : "");
       add("Uses", s.uses?.max ? `${s.uses.max}${s.uses.per ? ` per ${s.uses.per}` : ""}` : "");
       add("Ends on", list(s.endsOn).join(", "));
+      add("Limits", s.outsideLimits ? "Doesn't count toward Rule of 3's" : "");
       chips = [{ label: "Drag onto a creature to start it", tone: "", tooltip: s.summary ?? "" }];
       break;
     }

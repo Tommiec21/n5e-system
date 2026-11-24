@@ -45,7 +45,23 @@
           "pool": "discipline",
           "amount": 1
         },
-        "text": "10 minutes before reuse (or +1 Discipline per extra use)."
+        "text": "1 minute or until you fall unconscious. 10 minutes of meditation before reuse, or +1 Discipline for each use beyond the first (the second button)."
+      },
+      {
+        "id": "n5egXRxH27CDe8lU",
+        "type": "effect",
+        "label": "Enter Battle Trance (again)",
+        "effect": {
+          "name": "Battle Trance",
+          "target": "self",
+          "amp": "battle-trance"
+        },
+        "text": "Without the 10 minutes of meditation: 1 Discipline plus 1 for each use beyond the first.",
+        "cost": {
+          "pool": "discipline",
+          "choose": true
+        },
+        "activation": "bonus"
       }
     ]
   },
@@ -57,7 +73,8 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true
     }
   },
   "_stats": {

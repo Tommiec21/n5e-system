@@ -34,7 +34,7 @@
         "id": "obsidianWard",
         "label": "Obsidian Ward",
         "value": 0,
-        "max": "11 + @level",
+        "max": "11 + @level + lvl(1:0,10:@prof)",
         "die": "",
         "steps": [],
         "step": 0,
@@ -60,9 +60,16 @@
         "type": "roll",
         "label": "Ward Restoration",
         "roll": {
+          "formula": "",
+          "note": "Once per turn on your turn (any turn from 6th) when you spend Discipline: the ward regains this (from 10th, roll each die twice and keep the higher)."
+        },
+        "cost": {
+          "pool": "obsidianWard",
+          "amount": 1,
           "formula": "lvl(3:1d12,10:2d12,17:3d12)",
-          "note": "The ward regains this (when you spend Discipline, once per turn)."
-        }
+          "gain": true
+        },
+        "oncePerTurn": true
       }
     ]
   },
@@ -74,7 +81,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Obsidian Ward pool is its hit points (11 + your level; + your proficiency bonus from 10th); it is full after any rest. At the table: it takes all damage before your temporary and normal hit points (excess carries over), with your resistances, immunities and DR — spend the pool for the damage it takes."
+        }
+      ]
     }
   },
   "_stats": {

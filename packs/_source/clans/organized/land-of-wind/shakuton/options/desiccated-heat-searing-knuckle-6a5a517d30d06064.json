@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "shakuton",
       "sourceLine": 3601,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Action: touch plant matter or metal (1-foot cube or smaller) to reduce it to ash or a molten puddle."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,32 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eanzhkhs0ti81I",
+        "type": "effect",
+        "label": "Searing Knuckle",
+        "effect": {
+          "name": "Searing Knuckle",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.unarmed.die",
+              "value": "2d6",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Bonus action, 1 minute: [Unarmed Damage] 2d6 fire (set the type when you roll); a critical hit adds 1 rank of Immolation.",
+        "activation": "bonus",
+        "cost": {
+          "pool": "scorchCharges",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

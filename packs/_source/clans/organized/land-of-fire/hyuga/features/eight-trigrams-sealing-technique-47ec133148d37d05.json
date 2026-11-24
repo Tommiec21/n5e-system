@@ -9,7 +9,8 @@
   "flags": {
     "n5e": {
       "clanPackage": "hyuga",
-      "sourceLine": 955
+      "sourceLine": 955,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -42,6 +43,35 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eBgk5qT0yMkSGP",
+        "type": "save",
+        "label": "Sealing Technique",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "hyuga-network-distortion",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Network Distortion"
+          }
+        ],
+        "text": "[Main Branch] Your chakra-damage or Fuinjutsu jutsu: once per casting, an affected creature casting a CM jutsu. Failure: its casting is Interrupted and a rank of Network Distortion.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

@@ -9,7 +9,8 @@
   "flags": {
     "n5e": {
       "clanPackage": "iburi",
-      "sourceLine": 1151
+      "sourceLine": 1151,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -42,6 +43,43 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5es7ayrAYM6YEf4",
+        "type": "save",
+        "label": "Black Lung",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "exhaustion",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Exhaustion"
+          }
+        ],
+        "text": "Action: a 20-foot radius within 60 feet for 1 minute (or Reaction: turn a cloud you control black). Obscured, difficult terrain for creatures you choose (a Bonus action moves it 30 feet). Creatures you choose starting or ending their turn there or first entering it. Failure: a rank of Exhaustion (lost after 1 minute outside). Once per rest.",
+        "activation": "action",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "rest",
+      "recharge": "",
+      "staminaEligible": false
+    }
   }
 }

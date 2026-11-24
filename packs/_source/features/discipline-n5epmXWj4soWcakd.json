@@ -66,7 +66,7 @@
         "activation": "reaction",
         "roll": {
           "formula": "lvl(1:1d12,11:2d12,20:3d12)",
-          "note": "Reduce the damage you take by this."
+          "note": "Reduce the triggering damage by this (apply the reduced damage)."
         }
       },
       {
@@ -86,20 +86,50 @@
           "amount": 1
         },
         "oncePerTurn": true,
-        "text": "Added to a Bukijutsu's [Weapon Damage]; half the dice for areas (min 1)."
+        "text": "Once per turn, with a Bukijutsu's [Weapon Damage]: the first time it deals damage. Half the dice if it affects an area (minimum 1). Counts as [Weapon Damage]."
       },
       {
         "id": "n5eeJDa0za6ki8U7",
         "type": "roll",
         "label": "Chained Momentum",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn: a Bukijutsu without the Chain keyword gains it, and you maintain your current Chain value."
+        },
         "cost": {
           "pool": "discipline",
           "amount": 1
         },
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5eCYvCBTYeyJ3By",
+        "type": "roll",
+        "label": "Chained Momentum: shift Chain",
         "roll": {
           "formula": "",
-          "note": "A non-Chain Bukijutsu gains Chain and maintains it (or 2 Discipline: raise or lower Chain by 1)."
-        }
+          "note": "Once per turn, a Bukijutsu with the Chain keyword: raise or lower your current Chain rank by 1."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        },
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5enI7zdWGYMrg1j",
+        "type": "roll",
+        "label": "Regain Discipline (Chain)",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, casting a Bukijutsu with the Chain keyword: regain Discipline equal to the Chain rank effect you benefited from."
+        },
+        "cost": {
+          "pool": "discipline",
+          "choose": true,
+          "gain": true
+        },
+        "oncePerTurn": true
       }
     ]
   },
@@ -122,7 +152,14 @@
         "pool": "discipline",
         "cost": 1,
         "requiresDR": true
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Discipline: 2 at 1st level (the class table); all of it back on a short or long rest. The Flurry Die is a d12; Flurry Technique saves use your Taijutsu save DC."
+        }
+      ]
     }
   },
   "_stats": {

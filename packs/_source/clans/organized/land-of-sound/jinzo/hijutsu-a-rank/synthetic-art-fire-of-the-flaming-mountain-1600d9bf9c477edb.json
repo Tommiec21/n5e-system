@@ -17,6 +17,48 @@
         "cost": "20 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fuinjutsu, Fire Release, Shin Branch",
         "components": "HS, CM, CS"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Shin Branch]"
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5emsDcrXEJENza7",
+              "type": "save",
+              "label": "Fire of the Flaming Mountain",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Needs Synthetic Chakra Mode: dispel a Shin-Seal on a creature you can see within 90 feet; a 20-foot radius, 120-foot cylinder on it. Doused creatures count as 5 ranks.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(10d6) + (1d6)",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "cost": {
+                "pool": "shinSeals",
+                "amount": 1
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +152,37 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5emsDcrXEJENza7",
+        "type": "save",
+        "label": "Fire of the Flaming Mountain",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Needs Synthetic Chakra Mode: dispel a Shin-Seal on a creature you can see within 90 feet; a 20-foot radius, 120-foot cylinder on it. Doused creatures count as 5 ranks.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "10d6",
+              "type": "fire"
+            }
+          ]
+        },
+        "cost": {
+          "pool": "shinSeals",
+          "amount": 1
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

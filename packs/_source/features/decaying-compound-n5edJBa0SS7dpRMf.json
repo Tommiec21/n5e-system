@@ -72,9 +72,27 @@
         },
         "roll": {
           "formula": "",
-          "note": ""
+          "note": "1 minute: the weapon deals necrotic or poison damage; once per turn, beating AC by 5 with it or a Taijutsu attack inflicts Sepsis (1 Corroded) or Viral (1 Envenomed)."
         },
         "activation": "bonus"
+      },
+      {
+        "id": "n5e2MybWcRxVBkqn",
+        "type": "roll",
+        "label": "Sepsis",
+        "roll": {
+          "formula": "",
+          "note": "Putrefy, beating AC by 5: 1 rank of Corroded (apply it)."
+        }
+      },
+      {
+        "id": "n5eeMRQ7ZMEyaICC",
+        "type": "roll",
+        "label": "Viral",
+        "roll": {
+          "formula": "",
+          "note": "Putrefy, beating AC by 5: 1 rank of Envenomed (apply it)."
+        }
       }
     ]
   },
@@ -86,7 +104,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Infuse compounds: Cell Failure (a creature failing the save can't regain hit points until the start of your next turn) or Overdose (one more rank of a condition the jutsu inflicts). The Black Medicine Array (4 ampoules) is full after any rest."
+        }
+      ]
     }
   },
   "_stats": {

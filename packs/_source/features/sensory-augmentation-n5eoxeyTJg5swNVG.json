@@ -36,7 +36,7 @@
       {
         "id": "n5ebn8yyaAoIVbbg",
         "type": "effect",
-        "label": "Sensory Augmentation",
+        "label": "Sensory Augmentation: blindsight",
         "effect": {
           "name": "Sensory Augmentation",
           "target": "self",
@@ -55,6 +55,29 @@
           "amount": 1
         },
         "text": "Blindsight shown; pick Tremor Sense instead if you prefer. Out of combat it lasts 1 minute."
+      },
+      {
+        "id": "n5esjhR0KD4fafuC",
+        "type": "effect",
+        "label": "Sensory Augmentation: tremorsense",
+        "effect": {
+          "name": "Sensory Augmentation (tremorsense)",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.traits.senses.tremorsense",
+              "value": "30",
+              "mode": 4
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "",
+        "cost": {
+          "pool": "discipline",
+          "amount": 1
+        }
       }
     ],
     "prerequisites": []
@@ -67,7 +90,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "In combat the sense lasts until the start of your next turn (the buttons); out of combat it lasts 1 minute (end it then)."
+        }
+      ]
     }
   },
   "_stats": {

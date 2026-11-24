@@ -84,10 +84,23 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5eARhpfYFtFjJCU",
+        "type": "effect",
+        "label": "Body Flicker",
+        "effect": {
+          "name": "Body Flicker",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "20",
+              "mode": 2
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 0
+        },
+        "text": "+20 speed until the end of your turn (+10 per rank). B-Rank: invisible while moving."
       }
     ],
     "featureType": "active",
@@ -154,9 +167,95 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eARhpfYFtFjJCU",
+              "type": "effect",
+              "label": "Body Flicker",
+              "effect": {
+                "name": "Body Flicker",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.speed",
+                    "value": "30",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "+20 speed until the end of your turn (+10 per rank). B-Rank: invisible while moving."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eARhpfYFtFjJCU",
+              "type": "effect",
+              "label": "Body Flicker",
+              "effect": {
+                "name": "Body Flicker",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.speed",
+                    "value": "40",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "+20 speed until the end of your turn (+10 per rank). B-Rank: invisible while moving."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eARhpfYFtFjJCU",
+              "type": "effect",
+              "label": "Body Flicker",
+              "effect": {
+                "name": "Body Flicker",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.speed",
+                    "value": "50",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "+20 speed until the end of your turn (+10 per rank). B-Rank: invisible while moving."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eARhpfYFtFjJCU",
+              "type": "effect",
+              "label": "Body Flicker",
+              "effect": {
+                "name": "Body Flicker",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.speed",
+                    "value": "60",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "+20 speed until the end of your turn (+10 per rank). B-Rank: invisible while moving."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5eDpY0QdrV0NfEW"

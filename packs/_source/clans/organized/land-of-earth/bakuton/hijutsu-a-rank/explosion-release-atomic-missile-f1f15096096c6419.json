@@ -17,6 +17,61 @@
         "cost": "20 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Lightning Release, Earth Release, Reckless Branch",
         "components": "CM, M"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "You propel yourself at a space, creature, object or structure within range first."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5e3TEUDkPBOAbS1",
+              "type": "save",
+              "label": "Atomic Missile",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                },
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "Creatures, objects and structures in a 60-foot cone from you. Failure: damage, Staggered and Shaken; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@unarmed",
+                    "type": "force"
+                  },
+                  {
+                    "formula": "(4d12) + (1d12)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -111,7 +166,50 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e3TEUDkPBOAbS1",
+        "type": "save",
+        "label": "Atomic Missile",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "staggered",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Staggered"
+          },
+          {
+            "key": "shaken",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shaken"
+          }
+        ],
+        "text": "Creatures, objects and structures in a 60-foot cone from you. Failure: damage, Staggered and Shaken; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "@unarmed",
+              "type": "force"
+            },
+            {
+              "formula": "4d12",
+              "type": "force"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

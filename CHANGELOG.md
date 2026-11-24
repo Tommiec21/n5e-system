@@ -1,6 +1,375 @@
-## 0.69.0-alpha.1 — GM05 mission ideas and tools
+## 0.93.1-alpha.1 — GM05 mission ideas and tools
 
 Six filterable original mission prompts, editable idea saving/insertion, and links to native mission budgets, adversary building and social encounter setup. Existing rules and saved entries are preserved. No live verification; Design A polish remains GM06.
+
+
+## 0.93.0-alpha.1 — STD6f F7 Medical Ninjutsu; Supreme Poison Deity
+
+King 2026-11-23: "Next batch." Medical Release Ninjutsu (68) reviewed at every rank (52 partly automated, 16 notes only). Review table docs/jutsu/ninjutsu-medical-release-automation.md; spec docs/STD6f_SPEC.md (F7).
+
+- **Supreme Poison Deity:** built from the source book's Summon Stat Blocks (Summons > Ninjutsu > Medical Release); the jutsu's button places it.
+- **Fixed buttons:** Wounds, Chakra Needles and Grim Blade are attacks again; Ensnaring Strike's and Water to Acid's damage no longer ride on the save; Corrosive Plume no longer gives 5 Envenomed.
+- **Medical:** healing, temporary hit points, attacks, saves and upcasts (Acid Armor, Acid Whips, Adept Healing, Healing Elixir, Wounds and others); seven Amps kept.
+
+## 0.92.0-alpha.1 — STD6f F6 Non-Elemental Ninjutsu; Non-Elemental summons
+
+King 2026-11-23: "Next batch." Non-Elemental Ninjutsu (86) reviewed at every rank (43 partly automated, 43 notes only). Review table docs/jutsu/ninjutsu-non-elemental-automation.md; spec docs/STD6f_SPEC.md (F6).
+
+- **Summons:** Ink Bat/Snake, Ink Reptile, Ink Predator, Inanimate Puppet, Ink Oni and the shared Clone, from the source book's Summon Stat Blocks (Summons compendium: Ninjutsu > Non-Elemental). AC and hit points grow by the rank cast; they use your Ninjutsu attack bonus and save DC. The jutsu's buttons place them.
+- **Fixed buttons:** Sealing Art: Reject, Curse of the Prey, Banishing Seal, Hex and Void applied the wrong conditions.
+- **Non-Elemental:** attacks, saves and upcasts (Arms of Buddha, Body Flicker, Chakra Shield, Substitution Technique, Crown of Shining Stars and others); the Bestial Art: Hunter and Gift of the Apex Amps kept.
+
+## 0.91.0-alpha.1 — STD6f F5 Bukijutsu III; Fury from data
+
+King 2026-11-23: "Next batch." Bukijutsu Power (30) and Ammunition (53) reviewed at every rank (74 partly automated, 9 notes only); Bukijutsu is done. Review tables docs/jutsu/bukijutsu-power-automation.md and bukijutsu-ammunition-automation.md; spec docs/STD6f_SPEC.md (F5).
+
+- **Fury tracker from data (F-D2):** it shows when you have Fury, a raised Fury maximum, or an item tagged as a Fury user (`flags.n5e.trackers: ["fury"]`); names and text that say "fury" (Rabbit Fury, Sun Spear) no longer show it.
+- **Binding Fury Stance:** its button starts the concentration effect that gains Fury on your first [Weapon damage] each turn. Before, the trigger waited for a stance item the jutsu never was, so it never fired.
+- **Bukijutsu III:** melee and ranged weapon strikes with their number of attacks and extra dice; saves dealing [Weapon damage] plus dice; Chain and Fury buttons; per-rank dice, extra attacks and upcast riders; critical-range effects; no-save conditions.
+
+## 0.90.0-alpha.1 — STD6f F4 Bukijutsu II
+
+King 2026-11-23: "Next batch." Bukijutsu Flail (33) and Polearm (33) reviewed at every rank (62 partly automated, 4 notes only). Review tables docs/jutsu/bukijutsu-flail-automation.md and bukijutsu-polearm-automation.md; spec docs/STD6f_SPEC.md (F4).
+
+- **Weapon damage die (F-D5):** a damage formula can use `@wdie`, the wielded weapon's damage die alone, for "your weapon damage die + 2d8".
+- **Bukijutsu II:** weapon strikes with their number of attacks and extra dice; saves dealing [Weapon damage] plus dice; Chain buttons; per-rank dice, extra attacks and upcast riders; twice [Weapon damage] (Chain Kill, Dual Ring); no-save conditions; Abyssal Aura's delayed conditions as effect buttons.
+- **Kept** (King Q-J2): the Warriors Zone, Sparking Flail, Enhanced Blocking, Demon Hunter and Overcomer Amps; Overcomer's wrong save button removed.
+
+## 0.89.0-alpha.1 — STD6f F3 Bukijutsu I
+
+King 2026-11-22: "Next batch." Bukijutsu Shinobi Basics (68) and Blade (35) reviewed at every rank (96 partly automated, 7 notes only). Review tables docs/jutsu/bukijutsu-shinobi-basics-automation.md and bukijutsu-blade-automation.md; spec docs/STD6f_SPEC.md (F3).
+
+- **[Weapon damage] in damage (F-D5):** a damage formula can use `@weapon`, your wielded weapon's dice and bonus with its damage type; for saves like "[Weapon damage] + 1d8 earth".
+- **Bukijutsu I:** weapon strikes with their number of attacks and extra dice; Chain effects as their own "Chain N: …" buttons; per-rank dice and extra attacks; no-save conditions (Binding Meteor, Killer Bee, Shadowfall); self bonuses as effects (Weapon Deflect, Mikiri Counter, Flurry Guard, Silent Killing, Reapers Swing, Disarming Riposte).
+- **Kept** (King Q-J2): the Breath of Sound: Score, Guardian Knight, Blade Heart and The Zone Amps.
+
+## 0.88.0-alpha.1 — STD6f F2 Taijutsu II
+
+King 2026-11-22: "Next batch." 55 B- to S-Rank Taijutsu reviewed (48 partly automated, 7 notes only); the whole Taijutsu section is now done (146 jutsu). Review table docs/jutsu/taijutsu-general-automation.md; spec docs/STD6f_SPEC.md (F2).
+
+- **Taijutsu II:** attacks with their number and dice; Finisher versions as their own buttons; saves with what a failure inflicts; per-rank dice and extra attacks; no-save conditions (Maximum Entry, Quaking Leg, Owl Drop, Supreme Pacification, Violent Strangling, Final Lotus); Still Earth: Reverb's buffs; Daytime Tiger's two damage types.
+- **Kept** (King Q-J2): the Magnum Knuckle, Supreme Violence and Tiger Lily Amps.
+
+## 0.87.0-alpha.1 — STD6f F1 Taijutsu I
+
+King 2026-11-22: "QJ1. Yes. QJ2. Fix/Finish the rest. Next Batch". The STD6f spec is approved (docs/STD6f_SPEC.md). 91 E- to C-Rank Taijutsu reviewed (85 partly automated, 6 notes only); review table docs/jutsu/taijutsu-general-automation.md.
+
+- **Jutsu tables:** `content/automation/jutsu/<discipline>-<section>.json`, applied by `tools/content/apply-automation.mjs` for the ranks done; `npm run check` fails on a missing or unapplied entry.
+- **Taijutsu I:** every attack's number of attacks and [Unarmed damage] plus dice; Finisher versions as their own buttons; saves with what a failure inflicts; per-rank buttons with upcast dice, die steps and extra attacks; self bonuses as effects; the importer's correct buttons kept (King Q-J2).
+- **No-save conditions (F-D3):** an effect button's `inflicts` puts conditions and states on its targets ("knocked Prone", "Bruised and Staggered"), through the GM's client for creatures you don't own.
+- **[Unarmed damage] in healing (F-D4):** Iron Guard's temporary hit points.
+- **Fix:** four Shikigami effect buttons (Craft II Burned, Bleeding Edge, Sealed Page, Paper Chakram's Bleed) now apply their conditions.
+
+## 0.86.0-alpha.1 — STD6e E8 Minor Lands
+
+King 2026-11-22: "Next Batch". 114 clan items reviewed (106 partly automated, 8 notes only). Spec: docs/STD6e_SPEC.md (E8). Every clan in STD6e is now done (Clan Feats, Latents and Non-Clan wait for King's overhaul).
+
+- **Hebi:** Viper Blood (pool) and regeneration; the Serpent's Coil stance (Viper and Python Strike); every Venom Art; Basilisk's Blessing; Ouroboros; every Hijutsu.
+- **Hoshi:** Star Chakra (pool); each Hijutsu's Irradiated version as a cast dialog option; Kujaku Mode by level; every Celestial Trait; Kujaku Sanseijin; every Hijutsu.
+- **Kujaku Beast summon:** built from its complete stat block (AC and hit points by rank).
+- **Kuru:** the Miraigan and Foresight (pool); the Black Fang stance; Yin Release as a cast dialog option; every Yin Art; Black Okami Form; the Prophetic Pool; every Hijutsu.
+- **Ryu:** Draconic Chakra (pool); Dragon's Rage, Ascended and Awakened; the Ryūken stance; every Wyrm Art; Dragon Rage effects as cast dialog options; every Hijutsu.
+- **Shikigami:** Paper Veil and every Canvas Type; the Muscle Weave stance; Rei (pool) and every Origami; Origami Angel/Demon; The Final Page; Paper Veil and Angel/Demon effects as cast dialog options; every Hijutsu.
+- **Past rulings applied:** Amp copies removed from Serpents Guile, Irradiated Apex, Visions of what will be, Wrath of the Dragon and Secret Pages (Q-E12); the Black Fang and Muscle Weave stance items hold their own text (Q-E9); Hebi's duplicate stance item deleted (as Q-E18).
+
+## 0.85.0-alpha.1 — STD6e E7 Land of Fire II
+
+King 2026-11-22: "Next batch." 156 clan items reviewed (116 partly automated, 40 notes only). Spec: docs/STD6e_SPEC.md (E7).
+
+- **Namikaze:** Speed Seals (d8 pool) with every Blitz Art; Interdiction Seal; each Swift Release Hijutsu's Interdiction Seal effect as a cast dialog option; Trickster's Blink; Sovereign of Speed.
+- **Nara:** the Shadow Art stance and Shadow Possession; Bright and Dimly Lit as cast dialog options; Operational Contingencies; Mendokusē; every Hijutsu.
+- **Sarutobi:** Will (pool) with every Legacy Technique; the Cross-Style stance and Unified Form; Ember's Guardian; Rekindling Pulse; Will of Fire Incarnate (Blazing).
+- **Senju:** Senju Cells and +2 hit points per level; the Mokuton Infusion stance and Verdant Lash; New Growth; the mutations; every Hijutsu.
+- **Uchiha:** the Sharingan, Ocular Charges and every Ocular Evolution; the Agile Fist stance; every Adaptation; Fanning the Flame; Crimson Sovereign; the mutations; every Hijutsu.
+- **Uzumaki:** Spiral Cells and +2 chakra points per level; the Binding Chain stance; Seal Break as cast dialog options; every Spiral Tag; Warding Network; the mutations; every Hijutsu.
+- **Yamanaka:** the Mind Disruption stance (Beam, Pulse, Wave); Deep Disruption; the Recalibrations; every Hijutsu.
+- **Past rulings applied:** Amp copies removed from Interdiction Seal, Ember's Guardian and Sharingan (Q-E12); the Cross-Style, Mokuton Infusion and Agile Fist stance items hold their own text (Q-E9).
+- **Held:** the Wood Dragon (Senju) stat block, H9 (Intelligence and Wisdom saves blank).
+
+## 0.84.1-alpha.1 — One roll, two damage types (Q-E20)
+
+King 2026-11-22: "It's 10d12 poison and 10d12 chakra. But the result should be the same. So if the result is 50 damage, it should be 50 chakra and 50 poison"
+
+- **Damage part `alsoAs`:** the same rolled result is dealt again as a second type. The roll dialog keeps it.
+- **Aburame Parasitic Giant Insect:** one 10d12 roll, dealt as poison and as chakra.
+
+## 0.84.0-alpha.1 — Clans as data: E6 Land of Fire I (Aburame, Akimichi, Hatake, Hyūga, Iburi, Inuzuka, Kurama)
+
+King 2026-11-22: "Next batch"
+
+- **143 clan items reviewed:** see `docs/clans/`.
+- **Aburame:** Swarm Chakra stance and "Swarm active" cast dialog options; Kikaichu Swarm; Festering Brood; Grand Veil.
+- **Akimichi:** Calories and every Caloric Art; Expansion Technique stance; "Pay with Calories" and Expansion Crash cast dialog options; Butterfly Mode; Seismic Bounce.
+- **Hatake:** White Chakra and Command Dice with every art, tactic and spend; White Wolf.
+- **Hyūga:** Byakugan; Gentle Fist stance; Eight Trigram cast dialog options with Disrupt / Block; every Dogma; Heavenly Technique.
+- **Iburi:** Smoke Style with Cinder Bow and Smoke Chains; Will-O-Wisps; Aberration of Smoke; Ashen Monarch; Black Lung.
+- **Inuzuka:** Four-Legs stance; Feral; Tag-Team cast dialog options; Two-Headed Wolf.
+- **Kurama:** Oni-Coils and every Onijutsu as a Genjutsu cast dialog option; Illusion Made Manifest; Well Rested; Inner Self.
+- **Held stat blocks H6–H8:** Nin-Dog, Two-Headed Wolf, Dream Walker (incomplete stat blocks; King gives them together).
+- Question Q-E20 (Parasitic Giant Insect's damage) in `docs/STD6e_SPEC.md`; nothing waits on it.
+
+## 0.83.1-alpha.1 — Held stat blocks recorded (Q-E19)
+
+King 2026-11-22: "Hold them. Review the record to make sure all held stat blocks are there."
+
+- **Held stat blocks table** in `docs/STD6e_SPEC.md` (H1–H5): Storm Snake (Ranton), Neon Antivirus (Genwa), Broodling (Tsuchigumo), Bio-Amphibian and Bio-Serpent (Jinzo).
+- Each held item's note says it's held for King's stat block, with its H number.
+
+## 0.83.0-alpha.1 — Clans as data: E5 Land of Sound (Jinzo, Jūgo, Kashu, Shoton, Tsuchigumo)
+
+King 2026-11-21: "Q17. 1. Q18. Yes. Next batch."
+
+- **174 clan items reviewed:** see `docs/clans/`.
+- **Jinzo:** Shin-Pet and Shin-Seal focuses; Shin-Seals with each Hijutsu's Shin-Seal spend as a cast dialog option; Soft Physique; every Biovolution and Synthwakening; Synthetic Chakra Mode.
+- **Jūgo:** Nature Energy (0 after a long rest) with every expenditure; Amplify as a cast dialog option on each Hijutsu; Flesh Crafting; every Feral Instinct; The Hunter; Cascading Mania.
+- **Kashu:** the Doki (Bandaged), (Claw) and (Club) summons; Resonance and every Melody; Bell Wires and every Mnemody; the Harmonies; Killing Frequency.
+- **Shoton:** Hardness; Crystal Weapon Dance and Crystal Aura; every Crystal Type; Crystal Ascension; the Crystal Rabbit, Deer and Dragon summons with stats by cast rank.
+- **Tsuchigumo:** Web Anchors and every Silk Weave; Arachnid; the Brood Mother summon.
+- **Rest recovery "Empty":** a long rest can reset a pool to 0 (Nature Energy).
+- **King Q-E17:** Hozuki's Hydration triggers regain 1. **King Q-E18:** Vesper's duplicate "Claws of the Night" stance is deleted.
+- Question Q-E19 (Jinzo Bio-Pets) in `docs/STD6e_SPEC.md`; nothing waits on it.
+
+## 0.82.0-alpha.1 — Clans as data: E4 Land of Water (Genwa, Hoshigaki, Hozuki, Kaguya, Vesper, Yamada, Yuki)
+
+King 2026-11-21: "Next batch."
+
+- **151 clan items reviewed:** see `docs/clans/`.
+- **Genwa:** Uplink and Downlink, Radiant Beam and Saber, Signal Boosted; Angel Link and Demon Link as cast dialog options on each Hijutsu; Data Leak; every Data Channel.
+- **Hoshigaki:** Apex Predator's Amp cards by level; Ravenous Chakra; the Bite; Shark Skinned's DR; King of the Deep; every Predator Trait and Surge.
+- **Hozuki:** Hydration with every Liquification Technique; Hydrofication as a cast dialog option on each Hijutsu; Mirage Regent and Tidal Gains; the Steam Imp summon (Class & Clan Summons › Hozuki).
+- **Kaguya:** Battle Lust (up to 5) with its Amp cards; Battle Lust spends as cast dialog options on each Hijutsu; every Defining Anatomy.
+- **Vesper:** the Claws of Night stance; Echolocation and Pinging; Hypnotic Voice and Gaze; Umbral Monarch with Sonic Lance and Umbral Shockwave; every Nocturnal option.
+- **Yamada:** the Tameshi Itto-ryu stance and Empty Blade; Ideal Cut and Tao as cast dialog options on each Hijutsu; every Discipline and Tao Attunement.
+- **Yuki:** Ice Mirrors (each lasts 1 minute); every Bloody Mist Legacy path; Sanctum of Ice; Demonic Ice Prism.
+- **Earlier rulings applied (not asked again):** copied Amp text removed (Q-E12); stance items hold their stance's own text (Q-E9).
+- **Fixed:** Chinoike's Bloody Resilience clot rolls 1d8 per rank removed (it rolled one die).
+- Questions Q-E17 (Hydration) and Q-E18 (Vesper's duplicate stance) in `docs/STD6e_SPEC.md`; nothing waits on them.
+
+## 0.81.1-alpha.1 — Clans as data: E3 follow-ups (Q-E12, Q-E16)
+
+King 2026-11-21: "Q12. Remove the copy. ... Q14. Hold off on this. ... Q16. That means rolling a 1 or 2 doesn't reduce the ammunition die by one step."
+
+- **Copied Amp text removed:** Crimson Architect no longer holds Crimson Pact's Amp; Aphelion – The Mirror and Stellar Convergence no longer hold Event Horizon's.
+- **Crimson Weaponry:** its note says the ammunition die doesn't drop a step on a 1 or 2.
+- Q-E13 and Q-E15 wait on King (full text posted); Q-E14 (Storm Snakes) is on hold.
+
+## 0.81.0-alpha.1 — Clans as data: E3 Land of Lightning (Chinoike, Keton, Ranton)
+
+King 2026-11-21: "Next Batch."
+
+- **84 clan items reviewed:** see `docs/clans/`.
+- **Chinoike:** Ketsuryugan Amp; Crimson Charges with every Crimson Evocation; Blood Detonation as a cast dialog option on each Hijutsu; Crimson Pact; Crimson Domain; the Blood Dragon summon (Class & Clan Summons › Chinoike).
+- **Keton:** Starlights (each lasts 1 minute); the Solar Flare stance's Stellar Knuckle and Plasma Burst; Stellar Charges with every Constellation; Event Horizon.
+- **Ranton:** the Laser Circus stance and attack; Voltage with every Storm Circuit; Spear and Shield Forms; every Gale Circuit; Eye of the Storm.
+- **Combat recovery amounts:** a pool's turn, round and combat recovery now uses its amount. Jiton's Magnetic Charges gain 1 a turn (they refilled before: fixed). New amount "Empty": Stellar Charges and Voltage start each combat at 0.
+- Questions Q-E12–Q-E16 in `docs/STD6e_SPEC.md`; nothing waits on them.
+
+## 0.80.1-alpha.1 — Clans as data: E2 follow-ups (Q-E8–Q-E11)
+
+King 2026-11-21: "Q8. Yes. Q9. Yes. Q10. +1d6 bonus damage. Q11. Share duration."
+
+- **Hanami Combo/Finisher Boon:** its own option item (split out of Boosting Boon), with a button that spends a Boon/Bane.
+- **Fūshin Divine Wind stance:** the stance's text is now Divine Winds' stance part.
+- **Shakuton Blazing Aura:** damage button, 1d6 fire at 3rd level, 2d6 at 7th, 3d6 at 15th.
+- **Pool lifetimes:** units a pool gains at the start of a turn (or any turn, round or combat recovery) carry the pool's lifetime too: Jiton's turn-start Magnetic Charge lasts 1 minute.
+
+## 0.80.0-alpha.1 — Clans as data: E2 Land of Wind (Fūshin, Hanami, Jiton, Konjiki, Shakuton)
+
+King 2026-11-21: "Next batch."
+
+- **115 clan items reviewed:** see `docs/clans/`.
+  - **Fūshin:** High Pressure (each lasts 1 minute) with Swirl and every Wind Whisper; Wind Scythe's Jet Needle and Cleave.
+  - **Hanami:** Boons/Banes with a button each; the Medical Fist stance; Monstrous Burst and Healers Touch as cast options on every Hanami Hijutsu.
+  - **Jiton:** Magnetic Charges with every Magnetic Tag; the Dust Veil particles' saves and conditions (Volatile, Heavy, Brined, Unstable); Magnetic Surge.
+  - **Konjiki:** Liquid Metal Ingots with every Alomancy; Alomancy Infusions as cast options.
+  - **Shakuton:** Scorch Charges (each lasts 1 minute) with every Desiccated Heat ability; each Hijutsu's Scorch effect as a cast option that spends its charges.
+- Every Hijutsu has its buttons, tiers and upcast dice.
+
+## 0.79.2-alpha.1 — Primes and Pressure last 1 minute
+
+King 2026-11-21 (Q-E6): "1 minute cleanse unless spent."
+
+- **Primes (Bakuton) and Pressure (Futton):** each one lasts 1 minute from when you gain it, unless you spend it first. Spending uses the oldest. They no longer empty at the start and end of combat.
+- **Pools can now have a lifetime** (`lifetime`, in seconds): the GM's client drops expired units as world time passes (combat rounds and time passing).
+
+## 0.79.1-alpha.1 — Bakuton: two Hijutsu of their own; Ballistic Knuckle
+
+King 2026-11-21: "Q5. Make them as its own item. Q7. Drop it automatically."
+
+- **New Hijutsu (Bakuton, B-Rank):** Explosion Release: Clay Centipede (summons two Clay Centipedes) and Explosion Release: Chain Reaction Blitz (attack each chosen creature, blast save, upcast dice), split out of Absolute Death Bombing's text and added to the clan's Hijutsu list.
+- **Ballistic Knuckle:** its [Unarmed Damage] no longer adds your ability modifier (new stance field `unarmedNoMod`).
+
+## 0.79.0-alpha.1 — Clans as data: E1 Land of Earth (Bakuton, Futton, Shí Hóu, Yoton)
+
+King 2026-11-21: "Q1. Same time. Q2. Yes. Q3. No. Clan Feats and Latents should not be done at all. There is a major overhaul coming for them. Q4. Sure. Begin."
+
+- **117 clan items reviewed** (features, options, stances and Hijutsu): see `docs/clans/`.
+  - **Bakuton:** Primes with Prime and Detonate buttons, the ten Payloads, Clay Bombings on the Artistic Cataclysm stance, Ballistic Knuckle's 2d8 force, every Hijutsu.
+  - **Futton:** Pressure with Boil Knuckle, Jet Dash and Vent Strike; Solid Fog; the Alchemical Fog and Steam Engine options; every Hijutsu.
+  - **Shí Hóu:** Inner Chi on every transformation, Golden Strands, Primal Vanity and Nirvana.
+  - **Yoton:** Molten Terrain, Onyx, Volcanic, the Foundations, World Forge, every Hijutsu.
+- **Hijutsu upcasts:** each higher rank's buttons carry the extra dice.
+- **New summons** (Class & Clan Summons › Bakuton): Clay Spider, Clay Bird, Clay Centipede and Clay Dragon, with hit points by the rank you cast at.
+- **"Your highest jutsu save DC"** and attack bonus work on clan buttons.
+
+## 0.78.0-alpha.1 — Genjutsu Specialist automation (the last class)
+
+King 2026-11-21: "Next batch."
+
+- **Genjutsu Specialist** (107 features): see `docs/classes/genjutsu-specialist-automation.md`.
+  - Actualization Dice with their cast dialog options and skill button; Genjutsu use Charisma when it's higher.
+  - Mirages that change a jutsu are cast dialog options on that jutsu (Piece of Mind: Mind Sliver as a Bonus Action; Misty Thoughts: Cajolery of Glamour at no cost on a non-hostile creature). Black Fangs: +1 critical range on Shadow Bite.
+  - Rending Thoughts by level; the Inceptions' buttons and 11th-level reactions; Rewind, Fast Forward, Words of Affirmation and Words of Detriment.
+- **New summons** (Class & Clan Summons, Genjutsu Specialist folder): the Duplicity (Beguiler) and the Phantasm (Illusionist), with summon buttons.
+- **New condition:** Mentally Compromised (Corrupt Thoughts).
+- Engine: rolls know which jutsu they're from (`jutsu:id:<identifier>`); a discipline can use another ability when it's higher (`n5e.keywordAbility.discipline:gen`).
+- King's answers (Q-D26 to Q-D29):
+  - **Genjutsu ability pick:** Features tab, class header: Auto (higher), Wisdom or Charisma.
+  - **Duplicity:** a perfect visual illusion of you: the token takes your name, image and size, and your speed and fly speed.
+  - **Illusory items** (new armor category, worn over armor; Equipment compendium › Class Items): Armor of Psychosis (Genjutsu modifier in place of Dex in your AC) and Reality Shift: Genjutsu Save DC as AC (while the Amp is active, when higher).
+  - **Mind Over Matter:** stays a manual tick.
+
+## 0.77.1-alpha.1 — Lethal Attack as a damage toggle
+
+King 2026-11-21 (Q-D25): "Lethal attack should be a damage toggle in the Attack/Damage window when clicking an attack or Jutsu. Players can determine how it toggles on their own."
+
+- **Lethal Attack:** two unticked rows in the damage window of every attack and jutsu: the full dice, and half (rounded up) for an attack of the Attack action or a weapon attack. Tick one when it applies; it takes the roll's damage type.
+- The separate Lethal Attack buttons are gone. Combat Exploits keep their buttons (Lethal Attack with their dice forgone).
+- Damage rule elements can be optional (`optional: true`): an unticked row in the damage window.
+
+## 0.77.0-alpha.1 — Hunter-Nin automation and the Class & Clan Limits menu
+
+King 2026-11-21: "QD24. 1+Prof, use per LR. For now make this use limit variable in a new class & clan setting menu."
+
+- **Hunter-Nin** (86 features): see `docs/classes/hunter-nin-automation.md`.
+  - Lethal Attack full and half buttons; every Combat Exploit rolls Lethal Attack with its forgone dice and the save or effect it calls for.
+  - Skilled Exploits: 1 + proficiency bonus uses per Long Rest; every Skilled Exploit's button spends one.
+  - Lethal Precision: Taijutsu or Bukijutsu with Dexterity, by the level-up choice.
+  - Creed pools and buttons (Carnage, Posture, Black Medicine Array, Dread Arsenal, Void Anchors, Prosthetic Tools); Uncanny Dodge keeps its automatic halving reaction.
+- **New menu: N5e Class & Clan Limits** (Configure Settings).
+  - Lists every class, subclass and clan limit that comes back: resource pools and Amp card uses.
+  - Classes first (each class's features, then its subclasses), then clans.
+  - Pools: as written, 10 minutes of rest, Short Rest, half on a Short Rest and all on a Long Rest, Long Rest, Full Rest, each day, Initiative, each round, start of your turn, never.
+  - Amp uses: as written, 10 minutes of rest, Short Rest, Long Rest, Full Rest, each day.
+  - The GM saves; changes reach every character straight away. "All as written" clears them.
+- Effects can now turn on only with a class level-up option chosen.
+
+## 0.76.0-alpha.1 — Class & Clan Summons: the Bunshin and the Void Soul
+
+King 2026-11-21: "Make the Bunshin and Void Soul NPCs following their statistics. And place them in their appropriate Subclass folders."
+
+- **New compendium, Class & Clan Summons** (Actors), in folders by class and subclass like the features compendium.
+- **Bunshin** (Scout-Nin › Cloning Scout), from its stat block:
+  - 1 HP, 30 ft. speed; its AC is your Ninjutsu save DC; no ability modifiers, saves +0.
+  - Its traits: Limited Casting I, Placement, Basic Tools, Gang Up, Hiding In Plain Sight.
+  - Bunshin Strike (1d6) and Bunshins Cast (2d6 to 6d6 by rank).
+  - When it's summoned, it takes your level, AC, attack bonuses, save DCs, skills and senses.
+- **Void Soul** (Scout-Nin › Void Heart Scout), from its stat block:
+  - Medium Construct, AC 8 + Dex + Con + Prof, immune to Charmed, darkvision 30 ft.
+  - Its traits: Inexhaustible and Shared Being, and an Unarmed Strike (1d6 + Str).
+  - When it's summoned, it takes your level, hit point maximum, speed and save proficiencies. Set its ability scores to your chosen +4, +3, +2, +2, +1, +0 and give it its jutsu.
+- **Summon buttons:**
+  - Tajū Kage Bunshin and Superior Clones place a Bunshin.
+  - Void Heart Mask places the Void Soul, which lasts until dismissed or a day passes.
+  - A compendium summon is copied into the world the first time and reused after that.
+- **For any summon:** an NPC can name numbers it takes from its summoner; they're filled in when it's placed.
+
+## 0.75.0-alpha.1 — STD6d: Scout-Nin automated
+
+King 2026-11-21: "Next batch." The fifth class in the class pass. Review table: `docs/classes/scout-nin-automation.md` (187 features: 1 automated, 148 partly automated, 36 notes only, 2 no mechanics).
+
+- **Every maneuver spends its Superiority Dice from a button.** When the maneuver uses the number, the die is rolled. The button also brings the save, effect or healing the maneuver calls for.
+- **Jack of All:** Warfare, Seize and Tactics are switchable states. Warfare's bonus damage now follows the text: 1d8, 2d8 at 5th, 3d8 at 11th, 4d8 at 15th, 5d8 at 20th.
+- **Switch Hitter:** Follow Up and Set-Up mark creatures. Follow Up's +1 to hit (+2 at 11th, +3 at 19th) is automatic for jutsu attacks that aren't your Primary casting discipline.
+- **Superior Assault:** +1 critical range (+2 at 10th) with attacks of your Primary casting discipline.
+- **New resources:** Chakra Barrier (its hit points, twice your level, with Chakra Control Mastery by level), Ghostfire (3, then 5 at 10th) and Tactical Insight (4), each with the buttons that spend them.
+- **Subclass cores:** Squad-Mates and Command, Combat Rival, Flash, Elemental Flux, Chakra Sphere and Repelling Burst, Phantom's Flame, Elemental Aura for allies, Superego Manifestation's aura, Heavy Guard and Transverse Defense.
+- **Still at the table:** Bunshin and the Void Soul (make them as actors), the Chakra Barrier taking damage, the one-maneuver-per-turn limit, Signature Jutsu modifications and the Shinobi Paths.
+- **New for every class:** an effect placed by a button can use the caster's proficiency bonus or ability modifier, fixed when it's placed, auras included.
+
+## 0.74.0-alpha.1 — STD6d: Weapon Specialist automated
+
+King 2026-11-21: "Then let's work on next Batch." The fourth class in the class pass. Review table: `docs/classes/weapon-specialist-automation.md` (101 features: 2 automated, 85 partly automated, 9 notes only, 5 no mechanics).
+
+- **Discipline:** Deflection, Chakra Strike, Chained Momentum (gain Chain for 1, or shift it for 2), and a button to regain Discipline from a Chain Bukijutsu.
+- **Every Kata spends its Discipline from its button**, with the save, dice or effect it calls for, once per turn where the text says so. Elite Focus has its upkeep button; Overwhelming Malice its stance, Retributive Strike and Pensive Shot.
+- **Efficient Bukijutsu** is a cast dialog option (1 Discipline: −1 cost a rank). **Chaining Adept:** Chain 2's cost reduction in the cast dialog, Chain 3's temporary hit points as a button.
+- **Critical Focus** now works only with your Weapon Focus group (+1 critical range, +2 at 11th, +3 at 18th), weapon and Taijutsu attacks alike. It used to add +1 to every Bukijutsu.
+- **Doctrines:** Vector Seal and Quarry marks (two at higher levels), Quarry's bonus [Weapon Damage], Reaver Echoes, the Obsidian Ward pool and its restoration rolls, Aura of Protection for allies, Provoke by level, Savage Assault's Shaken and Hobbled, and buttons for every Flurry Technique of the six Doctrines.
+- **New for every class:** a class's level-up choices (such as the Weapon Focus group) can be named by effects; a resource cost can grow with level or be rolled.
+
+## 0.73.0-alpha.1 — AMP1f batch 4: jutsu Amps (A and S-Rank)
+
+King 2026-11-21: Q-F15 Aura of Power's −2 goes on hostile creatures through the aura; Q-F16 Freight Train leaves a condition when it ends; Q-F17 Strength of 1000 ends with Strength of 100 and leaves a shock until a full rest; Q-F18 the maintained Lotus cannon is an Amp; Q-F19 Water Heavens Convergence isn't; Q-F20 The Zone pauses when you end it early. This finishes the AMP1f review.
+
+- **14 A and S-Rank jutsu now start Amp cards (16 cards):** Freight Train, Lotus Nonself Connected Cannons ("Maintain the cannon"), Demon Hunter, Overcomer, Unlimited Pleasure, Diamond Bone Hardening (A, S), Aura of Power (plus "in the aura"), Neverending Breath, Magnum Knuckle, Supreme Violence, Tiger Lily, The Zone, Body of Dawn, Strength of 1000.
+- **Three new conditions** (Conditions compendium, Jutsu folder), applied when the Amp ends:
+  - **Freight Train: Overheated:** Incapacitated until the end of your next turn.
+  - **Strength of 1000: Shock:** no Strength of 1000, or Medical jutsu that need concentration, until a full rest (a reminder; casting isn't blocked).
+  - **The Zone: Spent:** no The Zone until a full rest.
+- **Amps that end with another** (new): Strength of 1000 frees Strength of 100 from concentration and ends when it ends; both leave their own condition.
+- **A pause button on an Amp** (new): The Zone's **End early (pause)** ends it without The Zone: Spent, so you can reactivate it.
+- **Auras with a second group** (new): Aura of Power gives allies its Amp (+2 to saves against Ninjutsu) and hostile creatures a −2 to those saves.
+- **Saves know what they're against** (new): a save rolled from a jutsu's card carries that jutsu's facts, so effects can name "saves against Ninjutsu".
+- **Conditions:** can carry extra statuses (Overheated is Incapacitated) and can end only on a full rest.
+- Effect values can use your discipline modifier when placed (Supreme Violence: half your Taijutsu modifier to AC).
+- **4 jutsu marked not Amps:** Chains of Fantasia, Moon-Fang Piercer, Heal, Water Heavens Convergence.
+
+## 0.72.0-alpha.1 — AMP1f batch 3: jutsu Amps (B-Rank)
+
+King 2026-11-20: Q-F10 Twin Rising Dragons isn't an Amp; Q-F11 a Parrying stance button on Blade Heart's Amp; Q-F12 Misleading Duplicate's invisibility is an Amp; Q-F13 Strength of 100 leaves a condition of its own when it ends.
+
+- **11 B-Rank jutsu now start Amp cards (16 cards):** Light Binding Step (B, S), Nature Transfiguration, Pythons Gaze, Dragon Cloak (B, A, S), Blade Heart, Misleading Duplicate, Investiture of Flame, Investiture of Acid, Strength of 100, Bestial Art: Hunter (B, A, S), Gift of the Apex.
+- **Options menus:** Nature Transfiguration (Amplified: no concentration), Bestial Art: Hunter (Strength 22 or Dexterity 18), Gift of the Apex (the beast).
+- **Buttons on an active Amp** (new): shown on the Amp's row in the Amps panel. Blade Heart: **Parrying stance**, +2 AC and Dexterity saves until the start of your next turn, as often as you need while the jutsu lasts.
+- **Amps that carry a status** (new): Misleading Duplicate makes you **Invisible** while it lasts.
+- **A condition when an Amp ends** (new): Strength of 100 leaves **Strength of 100: Overexerted** (disadvantage on Strength checks for 1 hour or until you rest). It's in the Conditions compendium, Jutsu folder.
+- **Conditions can end on a rest** (new "Ends" option on condition cards: after the duration or any rest, whichever comes first).
+- **Damage vulnerability** in effects (new change `n5e.vulnerable`): the Investitures' cold and earth vulnerability.
+- **6 jutsu marked not Amps:** Rubber Wall Enhancement, Silk Burial, Star Wall, Twin Rising Dragons, Encroaching Darkness, Memory Domination.
+
+### Fixed
+- The AMP1g level-versions builder deleted the jutsu rank cards when run after the jutsu builder. It now removes only its own versions.
+
+## 0.71.0-alpha.1 — AMP1f batch 2: jutsu Amps (C-Rank)
+
+King 2026-11-20: Q-F6 an aura applies the Amp to each creature in it, Q-F7 two picks, Q-F8 Heated Body is an Amp-less buff, Q-F9 a Change button for picks that can change.
+
+- **17 C-Rank jutsu now start Amp cards (49 cards)**, a card per cast rank where the effects change.
+- **Auras that apply the Amp.** Lightning King's Mantle and Medical Aura start an aura on the caster. You and the creatures in it each get the Amp card (it counts toward their Rule of 3's); it leaves when they step out or the jutsu ends. The aura card itself doesn't count.
+- **Options menus:** Adaptive Biology (a damage type or condition; two picks at A-Rank), Score's tempo, Guardian Knight's armor, Jolt (Overcharged: d10s).
+- **Change button** on an active Amp whose pick can change: Breath of Sound: Score's tempo at the start of each turn.
+- **8 jutsu marked not Amps:** Adamantine Barrier, Dust Mesh, Senta Piercing, Heated Body (an Amp-less buff), Outflank, Shadow Clone Technique, Heavenly Mirror of Pain, Vacuum Field.
+
+## 0.70.0-alpha.1 — AMP1f batch 1: jutsu Amps (E and D ranks)
+
+King 2026-11-20: Q-F1 a card per cast rank and an options menu for picks, Q-F2 Hijutsu aren't Clan Amps, Q-F3 typeless for now, Q-F4 temporary-HP jutsu are Amps, Q-F5 Chakra Skin and Geo Breastplate are Amp-less buffs.
+
+- **23 E and D-Rank jutsu now start Amp cards (75 cards).** Casting the jutsu and clicking its button starts the card for the rank you cast at, for example Medical Release: Acid Armor (C-Rank).
+  - A rank gets its own card only when its effects change; a cast in between uses the card below it (Crystal Armor at C uses the D card).
+  - Gaslight grows by character level, so it has level versions (5th, 11th, 17th).
+  - Every jutsu Amp is typeless for now (Hijutsu included) and still counts toward Rule of 3's.
+- **Options menu when an Amp starts.** Beast Fist: Rushing Lion asks Strength or Dexterity; Gaslight asks Action or Reaction (its duration changes); Environmental Affinity asks in or out of combat. Given to several creatures, the caster picks once.
+- **Jutsu Amps aren't on the Amps panel's start list**: they start only by casting the jutsu, and show on the panel while active.
+- **7 jutsu marked not Amps** and gone from the audit: Misty Hallucination, Chakra Skin, Bedrock Coffin, Geo Breastplate, Resonating Geo Isotoma, Fox Fire, Chakra Mark.
+- Parts that need the table (retaliation damage, barriers, triggers, the resistance that lasts only while temporary HP last) are notes on each card.
+
+## 0.69.0-alpha.1 — AMP1e: self-buff states, stances, Coordinated
+
+King 2026-11-20: Q-E1 stances stay stances, Q-E2 Feral and Well Rested stay Clan Amps, Q-E3 DYNAMIC FORM! and Flawless become cards that don't count toward Rule of 3's, Q-E4 Coordinated is a condition, Q-E5 a feature's level is the character level of whoever has it.
+
+- **DYNAMIC FORM! and Flawless are Amp cards** with no type, marked "Doesn't count toward Rule of 3's". Their feature buttons start them.
+  - DYNAMIC FORM! ends when you cast a Finisher or combat ends. Tempo and its bonuses stay on the Tempo pool.
+  - Flawless starts by itself when you roll initiative and ends with combat. Perfection and the Flawless buttons stay on Genius Talent.
+- **New card option "Outside the Amp limits"** (Advanced): such an Amp never triggers Rule of 3's, never takes one of the three places and is never offered in the keep dialog.
+- **New ending "Casting a Finisher"** on Amp cards.
+- **Stances in the Amp audit** have their own "Stance" label and filter, and no longer appear as candidates.
+- **Combat Coordinated and Diplomatic Coordinated are condition cards** (Nara). Team Coordination has a button for each; target your allies.
+  - Mastery ranks follow the Nara's character level: 1, 2 at 7th, 3 at 15th.
+  - Diplomatic Coordinated: each ally picks Deception, Persuasion or Intimidation from a chat card.
+  - The initiative swap, Coordinated Support and Coordinated Experience are notes on the card (done at the table).
+  - The Combat Coordinated Amp cards are removed, and the Nara box no longer shows in the Amp audit.
+- Condition cards can now ask the bearer to choose, and `lvl()` in their changes uses the applier's level. A Mastery value "Source ×2" gives two ranks.
 
 ## 0.68.1-alpha.3 — GM04c selective starter import
 

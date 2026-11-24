@@ -17,7 +17,14 @@
         "cost": "10 Chakra",
         "keywords": "Hijutsu, Bukijutsu, Stable, Efficient",
         "components": "M, CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Finesse: use Dexterity in place of Strength when higher (adjust the roll)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -109,7 +116,73 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ehtpdNOY7Nr0p7",
+        "type": "attack",
+        "label": "Clematis Vine",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Whip: Reach 4, Trip, Finesse, Grapple (Flail).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d8 + @str",
+              "type": "slashing"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eViGE2vQYYnDTa",
+        "type": "save",
+        "label": "Clematis Vine: restrain",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "Once per turn, its [Weapon Damage]. Failure: Restrained (a Strength save at the end of its turns ends it).",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5epn9mwgGbFyisU",
+        "type": "attack",
+        "label": "Clematis Thorn",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Critical 2, Deadly 4, Reach 1 (Power). At disadvantage, but advantage against a grappled creature; can't be disarmed or used in area jutsu.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6 + @str",
+              "type": "piercing"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "chinoike",
-      "sourceLine": 5596
+      "sourceLine": 5596,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonded Lifeforce: you fall to 0; your bonded creature can lose 20 maximum hit points until both of you long rest, and you fall to 20 instead."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,22 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eC7M2FZs8eZQvF",
+        "type": "effect",
+        "label": "Crimson Pact",
+        "effect": {
+          "name": "Crimson Pact",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "amp": "crimson-pact"
+        },
+        "text": "Over a long rest, with a willing creature you can reach: both gain the Crimson Pact (one bond at a time). Ends when dismissed, on death, or by a dispel of B-Rank or lower."
+      }
+    ]
   }
 }

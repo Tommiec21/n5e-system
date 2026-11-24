@@ -17,6 +17,155 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Fire Release, Lightning Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5egY0oMQRJMqCC5",
+              "type": "attack",
+              "label": "Sparkler Chain",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Teleport into the light of up to 2 Starlights within 60 feet (3 at A-Rank), attacking at each. In Solar Flare: add Plasma Burst's 1d12.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (1d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e5CVyFvh5kwZnG",
+              "type": "save",
+              "label": "Sparkler Chain: damaged",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "keton-convergence",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Convergence"
+                }
+              ],
+              "text": "Failure: Convergence until the end of your next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5egY0oMQRJMqCC5",
+              "type": "attack",
+              "label": "Sparkler Chain",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Teleport into the light of up to 2 Starlights within 60 feet (3 at A-Rank), attacking at each. In Solar Flare: add Plasma Burst's 1d12.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (2d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e5CVyFvh5kwZnG",
+              "type": "save",
+              "label": "Sparkler Chain: damaged",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "keton-convergence",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Convergence"
+                }
+              ],
+              "text": "Failure: Convergence until the end of your next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5egY0oMQRJMqCC5",
+              "type": "attack",
+              "label": "Sparkler Chain",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Teleport into the light of up to 2 Starlights within 60 feet (3 at A-Rank), attacking at each. In Solar Flare: add Plasma Burst's 1d12.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (3d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e5CVyFvh5kwZnG",
+              "type": "save",
+              "label": "Sparkler Chain: damaged",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "keton-convergence",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Convergence"
+                }
+              ],
+              "text": "Failure: Convergence until the end of your next turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +259,54 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5egY0oMQRJMqCC5",
+        "type": "attack",
+        "label": "Sparkler Chain",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 2
+        },
+        "text": "Teleport into the light of up to 2 Starlights within 60 feet (3 at A-Rank), attacking at each. In Solar Flare: add Plasma Burst's 1d12.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e5CVyFvh5kwZnG",
+        "type": "save",
+        "label": "Sparkler Chain: damaged",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "keton-convergence",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Convergence"
+          }
+        ],
+        "text": "Failure: Convergence until the end of your next turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

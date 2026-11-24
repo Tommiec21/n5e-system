@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "vesper",
       "sourceLine": 4451,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "On initiative: Echolocation's blindsight becomes 40 feet."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,28 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eSl40WdT9y94it",
+        "type": "save",
+        "label": "Dominion: compel",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Teleporting into dim light or darkness next to a Berserk, Charmed, Confused, Demoralized or Shaken creature. Failure: it spends its movement, action and bonus action harming a creature you pick until it has damaged it 3 times. Passing by 5: immune until you rest.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

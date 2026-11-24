@@ -1,0 +1,389 @@
+{
+  "_id": "n5elvxF09A0csTLT",
+  "_key": "!actors!n5elvxF09A0csTLT",
+  "name": "Clay Bird",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Bakuton: Clay Bird",
+      "biography": "<p><em>Explosion Release: Clay Bird (Bakuton Hijutsu).</em> It uses your Ninjutsu attack bonus or Save DC when an effect calls for it. You command it as an Action or Bonus action.</p><p><strong>Armor Class</strong> 12 + your ninjutsu ability modifier · <strong>Hit Points</strong> 40 + 10 for every rank above C-Rank · <strong>Speed</strong> 45 ft. flying</p><p><strong>Abilities</strong> STR +2 (save +4), DEX +4 (+8), CON +3 (+7), INT −5, WIS +0, CHA −5. <strong>Damage Vulnerability</strong> Lightning. <strong>Damage Immunities</strong> Acid, Poison, Psychic. <strong>Condition Immunities</strong> All Mental, All Sensory, Stunned, Exhaustion. <strong>Senses</strong> Relies on Caster senses.</p><p><strong>Linked to you when summoned:</strong> its AC (base + your Ninjutsu ability modifier), hit points (by the rank you cast the jutsu at), Ninjutsu attack bonus and save DC, and your senses.</p>",
+      "summonRole": "Clay Bird"
+    },
+    "abilities": {
+      "str": {
+        "value": 14
+      },
+      "dex": {
+        "value": 18
+      },
+      "con": {
+        "value": 16
+      },
+      "int": {
+        "value": 0
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 0
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 12,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "large",
+      "immune": [
+        "acid",
+        "poison",
+        "psychic"
+      ],
+      "conditionImmune": [
+        "berserk",
+        "charmed",
+        "confused",
+        "demoralized",
+        "shaken",
+        "concussed",
+        "blinded",
+        "dazzled",
+        "deafened",
+        "exhaustion"
+      ],
+      "stateImmune": [
+        "stunned"
+      ],
+      "vuln": [
+        "lightning"
+      ],
+      "speed": {
+        "walk": 0,
+        "climb": 0,
+        "swim": 0,
+        "fly": 45,
+        "burrow": 0,
+        "hover": false
+      }
+    },
+    "hpMax": 40,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5eEVBBd6kOaTvsb",
+      "_key": "!actors.items!n5elvxF09A0csTLT.n5eEVBBd6kOaTvsb",
+      "name": "Shock Weakness",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>If this creature takes Lightning damage it cannot perform its Detonate attack, until the end of its casters next turn. It also cannot perform its Detonate attack while it has the Shocked condition.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eXezmirELIOTqx",
+      "_key": "!actors.items!n5elvxF09A0csTLT.n5eXezmirELIOTqx",
+      "name": "Purpose to BOOM",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>Once summoned this creature has 1 minute before it self Detonates. If it cannot Detonate after this 1-minute duration, it dispels itself.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5etYTn1Dj1mbelk",
+      "_key": "!actors.items!n5elvxF09A0csTLT.n5etYTn1Dj1mbelk",
+      "name": "Flying Mount",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Clay Birds primary purpose is to be a flying mount. A creature of your choice can mount the Clay Bird. When it does, replace the creatures movement with the Clay Birds. The Clay Bird moves with the mounted creature. If you are mounted to the Clay Bird, you cannot command it to move separate from you unless you dismount by spending 5 feet of your normal movement. Attacks targeting the mounted Creature does not harm the Clay Bird and attacks targeting the Clay Bird does not harm the mounted creature. A mounted creature can spend its reaction to switch targets causing either themselves or the Clay Bird to interpose an attack targeting the other. Effects that target an area affects both the Clay Bird and mounted creature as individuals.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eAHoBzdC52yswV",
+      "_key": "!actors.items!n5elvxF09A0csTLT.n5eAHoBzdC52yswV",
+      "name": "Ram",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>If the Clay Bird flies in a straight line for at least 30 feet it can perform the Ram attack. All creatures in a straight line after the bird has moved at least 30 feet must succeed a Dexterity saving throw, taking 6d6 bludgeoning damage on a failed save or half as much on a success.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eArUbwGOrVy7wv",
+            "type": "save",
+            "label": "Ram",
+            "save": {
+              "abilities": [
+                "dex"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "half",
+              "resave": false
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "6d6",
+                  "type": "bludgeoning"
+                }
+              ]
+            }
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eR3Qgl53DIT5KW",
+      "_key": "!actors.items!n5elvxF09A0csTLT.n5eR3Qgl53DIT5KW",
+      "name": "Detonate",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Clay Bird detonates in a beautiful incendiary display, filling a 10-foot radius centered on it. All creatures in the radius takes force damage on a failed Dexterity saving throw or half as much on a success based on the rank the Clay Bird was summoned at. If more than one Clay Bird is Detonating and the same creature is within more than 1 radius, they make a single saving throw, but increase the damage they take by +2d8 for each additional Clay Bird explosion radius they are in. D-Rank/C-Rank: 4d8. B-Rank/A-Rank: 5d8. S-Rank: 6d8.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eNG7cnItRaSMG7",
+            "type": "save",
+            "label": "Detonate",
+            "save": {
+              "abilities": [
+                "dex"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "half",
+              "resave": false
+            },
+            "text": "Force damage by the rank it was summoned at; half on a success."
+          },
+          {
+            "id": "n5esJD3DUtlMhUbA",
+            "type": "damage",
+            "label": "Detonate: D/C-Rank",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "4d8",
+                  "type": "force"
+                }
+              ]
+            },
+            "text": "Summoned at D/C-Rank."
+          },
+          {
+            "id": "n5eBtLQ21AcHbJfA",
+            "type": "damage",
+            "label": "Detonate: B/A-Rank",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "5d8",
+                  "type": "force"
+                }
+              ]
+            },
+            "text": "Summoned at B/A-Rank."
+          },
+          {
+            "id": "n5eDi7lYl5Tg1lHW",
+            "type": "damage",
+            "label": "Detonate: S-Rank",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "6d8",
+                  "type": "force"
+                }
+              ]
+            },
+            "text": "Summoned at S-Rank."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5eCOJnly0WDE9lV",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "attributes.ac.flat": "12 + (@dc.nin - 8 - @prof)",
+        "hpMax": "40 + 10 * max(0, @rankValue - 2)",
+        "bonuses.saveDC.nin": "@dc.nin - 8 - @prof",
+        "bonuses.attack.nin": "@attack.nin - @prof",
+        "traits.senses.blindsight": "@senses.blindsight",
+        "traits.senses.chakraSensing": "@senses.chakraSensing",
+        "traits.senses.chakraSight": "@senses.chakraSight",
+        "traits.senses.darkvision": "@senses.darkvision",
+        "traits.senses.tremorSense": "@senses.tremorSense",
+        "traits.senses.trueSight": "@senses.trueSight",
+        "traits.senses.heatSense": "@senses.heatSense",
+        "traits.senses.waterSense": "@senses.waterSense"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Clay Bird",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.93.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

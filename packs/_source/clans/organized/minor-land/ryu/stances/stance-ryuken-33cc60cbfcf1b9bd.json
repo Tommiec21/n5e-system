@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "ryu",
-      "sourceLine": 8658
+      "sourceLine": 8658,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Unarmed Damage] d6, slashing or piercing, with your Hijutsu Flexibility ability. 7th: two attacks without Extra Attack."
+        }
+      ]
     }
   },
   "ownership": {
@@ -29,6 +36,140 @@
     ],
     "clan": "ryu",
     "featureType": "passive",
-    "requirement": "Ryu clan"
+    "requirement": "Ryu clan",
+    "activities": [
+      {
+        "id": "n5ezlY5cSIYy6rwx",
+        "type": "effect",
+        "label": "Ryūken",
+        "effect": {
+          "name": "Ryūken",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "Enter the stance.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5eaU5ydfXzCueuZ",
+        "type": "attack",
+        "label": "Rending Strike",
+        "attack": {
+          "discipline": "highest",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "In place of an attack; slashing or piercing.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:0,7:1d6,15:2d6)",
+              "type": ""
+            }
+          ]
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5e8M39t7zCcGPKr",
+        "type": "save",
+        "label": "Rending Strike: AC",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "On a hit. Failure: −1 AC (−2 at 7th, −3 at 15th) until the start of your next turn.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eGDp3w2Bj1IX8M",
+        "type": "attack",
+        "label": "Starving Strike",
+        "attack": {
+          "discipline": "highest",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "In place of an attack: the [Unarmed Damage] is chakra damage.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:0,7:1d6,15:2d6)",
+              "type": "chakra"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eHd22MO2pzeIKa",
+        "type": "save",
+        "label": "Starving Strike: drain",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "On a hit. Failure: you gain 2 temporary chakra (4 at 7th, 6 at 15th) until the end of the turn.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5elPo5FXNWt6Skl",
+        "type": "heal",
+        "label": "Starving Strike: temporary chakra",
+        "heal": {
+          "formula": "lvl(1:2,7:4,15:6)",
+          "pool": "tempCp"
+        },
+        "text": "It failed."
+      },
+      {
+        "id": "n5esFCXti8qvKAx8",
+        "type": "roll",
+        "label": "Strike in a Hijutsu",
+        "roll": {
+          "formula": "",
+          "note": "Use a Strike ability as part of a Ryu Clan Hijutsu."
+        },
+        "cost": {
+          "pool": "draconicChakra",
+          "amount": 1
+        }
+      }
+    ],
+    "unarmedDie": "1d6"
   }
 }

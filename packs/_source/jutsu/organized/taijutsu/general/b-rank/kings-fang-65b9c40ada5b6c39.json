@@ -86,13 +86,13 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eA0wlBhGuFTViC",
         "type": "attack",
-        "label": "Attack",
+        "label": "King’s Fang",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
         "damage": {
           "parts": []
@@ -103,21 +103,13 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "2"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5ePOfP31LA2uo7Y",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "bruised",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bruised"
-          }
-        ],
+        "label": "Per hit: Bruised",
         "save": {
           "abilities": [
             "con"
@@ -126,25 +118,67 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "Once per hit. Failure: Bruised.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "finisher-parsed1",
-        "type": "damage",
-        "label": "Finisher: Damage",
+        "id": "n5ec7NGM2iFficzB",
+        "type": "attack",
+        "label": "Finisher: King’s Fang",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 2
+        },
         "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed + 4d6",
-              "type": "bludgeoning"
-            }
-          ]
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "4d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "2"
+        }
+      },
+      {
+        "id": "n5eRE2nHs3vzfmlI",
+        "type": "save",
+        "label": "Finisher: Shaken per hit",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "shaken",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Shaken"
+          }
+        ],
+        "text": "Failure: Shaken ranks equal to the hits (set the ranks).",
+        "damage": {
+          "parts": []
         }
       }
     ],
@@ -237,9 +271,207 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eA0wlBhGuFTViC",
+              "type": "attack",
+              "label": "King’s Fang",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5ePOfP31LA2uo7Y",
+              "type": "save",
+              "label": "Per hit: Bruised",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Once per hit. Failure: Bruised.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ec7NGM2iFficzB",
+              "type": "attack",
+              "label": "Finisher: King’s Fang",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "4d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eRE2nHs3vzfmlI",
+              "type": "save",
+              "label": "Finisher: Shaken per hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "Failure: Shaken ranks equal to the hits (set the ranks).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eA0wlBhGuFTViC",
+              "type": "attack",
+              "label": "King’s Fang",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "3"
+              }
+            },
+            {
+              "id": "n5ePOfP31LA2uo7Y",
+              "type": "save",
+              "label": "Per hit: Bruised",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "Once per hit. Failure: Bruised.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ec7NGM2iFficzB",
+              "type": "attack",
+              "label": "Finisher: King’s Fang",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "4d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "3"
+              }
+            },
+            {
+              "id": "n5eRE2nHs3vzfmlI",
+              "type": "save",
+              "label": "Finisher: Shaken per hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "Failure: Shaken ranks equal to the hits (set the ranks).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "64b78902f2631880"

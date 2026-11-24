@@ -35,7 +35,23 @@
         "skill.slt",
         "skill.dec"
       ]
-    }
+    },
+    "activities": [
+      {
+        "id": "n5e0jKWa7Li5GLCO",
+        "type": "effect",
+        "label": "Stalk your Primary Target",
+        "effect": {
+          "name": "Stalked",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 3600,
+          "state": "stalked"
+        },
+        "text": "Your Primary Target is Stalked: −2 to its Perception and Insight checks against you (at the table)."
+      }
+    ]
   },
   "effects": [
     {
@@ -77,7 +93,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Proficiency in Sleight of Hand and Deception (Dex or Cha). 20 feet of blindsight (its effect); in dim light or darkness, blindsight and tremorsense can't perceive you. A Stalked creature that's isolated (no allies within 10 feet) takes +1 Lethal Attack die. Lethal Attack also against Demoralized, Shaken or Dazzled. Shadow Step (not counting against your exploits)."
+        }
+      ]
     }
   },
   "_stats": {

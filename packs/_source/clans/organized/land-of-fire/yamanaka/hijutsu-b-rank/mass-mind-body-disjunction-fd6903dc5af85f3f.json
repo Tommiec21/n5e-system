@@ -17,6 +17,211 @@
         "cost": "14 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile, Auditory, Unaware), Fuinjutsu",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5e2YQCCZKW4z45f",
+              "type": "save",
+              "label": "Mass Mind Body Disjunction",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "2d6 psychic.",
+                  "success": "4d6 psychic; Dazed.",
+                  "failure": "8d6 psychic; Slowed; 1 Mental Overwrite.",
+                  "critFailure": "10d6 psychic; Stunned; 3 Mental Overwrite."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "slowed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Slow"
+                },
+                {
+                  "key": "yamanaka-mental-overwrite",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Mental Overwrite"
+                }
+              ],
+              "text": "Creatures you choose within 30 feet. A Reaction when an ally Shadow Binds or Human Boulders a hostile creature (that one's result is one degree worse).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eqRecjLRSD8z2u",
+              "type": "damage",
+              "label": "Critical success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5egreczKrHvXe17",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eubnShYzdNaQUL",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(8d6) + (1d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5exMEwCpQYAQ93X",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(10d6) + (1d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e2YQCCZKW4z45f",
+              "type": "save",
+              "label": "Mass Mind Body Disjunction",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "2d6 psychic.",
+                  "success": "4d6 psychic; Dazed.",
+                  "failure": "8d6 psychic; Slowed; 1 Mental Overwrite.",
+                  "critFailure": "10d6 psychic; Stunned; 3 Mental Overwrite."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "slowed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Slow"
+                },
+                {
+                  "key": "yamanaka-mental-overwrite",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Mental Overwrite"
+                }
+              ],
+              "text": "Creatures you choose within 30 feet. A Reaction when an ally Shadow Binds or Human Boulders a hostile creature (that one's result is one degree worse).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eqRecjLRSD8z2u",
+              "type": "damage",
+              "label": "Critical success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5egreczKrHvXe17",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eubnShYzdNaQUL",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(8d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5exMEwCpQYAQ93X",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(10d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -112,7 +317,106 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e2YQCCZKW4z45f",
+        "type": "save",
+        "label": "Mass Mind Body Disjunction",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "2d6 psychic.",
+            "success": "4d6 psychic; Dazed.",
+            "failure": "8d6 psychic; Slowed; 1 Mental Overwrite.",
+            "critFailure": "10d6 psychic; Stunned; 3 Mental Overwrite."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          },
+          {
+            "key": "slowed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Slow"
+          },
+          {
+            "key": "yamanaka-mental-overwrite",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Mental Overwrite"
+          }
+        ],
+        "text": "Creatures you choose within 30 feet. A Reaction when an ally Shadow Binds or Human Boulders a hostile creature (that one's result is one degree worse).",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eqRecjLRSD8z2u",
+        "type": "damage",
+        "label": "Critical success",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5egreczKrHvXe17",
+        "type": "damage",
+        "label": "Success",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eubnShYzdNaQUL",
+        "type": "damage",
+        "label": "Failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "8d6",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5exMEwCpQYAQ93X",
+        "type": "damage",
+        "label": "Critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "10d6",
+              "type": "psychic"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

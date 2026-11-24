@@ -85,16 +85,36 @@
     },
     "activities": [
       {
-        "id": "chain-3-parsed1",
-        "type": "attack",
-        "label": "Chain 3: Attack",
-        "attack": {
-          "discipline": "",
-          "range": "melee",
-          "count": 1
+        "id": "ampf01b9029bbf79",
+        "type": "effect",
+        "label": "Demon Hunter",
+        "effect": {
+          "name": "Demon Hunter",
+          "target": "self",
+          "amp": "jutsu-demon-hunter"
         },
+        "text": "Starts the jutsu's Amp at the rank it was cast at."
+      },
+      {
+        "id": "n5eswpHuGjw9T3fx",
+        "type": "attack",
+        "label": "Chain 3: opportunity attacks",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 2
+        },
+        "text": "Chain 3: your hunted demon provokes; one hit regains the reaction.",
         "damage": {
           "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "2"
         }
       }
     ],
@@ -164,7 +184,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "405991324385ff7a"

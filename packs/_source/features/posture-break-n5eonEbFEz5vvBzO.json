@@ -34,6 +34,51 @@
     "resourcePools": [],
     "prerequisites": [
       "Wolves Legacy"
+    ],
+    "activities": [
+      {
+        "id": "n5eCYfGXgMUbSj1d",
+        "type": "damage",
+        "label": "Lethal Attack (forgo 1)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(max(0, @scale.hunterNin.lethalAttack - 1))d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true,
+        "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+      },
+      {
+        "id": "n5e3hHPeqj1PDlgJ",
+        "type": "damage",
+        "label": "Lethal Attack (forgo 1): Attack action or weapon",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 1))d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true,
+        "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+      },
+      {
+        "id": "n5erAxbnukHYgY7S",
+        "type": "effect",
+        "label": "Posture Break",
+        "effect": {
+          "name": "Posture Broken",
+          "target": "targets",
+          "changes": [],
+          "expires": "turnEnd",
+          "seconds": 12
+        },
+        "text": "Wolves Legacy. Until the end of your next turn it can't cast jutsu that raise its AC or give it DR. With Retaliate: no dice forgone (use the plain Lethal Attack button)."
+      }
     ]
   },
   "effects": [],
@@ -45,7 +90,8 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "optionGroup": "Combat Exploits"
+      "optionGroup": "Combat Exploits",
+      "reviewed": true
     }
   },
   "_stats": {

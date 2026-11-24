@@ -45,7 +45,24 @@
           "seconds": 60
         },
         "activation": "bonus",
-        "text": "Concentration as a B-Rank jutsu; pick two benefits; 2 Discipline at the start of each turn."
+        "text": "Concentration as a B-Rank jutsu. Pick two: +20 speed, +2 AC, advantage on one saving throw, or one more Action each turn (a skill action, Dash, Disengage or one weapon attack). 2 Discipline at the start of each of your turns to keep it.",
+        "cost": {
+          "pool": "discipline",
+          "amount": 4
+        }
+      },
+      {
+        "id": "n5evpnTIwrfS4DMm",
+        "type": "roll",
+        "label": "Elite Focus: maintain",
+        "roll": {
+          "formula": "",
+          "note": "At the start of each of your turns, to keep Elite Focus."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        }
       }
     ],
     "prerequisites": []
@@ -59,7 +76,14 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "optionGroup": "Kata: Versatility"
+      "optionGroup": "Kata: Versatility",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The two benefits are picked at the table and tracked on the effect (add +20 speed or +2 AC to the effect's changes)."
+        }
+      ]
     }
   },
   "_stats": {

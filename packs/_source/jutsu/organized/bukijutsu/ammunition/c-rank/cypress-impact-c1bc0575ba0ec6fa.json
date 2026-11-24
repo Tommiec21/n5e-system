@@ -85,17 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ei6bgK3wf0tt5i",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "restrained",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Restrained"
-          }
-        ],
+        "label": "Cypress Impact",
         "save": {
           "abilities": [
             "dex"
@@ -104,22 +96,50 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "Within 15 feet of a point in your weapon's range. Failure: the damage and Restrained (Strength save to break free; Chain 2: failing by 5+, no hand seals while Restrained).",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "2d8",
+              "type": ""
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "2d8",
-        "roll": {
-          "formula": "2d8",
-          "note": "Creatures in range must make a Dexterity saving throw taking your [Weapons damage] + 2d8, being Restrained by your chakra tethers pinning them in place. A Restrained creature can make a Strength saving throw, breaking free on a success."
-        }
+        "id": "n5eupKsoRt9xBjwU",
+        "type": "effect",
+        "label": "Chain 1: Bleed",
+        "effect": {
+          "name": "Chain 1: Bleed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            }
+          ]
+        },
+        "text": "Chain 1: a creature that failed."
       }
     ],
     "featureType": "active",
@@ -205,9 +225,188 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5ei6bgK3wf0tt5i",
+              "type": "save",
+              "label": "Cypress Impact",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "Within 15 feet of a point in your weapon's range. Failure: the damage and Restrained (Strength save to break free; Chain 2: failing by 5+, no hand seals while Restrained).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d8) + (1d8)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eupKsoRt9xBjwU",
+              "type": "effect",
+              "label": "Chain 1: Bleed",
+              "effect": {
+                "name": "Chain 1: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ]
+              },
+              "text": "Chain 1: a creature that failed."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ei6bgK3wf0tt5i",
+              "type": "save",
+              "label": "Cypress Impact",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "Within 15 feet of a point in your weapon's range. Failure: the damage and Restrained (Strength save to break free; Chain 2: failing by 5+, no hand seals while Restrained).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d8) + (2d8)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eupKsoRt9xBjwU",
+              "type": "effect",
+              "label": "Chain 1: Bleed",
+              "effect": {
+                "name": "Chain 1: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ]
+              },
+              "text": "Chain 1: a creature that failed."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ei6bgK3wf0tt5i",
+              "type": "save",
+              "label": "Cypress Impact",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "Within 15 feet of a point in your weapon's range. Failure: the damage and Restrained (Strength save to break free; Chain 2: failing by 5+, no hand seals while Restrained).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d8) + (3d8)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eupKsoRt9xBjwU",
+              "type": "effect",
+              "label": "Chain 1: Bleed",
+              "effect": {
+                "name": "Chain 1: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ]
+              },
+              "text": "Chain 1: a creature that failed."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "f8211708ba076b1c"

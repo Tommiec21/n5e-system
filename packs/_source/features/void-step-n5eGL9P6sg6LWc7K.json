@@ -35,12 +35,17 @@
     "activities": [
       {
         "id": "n5eKvMv86Tiad6tI",
-        "type": "check",
-        "label": "Void Step: Ninshou check",
-        "check": {
-          "skill": "nin"
+        "type": "roll",
+        "label": "Void Step",
+        "activation": "",
+        "roll": {
+          "formula": "",
+          "note": "Void Hunter. All your movement: teleport within 5 feet of one of your Anchors; next to a creature with an Anchor, your next attack against it can trigger Lethal Attack."
         },
-        "activation": ""
+        "cost": {
+          "pool": "skilledExploits",
+          "amount": 1
+        }
       }
     ],
     "prerequisites": [
@@ -56,7 +61,8 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "optionGroup": "Skilled Exploits"
+      "optionGroup": "Skilled Exploits",
+      "reviewed": true
     }
   },
   "_stats": {

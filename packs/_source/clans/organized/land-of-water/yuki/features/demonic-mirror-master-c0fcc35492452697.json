@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "yuki",
-      "sourceLine": 4763
+      "sourceLine": 4763,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Once per turn at the start of your turn, switch Bloody Mist Legacy paths freely. Ice Daggers: one attack roll against all creatures of your choice within 15 feet of a mirror."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,29 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eOBy57WnvFaubG",
+        "type": "effect",
+        "label": "Demonic Ice Prism",
+        "effect": {
+          "name": "Demonic Ice Prism",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Bonus action on your turn, 1 minute, once per rest: up to 8 mirrors in unoccupied spaces within 60 feet (outside your limit); you teleport into the closest.",
+        "activation": "bonus"
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "rest",
+      "recharge": "",
+      "staminaEligible": false
+    }
   }
 }

@@ -36,13 +36,46 @@
       "scout-maneuver"
     ],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e0hp2xgk1Nxq3P",
+        "type": "roll",
+        "label": "Debilitate: Reflex",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1
+        },
+        "roll": {
+          "formula": "",
+          "note": "An attack or jutsu affecting a hostile creature: a creature failing the jutsu's save gains −2 AC until the end of its next turn."
+        }
+      },
+      {
+        "id": "n5eSsNspoEimL1Jn",
+        "type": "save",
+        "label": "Debilitate: Reflex: Charisma save",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "When the attack forces no save (Discipline already spent): a Charisma save (the jutsu's DC; Taijutsu for weapons or unarmed). Failure: −2 AC until the end of its next turn."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

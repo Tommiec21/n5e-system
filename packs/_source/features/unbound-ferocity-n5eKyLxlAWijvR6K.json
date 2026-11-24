@@ -42,14 +42,57 @@
           "target": "targets",
           "changes": [],
           "expires": "turnStart",
-          "seconds": 0
+          "seconds": 0,
+          "state": "unbound-ferocity"
         },
-        "text": "You have advantage on Taijutsu attacks against it; it has advantage against you."
+        "text": "Target one hostile creature within 60 feet. Until the start of your next turn you have advantage on Taijutsu attacks against it, and it has advantage on attacks against you.",
+        "cost": {
+          "pool": "discipline",
+          "amount": 3
+        },
+        "activation": "bonus"
       }
     ],
     "prerequisites": []
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5ej5kMW4SEIJMIY",
+      "name": "Unbound Ferocity: advantage",
+      "type": "generic",
+      "img": "icons/svg/upgrade.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true,
+          "rules": [
+            {
+              "key": "advantage",
+              "selector": "attack",
+              "predicate": [
+                "jutsu:discipline:tai",
+                "target:state:unbound-ferocity"
+              ],
+              "label": "Unbound Ferocity"
+            }
+          ]
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!n5eKyLxlAWijvR6K.n5ej5kMW4SEIJMIY"
+    }
+  ],
   "folder": "n5ecV5gB5Cd9gFuJ",
   "sort": 0,
   "ownership": {
@@ -58,7 +101,14 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "optionGroup": "Kata: Pressure"
+      "optionGroup": "Kata: Pressure",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its advantage on attacks against you is at the table."
+        }
+      ]
     }
   },
   "_stats": {

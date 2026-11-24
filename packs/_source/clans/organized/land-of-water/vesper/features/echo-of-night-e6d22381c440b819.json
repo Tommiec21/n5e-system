@@ -9,7 +9,8 @@
   "flags": {
     "n5e": {
       "clanPackage": "vesper",
-      "sourceLine": 4373
+      "sourceLine": 4373,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -42,6 +43,36 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e0VacSN2W6VqBS",
+        "type": "effect",
+        "label": "Echolocation",
+        "effect": {
+          "name": "Echolocation",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Bonus action, 1 minute: blindsight 30 feet while you can hear (not while Deafened or muffled); a rank of Mastery on sound-based Perception.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5eHTJIgNS4ZEa3Z",
+        "type": "effect",
+        "label": "Pinging",
+        "effect": {
+          "name": "Pinged",
+          "target": "targets",
+          "changes": [],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Bonus action: creatures within 10 feet of a point within 30 feet (45 at 7th, 60 at 15th) until the start of your next turn: your attacks against them can't be at disadvantage; allies they can't see get attacks of opportunity on them.",
+        "activation": "bonus"
+      }
+    ]
   }
 }

@@ -12,9 +12,17 @@
  *   uses        {max (number or formula: "@prof", "lvl(1:1,11:2)"), per: sr | lr | fr | day}
  *   cooldown    seconds before it can start again once it ends ("10 minutes before re-entry": 600)
  *   exclusive   group: starting one ends the others (Crash / Flow)
- *   endsOn      staggered, blinded, unconscious, noChakra, stanceLeave (King Q-A5: the GM's setting
+ *   endsOn      staggered, blinded, unconscious, noChakra, stanceLeave, finisherCast (King Q-A5: the GM's setting
  *               decides whether these end it automatically or at the table)
  *   changes, tempHp, state, aura, and rule elements in flags.n5e.rules: the buff itself
+ *   outsideLimits  AMP1e (King Q-E3): doesn't count toward Rule of 3's (DYNAMIC FORM!, Flawless)
+ *   rank        AMP1f (King Q-F1): the cast rank this version starts at (E–S; "" not a rank version)
+ *   choose      AMP1f: {prompt, options: [{label, changes, rules, duration}]}: picked in a menu when the Amp
+ *               starts; an option's duration (when its seconds or until is set) and tempHp replace the card's;
+ *               count: how many picks (Adaptive Biology at A-Rank: 2); changeable: a Change button on the
+ *               active Amp reopens the menu (Breath of Sound: Score's tempo, King Q-F9)
+ *   owner kind "jutsu" (AMP1f): only casting that jutsu starts it (id: the jutsu's identifier)
+ *   endsWith    AMP1f batch 4: ends with another Amp on the bearer and frees that Amp's concentration
  *   series, level  AMP1g: the version group (the base key) and the character level this version starts at
  */
 import * as S from "../fields/shared.mjs";
@@ -43,9 +51,27 @@ export class AmpCardData extends TDM() {
       endsOn: S.set(),
       changes: S.arr(S.obj({ key: S.str(), value: S.str(), mode: S.int(2) })),
       aura: object(),
+      // AMP1e (King Q-E3): an Amp the Amp limits don't count (it never triggers Rule of 3's).
+      outsideLimits: S.bool(),
       // AMP1g: versions of one Amp (King 2026-11-20): the base key, and the character level it starts at.
       series: S.str(),
-      level: S.int(0, { min: 0 })
+      level: S.int(0, { min: 0 }),
+      // AMP1f (King Q-F1): a version per cast rank, and the caster's picks.
+      rank: S.str(),
+      choose: S.obj({ prompt: S.str(), count: S.int(1, { min: 1 }), changeable: S.bool(), options: S.arr(S.obj({ label: S.str(), changes: S.arr(S.obj({ key: S.str(), value: S.str(), mode: S.int(2) })), rules: S.arr(object()),
+        duration: S.obj({ seconds: S.int(0, { min: 0 }), until: S.str(), concentration: S.bool() }), tempHp: S.str() })) }),
+      // AMP1f batch 3 (King Q-F11): buttons on the active Amp in the Amps panel (Blade Heart's Parrying
+      // stance); each applies its effect (an activity effect: changes, expires...) to the Amp's bearer.
+      // AMP1f batch 4 (King Q-F20): a button can instead end the Amp early without its aftermath
+      // (end: "pause", The Zone: it can be reactivated).
+      buttons: S.arr(S.obj({ label: S.str(), activation: S.str(), text: S.str(), effect: object(), end: S.str() })),
+      // AMP1f batch 3 (King Q-F13): a condition card applied to the bearer when the Amp ends.
+      onEnd: S.obj({ condition: S.str() }),
+      // AMP1f batch 3 (King Q-F12): token statuses the Amp carries while it lasts (invisible).
+      statuses: S.arr(S.str()),
+      // AMP1f batch 4 (King Q-F17): the Amp ends when this Amp (a key or series) ends on its bearer, and
+      // starting it releases the concentration that one was held by (Strength of 1000 on Strength of 100).
+      endsWith: S.str()
     };
   }
 }

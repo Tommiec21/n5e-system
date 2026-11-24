@@ -17,6 +17,61 @@
         "cost": "20 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Earth Release, Fire Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The area is Molten Terrain for the duration. A Bonus Action in Lava Chakra Mode. Upcast: +5 feet to the cube per rank."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5eJaRCAciGHKWIQ",
+              "type": "save",
+              "label": "Planet-Branding Blast",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "yoton-molten",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Molten"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "A 45-foot cube from you; again at the start of each of your turns. Failure: damage, Molten until the end of your next turn and Bruised; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (1d10)",
+                    "type": "fire"
+                  },
+                  {
+                    "formula": "(3d10) + (1d10)",
+                    "type": "earth"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -109,7 +164,50 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eJaRCAciGHKWIQ",
+        "type": "save",
+        "label": "Planet-Branding Blast",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "yoton-molten",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Molten"
+          },
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "A 45-foot cube from you; again at the start of each of your turns. Failure: damage, Molten until the end of your next turn and Bruised; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d10",
+              "type": "fire"
+            },
+            {
+              "formula": "3d10",
+              "type": "earth"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

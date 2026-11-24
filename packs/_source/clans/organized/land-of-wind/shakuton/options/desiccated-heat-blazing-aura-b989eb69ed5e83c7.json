@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "shakuton",
       "sourceLine": 3586,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its damage +1d6 at 7th and 15th (the text names no base damage; errata list)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,54 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eTR0mDqXzFQZX3",
+        "type": "save",
+        "label": "Blazing Aura",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "shakuton-immolation",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Immolation"
+          }
+        ],
+        "text": "Bonus action: 20 feet around you until the end of your next turn (1 more charge: +1 round). Starting or first entering it on a turn. Failure: 1 rank of Immolation (2 at 11th).",
+        "activation": "bonus",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "scorchCharges",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5ewsALqxQCm0992",
+        "type": "damage",
+        "label": "Blazing Aura: damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(3:1d6,7:2d6,15:3d6)",
+              "type": "fire"
+            }
+          ]
+        },
+        "text": "With the save: a creature that fails (King Q-E10: 1d6, +1d6 at 7th and 15th)."
+      }
+    ]
   }
 }

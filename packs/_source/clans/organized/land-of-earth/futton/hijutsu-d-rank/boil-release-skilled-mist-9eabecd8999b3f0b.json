@@ -17,6 +17,241 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Inhale, Tactile), Fire Release, Water Release, Corrosive Branch, Stable",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "B-Rank: +20 feet to the area; S-Rank: +20 more."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eofi7g5pvZccxk",
+              "type": "save",
+              "label": "Skilled Mist",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 4d6 acid.",
+                  "success": "Success: half of 4d6 acid and −1 AC until the start of its next turn.",
+                  "failure": "Failure: 4d6 acid and Corroded.",
+                  "critFailure": "Critical Failure: as a failure, and 1 rank of Deteriorate."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "corroded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Corroded"
+                },
+                {
+                  "key": "futton-deteriorate",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Deteriorate"
+                }
+              ],
+              "text": "In range when cast, or starting a turn in the mist.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5enpRbEHCIIZFQH",
+              "type": "damage",
+              "label": "Skilled Mist: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "acid"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eofi7g5pvZccxk",
+              "type": "save",
+              "label": "Skilled Mist",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 4d6 acid.",
+                  "success": "Success: half of 4d6 acid and −1 AC until the start of its next turn.",
+                  "failure": "Failure: 4d6 acid and Corroded.",
+                  "critFailure": "Critical Failure: as a failure, and 1 rank of Deteriorate."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "corroded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Corroded"
+                },
+                {
+                  "key": "futton-deteriorate",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Deteriorate"
+                }
+              ],
+              "text": "In range when cast, or starting a turn in the mist.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5enpRbEHCIIZFQH",
+              "type": "damage",
+              "label": "Skilled Mist: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "acid"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eofi7g5pvZccxk",
+              "type": "save",
+              "label": "Skilled Mist",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 4d6 acid.",
+                  "success": "Success: half of 4d6 acid and −1 AC until the start of its next turn.",
+                  "failure": "Failure: 4d6 acid and Corroded.",
+                  "critFailure": "Critical Failure: as a failure, and 1 rank of Deteriorate."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "corroded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Corroded"
+                },
+                {
+                  "key": "futton-deteriorate",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Deteriorate"
+                }
+              ],
+              "text": "In range when cast, or starting a turn in the mist.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5enpRbEHCIIZFQH",
+              "type": "damage",
+              "label": "Skilled Mist: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (3d6)",
+                    "type": "acid"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eofi7g5pvZccxk",
+              "type": "save",
+              "label": "Skilled Mist",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 4d6 acid.",
+                  "success": "Success: half of 4d6 acid and −1 AC until the start of its next turn.",
+                  "failure": "Failure: 4d6 acid and Corroded.",
+                  "critFailure": "Critical Failure: as a failure, and 1 rank of Deteriorate."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "corroded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Corroded"
+                },
+                {
+                  "key": "futton-deteriorate",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Deteriorate"
+                }
+              ],
+              "text": "In range when cast, or starting a turn in the mist.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5enpRbEHCIIZFQH",
+              "type": "damage",
+              "label": "Skilled Mist: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (4d6)",
+                    "type": "acid"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            }
+          ]
+        }
       }
     }
   },
@@ -114,7 +349,62 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eofi7g5pvZccxk",
+        "type": "save",
+        "label": "Skilled Mist",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: half of 4d6 acid.",
+            "success": "Success: half of 4d6 acid and −1 AC until the start of its next turn.",
+            "failure": "Failure: 4d6 acid and Corroded.",
+            "critFailure": "Critical Failure: as a failure, and 1 rank of Deteriorate."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "corroded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Corroded"
+          },
+          {
+            "key": "futton-deteriorate",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Deteriorate"
+          }
+        ],
+        "text": "In range when cast, or starting a turn in the mist.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5enpRbEHCIIZFQH",
+        "type": "damage",
+        "label": "Skilled Mist: damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "acid"
+            }
+          ]
+        },
+        "text": "Halve it on a success."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

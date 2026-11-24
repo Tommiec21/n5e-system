@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "hatake",
       "sourceLine": 861,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,34 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eAh2PJs8BT87J0",
+        "type": "roll",
+        "label": "Shared Burden: advantage",
+        "roll": {
+          "formula": "",
+          "note": "An ally casting an Action jutsu: its attacks have advantage."
+        },
+        "cost": {
+          "pool": "commandDice",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5exyyIzU60mrrxT",
+        "type": "roll",
+        "label": "Shared Burden: cost",
+        "roll": {
+          "formula": "",
+          "note": "Up to 3 White Chakra: its cost −2 per White Chakra."
+        },
+        "cost": {
+          "pool": "whiteChakra",
+          "choose": true
+        }
+      }
+    ]
   }
 }

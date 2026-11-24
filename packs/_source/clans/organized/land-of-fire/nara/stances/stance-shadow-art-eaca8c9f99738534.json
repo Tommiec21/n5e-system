@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "nara",
-      "sourceLine": 1735
+      "sourceLine": 1735,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Shadow Bound (the condition item) ends early if the creature is moved, you're incapacitated, can't mold chakra or can't see it, or either of you is in total darkness."
+        }
+      ]
     }
   },
   "ownership": {
@@ -29,6 +36,49 @@
     ],
     "clan": "nara",
     "featureType": "passive",
-    "requirement": "Nara clan"
+    "requirement": "Nara clan",
+    "activities": [
+      {
+        "id": "n5e46zOPX2C4wUdW",
+        "type": "effect",
+        "label": "Shadow Art",
+        "effect": {
+          "name": "Shadow Art",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "Bonus action: the Shadow Art chakra stance.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5e0VHx4x9PW7TYF",
+        "type": "save",
+        "label": "Shadow Possession",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "nara-shadow-bound",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shadow Bound"
+          }
+        ],
+        "text": "A creature you can see within 40 feet (60 at 7th, 80 at 15th). Failure: Shadow Bound; it saves Strength or Dexterity at the end of each of its turns to end it. Hold 1 creature (2 at 7th, 3 at 15th). Not while you can't mold chakra or concentrate.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

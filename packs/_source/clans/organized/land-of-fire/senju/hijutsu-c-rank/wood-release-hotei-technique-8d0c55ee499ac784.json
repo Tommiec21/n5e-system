@@ -17,7 +17,8 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Earth Release, Water Release",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -109,7 +110,49 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eplSGA7AAUJiCQ",
+        "type": "save",
+        "label": "Hotei",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "grappled",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Grappled"
+          }
+        ],
+        "text": "Up to two creatures within 60 feet (+1 per rank). Failure: grappled (pulled down if airborne); a 15-foot radius of difficult terrain (New Growth).",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5e2pfro0DvWVVJM",
+        "type": "damage",
+        "label": "Grappled: start of its turn",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "earth"
+            }
+          ]
+        },
+        "text": "Earth or cold; then a Strength save breaks free."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

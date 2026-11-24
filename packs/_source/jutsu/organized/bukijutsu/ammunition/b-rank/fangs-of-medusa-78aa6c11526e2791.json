@@ -85,38 +85,31 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eTbAt4h0BXSx9n",
         "type": "attack",
-        "label": "Attack",
+        "label": "Fangs of Medusa",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
         "damage": {
-          "parts": []
-        },
-        "strike": {
-          "kind": "weapon",
-          "extraDice": "4d8",
-          "dieSteps": 0,
-          "pierce": 0,
-          "maximize": false,
-          "attacks": "1"
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "4d8",
+              "type": "poison"
+            }
+          ]
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eNG5FDKHxJ0gUt",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "envenomed",
-            "kind": "condition",
-            "ranks": 2,
-            "label": "Envenomed"
-          }
-        ],
+        "label": "Medusa: Envenomed",
         "save": {
           "abilities": [
             "con"
@@ -125,26 +118,25 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "envenomed",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Envenomed"
+          }
+        ],
+        "text": "On a hit. Failure: 2 Envenomed.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "chain-2-parsed1",
+        "id": "n5eF8zlwDQiX1sZ3",
         "type": "save",
-        "label": "Chain 2: Save",
-        "inflicts": [
-          {
-            "key": "envenomed",
-            "kind": "condition",
-            "ranks": 2,
-            "label": "Envenomed"
-          }
-        ],
+        "label": "Chain 2: poison burst",
         "save": {
           "abilities": [
             "con"
@@ -153,10 +145,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "envenomed",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Envenomed"
+          }
+        ],
+        "text": "Chain 2, on a hit: a 15-foot radius cloud around the target. Failure: 2 Envenomed.",
         "damage": {
           "parts": []
         }
@@ -245,9 +244,177 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eTbAt4h0BXSx9n",
+              "type": "attack",
+              "label": "Fangs of Medusa",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "4d8",
+                    "type": "poison"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eNG5FDKHxJ0gUt",
+              "type": "save",
+              "label": "Medusa: Envenomed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "On a hit. Failure: 2 Envenomed.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eF8zlwDQiX1sZ3",
+              "type": "save",
+              "label": "Chain 2: poison burst",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "Chain 2, on a hit: a 15-foot radius cloud around the target. Failure: 2 Envenomed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eTbAt4h0BXSx9n",
+              "type": "attack",
+              "label": "Fangs of Medusa",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "4d8",
+                    "type": "poison"
+                  },
+                  {
+                    "formula": "2d10",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eNG5FDKHxJ0gUt",
+              "type": "save",
+              "label": "Medusa: Envenomed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "On a hit. Failure: 2 Envenomed.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eF8zlwDQiX1sZ3",
+              "type": "save",
+              "label": "Chain 2: poison burst",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "Chain 2, on a hit: a 15-foot radius cloud around the target. Failure: 2 Envenomed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "A-Rank: Full Moon benefits on a Half Moon; S-Rank: on a Crescent Moon (see the text)."
+        }
+      ]
     }
   },
   "folder": "a7edbe01a9022231"

@@ -17,6 +17,97 @@
         "cost": "20 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fire Release, Lightning Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5ezHd3qfk73xYFR",
+              "type": "save",
+              "label": "Solar Prominence: Dexterity",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "keton-convergence",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Convergence"
+                }
+              ],
+              "text": "Needs 1+ Starlight; each detonates in a 20-foot radius (two or more: disadvantage), then all are dispelled. Failure: the damage and Convergence until the end of your next turn.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d10) + (1d10)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eaCZCGvvEGnGXO",
+              "type": "save",
+              "label": "Solar Prominence: Constitution",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                },
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 3,
+                  "label": "Dazzled"
+                },
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "Failure: Blinded, 3 ranks of Dazzled and Dazed for 1 minute (a Constitution save ends Blinded and Dazed).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5egOShhqirfItIr",
+              "type": "roll",
+              "label": "Starlights dispelled",
+              "roll": {
+                "formula": "",
+                "note": "All active Starlights."
+              },
+              "cost": {
+                "pool": "starlights",
+                "choose": true
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -109,7 +200,92 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ezHd3qfk73xYFR",
+        "type": "save",
+        "label": "Solar Prominence: Dexterity",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "keton-convergence",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Convergence"
+          }
+        ],
+        "text": "Needs 1+ Starlight; each detonates in a 20-foot radius (two or more: disadvantage), then all are dispelled. Failure: the damage and Convergence until the end of your next turn.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d10",
+              "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eaCZCGvvEGnGXO",
+        "type": "save",
+        "label": "Solar Prominence: Constitution",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          },
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 3,
+            "label": "Dazzled"
+          },
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "Failure: Blinded, 3 ranks of Dazzled and Dazed for 1 minute (a Constitution save ends Blinded and Dazed).",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5egOShhqirfItIr",
+        "type": "roll",
+        "label": "Starlights dispelled",
+        "roll": {
+          "formula": "",
+          "note": "All active Starlights."
+        },
+        "cost": {
+          "pool": "starlights",
+          "choose": true
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

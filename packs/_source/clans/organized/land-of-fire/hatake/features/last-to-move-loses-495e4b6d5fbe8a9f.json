@@ -9,7 +9,15 @@
   "flags": {
     "n5e": {
       "clanPackage": "hatake",
-      "sourceLine": 880
+      "sourceLine": 880,
+      "ampCopyRemoved": "White Wolf (King Q-E12)",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "(Its copy of White Wolf's Amp is removed, as King Q-E12.)"
+        }
+      ]
     }
   },
   "ownership": {
@@ -17,7 +25,7 @@
   },
   "system": {
     "identifier": "hatake-last-to-move-loses",
-    "description": "<p>7th Level Clan Feature</p>\n<p>You take the opportunity to move swiftly when combat breaks out. When initiative is rolled, you can enhance your combat readiness in different ways.</p>\n<p>White Chakra. By spending 1 White Chakra, you add your full proficiency bonus to your initiative, instead of half.</p>\n<p>Command Dice. By spending 1 Command Dice You and your team rolls your initiatives and records the results. You and your allies who recorded the results can now choose who gets what result based on the need of the combat.</p>\n<p>| #### White Wolf / Battle Amp / While in this state, you gain the following benefits; / Two Steps Ahead. At the beginning of each of your turns, you regain either 2 White Chakra or 1 Command Dice. / Lethal Fang. Once per turn, when you score a hit with an attack that deals damage of a type associated with your Passive Affinity, you can remove 1 rank of the conditions associated condition to reinforce the attack, granting it a rank of mastery to its critical threat range. (Earth: Bruised/Dazed, Wind: Bleed/Weakened, Fire: Burned, Cold: Chilled, Lightning: Shocked) / Limit Break. Once per turn, You can spend 3 White Chakra or 2 Command Dice to gain an additional action. Once you do, you cannot do so again until the end of your next turn. / No Casualties. When an allied creature other than yourself within 30 feet of you would take damage, you can spend your reaction to deflect some of the damage, throwing your weapon to intercept and reducing the damage they would take by an amount equal to your [Weapon Damage] + your level. You throw your weapon and it lands on the ground in a space next to damaged ally. |</p>",
+    "description": "<p>7th Level Clan Feature</p>\n<p>You take the opportunity to move swiftly when combat breaks out. When initiative is rolled, you can enhance your combat readiness in different ways.</p>\n<p>White Chakra. By spending 1 White Chakra, you add your full proficiency bonus to your initiative, instead of half.</p>\n<p>Command Dice. By spending 1 Command Dice You and your team rolls your initiatives and records the results. You and your allies who recorded the results can now choose who gets what result based on the need of the combat.</p>\n",
     "source": {
       "book": "Tsunade's Studies Compendium",
       "page": "",
@@ -42,6 +50,34 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eSUdGdJJROAh6e",
+        "type": "roll",
+        "label": "Initiative: full proficiency",
+        "roll": {
+          "formula": "ceil(@prof / 2)",
+          "note": "Add your full proficiency bonus to initiative instead of half."
+        },
+        "cost": {
+          "pool": "whiteChakra",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eyifdQkJGFrzfT",
+        "type": "roll",
+        "label": "Initiative: assign results",
+        "roll": {
+          "formula": "",
+          "note": "You and your team record your rolls, then choose who gets which."
+        },
+        "cost": {
+          "pool": "commandDice",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

@@ -62,6 +62,8 @@ export async function cleanupSummons() {
 /** Hook registration is explicit and happens once from the system entry point. */
 export function registerAutomationHooks() {
   Hooks.on("updateWorldTime", cleanupSummons);
+  // King Q-E6: pool units with a lifetime (Primes, Pressure) are lost after it unless spent.
+  Hooks.on("updateWorldTime", () => import("./resources.mjs").then(m => m.expirePoolUnits()));
   Hooks.on("updateActor", (actor, changes) => {
     if ( foundry.utils.hasProperty(changes, "system.combat.concentrating") ) return cleanupSummons();
   });

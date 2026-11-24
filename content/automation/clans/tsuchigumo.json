@@ -1,0 +1,1232 @@
+{
+  "clan": "tsuchigumo",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "tsuchigumo-king-of-the-brood": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eSdu0GdnCFab7c",
+          "type": "summon",
+          "label": "Brood Mother",
+          "summon": {
+            "uuid": "Compendium.n5e.summons.Actor.n5eJxCsMDaq3FJQl",
+            "count": 1,
+            "template": ""
+          }
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "lr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "Action: within 10 feet (Class & Clan Summons › Tsuchigumo); command it as a Bonus action. Dispelled or dismissed: not again until a long rest. Its Broodlings have no stat block: held for King's stat block (H3)."
+        }
+      ]
+    },
+    "tsuchigumo-master-silk-weaver": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "10 minutes, once per rest: a 20-foot cube traversable silk structure for 1 hour, for the creatures you name (Medium or smaller; anyone else touching it collapses it). Or over a rest: a fine garment for 24 hours (dissolves in water); unfamiliar non-hostile creatures' attitude +1 rank. (Its text also holds the Brood Mother's stat block, now the summon.)"
+        }
+      ]
+    },
+    "tsuchigumo-silk-weaves": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "After a rest prepare 2 Silk Weaves (3 at 7th, 4 at 15th): the option items. Saves use your highest jutsu save DC; one dispelling weave per turn."
+        }
+      ]
+    },
+    "tsuchigumo-silk-weaves-disorienting-thread": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ek1pPtvHAhu1AY",
+          "type": "save",
+          "label": "Disorienting Thread",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "Two anchors within 30 feet of each other; a hostile creature enters one: dispel it. Failure: pulled up to 30 feet into the other and Prone.",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "webAnchors",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "tsuchigumo-silk-weaves-entangling-web": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ehU1GBmykYOUQf",
+          "type": "save",
+          "label": "Entangling Web",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "grappled",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Grappled"
+            },
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            }
+          ],
+          "text": "Once per turn, a hostile creature enters an anchor. Failure: Grappled until the start of its next turn (11th: Restrained, resaving at the end of its turns).",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "tsuchigumo-silk-weaves-golden-silk": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Standing on your anchor, against melee attacks: 4 DR (6 at 7th, 8 at 15th) and immunity to chakra damage."
+        }
+      ]
+    },
+    "tsuchigumo-silk-weaves-guiding-threads": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "An ally (not you) standing on your anchor: +1 to its ranged attacks (+2 at 11th)."
+        }
+      ]
+    },
+    "tsuchigumo-silk-weaves-guiding-weave": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezHkatMKQ0aoZs",
+          "type": "save",
+          "label": "Guiding Weave",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Once per turn, a Web Weapon ranged attack at an anchor: a 60 by 5-foot line from it. Failure: [Weapons Damage] (twice at 11th); success: half.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "tsuchigumo-silk-weaves-lifeline": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eEwfCeHt1zVGWs",
+          "type": "roll",
+          "label": "Lifeline",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, a willing ally you can see within 30 feet of an anchor takes damage: pull it 30 feet onto the anchor (before a melee attack lands: it may miss)."
+          },
+          "activation": "reaction"
+        }
+      ]
+    },
+    "tsuchigumo-silk-weaves-razor-web": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ejMxn2VRzeytQK",
+          "type": "save",
+          "label": "Razor Web",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            }
+          ],
+          "text": "Once per turn, a hostile creature enters an anchor. Failure: 1 rank of Bleed (2 at 7th, 3 at 15th).",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "tsuchigumo-silk-weaves-silk-tag": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Once per turn, a ranged weapon hit or your Hijutsu's [Weapon Damage]: Silk Tag until the end of your next turn; it always counts as standing in your anchor."
+        }
+      ]
+    },
+    "tsuchigumo-silk-weaves-trap-silk": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5edBaIJtaf5Nlvw",
+          "type": "attack",
+          "label": "Trap Silk: weapon trap",
+          "attack": {
+            "discipline": "highest",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "Dispel the anchor when crossed: one attack roll against the creature and all within 5 feet; [Weapons Damage] (twice at 7th, three times at 15th).",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eKLAyeXBzS2yMN",
+          "type": "roll",
+          "label": "Trap Silk: explosive",
+          "roll": {
+            "formula": "",
+            "note": "Dispel the anchor when crossed: they save Dexterity at disadvantage against the explosive tool."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Once per turn, setting an anchor with a Bulk 1 weapon (you're disarmed of it) or an explosive tool (one charge)."
+        }
+      ]
+    },
+    "tsuchigumo-silk-weaves-unsuspecting-prey": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eXrKYm4Hwleyvb",
+          "type": "roll",
+          "label": "Unsuspecting Prey",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, a hostile creature steps onto an anchor: the Attack action against it, or a Tsuchigumo Hijutsu attack; +1 critical range (+2 at 7th, +3 at 15th)."
+          },
+          "activation": "reaction"
+        }
+      ]
+    },
+    "tsuchigumo-silk-weaves-wider-web": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Web Anchors are 15-foot cubes (20 at 11th)."
+        }
+      ]
+    },
+    "tsuchigumo-spider-art-golden-silk-strike": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eahq8AZgYR8sbD",
+          "type": "attack",
+          "label": "Golden Silk Strike",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 2
+          },
+          "text": "[Weapon Damage] (+1d6 each at C, +1d6 more at A).",
+          "damage": {
+            "parts": []
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "2"
+          }
+        },
+        {
+          "id": "n5eieZhKHz1p0nVZ",
+          "type": "save",
+          "label": "Golden Silk Strike: webs",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "At least one hit. Failure: you move it 10 feet and yourself up to 10 feet, without provoking.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "tsuchigumo-spider-art-killing-thread": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eomvmTEJ8cYLB3",
+          "type": "save",
+          "label": "Killing Thread",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "A 30-foot cube within 60 feet (difficult terrain; counts as a Web Anchor where it crosses one); first move through it each turn. Failure: the damage and Prone; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d8",
+                "type": "slashing"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5eomvmTEJ8cYLB3",
+                "type": "save",
+                "label": "Killing Thread",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A 30-foot cube within 60 feet (difficult terrain; counts as a Web Anchor where it crosses one); first move through it each turn. Failure: the damage and Prone; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d8) + (1d8)",
+                      "type": "slashing"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eomvmTEJ8cYLB3",
+                "type": "save",
+                "label": "Killing Thread",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A 30-foot cube within 60 feet (difficult terrain; counts as a Web Anchor where it crosses one); first move through it each turn. Failure: the damage and Prone; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d8) + (2d8)",
+                      "type": "slashing"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "tsuchigumo-spider-art-rain-of-spiders": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5er0hrTVKTFfzMH",
+          "type": "roll",
+          "label": "Web Rain",
+          "roll": {
+            "formula": "",
+            "note": "Needs the Brood Mother and Broodlings: for 1 minute the Broodlings obey you. Web Rain: all Broodlings move to one creature, the Brood Mother makes 2 Web String attacks at it, and each Broodling within 5 feet bites (+4 damage against a Bleeding or Weakened creature)."
+          }
+        }
+      ]
+    },
+    "tsuchigumo-spider-art-silk-burial": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e0zmxFSpMQQGfR",
+          "type": "save",
+          "label": "Silk Burial",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "incapacitated",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Incapacitated"
+            },
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            },
+            {
+              "key": "deafened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Deafened"
+            }
+          ],
+          "text": "Creatures standing on one Web Anchor. Failure: cocooned (Incapacitated, Blinded, Deafened; cocoon AC your jutsu save DC, 40 hit points +10 per rank, 10 DR (+4 at S), immune to bludgeoning, poison and psychic); an Action and a Strength save escapes.",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "webAnchors",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eDCt7symnHAnHh",
+          "type": "damage",
+          "label": "Constrict",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "bludgeoning"
+              }
+            ]
+          },
+          "text": "Once per turn on your turn, to the encased creature."
+        }
+      ]
+    },
+    "tsuchigumo-spider-art-terrible-shot": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eaIAHZz9LuI0cD",
+          "type": "attack",
+          "label": "Terrible Shot",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "Your bow: [Weapons Damage] + 3d8. In its first range band: a second attack at another creature. B-Rank: +2 critical range, +2d12 on a critical hit; S-Rank: Pierce 12 in its furthest band.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "piercing"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eaIAHZz9LuI0cD",
+                "type": "attack",
+                "label": "Terrible Shot",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "Your bow: [Weapons Damage] + 3d8. In its first range band: a second attack at another creature. B-Rank: +2 critical range, +2d12 on a critical hit; S-Rank: Pierce 12 in its furthest band.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (1d8)",
+                      "type": "piercing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eaIAHZz9LuI0cD",
+                "type": "attack",
+                "label": "Terrible Shot",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "Your bow: [Weapons Damage] + 3d8. In its first range band: a second attack at another creature. B-Rank: +2 critical range, +2d12 on a critical hit; S-Rank: Pierce 12 in its furthest band.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (2d8)",
+                      "type": "piercing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eaIAHZz9LuI0cD",
+                "type": "attack",
+                "label": "Terrible Shot",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "Your bow: [Weapons Damage] + 3d8. In its first range band: a second attack at another creature. B-Rank: +2 critical range, +2d12 on a critical hit; S-Rank: Pierce 12 in its furthest band.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (3d8)",
+                      "type": "piercing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eaIAHZz9LuI0cD",
+                "type": "attack",
+                "label": "Terrible Shot",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 1
+                },
+                "text": "Your bow: [Weapons Damage] + 3d8. In its first range band: a second attack at another creature. B-Rank: +2 critical range, +2d12 on a critical hit; S-Rank: Pierce 12 in its furthest band.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (4d8)",
+                      "type": "piercing"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "tsuchigumo-spider-art-web-bind": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eOck8A1Y7xwrot",
+          "type": "save",
+          "label": "Web Bind",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            }
+          ],
+          "text": "A 20-foot cone (+5 feet per rank). Failure: Restrained and no opportunity attacks until the end of its next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "tsuchigumo-spider-art-web-flower": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e4eAhAg0ZdSdJv",
+          "type": "attack",
+          "label": "Web Flower",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 3
+          },
+          "text": "Up to three targets (+1 attack per rank): −10 speed per hit until the end of your next turn.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5edJtTZbuOQGZpk",
+          "type": "save",
+          "label": "Web Flower: 2+ hits",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            },
+            {
+              "key": "slowed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Slow"
+            }
+          ],
+          "text": "Failure: no HS jutsu until the end of your next turn; with 3 hits, also Blinded and Slowed.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "tsuchigumo-spider-art-web-slingshot": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezNvg8lE4SmulX",
+          "type": "save",
+          "label": "Web Slingshot",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "Launch up to 90 feet in a line (+30 at A; without provoking); crashing on a creature you cross. Failure: Prone and [Weapon] or [Unarmed Damage] + 1d12. Or launch a willing ally within 5 feet.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d12",
+                "type": "bludgeoning"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5ezNvg8lE4SmulX",
+                "type": "save",
+                "label": "Web Slingshot",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "Launch up to 90 feet in a line (+30 at A; without provoking); crashing on a creature you cross. Failure: Prone and [Weapon] or [Unarmed Damage] + 1d12. Or launch a willing ally within 5 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d12) + (1d12)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5ezNvg8lE4SmulX",
+                "type": "save",
+                "label": "Web Slingshot",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "Launch up to 90 feet in a line (+30 at A; without provoking); crashing on a creature you cross. Failure: Prone and [Weapon] or [Unarmed Damage] + 1d12. Or launch a willing ally within 5 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d12) + (2d12)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5ezNvg8lE4SmulX",
+                "type": "save",
+                "label": "Web Slingshot",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "Launch up to 90 feet in a line (+30 at A; without provoking); crashing on a creature you cross. Failure: Prone and [Weapon] or [Unarmed Damage] + 1d12. Or launch a willing ally within 5 feet.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(1d12) + (3d12)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "tsuchigumo-spider-art-web-throw": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eqcb0BORMbFv6u",
+          "type": "save",
+          "label": "Web Throw",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "A creature you can see within 60 feet. Failure: thrown up to 30 feet (+5 per rank), the damage and Prone.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": "bludgeoning"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eqcb0BORMbFv6u",
+                "type": "save",
+                "label": "Web Throw",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A creature you can see within 60 feet. Failure: thrown up to 30 feet (+5 per rank), the damage and Prone.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (1d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eqcb0BORMbFv6u",
+                "type": "save",
+                "label": "Web Throw",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A creature you can see within 60 feet. Failure: thrown up to 30 feet (+5 per rank), the damage and Prone.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (2d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eqcb0BORMbFv6u",
+                "type": "save",
+                "label": "Web Throw",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A creature you can see within 60 feet. Failure: thrown up to 30 feet (+5 per rank), the damage and Prone.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (3d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eqcb0BORMbFv6u",
+                "type": "save",
+                "label": "Web Throw",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ],
+                "text": "A creature you can see within 60 feet. Failure: thrown up to 30 feet (+5 per rank), the damage and Prone.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (4d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "tsuchigumo-spider-web-wall": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5enf2N1aW1HfrCy",
+          "type": "save",
+          "label": "Spider Web Wall",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            }
+          ],
+          "text": "A creature passing through the wall (60 by 10 by 1 feet; AC your jutsu save DC; 20 hit points per 10 feet, +15 per rank; immune to bludgeoning, poison and psychic, vulnerable to fire). Failure: Restrained in it (an Action and a Strength save escapes).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Light obscurement across it (heavy at A); S-Rank: 1 hour, no concentration."
+        }
+      ]
+    },
+    "tsuchigumo-spiders-thread": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e9b8w7UYlF5JBl",
+          "type": "roll",
+          "label": "Place Web Anchors",
+          "roll": {
+            "formula": "",
+            "note": "The Attack action: one Web Anchor per attack replaced (two for a single attack at 7th): a 10-foot cube on a surface within 60 feet; Stealth DC your highest jutsu save DC; 10 AC, 15 hit points, immune to bludgeoning. Over your maximum the oldest goes (spend one first)."
+          },
+          "cost": {
+            "pool": "webAnchors",
+            "choose": true,
+            "gain": true
+          }
+        },
+        {
+          "id": "n5eoxuMmv7FpA6Rd",
+          "type": "roll",
+          "label": "Web Anchor gone",
+          "roll": {
+            "formula": "",
+            "note": "Destroyed, dispelled by a weave, or dissolved."
+          },
+          "cost": {
+            "pool": "webAnchors",
+            "choose": true
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "webAnchors",
+          "label": "Web Anchors",
+          "value": 0,
+          "max": "lvl(1:4,7:5,15:6)",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [],
+          "lifetime": 60
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Web Anchors: up to 4 (5 at 7th, 6 at 15th), the pool; each lasts 1 minute in combat (1 hour outside it: track by hand). A hostile creature entering one within your held ranged weapon's range: you know where it is and can target it even unseen or through full cover (disadvantage); your ranged weapon and Taijutsu attacks treat its AC as 2 lower."
+        }
+      ]
+    },
+    "tsuchigumo-web-walker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eODBYbsOu7Aquz",
+          "type": "effect",
+          "label": "Arachnid",
+          "effect": {
+            "name": "Arachnid",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "arachnid"
+          },
+          "text": "Bonus action, 1 minute; once per short rest.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5ehnDyal3pCPcTK",
+          "type": "roll",
+          "label": "Six Arms: Web Anchor",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn at no action cost."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "webAnchors",
+            "amount": 1,
+            "gain": true
+          }
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "sr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "(Its copy of Arachnid's Amp is removed, as King Q-E12.)"
+        }
+      ]
+    }
+  }
+}

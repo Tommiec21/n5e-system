@@ -17,6 +17,14 @@
         "cost": "20 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fuinjutsu, Wind Release, Lightning Release.",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Interdiction Seal",
+        "appliesTo": {
+          "namePrefix": "Swift Release: Speed Siphon"
+        },
+        "note": "On a creature marked with your Speed Seal: each success it makes gives −1 on its saves (stacks to −4)."
       }
     }
   },
@@ -110,7 +118,41 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eMxTHCfiYRx8DC",
+        "type": "save",
+        "label": "Speed Siphon",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "slowed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Slow"
+          },
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "A creature you can see within 60 feet, at the start of each of its turns. Failure: Slowed and Dazed (they don't end early; disadvantage on its attacks); a success ends both until its next save.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

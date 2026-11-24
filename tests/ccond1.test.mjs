@@ -179,10 +179,10 @@ test("clan cards, batch C: every clan condition in the clan items is a card", ()
   assert.equal(registry["yamada-asaemon-discipline"].removal[0].check[0], "med");
 });
 
-test("CCOND1b: all 19 class conditions from the books are cards, and their features apply them", () => {
+test("CCOND1b: all 20 class conditions from the books are cards, and their features apply them", () => {
   const classCards = Object.entries(registry).filter(([, d]) => d.owner.kind === "class").map(([k]) => k).sort();
   assert.deepEqual(classCards, ["balance-broken", "blighted", "bone-broken", "curse-of-the-reaper", "flow-broken", "ghostburn", "hemorrhage-vitality",
-    "hobbled", "identity-crisis", "life-pulse", "momentary-flaw", "okuri-inu-shaken", "provoked", "psychosis", "reaver-echo", "scout-disoriented",
+    "hobbled", "identity-crisis", "life-pulse", "mentally-compromised", "momentary-flaw", "okuri-inu-shaken", "provoked", "psychosis", "reaver-echo", "scout-disoriented",
     "shattered", "suppressed", "transfiguration"]);
   const labels = Object.values(registry).map(d => d.label);
   assert.equal(new Set(labels).size, labels.length, "unique names (text links find conditions by name)");

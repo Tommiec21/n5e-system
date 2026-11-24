@@ -9,7 +9,8 @@
   "flags": {
     "n5e": {
       "clanPackage": "keton",
-      "sourceLine": 5885
+      "sourceLine": 5885,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -42,6 +43,47 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ePWoltf0HAOI4q",
+        "type": "effect",
+        "label": "Event Horizon",
+        "effect": {
+          "name": "Event Horizon",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "amp": "event-horizon"
+        },
+        "text": "Bonus action, 4 Stellar Charges, consuming up to 4 Starlights (dispelled; spend them from the Starlights pool): up to 1 minute, once per long rest.",
+        "activation": "bonus",
+        "cost": {
+          "pool": "stellarCharges",
+          "amount": 4
+        }
+      },
+      {
+        "id": "n5e0wccgxSvsV0Kx",
+        "type": "roll",
+        "label": "Consume Starlights",
+        "roll": {
+          "formula": "",
+          "note": "The Starlights the Event Horizon consumes (its benefits by count)."
+        },
+        "cost": {
+          "pool": "starlights",
+          "choose": true
+        }
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "lr",
+      "recharge": "",
+      "staminaEligible": false
+    }
   }
 }

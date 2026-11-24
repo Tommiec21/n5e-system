@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "ryu",
-      "sourceLine": 8666
+      "sourceLine": 8666,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Wyrm Arts (+1 at 7th and 15th): pick them; all are buttons here. Sovereigns Brutality: having taken damage since your last turn, attacks against creatures with Elemental or Physical ranks +1 critical range (+1 at 7th and 15th). Tyrants Focus: in Dragon's Rage, immune to being made to treat or target allies as hostile; can't be Charmed by hostile creatures in combat. Tyrants Ferocity: in Dragon's Rage, a jutsu critical hit allows one Strike at the same creature."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,226 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5efNglDPkN5zwBj",
+        "type": "effect",
+        "label": "Sovereigns Ascent",
+        "effect": {
+          "name": "Sovereigns Ascent",
+          "target": "self",
+          "changes": [],
+          "expires": "nextTurnEnd",
+          "seconds": 0
+        },
+        "text": "Bonus action, on the ground: a fly speed equal to your speed until the end of your next turn.",
+        "activation": "bonus",
+        "cost": {
+          "pool": "draconicChakra",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5etqVbE35EKXuey",
+        "type": "roll",
+        "label": "Sovereigns Coil",
+        "roll": {
+          "formula": "",
+          "note": "Reaction to Ninjutsu, Taijutsu or Bukijutsu damage: a Clash with Chakra Control."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "draconicChakra",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5e8nQxYzBMwEdej",
+        "type": "attack",
+        "label": "Sovereigns Momentum",
+        "attack": {
+          "discipline": "highest",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Action: a 30-foot line through creatures; one attack against each hostile one passed (it can be a Strike).",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5ez7BF0ARflHpFq",
+        "type": "attack",
+        "label": "Cleaving Strike",
+        "attack": {
+          "discipline": "highest",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Once per turn, in place of an attack.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:0,7:1d6,15:2d6)",
+              "type": ""
+            }
+          ]
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5ebNoddrtTZcJN7",
+        "type": "save",
+        "label": "Cleaving Strike: DR",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "On a hit. Failure: −4 DR (−6 at 7th, −8 at 15th) until the end of your next turn.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eNkNAJxICux7q6",
+        "type": "attack",
+        "label": "Consuming Strike",
+        "attack": {
+          "discipline": "highest",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Once per turn, in place of an attack.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:0,7:1d6,15:2d6)",
+              "type": ""
+            }
+          ]
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eMLEe3S7snbJu2",
+        "type": "save",
+        "label": "Consuming Strike: dispel",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "On a hit. Failure: one jutsu effect on it of D-Rank or lower (C at 7th, B at 15th) is dispelled.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eA0QavuSv5ChQB",
+        "type": "attack",
+        "label": "Rebelling Strike",
+        "attack": {
+          "discipline": "highest",
+          "range": "melee",
+          "count": 2
+        },
+        "text": "Once per turn, Reaction to damage from a creature in reach: two attacks.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:0,7:1d6,15:2d6)",
+              "type": ""
+            }
+          ]
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "2"
+        }
+      },
+      {
+        "id": "n5ekTefnm85whizg",
+        "type": "save",
+        "label": "Rebelling Strike: push",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          },
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "At least one hit. Failure: pushed 20 feet, Prone and Bruised.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eKlyjdknsEVltt",
+        "type": "roll",
+        "label": "Tyrants Hunger",
+        "roll": {
+          "formula": "",
+          "note": "In Dragon's Rage, Reaction to damage from a jutsu of your release: −1 damage die (+1 at 7th and 15th); regain Draconic Chakra by its rank (D/C 2, B/A 4, S 6; gain by hand)."
+        },
+        "activation": "reaction"
+      }
+    ]
   }
 }

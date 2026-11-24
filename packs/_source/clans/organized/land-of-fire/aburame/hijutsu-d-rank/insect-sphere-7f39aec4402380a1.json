@@ -17,6 +17,190 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eh0nCWGhOBlgdz",
+              "type": "save",
+              "label": "Insect Sphere",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "Creatures within 5 feet of a point within 30 feet (two points with your Swarm). Failure: Grappled; its jutsu cost +4 (+2 per rank); a Strength save at the end of its turns ends it.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eCcWm9jbFJyXV2",
+              "type": "damage",
+              "label": "Insect Sphere: end of its turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (1d8)",
+                    "type": "poison"
+                  }
+                ]
+              },
+              "text": "A grappled creature; poison or chakra."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eh0nCWGhOBlgdz",
+              "type": "save",
+              "label": "Insect Sphere",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "Creatures within 5 feet of a point within 30 feet (two points with your Swarm). Failure: Grappled; its jutsu cost +4 (+2 per rank); a Strength save at the end of its turns ends it.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eCcWm9jbFJyXV2",
+              "type": "damage",
+              "label": "Insect Sphere: end of its turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (2d8)",
+                    "type": "poison"
+                  }
+                ]
+              },
+              "text": "A grappled creature; poison or chakra."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eh0nCWGhOBlgdz",
+              "type": "save",
+              "label": "Insect Sphere",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "Creatures within 5 feet of a point within 30 feet (two points with your Swarm). Failure: Grappled; its jutsu cost +4 (+2 per rank); a Strength save at the end of its turns ends it.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eCcWm9jbFJyXV2",
+              "type": "damage",
+              "label": "Insect Sphere: end of its turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (3d8)",
+                    "type": "poison"
+                  }
+                ]
+              },
+              "text": "A grappled creature; poison or chakra."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eh0nCWGhOBlgdz",
+              "type": "save",
+              "label": "Insect Sphere",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "Creatures within 5 feet of a point within 30 feet (two points with your Swarm). Failure: Grappled; its jutsu cost +4 (+2 per rank); a Strength save at the end of its turns ends it.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eCcWm9jbFJyXV2",
+              "type": "damage",
+              "label": "Insect Sphere: end of its turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (4d8)",
+                    "type": "poison"
+                  }
+                ]
+              },
+              "text": "A grappled creature; poison or chakra."
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Swarm active",
+        "appliesTo": {
+          "namePrefix": "Insect Sphere"
+        },
+        "note": "With your Swarm released: a second point in range."
       }
     }
   },
@@ -107,7 +291,49 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eh0nCWGhOBlgdz",
+        "type": "save",
+        "label": "Insect Sphere",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "grappled",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Grappled"
+          }
+        ],
+        "text": "Creatures within 5 feet of a point within 30 feet (two points with your Swarm). Failure: Grappled; its jutsu cost +4 (+2 per rank); a Strength save at the end of its turns ends it.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eCcWm9jbFJyXV2",
+        "type": "damage",
+        "label": "Insect Sphere: end of its turn",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "poison"
+            }
+          ]
+        },
+        "text": "A grappled creature; poison or chakra."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

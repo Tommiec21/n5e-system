@@ -87,17 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5em5BX8FISs3Hfn",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "dazzled",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Dazzled"
-          }
-        ],
+        "label": "Breath of Sound: Roar",
         "save": {
           "abilities": [
             "con"
@@ -106,21 +98,24 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          }
+        ],
+        "text": "Creatures in range but you (B-Rank: proficiency-bonus creatures immune). Failure: 1 Dazzled; Chain 1, failing by 5+: also Confused. No half damage on a success.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "1d6",
-        "roll": {
-          "formula": "1d6",
-          "note": "On a failed save, they take your weapons damage + 1d6 and gain a rank of Dazzled on a failed save."
+          "parts": [
+            {
+              "formula": "@weapon + 1d6",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -201,9 +196,147 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5em5BX8FISs3Hfn",
+              "type": "save",
+              "label": "Breath of Sound: Roar",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "Creatures in range but you (B-Rank: proficiency-bonus creatures immune). Failure: 1 Dazzled; Chain 1, failing by 5+: also Confused. No half damage on a success.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 1d6) + (1d6)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5em5BX8FISs3Hfn",
+              "type": "save",
+              "label": "Breath of Sound: Roar",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "Creatures in range but you (B-Rank: proficiency-bonus creatures immune). Failure: 1 Dazzled; Chain 1, failing by 5+: also Confused. No half damage on a success.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 1d6) + (2d6)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5em5BX8FISs3Hfn",
+              "type": "save",
+              "label": "Breath of Sound: Roar",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "Creatures in range but you (B-Rank: proficiency-bonus creatures immune). Failure: 1 Dazzled; Chain 1, failing by 5+: also Confused. No half damage on a success.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 1d6) + (3d6)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5em5BX8FISs3Hfn",
+              "type": "save",
+              "label": "Breath of Sound: Roar",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "Creatures in range but you (B-Rank: proficiency-bonus creatures immune). Failure: 1 Dazzled; Chain 1, failing by 5+: also Confused. No half damage on a success.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 1d6) + (4d6)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "1b8bbde86064544a"

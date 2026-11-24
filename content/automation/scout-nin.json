@@ -1,0 +1,4483 @@
+{
+  "class": "scout-nin",
+  "spec": "docs/STD6d_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "absolute-authority-arbiter-scout": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A rank of Mastery in Deception, Intimidation or Persuasion. Reaction: you or a Squad-Mate attempting a Str, Dex or Cha skill-based action uses a Charisma skill you have Mastery in instead."
+        }
+      ]
+    },
+    "adaptive-initiative": {
+      "status": "automated",
+      "rules": [
+        {
+          "key": "initiativeOptions",
+          "skills": [
+            "ath",
+            "nin",
+            "ill",
+            "ins"
+          ],
+          "text": "Substitute a skill if it fits how combat started (GM decides).",
+          "label": "Adaptive Initiative"
+        }
+      ]
+    },
+    "adaptive-orders-arbiter-scout": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Squad needn't see or hear you to follow commands while in initiative with you. Command twice per turn; each forgone attack of the Attack action commands a different Squad-Mate."
+        }
+      ]
+    },
+    "adaptive-shielding-barrier-scout": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "When your barrier takes damage, it can resist that type until the start of your next turn (one type at a time)."
+        }
+      ]
+    },
+    "all-a-part-of-the-plan": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eCRh3HcuJIsefU",
+          "type": "roll",
+          "label": "All a Part of the Plan",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "activation": "bonus",
+          "roll": {
+            "formula": "1d20",
+            "note": "Bonus action: roll a d20 and record it (up to 3 recorded, 1 minute). When you make a saving throw, use a recorded result instead."
+          }
+        }
+      ]
+    },
+    "amplified-force": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5evQAgiskgUsCLV",
+          "type": "roll",
+          "label": "Amplified Force",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). A jutsu forcing your Combat Rival to save against a condition: on a failure, +1 rank of it."
+          }
+        }
+      ]
+    },
+    "arresting-strike": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ewK8ajeVSAAusr",
+          "type": "save",
+          "label": "Arresting Strike",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "On a hit. Failure: speed halved, Prone, and standing takes its bonus action until the end of its next turn."
+        }
+      ]
+    },
+    "authoritative-strike": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ebjXJycpG2Et1z",
+          "type": "roll",
+          "label": "Authoritative Strike",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "On a hit, or a failed save against your jutsu: every affected hostile creature gains 1 rank of Demoralized or Weakened until the start of your next turn."
+          }
+        }
+      ]
+    },
+    "back-off": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ec8N7y5bTC7UfI",
+          "type": "effect",
+          "label": "Back Off!",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "activation": "bonus",
+          "effect": {
+            "name": "Back Off!",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "n5e.dr",
+                "value": "@poolRoll",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Bonus action: your Squad moves up to half speed away from a hostile creature (no opportunity attacks) and gains DR equal to the die until the start of your next turn. Target them."
+        }
+      ]
+    },
+    "battlefield-judication-arbiter-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e3JUG1WDW35Nhl",
+          "type": "effect",
+          "label": "Choose Squad-Mates",
+          "effect": {
+            "name": "Squad-Mate",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "state": "squad-mate",
+            "limit": "@prof"
+          },
+          "text": "After a rest: creatures other than you, up to your proficiency bonus."
+        },
+        {
+          "id": "n5ecuCdCiWMuyHiK",
+          "type": "roll",
+          "label": "Command",
+          "oncePerTurn": true,
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, in place of an attack of the Attack action: a Squad-Mate who can see or hear you makes a weapon attack, casts a D-Rank or lower attack jutsu (C-Rank at 10th, B-Rank at 17th), takes a skill-based action (you regain 1 die), Dodges, or Disengages and moves half its speed (you regain 1 die)."
+          }
+        },
+        {
+          "id": "n5eZFAPZjpWIDcrw",
+          "type": "roll",
+          "label": "Command: regain a die",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "After a Command to take a skill-based action or Disengage."
+          }
+        },
+        {
+          "id": "n5eC1UZxCMEPUWap",
+          "type": "roll",
+          "label": "Join the attack",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "activation": "reaction",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, a Squad-Mate attacks: a weapon attack against the same target; on a hit, add the die to both your damage and theirs."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "In combat, you and your Squad add your Charisma modifier to initiative (at the table)."
+        }
+      ]
+    },
+    "better-than-the-best-tactical-scout": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two maneuvers from the Arbiter, Assault, Cloning, Elemental or Phantom lists (not Specialized), not counting against maneuvers known; two more at 14th."
+        }
+      ]
+    },
+    "between-the-veil-phantom-scout": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Placing yourself and another under Spectral Concealment: Dimensional Walk (Sneaking creatures also get Ghost Walk, free) or Extended Veil (10 minutes; harmless jutsu don't break stealth). Switching needs 10 minutes of meditation."
+        }
+      ]
+    },
+    "blitz-assault": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eLKSFBpzImcNy1",
+          "type": "roll",
+          "label": "Blitz Assault",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). In Flash, making an attack: that many other creatures; one unarmed or weapon attack against each as you teleport between them, then return."
+          }
+        }
+      ]
+    },
+    "blitz-guard": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eC3XUKQfKND5AC",
+          "type": "effect",
+          "label": "Blitz Guard",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "activation": "reaction",
+          "effect": {
+            "name": "Blitz Guard",
+            "target": "self",
+            "changes": [],
+            "expires": "turnEnd",
+            "seconds": 0
+          },
+          "text": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). In Flash, reaction to damage: 4 DR for every 20 feet of movement you have (max 12). Add the DR to the effect."
+        }
+      ]
+    },
+    "blitz-recovery": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e1HnaDDy3WBtrl",
+          "type": "roll",
+          "label": "Blitz Recovery",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "A jutsu or feature that heals only you: add twice the die to the healing."
+          }
+        }
+      ]
+    },
+    "blitz-shock": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5euEluBQGy2xS2L",
+          "type": "roll",
+          "label": "Blitz Shock",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "When you teleport: an unarmed or weapon attack against each creature within 5 feet of where you left or arrived."
+          }
+        }
+      ]
+    },
+    "blitz-step": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eA8sgrJmNQF6lG",
+          "type": "roll",
+          "label": "Blitz Step",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "In Flash, using Burst Rush: teleport 5 × the die feet farther."
+          }
+        }
+      ]
+    },
+    "blitz-strike": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5etr2xT0yQCHUwF",
+          "type": "save",
+          "label": "Blitz Strike",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            }
+          ],
+          "text": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). In Flash, on a hit: a Constitution save (the jutsu's DC; Taijutsu for weapons or unarmed) or Dazed."
+        }
+      ]
+    },
+    "blitz-swap": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQfsT3QrwZXruR",
+          "type": "roll",
+          "label": "Blitz Swap",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "activation": "reaction",
+          "roll": {
+            "formula": "",
+            "note": "Reaction: an ally within your movement is attacked or forced to save. Swap places and become the target; you both add half the die to AC and saves against it until the end of the turn."
+          }
+        }
+      ]
+    },
+    "brutish-aggression-assault-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ekLydJlimFfApR",
+          "type": "roll",
+          "label": "Brutish Aggression: regain a die",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "gain": true
+          },
+          "oncePerTurn": true,
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, succeeding at a skill-based action against your Combat Rival: its next attack has disadvantage."
+          }
+        }
+      ]
+    },
+    "brutish-momentum": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eGZIk9Z7GDX8b6",
+          "type": "effect",
+          "label": "Mark Combat Rival",
+          "effect": {
+            "name": "Combat Rival",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 3600,
+            "state": "combatRival"
+          },
+          "text": "When initiative is rolled: one creature you can see, until combat ends or either of you drops to 0 hit points (then mark a new one)."
+        },
+        {
+          "id": "n5eufAY2EwlFapzs",
+          "type": "effect",
+          "label": "Relentless Durability",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "activation": "reaction",
+          "oncePerTurn": true,
+          "effect": {
+            "name": "Relentless Durability",
+            "target": "self",
+            "changes": [],
+            "expires": "turnEnd",
+            "seconds": 0,
+            "tempHp": "@poolRoll * lvl(3:1,10:2,17:3)"
+          },
+          "text": "Once per turn, when you take damage: temporary hit points equal to the die (twice at 10th, three times at 17th) until the end of the turn."
+        },
+        {
+          "id": "n5eGMOgxTbVnnw5Q",
+          "type": "roll",
+          "label": "Relentless Pursuit",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "activation": "reaction",
+          "roll": {
+            "formula": "",
+            "note": "Reaction: your Combat Rival ends its movement more than 5 feet away. Move up to your speed toward it; in range, an unarmed or weapon attack adding the die to its damage."
+          }
+        },
+        {
+          "id": "n5e8ZZEqDEtj0zcQ",
+          "type": "roll",
+          "label": "Relentless Progress: regain a die",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "gain": true
+          },
+          "oncePerTurn": true,
+          "roll": {
+            "formula": "",
+            "note": "The first time each turn you beat your Combat Rival's AC by 5, or it fails your jutsu's save by 5."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Relentless Aggression: once per turn, hitting your Combat Rival with an Attack-action attack on your turn: Trip, Grapple, Shove or Disarm using the attack result."
+        }
+      ]
+    },
+    "burst-of-speed-pathfinder-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e6zMj9NR1OxNaQ",
+          "type": "effect",
+          "label": "Enter Flash",
+          "activation": "bonus",
+          "effect": {
+            "name": "Flash",
+            "target": "self",
+            "amp": "flash"
+          },
+          "text": "A bonus action on your turn, or when you cast a Mobile Savant jutsu; 1 minute."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Ending Flash early: Speed Blitz (an attack of the Attack action with Jack of All's Combat benefits that can't be reacted to) or Burst Rush (Dash: teleport within your movement, bringing an adjacent willing ally). End the Flash card when you do."
+        }
+      ]
+    },
+    "chakra-barrier-barrier-scout": {
+      "status": "partial",
+      "pools": [
+        {
+          "id": "chakraBarrier",
+          "label": "Chakra Barrier",
+          "value": 0,
+          "max": "2 * @level",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "sr",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            },
+            {
+              "on": "lr",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "activities": [
+        {
+          "id": "n5eISc1faMM6i2dz",
+          "type": "roll",
+          "label": "Barrier: transfer temporary hit points",
+          "cost": {
+            "pool": "chakraBarrier",
+            "choose": true,
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "1 barrier hit point for each temporary hit point you transfer (enter the amount)."
+          }
+        },
+        {
+          "id": "n5ejp4LJMJR5ix03",
+          "type": "roll",
+          "label": "Barrier: sacrifice DR",
+          "cost": {
+            "pool": "chakraBarrier",
+            "choose": true,
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "2 barrier hit points for each DR from a jutsu you give up (enter twice the DR)."
+          }
+        }
+      ],
+      "effects": [
+        {
+          "name": "Chakra Barrier: Mastery",
+          "changes": [
+            {
+              "key": "n5e.mastery.skill.cha",
+              "value": "Chakra Barrier ×lvl(3:1,9:2,17:3)",
+              "mode": 2
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Chakra Barrier pool is its hit points (twice your level), full after any rest. At the table: it intercepts damage before you, with your resistances and immunities; spend the pool for it. At 0 hit points you lose the Mastery (disable its effect)."
+        }
+      ]
+    },
+    "clone-combo": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eObsSNkLRBeGSd",
+          "type": "roll",
+          "label": "Clone Combo",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Making an attack with a Bunshin active: dismiss any number; each gives −1 AC (max −3) and −2 DR (max −6) to the target for this attack and its damage."
+          }
+        }
+      ]
+    },
+    "clone-flank": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e1WTF6UKIH8BCC",
+          "type": "roll",
+          "label": "Clone Flank",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Summoning two or more clones or Bunshin with a hostile creature within 60 feet: −1 to its next Str, Dex or Con save for each one summoned adjacent to it (max −3), until the end of your next turn."
+          }
+        }
+      ]
+    },
+    "clone-master-cloning-scout": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Up to 8 Bunshin; each after the first costs 2 chakra with a Clone jutsu. Clone Strike as many times as your Attack action's attacks."
+        }
+      ]
+    },
+    "clone-raid": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ebv4zFoDzoaBwy",
+          "type": "roll",
+          "label": "Clone Raid",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "activation": "reaction",
+          "roll": {
+            "formula": "",
+            "note": "Reaction: a hostile creature within 10 feet of a clone or Bunshin casts a jutsu that heals it or gives temporary hit points. 1d8 for each clone within 10 feet; reduce what it gains by the total."
+          }
+        }
+      ]
+    },
+    "clone-swap": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5emlRo2jhdLqCUs",
+          "type": "roll",
+          "label": "Clone Swap",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "activation": "reaction",
+          "roll": {
+            "formula": "",
+            "note": "Reaction: you or an ally would take damage; a clone or Bunshin within 15 feet swaps places and takes it and its effects."
+          }
+        }
+      ]
+    },
+    "clone-swarm": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eDxCjqlRkyeO8b",
+          "type": "roll",
+          "label": "Clone Swarm",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Each missed attack of your attack jutsu: dismiss a Bunshin and remake it (without advantage if the first had it)."
+          }
+        }
+      ]
+    },
+    "clone-tactics-cloning-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eBeafMG5YhQ0AZ",
+          "type": "roll",
+          "label": "Clone Tactics",
+          "activation": "reaction",
+          "roll": {
+            "formula": "",
+            "note": "Reaction to damage or a failed save: summon a Bunshin in your space and teleport to another Bunshin within 60 feet (dispelling it); lightly obscured there, you can Hide."
+          }
+        }
+      ]
+    },
+    "cloned-technique": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eBJdkRzpVHISwK",
+          "type": "roll",
+          "label": "Cloned Technique",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). One active Bunshin deals the jutsu's listed damage until the end of the turn."
+          }
+        }
+      ]
+    },
+    "clones-everywhere-cloning-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZiEcdZoEuaheZ",
+          "type": "save",
+          "label": "Clones Everywhere",
+          "oncePerTurn": true,
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "nin"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "scout-disoriented",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Disoriented"
+            }
+          ],
+          "text": "Once per turn with a clone or Bunshin active, a hit by you, a clone or a Bunshin Strike: a Wisdom save against your Stealth DC or Disoriented (until the end of its turn)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The save uses your Stealth DC (8 + your Stealth bonus); the button uses your Ninjutsu DC, so adjust at the table. Downtime to learn, create or modify jutsu is reduced by the jutsu's rank."
+        }
+      ]
+    },
+    "clones-stealth": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ekyuCF1ZgWlNLE",
+          "type": "roll",
+          "label": "Clones Stealth",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Summoning two or more Bunshin within 60 feet of cover: a Stealth check plus the die against the highest hostile passive Perception; on a success they are undetected."
+          }
+        }
+      ]
+    },
+    "clones-support": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eJHJxg4XH8joJI",
+          "type": "roll",
+          "label": "Clones Support",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "activation": "reaction",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, making a save: dismiss clones or Bunshin; +1 to the save for each (max +4)."
+          }
+        }
+      ]
+    },
+    "commanding-presence-arbiter-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eaUJMgW9nDmVKw",
+          "type": "roll",
+          "label": "Focus!",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 2
+          },
+          "activation": "bonus",
+          "roll": {
+            "formula": "",
+            "note": "Bonus action: Squad-Mates in initiative who can see or hear you remake their saves against a hostile jutsu, feature or trait, adding your Tactics skill bonus."
+          }
+        },
+        {
+          "id": "n5eGoHZ7mQzfveI4",
+          "type": "roll",
+          "label": "Superior Momentum for a Squad-Mate",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 3
+          },
+          "activation": "reaction",
+          "roll": {
+            "formula": "",
+            "note": "Reaction on a Squad-Mate's turn: they gain an extra action by Superior Momentum's rules (once per turn per creature)."
+          }
+        }
+      ]
+    },
+    "debilitate-focus": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5efSopKAVzpTtqU",
+          "type": "roll",
+          "label": "Debilitate: Focus",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "An attack or jutsu affecting a hostile creature: a creature failing the jutsu's save gains 1 rank of Dazzled."
+          }
+        },
+        {
+          "id": "n5eOEXJzPWmPsGT4",
+          "type": "save",
+          "label": "Debilitate: Focus: Charisma save",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            }
+          ],
+          "text": "When the attack forces no save (Discipline already spent): a Charisma save (the jutsu's DC; Taijutsu for weapons or unarmed). Failure: 1 rank of Dazzled."
+        }
+      ]
+    },
+    "debilitate-reflex": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e0hp2xgk1Nxq3P",
+          "type": "roll",
+          "label": "Debilitate: Reflex",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "An attack or jutsu affecting a hostile creature: a creature failing the jutsu's save gains −2 AC until the end of its next turn."
+          }
+        },
+        {
+          "id": "n5eSsNspoEimL1Jn",
+          "type": "save",
+          "label": "Debilitate: Reflex: Charisma save",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "When the attack forces no save (Discipline already spent): a Charisma save (the jutsu's DC; Taijutsu for weapons or unarmed). Failure: −2 AC until the end of its next turn."
+        }
+      ]
+    },
+    "debilitate-strength": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eHlElM2wDQVEvg",
+          "type": "roll",
+          "label": "Debilitate: Strength",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "An attack or jutsu affecting a hostile creature: a creature failing the jutsu's save gains 1 rank of Weakened."
+          }
+        },
+        {
+          "id": "n5eIEfC5dAnC4UmG",
+          "type": "save",
+          "label": "Debilitate: Strength: Charisma save",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            }
+          ],
+          "text": "When the attack forces no save (Discipline already spent): a Charisma save (the jutsu's DC; Taijutsu for weapons or unarmed). Failure: 1 rank of Weakened."
+        }
+      ]
+    },
+    "defensive-enhancement": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5emYF5Yg6FzmC6X",
+          "type": "roll",
+          "label": "Defensive Enhancement",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). An ally under your Projected Barrier makes a save: add the die to it."
+          }
+        }
+      ]
+    },
+    "defensive-goading": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e01UnrUCWgmqvR",
+          "type": "effect",
+          "label": "Defensive Goading",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "effect": {
+            "name": "Goaded",
+            "target": "targets",
+            "changes": [],
+            "expires": "turnEnd",
+            "seconds": 12
+          },
+          "text": "Dealing damage: the target has disadvantage on attacks against anyone but you until the end of its next turn."
+        }
+      ]
+    },
+    "defensive-rally": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezeYz4nC1fhbr0",
+          "type": "heal",
+          "label": "Defensive Rally",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "activation": "bonus",
+          "heal": {
+            "formula": "@poolRoll",
+            "pool": "hp"
+          },
+          "text": "Bonus action: an ally within 30 feet damaged in the last minute regains the die plus a Hit Die it spends (it rolls the Hit Die)."
+        }
+      ]
+    },
+    "defensive-ramping": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5exKf4EWqrZHKEx",
+          "type": "roll",
+          "label": "Defensive Ramping",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "A jutsu giving you temporary hit points: allies within 10 feet gain it too; add the die to a rolled amount."
+          }
+        }
+      ]
+    },
+    "defensive-reassurance": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eiuAJimVpLvg6g",
+          "type": "effect",
+          "label": "Defensive Reassurance",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "effect": {
+            "name": "Defensive Reassurance",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "2",
+                "mode": 2
+              }
+            ],
+            "expires": "turnEnd",
+            "seconds": 0
+          },
+          "text": "A willing ally within 60 feet that can see or hear you is attacked: +2 AC."
+        }
+      ]
+    },
+    "defensive-rebuke": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e3jTmHOk4YXCS0",
+          "type": "roll",
+          "label": "Defensive Rebuke",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). A jutsu giving you DR: creatures under your Projected Barrier gain it too until the end of the turn; add the die to a rolled amount."
+          }
+        }
+      ]
+    },
+    "defensive-regression": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZB9YP68BoMVum",
+          "type": "roll",
+          "label": "Defensive Regression",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). A critical hit on an ally under your Projected Barrier: it rolls that many fewer damage dice (at least 1)."
+          }
+        }
+      ]
+    },
+    "devastating-assault-assault-scout": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "On a critical hit: maximize the damage dice without doubling them, and double your ability modifier (4d10 + 5 becomes 40 + 10). Choose it in the damage dialog at the table."
+        }
+      ]
+    },
+    "durable-clone": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRkBaG3FhiF7mi",
+          "type": "effect",
+          "label": "Durable Clone",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "effect": {
+            "name": "Durable Clone",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "n5e.dr",
+                "value": "@poolRoll",
+                "mode": 2
+              }
+            ],
+            "expires": "turnEnd",
+            "seconds": 0
+          },
+          "text": "You or one of your clones or Bunshin takes damage: DR equal to the die."
+        }
+      ]
+    },
+    "elemental-aura-elemental-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eIA9e3L8qt44NO",
+          "type": "effect",
+          "label": "Elemental Aura",
+          "effect": {
+            "name": "Elemental Aura",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "aura": {
+              "radius": 10,
+              "who": "friendly",
+              "includeSelf": true,
+              "effect": {
+                "name": "Elemental Aura",
+                "rules": [
+                  {
+                    "key": "modifier",
+                    "selector": "save",
+                    "predicate": {
+                      "any": [
+                        "against:jutsu:keyword:earthRelease",
+                        "against:jutsu:keyword:windRelease",
+                        "against:jutsu:keyword:fireRelease",
+                        "against:jutsu:keyword:waterRelease",
+                        "against:jutsu:keyword:lightningRelease"
+                      ]
+                    },
+                    "value": "floor(@abilities.con.mod / 2)",
+                    "label": "Elemental Aura"
+                  }
+                ]
+              }
+            }
+          },
+          "text": "A passive 10-foot aura (20 at 14th: Primordial Flux, at the table) for creatures of your choice: + half your Constitution modifier to saves against nature release jutsu. Start it once; it stays."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A second nature release. In Flux: resistance to your Flux type's damage (on the Elemental Flux card from 6th)."
+        }
+      ]
+    },
+    "elemental-being": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5elIkgz9t2Sfb2Q",
+          "type": "effect",
+          "label": "Elemental Being",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "activation": "reaction",
+          "effect": {
+            "name": "Elemental Being",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "@poolRoll",
+                "mode": 2
+              }
+            ],
+            "expires": "turnEnd",
+            "seconds": 0
+          },
+          "text": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). In Flux, reaction to damage from an attack: +AC equal to the die until the end of the turn; melee attackers take twice the die of your Flux type."
+        }
+      ]
+    },
+    "elemental-chakra-strike": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eytoT6hCrFW7dL",
+          "type": "roll",
+          "label": "Elemental Chakra-Strike",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "activation": "bonus",
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Bonus action: infuse a Ninjutsu or Genjutsu attack jutsu you know with a nature release. Your first unarmed or weapon hit before the end of your next turn deals its [Weapon Damage] plus the jutsu's damage (its save at disadvantage; half on a success)."
+          }
+        }
+      ]
+    },
+    "elemental-disruption": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eaJzAbRHcCgudl",
+          "type": "roll",
+          "label": "Elemental Disruption",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). In Flux, damaging a creature with an attack: its jutsu cost twice the die more until the start of your next turn."
+          }
+        }
+      ]
+    },
+    "elemental-flux-elemental-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQzq3kIuwv0hFq",
+          "type": "effect",
+          "label": "Enter Elemental Flux",
+          "effect": {
+            "name": "Elemental Flux",
+            "target": "self",
+            "amp": "elemental-flux"
+          },
+          "text": "In combat, casting a nature release jutsu: until the end of your next turn (a same-release jutsu extends it a round; another release changes it)."
+        },
+        {
+          "id": "n5e3CtmcdvelVMzR",
+          "type": "roll",
+          "label": "Flux: regain a die",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "gain": true
+          },
+          "oncePerTurn": true,
+          "roll": {
+            "formula": "",
+            "note": "Once per turn in Flux, casting a jutsu that applies or benefits from Follow Up or Set-Up."
+          }
+        }
+      ]
+    },
+    "elemental-malady": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e3FHnrYYMRtG1u",
+          "type": "roll",
+          "label": "Elemental Malady",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). A nature release jutsu that can inflict an Elemental condition: half the die more ranks, when it's inflicted."
+          }
+        }
+      ]
+    },
+    "elite-clone": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eonbQHyUdFNSxW",
+          "type": "roll",
+          "label": "Elite Clone",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Summoning two or more Bunshin: summon one with 5 × the die hit points, one more jutsu, and +1d8 to its damage once per turn. One at a time."
+          }
+        }
+      ]
+    },
+    "exceeding-expectations-tactical-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezGNLJCI0b5fTj",
+          "type": "roll",
+          "label": "Lasting Affliction",
+          "cost": {
+            "pool": "tacticalInsight",
+            "amount": 2
+          },
+          "roll": {
+            "formula": "",
+            "note": "Tactician: Physical, Mental or Sensory conditions you inflict Persist for 1 minute; ones ending at the end of a creature's next turn now need a Constitution save against your highest DC at the end of its turns."
+          }
+        },
+        {
+          "id": "n5eNfOQKxXRYksQC",
+          "type": "roll",
+          "label": "Always Prepared (Tactician)",
+          "cost": {
+            "pool": "tacticalInsight",
+            "amount": 2
+          },
+          "oncePerTurn": true,
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, inflicting a condition: inflict a Physical, Mental or Sensory condition of your choice instead (not Staggered, Restrained, Lacerated, Berserk, Charmed or Blinded)."
+          }
+        },
+        {
+          "id": "n5eBIQ44K9o6mCDV",
+          "type": "roll",
+          "label": "Never Caught Off Guard",
+          "cost": {
+            "pool": "tacticalInsight",
+            "amount": 2
+          },
+          "roll": {
+            "formula": "",
+            "note": "Superior Momentum for one more reaction (lost if unused by the start of your next turn)."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "One more maneuver per turn. Tactician is a Generalization (switch to it like the others; its abilities spend Tactical Insight)."
+        }
+      ]
+    },
+    "extra-attack": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "attacks",
+          "value": 2,
+          "label": "Extra Attack"
+        },
+        {
+          "key": "attacks",
+          "value": 3,
+          "implementsOnly": true,
+          "label": "Extra Attack"
+        },
+        {
+          "key": "note",
+          "text": "Base-quality Chili Pepper Bombs, Paper Bombs, Flash Tags and Smoke Bombs use a d4 ammunition die instead of charges."
+        }
+      ]
+    },
+    "follow-my-lead": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ejpGRBxjBA6B3N",
+          "type": "roll",
+          "label": "Follow My Lead",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). A melee attack with your Follow Up bonus to hit; on a hit, apply Set-Up, and a Squad-Mate can use its reaction for the same kind of attack (a jutsu of the same rank or lower) on it."
+          }
+        }
+      ]
+    },
+    "geist-walk": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQFFGWLYJ6T8az",
+          "type": "roll",
+          "label": "Geist Walk",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). A save or check to move through a barrier: add the die."
+          }
+        }
+      ]
+    },
+    "general-technique": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "attacks",
+          "value": 2,
+          "implementsOnly": true,
+          "text": "then no Bonus Action attack with them this turn",
+          "label": "General Technique"
+        },
+        {
+          "key": "note",
+          "text": "Fighting Stances: one at 1st (Taijutsu Stance, Weapon Stance or Chakra Mode), another type at 7th and 11th. Chili Pepper Bombs, Paper Bombs, Flash Tags or Smoke Bombs can replace an attack of the Attack action."
+        }
+      ]
+    },
+    "ghastly-wail": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eqLAknrDrblYq5",
+          "type": "save",
+          "label": "Ghastly Wail",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "nin"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Dazzled"
+            }
+          ],
+          "text": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). In place of an attack of the Attack action: creatures of your choice in a 30-foot cone. Failure: 2 ranks of Dazzled."
+        }
+      ]
+    },
+    "ghostfire-claw": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5enHX2mh5hYHKyG",
+          "type": "roll",
+          "label": "Ghostfire Claw",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). With Phantasm's Grip: Concussed also gives 1 rank of Sealed. Hidden or unaware: its save at disadvantage; failure gives +1 Concussed and 2 Sealed."
+          }
+        }
+      ]
+    },
+    "go-all-out": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eEZYSdxsDjsUwB",
+          "type": "roll",
+          "label": "Go All Out",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "activation": "bonus",
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Bonus action: a Squad-Mate can use its reaction to cast a 1-Action jutsu of B-Rank or lower, adding your Warfare bonus damage (half the dice for an area)."
+          }
+        }
+      ]
+    },
+    "guards-up": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ewQCE4CrhBHvEP",
+          "type": "roll",
+          "label": "Guards Up!",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "activation": "reaction",
+          "roll": {
+            "formula": "",
+            "note": "Reaction: a creature within 30 feet would take damage from a failed save or an attack. +AC equal to the die, or + half the die to the save, against it."
+          }
+        }
+      ]
+    },
+    "haunting": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eWSNujcUKvx4n1",
+          "type": "roll",
+          "label": "Haunting",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "activation": "reaction",
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Reaction: a creature within 5 feet moves away. Invisible, move up to your speed next to it, then a weapon attack adding the die to its damage."
+          }
+        }
+      ]
+    },
+    "haunting-veil-phantom-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eiLMjzJA2EJvET",
+          "type": "roll",
+          "label": "Haunting Veil: regain a die",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Out of combat, attempting to Hide: allies within 10 feet gain Spectral Concealment (your Stealth result for Hide and Sneak, undetectable to Chakra Sight and darkvision, 1 minute or until observed). Once every 10 minutes."
+          }
+        }
+      ]
+    },
+    "heat-riser-void-heart-scout": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Using a Trickster maneuver on a creature: another one on it in the same action, for another die. Your Void Soul's ability modifiers +1."
+        }
+      ]
+    },
+    "heightened-jutsu": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eJ2lpyLALjSHPv",
+          "type": "roll",
+          "label": "Heightened Jutsu",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). A nature release jutsu: one affected hostile creature's reaction jutsu bonus to its save or AC becomes a penalty."
+          }
+        }
+      ]
+    },
+    "hungry-phantom-flame-phantom-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eiTwUEYANtWVPG",
+          "type": "roll",
+          "label": "Hungry Phantom Flame",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "activation": "reaction",
+          "roll": {
+            "formula": "",
+            "note": "Reaction to damage from an attack: spend Ghostfire too (the Ghostfire button); reduce the damage by 2d6 for each (2d8 against a Genjutsu attack or psychic damage). Reduced to 0: hostile creatures within 10 feet make a Wisdom save or take the reduced amount as chakra damage. You gain 1d6 temporary chakra per Ghostfire (1 minute)."
+          }
+        },
+        {
+          "id": "n5e9UWtswITEEXls",
+          "type": "roll",
+          "label": "Hungry Phantom Flame: Ghostfire",
+          "cost": {
+            "pool": "ghostfire",
+            "choose": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "The Ghostfire you spend with it."
+          }
+        }
+      ]
+    },
+    "i-know-what-im-doing": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eITCL0Iud1vBvX",
+          "type": "roll",
+          "label": "I Know What I'm Doing",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "oncePerTurn": true,
+          "roll": {
+            "formula": "",
+            "note": "A skill-based action without its action cost (once per turn in combat)."
+          }
+        }
+      ]
+    },
+    "jack-of-all": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eeePINQmze4aQo",
+          "type": "effect",
+          "label": "Generalization: Warfare",
+          "activation": "bonus",
+          "effect": {
+            "name": "Generalization: Warfare",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "state": "generalization-warfare"
+          },
+          "text": "Switching is a Bonus action; end the other Generalization."
+        },
+        {
+          "id": "n5eEqTCpMXXG1ZBg",
+          "type": "effect",
+          "label": "Generalization: Seize",
+          "activation": "bonus",
+          "effect": {
+            "name": "Generalization: Seize",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "state": "generalization-seize"
+          },
+          "text": "Switching is a Bonus action; end the other Generalization."
+        },
+        {
+          "id": "n5eYJa2TSoZMfPy1",
+          "type": "effect",
+          "label": "Generalization: Tactics",
+          "activation": "bonus",
+          "effect": {
+            "name": "Generalization: Tactics",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "state": "generalization-tactics"
+          },
+          "text": "Switching is a Bonus action; end the other Generalization."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "One Generalization at a time; its buttons are on Warfare, Seize and Tactics."
+        }
+      ]
+    },
+    "just-you": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eX0KlWLgSpB7X4",
+          "type": "roll",
+          "label": "Just You",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). An area jutsu including your Combat Rival: it affects only your Combat Rival, which saves at disadvantage."
+          }
+        }
+      ]
+    },
+    "knock-back": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5en76nGMIiQbcar",
+          "type": "roll",
+          "label": "Knock Back",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "On a hit: push it 10 feet × the die, ending Prone; 2d6 bludgeoning for each structure 5 feet thick or less it breaks through."
+          }
+        }
+      ]
+    },
+    "know-ones-self-void-heart-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRC86aReRItptv",
+          "type": "roll",
+          "label": "Know One's Self: Insight",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Add the die to an Insight check (with Intelligence or Wisdom)."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Proficiency in Chakra Control, Insight and Ninshou; Insight can use Intelligence."
+        }
+      ]
+    },
+    "layered-shield": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eIz01upxX61QZm",
+          "type": "roll",
+          "label": "Layered Shield",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Taking damage while your Chakra Barrier has 0 hit points: it has 3 × the die hit points until the end of the turn."
+          }
+        }
+      ]
+    },
+    "leaders-arbitration": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e8MBNxBxTZ0uhu",
+          "type": "save",
+          "label": "Leaders Arbitration",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "activation": "action",
+          "save": {
+            "abilities": [
+              "wis",
+              "int"
+            ],
+            "dc": {
+              "source": "nin"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Action: creatures of your choice within 30 feet (Wisdom or Intelligence, your pick). Failure, for 1 minute: no Disengage, and no lying to you or your allies."
+        }
+      ]
+    },
+    "leaders-charge": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e6lrgBWkMcVECh",
+          "type": "roll",
+          "label": "Leaders Charge",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 2,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Starting to move: +20 speed. A hit on a creature adjacent at the end: your Squad can use reactions to move their full speed and attack or cast a C-Rank or lower jutsu at it, adding the dice to their damage."
+          }
+        }
+      ]
+    },
+    "limit-breaker": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5edvqVIbqdvODNk",
+          "type": "effect",
+          "label": "Limit Breaker",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "effect": {
+            "name": "Limit Breaker",
+            "target": "self",
+            "changes": [],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "No action, on your turn, until the start of your next turn: damage from attacks or jutsu can't drop you below 1 HP; add the die to your first attack roll each turn; the first attack against you each turn has advantage. Each use before a rest costs +1 die (spend it from the pool)."
+        }
+      ]
+    },
+    "master-of-tactics-tactical-scout": {
+      "status": "partial",
+      "pools": [
+        {
+          "id": "tacticalInsight",
+          "label": "Tactical Insight",
+          "value": 0,
+          "max": "4",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": []
+        }
+      ],
+      "activities": [
+        {
+          "id": "n5e2ruFiqifB4pW7",
+          "type": "roll",
+          "label": "Gain Tactical Insight",
+          "cost": {
+            "pool": "tacticalInsight",
+            "amount": 1,
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "At the start of each of your turns, or once per turn performing a skill-based action."
+          }
+        },
+        {
+          "id": "n5eQ5ttFn9YmRkJy",
+          "type": "roll",
+          "label": "Updated Tactics",
+          "cost": {
+            "pool": "tacticalInsight",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "On your turn: switch Generalization at no action cost."
+          }
+        },
+        {
+          "id": "n5e5oYdk7XCZ1fXr",
+          "type": "roll",
+          "label": "Follow Through",
+          "cost": {
+            "pool": "tacticalInsight",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "Applying Follow Up or Set-Up: apply both."
+          }
+        },
+        {
+          "id": "n5ellcjX6ivP59x2",
+          "type": "roll",
+          "label": "Tactical Placement",
+          "cost": {
+            "pool": "tacticalInsight",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "1d20 + @init",
+            "note": "On your turn: reroll initiative; at the end of your turn you move to the new result (no second turn this round)."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Initiative: any Adaptive Initiative skill regardless of circumstance, at advantage. Always Prepared: Tactical Insight can pay Superiority Dice for class features that aren't maneuvers (spend from either pool). Tactical Insight resets when combat ends (empty it at the table)."
+        }
+      ]
+    },
+    "mastered-barrier-barrier-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ebOST3GhXu9Qdz",
+          "type": "effect",
+          "label": "Heavy Guard",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "activation": "reaction",
+          "effect": {
+            "name": "Heavy Guard",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "n5e.resist",
+                "value": "all",
+                "mode": 2
+              }
+            ],
+            "expires": "turnEnd",
+            "seconds": 6,
+            "limit": 4
+          },
+          "text": "Reaction (a Projected Barrier option, 1 Superiority Die): up to 4 willing creatures within 30 feet resist all damage, psychic included, until the end of the turn."
+        }
+      ]
+    },
+    "mastered-path-tactical-scout": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A third Shinobi Path, and the Signature Path of the one from Superior Tactics."
+        }
+      ]
+    },
+    "mastery-of-self-void-heart-scout": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "While your Void Soul is summoned or in Superego Manifestation, you and it are immune to all Mental conditions."
+        }
+      ]
+    },
+    "menacing-assault": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e0gkL9TaG5TjA3",
+          "type": "save",
+          "label": "Menacing Assault",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Damaging your Combat Rival: creatures of your choice within 20 feet of you or it. Failure: ranks of Demoralized equal to half the die."
+        }
+      ]
+    },
+    "mobile-savant-pathfinder-scout": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "You learn Chakra Movement (cast when you move at least 10 feet) and one of Zephyr Strike, Lightning Speed, Graceful Cat or Flower Petal Escape (another at 9th and 14th), not counting against jutsu known. They can be cast with 1 Superiority Die in place of chakra, and their concentration is free (pay the die at the table, in place of the cast's chakra)."
+        }
+      ]
+    },
+    "multifaceted": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Casting a jutsu as an Action: your Bonus action for 2 unarmed or Kunai, Shuriken or Senbon attacks. Attacking with them in the Attack action: Follow Up on one creature you damaged."
+        }
+      ]
+    },
+    "natural-transposition-pathfinder-scout": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Enter Flash at the start of each of your turns at no cost or action (the Enter Flash button)."
+        }
+      ]
+    },
+    "natured-jutsu": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eSWgCXlcgx1INu",
+          "type": "roll",
+          "label": "Natured Jutsu",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). In Flux, an ally within 30 feet casts a jutsu: it gains your Flux keyword and benefits from your Flux."
+          }
+        }
+      ]
+    },
+    "never-alone-cloning-scout": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Assisting Bunshin (no attack or jutsu of their own this turn) move next to you. Army of One: once per turn +2 damage each (max +10). Pivot!: once per turn, Bunshin Strike or Cast. Bunshin Throw (2+): thrown up to 10 feet per Bunshin, no opportunity attacks; regain 1 die. Bunshin Amp (3+, casting): dispel up to four; per 2, a Cloning maneuver or 1 die back."
+        }
+      ]
+    },
+    "path-of-awareness": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5epTRh6MqahqzeV",
+          "type": "roll",
+          "label": "Sensory Type",
+          "activation": "action",
+          "roll": {
+            "formula": "",
+            "note": "Action: a Perception check against the Chakra Control DC of every creature within 60 feet; on a success, Chakra Sensing against them for 1 minute (until they reach 0 chakra or succeed at Suppress Chakra)."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Overly Perceptive: Search and Identify Genjutsu as a Bonus action."
+        }
+      ]
+    },
+    "path-of-awareness-perception": {
+      "status": "partial",
+      "effects": [
+        {
+          "name": "Path of Awareness: blindsight",
+          "changes": [
+            {
+              "key": "system.traits.senses.blindsight",
+              "value": "20",
+              "mode": 4
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Attacks (and opportunity attacks) against you or allies within 10 feet are at disadvantage (at the table). 20 feet of blindsight is on its effect."
+        }
+      ]
+    },
+    "path-of-the-archivist": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Encyclopedic Knowledge: Identify Ninjutsu/Genjutsu/Taijutsu/Bukijutsu checks compare against the jutsu's save DC (without the +5). Lore Extraction: Study as a Full-Turn Action; Research can take 1 hour for a 1d8 bonus."
+        }
+      ]
+    },
+    "path-of-the-archivist-genius": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "+2 to checks with a skill or toolkit you're proficient in; reroll a 1 on a skill or ability check and take the second."
+        }
+      ]
+    },
+    "path-of-the-commandant": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eBEwtZR7kUreG4",
+          "type": "roll",
+          "label": "Tactical Callouts",
+          "activation": "reaction",
+          "oncePerTurn": true,
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, reaction: an ally is targeted by an attack or jutsu. Move up to half your movement toward them; ending within 15 feet, they get +2 AC or to the save against it."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Field Strategist: the Help action as a Bonus action, even with skills you aren't proficient in."
+        }
+      ]
+    },
+    "path-of-the-commandant-leader": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eGOJrDv7MZ1ZE1",
+          "type": "roll",
+          "label": "Battle Cry",
+          "activation": "action",
+          "roll": {
+            "formula": "",
+            "note": "Action: allies within 60 feet who can see or hear you can spend 2 Hit Dice and 2 Chakra Dice, regaining their results plus their Constitution modifier."
+          }
+        }
+      ]
+    },
+    "path-of-the-mender": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Field Medic: Administer Aid as a Bonus action. Battle Medicine: Treat Wounds as an Action."
+        }
+      ]
+    },
+    "path-of-the-mender-medic": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Blood Pills and Chakra Pills you use give +5 hit points or chakra; Medicine Kit actions costing 2+ charges cost 1 less."
+        }
+      ]
+    },
+    "path-of-the-rogue": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Veiled Hand: Steal as a Bonus action; Pick a Lock without a Security Kit once per lock, as with 1 Charge. Shinobi Step: your full movement while Sneaking."
+        }
+      ]
+    },
+    "path-of-the-rogue-hidden-technique": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eHz6nP9862mNDz",
+          "type": "effect",
+          "label": "Perfect Stillness",
+          "activation": "action",
+          "effect": {
+            "name": "Perfect Stillness",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "state": "perfect-stillness"
+          },
+          "text": "Action, at least lightly obscured: you and allies within 5 feet are Invisible to Search for 1 minute (in combat: until the start of your next turn or one moves, casts, attacks or acts), and undetectable by tremorsense and Chakra Sight. Target them."
+        }
+      ]
+    },
+    "path-of-the-swift": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mastering the Basics: Wall Running and Water Walking cost no extra movement. The +5 feet to jumps is at the table; the +10 speed is on its effect."
+        }
+      ]
+    },
+    "path-of-the-swift-mobile": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "You and allies starting their turns within 10 feet can Dash and Disengage as Bonus actions. You ignore difficult terrain and environmental effects that cost extra movement."
+        }
+      ]
+    },
+    "perceived-weakness-elemental-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5efNAsGGFxW2Hqq",
+          "type": "roll",
+          "label": "Perceived Weakness",
+          "roll": {
+            "formula": "",
+            "note": "In place of an attack of the Attack action or as a Bonus action: a Maintain Focus check against the Constitution save DC of a creature within 60 feet. Success: learn its nature releases, and it has Momentary Flaw until the end of your next turn (apply the condition card)."
+          }
+        }
+      ]
+    },
+    "phantasmic-eruption-phantom-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e7jFNC24n9PF8E",
+          "type": "save",
+          "label": "Phantasmic Eruption",
+          "cost": {
+            "pool": "ghostfire",
+            "amount": 3
+          },
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "nin"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "ghostburn",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Ghostburn"
+            }
+          ],
+          "text": "Under Ghost Walk, dealing melee damage. Failure: Ghostburned."
+        }
+      ]
+    },
+    "phantasms-inferno-phantom-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eWiiCs7xxoupdQ",
+          "type": "roll",
+          "label": "Gain Ghostfire (Set-Up)",
+          "cost": {
+            "pool": "ghostfire",
+            "amount": 1,
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "An ally benefits from your Set-Up."
+          }
+        },
+        {
+          "id": "n5e2mD8ilBg746PB",
+          "type": "effect",
+          "label": "Spectral Brand",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "effect": {
+            "name": "Spectral Brand",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "state": "set-up"
+          },
+          "text": "Dealing psychic or chakra damage (also 1 Ghostfire): branded for 1 minute or until detonated; always under Set-Up (its benefit once per turn)."
+        },
+        {
+          "id": "n5eQGpv4lhBnFBHv",
+          "type": "save",
+          "label": "Detonate Spectral Brands",
+          "activation": "action",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "nin"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "sealed",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Sealed"
+            },
+            {
+              "key": "concussed",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Concussed"
+            }
+          ],
+          "text": "Action: every branded creature. Failure: 2 ranks of Sealed and Concussed."
+        },
+        {
+          "id": "n5exIln1AeyThTWs",
+          "type": "save",
+          "label": "Hollow Reflection",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "activation": "reaction",
+          "save": {
+            "abilities": [
+              "int"
+            ],
+            "dc": {
+              "source": "nin"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Reaction (also 1 Ghostfire): gaining a Mental or Sensory condition from a hostile jutsu of a creature you can see. Failure: your Mental and Sensory conditions drop to 0, and it gains 2 ranks of each."
+        },
+        {
+          "id": "n5e6WD8MWBj4a0bX",
+          "type": "roll",
+          "label": "Spend Ghostfire",
+          "cost": {
+            "pool": "ghostfire",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "The Ghostfire Spectral Brand and Hollow Reflection also cost."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Ghostfire maximum 5 (on the pool)."
+        }
+      ]
+    },
+    "phantom-avoidance": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eR3VDhUogc9bEF",
+          "type": "roll",
+          "label": "Phantom Avoidance",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "activation": "reaction",
+          "roll": {
+            "formula": "5 * @pools.ghostfire.value",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Reaction: hit by an attack or saving against damage. Incorporeal: DR equal to 5 × your current Ghostfire."
+          }
+        }
+      ]
+    },
+    "phantoms-flame-phantom-scout": {
+      "status": "partial",
+      "pools": [
+        {
+          "id": "ghostfire",
+          "label": "Ghostfire",
+          "value": 0,
+          "max": "lvl(3:3,10:5)",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": []
+        }
+      ],
+      "activities": [
+        {
+          "id": "n5eXecNng3rTVuhu",
+          "type": "roll",
+          "label": "Gain Ghostfire",
+          "cost": {
+            "pool": "ghostfire",
+            "amount": 1,
+            "gain": true
+          },
+          "oncePerTurn": true,
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, benefiting from Follow Up or performing a skill-based action (each lasts 1 minute)."
+          }
+        },
+        {
+          "id": "n5eRVyfh15GkrUWD",
+          "type": "save",
+          "label": "Phantasm's Grip",
+          "cost": {
+            "pool": "ghostfire",
+            "amount": 1
+          },
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "nin"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "concussed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Concussed"
+            }
+          ],
+          "text": "The Attack action or an attack jutsu: it counts as Genjutsu for class features, deals psychic or chakra damage, and conditions it inflicts become Concussed. With the Attack action: a Wisdom save or 1 rank of Concussed. Beating AC by 5: regain 1 Superiority Die."
+        },
+        {
+          "id": "n5ekibSa6wI6tKEA",
+          "type": "effect",
+          "label": "Ghost Walk",
+          "cost": {
+            "pool": "ghostfire",
+            "amount": 1
+          },
+          "effect": {
+            "name": "Ghost Walk (incorporeal)",
+            "target": "self",
+            "changes": [],
+            "expires": "turnEnd",
+            "seconds": 6,
+            "state": "incorporeal"
+          },
+          "text": "As part of your movement: incorporeal until the end of your turn; move through objects and walls not made or reinforced by jutsu. Ending inside one: shunted out, 10 necrotic per 5 feet (can't be reduced)."
+        },
+        {
+          "id": "n5eysc1KGNaog0l4",
+          "type": "effect",
+          "label": "Gravesight",
+          "cost": {
+            "pool": "ghostfire",
+            "amount": 1
+          },
+          "activation": "bonus",
+          "effect": {
+            "name": "Gravesight",
+            "target": "self",
+            "changes": [
+              {
+                "key": "system.traits.senses.blindsight",
+                "value": "30",
+                "mode": 4
+              }
+            ],
+            "expires": "turnEnd",
+            "seconds": 12
+          },
+          "text": "Bonus action, until the end of your next turn: 30 feet of blindsight, see invisible creatures, and tell clones, constructs and undead."
+        },
+        {
+          "id": "n5e6oHg1P1LGUQ60",
+          "type": "roll",
+          "label": "Phantasm's Grip: regain a die",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "The attack beat the target's AC by 5 or more."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Ghostfire pool (3, 5 from 10th) is on this feature; each Ghostfire lasts 1 minute (empty it at the table)."
+        }
+      ]
+    },
+    "pincer-attack": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ePc0qPRVKhgshg",
+          "type": "roll",
+          "label": "Pincer Attack",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "activation": "bonus",
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Bonus action, 2+ Squad-Mates engaged with the same creature: each makes an unarmed or weapon attack at it adding the die to its damage; each hit gives it −1 to its next save against your jutsu this turn."
+          }
+        }
+      ]
+    },
+    "poltergeist-visage": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5erC0SFxAqHaAnJ",
+          "type": "save",
+          "label": "Poltergeist Visage",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "nin"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "In place of an attack of the Attack action: hostile creatures within 20 feet. Failure: they drop their weapons, move their full speed away, and can't cast Hand Sign jutsu until the start of their next turn."
+        }
+      ]
+    },
+    "power-up-charge": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQeQC9rgDYlTnG",
+          "type": "effect",
+          "label": "Power Up: Charge",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "activation": "bonus",
+          "effect": {
+            "name": "Power Up: Charge",
+            "target": "self",
+            "changes": [],
+            "expires": "turnEnd",
+            "seconds": 0,
+            "rules": [
+              {
+                "key": "critRange",
+                "selector": "attack",
+                "value": 2,
+                "label": "Power Up: Charge"
+              }
+            ]
+          },
+          "text": "Bonus action: your next attack this turn has +2 critical range (end the effect after it)."
+        }
+      ]
+    },
+    "power-up-concentrate": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eosXIvDkuGRteI",
+          "type": "roll",
+          "label": "Power Up: Concentrate",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "activation": "bonus",
+          "roll": {
+            "formula": "",
+            "note": "Bonus action: before the end of the turn, your next Int, Wis or Cha damage rerolls 1s and 2s against one creature."
+          }
+        }
+      ]
+    },
+    "power-up-focus": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eB5noLHxfbiOPZ",
+          "type": "roll",
+          "label": "Power Up: Focus",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "activation": "bonus",
+          "roll": {
+            "formula": "",
+            "note": "Bonus action: the next jutsu you cast costs half the die less."
+          }
+        }
+      ]
+    },
+    "preconscious-awakening-void-heart-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5elid1YumcHDzJf",
+          "type": "heal",
+          "label": "Messiah",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "heal": {
+            "formula": "@poolRoll",
+            "pool": "hp"
+          },
+          "text": "A creature would drop to 0 hit points: it regains the die in hit points (and twice the die as temporary hit points, at the table)."
+        },
+        {
+          "id": "n5ekFiUw9nMfdlkH",
+          "type": "roll",
+          "label": "Izanagi: regain a die",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Rolling a 7 or 8 on a maneuver's Superiority Die."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Void Soul resists two damage types. In Superego Manifestation, one benefit until a rest: Messiah or Izanagi."
+        }
+      ]
+    },
+    "primal-enhancement": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eUQJb7vv0R0yOD",
+          "type": "roll",
+          "label": "Primal Enhancement",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). In Flux, a jutsu that reduces damage or gives you temporary hit points: add the die to it."
+          }
+        }
+      ]
+    },
+    "primal-power": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZj12L8mjBh9PZ",
+          "type": "roll",
+          "label": "Primal Power",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 2
+          },
+          "roll": {
+            "formula": "",
+            "note": "Your next attack is at disadvantage (no advantage or jutsu bonuses to it); on a hit it is a critical hit."
+          }
+        }
+      ]
+    },
+    "primal-recovery": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ehp2oj1OnUa527",
+          "type": "heal",
+          "label": "Primal Recovery",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "activation": "bonus",
+          "heal": {
+            "formula": "2 * @poolRoll",
+            "pool": "tempCp"
+          },
+          "text": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). In Flux, Bonus action: temporary chakra equal to twice the die, and you can mold chakra again; your Flux ends. Recharges after 10 minutes of meditation; each use before that costs +1 die."
+        }
+      ]
+    },
+    "primal-storm-elemental-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ekjQywpnzXJgKa",
+          "type": "effect",
+          "label": "Primal Storm",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "effect": {
+            "name": "Primal Storm",
+            "target": "self",
+            "changes": [],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "At the start of your turn in Flux: immunity to your Flux type's damage until the start of your next turn (add it to the effect)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "In Flux, one more maneuver on your turn."
+        }
+      ]
+    },
+    "primordial-flux-elemental-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e4jCCabeUa0AqJ",
+          "type": "heal",
+          "label": "Primordial Flux: temporary chakra",
+          "heal": {
+            "formula": "1d8",
+            "pool": "tempCp"
+          },
+          "text": "Once per turn, entering Elemental Flux: allies in your Elemental Aura gain 1d8 temporary chakra. Target them."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Elemental Aura 20 feet (at the table: the aura stays 10 feet). Elemental Infusion adds 1d8 to Attack-action and Bonus-action unarmed and weapon attacks."
+        }
+      ]
+    },
+    "projected-barrier-barrier-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ePwQJrPG9TxsZb",
+          "type": "effect",
+          "label": "Chakra Sphere",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "activation": "reaction",
+          "effect": {
+            "name": "Chakra Sphere",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "n5e.dr",
+                "value": "lvl(3:4,9:8,17:12)",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Reaction: your Chakra Barrier as a 10-foot radius on a point until the start of your next turn; allies of your choice inside get 4 DR (8 at 9th, 12 at 17th). Target them."
+        },
+        {
+          "id": "n5evxDBbK3djuJlF",
+          "type": "save",
+          "label": "Repelling Burst",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "activation": "action",
+          "save": {
+            "abilities": [
+              "str",
+              "dex"
+            ],
+            "dc": {
+              "source": "nin"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "Action: a 10-foot radius on you, creatures of your choice (Strength or Dexterity, your pick). Failure: force damage, pushed 10 feet and Prone; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(3:2d6,9:4d6,17:6d6)",
+                "type": "force"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "rallying-barrier-barrier-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eFmgICjKOcM1nN",
+          "type": "heal",
+          "label": "Rallying Barrier",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "activation": "bonus",
+          "heal": {
+            "formula": "@level",
+            "pool": "tempHp"
+          },
+          "text": "Bonus action: up to 4 allies within 30 feet (not you) gain temporary hit points equal to your level for 1 minute."
+        }
+      ]
+    },
+    "ramp-up-power": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eTLu5sWZhU52es",
+          "type": "roll",
+          "label": "Ramp Up: Power",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "In place of an attack of the Attack action: an ally within 30 feet's next attack or jutsu gets Jack of All's Combat or Control benefit (your choice)."
+          }
+        }
+      ]
+    },
+    "ramp-up-protection": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eyvdxf1i4DSRzQ",
+          "type": "effect",
+          "label": "Ramp Up: Protection",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "effect": {
+            "name": "Ramp Up: Protection",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "2",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "In place of an attack of the Attack action: an ally (not you) within 30 feet gets +2 AC against the next attack, or the die to its next save, whichever comes first (end it then)."
+        }
+      ]
+    },
+    "ramp-up-swiftness": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZ8gcNc9SXXDMM",
+          "type": "effect",
+          "label": "Ramp Up: Swiftness",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "activation": "bonus",
+          "effect": {
+            "name": "Ramp Up: Swiftness",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "system.bonuses.speed",
+                "value": "5 * @poolRoll",
+                "mode": 2
+              }
+            ],
+            "expires": "turnEnd",
+            "seconds": 12
+          },
+          "text": "Bonus action: a willing ally within 30 feet gets 5 × the die speed and one more bonus action on its next turn."
+        }
+      ]
+    },
+    "relentless-assault-scout": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Superior Momentum can give 2 actions for 2 more dice (still not the same discipline as one you cast this turn)."
+        }
+      ]
+    },
+    "relentless-retaliation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ejLdpR0GZJrYoo",
+          "type": "roll",
+          "label": "Relentless Retaliation",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 2
+          },
+          "activation": "reaction",
+          "roll": {
+            "formula": "",
+            "note": "Reaction to damage from a creature in range: attack or cast at it; on a hit or failed save, repeat (−4 to hit or +4 to its save, 2 more each time)."
+          }
+        }
+      ]
+    },
+    "remarkable-aggression-assault-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e8VrFVpE9FtUrW",
+          "type": "roll",
+          "label": "Relentless Stamina",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "oncePerTurn": true,
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, with a Combat Rival, gaining ranks of a Physical condition: one rank fewer."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "+2 critical range with your Primary casting discipline (on Superior Assault's effect). Relentless Focus: concentration checks add your Tactics skill bonus while you have a Combat Rival."
+        }
+      ]
+    },
+    "rending-critical": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eeRYUwZhoMX7VK",
+          "type": "effect",
+          "label": "Rending Critical",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "effect": {
+            "name": "Rending Critical",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "-floor(@poolRoll/2)",
+                "mode": 2
+              },
+              {
+                "key": "n5e.dr",
+                "value": "-floor(@poolRoll/2)",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). A critical hit on your Combat Rival: −half the die to its AC and DR until the start of your next turn; no jutsu bonuses to them meanwhile."
+        }
+      ]
+    },
+    "resonance-elemental-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eXbTRoIlJghujD",
+          "type": "roll",
+          "label": "Resonance",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "1d8",
+            "note": "An ally in your Elemental Aura casts a nature release jutsu: enter Elemental Flux of that release; they add 1d8 to its damage or reduce its cost by half the result."
+          }
+        }
+      ]
+    },
+    "revenge-guard": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ez3knU2d56M8TS",
+          "type": "roll",
+          "label": "Revenge Guard",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). A jutsu giving you DR or temporary hit points: the first damage they meet this turn echoes to hostile creatures of your choice within 10 feet (Dexterity save against the original DC): that damage plus the die, half on a success."
+          }
+        }
+      ]
+    },
+    "role-reassignment-tactical-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ecI6OXGsJWNT7G",
+          "type": "roll",
+          "label": "Field Analyst",
+          "activation": "bonus",
+          "roll": {
+            "formula": "",
+            "note": "Bonus action: Insight or Investigation against a creature's Charisma save DC; success: whether its Str, Dex or Con is highest and its Wis, Int or Cha lowest."
+          }
+        },
+        {
+          "id": "n5eLBJmlyHKUZCEl",
+          "type": "roll",
+          "label": "Tactical Swap",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "On your turn: swap places with a willing creature in initiative; at the end of the later turn your initiative positions swap."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "One role after each rest: Infiltrator (move through larger or same-size enemies' spaces; unheard and undetected by traps and alarms while moving), Field Analyst or Tactical Swap."
+        }
+      ]
+    },
+    "scouting-technique": {
+      "status": "none",
+      "rules": []
+    },
+    "seize": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ecrDQBE1HxcTkF",
+          "type": "roll",
+          "label": "Seize: add to a contested check",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Add the Superiority Die to your contested check."
+          }
+        },
+        {
+          "id": "n5eprrWz3Z6NQvPN",
+          "type": "roll",
+          "label": "Seize: no jutsu save bonuses",
+          "activation": "bonus",
+          "roll": {
+            "formula": "",
+            "note": "Bonus action, when a maneuver, item or feature you use forces a save: the creature can't gain save bonuses from jutsu it casts."
+          }
+        }
+      ]
+    },
+    "shadow-drain": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ecyFLvy9yUnDAb",
+          "type": "save",
+          "label": "Shadow Drain",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "activation": "reaction",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "nin"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Reaction: a creature within 30 feet gains a bonus to hit or damage. Failure: it loses the bonus and you gain it until the end of your next turn."
+        }
+      ]
+    },
+    "shadow-snatch": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e67bCjIBm8ZI9T",
+          "type": "roll",
+          "label": "Shadow Snatch",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "activation": "reaction",
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Reaction: a creature within 30 feet hits an ally (not you). Reduce the attack roll by the die."
+          }
+        }
+      ]
+    },
+    "shared-flux": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eNQH6L5UgEcPix",
+          "type": "roll",
+          "label": "Shared Flux",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "activation": "bonus",
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Bonus action: your Flux ends and a creature within 30 feet gains its benefits until the start of your next turn; you can spend dice on maneuvers for them."
+          }
+        }
+      ]
+    },
+    "shared-willpower": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eumkwjsZELfEBF",
+          "type": "roll",
+          "label": "Shared Willpower",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). On a hit or failed save: a Squad-Mate makes the save against a jutsu effect on you with its statistics; on a success the effect ends."
+          }
+        }
+      ]
+    },
+    "shinobis-path": {
+      "status": "none",
+      "rules": []
+    },
+    "signature-jutsu": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "One known jutsu of B-Rank or lower (switch after a Full Rest) gets a Signature Modification and counts as your Primary; a second modification at 15th. The modifications are notes on their features."
+        }
+      ]
+    },
+    "signature-modification-power": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Signature Jutsu ignores resistance and treats immunity as resistance. Warfare: add the jutsu's ability modifier to its damage. Seize: cast it as a Bonus action instead of an Action (not both in a turn)."
+        }
+      ]
+    },
+    "signature-modification-ramping": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1 damage or healing die. Seize: a creature reacting with a jutsu to you pays your level more for it. Tactics: an attack jutsu can include a skill-based action that takes an Action or Bonus action."
+        }
+      ]
+    },
+    "signature-modification-refinement": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "It costs its rank less (D 1, C 2, B 3, A 4, S 5). Tactics: +1d4 to checks it calls for. Warfare: two maneuvers per turn, both on its casting."
+        }
+      ]
+    },
+    "signature-path": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "At 9th, your first Shinobi Path's enhanced benefit (the Path features); at 18th, your second path's."
+        }
+      ]
+    },
+    "signature-switch": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eYU3rmVkkv2Sgy",
+          "type": "roll",
+          "label": "Signature Switch",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "Damaging a hostile creature with your Primary casting discipline: apply both Follow Up and Set-Up to it."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Once per casting, after damage: switch your Fighting Stance and your Generalization."
+        }
+      ]
+    },
+    "specialized-clones-cloning-scout": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Up to 6 Bunshin. A Clone Ninjutsu with a nature release gives your Bunshin that bonus (up to two keywords at once): Earth (10 HP, 10 DR, 10 temporary hit points again each turn), Fire (6d6 fire, Dex save, 10 feet when dropped to 0), Water (no damage on a passed save; your Ninjutsu attack bonus for saves), Lightning (d8s instead of d6s)."
+        }
+      ]
+    },
+    "speedy-recovery": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eoPiq164pmw4s3",
+          "type": "roll",
+          "label": "Speedy Recovery",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Under a lasting condition, jutsu or trait: another save or check against it, adding the die (no DC: 10 + its level or rank value; D 5, C 7, B 9, A 11, S 13)."
+          }
+        }
+      ]
+    },
+    "spirit-siphon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eMkLfTCXnkF3pN",
+          "type": "save",
+          "label": "Spirit Siphon",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "slowed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Slowed"
+            }
+          ],
+          "text": "Dealing chakra damage. Failure: 1 rank of Slowed. With a Mental condition, it saves at disadvantage."
+        }
+      ]
+    },
+    "staggering-will": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5egvTY3GBgNYYoM",
+          "type": "roll",
+          "label": "Staggering Will",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Failing a save that deals damage and inflicts a condition: add the die; if you now succeed, hostile creatures within 20 feet make a Wisdom save or are Dazed until the start of your next turn."
+          }
+        },
+        {
+          "id": "n5ePYII6astteK8l",
+          "type": "save",
+          "label": "Staggering Will: Wisdom save",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "nin"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            }
+          ],
+          "text": "When Staggering Will turned the save (die already spent)."
+        }
+      ]
+    },
+    "sturdy-shielding-barrier-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eJqgOJPA4dmBsV",
+          "type": "roll",
+          "label": "Sturdy Shielding: barrier",
+          "cost": {
+            "pool": "chakraBarrier",
+            "choose": true,
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Using a maneuver: your barrier regains the highest die rolled for it (no dice: roll a Superiority Die). Enter it."
+          }
+        }
+      ]
+    },
+    "superego-manifestation-void-heart-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5elCHwgiTAekQYw",
+          "type": "effect",
+          "label": "Superego Manifestation",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "activation": "bonus",
+          "effect": {
+            "name": "Superego Manifestation",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "state": "superego",
+            "rules": [
+              {
+                "key": "advantage",
+                "selector": [
+                  "save:wis",
+                  "save:cha",
+                  "check:wis",
+                  "check:cha"
+                ],
+                "label": "Superego's Will"
+              }
+            ],
+            "aura": {
+              "radius": 10,
+              "who": "friendly",
+              "includeSelf": false,
+              "effect": {
+                "name": "Superego's Influence",
+                "rules": [
+                  {
+                    "key": "modifier",
+                    "selector": "attack",
+                    "value": 2,
+                    "label": "Superego's Influence"
+                  },
+                  {
+                    "key": "modifier",
+                    "selector": "damage",
+                    "value": 2,
+                    "label": "Superego's Influence"
+                  }
+                ]
+              }
+            }
+          },
+          "text": "Bonus action, up to 1 minute (ends if you're unconscious): fused with your Void Soul; cast its jutsu; advantage on Wisdom and Charisma saves and checks; allies within 10 feet +2 to attack and damage."
+        }
+      ]
+    },
+    "superior-arbitration-arbiter-scout": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Arbitration maneuvers (more by the class table). Proficiency in Deception, Intimidation and Persuasion (a rank of Mastery if already proficient)."
+        }
+      ]
+    },
+    "superior-assault": {
+      "status": "partial",
+      "effects": [
+        {
+          "name": "Superior Assault: critical range",
+          "rules": [
+            {
+              "key": "critRange",
+              "selector": "attack",
+              "predicate": {
+                "any": [
+                  {
+                    "all": [
+                      "option:primaryDiscipline:nin",
+                      "jutsu:discipline:nin"
+                    ]
+                  },
+                  {
+                    "all": [
+                      "option:primaryDiscipline:gen",
+                      "jutsu:discipline:gen"
+                    ]
+                  },
+                  {
+                    "all": [
+                      "option:primaryDiscipline:tai",
+                      "jutsu:discipline:tai"
+                    ],
+                    "not": [
+                      "jutsu:keyword:bukijutsu"
+                    ]
+                  },
+                  {
+                    "all": [
+                      "option:primaryDiscipline:buki",
+                      "jutsu:keyword:bukijutsu"
+                    ]
+                  }
+                ]
+              },
+              "value": "lvl(3:1,10:2)",
+              "label": "Superior Assault"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Assault maneuvers (more by the class table). +1 critical range with attacks of your Primary casting discipline (+2 from 10th, Remarkable Aggression) is on its effect."
+        }
+      ]
+    },
+    "superior-clones-cloning-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eKfd1EIuPENRDf",
+          "type": "summon",
+          "label": "Bunshin",
+          "summon": {
+            "uuid": "Compendium.n5e.summons.Actor.n5eAlLuGNsHQujqh",
+            "count": 1,
+            "template": ""
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Cloning maneuvers. Shadow Clone Technique as a Bonus action; summon Bunshins in place of its clones with the Bunshin button (once per Bunshin; the Class & Clan Summons NPC, its AC, attacks, DCs, skills and senses from you). Up to 4 (6 at 10th, 8 at 17th); 1 minute in combat or 1 hour outside; up to 1 mile; dispelled if they enter combat another way. Commands: Where I say, Clone Strike, Split Focus."
+        }
+      ]
+    },
+    "superior-defense-barrier-scout": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Four Barrier maneuvers (more by the class table)."
+        }
+      ]
+    },
+    "superior-disarming-trip": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5et3HGkNrETHtPQ",
+          "type": "roll",
+          "label": "Superior Disarming Trip",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "On a hit: Disarm, Trip and Shove using the attack result against its AC."
+          }
+        }
+      ]
+    },
+    "superior-elements-elemental-scout": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Elemental maneuvers. Choose a nature release (you can learn its jutsu). Elemental Infusion (Strike): after a nature release jutsu, your unarmed and weapon attacks deal its damage type until the end of your next turn. Once per turn, a jutsu without a nature release can take yours."
+        }
+      ]
+    },
+    "superior-feint": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5edtNAZZS1fR3Y9",
+          "type": "roll",
+          "label": "Superior Feint",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "On a hit: Demoralize and Feint using the attack result against its Wisdom save DC."
+          }
+        }
+      ]
+    },
+    "superior-heart-void-heart-scout": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Four Trickster maneuvers. The Void Soul stat block is the Void Soul NPC in Class & Clan Summons (Void Heart Mask's button places it)."
+        }
+      ]
+    },
+    "superior-momentum": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e60gUAr6sZRIJa",
+          "type": "roll",
+          "label": "Superior Momentum",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 2
+          },
+          "oncePerTurn": true,
+          "roll": {
+            "formula": "",
+            "note": "Once per turn: one more action, only to cast a jutsu of a different discipline than one you cast this turn (and no more of that discipline with your action). Each use before a rest costs +1 die (Relentless: 2 actions for +2; The Elite: −1)."
+          }
+        }
+      ]
+    },
+    "superior-movement-pathfinder-scout": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Four Pathfinder maneuvers (more by the class table)."
+        }
+      ]
+    },
+    "superior-phantasm-phantom-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e6NjTY96vIJDeK",
+          "type": "roll",
+          "label": "Ghastly Deception",
+          "roll": {
+            "formula": "",
+            "note": "In place of an attack of the Attack action or as a Bonus action (a skill-based action): Deception against the AC of a creature within 20 feet. Success: teleport to a space within 10 feet of it, and apply Follow Up to it."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Phantom maneuvers. Proficiency in Deception and Illusions (a rank of Mastery if already proficient)."
+        }
+      ]
+    },
+    "superior-riposte": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5em8BaZSTmGRHYy",
+          "type": "roll",
+          "label": "Superior Riposte",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "activation": "reaction",
+          "roll": {
+            "formula": "",
+            "note": "Reaction: a creature misses you. A melee or ranged weapon attack; on a hit, 1 rank of Weakened, Demoralized or Shaken (your pick)."
+          }
+        }
+      ]
+    },
+    "superior-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eBcXaBzDbxR6dm",
+          "type": "roll",
+          "label": "Superior Scout: regain a die",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "At the start of each of your turns."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "All jutsu you cast of C-Rank and lower count as your Signature Jutsu."
+        }
+      ]
+    },
+    "superior-shielding-barrier-scout": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Allies benefiting from your Projected or Rallying Barrier are Shielded until the end of your next turn: one Projected Barrier ability without a Superiority Die, then it ends."
+        }
+      ]
+    },
+    "superior-speed-pathfinder-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ehyZZcLxjGkr5g",
+          "type": "roll",
+          "label": "Superior Speed",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "activation": "bonus",
+          "roll": {
+            "formula": "",
+            "note": "Bonus action: cast a 1-Action jutsu that teleports you or raises your speed as a Bonus action."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Concentrate on up to 3 jutsu that teleport you or raise your speed."
+        }
+      ]
+    },
+    "superior-suppression": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5efz2KChagX0p6x",
+          "type": "roll",
+          "label": "Superior Suppression",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "A creature saves against your jutsu's effect: it rerolls and takes the lower; on a failure, 1 rank of Demoralized, Shaken or Sealed (your pick)."
+          }
+        }
+      ]
+    },
+    "superior-tactics-tactical-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e3k5gEtROo60Ih",
+          "type": "roll",
+          "label": "Lend a maneuver",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "oncePerTurn": true,
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, when an ally attacks or casts a jutsu: they apply the effects of a maneuver you know."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Tactical maneuvers (more by the class table), and one more Shinobi Path."
+        }
+      ]
+    },
+    "superior-technique": {
+      "status": "partial",
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Superiority Dice pool (d8; 3 at 2nd, by the class table) is on the class; all of it back after 10 minutes of rest or meditation."
+        }
+      ]
+    },
+    "superior-transposition-pathfinder-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5euoyJgfdTCC0wS",
+          "type": "roll",
+          "label": "Superior Transposition",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "1d20",
+            "note": "At the start of another creature's turn: you each roll 1d20 + half your current speed. Higher: it is Slowed, and you cast one of your Mobile Savant jutsu free."
+          }
+        }
+      ]
+    },
+    "swap-spots": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e4rz2Ai4yjP1vu",
+          "type": "roll",
+          "label": "Swap Spots",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). In Flash: swap with a creature in teleport range. Willing ally: + the die to its AC against the next attack. Unwilling: a Charisma save; failure swaps, and −2 AC until the end of its next turn."
+          }
+        },
+        {
+          "id": "n5e5wF4utE7bWJCM",
+          "type": "save",
+          "label": "Swap Spots: unwilling",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "nin"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "The unwilling creature's save (die already spent)."
+        }
+      ]
+    },
+    "switch-hitter": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5epsFvdReB0nHtC",
+          "type": "effect",
+          "label": "Follow Up",
+          "effect": {
+            "name": "Follow Up",
+            "target": "targets",
+            "changes": [],
+            "expires": "nextTurnEnd",
+            "seconds": 0,
+            "state": "follow-up"
+          },
+          "text": "One affected creature, until the end of your next turn: +1 to hit it (+2 at 11th, +3 at 19th) with your next jutsu that isn't your Primary."
+        },
+        {
+          "id": "n5eF64gU8lB8jcQm",
+          "type": "effect",
+          "label": "Set-Up (AC)",
+          "effect": {
+            "name": "Set-Up (AC)",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "lvl(2:-1,11:-2,19:-3)",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0,
+            "state": "set-up"
+          },
+          "text": "All affected creatures: −AC against the next jutsu one of your allies (not you) casts before the start of your next turn."
+        },
+        {
+          "id": "n5efo7RI5X8L4Mnb",
+          "type": "effect",
+          "label": "Set-Up (saves)",
+          "effect": {
+            "name": "Set-Up (saves)",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "system.bonuses.save",
+                "value": "lvl(2:-1,11:-2,19:-3)",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0,
+            "state": "set-up"
+          },
+          "text": "All affected creatures: −saves against the next jutsu one of your allies (not you) casts before the start of your next turn."
+        }
+      ],
+      "effects": [
+        {
+          "name": "Follow Up: to hit",
+          "rules": [
+            {
+              "key": "modifier",
+              "selector": "attack",
+              "predicate": [
+                "target:state:follow-up",
+                "kind:attack",
+                {
+                  "not": [
+                    {
+                      "any": [
+                        {
+                          "all": [
+                            "option:primaryDiscipline:nin",
+                            "jutsu:discipline:nin"
+                          ]
+                        },
+                        {
+                          "all": [
+                            "option:primaryDiscipline:gen",
+                            "jutsu:discipline:gen"
+                          ]
+                        },
+                        {
+                          "all": [
+                            "option:primaryDiscipline:tai",
+                            "jutsu:discipline:tai"
+                          ],
+                          "not": [
+                            "jutsu:keyword:bukijutsu"
+                          ]
+                        },
+                        {
+                          "all": [
+                            "option:primaryDiscipline:buki",
+                            "jutsu:keyword:bukijutsu"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "any": [
+                    "jutsu:discipline:nin",
+                    "jutsu:discipline:gen",
+                    "jutsu:discipline:tai"
+                  ]
+                }
+              ],
+              "value": "lvl(2:1,11:2,19:3)",
+              "label": "Follow Up"
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Primary casting discipline is the level-up choice. Follow Up's +1 to hit is automatic for non-Primary jutsu attacks against the marked creature; its save DC option is at the table. End Follow Up and Set-Up after the next jutsu."
+        }
+      ]
+    },
+    "switch-port": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5exPpFmpY2uSOCj",
+          "type": "roll",
+          "label": "Switch Port",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). In Flash, teleporting: a willing ally within 10 feet teleports instead."
+          }
+        }
+      ]
+    },
+    "tactical-breakthrough": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e2zGmtWqXsDNuJ",
+          "type": "save",
+          "label": "Tactical Breakthrough",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "tai"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Damage that DR or temporary hit points would reduce. Failure: they lose twice the die of DR or temporary hit points until the end of the turn."
+        }
+      ]
+    },
+    "tactical-escape": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eFjqHZ5RJaOph6",
+          "type": "roll",
+          "label": "Tactical Escape",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "activation": "reaction",
+          "roll": {
+            "formula": "",
+            "note": "Reaction: a hostile creature takes an Action. Disengage and Dash, move your full speed; add the die to Athletics or Acrobatics checks this turn."
+          }
+        }
+      ]
+    },
+    "tactical-overwrite": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ev7Gs4otqA8mYn",
+          "type": "roll",
+          "label": "Tactical Overwrite",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "Attacking a creature that gains AC from a reaction: it makes a Chakra Control check against your DC or loses the bonus this turn."
+          }
+        }
+      ]
+    },
+    "tactical-parry": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5edjKFU7VdJBNp6",
+          "type": "roll",
+          "label": "Tactical Parry",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Your reaction jutsu that reduces damage: add twice the die to it."
+          }
+        }
+      ]
+    },
+    "tactical-strike": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eDovZHYwoLMuQw",
+          "type": "roll",
+          "label": "Tactical Strike",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "The Attack action: forgo an attack to cast a C-Rank or lower jutsu making no more than one attack, then finish the attacks. Each further use this turn costs +1 die."
+          }
+        }
+      ]
+    },
+    "tactics": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ecyrBE7RUfTq0V",
+          "type": "roll",
+          "label": "Tactics: skill action bonus",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "lvl(2:2,11:3,20:4)",
+            "note": "Add this to the skill-based action's check."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A skill-based action that takes an Action can be a Bonus action; once per turn, one that takes a reaction costs no action."
+        }
+      ]
+    },
+    "taj-kage-bunshin-cloning-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ebUlTo6mWCJ3M7",
+          "type": "roll",
+          "label": "Summon Bunshin",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "activation": "bonus",
+          "roll": {
+            "formula": "",
+            "note": "Bonus action: 1 Bunshin (2 at 10th, 3 at 17th). Then place them with the Bunshin button (once per Bunshin)."
+          }
+        },
+        {
+          "id": "n5eb0S4KHHVx9RU5",
+          "type": "summon",
+          "label": "Bunshin",
+          "summon": {
+            "uuid": "Compendium.n5e.summons.Actor.n5eAlLuGNsHQujqh",
+            "count": 1,
+            "template": ""
+          }
+        },
+        {
+          "id": "n5eOVCVFRdMV2xOL",
+          "type": "roll",
+          "label": "Clone summon: regain a die",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Summoning 2 or more clones or Bunshin at once with a Clone Ninjutsu."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Bunshin use your Cloning maneuvers, Switch Hitter and Jack of All with your limits."
+        }
+      ]
+    },
+    "team-guard": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eDrDp1zN87WMDB",
+          "type": "effect",
+          "label": "Team Guard",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "effect": {
+            "name": "Team Guard",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "2",
+                "mode": 2
+              },
+              {
+                "key": "n5e.save.all",
+                "value": "2",
+                "mode": 2
+              },
+              {
+                "key": "n5e.dr",
+                "value": "@poolRoll",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Within 10 feet of an ally: allies within 10 feet, you included, get +2 AC and saves, and reduce damage taken by the die, until the start of your next turn while within 10 feet. Target them."
+        }
+      ]
+    },
+    "the-elite-tactical-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eRQeyAU4YUXcKB",
+          "type": "roll",
+          "label": "The Elite: regain a die",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "gain": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Casting two jutsu of different disciplines in a turn, or attacking with a weapon or unarmed and casting your Primary in a turn."
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Superior Momentum costs 1 die less (pay one less). Two more maneuvers per turn."
+        }
+      ]
+    },
+    "transverse-defense-pathfinder-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eseTDRqZ9e4Kgm",
+          "type": "effect",
+          "label": "Transverse Defense",
+          "activation": "reaction",
+          "effect": {
+            "name": "Transverse Defense",
+            "target": "self",
+            "changes": [
+              {
+                "key": "n5e.resist",
+                "value": "all",
+                "mode": 2
+              }
+            ],
+            "expires": "turnEnd",
+            "seconds": 6
+          },
+          "text": "Reaction to damage from an attack or jutsu: resistance to its damage this turn (end it after that damage)."
+        }
+      ]
+    },
+    "ultimate-revolution": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e0pwg70TEaQJHh",
+          "type": "effect",
+          "label": "Ultimate: Revolution",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "activation": "bonus",
+          "effect": {
+            "name": "Ultimate: Revolution",
+            "target": "targets",
+            "changes": [],
+            "expires": "turnEnd",
+            "seconds": 12,
+            "rules": [
+              {
+                "key": "critRange",
+                "selector": "attack",
+                "value": 4,
+                "label": "Ultimate: Revolution"
+              }
+            ]
+          },
+          "text": "Bonus action: willing creatures within 60 feet get +4 critical range, and vulnerability to the next damage they take before the end of your next turn (at the table). Target them."
+        }
+      ]
+    },
+    "unbreakable-formation-arbiter-scout": {
+      "status": "partial",
+      "effects": [
+        {
+          "name": "Unbreakable Formation",
+          "changes": [
+            {
+              "key": "n5e.conditionImmune",
+              "value": "confused",
+              "mode": 2
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Squad is also immune to Confused while you aren't incapacitated (give them the effect at the table). Starting a turn within 10 feet of another Squad-Mate: 10 temporary hit points until the start of the next turn, and advantage on saves against forced movement or teleport while they last."
+        }
+      ]
+    },
+    "unmatched-mobility-pathfinder-scout": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "In Flash: immune to speed reductions from conditions. Athletics and Acrobatics checks to traverse terrain at advantage; standing from Prone costs no movement."
+        }
+      ]
+    },
+    "untapped-potential-assault-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5emul5iyAle66aQ",
+          "type": "damage",
+          "label": "Warfare bonus (free)",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(6:2d8,11:3d8,15:4d8,20:5d8)",
+                "type": ""
+              }
+            ]
+          },
+          "text": "Once per turn: your Warfare bonus damage without a Superiority Die (half the dice for an area or an unarmed or weapon attack)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Maneuvers that roll the die: roll it twice, take the higher (reroll at the table)."
+        }
+      ]
+    },
+    "void-heart-mask-void-heart-scout": {
+      "status": "partial",
+      "duration": {
+        "value": 1,
+        "unit": "day",
+        "concentration": false
+      },
+      "activities": [
+        {
+          "id": "n5eSN3qzePF0Jgmv",
+          "type": "summon",
+          "label": "Void Soul",
+          "summon": {
+            "uuid": "Compendium.n5e.summons.Actor.n5e4SI1faHafDV8O",
+            "count": 1,
+            "template": ""
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus action: the Void Soul button places it (the Class & Clan Summons NPC; its level, hit point maximum, speed and save proficiencies come from you). Set its ability scores to your +4, +3, +2, +2, +1, +0 and add its jutsu (as many as your proficiency bonus). Command it with your Bonus Actions; damage to it is lost from your hit points. Dismiss it as a bonus action or when you fall unconscious (it also lapses after a day)."
+        }
+      ]
+    },
+    "warfare": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ev4P2Tk4HLy2M2",
+          "type": "damage",
+          "label": "Warfare: attack bonus",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "oncePerTurn": true,
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(2:1d8,5:2d8,11:3d8,15:4d8,20:5d8)",
+                "type": ""
+              }
+            ]
+          },
+          "text": "Once per turn, casting a jutsu or making an unarmed or weapon attack. Area jutsu, and unarmed or weapon attacks: half the dice, rounded up (minimum 1). With a Scouting Technique maneuver: one die fewer."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Multiattack with a Kunai, Shuriken or Senbon adds your ability modifier to the damage."
+        }
+      ],
+      "effects": [
+        {
+          "name": "Warfare: Multiattack damage",
+          "rules": [
+            {
+              "key": "note",
+              "text": "While in Warfare: add your ability modifier to Multiattack damage with a Kunai, Shuriken or Senbon."
+            }
+          ]
+        }
+      ]
+    },
+    "whirlwind-strike": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eYiHJo8MhuKakz",
+          "type": "roll",
+          "label": "Whirlwind Strike",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1,
+            "roll": true
+          },
+          "roll": {
+            "formula": "",
+            "note": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). Damaging your Combat Rival with an attack: that many creatures within 10 feet of it; if your attack hits their AC, they take half the damage."
+          }
+        }
+      ]
+    },
+    "who-decided-that-arbiter-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e3CXeAWRqdoDaj",
+          "type": "roll",
+          "label": "Who Decided That!?",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 2
+          },
+          "activation": "reaction",
+          "roll": {
+            "formula": "",
+            "note": "Reaction: a Squad-Mate (not you) fails a save; it succeeds instead with no further effects. Once per creature per initiative."
+          }
+        }
+      ]
+    },
+    "willpower-surge-void-heart-scout": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eIJbrFpZSFsvtF",
+          "type": "roll",
+          "label": "Willpower Surge",
+          "cost": {
+            "pool": "superiorityDice",
+            "amount": 1
+          },
+          "roll": {
+            "formula": "",
+            "note": "Casting a jutsu without your Void Soul summoned: it loses Hand Sign and Chakra Molding components; its first attack roll at advantage or the first save against it at disadvantage. In Superego Manifestation: maneuvers inflicting a condition inflict 2 ranks."
+          }
+        }
+      ]
+    }
+  }
+}

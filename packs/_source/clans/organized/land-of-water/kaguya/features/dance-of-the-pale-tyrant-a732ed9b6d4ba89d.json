@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "kaguya",
-      "sourceLine": 4272
+      "sourceLine": 4272,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Ivory Judgement: the Attack action or an attack of opportunity with a Bone Weapon gets +1 attack. Counter Dance: Mobility (M) jutsu cast in your reach provoke attacks of opportunity."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,43 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eEL4ahOdXW99NT",
+        "type": "effect",
+        "label": "Dance of the Pale Tyrant",
+        "effect": {
+          "name": "Dance of the Pale Tyrant",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "1 minute, then a rest before again (its action isn't stated)."
+      },
+      {
+        "id": "n5ekwtOeVzJy8qdo",
+        "type": "roll",
+        "label": "Tyrants Lust",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn: you take damage, or deal damage with a Bone Weapon to a creature with a Physical condition."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "battleLust",
+          "amount": 1,
+          "gain": true
+        }
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "rest",
+      "recharge": "",
+      "staminaEligible": false
+    }
   }
 }

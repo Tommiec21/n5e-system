@@ -84,10 +84,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eCxtoYTSJFVNqY",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Crimson Skies: flames",
         "save": {
           "abilities": [
             "str"
@@ -95,22 +94,43 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "Everyone within 45 feet (not you). Success: half.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "10d8",
+              "type": "fire"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "10d8",
-        "roll": {
-          "formula": "10d8",
-          "note": "On a failed save, they take 10d8 Fire damage from the spark of flames or half as much on a success"
+        "id": "n5e5pBl5ugwkGK4B",
+        "type": "save",
+        "label": "Crimson Skies: cyclone",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Everyone again (disadvantage if it failed the first). Failure: thrown 120 feet; success: half, thrown 60 feet.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "10d8",
+              "type": "bludgeoning"
+            }
+          ]
         }
       }
     ],
@@ -193,7 +213,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "49c20138df26d73f"

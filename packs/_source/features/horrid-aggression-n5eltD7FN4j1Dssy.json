@@ -47,33 +47,13 @@
           "onSuccess": "none",
           "resave": false
         },
-        "inflicts": [
-          {
-            "key": "bruised",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bruised"
-          },
-          {
-            "key": "weakened",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Weakened"
-          },
-          {
-            "key": "dazzled",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Dazzled"
-          },
-          {
-            "key": "concussed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Concussed"
-          }
-        ],
-        "text": "Pick one condition on a failure."
+        "inflicts": [],
+        "text": "Bonus action: this turn, the first time you deal [Weapon Damage] with an Attack-action attack. Failure: one of Bruised, Weakened, Dazzled or Concussed (your pick; apply it).",
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        },
+        "activation": "bonus"
       }
     ],
     "prerequisites": []
@@ -87,7 +67,8 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "optionGroup": "Kata: Pressure"
+      "optionGroup": "Kata: Pressure",
+      "reviewed": true
     }
   },
   "_stats": {

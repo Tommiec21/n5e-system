@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "shakuton",
       "sourceLine": 3583,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,26 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eLcqrnLzNswEh0",
+        "type": "effect",
+        "label": "Scorching Aura",
+        "effect": {
+          "name": "Scorching Aura",
+          "target": "self",
+          "changes": [],
+          "expires": "nextTurnEnd",
+          "seconds": 0
+        },
+        "text": "Bonus action: 20 feet around you until the end of your next turn (1 more charge: +1 round). Creatures in it can't regain hit points; healing instead deals them that much fire damage (from you).",
+        "activation": "bonus",
+        "cost": {
+          "pool": "scorchCharges",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

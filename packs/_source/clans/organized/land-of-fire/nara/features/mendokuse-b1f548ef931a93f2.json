@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "nara",
-      "sourceLine": 1782
+      "sourceLine": 1782,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "One Contingency at the start of your turn with no Bonus action (then you can't use the Bonus action for one). Shadow Possession as a Bonus action instead of an Action."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,36 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5erecMDtNDFeXTx",
+        "type": "save",
+        "label": "Shadow Possession (Bonus action)",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "nara-shadow-bound",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shadow Bound"
+          }
+        ],
+        "text": "A creature you can see within 40 feet (60 at 7th, 80 at 15th). Failure: Shadow Bound; it saves Strength or Dexterity at the end of each of its turns to end it. Hold 1 creature (2 at 7th, 3 at 15th). Not while you can't mold chakra or concentrate.",
+        "activation": "bonus",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

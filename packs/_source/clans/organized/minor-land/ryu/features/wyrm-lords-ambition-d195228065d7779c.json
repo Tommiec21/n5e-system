@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "ryu",
-      "sourceLine": 8695
+      "sourceLine": 8695,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Revealing your clan to a non-combatant: one minor request without a check."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,37 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5epabmECkB3mZKf",
+        "type": "effect",
+        "label": "Draconic Wings",
+        "effect": {
+          "name": "Draconic Wings",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.traits.speed.fly",
+              "value": "30",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 600
+        },
+        "text": "1 minute of focus: willing allies within 10 feet, 30-foot fly for 10 minutes; once per rest. In initiative they keep it by concentrating as if on an A-Rank jutsu.",
+        "cost": {
+          "pool": "draconicChakra",
+          "amount": 2
+        }
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "sr",
+      "recovery": []
+    }
   }
 }

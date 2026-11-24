@@ -17,7 +17,340 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Visual, Tactile), Lightning Release, Clash",
         "components": "CM"
-      }
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5enmKhgshEqs9tC",
+              "type": "save",
+              "label": "Torrent",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 3d8 lightning.",
+                  "success": "Success: half of 3d8 lightning and Shocked until the end of its next turn.",
+                  "failure": "Failure: 3d8 lightning and 1 rank of Shocked.",
+                  "critFailure": "Critical Failure: 5d8 lightning, 1 rank of Shocked and Firewalled."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                },
+                {
+                  "key": "genwa-firewalled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Firewalled"
+                }
+              ],
+              "text": "A 30-foot cone.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eqZAiOuWUS87CV",
+              "type": "damage",
+              "label": "Torrent: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (1d8)",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5e1vimJEaZrP9i3",
+              "type": "damage",
+              "label": "Torrent: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (1d8)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eyHdyHFNlHboMw",
+              "type": "roll",
+              "label": "Torrent: link bonus",
+              "roll": {
+                "formula": "1d8",
+                "note": "Angel Link: allies in range gain this temporary chakra and Signal Boosted. Demon Link: their next damage +this. (+1d8 at B and again at S.)"
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5enmKhgshEqs9tC",
+              "type": "save",
+              "label": "Torrent",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 3d8 lightning.",
+                  "success": "Success: half of 3d8 lightning and Shocked until the end of its next turn.",
+                  "failure": "Failure: 3d8 lightning and 1 rank of Shocked.",
+                  "critFailure": "Critical Failure: 5d8 lightning, 1 rank of Shocked and Firewalled."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                },
+                {
+                  "key": "genwa-firewalled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Firewalled"
+                }
+              ],
+              "text": "A 30-foot cone.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eqZAiOuWUS87CV",
+              "type": "damage",
+              "label": "Torrent: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (2d8)",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5e1vimJEaZrP9i3",
+              "type": "damage",
+              "label": "Torrent: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (2d8)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eyHdyHFNlHboMw",
+              "type": "roll",
+              "label": "Torrent: link bonus",
+              "roll": {
+                "formula": "1d8",
+                "note": "Angel Link: allies in range gain this temporary chakra and Signal Boosted. Demon Link: their next damage +this. (+1d8 at B and again at S.)"
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5enmKhgshEqs9tC",
+              "type": "save",
+              "label": "Torrent",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 3d8 lightning.",
+                  "success": "Success: half of 3d8 lightning and Shocked until the end of its next turn.",
+                  "failure": "Failure: 3d8 lightning and 1 rank of Shocked.",
+                  "critFailure": "Critical Failure: 5d8 lightning, 1 rank of Shocked and Firewalled."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                },
+                {
+                  "key": "genwa-firewalled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Firewalled"
+                }
+              ],
+              "text": "A 30-foot cone.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eqZAiOuWUS87CV",
+              "type": "damage",
+              "label": "Torrent: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (3d8)",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5e1vimJEaZrP9i3",
+              "type": "damage",
+              "label": "Torrent: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (3d8)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eyHdyHFNlHboMw",
+              "type": "roll",
+              "label": "Torrent: link bonus",
+              "roll": {
+                "formula": "1d8",
+                "note": "Angel Link: allies in range gain this temporary chakra and Signal Boosted. Demon Link: their next damage +this. (+1d8 at B and again at S.)"
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5enmKhgshEqs9tC",
+              "type": "save",
+              "label": "Torrent",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half of 3d8 lightning.",
+                  "success": "Success: half of 3d8 lightning and Shocked until the end of its next turn.",
+                  "failure": "Failure: 3d8 lightning and 1 rank of Shocked.",
+                  "critFailure": "Critical Failure: 5d8 lightning, 1 rank of Shocked and Firewalled."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                },
+                {
+                  "key": "genwa-firewalled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Firewalled"
+                }
+              ],
+              "text": "A 30-foot cone.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eqZAiOuWUS87CV",
+              "type": "damage",
+              "label": "Torrent: damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (4d8)",
+                    "type": "lightning"
+                  }
+                ]
+              },
+              "text": "Halve it on a success."
+            },
+            {
+              "id": "n5e1vimJEaZrP9i3",
+              "type": "damage",
+              "label": "Torrent: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (4d8)",
+                    "type": "lightning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eyHdyHFNlHboMw",
+              "type": "roll",
+              "label": "Torrent: link bonus",
+              "roll": {
+                "formula": "1d8",
+                "note": "Angel Link: allies in range gain this temporary chakra and Signal Boosted. Demon Link: their next damage +this. (+1d8 at B and again at S.)"
+              }
+            }
+          ]
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Angel Link (Uplink)",
+          "appliesTo": {
+            "namePrefix": "Data Release: Torrent"
+          },
+          "note": "In your Uplink stance: allies in range (not you) are unharmed, gain 1d8 temporary chakra and Signal Boosted until the end of their next turn."
+        },
+        {
+          "label": "Demon Link (Downlink)",
+          "appliesTo": {
+            "namePrefix": "Data Release: Torrent"
+          },
+          "note": "In your Downlink stance: allies in range (not you) are unharmed; their next damage +1d8."
+        }
+      ]
     }
   },
   "ownership": {
@@ -112,7 +445,84 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5enmKhgshEqs9tC",
+        "type": "save",
+        "label": "Torrent",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: half of 3d8 lightning.",
+            "success": "Success: half of 3d8 lightning and Shocked until the end of its next turn.",
+            "failure": "Failure: 3d8 lightning and 1 rank of Shocked.",
+            "critFailure": "Critical Failure: 5d8 lightning, 1 rank of Shocked and Firewalled."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "shocked",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shocked"
+          },
+          {
+            "key": "genwa-firewalled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Firewalled"
+          }
+        ],
+        "text": "A 30-foot cone.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eqZAiOuWUS87CV",
+        "type": "damage",
+        "label": "Torrent: damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "lightning"
+            }
+          ]
+        },
+        "text": "Halve it on a success."
+      },
+      {
+        "id": "n5e1vimJEaZrP9i3",
+        "type": "damage",
+        "label": "Torrent: critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d8",
+              "type": "lightning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eyHdyHFNlHboMw",
+        "type": "roll",
+        "label": "Torrent: link bonus",
+        "roll": {
+          "formula": "1d8",
+          "note": "Angel Link: allies in range gain this temporary chakra and Signal Boosted. Demon Link: their next damage +this. (+1d8 at B and again at S.)"
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

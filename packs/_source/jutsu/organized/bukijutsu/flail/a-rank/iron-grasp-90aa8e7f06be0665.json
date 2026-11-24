@@ -85,13 +85,71 @@
     },
     "activities": [
       {
-        "id": "sourceRoll2",
+        "id": "n5e5zXUioxus8DCv",
         "type": "roll",
-        "label": "2d6",
+        "label": "Grapple (contest)",
         "roll": {
-          "formula": "2d6",
-          "note": "If a creature becomes Grappled by this jutsu, they take your [Weapons damage] + 2d6 you immediately move them anywhere within your weapon range. For each Ally that they pass by, that ally may take a reaction to take an attack of opportunity or cast a Bukijutsu of C-Rank or lower targeting the Grappled creature."
+          "formula": "1d20",
+          "note": "Your Athletics or Taijutsu attack bonus, whichever is higher, against its contest (roll your bonus by hand)."
         }
+      },
+      {
+        "id": "n5eZqrH1LL4e6szH",
+        "type": "effect",
+        "label": "Grappled",
+        "effect": {
+          "name": "Grappled",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "grappled",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Grappled"
+            }
+          ]
+        },
+        "text": "If it loses."
+      },
+      {
+        "id": "n5e0uZBOZ7WQMFUB",
+        "type": "damage",
+        "label": "Iron Grasp",
+        "damage": {
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "2d6",
+              "type": ""
+            }
+          ]
+        },
+        "text": "Grappled: then move it anywhere in your weapon's range; each ally it passes can use its reaction for an opportunity attack or a C-Rank or lower Bukijutsu (Chain 3: any C-Rank or lower jutsu)."
+      },
+      {
+        "id": "n5eIMnkNVf1mi3LN",
+        "type": "effect",
+        "label": "Chain 2: ally +2 AC",
+        "effect": {
+          "name": "Iron Grasp",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Allies that hit it, until the start of your next turn."
       }
     ],
     "featureType": "active",
@@ -173,7 +231,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "3d2e2375a5c550b3"

@@ -85,17 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5espv3U35Y3wOCG",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "sealed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Sealed"
-          }
-        ],
+        "label": "Hex",
         "save": {
           "abilities": [
             "cha"
@@ -104,10 +96,30 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "A creature you touch. Failure: Hexed (it counts as 1 Sealed for effects): pick Disable (disadvantage with one ability), Death (the next button), Unluck (disadvantage on attacks against you), Hopelessness (no harmful targeting) or Stolen Sense (no special senses). No chakra to maintain.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5evE29hDIN8mIdg",
+        "type": "save",
+        "label": "Death hex",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "At the start of the hexed creature's turn. Success: half.",
         "damage": {
           "parts": [
             {
@@ -115,15 +127,6 @@
               "type": "necrotic"
             }
           ]
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "1d10",
-        "roll": {
-          "formula": "1d10",
-          "note": "This increases by 1d10 for every rank about C-Rank."
         }
       }
     ],
@@ -204,9 +207,158 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5espv3U35Y3wOCG",
+              "type": "save",
+              "label": "Hex",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A creature you touch. Failure: Hexed (it counts as 1 Sealed for effects): pick Disable (disadvantage with one ability), Death (the next button), Unluck (disadvantage on attacks against you), Hopelessness (no harmful targeting) or Stolen Sense (no special senses). No chakra to maintain.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5evE29hDIN8mIdg",
+              "type": "save",
+              "label": "Death hex",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "At the start of the hexed creature's turn. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (1d10)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5espv3U35Y3wOCG",
+              "type": "save",
+              "label": "Hex",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A creature you touch. Failure: Hexed (it counts as 1 Sealed for effects): pick Disable (disadvantage with one ability), Death (the next button), Unluck (disadvantage on attacks against you), Hopelessness (no harmful targeting) or Stolen Sense (no special senses). No chakra to maintain.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5evE29hDIN8mIdg",
+              "type": "save",
+              "label": "Death hex",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "At the start of the hexed creature's turn. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (2d10)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5espv3U35Y3wOCG",
+              "type": "save",
+              "label": "Hex",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A creature you touch. Failure: Hexed (it counts as 1 Sealed for effects): pick Disable (disadvantage with one ability), Death (the next button), Unluck (disadvantage on attacks against you), Hopelessness (no harmful targeting) or Stolen Sense (no special senses). No chakra to maintain.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5evE29hDIN8mIdg",
+              "type": "save",
+              "label": "Death hex",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "At the start of the hexed creature's turn. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d10) + (3d10)",
+                    "type": "necrotic"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "A-Rank: drop concentration for 10 minutes, or keep it for 24 hours. S-Rank: permanent until dispelled."
+        }
+      ]
     }
   },
   "folder": "cfa6ae1d0e387079"

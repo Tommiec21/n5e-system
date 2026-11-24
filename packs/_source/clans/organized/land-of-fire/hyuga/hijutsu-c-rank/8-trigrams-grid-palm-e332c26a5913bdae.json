@@ -17,6 +17,20 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Taijutsu, Fuinjutsu",
         "components": "CS, CM, M"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its upcast says above D-Rank (it's C-Rank)."
+        }
+      ],
+      "castOption": {
+        "label": "Eight Trigram",
+        "appliesTo": {
+          "namePrefix": "8-Trigrams Grid Palm"
+        },
+        "note": "In your Gentle Fist stance: failed creatures can't cast HS jutsu of this rank or lower for the duration."
       }
     }
   },
@@ -108,7 +122,35 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e61IriUuCzUHUp",
+        "type": "save",
+        "label": "Grid Palm",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "Creatures you choose in a 15-foot radius on you. Failure: Restrained (resave at the end of its turns).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

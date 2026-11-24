@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "fushin",
-      "sourceLine": 2722
+      "sourceLine": 2722,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "One Wind Whisper (more at 7th and 15th). Vortex Burst: Wind Release areas and Swirls +5 feet (+10 at 11th); Low Pressure: on a failed save, slam it Prone with speed 0 until the end of its next turn. Blade Spiral: with an Action Hijutsu that inflicts Bleed, a Bonus action triggers Swirl and its creatures save too (+1 rank of Bleed). Storm Wall: your Wind Release Barriers gain 4 DR (6 at 11th); casting dispels vapors and gases within 10 feet; Low Pressure halves a Barrier's hit points or DR. Whispering Breeze: Auditory Genjutsu affect deafened creatures and Inhale ones affect creatures holding breath; High Pressure: a failed save also Deafens and Dazes until the end of its next turn; Low Pressure: it suffers the Critical Failure instead. Rending Jetstream: casting a Fūshin Hijutsu, move up to 20 feet without provoking."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,113 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eIZi5SwnlyPp9J",
+        "type": "effect",
+        "label": "Vortex Burst: fly (2 High Pressure)",
+        "effect": {
+          "name": "Vortex Burst flight",
+          "target": "self",
+          "changes": [],
+          "expires": "nextTurnEnd",
+          "seconds": 0
+        },
+        "text": "A fly speed equal to your speed until the end of your next turn.",
+        "cost": {
+          "pool": "highPressure",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5e41sWZJUVuLR0l",
+        "type": "roll",
+        "label": "Blade Spiral: sharpen (1 High Pressure)",
+        "roll": {
+          "formula": "lvl(3:1d6,11:2d6)",
+          "note": "Until the start of your next turn, your weapon deals this extra wind damage."
+        },
+        "cost": {
+          "pool": "highPressure",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5e5IKy9G8UIP0w0",
+        "type": "damage",
+        "label": "Blade Spiral: Low Pressure reaction",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(3:2d6,7:4d6,15:6d6)",
+              "type": "slashing"
+            }
+          ]
+        },
+        "text": "Reaction, a creature with Low Pressure attacks you in melee: spend its pressure (slashing or wind)."
+      },
+      {
+        "id": "n5efqVH4ypBUckc9",
+        "type": "heal",
+        "label": "Storm Wall: wind shield (2 High Pressure)",
+        "heal": {
+          "formula": "2 * @level",
+          "pool": "tempHp"
+        },
+        "text": "As part of casting a Wind Release jutsu: temporary hit points until the start of your next turn.",
+        "cost": {
+          "pool": "highPressure",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5emxanXq5vPx7yr",
+        "type": "roll",
+        "label": "Rending Jetstream: rend DR",
+        "roll": {
+          "formula": "2 * @amount",
+          "note": "Dealing wind or slashing damage: the creature's DR is 2 lower per High Pressure spent (up to 2) until the start of your next turn."
+        },
+        "cost": {
+          "pool": "highPressure",
+          "choose": true
+        }
+      },
+      {
+        "id": "n5ezlEpZOIFmBGOv",
+        "type": "save",
+        "label": "Rending Jetstream: tendons",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          },
+          {
+            "key": "shaken",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shaken"
+          }
+        ],
+        "text": "Reaction, a creature with Low Pressure casts a Mobility jutsu: spend its pressure. Failure: 1 rank of Bleed and Shaken.",
+        "activation": "reaction",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

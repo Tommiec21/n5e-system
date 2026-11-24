@@ -29,7 +29,50 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5epHe0fgWiOtV3g",
+        "type": "roll",
+        "label": "Critical Aperture",
+        "roll": {
+          "formula": "",
+          "note": "A ranged weapon or Bukijutsu Taijutsu attack crit: −1 to the creature's AC or saves (pick; −2 from 10th) until the end of your next turn."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5eWBjNlG6YeHWTc",
+        "type": "roll",
+        "label": "Snap Volley",
+        "roll": {
+          "formula": "1d12",
+          "note": "After the action that dealt [Weapon Damage], bonus action: two ranged weapon attacks (three at 10th, four at 17th), each 1 Flurry Die of your weapon's type."
+        },
+        "activation": "bonus",
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5eSvoHHCLL3iNu6",
+        "type": "roll",
+        "label": "Threaded Relay",
+        "roll": {
+          "formula": "1d12",
+          "note": "Once per turn, when an ally damages your Vector Seal creature: one ranged weapon attack at it, 1 Flurry Die of your weapon's type."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 1
+        },
+        "oncePerTurn": true
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eeKumLbMLJOu4F",
@@ -39,7 +82,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "While wielding an Ammunition-group weapon or a Thrown weapon."
+        }
+      ]
     }
   },
   "_stats": {

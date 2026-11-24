@@ -33,13 +33,37 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5emul5iyAle66aQ",
+        "type": "damage",
+        "label": "Warfare bonus (free)",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(6:2d8,11:3d8,15:4d8,20:5d8)",
+              "type": ""
+            }
+          ]
+        },
+        "text": "Once per turn: your Warfare bonus damage without a Superiority Die (half the dice for an area or an unarmed or weapon attack)."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Maneuvers that roll the die: roll it twice, take the higher (reroll at the table)."
+        }
+      ]
     }
   },
   "ownership": {

@@ -153,10 +153,10 @@ export default class N5eActor extends Actor {
    * @param {object} [o.flags]       extra flags.n5e on the effect (CCOND1: appliedBy, resave)
    * @returns {Promise<ActiveEffect|null>}
    */
-  async addCondition(key, ranks = 1, { sourceRank = "", origin, duration, manual = false, flags = null } = {}) {
+  async addCondition(key, ranks = 1, { sourceRank = "", origin, duration, manual = false, flags = null, changes = null } = {}) {
     const def = CONFIG.N5E.conditions[key] ?? CONFIG.N5E.clanConditions[key];
     if ( !def ) throw new Error(`Unknown condition: ${key}`);
-    const result = await this.#addCondition(key, def, ranks, { sourceRank, origin, duration, manual, flags });
+    const result = await this.#addCondition(key, def, ranks, { sourceRank, origin, duration, manual, flags, changes });
     if ( result && def.initiativeShift ) await this.#queueInitiativeShift(def.initiativeShift);
     return result;
   }
@@ -175,7 +175,7 @@ export default class N5eActor extends Actor {
     }
   }
 
-  async #addCondition(key, def, ranks, { sourceRank, origin, duration, manual, flags }) {
+  async #addCondition(key, def, ranks, { sourceRank, origin, duration, manual, flags, changes }) {
     // King 2026-11-13: out of combat, "until the end of its next turn" conditions from game effects
     // end immediately; only a deliberate application (sheet, GM tools, dragged effect) stays.
     if ( !manual && def.endsAt === "nextTurnEnd" && !this.inStartedCombat ) {
@@ -207,7 +207,7 @@ export default class N5eActor extends Actor {
         ...(flags ? { flags: { n5e: flags } } : {})
       });
     }
-    const data = CONFIG.ActiveEffect.documentClass.conditionData(key, { ranks, sourceRank, origin });
+    const data = CONFIG.ActiveEffect.documentClass.conditionData(key, { ranks, sourceRank, origin, changes });
     if ( !manual ) foundry.utils.setProperty(data, "flags.n5e.applied", "auto");
     if ( flags ) for ( const [k, v] of Object.entries(flags) ) foundry.utils.setProperty(data, `flags.n5e.${k}`, v);
     const dur = duration ?? defaultDuration(key);

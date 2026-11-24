@@ -84,10 +84,28 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5emSPnn1CcxPYCQ",
+        "type": "effect",
+        "label": "Welter Move",
+        "effect": {
+          "name": "Welter Move",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.attack.all",
+              "value": "1",
+              "mode": 2
+            },
+            {
+              "key": "n5e.save.dex",
+              "value": "1",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "In a Taijutsu stance, moving 10+ feet before a melee attack: +1 attack and Dexterity saves until the start of your next turn (stacks twice). Attacks equal to your AC miss; a successful Dexterity save takes nothing; the first hit on you ends it."
       }
     ],
     "featureType": "active",
@@ -154,7 +172,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "aee26bc2434fe738"

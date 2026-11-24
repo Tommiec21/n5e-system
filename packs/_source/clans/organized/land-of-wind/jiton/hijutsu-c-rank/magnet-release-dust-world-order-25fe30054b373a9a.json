@@ -17,7 +17,14 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Inhale, Tactile), Earth Release, Wind Release",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +10 feet to the area per rank."
+        }
+      ]
     }
   },
   "ownership": {
@@ -112,7 +119,81 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eLrOoh0f6cwbv6",
+        "type": "save",
+        "label": "Dust World Order",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: half of 6d6 earth.",
+            "success": "Success: half of 6d6 earth and Staggered.",
+            "failure": "Failure: 6d6 earth, Dazed and Staggered.",
+            "critFailure": "Critical Failure: 8d6 earth and Stunned."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "staggered",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Staggered"
+          },
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          },
+          {
+            "key": "stunned",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Stunned"
+          }
+        ],
+        "text": "A 20-foot radius within 60 feet.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eBUz43qPY18p7K",
+        "type": "damage",
+        "label": "Dust World Order: damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": "earth"
+            }
+          ]
+        },
+        "text": "Halve it on a success."
+      },
+      {
+        "id": "n5eroHE4rX68VJi2",
+        "type": "damage",
+        "label": "Dust World Order: critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "8d6",
+              "type": "earth"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

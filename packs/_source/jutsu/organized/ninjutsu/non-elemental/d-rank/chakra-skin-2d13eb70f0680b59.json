@@ -82,14 +82,7 @@
       "per": "",
       "staminaEligible": false
     },
-    "activities": [
-      {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
-      }
-    ],
+    "activities": [],
     "featureType": "active",
     "ability": "",
     "upcast": {
@@ -154,9 +147,66 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eoqSOYzNkb0CAT",
+              "type": "heal",
+              "label": "Temporary hit points",
+              "heal": {
+                "formula": "8",
+                "pool": "tempHp"
+              },
+              "text": "C-Rank and higher; a Bonus Action replenishes them."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eoqSOYzNkb0CAT",
+              "type": "heal",
+              "label": "Temporary hit points",
+              "heal": {
+                "formula": "8",
+                "pool": "tempHp"
+              },
+              "text": "C-Rank and higher; a Bonus Action replenishes them."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eoqSOYzNkb0CAT",
+              "type": "heal",
+              "label": "Temporary hit points",
+              "heal": {
+                "formula": "8",
+                "pool": "tempHp"
+              },
+              "text": "C-Rank and higher; a Bonus Action replenishes them."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eoqSOYzNkb0CAT",
+              "type": "heal",
+              "label": "Temporary hit points",
+              "heal": {
+                "formula": "8",
+                "pool": "tempHp"
+              },
+              "text": "C-Rank and higher; a Bonus Action replenishes them."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "notAmp": "An Amp-less buff / stat override (King Q-F5).",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "8 hours: you lose your armor's benefits; your AC is 13 + your Intelligence modifier + half your proficiency bonus (B-Rank: +1; S-Rank: +2). Set your AC by hand. Ends if you dismiss it (Bonus action)."
+        }
+      ]
     }
   },
   "folder": "n5eDpY0QdrV0NfEW"

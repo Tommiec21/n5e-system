@@ -17,6 +17,151 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eUmqyjDByQEFlT",
+              "type": "damage",
+              "label": "Tyrants Piston Press",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (1d8)",
+                    "type": "force"
+                  }
+                ]
+              },
+              "text": "On a melee hit (with Feral Axe or Morningstar: ignores resistance, immunity as resistance)."
+            },
+            {
+              "id": "n5eT3eOnlVewj8zG",
+              "type": "save",
+              "label": "Piston Press: daze",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "Failure: Dazed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eUmqyjDByQEFlT",
+              "type": "damage",
+              "label": "Tyrants Piston Press",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (2d8)",
+                    "type": "force"
+                  }
+                ]
+              },
+              "text": "On a melee hit (with Feral Axe or Morningstar: ignores resistance, immunity as resistance)."
+            },
+            {
+              "id": "n5eT3eOnlVewj8zG",
+              "type": "save",
+              "label": "Piston Press: daze",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "Failure: Dazed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eUmqyjDByQEFlT",
+              "type": "damage",
+              "label": "Tyrants Piston Press",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (3d8)",
+                    "type": "force"
+                  }
+                ]
+              },
+              "text": "On a melee hit (with Feral Axe or Morningstar: ignores resistance, immunity as resistance)."
+            },
+            {
+              "id": "n5eT3eOnlVewj8zG",
+              "type": "save",
+              "label": "Piston Press: daze",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "Failure: Dazed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Amplify (4 Nature Energy)",
+        "appliesTo": {
+          "namePrefix": "Tyrants Piston Press"
+        },
+        "note": "On a failure, it's Grappled and you move up to your speed dragging it.",
+        "cost": {
+          "pool": "natureEnergy",
+          "amount": 4
+        }
       }
     }
   },
@@ -108,7 +253,49 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eUmqyjDByQEFlT",
+        "type": "damage",
+        "label": "Tyrants Piston Press",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "force"
+            }
+          ]
+        },
+        "text": "On a melee hit (with Feral Axe or Morningstar: ignores resistance, immunity as resistance)."
+      },
+      {
+        "id": "n5eT3eOnlVewj8zG",
+        "type": "save",
+        "label": "Piston Press: daze",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "Failure: Dazed.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

@@ -1,6 +1,6 @@
 # STD6d function spec: classes as data
 
-Status: **King 2026-11-15: "push Feats to the end and start work on using the new Active Effects system to actually automate class features … continue. Stop after the first two classes are complete." Medical-Nin built (0.48.0-alpha.1) and Ninjutsu Specialist built (0.49.0-alpha.1); King 2026-11-15 "Lets move on to STD6d": Taijutsu Specialist built (0.55.0-alpha.1). Next: Weapon Specialist, Scout-Nin, Hunter-Nin, Genjutsu Specialist.**
+Status: **King 2026-11-15: "push Feats to the end and start work on using the new Active Effects system to actually automate class features … continue. Stop after the first two classes are complete." Medical-Nin built (0.48.0-alpha.1) and Ninjutsu Specialist built (0.49.0-alpha.1); King 2026-11-15 "Lets move on to STD6d": Taijutsu Specialist built (0.55.0-alpha.1); King 2026-11-21 "Then let's work on next Batch": Weapon Specialist built (0.74.0-alpha.1); King "Next batch": Scout-Nin built (0.75.0-alpha.1); Hunter-Nin built with the Class & Clan Limits menu (0.77.0-alpha.1); Genjutsu Specialist built (0.78.0-alpha.1). Every class has its table; next: STD6e (clans).**
 
 Plan: `docs/STD_SPEC.md` (STD6d, the class pass; this is FEATAUTO1 under the contract, `docs/FEATAUTO1_SPEC.md`). Order changed by King: feats (STD6c) move to the end, after the jutsu pass.
 
@@ -37,6 +37,16 @@ Plan: `docs/STD_SPEC.md` (STD6d, the class pass; this is FEATAUTO1 under the con
 | D17 | Best-of-abilities values | A rule element's value `mod(int,wis,cha)` is the highest of those modifiers (Agile's initiative bonus). |
 | D18 | Fixed cost by rank | Change key `n5e.rankCost.<scope>` ("D:3,C:5,B:9,A:14,S:20"): the jutsu costs that for its cast rank, as a Special cost (no reductions); a jutsu already Special keeps its own (Unwasted Movements). |
 | D19 | Unarmed fact | The Unarmed Strike item's damage rolls carry `weapon:unarmed` (Sustained Pressure's predicate). Table effects may require a stance (`requiresStance`). |
+| D20 | Class option facts | A class's level-up options are roll facts: `option:<key>:<value>` (Weapon Focus: `option:weaponFocus:blade`; "Thrown/Ammunition" is `thrown-ammunition`). With a weapon's `weapon:group:<g>`, an element can name "your Weapon Focus". |
+| D21 | Pool cost formulas | An activity cost's `formula` replaces its amount: by level (`lvl(1:1,11:2,20:3)`) or rolled (`1d12`, posted to chat): the Obsidian Ward regains Flurry Dice. |
+| D22 | Replaced imported effects | A table entry's `dropEffects` removes the feature's imported effects of those names (Critical Focus's blanket +1 on all Bukijutsu). |
+| D23 | Caster values on placement | A placed effect's values (and an aura child's rules) can use the caster's `@prof` and `@abilities.<a>.mod`, fixed when placed (Squad-Mates up to your proficiency bonus; Elemental Aura's half Constitution modifier). The rule validator accepts those placement-time forms. |
+| D24 | Summoner links | An Allied NPC template lists the numbers it takes from its summoner (`flags.n5e.fromSummoner`: system path → formula over the summoner, rules/summoner-links.mjs); placing it writes them into the token's actor delta, with `details.summoner`. A compendium template is imported once and reused. Table entries can set a feature's `duration` (how long its summons last). |
+| D25 | Option-gated effects | `flags.n5e.requiresOption: "<key>:<value>"` turns an effect on only while that class level-up option is chosen (Lethal Precision: `lethalPrecision:tai` or `:buki`; rules/features.mjs `optionChosen`). |
+| D26 | Class & Clan Limits | The world setting `limitRecovery` changes when a pool or Amp's uses come back, from the Class & Clan Limits menu (rules/recovery-overrides.mjs). |
+| D27 | Optional damage | A damage rule element with `optional: true` is an unticked row in the damage window, added only when ticked (King Q-D25: Lethal Attack). |
+| D28 | Jutsu identity fact | Rolls from a cast card also carry `jutsu:id:<identifier>`, so an element can name one jutsu (Black Fangs: +1 critical range on Shadow Bite). |
+| D29 | Discipline ability when higher | `n5e.keywordAbility.discipline:<d>`: every jutsu cast as that discipline may use the ability when it's higher (Actualization: Genjutsu with Charisma). |
 
 ## Medical-Nin (0.48.0-alpha.1)
 
@@ -86,6 +96,76 @@ Highlights:
 
 - **Text issues** (for the errata list): Extra Attack contains the Balance Broken definition; Iron Body ends with the class design note; Genius Talent has a broken sentence ("You can only use each Flawless"); Bone Broken and Flow Broken are not defined anywhere in the class text.
 
+## Weapon Specialist (0.74.0-alpha.1)
+
+Review table: `docs/classes/weapon-specialist-automation.md` (101 features: 2 automated, 85 partly automated, 9 notes only, 5 no mechanics).
+
+Highlights:
+- **Discipline:** the pool (2 at 1st, by the class table; back on any rest). Deflection, Chakra Strike, Chained Momentum (gain Chain, or shift it for 2) and a Regain Discipline (Chain) button. Saves use your Taijutsu DC; the Flurry Die is a d12.
+- **Every Kata** has a button that spends its Discipline (once per turn where the text says so), with the save, dice or effect it calls for: Battle Boast, Disorienting Strike, Muted Strike, Horrid Aggression, Executioner (with the Cripple save), Overwhelming Malice's stance with Retributive Strike and Pensive Shot, Sensory Augmentation (blindsight or tremorsense), Strider, Elite Focus (and its upkeep), and the rest.
+- **Efficient Bukijutsu:** a cast dialog option, 1 Discipline for −1 cost a rank. **Chaining Adept:** Chain 2's reduction as a cast option, Chain 3's temporary HP as a button.
+- **Critical Focus:** +1 critical range (+2 at 11th, +3 at 18th) only with your Weapon Focus group, weapon and Taijutsu attacks (D20). The imported +1 on every Bukijutsu is removed (D22).
+- **Doctrines:**
+  - Seeker: Vector Seal (two from 10th), Triangulation's +1 on ranged Bukijutsu attacks, Course Correction, Crossfire Aim, Dread Ambusher, Sharpshooting Savant, Seeker of the End.
+  - Reaver: Quarry (two from 17th) with +1/+2/+3 [Weapon Damage] against it, Reaver Echoes (the condition card), Kenjutsu, Severance, Delayed Displacement, Reaver's Judgement.
+  - Obsidian Guard: the Obsidian Ward pool (11 + level, + proficiency from 10th) and Ward Restoration rolling Flurry Dice into it (D21), Aura of Protection (+1/+2 AC and saves to allies), Provoke (more creatures by level), Obsidian Bulwark, Guardian Force.
+  - Fang Breaker: Battle Trance (the AMP1d cards), Savage Assault with Shaken (Okuri-Inu Fang) and Hobbled, Savage Exploits (1 less from 17th), Titanic Wrath.
+  - Battle Dancer: Waltz and Samba (the AMP1d cards), Move in Tandem, Cascade Step, Defensive Dance, Flourish!, Twin Step, Spectacular Form, Dance of the Dawn.
+  - Primal Weapon: Primal Strikes, Chained Cascade (3 Discipline), Primal Weapon Mastery, Reflective Sunder, Break and Reinforce the Seal.
+- **At the table:** the Obsidian Ward taking damage first; Deflection's reduction; Temporary Discipline (Aggressive Reprisal); Dauntless's −1 Kata cost; the Superior Discipline upgrades (notes on each).
+
+- **Text issues** (for the errata list): Superior Discipline contains the class design note; Chained Cascade contains its Battle Amp box; Burst Echo deals damage with no save stated.
+
+## Scout-Nin (0.75.0-alpha.1)
+
+Review table: `docs/classes/scout-nin-automation.md` (187 features: 1 automated, 148 partly automated, 36 notes only, 2 no mechanics).
+
+Highlights:
+- **Superiority Dice** (the class pool, d8): every maneuver has a button that spends its dice, rolling the die when the maneuver uses the number, with the save, effect or healing it calls for.
+- **Jack of All:** Warfare, Seize and Tactics as switchable states; Warfare's bonus damage now grows at 5th and 15th as the text says (1d8 to 5d8).
+- **Switch Hitter:** Follow Up and Set-Up mark creatures; Follow Up's +1/+2/+3 to hit is automatic for jutsu attacks that aren't your Primary casting discipline (the level-up choice, D20).
+- **Superior Assault / Remarkable Aggression:** +1 critical range (+2 at 10th) with attacks of your Primary casting discipline.
+- **New pools:** Chakra Barrier (twice your level, its hit points, with its Chakra Control Mastery by level), Ghostfire (3, 5 at 10th), Tactical Insight (4), each with the buttons that spend them.
+- **Subclass cores:** Squad-Mates (up to your proficiency bonus) and Command; Combat Rival and the Relentless abilities; Flash and Elemental Flux (the AMP1d cards); Projected Barrier's Chakra Sphere and Repelling Burst; Phantom's Flame (Phantasm's Grip, Ghost Walk, Gravesight); Elemental Aura (+ half your Constitution modifier to allies' saves against nature release jutsu, D23); Superego Manifestation's aura; Heavy Guard; Transverse Defense.
+- **At the table:** Bunshin and the Void Soul (stat blocks to make as actors), the Chakra Barrier intercepting damage, the one-maneuver-per-turn limit, Signature Jutsu modifications, Shinobi Paths and most commands to allies.
+
+- **Text issues** (for the errata list): Jack of All repeats Warfare's text; Superior Riposte stops mid-sentence ("If the target"); Clones Support and Primal Storm contain design notes; Specialized Clones' Fire Release has "saving tactical, Phantom or hrow"; Speedy Recovery ends with "..".
+
+## Hunter-Nin (0.77.0-alpha.1)
+
+Review table: `docs/classes/hunter-nin-automation.md` (86 features: 2 automated, 66 partly automated, 17 notes only, 1 no mechanics).
+
+Highlights:
+- **Lethal Attack** (King Q-D25): unticked full and half rows in the damage window of every attack and jutsu; tick one when it applies. Every Combat Exploit rolls Lethal Attack with its dice already forgone, with the save or effect it calls for.
+- **Skilled Exploits** (King Q-D24): 1 + proficiency bonus uses per Long Rest (the Skilled Exploits pool on Hunters Exploits); every Skilled Exploit's check button spends one.
+- **Lethal Precision:** Taijutsu or Bukijutsu with Dexterity, by the level-up choice (D25).
+- **Creeds:** Carnage, Posture, the Black Medicine Array, the Dread Arsenal, Void Anchors and Prosthetic Tools from their pools and buttons; Uncanny Dodge keeps its automatic halving reaction.
+- **At the table:** the conditions that let each Creed use Lethal Attack, Stalked's −2 to Perception and Insight, Defensive Tactics and the subclasses' passives.
+
+## Genjutsu Specialist (0.78.0-alpha.1)
+
+Review table: `docs/classes/genjutsu-specialist-automation.md` (107 features: 4 automated, 80 partly automated, 23 notes only).
+
+Highlights:
+- **Actualization:** the Actualization Dice pool with its cast dialog options (+rank d6 damage; −1 to saves per die) and skill-check button. Genjutsu use Charisma when it's higher (D29).
+- **Mirages:** each Mirage that changes a jutsu is a cast dialog option on that jutsu only (Piece of Mind casts Mind Sliver as a Bonus Action; Misty Thoughts casts Cajolery of Glamour at no cost on a non-hostile creature; the rest put their change on the cast card). Black Fangs' +1 critical range on Shadow Bite is automatic (D28).
+- **Rending Thoughts:** save with its success, failure and critical-failure damage by level, and the attack-penalty die.
+- **Inceptions:** Hallucinatory Instrument, Illusory Weapon, Reality Marble (−2 concentration cost at 7th) and Temporal Stopwatch buttons, with their 11th-level reactions; the 7th-level choices (Rewind, Fast Forward, Words of Affirmation, Words of Detriment) have buttons.
+- **Summons** (Class & Clan Summons): the **Duplicity** (Beguiler; AC your Genjutsu save DC, 1 HP, your speed) and the **Phantasm** (Illusionist; its stat block: AC 20, 10 HP, Ghastly Strike, Maddening Echo; your Genjutsu attack bonus, save DC and senses). Summon buttons on Beguiling Duplicity, Phantasm and Phantasmic Double.
+- **Mentally Compromised:** a new condition card (Conditions compendium, Genjutsu Specialist folder), applied by Collapsing your World and Corrupt Influence.
+- **AC** (King Q-D28): the Illusory items Armor of Psychosis and Reality Shift: Genjutsu Save DC as AC.
+- **At the table:** area and target changes, identification blocking, the degree-of-success features (Master of Illusion, The Prestige) and the Pledges' passives.
+
+## Class & Clan Limits (0.77.0-alpha.1)
+
+King 2026-11-21: "make this use limit variable in a new class & clan setting menu… list all classes and subclasses, and Clans under their own sections; each feature that has a limit that recharges on a rest should be changeable."
+
+- **Menu:** Configure Settings › N5e Class & Clan Limits. Classes first (each class's own features, then its subclasses), then clans; everyone can view, the GM saves.
+- **Limits listed:** every resource pool on a class, subclass, feature or clan, and every class- or clan-owned Amp card with uses.
+- **Choices for pools:** as written, 10 minutes of rest, Short Rest, half on a Short Rest and all on a Long Rest, Long Rest, Full Rest, each day, Initiative (combat start and end), each round, start of your turn, never.
+- **Choices for Amp uses:** as written, 10 minutes of rest, Short Rest, Long Rest, Full Rest, each day.
+- A choice replaces the limit's recovery for every character in the world straight away; "All as written" clears them.
+
 ## Questions for King (answer when convenient; nothing waits on them)
 
 - **Q-D1 Toxic Tongue:** "immunity to the Poisoned and Corroded conditions": N5e has no Poisoned condition. Is it Envenomed? (Only Corroded is automated.)
@@ -101,6 +181,23 @@ Highlights:
 - **Q-D12 Saving throw Mastery:** Iron Body (2 ranks of Con at 13th) plus Mastery of Self (1 more) is 3 ranks of Con at 20th, and Iron Will plus Mastery of Self is 3 ranks of Wis. Is that intended?
 - **Q-D13 Quivering Strike:** the damage card is posted with each end-of-turn save; on a success it isn't applied. OK?
 - **Q-D7 Breakers:** advantage on Clash checks only when the jutsu you clash with is a Ninjutsu of the Release against the other's Release. Correct?
+- **Q-D14 Weapon Focus "Thrown/Ammunition":** the cards count weapons of the Thrown and the Ammunition groups. Does a weapon with only the Thrown property (outside those groups) count too?
+- **Q-D15 Critical Focus:** "+1 rank of the Critical property" is read as +1 critical range (+2 at 11th, +3 at 18th), capped at +3 with everything else. Correct?
+- **Q-D16 Blitz:** Chakra Strike without the Discipline cost adds half the Flurry Dice: the button rounds up (1 at 9th, 2 at 11th and 15th, 3 at 20th). Round up or down?
+- **Q-D17 Burst Echo:** no saving throw is stated; the button applies the 2d12 to each creature within 5 feet of the point. Is a save missing?
+- **Q-D18 Dauntless and Titanic Wrath:** the −1 Discipline cost (all Katas at 20th; Savage Exploits at 17th) is built into the Savage Exploits buttons only; Katas at 20th are paid 1 less at the table. Should the Kata buttons cost 1 less from 20th too?
+- **Q-D19 Chakra Barrier:** it says "Unique Amp", but it behaves like a hit point pool. It's built as the Chakra Barrier pool plus its Mastery effect, not an Amp card. Should it be an Amp card too (counting toward Rule of 3's)?
+- **Q-D20 Tactical Insight and Ghostfire:** Ghostfire lasts 1 minute; Tactical Insight gives no ending. Should Tactical Insight empty when combat ends?
+- **Q-D21 Clones Everywhere:** the save is against your Stealth DC. Buttons can't use a skill DC yet, so it uses your Ninjutsu DC. Add a Stealth DC source, or keep it at the table?
+- **Q-D22 One maneuver per turn:** the limit isn't enforced (The Elite and Exceeding Expectations raise it). Enforce it on the maneuver buttons?
+- **Q-D23 Warfare's dice:** the text gives 1d8, 2d8 at 5th, 3d8 at 11th, 4d8 at 15th, 5d8 at 20th; the old button stopped at 3d8. The button now follows the text. Correct?
+- **Q-D24 Skilled Exploits:** answered (King 2026-11-21): 1 + proficiency bonus per Long Rest, changeable in the Class & Clan Limits menu.
+- **Q-D25 Lethal Attack:** answered (King 2026-11-21): a damage toggle in the damage window of every attack and jutsu; players decide when to tick it, no further automation. Built in 0.77.1-alpha.1.
+- **Q-D26 Actualization's Charisma:** answered (King 2026-11-21): the higher by default, plus a manual pick on the sheet (Features tab, class header: "Genjutsu ability", Auto (higher), Wis or Cha; kept on the class item as `flags.n5e.abilityChoice.gen`).
+- **Q-D27 Duplicity:** answered (King 2026-11-21, "Read the class again"): it's "a perfect visual illusion of yourself", so the summoned token takes your token's name, image and size (`flags.n5e.summonerLook`), and your speed and fly speed ("it cannot fly unless you have a fly speed").
+- **Q-D28 Armor of Psychosis and Reality Shift's AC:** answered (King 2026-11-21): equippable items. New armor category Illusory (worn over armor): Armor of Psychosis (Genjutsu modifier in place of Dex) and Reality Shift: Genjutsu Save DC as AC (only while the Amp is active, when higher), Equipment compendium › Class Items.
+- **Q-D29 Mind Over Matter:** answered (King 2026-11-21): a manual tick (as built).
+- **Genjutsu Specialist text issues** (for the errata list): Venom Strike Adept (2nd) holds Venom Strike Expert's Psychosis box; Mind Leech holds the Mentally Compromised box; Who are you Fighting? holds Betray Yourself's Identity Crisis box; Phantasmic Influence holds the Phantasm stat block; "Rend Thoughts" for Rending Thoughts (Denial is a River, Vindictive Thoughts); "Inhale" for Inhaled (Venom Strike Expert); "you your" (Mind Over Matter); "They 5d6" (Nightmare Rain); Fighting Mirage's prerequisite "Illusionary Weapon" (Illusory Weapon); One with Shadows' prerequisite "Reality Marble Genjutsu pledge" (Reality Marble is an Inception).
 - **Text issues** (for the errata list): Counter Seal contains the Flow (Perfected) box; Perfected Surge contains the Crash (Perfected) box; Tag-Team contains the Crash and Flow Duality boxes; the Summoner subclass is marked non-final in its design note.
 - **Earlier text issues** (for the errata list): Hematoxic Touch contains Toxic Chakra's Blighted definition; Chimeric Mutation contains the 10th-level Transfiguration lead-in; Transmogrified Biology ends with the Ninjutsu Specialist class table; Chakra Enhanced Combat holds the Battle Medic box.
 
@@ -112,3 +209,9 @@ Highlights:
 - 2026-11-15 King: Q-D1 Envenomed (Toxic Tongue now gives immunity to Envenomed and Corroded; ships with the next release); Q-D2 character level is right (no multiclassing in N5e); Q-D4–Q-D7 correct; Q-D3 asked for an explanation.
 - 2026-11-15 King: "Lets move on to STD6d". Claude: engine D15–D19 and Taijutsu Specialist built, published 0.55.0-alpha.1. Suites 589 and 180 pass.
 - 2026-11-15 King: Q-D8 Bone Broken and Flow Broken are class conditions, to be built with the class and clan conditions system (`docs/CCOND1_SPEC.md`); Q-D9 yes; Q-D10 upcasting yes, a None-cost Taijutsu keeps None (fixed in code, ships with the next release); Q-D11 no (stance only); Q-D12 yes (3 ranks intended); Q-D13 yes.
+- 2026-11-21 King: "Then let's work on next Batch." Claude: engine D20–D22 and Weapon Specialist built (101 features), published 0.74.0-alpha.1. Q-D14–Q-D18 asked; nothing waits on them.
+- 2026-11-21 King: "Next batch." Claude: engine D23 and Scout-Nin built (187 features), published 0.75.0-alpha.1. Q-D19–Q-D23 asked; nothing waits on them.
+- 2026-11-21 King: "Make the Bunshin and Void Soul NPCs following their statistics. And place them in their appropriate Subclass folders." Claude: Class & Clan Summons (Bunshin, Void Soul) and summoner links (D24), published 0.76.0-alpha.1.
+- 2026-11-21 King: "Next batch." and "QD24. 1+Prof, use per LR. For now make this use limit variable in a new class & class setting menu..." Claude: Hunter-Nin built (86 features), D25 option-gated effects, D26 Class & Clan Limits menu, published 0.77.0-alpha.1. Q-D25 asked; nothing waits on it.
+- 2026-11-21 King: "Qd25. Lethal attack should be a damage toggle in the Attack/Damage window..." Claude: optional damage elements; Lethal Attack as full and half rows, published 0.77.1-alpha.1.
+- 2026-11-21 King: "Next batch." Claude: Genjutsu Specialist built (107 features), D27–D29, Duplicity and Phantasm summons, Mentally Compromised; published 0.78.0-alpha.1. King answered Q-D26–Q-D29 the same day (manual Genjutsu ability pick, the Duplicity looks like you, Illusory AC items, Mind Over Matter a manual tick).

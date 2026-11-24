@@ -87,17 +87,32 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eLL1412bV7B7jZ",
+        "type": "attack",
+        "label": "Breath of Water: Surface",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Chain 1: no disadvantage or penalties from hostile effects. B-Rank: advantage against a target with Physical ranks.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "2d12",
+              "type": "cold"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5epRNbl43bRcCwA",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "dazed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Dazed"
-          }
-        ],
+        "label": "Surface: Dazed",
         "save": {
           "abilities": [
             "str"
@@ -106,17 +121,19 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "On a hit. Failure: Dazed.",
         "damage": {
-          "parts": [
-            {
-              "formula": "2d12",
-              "type": "cold"
-            }
-          ]
+          "parts": []
         }
       }
     ],
@@ -200,52 +217,32 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
-              "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "dazed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Dazed"
-                }
-              ],
-              "save": {
-                "abilities": [
-                  "str"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
+              "id": "n5eLL1412bV7B7jZ",
+              "type": "attack",
+              "label": "Breath of Water: Surface",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
               },
+              "text": "Chain 1: no disadvantage or penalties from hostile effects. B-Rank: advantage against a target with Physical ranks.",
               "damage": {
                 "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
                   {
                     "formula": "(2d12) + (1d12)",
                     "type": "cold"
                   }
                 ]
               }
-            }
-          ],
-          "B": [
+            },
             {
-              "id": "parsed1",
+              "id": "n5epRNbl43bRcCwA",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "dazed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Dazed"
-                }
-              ],
+              "label": "Surface: Dazed",
               "save": {
                 "abilities": [
                   "str"
@@ -254,33 +251,50 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "On a hit. Failure: Dazed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eLL1412bV7B7jZ",
+              "type": "attack",
+              "label": "Breath of Water: Surface",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Chain 1: no disadvantage or penalties from hostile effects. B-Rank: advantage against a target with Physical ranks.",
               "damage": {
                 "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
                   {
                     "formula": "(2d12) + (2d12)",
                     "type": "cold"
                   }
                 ]
               }
-            }
-          ],
-          "A": [
+            },
             {
-              "id": "parsed1",
+              "id": "n5epRNbl43bRcCwA",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "dazed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Dazed"
-                }
-              ],
+              "label": "Surface: Dazed",
               "save": {
                 "abilities": [
                   "str"
@@ -289,33 +303,50 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "On a hit. Failure: Dazed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eLL1412bV7B7jZ",
+              "type": "attack",
+              "label": "Breath of Water: Surface",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Chain 1: no disadvantage or penalties from hostile effects. B-Rank: advantage against a target with Physical ranks.",
               "damage": {
                 "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
                   {
                     "formula": "(2d12) + (3d12)",
                     "type": "cold"
                   }
                 ]
               }
-            }
-          ],
-          "S": [
+            },
             {
-              "id": "parsed1",
+              "id": "n5epRNbl43bRcCwA",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "dazed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Dazed"
-                }
-              ],
+              "label": "Surface: Dazed",
               "save": {
                 "abilities": [
                   "str"
@@ -324,23 +355,78 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "On a hit. Failure: Dazed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eLL1412bV7B7jZ",
+              "type": "attack",
+              "label": "Breath of Water: Surface",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Chain 1: no disadvantage or penalties from hostile effects. B-Rank: advantage against a target with Physical ranks.",
               "damage": {
                 "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
                   {
                     "formula": "(2d12) + (4d12)",
                     "type": "cold"
                   }
                 ]
               }
+            },
+            {
+              "id": "n5epRNbl43bRcCwA",
+              "type": "save",
+              "label": "Surface: Dazed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "On a hit. Failure: Dazed.",
+              "damage": {
+                "parts": []
+              }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "1b8bbde86064544a"

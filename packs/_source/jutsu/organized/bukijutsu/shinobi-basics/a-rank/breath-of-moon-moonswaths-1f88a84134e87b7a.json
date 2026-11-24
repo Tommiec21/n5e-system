@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eYfBvIqY3lnivG",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Breath of Moon: Moonswaths",
         "save": {
           "abilities": [
             "dex"
@@ -97,11 +96,18 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 3,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Within 5 feet of up to 4 points within 60 feet; once per creature. Chain 2: failure 3 Bleed. Chain 3: a Breath of Moon as an Action, Bonus action or Reaction until the end of your next turn. Success: half.",
         "damage": {
           "parts": [
             {
@@ -192,10 +198,9 @@
         "activitiesByRank": {
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eYfBvIqY3lnivG",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Breath of Moon: Moonswaths",
               "save": {
                 "abilities": [
                   "dex"
@@ -203,11 +208,18 @@
                 "dc": {
                   "source": "discipline"
                 },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
+                "onSuccess": "half",
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 3,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Within 5 feet of up to 4 points within 60 feet; once per creature. Chain 2: failure 3 Bleed. Chain 3: a Breath of Moon as an Action, Bonus action or Reaction until the end of your next turn. Success: half.",
               "damage": {
                 "parts": [
                   {
@@ -220,7 +232,14 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Bleed is Chain 2 only."
+        }
+      ]
     }
   },
   "folder": "7116760d98edc24e"

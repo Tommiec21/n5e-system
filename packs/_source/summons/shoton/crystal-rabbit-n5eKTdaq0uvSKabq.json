@@ -1,0 +1,334 @@
+{
+  "_id": "n5eKTdaq0uvSKabq",
+  "_key": "!actors!n5eKTdaq0uvSKabq",
+  "name": "Crystal Rabbit",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Shoton: Crystal Rabbit",
+      "summonRole": "Crystal Rabbit",
+      "biography": "<p><em>Shoton Hijutsu (an Earthen Artifact).</em> It uses your highest jutsu attack bonus or Save DC when an effect calls for it. You command it as a Bonus action.</p><p><strong>Small Construct, unaligned.</strong> <strong>Armor Class</strong> 10 + 2 for every rank above D-Rank · <strong>Hit Points</strong> 10 + 10 for every rank above D-Rank · <strong>Speed</strong> 40 ft. STR +1 (save +3), DEX +4 (+7), CON +2 (+7), INT −5, WIS +0, CHA −5. <strong>Condition Immunities</strong> All Mental, All Sensory, Stunned, Petrified, Envenomed.</p><p><strong>Linked to you when summoned:</strong> AC, DR and hit points by the rank you cast the jutsu at, and your highest jutsu attack bonus and save DC.</p>"
+    },
+    "abilities": {
+      "str": {
+        "value": 12
+      },
+      "dex": {
+        "value": 18
+      },
+      "con": {
+        "value": 14
+      },
+      "int": {
+        "value": 0
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 0
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 10,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "small",
+      "conditionImmune": [
+        "berserk",
+        "charmed",
+        "confused",
+        "demoralized",
+        "shaken",
+        "concussed",
+        "blinded",
+        "dazzled",
+        "deafened",
+        "petrified",
+        "envenomed"
+      ],
+      "stateImmune": [
+        "stunned"
+      ],
+      "speed": {
+        "walk": 40,
+        "climb": 0,
+        "swim": 0,
+        "fly": 0,
+        "burrow": 0,
+        "hover": false
+      }
+    },
+    "hpMax": 10,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5en9YkxE1umUypX",
+      "_key": "!actors.items!n5eKTdaq0uvSKabq.n5en9YkxE1umUypX",
+      "name": "Abrasive",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>When a crystal rabbit takes damage from a melee attack, the attacking creature must make a Constitution saving throw, gaining a rank of Bleed on a failure.</p>",
+        "category": "npcTraits",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5ekYtfX4yY2beWk",
+            "type": "save",
+            "label": "Abrasive",
+            "save": {
+              "abilities": [
+                "con"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "inflicts": [
+              {
+                "key": "bleed",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Bleed"
+              }
+            ],
+            "text": "A melee attacker that damaged it. Failure: a rank of Bleed."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eSaYBXCDkzToO4",
+      "_key": "!actors.items!n5eKTdaq0uvSKabq.n5eSaYBXCDkzToO4",
+      "name": "Team Effort",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>If more than one Crystal Rabbit uses Bucktooth against the same creature on the same turn, that creature makes a single saving throw, but takes +1d6 damage for each Crystal Rabbit beyond the first on a failed save.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5epoJ9wlzSY7hlU",
+      "_key": "!actors.items!n5eKTdaq0uvSKabq.n5epoJ9wlzSY7hlU",
+      "name": "Nibble",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Natural weapon Attack:</em> +X to hit, Reach 5ft., one target. <em>Hit:</em> 1d4+4 earth damage. On a roll of 4 of the damage die, the affected creature has its speed reduced by 5, until the beginning of the summoners next turn.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eMN3fTw5BJMIDI",
+            "type": "attack",
+            "label": "Nibble",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 1,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "1d4 + 4",
+                  "type": "earth"
+                }
+              ]
+            }
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5erfhry8rJKDYn6",
+      "_key": "!actors.items!n5eKTdaq0uvSKabq.n5erfhry8rJKDYn6",
+      "name": "Bucktooth",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>(Recharge 5-6).</em> The crystal rabbit grows two crystal teeth and fires them like missiles at a target creature within 30 feet, forcing them to make a Dexterity saving throw. On a failure, they take 2d6 earth damage and they gain 1 rank of Crystallization.",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eeluRhEiUx7zpt",
+            "type": "save",
+            "label": "Bucktooth",
+            "save": {
+              "abilities": [
+                "dex"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "2d6",
+                  "type": "earth"
+                }
+              ]
+            },
+            "inflicts": [
+              {
+                "key": "shoton-crystallization",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Crystallization"
+              }
+            ]
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5eCbvy0rg2by1rM",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "attributes.ac.flat": "10 + 2 * max(0, @rankValue - 2)",
+        "hpMax": "10 + 10 * max(0, @rankValue - 2)",
+        "bonuses.saveDC.nin": "max(@dc.nin, @dc.tai, @dc.gen) - 8 - @prof",
+        "bonuses.attack.nin": "max(@attack.nin, @attack.tai, @attack.gen) - @prof"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Crystal Rabbit",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.93.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

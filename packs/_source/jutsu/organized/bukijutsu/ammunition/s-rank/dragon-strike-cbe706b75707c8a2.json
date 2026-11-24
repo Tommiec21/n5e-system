@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eufxMPUwjuVB2Y",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Dragon-Strike",
         "save": {
           "abilities": [
             "dex"
@@ -97,21 +96,21 @@
             "source": "discipline"
           },
           "onSuccess": "half",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "A 15-foot wide line as long as your weapon's range. Success: half. Chain 3: failure: speed 0 until the start of your next turn; set your Chain rank to any value but 0.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "7d10",
-        "roll": {
-          "formula": "7d10",
-          "note": "All creatures in 15 feet wide line with a maximum length equal to your weapons Range, originating from you, must make a Dexterity saving throw taking [Weapons damage] + 7d10 on a failed save, or half as much damage on a successful one."
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "7d10",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -194,7 +193,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "a8010b352a59571c"

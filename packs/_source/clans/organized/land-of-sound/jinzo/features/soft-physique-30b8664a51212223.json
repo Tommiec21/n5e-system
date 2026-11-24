@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "jinzo",
-      "sourceLine": 7192
+      "sourceLine": 7192,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Bio Branch] Reach Extension: unarmed attacks Reach 1 (+1 at 7th and 15th; Taijutsu, Grapple and reaching too). Instinctual Coil: Grapple can use your Hijutsu Flexibility ability. Dragging Wrap: full speed while grappling; once per turn, 5 feet of movement moves the grappled creature within your reach. Coiling Pull: grapple or carry two creatures your size or smaller."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,22 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eEJEmXwe0KwDv5",
+        "type": "effect",
+        "label": "Soft Physique",
+        "effect": {
+          "name": "Soft Physique",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "On initiative until combat ends, or a Bonus action.",
+        "activation": "bonus"
+      }
+    ]
   }
 }

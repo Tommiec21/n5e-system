@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eBbADZhZZ4dTKp",
         "type": "attack",
-        "label": "Attack",
+        "label": "Shadow Snake Bite",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Concentration: a creature within 20 feet (B-Rank: +1; S-Rank: +2). Snake Terrain: ignore ground difficult terrain.",
         "damage": {
           "parts": [
             {
@@ -103,17 +104,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eA50bGQD0H7yGX",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "grappled",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Grappled"
-          }
-        ],
+        "label": "Bite: Grappled",
         "save": {
           "abilities": [
             "str"
@@ -122,10 +115,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "grappled",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Grappled"
+          }
+        ],
+        "text": "On a hit. Failure: Grappled; resave at the end of each of its turns.",
         "damage": {
           "parts": []
         }
@@ -208,9 +208,203 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eBbADZhZZ4dTKp",
+              "type": "attack",
+              "label": "Shadow Snake Bite",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration: a creature within 20 feet (B-Rank: +1; S-Rank: +2). Snake Terrain: ignore ground difficult terrain.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (1d8)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eA50bGQD0H7yGX",
+              "type": "save",
+              "label": "Bite: Grappled",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "On a hit. Failure: Grappled; resave at the end of each of its turns.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eBbADZhZZ4dTKp",
+              "type": "attack",
+              "label": "Shadow Snake Bite",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration: a creature within 20 feet (B-Rank: +1; S-Rank: +2). Snake Terrain: ignore ground difficult terrain.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (2d8)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eA50bGQD0H7yGX",
+              "type": "save",
+              "label": "Bite: Grappled",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "On a hit. Failure: Grappled; resave at the end of each of its turns.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eBbADZhZZ4dTKp",
+              "type": "attack",
+              "label": "Shadow Snake Bite",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration: a creature within 20 feet (B-Rank: +1; S-Rank: +2). Snake Terrain: ignore ground difficult terrain.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (3d8)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eA50bGQD0H7yGX",
+              "type": "save",
+              "label": "Bite: Grappled",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "On a hit. Failure: Grappled; resave at the end of each of its turns.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eBbADZhZZ4dTKp",
+              "type": "attack",
+              "label": "Shadow Snake Bite",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration: a creature within 20 feet (B-Rank: +1; S-Rank: +2). Snake Terrain: ignore ground difficult terrain.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d8) + (4d8)",
+                    "type": "poison"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eA50bGQD0H7yGX",
+              "type": "save",
+              "label": "Bite: Grappled",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "On a hit. Failure: Grappled; resave at the end of each of its turns.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5eDpY0QdrV0NfEW"

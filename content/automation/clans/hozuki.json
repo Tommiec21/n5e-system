@@ -1,0 +1,1922 @@
+{
+  "clan": "hozuki",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "hozuki-blood-as-thick-as-oil": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Water Release Hijutsu have elemental advantage against Earth Release jutsu; damaging Hijutsu treat structures and constructs with hit points as vulnerable. (Its copy of Mirage Regent's Amp is removed, as King Q-E12.)"
+        }
+      ]
+    },
+    "hozuki-demon-wave-sniper": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5essI3c8jejVaGv",
+          "type": "attack",
+          "label": "Demon Wave Sniper",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 8
+          },
+          "text": "Up to 8 creatures within 120 feet, once each, even unseen; never at disadvantage.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "10d6",
+                "type": "piercing"
+              },
+              {
+                "formula": "5d6",
+                "type": "cold"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "S": [
+              {
+                "id": "n5essI3c8jejVaGv",
+                "type": "attack",
+                "label": "Demon Wave Sniper",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "ranged",
+                  "count": 8
+                },
+                "text": "Up to 8 creatures within 120 feet, once each, even unseen; never at disadvantage.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(10d6) + (1d6)",
+                      "type": "piercing"
+                    },
+                    {
+                      "formula": "(5d6) + (1d6)",
+                      "type": "cold"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Hydrofication (1 Hydration)",
+          "appliesTo": {
+            "namePrefix": "Demon Wave Sniper"
+          },
+          "note": "+2 critical range on these attacks.",
+          "cost": {
+            "pool": "hydration",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hozuki-demonic-illusion-steaming-mirage": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ewEVRL4uTfz9qV",
+          "type": "save",
+          "label": "Steaming Mirage",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists.",
+              "success": "Success: Confused.",
+              "failure": "Failure: it sees every other creature as you (resave at the end of its turns).",
+              "critFailure": "Critical Failure: as a failure, with no resave."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            }
+          ],
+          "text": "A 20-foot radius within 90 feet (+10 per rank); ending a turn there, it saves again.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Hydrofication (1 Hydration)",
+          "appliesTo": {
+            "namePrefix": "Demonic Illusion: Steaming Mirage"
+          },
+          "note": "You count as invisible to creatures that fail.",
+          "cost": {
+            "pool": "hydration",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hozuki-follow-the-current": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ei5kcsupZE8bJV",
+          "type": "roll",
+          "label": "Follow the Current",
+          "roll": {
+            "formula": "",
+            "note": "Bonus action, at least half submerged: teleport to a space in the same water within 120 feet. Then not again for 10 minutes."
+          },
+          "activation": "bonus"
+        }
+      ]
+    },
+    "hozuki-great-water-arm": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e9GbitygHKsDNS",
+          "type": "attack",
+          "label": "Great Water Arm",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "[Weapon Damage] + 2d8 (its type isn't given).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d8",
+                "type": "bludgeoning"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5ejJg0KICrF4LAx",
+          "type": "save",
+          "label": "Great Water Arm: on a hit",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            },
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            },
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            }
+          ],
+          "text": "Failure: pushed 15 feet and Dazed (B-Rank: Bruised too; S-Rank: Staggered too).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5e9GbitygHKsDNS",
+                "type": "attack",
+                "label": "Great Water Arm",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "[Weapon Damage] + 2d8 (its type isn't given).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (1d8)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5ejJg0KICrF4LAx",
+                "type": "save",
+                "label": "Great Water Arm: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "Failure: pushed 15 feet and Dazed (B-Rank: Bruised too; S-Rank: Staggered too).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5e9GbitygHKsDNS",
+                "type": "attack",
+                "label": "Great Water Arm",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "[Weapon Damage] + 2d8 (its type isn't given).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (2d8)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5ejJg0KICrF4LAx",
+                "type": "save",
+                "label": "Great Water Arm: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "Failure: pushed 15 feet and Dazed (B-Rank: Bruised too; S-Rank: Staggered too).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5e9GbitygHKsDNS",
+                "type": "attack",
+                "label": "Great Water Arm",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "[Weapon Damage] + 2d8 (its type isn't given).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (3d8)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5ejJg0KICrF4LAx",
+                "type": "save",
+                "label": "Great Water Arm: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "Failure: pushed 15 feet and Dazed (B-Rank: Bruised too; S-Rank: Staggered too).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e9GbitygHKsDNS",
+                "type": "attack",
+                "label": "Great Water Arm",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "[Weapon Damage] + 2d8 (its type isn't given).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (4d8)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5ejJg0KICrF4LAx",
+                "type": "save",
+                "label": "Great Water Arm: on a hit",
+                "save": {
+                  "abilities": [
+                    "str"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "Failure: pushed 15 feet and Dazed (B-Rank: Bruised too; S-Rank: Staggered too).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Hydrofication (1 Hydration)",
+          "appliesTo": {
+            "namePrefix": "Great Water Arm"
+          },
+          "note": "Range Self (15-foot cone): one attack roll against each creature in it.",
+          "cost": {
+            "pool": "hydration",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hozuki-heir-of-the-mist": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5egcXJTVUGtgJBg",
+          "type": "heal",
+          "label": "Heir of the Mist (D-Rank)",
+          "heal": {
+            "formula": "5",
+            "pool": "tempHp"
+          },
+          "text": "Once per turn, a Water Release jutsu that costs chakra: until the start of your next turn.",
+          "cost": {
+            "pool": "hydration",
+            "amount": 2
+          },
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5eEvVbkIKexcWaI",
+          "type": "heal",
+          "label": "Heir of the Mist (C-Rank)",
+          "heal": {
+            "formula": "10",
+            "pool": "tempHp"
+          },
+          "text": "Once per turn, a Water Release jutsu that costs chakra: until the start of your next turn.",
+          "cost": {
+            "pool": "hydration",
+            "amount": 2
+          },
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5epSFqSTi5JtB3q",
+          "type": "heal",
+          "label": "Heir of the Mist (B-Rank)",
+          "heal": {
+            "formula": "15",
+            "pool": "tempHp"
+          },
+          "text": "Once per turn, a Water Release jutsu that costs chakra: until the start of your next turn.",
+          "cost": {
+            "pool": "hydration",
+            "amount": 2
+          },
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5efhQuXL300xTbk",
+          "type": "heal",
+          "label": "Heir of the Mist (A-Rank)",
+          "heal": {
+            "formula": "20",
+            "pool": "tempHp"
+          },
+          "text": "Once per turn, a Water Release jutsu that costs chakra: until the start of your next turn.",
+          "cost": {
+            "pool": "hydration",
+            "amount": 2
+          },
+          "oncePerTurn": true
+        },
+        {
+          "id": "n5eBotsL2ZAMhgkj",
+          "type": "heal",
+          "label": "Heir of the Mist (S-Rank)",
+          "heal": {
+            "formula": "25",
+            "pool": "tempHp"
+          },
+          "text": "Once per turn, a Water Release jutsu that costs chakra: until the start of your next turn.",
+          "cost": {
+            "pool": "hydration",
+            "amount": 2
+          },
+          "oncePerTurn": true
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "After a long rest pick a Tidal State (the option items); enter it for 1 minute as a Bonus action for 4 Hydration, once per rest."
+        }
+      ]
+    },
+    "hozuki-heir-of-the-mist-mirage-regent": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eL4Bh7aPbXYHe6",
+          "type": "effect",
+          "label": "Mirage Regent",
+          "effect": {
+            "name": "Mirage Regent",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "mirage-regent"
+          },
+          "text": "Bonus action, 1 minute, once per rest.",
+          "activation": "bonus",
+          "cost": {
+            "pool": "hydration",
+            "amount": 4
+          }
+        },
+        {
+          "id": "n5e9oqN5NSnc6K1C",
+          "type": "roll",
+          "label": "Where are You Looking?",
+          "roll": {
+            "formula": "1d12",
+            "note": "First attack on you each turn: at or under the target it misses (11, then 1 lower after each miss)."
+          }
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "rest",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "(Its copy of Tidal Gains' Amp is removed, as King Q-E12.)"
+        }
+      ]
+    },
+    "hozuki-heir-of-the-mist-tidal-gains": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5egNa0d2uM8KtZF",
+          "type": "effect",
+          "label": "Tidal Gains",
+          "effect": {
+            "name": "Tidal Gains",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "tidal-gains"
+          },
+          "text": "Bonus action, 1 minute, once per rest.",
+          "activation": "bonus",
+          "cost": {
+            "pool": "hydration",
+            "amount": 4
+          }
+        },
+        {
+          "id": "n5ewJj1kukmEvdnt",
+          "type": "save",
+          "label": "Water Pressure",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Weakened"
+            },
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "Once per turn, [Weapon Damage] or [Unarmed Damage] to a Large or smaller creature. Failure: 2 ranks of Weakened and Prone.",
+          "oncePerTurn": true,
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "rest",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      },
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its text says once you exit it you can't enter again until a short rest; Heir of the Mist says until a rest."
+        }
+      ]
+    },
+    "hozuki-hydration": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eFdV1ZQQmpEPKS",
+          "type": "roll",
+          "label": "Regain 1 Hydration",
+          "roll": {
+            "formula": "",
+            "note": "A long rest refills it; regain 1 (King Q-E17) when a Water Release jutsu damages you, you start your turn half submerged, or your Water jutsu uses a sufficient source of water."
+          },
+          "cost": {
+            "pool": "hydration",
+            "amount": 1,
+            "gain": true
+          }
+        },
+        {
+          "id": "n5erpnD6qvZJ80kC",
+          "type": "roll",
+          "label": "Lose 2 Hydration (lightning)",
+          "roll": {
+            "formula": "",
+            "note": "Once per turn, when you take lightning damage."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "hydration",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5eTXCQeR312w9Fz",
+          "type": "roll",
+          "label": "Capillary Infiltration",
+          "roll": {
+            "formula": "",
+            "note": "On your turn, until it ends: squeeze through 1-inch gaps; immune to Grappled and Restrained."
+          },
+          "cost": {
+            "pool": "hydration",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5edZBIVjKPf2tKz",
+          "type": "roll",
+          "label": "Liquid Evasion",
+          "roll": {
+            "formula": "",
+            "note": "Reaction to bludgeoning, piercing, slashing, cold or earth damage: resistance to it and move 10 feet without provoking. Cold: temporary hit points by the jutsu's rank instead of the damage (D 5 ... S 25)."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "hydration",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5e2oMGp820JN5Ax",
+          "type": "roll",
+          "label": "Liquid Impact",
+          "roll": {
+            "formula": "",
+            "note": "A hostile creature's critical hit on you becomes a normal hit."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "hydration",
+            "amount": 3
+          }
+        },
+        {
+          "id": "n5eehz9ZT2BTMK99",
+          "type": "effect",
+          "label": "Water Pistol",
+          "effect": {
+            "name": "Water Pistol",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "On your turn, for 1 minute: the Attack action can make one Water Bullet (two at 7th, three at 15th), as casting a Hozuki Hijutsu (Ninjutsu, Water Release) at your highest rank.",
+          "cost": {
+            "pool": "hydration",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5eP1XFjC2fcoVc6",
+          "type": "attack",
+          "label": "Water Bullet",
+          "attack": {
+            "discipline": "highest",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "A creature you can see within 30 feet: bludgeoning, piercing or cold (pick). Pierce 6 at 7th, 12 at 15th.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:1d8,11:2d8) + max(@mod.nin, @mod.tai, @mod.gen)",
+                "type": "piercing"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5euMH6qlCnN4A1H",
+          "type": "effect",
+          "label": "Water Muscles",
+          "effect": {
+            "name": "Water Muscles",
+            "target": "self",
+            "changes": [
+              {
+                "key": "n5e.damage.weapon",
+                "value": "lvl(1:2,7:4,15:6)",
+                "mode": 2
+              },
+              {
+                "key": "n5e.damage.unarmed",
+                "value": "lvl(1:2,7:4,15:6)",
+                "mode": 2
+              }
+            ],
+            "expires": "nextTurnEnd",
+            "seconds": 0
+          },
+          "text": "Dealing [Weapon Damage] or [Unarmed Damage]: +2 to it until the end of your next turn (+4 at 7th, +6 at 15th; the effect raises both).",
+          "cost": {
+            "pool": "hydration",
+            "amount": 1
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "hydration",
+          "label": "Hydration",
+          "value": 0,
+          "max": "1 + max(@str, @dex, @con, @int, @wis, @cha)",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "lr",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Hydration: 1 + your highest ability modifier (the pool). Hydrofication: a Hozuki Hijutsu's effect for 1 Hydration (a cast dialog option on each)."
+        }
+      ]
+    },
+    "hozuki-mistborn-infiltrator": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Liquid Infiltration techniques (one more at 11th): the option items."
+        }
+      ]
+    },
+    "hozuki-mistborn-infiltrator-dampen-reverb": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5elUSaBjQCIHq6B",
+          "type": "effect",
+          "label": "Dampen Reverb",
+          "effect": {
+            "name": "Dampen Reverb",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 600
+          },
+          "text": "Bonus action: a 10-foot radius soundproof bubble for 10 minutes or until a hostile creature passes through it. Once per short rest.",
+          "activation": "bonus"
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "sr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      }
+    },
+    "hozuki-mistborn-infiltrator-hydrophonic-sense": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Touching liquid (puddles, flooded halls, sewers): tremorsense through it up to 1 mile, and you hear conversations near it (one location at a time)."
+        }
+      ]
+    },
+    "hozuki-mistborn-infiltrator-mist-voice": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Creatures touching the same body of water within 120 feet: send messages of up to 10 words, heard only by them."
+        }
+      ]
+    },
+    "hozuki-mistborn-infiltrator-rain-traversal": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "No tracks or scent in rain, mist or standing water: tracking you there is DC +10."
+        }
+      ]
+    },
+    "hozuki-mistborn-infiltrator-vapor-shroud": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ex2tr4m7UEf4bH",
+          "type": "effect",
+          "label": "Vapor Shroud",
+          "effect": {
+            "name": "Vapor Shroud",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action, 1 minute: you and allies starting their turns within 10 feet gain a rank of Mastery on Stealth (two at 7th) and +10 speed. Hostile Wind or Lightning jutsu end it. Once per short rest.",
+          "activation": "bonus"
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "sr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      }
+    },
+    "hozuki-misty-hallucination": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5exu5NRrgpcOLCU",
+          "type": "save",
+          "label": "Misty Hallucination",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists.",
+              "success": "Success: a rank of Dazzled.",
+              "failure": "Failure: its next Action attack targets the closest creature, then it ends.",
+              "critFailure": "Critical Failure: its first Action attack each turn targets the closest creature for the duration (resave at the end of each of its turns)."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            }
+          ],
+          "text": "A 10-foot radius within 30 feet (+10 feet range and +5 radius per rank).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Hydrofication (1 Hydration)",
+          "appliesTo": {
+            "namePrefix": "Misty Hallucination"
+          },
+          "note": "Your allies are immune.",
+          "cost": {
+            "pool": "hydration",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hozuki-rain-dance": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e8RKCNglOmkByQ",
+          "type": "attack",
+          "label": "Rain Dance",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "cold"
+              }
+            ]
+          },
+          "strike": {
+            "kind": "weapon",
+            "extraDice": "",
+            "dieSteps": 0,
+            "pierce": 0,
+            "maximize": false,
+            "attacks": "1"
+          }
+        },
+        {
+          "id": "n5eQBILCEJ1LAaZe",
+          "type": "save",
+          "label": "Rain Dance: droplets",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Weakened"
+            },
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            }
+          ],
+          "text": "On a hit, creatures of your choice within 5 feet. Failure: 2 ranks of Weakened (3 at A; Bruised too with Hydrofication).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5e8RKCNglOmkByQ",
+                "type": "attack",
+                "label": "Rain Dance",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (1d6)",
+                      "type": "cold"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eQBILCEJ1LAaZe",
+                "type": "save",
+                "label": "Rain Dance: droplets",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Weakened"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "On a hit, creatures of your choice within 5 feet. Failure: 2 ranks of Weakened (3 at A; Bruised too with Hydrofication).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5e8RKCNglOmkByQ",
+                "type": "attack",
+                "label": "Rain Dance",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (2d6)",
+                      "type": "cold"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eQBILCEJ1LAaZe",
+                "type": "save",
+                "label": "Rain Dance: droplets",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Weakened"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "On a hit, creatures of your choice within 5 feet. Failure: 2 ranks of Weakened (3 at A; Bruised too with Hydrofication).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e8RKCNglOmkByQ",
+                "type": "attack",
+                "label": "Rain Dance",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d6) + (3d6)",
+                      "type": "cold"
+                    }
+                  ]
+                },
+                "strike": {
+                  "kind": "weapon",
+                  "extraDice": "",
+                  "dieSteps": 0,
+                  "pierce": 0,
+                  "maximize": false,
+                  "attacks": "1"
+                }
+              },
+              {
+                "id": "n5eQBILCEJ1LAaZe",
+                "type": "save",
+                "label": "Rain Dance: droplets",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "weakened",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Weakened"
+                  },
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ],
+                "text": "On a hit, creatures of your choice within 5 feet. Failure: 2 ranks of Weakened (3 at A; Bruised too with Hydrofication).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Hydrofication (1 Hydration)",
+          "appliesTo": {
+            "namePrefix": "Rain Dance"
+          },
+          "note": "One attack roll against each creature of your choice within 5 feet; failed saves are also Bruised.",
+          "cost": {
+            "pool": "hydration",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hozuki-steaming-danger-tyranny": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eWSzGLQGyAmNND",
+          "type": "summon",
+          "label": "Steam Imp",
+          "summon": {
+            "uuid": "Compendium.n5e.summons.Actor.n5eb2WwgDK4N1W25",
+            "count": 1,
+            "template": ""
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Steam Imp (Class & Clan Summons › Hozuki): command it as a Bonus action; it uses your Ninjutsu attack bonus and save DC."
+        }
+      ]
+    },
+    "hozuki-tate-eboshi": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ercdlmdTFT47oU",
+          "type": "heal",
+          "label": "Tate Eboshi",
+          "heal": {
+            "formula": "2d8 + 8",
+            "pool": "tempHp"
+          },
+          "text": "Reaction: move up to your speed to within 5 feet of an ally and interpose its damage (B-Rank: all allies in a 15-foot cube).",
+          "activation": "reaction"
+        },
+        {
+          "id": "n5eHCK8yS8Y4Jmml",
+          "type": "damage",
+          "label": "Hydrofication: counter",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d8 + 8",
+                "type": "cold"
+              }
+            ]
+          },
+          "text": "You reduce the damage to 0 and the trigger is within 10 feet."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5ercdlmdTFT47oU",
+                "type": "heal",
+                "label": "Tate Eboshi",
+                "heal": {
+                  "formula": "2d8 + 8",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: move up to your speed to within 5 feet of an ally and interpose its damage (B-Rank: all allies in a 15-foot cube).",
+                "activation": "reaction"
+              },
+              {
+                "id": "n5eHCK8yS8Y4Jmml",
+                "type": "damage",
+                "label": "Hydrofication: counter",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8 + 8) + (1d8)",
+                      "type": "cold"
+                    }
+                  ]
+                },
+                "text": "You reduce the damage to 0 and the trigger is within 10 feet."
+              }
+            ],
+            "B": [
+              {
+                "id": "n5ercdlmdTFT47oU",
+                "type": "heal",
+                "label": "Tate Eboshi",
+                "heal": {
+                  "formula": "2d8 + 8",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: move up to your speed to within 5 feet of an ally and interpose its damage (B-Rank: all allies in a 15-foot cube).",
+                "activation": "reaction"
+              },
+              {
+                "id": "n5eHCK8yS8Y4Jmml",
+                "type": "damage",
+                "label": "Hydrofication: counter",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8 + 8) + (2d8)",
+                      "type": "cold"
+                    }
+                  ]
+                },
+                "text": "You reduce the damage to 0 and the trigger is within 10 feet."
+              }
+            ],
+            "A": [
+              {
+                "id": "n5ercdlmdTFT47oU",
+                "type": "heal",
+                "label": "Tate Eboshi",
+                "heal": {
+                  "formula": "2d8 + 8",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: move up to your speed to within 5 feet of an ally and interpose its damage (B-Rank: all allies in a 15-foot cube).",
+                "activation": "reaction"
+              },
+              {
+                "id": "n5eHCK8yS8Y4Jmml",
+                "type": "damage",
+                "label": "Hydrofication: counter",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8 + 8) + (3d8)",
+                      "type": "cold"
+                    }
+                  ]
+                },
+                "text": "You reduce the damage to 0 and the trigger is within 10 feet."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5ercdlmdTFT47oU",
+                "type": "heal",
+                "label": "Tate Eboshi",
+                "heal": {
+                  "formula": "2d8 + 8",
+                  "pool": "tempHp"
+                },
+                "text": "Reaction: move up to your speed to within 5 feet of an ally and interpose its damage (B-Rank: all allies in a 15-foot cube).",
+                "activation": "reaction"
+              },
+              {
+                "id": "n5eHCK8yS8Y4Jmml",
+                "type": "damage",
+                "label": "Hydrofication: counter",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8 + 8) + (4d8)",
+                      "type": "cold"
+                    }
+                  ]
+                },
+                "text": "You reduce the damage to 0 and the trigger is within 10 feet."
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Hydrofication (1 Hydration)",
+          "appliesTo": {
+            "namePrefix": "Tate Eboshi"
+          },
+          "note": "It gains Clash; reducing the damage to 0, the triggering creature within 10 feet takes the counter damage.",
+          "cost": {
+            "pool": "hydration",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hozuki-water-balloon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5exciGcK7SidTyd",
+          "type": "save",
+          "label": "Water Balloon",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            }
+          ],
+          "text": "Creatures of your choice first entering or starting their turn in the 20-foot cube; a Bonus action moves it. Failure: the damage and Staggered; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d10",
+                "type": "cold"
+              },
+              {
+                "formula": "2d10",
+                "type": "bludgeoning"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5exciGcK7SidTyd",
+                "type": "save",
+                "label": "Water Balloon",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "Creatures of your choice first entering or starting their turn in the 20-foot cube; a Bonus action moves it. Failure: the damage and Staggered; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d10) + (1d10)",
+                      "type": "cold"
+                    },
+                    {
+                      "formula": "(2d10) + (1d10)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5exciGcK7SidTyd",
+                "type": "save",
+                "label": "Water Balloon",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "Creatures of your choice first entering or starting their turn in the 20-foot cube; a Bonus action moves it. Failure: the damage and Staggered; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d10) + (2d10)",
+                      "type": "cold"
+                    },
+                    {
+                      "formula": "(2d10) + (2d10)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Hydrofication (1 Hydration)",
+          "appliesTo": {
+            "namePrefix": "Water Balloon"
+          },
+          "note": "You count as invisible to creatures that fail.",
+          "cost": {
+            "pool": "hydration",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hozuki-water-blob": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e9xGHqT0hsWkHt",
+          "type": "save",
+          "label": "Water Blob",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "suffocating",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Suffocating"
+            }
+          ],
+          "text": "A creature within 5 feet (30 with Hydrofication). Failure: its head is in water: Suffocating; keeping concentration costs a jutsu's full cost; resave at the end of each of its turns.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5etf86pL24NVycc",
+          "type": "damage",
+          "label": "Water Blob: end of its turn",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d8",
+                "type": "necrotic"
+              }
+            ]
+          },
+          "text": "While suffocating; it can't be reduced or ignored."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Hydrofication (1 Hydration)",
+          "appliesTo": {
+            "namePrefix": "Water Blob"
+          },
+          "note": "Range 30 feet.",
+          "cost": {
+            "pool": "hydration",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "hozuki-water-spirit-wave": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eX23aDVNHrygPp",
+          "type": "save",
+          "label": "Water Spirit Wave",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
+            },
+            {
+              "key": "shaken",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shaken"
+            },
+            {
+              "key": "staggered",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Staggered"
+            }
+          ],
+          "text": "A 30-foot cone (+20 feet at A). Failure: the damage and Bruised (B: Shaken too; S: Staggered too); success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": "cold"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eX23aDVNHrygPp",
+                "type": "save",
+                "label": "Water Spirit Wave",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  },
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "A 30-foot cone (+20 feet at A). Failure: the damage and Bruised (B: Shaken too; S: Staggered too); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (1d6)",
+                      "type": "cold"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eX23aDVNHrygPp",
+                "type": "save",
+                "label": "Water Spirit Wave",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  },
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "A 30-foot cone (+20 feet at A). Failure: the damage and Bruised (B: Shaken too; S: Staggered too); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (2d6)",
+                      "type": "cold"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eX23aDVNHrygPp",
+                "type": "save",
+                "label": "Water Spirit Wave",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  },
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "A 30-foot cone (+20 feet at A). Failure: the damage and Bruised (B: Shaken too; S: Staggered too); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (3d6)",
+                      "type": "cold"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eX23aDVNHrygPp",
+                "type": "save",
+                "label": "Water Spirit Wave",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  },
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  },
+                  {
+                    "key": "staggered",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Staggered"
+                  }
+                ],
+                "text": "A 30-foot cone (+20 feet at A). Failure: the damage and Bruised (B: Shaken too; S: Staggered too); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (4d6)",
+                      "type": "cold"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Hydrofication (1 Hydration)",
+          "appliesTo": {
+            "namePrefix": "Water Spirit Wave"
+          },
+          "note": "A 30 by 5-foot line instead; creatures save at disadvantage.",
+          "cost": {
+            "pool": "hydration",
+            "amount": 1
+          }
+        }
+      ]
+    }
+  }
+}

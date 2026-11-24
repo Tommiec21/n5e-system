@@ -33,13 +33,51 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5elid1YumcHDzJf",
+        "type": "heal",
+        "label": "Messiah",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1,
+          "roll": true
+        },
+        "heal": {
+          "formula": "@poolRoll",
+          "pool": "hp"
+        },
+        "text": "A creature would drop to 0 hit points: it regains the die in hit points (and twice the die as temporary hit points, at the table)."
+      },
+      {
+        "id": "n5ekFiUw9nMfdlkH",
+        "type": "roll",
+        "label": "Izanagi: regain a die",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1,
+          "gain": true
+        },
+        "roll": {
+          "formula": "",
+          "note": "Rolling a 7 or 8 on a maneuver's Superiority Die."
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Void Soul resists two damage types. In Superego Manifestation, one benefit until a rest: Messiah or Izanagi."
+        }
+      ]
     }
   },
   "ownership": {

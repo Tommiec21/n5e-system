@@ -35,11 +35,51 @@
     "resourcePools": [],
     "advancement": []
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5es29owJBwLKNoH",
+      "name": "Unbreakable Formation",
+      "type": "generic",
+      "img": "icons/svg/upgrade.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "n5e.conditionImmune",
+          "value": "confused",
+          "mode": 2,
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!bc86151d65a1ffda.n5es29owJBwLKNoH"
+    }
+  ],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Your Squad is also immune to Confused while you aren't incapacitated (give them the effect at the table). Starting a turn within 10 feet of another Squad-Mate: 10 temporary hit points until the start of the next turn, and advantage on saves against forced movement or teleport while they last."
+        }
+      ]
     }
   },
   "ownership": {

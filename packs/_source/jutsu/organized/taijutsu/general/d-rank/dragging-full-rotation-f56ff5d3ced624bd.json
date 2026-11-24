@@ -84,13 +84,27 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
+        "id": "n5eHB7P0s6txb5QR",
         "type": "roll",
-        "label": "1d6",
+        "label": "Throw distance",
         "roll": {
-          "formula": "1d6",
-          "note": "A creature whose movement is interrupted by a solid surface (such as a tree or wall) takes bludgeoning damage equal to 1d6 for every 10 feet you would have thrown them."
+          "formula": "max(1, 5 * @abilities.str.mod)",
+          "note": "Reaction, a creature within 5 feet misses you: drag it 10 feet, then throw it 5 × Strength modifier feet (min 1; +10 per rank)."
         }
+      },
+      {
+        "id": "n5esqYCRkxeD4fB3",
+        "type": "damage",
+        "label": "Hits a surface",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d6",
+              "type": "bludgeoning"
+            }
+          ]
+        },
+        "text": "1d6 per 10 feet it couldn't travel (roll once per 10 feet)."
       }
     ],
     "featureType": "active",
@@ -166,7 +180,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

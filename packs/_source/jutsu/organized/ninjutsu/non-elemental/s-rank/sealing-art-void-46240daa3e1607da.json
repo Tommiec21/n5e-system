@@ -85,17 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eKJVXuha0L1u3X",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "restrained",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Restrained"
-          }
-        ],
+        "label": "Void: pulled",
         "save": {
           "abilities": [
             "cha"
@@ -104,10 +96,18 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Concentration: a creature starting its turn within 100 feet of the 30-foot sphere. Failure: pulled to its center.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eMrtHa576T1SDm",
+        "type": "damage",
+        "label": "Void: inside",
         "damage": {
           "parts": [
             {
@@ -115,6 +115,47 @@
               "type": "force"
             }
           ]
+        },
+        "text": "Entering for the first time on a turn or starting its turn there; Restrained while inside (the effect)."
+      },
+      {
+        "id": "n5eGYUN61D2tN49B",
+        "type": "effect",
+        "label": "Inside: Restrained",
+        "effect": {
+          "name": "Inside: Restrained",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5edbtECptZKweFv",
+        "type": "save",
+        "label": "Escape",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Its Action (or another's within reach): success ends the Restrained.",
+        "damage": {
+          "parts": []
         }
       }
     ],
@@ -189,7 +230,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "359c019795b66652"

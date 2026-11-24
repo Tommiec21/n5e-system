@@ -16,6 +16,9 @@
  *         A typeless Amp has no type to clash with under Singleton; it still counts for Rule of 3's.
  *   Q-A5  Amps that end on Staggered, Blinded, 0 chakra... end automatically or at the table:
  *         the GM's "ampEnding" setting.
+ *
+ * King's answers (2026-11-20, AMP1e): Q-E3 DYNAMIC FORM! and Flawless are typeless cards that don't
+ * count toward Rule of 3's (the card's outsideLimits).
  */
 
 import { effectFieldCatalog } from "./effect-authoring.mjs";
@@ -26,11 +29,12 @@ const escHTML = t => String(t ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;"
 const slug = s => String(s ?? "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 export const AMP_TYPES = ["battle", "reflex", "fortitude", "will", "clan"];
+const RANKS = ["E", "D", "C", "B", "A", "S"];
 
 /** What can end an Amp (the card's endsOn), with labels for chat and the card sheet. */
 export const AMP_END_TRIGGERS = {
   staggered: "Staggered", blinded: "Blinded", unconscious: "Unconscious", noChakra: "0 chakra",
-  stanceLeave: "Leaving its stance", combatEnd: "End of combat", rest: "A rest"
+  stanceLeave: "Leaving its stance", finisherCast: "Casting a Finisher", combatEnd: "End of combat", rest: "A rest"
 };
 
 /** The registry key of a card: its identifier, or its name made into one. */
@@ -63,10 +67,28 @@ export function ampDefinition(card) {
     duration: { seconds: Number(s.duration?.seconds) || 0, until: s.duration?.until ?? "", concentration: !!s.duration?.concentration },
     uses: { max: String(s.uses?.max ?? ""), per: s.uses?.per ?? "" }, cooldown: Number(s.cooldown) || 0,
     exclusive: s.exclusive ?? "", state: s.state ?? "", tempHp: s.tempHp ?? "",
+    outsideLimits: !!s.outsideLimits,
     endsOn: list(s.endsOn).filter(k => k in AMP_END_TRIGGERS),
     // AMP1g: versions of one Amp share a series (the base key) and start at a character level.
-    series: s.series ?? "", level: Number(s.level) || 0
+    series: s.series ?? "", level: Number(s.level) || 0,
+    // AMP1f: the cast rank this version starts at, and the caster's picks.
+    rank: RANKS.includes(s.rank) ? s.rank : "",
+    // AMP1f batch 3 (King Q-F11): buttons on the active Amp.
+    buttons: list(s.buttons).filter(b => b?.label && (b?.effect || b?.end)).map(b => ({ label: b.label, activation: b.activation ?? "", text: b.text ?? "",
+      ...(b.end ? { end: b.end } : { effect: structuredClone(b.effect) }) })),
+    // AMP1f batch 3 (King Q-F13): a condition applied when the Amp ends.
+    onEnd: s.onEnd?.condition ? { condition: s.onEnd.condition } : null,
+    statuses: list(s.statuses).filter(Boolean),
+    // AMP1f batch 4 (King Q-F17): ends with another Amp (Strength of 1000 with Strength of 100).
+    endsWith: s.endsWith ?? ""
   };
+  const options = list(s.choose?.options).filter(o => o?.label);
+  if ( options.length ) def.choose = { prompt: s.choose.prompt || `${card.name}: choose one`,
+    count: Math.max(1, Number(s.choose.count) || 1), changeable: !!s.choose.changeable,
+    options: options.map(o => ({ label: o.label, changes: list(o.changes).filter(c => c?.key).map(c => ({ key: c.key, value: String(c.value), mode: Number(c.mode ?? 2) })),
+      rules: structuredClone(list(o.rules)),
+      ...(o.tempHp ? { tempHp: String(o.tempHp) } : {}),
+      ...(o.duration?.seconds || o.duration?.until ? { duration: { seconds: Number(o.duration.seconds) || 0, until: o.duration.until ?? "", concentration: !!o.duration.concentration } } : {}) })) };
   // UX1: the buff can be written on the card (its Changes, its rules) or in the card's own Active
   // Effects (the effect editor); switched-off effects are left out. All of it applies together.
   const effects = list(card.effects).filter(e => e && !e.disabled);
@@ -79,9 +101,9 @@ export function ampDefinition(card) {
   return def;
 }
 
-/** The identifiers an actor has: its classes, subclasses, clan and feats. */
+/** The identifiers an actor has: its classes, subclasses, clan, feats and jutsu. */
 function identities(actor) {
-  const ids = { class: new Set(), subclass: new Set(), clan: new Set(), feat: new Set() };
+  const ids = { class: new Set(), subclass: new Set(), clan: new Set(), feat: new Set(), jutsu: new Set() };
   for ( const i of list(actor?.items) ) {
     if ( !ids[i.type] ) continue;
     if ( i.system?.identifier ) ids[i.type].add(i.system.identifier);
@@ -97,6 +119,7 @@ export function ownsAmp(actor, def) {
   const ids = identities(actor);
   if ( o.kind === "clan" ) return ids.clan.has(o.id);
   if ( o.kind === "feat" ) return ids.feat.has(o.id);
+  if ( o.kind === "jutsu" ) return ids.jutsu.has(o.id);
   if ( o.kind === "subclass" ) return ids.subclass.has(o.id);
   return ids.class.has(o.id) && (!o.subclass || ids.subclass.has(o.subclass));
 }
@@ -119,14 +142,48 @@ export const actorLevel = actor => Number(actor?.system?.level ?? actor?.system?
  * AMP1g: the version of an Amp for a character: the highest version of the key's series that the
  * level reaches (the key itself when it has no versions, or none is reached).
  */
-export function ampVersionFor(registry = {}, key, level = 0) {
+export function ampVersionFor(registry = {}, key, level = 0, rank = "") {
   const series = registry[key]?.series || key;
-  let best = key, bestLevel = -1;
+  // AMP1f (King Q-F1): rank versions: the highest at or below the cast rank (a C cast of a D/B/S Amp is D).
+  const at = RANKS.indexOf(rank);
+  let best = key, bestLevel = -1, bestRank = -1;
   for ( const [k, def] of Object.entries(registry) ) {
     if ( (def.series || k) !== series || (def.level || 0) > level ) continue;
-    if ( (def.level || 0) > bestLevel ) { best = k; bestLevel = def.level || 0; }
+    const r = def.rank ? RANKS.indexOf(def.rank) : -1;
+    if ( r > -1 && (at < 0 || r > at) && k !== key ) continue;
+    if ( (def.level || 0) > bestLevel || ((def.level || 0) === bestLevel && r > bestRank) ) { best = k; bestLevel = def.level || 0; bestRank = r; }
   }
   return best;
+}
+
+/**
+ * AMP1f: the plan with the caster's pick (an option of the card's choose) added to its changes and rules.
+ * @param {object} plan   ampEffectPlan(...)
+ * @param {object} def
+ * @param {number|null} choice
+ */
+export function withChoice(plan, def, choice) {
+  // AMP1f batch 2: one pick or several (King Q-F7), as an index or a list of indexes.
+  const picks = (Array.isArray(choice) ? choice : choice == null ? [] : [choice]).map(Number).filter(i => def?.choose?.options?.[i]);
+  if ( !picks.length ) return plan;
+  const options = picks.map(i => def.choose.options[i]);
+  // An option with its own duration (Gaslight as a Reaction lasts until the end of your next turn).
+  const timed = options.find(o => o.duration);
+  if ( timed ) plan = ampEffectPlan(plan.ampKey, { ...def, duration: timed.duration });
+  const temp = options.find(o => o.tempHp)?.tempHp;
+  return { ...plan, name: `${plan.name}: ${options.map(o => o.label).join(", ")}`, ampChoice: picks,
+    ...(temp ? { tempHp: temp } : {}),
+    changes: [...(plan.changes ?? []), ...options.flatMap(o => o.changes)], rules: [...(plan.rules ?? []), ...options.flatMap(o => o.rules)] };
+}
+
+/**
+ * AMP1f (King Q-F9): the update that swaps an active Amp's pick (Score's tempo): the card's own
+ * changes and rules plus the new picks.
+ */
+export function ampChoiceUpdate(def, choice) {
+  const plan = withChoice({ name: def.label, changes: [...(def.changes ?? [])], rules: [...(def.rules ?? [])], ampKey: "" }, def, choice);
+  return { name: plan.name, changes: plan.changes.map(c => ({ key: c.key, value: String(c.value), mode: c.mode ?? 2 })),
+    "flags.n5e.rules": plan.rules, "flags.n5e.ampChoice": plan.ampChoice ?? [] };
 }
 
 /** AMP1g: the key uses and cooldowns are kept under (one pool for every version of an Amp). */
@@ -155,7 +212,8 @@ export function ampCardsFor(actor, registry = {}, { worldTime = 0, resolve } = {
   // AMP1g: of each Amp's versions, only the highest the character's level reaches.
   const best = new Map();
   for ( const [key, def] of Object.entries(registry) ) {
-    if ( def.owner?.kind === "any" || !def.owner?.id || !ownsAmp(actor, def) || (def.level || 0) > level ) continue;
+    // AMP1f: a jutsu's Amp starts only by casting the jutsu, so it isn't offered here (it shows when active).
+    if ( def.owner?.kind === "any" || def.owner?.kind === "jutsu" || !def.owner?.id || !ownsAmp(actor, def) || (def.level || 0) > level ) continue;
     const s = def.series || key;
     if ( !best.has(s) || (def.level || 0) > (registry[best.get(s)].level || 0) ) best.set(s, key);
   }
@@ -165,6 +223,7 @@ export function ampCardsFor(actor, registry = {}, { worldTime = 0, resolve } = {
       const uses = ampUsesLeft(actor, key, def, resolve);
       return { key, label: def.label, icon: def.icon, summary: def.summary, card: def.card, type: def.ampType,
         typeLabel: ampTypeLabel(def.ampType), namedType: def.namedType, giveable: def.giveable,
+        outsideLimits: !!def.outsideLimits,
         uses, pips: uses ? Array.from({ length: Math.min(uses.max, 10) }, (_, i) => i < uses.left) : [],
         cooldown: ampCooldownLeft(actor, key, worldTime, def),
         active: Object.keys(active).some(k => trackKey(k, registry[k]) === trackKey(key, def)) };
@@ -231,7 +290,9 @@ export function ampEffectPlan(key, def) {
     permanent: d.until === "dismissed",
     tempHp: def.tempHp ?? "", state: def.state ?? "", exclusive: def.exclusive ?? "",
     ampType: def.ampType ?? "", ampKey: key, img: def.icon, endsOn: def.endsOn ?? [], until: turnBased || d.until === "dismissed" ? "" : d.until ?? "",
-    concentration: !!d.concentration
+    concentration: !!d.concentration, outsideLimits: !!def.outsideLimits,
+    // AMP1f batch 3 (King Q-F12): conditions the Amp carries while it lasts (Misleading Duplicate: Invisible).
+    statuses: def.statuses ?? []
   };
 }
 
@@ -244,7 +305,9 @@ export function ampEffectPlan(key, def) {
  *   candidates: the Amps to choose among (the new one last); keep: how many of them stay on.
  */
 export function ampLimitConflict(amps, added, mode) {
-  const on = list(amps).filter(a => !a.disabled && a !== added && (a.id == null || a.id !== added.id));
+  // AMP1e (King Q-E3): Amps outside the limits neither trigger them nor take a place in them.
+  if ( added?.system?.outsideLimits ) return null;
+  const on = list(amps).filter(a => !a.disabled && !a.system?.outsideLimits && a !== added && (a.id == null || a.id !== added.id));
   if ( mode === "singleton" ) {
     const type = added.system?.ampType;
     if ( !type ) return null;
@@ -259,7 +322,7 @@ export function ampLimitConflict(amps, added, mode) {
 
 /**
  * Which active Amps end on an event (King Q-A5): Staggered, Blinded, Unconscious, 0 chakra,
- * leaving a stance, the end of combat, a rest.
+ * leaving a stance, casting a Finisher (AMP1e), the end of combat, a rest.
  * @param {object} actor
  * @param {string} trigger  a key of AMP_END_TRIGGERS
  * @returns {object[]} effects
@@ -316,4 +379,32 @@ export function ampEffectView(effect, registry = {}, N5E = {}) {
     lines.length ? `<ul>${lines.map(l => `<li>${escHTML(l)}</li>`).join("")}</ul>` : "<div><i>Changes nothing by itself; see the card.</i></div>",
     effect?.disabled ? "<div><i>Switched off (Amp limit).</i></div>" : ""].filter(Boolean).join("");
   return { name, tip };
+}
+
+/* -------------------------------------------- */
+/*  Amps that end with another (AMP1f batch 4)  */
+/* -------------------------------------------- */
+
+/** The series an Amp key belongs to (its base key). */
+export const seriesOf = (key, registry = {}) => registry[key]?.series || key;
+
+/**
+ * King Q-F17: when an Amp ends, the bearer's Amps whose card ends with it end too (Strength of 1000
+ * with Strength of 100). Versions count as their series.
+ * @param {object[]} effects     the bearer's effects
+ * @param {string} endedKey      the key of the Amp that ended
+ * @returns {string[]}           ids of the effects to end
+ */
+export function ampsEndingWith(effects, endedKey, registry = {}) {
+  if ( !endedKey ) return [];
+  const series = seriesOf(endedKey, registry);
+  return list(effects).filter(e => e.type === "amp" && e.system?.key !== endedKey)
+    .filter(e => { const w = ampDefFor(e, registry)?.endsWith; return w && seriesOf(w, registry) === series; })
+    .map(e => e.id ?? e._id);
+}
+
+/** The bearer's active Amp effect of this key or series (the one an endsWith card leans on). */
+export function activeAmpOfSeries(effects, key, registry = {}) {
+  const series = seriesOf(key, registry);
+  return list(effects).find(e => e.type === "amp" && !e.disabled && e.system?.key && seriesOf(e.system.key, registry) === series) ?? null;
 }

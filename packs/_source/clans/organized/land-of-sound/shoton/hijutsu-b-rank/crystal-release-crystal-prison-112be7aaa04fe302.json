@@ -17,7 +17,8 @@
         "cost": "Special (15 Chakra)",
         "keywords": "Hijutsu, Ninjutsu, Earth Release, Fuinjutsu",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -109,7 +110,35 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eJYDY1PRc6Erfh",
+        "type": "save",
+        "label": "Crystal Prison",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "shoton-crystallization",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Crystallization"
+          }
+        ],
+        "text": "Creatures of your choice in a 20-foot radius. Failure: 1 rank of Crystallization (2 failing by 5; +1 at S).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

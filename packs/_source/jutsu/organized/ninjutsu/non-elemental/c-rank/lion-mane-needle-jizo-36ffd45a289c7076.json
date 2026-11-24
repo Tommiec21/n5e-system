@@ -85,14 +85,43 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eBrHFS6hKhq6ch",
         "type": "attack",
-        "label": "Attack",
+        "label": "Wrap",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Concentration, 1 Action: a creature within 15 feet (B-Rank: up to 3; A-Rank: 30 feet). On a hit: Restrained (Strength save to escape); a Bonus Action drags it within 15 feet.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5ewC0RFQU5ygcGD",
+        "type": "effect",
+        "label": "Wrap: Restrained",
+        "effect": {
+          "name": "Wrap: Restrained",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eKvA1CQ3TEweuE",
+        "type": "damage",
+        "label": "Needle Cap",
         "damage": {
           "parts": [
             {
@@ -100,7 +129,8 @@
               "type": "piercing"
             }
           ]
-        }
+        },
+        "text": "Reaction to damage: until the start of your next turn, each melee attacker within 10 feet (A-Rank: every creature within 10 feet)."
       }
     ],
     "featureType": "active",
@@ -180,9 +210,224 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eBrHFS6hKhq6ch",
+              "type": "attack",
+              "label": "Wrap",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration, 1 Action: a creature within 15 feet (B-Rank: up to 3; A-Rank: 30 feet). On a hit: Restrained (Strength save to escape); a Bonus Action drags it within 15 feet.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ewC0RFQU5ygcGD",
+              "type": "effect",
+              "label": "Wrap: Restrained",
+              "effect": {
+                "name": "Wrap: Restrained",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eKvA1CQ3TEweuE",
+              "type": "damage",
+              "label": "Needle Cap",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "text": "Reaction to damage: until the start of your next turn, each melee attacker within 10 feet (A-Rank: every creature within 10 feet)."
+            },
+            {
+              "id": "n5eG6aAL1lNTeYqD",
+              "type": "effect",
+              "label": "Needle Cap: Bleed",
+              "effect": {
+                "name": "Needle Cap: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ]
+              },
+              "text": "B-Rank and higher: damaged by Needle Cap."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eBrHFS6hKhq6ch",
+              "type": "attack",
+              "label": "Wrap",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration, 1 Action: a creature within 15 feet (B-Rank: up to 3; A-Rank: 30 feet). On a hit: Restrained (Strength save to escape); a Bonus Action drags it within 15 feet.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ewC0RFQU5ygcGD",
+              "type": "effect",
+              "label": "Wrap: Restrained",
+              "effect": {
+                "name": "Wrap: Restrained",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eKvA1CQ3TEweuE",
+              "type": "damage",
+              "label": "Needle Cap",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "text": "Reaction to damage: until the start of your next turn, each melee attacker within 10 feet (A-Rank: every creature within 10 feet)."
+            },
+            {
+              "id": "n5eG6aAL1lNTeYqD",
+              "type": "effect",
+              "label": "Needle Cap: Bleed",
+              "effect": {
+                "name": "Needle Cap: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ]
+              },
+              "text": "B-Rank and higher: damaged by Needle Cap."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eBrHFS6hKhq6ch",
+              "type": "attack",
+              "label": "Wrap",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration, 1 Action: a creature within 15 feet (B-Rank: up to 3; A-Rank: 30 feet). On a hit: Restrained (Strength save to escape); a Bonus Action drags it within 15 feet.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ewC0RFQU5ygcGD",
+              "type": "effect",
+              "label": "Wrap: Restrained",
+              "effect": {
+                "name": "Wrap: Restrained",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eKvA1CQ3TEweuE",
+              "type": "damage",
+              "label": "Needle Cap",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (3d6)",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "text": "Reaction to damage: until the start of your next turn, each melee attacker within 10 feet (A-Rank: every creature within 10 feet)."
+            },
+            {
+              "id": "n5eG6aAL1lNTeYqD",
+              "type": "effect",
+              "label": "Needle Cap: Bleed",
+              "effect": {
+                "name": "Needle Cap: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ]
+              },
+              "text": "B-Rank and higher: damaged by Needle Cap."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "cfa6ae1d0e387079"

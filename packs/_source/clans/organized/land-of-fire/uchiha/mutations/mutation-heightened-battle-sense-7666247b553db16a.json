@@ -15,7 +15,14 @@
           "Mutated Feature: Fanning The Flame"
         ],
         "manualReplacement": true
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mutates Fanning the Flame: in a clan combat stance, a rank of Mastery to AC and Dexterity saves."
+        }
+      ]
     }
   },
   "ownership": {
@@ -48,6 +55,75 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eJGcEgdaveKrmk",
+        "type": "save",
+        "label": "Flame Bloom",
+        "save": {
+          "abilities": [
+            "dex",
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "offGuard",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Off-Guard"
+          },
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Burned"
+          }
+        ],
+        "text": "In Flaming Spark: a 20-foot radius within 60 feet. Failure: Off-Guard until the end of your next turn and 1 rank of Burned; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6+6",
+              "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5esTgMeHzoRBsLu",
+        "type": "save",
+        "label": "Uchiha Swipe",
+        "save": {
+          "abilities": [
+            "str",
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "In Blazing Fan: a 60 by 5-foot line. Failure: three times your weapon damage (roll it), pushed 40 feet and Prone; success: half, pushed 5 feet.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

@@ -98,7 +98,7 @@ export const recoveryPeriods = {
 };
 /** How much a recovery restores. */
 export const recoveryAmounts = {
-  all: "All", half: "Half of max", setHalf: "Set to half max if lower", formula: "Formula", step: "One die step"
+  all: "All", half: "Half of max", setHalf: "Set to half max if lower", formula: "Formula", step: "One die step", empty: "Empty (lose all)"
 };
 
 /** KB 03: sizes. */

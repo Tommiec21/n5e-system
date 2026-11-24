@@ -84,23 +84,31 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ejgFltGiDv8HaE",
         "type": "attack",
-        "label": "Attack",
+        "label": "Flying Swallow: Penetrate",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
+        "text": "Both hands; up to two creatures within 5 feet; no ability modifier (subtract it by hand).",
         "damage": {
           "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "3d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "2"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eg1z6oSP9BhaCJ",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Penetrate: AC",
         "save": {
           "abilities": [
             "con"
@@ -109,30 +117,12 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Failure: −1d4 AC per hit until the end of your next turn (roll and apply by hand).",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "3d6",
-        "roll": {
-          "formula": "3d6",
-          "note": "Make two melee taijutsu attacks against up to two enemies within 5 feet of you dealing your weapons damage + 3d6, you do not add your ability modifier to damage."
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "1d4",
-        "roll": {
-          "formula": "1d4",
-          "note": "Affected creatures must make a constitution saving throw having their AC is reduced by 1d4 for each successful hit, until the end of your next turn."
         }
       }
     ],
@@ -213,9 +203,143 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5ejgFltGiDv8HaE",
+              "type": "attack",
+              "label": "Flying Swallow: Penetrate",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "text": "Both hands; up to two creatures within 5 feet; no ability modifier (subtract it by hand).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "3d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "3"
+              }
+            },
+            {
+              "id": "n5eg1z6oSP9BhaCJ",
+              "type": "save",
+              "label": "Penetrate: AC",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Failure: −1d4 AC per hit until the end of your next turn (roll and apply by hand).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ejgFltGiDv8HaE",
+              "type": "attack",
+              "label": "Flying Swallow: Penetrate",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 4
+              },
+              "text": "Both hands; up to two creatures within 5 feet; no ability modifier (subtract it by hand).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "3d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "4"
+              }
+            },
+            {
+              "id": "n5eg1z6oSP9BhaCJ",
+              "type": "save",
+              "label": "Penetrate: AC",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Failure: −1d4 AC per hit until the end of your next turn (roll and apply by hand).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ejgFltGiDv8HaE",
+              "type": "attack",
+              "label": "Flying Swallow: Penetrate",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 5
+              },
+              "text": "Both hands; up to two creatures within 5 feet; no ability modifier (subtract it by hand).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "3d6",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "5"
+              }
+            },
+            {
+              "id": "n5eg1z6oSP9BhaCJ",
+              "type": "save",
+              "label": "Penetrate: AC",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Failure: −1d4 AC per hit until the end of your next turn (roll and apply by hand).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0032efe7c08875b9"

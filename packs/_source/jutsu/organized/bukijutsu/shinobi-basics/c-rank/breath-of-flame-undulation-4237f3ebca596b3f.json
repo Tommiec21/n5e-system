@@ -87,9 +87,19 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eJCtS8UqAWm7Wd",
         "type": "save",
-        "label": "Save",
+        "label": "Breath of Flame: Undulation",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "dazed",
@@ -98,20 +108,13 @@
             "label": "Dazed"
           }
         ],
-        "save": {
-          "abilities": [
-            "dex"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Creatures you choose within 10 feet (S-Rank: 20). Failure: Dazed (Chain 1: +1 Bleed; Chain 2: +1 Burned); success: half.",
         "damage": {
           "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
             {
               "formula": "2d6",
               "type": "fire"
@@ -203,9 +206,125 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eJCtS8UqAWm7Wd",
+              "type": "save",
+              "label": "Breath of Flame: Undulation",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "Creatures you choose within 10 feet (S-Rank: 20). Failure: Dazed (Chain 1: +1 Bleed; Chain 2: +1 Burned); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eJCtS8UqAWm7Wd",
+              "type": "save",
+              "label": "Breath of Flame: Undulation",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "Creatures you choose within 10 feet (S-Rank: 20). Failure: Dazed (Chain 1: +1 Bleed; Chain 2: +1 Burned); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eJCtS8UqAWm7Wd",
+              "type": "save",
+              "label": "Breath of Flame: Undulation",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "Creatures you choose within 10 feet (S-Rank: 20). Failure: Dazed (Chain 1: +1 Bleed; Chain 2: +1 Burned); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d6) + (3d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0032efe7c08875b9"

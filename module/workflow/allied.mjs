@@ -10,6 +10,7 @@
 import { rule } from "../rules-settings.mjs";
 import { canModify } from "../automation/authority.mjs";
 import { registerIntentHandler, submitIntent } from "../automation/owner-intents.mjs";
+import { summonerData, summonerDelta, mergeDeep } from "../rules/summoner-links.mjs";
 
 /** GM, or the world allows players to summon Allied NPCs (dnd5e allowSummoning equivalent). */
 export function canSummonAllied(user) {
@@ -20,17 +21,20 @@ export function canSummonAllied(user) {
  * Token data for Allied NPCs (pure; tested in Node). `base` is the template's token source.
  * @returns {object[]} token sources ready for createEmbeddedDocuments
  */
-export function alliedTokenData(base, { count, positions, ownerId, casterUuid, itemId, itemUuid, concentration, expires }) {
+export function alliedTokenData(base, { count, positions, ownerId, casterUuid, itemId, itemUuid, concentration, expires, linked = {}, look = null }) {
   const out = [];
   for ( let i = 0; i < count; i++ ) {
     const source = structuredClone(base);
     delete source._id;
     source.actorLink = false;
+    // King Q-D27 (Duplicity, "a perfect visual illusion of yourself"): the summoner's name, image and size.
+    if ( look ) Object.assign(source, structuredClone(look));
     Object.assign(source, positions[i] ?? positions[positions.length - 1] ?? {});
     source.disposition = 1; // friendly
     source.delta ??= {};
     source.delta.ownership = { ...(source.delta.ownership ?? {}), [ownerId]: 3 };
-    source.delta.system = { ...(source.delta.system ?? {}), allied: true };
+    // King 2026-11-21 (Bunshin, Void Soul): the numbers it takes from its summoner (rules/summoner-links.mjs).
+    source.delta.system = mergeDeep(source.delta.system ?? {}, { ...linked, allied: true, details: { ...(linked.details ?? {}), summoner: casterUuid } });
     source.flags ??= {};
     source.flags.n5e = { ...source.flags.n5e,
       summon: { casterUuid, itemId, itemUuid, concentration: !!concentration, expires },
@@ -38,6 +42,13 @@ export function alliedTokenData(base, { count, positions, ownerId, casterUuid, i
     out.push(source);
   }
   return out;
+}
+
+/** The summoner's look for a summon that is an illusion of them (pure): its token, or else its prototype token. */
+export function summonerLook(token, actor) {
+  const src = token ?? actor?.prototypeToken ?? {};
+  const texture = src.texture?.toObject?.() ?? src.texture;
+  return { name: src.name ?? actor?.name ?? "", width: src.width ?? 1, height: src.height ?? 1, ...(texture ? { texture: structuredClone(texture) } : {}) };
 }
 
 /** Grid positions in a row beside the origin (pure). */
@@ -50,11 +61,13 @@ export function rowPositions({ x, y, width = 1, size, count }) {
  * @returns {Promise<string[]>} created token uuids
  */
 export async function placeAllied({ caster, item, templateUuid, count = 1, x = null, y = null, sceneId = null,
-  seconds = 60, concentration = false, ownerId, initiative = "match" }) {
+  seconds = 60, concentration = false, ownerId, initiative = "match", rank = "" }) {
   if ( !game.user.isGM ) throw new Error("Only the GM's client places tokens for another user.");
   const scene = (sceneId && game.scenes.get(sceneId)) || canvas?.scene;
   if ( !scene || !caster || item?.actor?.uuid !== caster.uuid ) throw new Error("Open a scene and use an item the caster owns.");
-  const template = await fromUuid(templateUuid);
+  let template = await fromUuid(templateUuid);
+  // King 2026-11-21: a compendium template (Class & Clan Summons) is imported once and reused.
+  if ( template?.documentName === "Actor" && template.pack ) template = await worldCopy(template, templateUuid);
   if ( template?.documentName !== "Actor" || template.pack || template.isToken ) throw new Error("Choose a world Actor as the summon template; import compendium actors first.");
   const origin = scene.tokens.find(t => t.actor?.uuid === caster.uuid);
   if ( (!Number.isFinite(x) || !Number.isFinite(y)) && !origin ) throw new Error("Place the caster's token on the scene or give placement coordinates.");
@@ -62,12 +75,22 @@ export async function placeAllied({ caster, item, templateUuid, count = 1, x = n
   const base = (await template.getTokenDocument({ actorLink: false })).toObject();
   const positions = rowPositions({ x: Number.isFinite(x) ? x : origin.x + origin.width * size,
     y: Number.isFinite(y) ? y : origin.y, width: template.prototypeToken?.width ?? 1, size, count });
+  const linked = summonerDelta(template.flags?.n5e?.fromSummoner, summonerData(caster.system, { rank }));
+  const look = template.flags?.n5e?.summonerLook ? summonerLook(origin, caster) : null;
   const data = alliedTokenData(base, { count, positions, ownerId, casterUuid: caster.uuid, itemId: item.id, itemUuid: item.uuid,
-    concentration, expires: game.time.worldTime + seconds });
+    concentration, expires: game.time.worldTime + seconds, linked, look });
   const tokens = await scene.createEmbeddedDocuments("Token", data);
   await addAlliedCombatants(caster, tokens, initiative);
   Hooks.callAll("n5e.summoned", caster, item, tokens);
   return tokens.map(t => t.uuid);
+}
+
+/** The world copy of a compendium template: the one imported earlier, or a fresh import. */
+async function worldCopy(template, uuid) {
+  const existing = game.actors.find(a => a._stats?.compendiumSource === uuid || a.flags?.core?.sourceId === uuid);
+  if ( existing ) return existing;
+  const pack = game.packs.get(template.pack);
+  return pack ? game.actors.importFromCompendium(pack, template.id) : template;
 }
 
 /** If the caster is in combat, add the summons (dnd5e summons can match the caster's initiative). */
@@ -84,12 +107,12 @@ async function addAlliedCombatants(caster, tokens, mode) {
  * Card entry point. The GM places directly; a player asks the GM's client through an owner intent.
  * @returns {Promise<string[]>} token uuids
  */
-export async function summonAllied(caster, item, { uuid, count = 1, x, y, seconds = 60, concentration = false, initiative = "match" } = {}) {
+export async function summonAllied(caster, item, { uuid, count = 1, x, y, seconds = 60, concentration = false, initiative = "match", rank = "" } = {}) {
   if ( !canModify(game.user, caster) ) throw new Error("You must own the summoner.");
   if ( !canSummonAllied(game.user) ) throw new Error("The GM has turned off player summoning.");
-  const request = { itemId: item?.id, templateUuid: uuid, count, seconds, concentration, x, y, initiative, sceneId: canvas?.scene?.id };
+  const request = { itemId: item?.id, templateUuid: uuid, count, seconds, concentration, x, y, initiative, rank, sceneId: canvas?.scene?.id };
   if ( game.user.isGM ) return placeAllied({ caster, item, templateUuid: uuid, count, x, y, sceneId: request.sceneId,
-    seconds, concentration, initiative, ownerId: game.user.id });
+    seconds, concentration, initiative, rank, ownerId: game.user.id });
   return submitIntent(caster, "summonAllied", request);
 }
 
@@ -126,7 +149,7 @@ export function registerAlliedIntents() {
     const item = caster.items.get(data.itemId);
     if ( !item ) throw new Error("The summoning item is not on this actor.");
     return placeAllied({ caster, item, templateUuid: data.templateUuid, count: data.count, x: data.x, y: data.y,
-      sceneId: data.sceneId, seconds: data.seconds, concentration: data.concentration, initiative: data.initiative, ownerId: user.id });
+      sceneId: data.sceneId, seconds: data.seconds, concentration: data.concentration, initiative: data.initiative, rank: data.rank ?? "", ownerId: user.id });
   });
   registerIntentHandler("dismissAllied", async (caster, data) => removeAllied(caster, data.itemId).then(() => true));
 }

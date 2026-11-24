@@ -17,7 +17,312 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Bukijutsu, Genjutsu (Visual, Tactile) Chain",
         "components": "W (Any Melee), M"
-      }
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eprEW8VAwfpNHN",
+              "type": "attack",
+              "label": "Spring Garden",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Reaction: move within your speed, then attack.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "slashing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eGQFp765HwnLT2",
+              "type": "save",
+              "label": "Spring Garden: on a hit",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: Dazzled.",
+                  "failure": "Failure: Dazzled and no Reaction until the end of your next turn.",
+                  "critFailure": "Critical Failure: as a failure, and it loses its Action."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eAg9vBWPZb9lAY",
+              "type": "roll",
+              "label": "Ideal Cut / Tao d6",
+              "roll": {
+                "formula": "1d6",
+                "note": "Ideal Cut: 5–6 regains your Reaction. Tao: 5–6, an extra Bonus action on your first turn in combat."
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eprEW8VAwfpNHN",
+              "type": "attack",
+              "label": "Spring Garden",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Reaction: move within your speed, then attack.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "slashing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eGQFp765HwnLT2",
+              "type": "save",
+              "label": "Spring Garden: on a hit",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: Dazzled.",
+                  "failure": "Failure: Dazzled and no Reaction until the end of your next turn.",
+                  "critFailure": "Critical Failure: as a failure, and it loses its Action."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eAg9vBWPZb9lAY",
+              "type": "roll",
+              "label": "Ideal Cut / Tao d6",
+              "roll": {
+                "formula": "1d6",
+                "note": "Ideal Cut: 5–6 regains your Reaction. Tao: 5–6, an extra Bonus action on your first turn in combat."
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eprEW8VAwfpNHN",
+              "type": "attack",
+              "label": "Spring Garden",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Reaction: move within your speed, then attack.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (3d6)",
+                    "type": "slashing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eGQFp765HwnLT2",
+              "type": "save",
+              "label": "Spring Garden: on a hit",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: Dazzled.",
+                  "failure": "Failure: Dazzled and no Reaction until the end of your next turn.",
+                  "critFailure": "Critical Failure: as a failure, and it loses its Action."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eAg9vBWPZb9lAY",
+              "type": "roll",
+              "label": "Ideal Cut / Tao d6",
+              "roll": {
+                "formula": "1d6",
+                "note": "Ideal Cut: 5–6 regains your Reaction. Tao: 5–6, an extra Bonus action on your first turn in combat."
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eprEW8VAwfpNHN",
+              "type": "attack",
+              "label": "Spring Garden",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Reaction: move within your speed, then attack.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (4d6)",
+                    "type": "slashing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eGQFp765HwnLT2",
+              "type": "save",
+              "label": "Spring Garden: on a hit",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: Dazzled.",
+                  "failure": "Failure: Dazzled and no Reaction until the end of your next turn.",
+                  "critFailure": "Critical Failure: as a failure, and it loses its Action."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eAg9vBWPZb9lAY",
+              "type": "roll",
+              "label": "Ideal Cut / Tao d6",
+              "roll": {
+                "formula": "1d6",
+                "note": "Ideal Cut: 5–6 regains your Reaction. Tao: 5–6, an extra Bonus action on your first turn in combat."
+              }
+            }
+          ]
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Ideal Cut",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Spring Garden"
+          },
+          "note": "With your Executioners Instrument: roll 1d6: 5–6 regains your Reaction."
+        },
+        {
+          "label": "Tao (7th)",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Spring Garden"
+          },
+          "note": "With your Executioners Instrument, from 7th level (not with Ideal Cut, unless The Middle Path's Bonus action): roll 1d6: 5–6, an extra Bonus action on your first turn in combat."
+        }
+      ]
     }
   },
   "ownership": {
@@ -111,7 +416,77 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eprEW8VAwfpNHN",
+        "type": "attack",
+        "label": "Spring Garden",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Reaction: move within your speed, then attack.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "slashing"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eGQFp765HwnLT2",
+        "type": "save",
+        "label": "Spring Garden: on a hit",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: Dazzled.",
+            "failure": "Failure: Dazzled and no Reaction until the end of your next turn.",
+            "critFailure": "Critical Failure: as a failure, and it loses its Action."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          }
+        ],
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eAg9vBWPZb9lAY",
+        "type": "roll",
+        "label": "Ideal Cut / Tao d6",
+        "roll": {
+          "formula": "1d6",
+          "note": "Ideal Cut: 5–6 regains your Reaction. Tao: 5–6, an extra Bonus action on your first turn in combat."
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai",

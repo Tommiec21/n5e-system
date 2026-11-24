@@ -80,7 +80,7 @@ test("same-named Brutal Block variants are separate and prior core jutsu IDs are
 });
 
 test("conditional and repeating damage is not silently combined into one base roll", () => {
-  for ( const name of ["Mental Prison", "Medical Release: Acid Whips", "Lightning Release: Lightning Ball", "Breath of Wind: Claws"] ) {
+  for ( const name of ["Mental Prison", "Lightning Release: Lightning Ball"] ) {
     const doc = byName(name);
     assert.ok(doc.flags.n5e.jutsuBookImport.manual.length);
     assert.ok(doc.system.activities.every(a => (a.damage?.parts?.length ?? 0) <= 1), name);
@@ -88,13 +88,25 @@ test("conditional and repeating damage is not silently combined into one base ro
   }
   const tusk = byName("Earth Release: Lazuli Tusk");
   assert.equal(tusk.system.activities.find(a => a.type === "attack").damage.parts.length, 2, "explicit simultaneous piercing + earth is retained");
+  // Reviewed in STD6f F3: [Weapon damage] + 1d8 wind on one button, each extra hit its own roll.
+  const claws = byName("Breath of Wind: Claws").system.activities;
+  assert.deepEqual(claws.find(a => a.label === "Claws: damage").damage.parts.map(p => p.formula), ["@weapon", "1d8"]);
+  assert.ok(claws.some(a => a.label === "Each hit beyond the first"));
+  // Reviewed in STD6f F7: Acid Whips' hits and its start-of-turn damage on a Grappled creature are separate buttons.
+  const whips = byName("Medical Release: Acid Whips").system.activities;
+  assert.ok(whips.every(a => (a.damage?.parts?.length ?? 0) <= 1));
+  assert.deepEqual(whips.filter(a => a.damage?.parts?.length).map(a => a.damage.parts[0].formula), ["2d6", "1d12"]);
 });
 
 test("source-clear upcasting selects ranked damage without mutating the base or mixing in finisher damage", () => {
   const whip = byName("Fire Release: Flame Whip"), base = effectiveActivities(whip), raised = effectiveActivities(whip, { rank: "C" });
   assert.equal(base[0].damage.parts[0].formula, "2d10+2"); assert.match(raised[0].damage.parts[0].formula, /1d10\+1/);
   assert.equal(whip.system.activities[0].damage.parts[0].formula, "2d10+2");
-  assert.equal(Object.keys(byName("Leaf Hurricane").flags.n5e.jutsuBookImport.activitiesByRank).length, 0, "ambiguous rider growth remains manual");
+  // STD6f F1: Leaf Hurricane is reviewed; its table gives each rank its dice, the Finisher's too, kept apart.
+  const leaf = byName("Leaf Hurricane").flags.n5e.jutsuBookImport.activitiesByRank;
+  assert.deepEqual(Object.keys(leaf), ["B", "A", "S"]);
+  assert.equal(leaf.B.find(a => a.label === "Leaf Hurricane").damage.parts[0].formula, "(@unarmed + 2d6) + (1d6)");
+  assert.equal(leaf.B.find(a => a.label === "Finisher: Leaf Hurricane").damage.parts[0].formula, "(@unarmed + 4d6) + (1d6)");
 });
 
 test("fixed special costs charge the printed amount; unresolved/scheduled costs cannot cast as free", () => {
@@ -121,6 +133,10 @@ test("header parser retains pre-header boxes, plain titles and documented source
 
 test("existing starter authoring remains compatible with preparation and source-scoped effects", () => {
   const bull = load("jutsu", "forceful-bull");
-  assert.equal(bull.system.activities[0].effect.changes[0].value, "18"); assert.equal(bull.system.activities[0].effect.tempHp, "8");
+  // AMP1f: the buff moved onto the jutsu's Amp card; the button starts it, and the Refresh button stays.
+  assert.equal(bull.system.activities[0].effect.amp, "jutsu-beast-fist-forceful-bull");
+  assert.ok(bull.system.activities.some(a => a.id === "refreshBull"));
+  const card = load("amps", "jutsu-beast-fist-forceful-bull");
+  assert.equal(card.system.changes[0].value, "18"); assert.equal(card.system.tempHp, "8");
   assert.ok(byName("Fire Release: Fox Fire").system.activities.some(a => a.effect?.expires === "nextTurnEnd"));
 });

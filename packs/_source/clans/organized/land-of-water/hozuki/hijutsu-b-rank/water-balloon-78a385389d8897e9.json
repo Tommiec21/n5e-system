@@ -17,6 +17,98 @@
         "cost": "12 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Water Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5exciGcK7SidTyd",
+              "type": "save",
+              "label": "Water Balloon",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                }
+              ],
+              "text": "Creatures of your choice first entering or starting their turn in the 20-foot cube; a Bonus action moves it. Failure: the damage and Staggered; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (1d10)",
+                    "type": "cold"
+                  },
+                  {
+                    "formula": "(2d10) + (1d10)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5exciGcK7SidTyd",
+              "type": "save",
+              "label": "Water Balloon",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                }
+              ],
+              "text": "Creatures of your choice first entering or starting their turn in the 20-foot cube; a Bonus action moves it. Failure: the damage and Staggered; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (2d10)",
+                    "type": "cold"
+                  },
+                  {
+                    "formula": "(2d10) + (2d10)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Hydrofication (1 Hydration)",
+        "appliesTo": {
+          "namePrefix": "Water Balloon"
+        },
+        "note": "You count as invisible to creatures that fail.",
+        "cost": {
+          "pool": "hydration",
+          "amount": 1
+        }
       }
     }
   },
@@ -108,7 +200,44 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5exciGcK7SidTyd",
+        "type": "save",
+        "label": "Water Balloon",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "staggered",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Staggered"
+          }
+        ],
+        "text": "Creatures of your choice first entering or starting their turn in the 20-foot cube; a Bonus action moves it. Failure: the damage and Staggered; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d10",
+              "type": "cold"
+            },
+            {
+              "formula": "2d10",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

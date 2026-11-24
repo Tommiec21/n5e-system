@@ -85,23 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5epKaX7SDn6L72W",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "prone",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Prone"
-          },
-          {
-            "key": "restrained",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Restrained"
-          }
-        ],
+        "label": "Arrow Rain",
         "save": {
           "abilities": [
             "dex"
@@ -110,31 +96,49 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Spend an ammunition die (d4 or larger; Chain 2: shrink it one step). Within 10 feet of a point in range.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "2d8",
+              "type": ""
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "d4",
-        "roll": {
-          "formula": "d4",
-          "note": "When you cast this jutsu you must spend one ammunition die that is at least a d4 in size or greater."
-        }
-      },
-      {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "2d8",
-        "roll": {
-          "formula": "2d8",
-          "note": "All creatures within a 10 feet radius of the select point must make a Dexterity saving throw, taking your [Weapons damage] + 2d8. Creatures who fail their saving throw by 5 or more are pinned to the ground, being knocked Prone and Restrained. A creature Restrained in this way can spend their action to make a Strength (Athletic) check vs your Taijutsu save DC to escape, ending the Restrained condition."
-        }
+        "id": "n5es4l7yekdcGcgd",
+        "type": "effect",
+        "label": "Failed by 5+: Prone, Restrained",
+        "effect": {
+          "name": "Failed by 5+: Prone, Restrained",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            },
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            }
+          ]
+        },
+        "text": "Its Action: Strength (Athletics) against your Taijutsu save DC to escape."
       }
     ],
     "featureType": "active",
@@ -226,9 +230,127 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5epKaX7SDn6L72W",
+              "type": "save",
+              "label": "Arrow Rain",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Spend an ammunition die (d4 or larger; Chain 2: shrink it one step). Within 10 feet of a point in range.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d8) + (1d8)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5es4l7yekdcGcgd",
+              "type": "effect",
+              "label": "Failed by 5+: Prone, Restrained",
+              "effect": {
+                "name": "Failed by 5+: Prone, Restrained",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  }
+                ]
+              },
+              "text": "Its Action: Strength (Athletics) against your Taijutsu save DC to escape."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5epKaX7SDn6L72W",
+              "type": "save",
+              "label": "Arrow Rain",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Spend an ammunition die (d4 or larger; Chain 2: shrink it one step). Within 10 feet of a point in range.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d8) + (2d8)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5es4l7yekdcGcgd",
+              "type": "effect",
+              "label": "Failed by 5+: Prone, Restrained",
+              "effect": {
+                "name": "Failed by 5+: Prone, Restrained",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "restrained",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Restrained"
+                  }
+                ]
+              },
+              "text": "Its Action: Strength (Athletics) against your Taijutsu save DC to escape."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "a7edbe01a9022231"

@@ -17,7 +17,8 @@
         "cost": "14 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile, Auditory, Unaware), Fuinjutsu",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -112,7 +113,56 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eQkQFJDwDS5G4i",
+        "type": "save",
+        "label": "Mass Mind Body Dance",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "No further effects.",
+            "success": "Slowed until the end of its next turn.",
+            "failure": "Uses its Action on the command each turn.",
+            "critFailure": "As failure; damage only allows a resave."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "slowed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Slow"
+          }
+        ],
+        "text": "Up to 6 creatures within 60 feet that see and hear you, a command not to harm themselves (immune if they can't be Compelled). Resave at the end of each turn; damage ends it (critical failure: allows a resave) and gives 1 Mental Overwrite.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eSb3F0BnRaF4Vb",
+        "type": "effect",
+        "label": "Mental Overwrite",
+        "effect": {
+          "name": "Mental Overwrite",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "condition": "yamanaka-mental-overwrite"
+        },
+        "text": "A commanded creature takes damage."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

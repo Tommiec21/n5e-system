@@ -17,7 +17,14 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Water Release, Medical, Stable",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1 target per rank; +1d6 per condition rank at B and again at S."
+        }
+      ]
     }
   },
   "ownership": {
@@ -110,7 +117,42 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eUr245YJEQMcoL",
+        "type": "save",
+        "label": "Blood Drain",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "A damaged creature with Bleed or Bruised. Failure: 1d6 necrotic per rank of Bleed and Bruised (roll them), then both drop to 0; with your Ketsuryugan active you gain that many Crimson Charges.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eq4wTq00Wfpyrh",
+        "type": "roll",
+        "label": "Crimson Charges from ranks",
+        "roll": {
+          "formula": "",
+          "note": "With your Ketsuryugan active: the ranks reduced to 0."
+        },
+        "cost": {
+          "pool": "crimsonCharges",
+          "choose": true,
+          "gain": true
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

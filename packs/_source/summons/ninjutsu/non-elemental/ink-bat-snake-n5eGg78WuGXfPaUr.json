@@ -1,0 +1,331 @@
+{
+  "_id": "n5eGg78WuGXfPaUr",
+  "_key": "!actors!n5eGg78WuGXfPaUr",
+  "name": "Ink Bat/Snake",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Non-Elemental: Beast Imitating Art: Bat/Snake (D-Rank)",
+      "summonRole": "Ink Bat/Snake",
+      "biography": "<p><em>Beast Imitating Art: Bat/Snake (D-Rank) (Non-Elemental Ninjutsu).</em> It uses your Ninjutsu attack bonus and save DC. You command it as a Bonus Action; it can take reactions it's able to, such as opportunity attacks.</p><p><strong>Medium Construct.</strong> <strong>Armor Class</strong> 12 + 2 for every rank above D-Rank · <strong>Hit Points</strong> 15 + 8 for every rank above D-Rank · <strong>Speed</strong> 30 ft., 30 ft. fly.</p><p><strong>Abilities</strong> STR +3 (save +1), DEX +2 (save +1), CON +2 (save +1), INT −5 (save −5), WIS +0 (save +0), CHA +5 (save −5). <strong>Condition Immunities</strong> All Mental and Sensory, Incapacitated. <strong>Senses</strong> Darkvision 30 ft., passive Perception 10.</p><p><strong>Linked to you when summoned:</strong> AC and hit points by the rank you cast the jutsu at, and your Ninjutsu attack bonus and save DC.</p>"
+    },
+    "abilities": {
+      "str": {
+        "value": 16
+      },
+      "dex": {
+        "value": 14
+      },
+      "con": {
+        "value": 14
+      },
+      "int": {
+        "value": 0
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 20
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 12,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "medium",
+      "resist": [],
+      "immune": [],
+      "vuln": [],
+      "conditionImmune": [
+        "berserk",
+        "charmed",
+        "confused",
+        "demoralized",
+        "shaken",
+        "blinded",
+        "dazzled",
+        "deafened"
+      ],
+      "stateImmune": [
+        "incapacitated"
+      ],
+      "dr": 0,
+      "speed": {
+        "walk": 30,
+        "climb": 0,
+        "swim": 0,
+        "fly": 30,
+        "burrow": 0,
+        "hover": false
+      },
+      "senses": {
+        "darkvision": 30
+      }
+    },
+    "hpMax": 15,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5eRPtSVEZ0h8C6n",
+      "_key": "!actors.items!n5eGg78WuGXfPaUr.n5eRPtSVEZ0h8C6n",
+      "name": "Inky Body",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Ink Bat/Snake leaves an ink blotch on anything it hits. The blotch is noticeable and can't be removed without a deep cleaning lasting at least 1 hour.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eS6NZXs5tAxYT0",
+      "_key": "!actors.items!n5eGg78WuGXfPaUr.n5eS6NZXs5tAxYT0",
+      "name": "Bite",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 1d6 + 3 piercing damage.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5e8kv23Qoii9LGu",
+            "type": "attack",
+            "label": "Bite",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 1,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "1d6 + 3",
+                  "type": "piercing"
+                }
+              ]
+            }
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5ehBMbSn4UfiVqs",
+      "_key": "!actors.items!n5eGg78WuGXfPaUr.n5ehBMbSn4UfiVqs",
+      "name": "Face Wrap",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Bat/Snake wraps around the head of a creature within 5 feet of it, forcing that creature to make a Dexterity saving throw. On a failed save, they become Blinded. They can remake the save at the end of each of their turns. The Bat/Snake can't use Body Wrap while it has something Face Wrapped.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eHo5MfIjPwuAQq",
+            "type": "save",
+            "label": "Face Wrap",
+            "save": {
+              "abilities": [
+                "dex"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "inflicts": [
+              {
+                "key": "blinded",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Blinded"
+              }
+            ],
+            "text": "Resave at the end of each of its turns."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5epHwH8GohBGvYd",
+      "_key": "!actors.items!n5eGg78WuGXfPaUr.n5epHwH8GohBGvYd",
+      "name": "Body Wrap",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Bat/Snake wraps around the body of a creature within 5 feet of it, forcing that creature to make a Strength saving throw. On a failed save, they become Restrained. If the target has another creature adjacent to it, it can try to Restrain them both, but they make their saves at disadvantage. They can remake the save at the end of each of their turns. The Bat/Snake can't use Face Wrap while it has something Body Wrapped.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5ehQkf99Ebp7BWc",
+            "type": "save",
+            "label": "Body Wrap",
+            "save": {
+              "abilities": [
+                "str"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "inflicts": [
+              {
+                "key": "restrained",
+                "kind": "state",
+                "ranks": 1,
+                "label": "Restrained"
+              }
+            ],
+            "text": "Resave at the end of each of its turns."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5eYZQzrhbOq1gNa",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "attributes.ac.flat": "12 + 2 * max(0, @rankValue - 1)",
+        "hpMax": "15 + 8 * max(0, @rankValue - 1)",
+        "bonuses.saveDC.nin": "@dc.nin - 8 - @prof",
+        "bonuses.attack.nin": "@attack.nin - @prof"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Ink Bat/Snake",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.93.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

@@ -17,6 +17,116 @@
         "cost": "13 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu, Interrupt",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eoBIyVTxoXYNCD",
+              "type": "attack",
+              "label": "Fanged Interjection",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Reaction: move 20 feet to the caster; [Unarmed] or [Weapon Damage].",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": ""
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5e6m69wRbhuLCzI",
+              "type": "save",
+              "label": "Interrupt",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit. Failure: pushed 20 feet and its jutsu is interrupted.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eoBIyVTxoXYNCD",
+              "type": "attack",
+              "label": "Fanged Interjection",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Reaction: move 20 feet to the caster; [Unarmed] or [Weapon Damage].",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": ""
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5e6m69wRbhuLCzI",
+              "type": "save",
+              "label": "Interrupt",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit. Failure: pushed 20 feet and its jutsu is interrupted.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Dragon Rage",
+        "appliesTo": {
+          "namePrefix": "Conqueror’s Art: Fanged Interjection"
+        },
+        "note": "In your Dragon's Rage: a failed save also gives 2 ranks of your chosen release's condition (Earth Shaken, Wind Bleed, Fire Burned, Water Chilled, Lightning Shocked)."
       }
     }
   },
@@ -110,7 +220,55 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eoBIyVTxoXYNCD",
+        "type": "attack",
+        "label": "Fanged Interjection",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Reaction: move 20 feet to the caster; [Unarmed] or [Weapon Damage].",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": ""
+            }
+          ]
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5e6m69wRbhuLCzI",
+        "type": "save",
+        "label": "Interrupt",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "On a hit. Failure: pushed 20 feet and its jutsu is interrupted.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

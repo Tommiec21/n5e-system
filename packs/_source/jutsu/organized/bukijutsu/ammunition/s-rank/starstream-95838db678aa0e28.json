@@ -85,10 +85,28 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ex6CeYr176e9jK",
+        "type": "attack",
+        "label": "Starstream",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "When cast: a creature within 15 feet. Chain 3: you and allies you choose inside have partial cover against ranged attacks.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "@weapon + @weapon + 4d6",
+              "type": ""
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e9EzNHkpFn0W85",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Starstream: the storm",
         "save": {
           "abilities": [
             "dex"
@@ -96,22 +114,18 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "Concentration: a hostile creature entering for the first time on a turn, or starting or ending its turn inside. Success: half.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "4d6",
-        "roll": {
-          "formula": "4d6",
-          "note": "When this jutsu is cast, you may maneuver the storm of steel to strike a creature within the radius, making a ranged taijutsu attack, dealing [Weapons damage] + [Weapons damage] + 4d6 on a hit."
+          "parts": [
+            {
+              "formula": "@weapon + @weapon + @weapon",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -224,7 +238,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "a8010b352a59571c"

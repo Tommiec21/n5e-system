@@ -17,7 +17,14 @@
         "cost": "Special (9 Chakra)",
         "keywords": "Hijutsu, Ninjutsu, Stable",
         "components": "CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its Amp button stays: resistance to one damage type or condition you've experienced this initiative (two at A-Rank). Its upcast says above D-Rank (it's C-Rank)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -108,7 +115,19 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "ampdffd99e02cc66",
+        "type": "effect",
+        "label": "Synthetic Art: Adaptive Biology",
+        "effect": {
+          "name": "Synthetic Art: Adaptive Biology",
+          "target": "self",
+          "amp": "jutsu-jinzo-synthetic-art-adaptive-biology"
+        },
+        "text": "Starts the jutsu's Amp at the rank it was cast at."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

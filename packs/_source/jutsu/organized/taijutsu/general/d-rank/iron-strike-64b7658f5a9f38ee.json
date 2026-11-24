@@ -86,14 +86,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ebyPyYPxcnXZch",
         "type": "attack",
-        "label": "Attack",
+        "label": "Iron Strike",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "On a hit: its Reaction jutsu to your damage cost +4 (no cost: 10 chakra), +4 per rank.",
         "damage": {
           "parts": []
         },
@@ -107,16 +108,25 @@
         }
       },
       {
-        "id": "finisher-parsed1",
-        "type": "damage",
-        "label": "Finisher: Damage",
+        "id": "n5ejygjPCcLkrorA",
+        "type": "attack",
+        "label": "Finisher: Iron Strike",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Finisher: Reaction jutsu against you cost +8 (+4 per rank).",
         "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed + 4d6",
-              "type": "bludgeoning"
-            }
-          ]
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "4d6",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       }
     ],
@@ -215,9 +225,195 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5ebyPyYPxcnXZch",
+              "type": "attack",
+              "label": "Iron Strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "On a hit: its Reaction jutsu to your damage cost +4 (no cost: 10 chakra), +4 per rank.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d6 + 1d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ejygjPCcLkrorA",
+              "type": "attack",
+              "label": "Finisher: Iron Strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Finisher: Reaction jutsu against you cost +8 (+4 per rank).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "4d6 + 1d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5ebyPyYPxcnXZch",
+              "type": "attack",
+              "label": "Iron Strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "On a hit: its Reaction jutsu to your damage cost +4 (no cost: 10 chakra), +4 per rank.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d6 + 2d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ejygjPCcLkrorA",
+              "type": "attack",
+              "label": "Finisher: Iron Strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Finisher: Reaction jutsu against you cost +8 (+4 per rank).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "4d6 + 2d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ebyPyYPxcnXZch",
+              "type": "attack",
+              "label": "Iron Strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "On a hit: its Reaction jutsu to your damage cost +4 (no cost: 10 chakra), +4 per rank.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d6 + 3d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ejygjPCcLkrorA",
+              "type": "attack",
+              "label": "Finisher: Iron Strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Finisher: Reaction jutsu against you cost +8 (+4 per rank).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "4d6 + 3d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ebyPyYPxcnXZch",
+              "type": "attack",
+              "label": "Iron Strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "On a hit: its Reaction jutsu to your damage cost +4 (no cost: 10 chakra), +4 per rank.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d6 + 4d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5ejygjPCcLkrorA",
+              "type": "attack",
+              "label": "Finisher: Iron Strike",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Finisher: Reaction jutsu against you cost +8 (+4 per rank).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "4d6 + 4d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

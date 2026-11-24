@@ -33,13 +33,94 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eAq0L9GCraR8WR",
+        "type": "damage",
+        "label": "Lethal Attack (forgo 1)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(max(0, @scale.hunterNin.lethalAttack - 1))d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true,
+        "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+      },
+      {
+        "id": "n5ej6kGRPt9cMm4E",
+        "type": "damage",
+        "label": "Lethal Attack (forgo 1): Attack action or weapon",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 1))d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true,
+        "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+      },
+      {
+        "id": "n5epDVkFQggbVLLr",
+        "type": "roll",
+        "label": "Strike the Eyes",
+        "roll": {
+          "formula": "",
+          "note": "Forgo 1 die: 2 ranks of Dazzled (apply them)."
+        }
+      }
+    ]
   },
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5e5rljcPpWhVigt",
+      "name": "One with the Darkness: blindsight",
+      "type": "generic",
+      "img": "icons/svg/upgrade.svg",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "system.traits.senses.blindsight",
+          "value": "30",
+          "mode": 4,
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!57b4cf3df9baab38.n5e5rljcPpWhVigt"
+    }
+  ],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Blindsight 30 feet (its effect). In dim light or darkness, Chakra Sight and darkvision can't perceive you."
+        }
+      ]
     }
   },
   "ownership": {

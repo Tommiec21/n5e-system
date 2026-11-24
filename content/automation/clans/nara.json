@@ -1,0 +1,989 @@
+{
+  "clan": "nara",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "nara-black-spider-lily": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eXC6qKdvTVJHkF",
+          "type": "attack",
+          "label": "Shadow Drill",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "text": "Action, reach 10 feet; piercing or necrotic. On a hit, its next Strength save has disadvantage.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d8",
+                "type": "piercing"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5ejSrEPiCMqkLPB",
+          "type": "save",
+          "label": "Sea of Spears",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "nara-shadow-bound",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shadow Bound"
+            }
+          ],
+          "text": "Action: creatures you choose within 10 feet; piercing or necrotic. Failure: Shadow Bound until the end of its next turn; success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "piercing"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5ev5p5EOn1ZGW9I",
+          "type": "heal",
+          "label": "Shadow Barrier",
+          "heal": {
+            "formula": "3d12 + 8",
+            "pool": "tempHp"
+          },
+          "text": "Action: up to two willing allies within 30 feet, until the start of your next turn."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5eXC6qKdvTVJHkF",
+                "type": "attack",
+                "label": "Shadow Drill",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Action, reach 10 feet; piercing or necrotic. On a hit, its next Strength save has disadvantage.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (1d8)",
+                      "type": "piercing"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ejSrEPiCMqkLPB",
+                "type": "save",
+                "label": "Sea of Spears",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "nara-shadow-bound",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shadow Bound"
+                  }
+                ],
+                "text": "Action: creatures you choose within 10 feet; piercing or necrotic. Failure: Shadow Bound until the end of its next turn; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (1d8)",
+                      "type": "piercing"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ev5p5EOn1ZGW9I",
+                "type": "heal",
+                "label": "Shadow Barrier",
+                "heal": {
+                  "formula": "3d12 + 8",
+                  "pool": "tempHp"
+                },
+                "text": "Action: up to two willing allies within 30 feet, until the start of your next turn."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eXC6qKdvTVJHkF",
+                "type": "attack",
+                "label": "Shadow Drill",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "text": "Action, reach 10 feet; piercing or necrotic. On a hit, its next Strength save has disadvantage.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (2d8)",
+                      "type": "piercing"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ejSrEPiCMqkLPB",
+                "type": "save",
+                "label": "Sea of Spears",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "nara-shadow-bound",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shadow Bound"
+                  }
+                ],
+                "text": "Action: creatures you choose within 10 feet; piercing or necrotic. Failure: Shadow Bound until the end of its next turn; success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d8) + (2d8)",
+                      "type": "piercing"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ev5p5EOn1ZGW9I",
+                "type": "heal",
+                "label": "Shadow Barrier",
+                "heal": {
+                  "formula": "3d12 + 8",
+                  "pool": "tempHp"
+                },
+                "text": "Action: up to two willing allies within 30 feet, until the start of your next turn."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "nara-mendokuse": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5erecMDtNDFeXTx",
+          "type": "save",
+          "label": "Shadow Possession (Bonus action)",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "nara-shadow-bound",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shadow Bound"
+            }
+          ],
+          "text": "A creature you can see within 40 feet (60 at 7th, 80 at 15th). Failure: Shadow Bound; it saves Strength or Dexterity at the end of each of its turns to end it. Hold 1 creature (2 at 7th, 3 at 15th). Not while you can't mold chakra or concentrate.",
+          "activation": "bonus",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "One Contingency at the start of your turn with no Bonus action (then you can't use the Bonus action for one). Shadow Possession as a Bonus action instead of an Action."
+        }
+      ]
+    },
+    "nara-operational-contingencies": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e3AsAdWWRp8DmG",
+          "type": "roll",
+          "label": "Establish a Contingency",
+          "roll": {
+            "formula": "",
+            "note": "Start of your turn, Bonus action: one Cause + one Effect (the option items) until the start of your next turn (two at 11th); the Effect happens as the Cause does."
+          },
+          "activation": "bonus"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Combat Coordinated is the condition item (Team Coordination applies it)."
+        }
+      ]
+    },
+    "nara-operational-contingencies-cause": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Causes: an ally is targeted by an attack; fails a save; gains a Physical condition; gains a Mental condition; a hostile creature you see casts an HS jutsu; starts its turn concentrating; moves within 10 feet of an ally."
+        }
+      ]
+    },
+    "nara-operational-contingencies-effect": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Effects: an ally gets a rank of Mastery to AC, or to saves, until the start of its next turn; remakes its saves against current effects; makes a free opportunity attack; uses its reaction to move 10 feet without provoking (out of the area or reach: no longer a target); uses its reaction to cast a 1-Action jutsu at a hostile creature in range."
+        }
+      ]
+    },
+    "nara-shadow-arts": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus action: enter the Shadow Art chakra stance (the clan's stance item). Your Hijutsu's Bright / Dimly Lit effects: cast dialog options, by the GM's time of day."
+        }
+      ]
+    },
+    "nara-shadow-gathering": {
+      "status": "note",
+      "activities": [],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Concentration: shadow tendrils within 60 feet slip under doors and through holes to steal (up to 25 pounds), disable a device or trap, or pick a lock (roll the check)."
+        }
+      ]
+    },
+    "nara-shadow-imitation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eA6aLusc17yfY2",
+          "type": "effect",
+          "label": "Shadow Imitation",
+          "effect": {
+            "name": "Shadow Imitation",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "2",
+                "mode": 2
+              }
+            ],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Reaction: a willing creature within 30 feet: +2 AC (+1 per rank) and advantage on Dexterity saves until the start of your next turn.",
+          "activation": "reaction"
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Bright",
+          "appliesTo": {
+            "namePrefix": "Shadow Imitation",
+            "maxRank": "D"
+          },
+          "note": "Bright time of day (GM's call): range 60 feet."
+        },
+        {
+          "label": "Dimly Lit",
+          "appliesTo": {
+            "namePrefix": "Shadow Imitation",
+            "maxRank": "D"
+          },
+          "note": "Dimly lit time of day (GM's call): +1 creature."
+        }
+      ]
+    },
+    "nara-shadow-imitation-field": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eXBqrCxj240UUE",
+          "type": "save",
+          "label": "Shadow Imitation Field",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "nara-shadow-bound",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shadow Bound"
+            }
+          ],
+          "text": "Creatures on your surface in a 20-foot radius on you (+5 feet per rank). Failure: Shadow Bound for the duration; on its turn it can save Strength to break free.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Bright",
+          "appliesTo": {
+            "namePrefix": "Shadow Imitation Field"
+          },
+          "note": "Bright time of day (GM's call): −1 on their saves."
+        },
+        {
+          "label": "Dimly Lit",
+          "appliesTo": {
+            "namePrefix": "Shadow Imitation Field"
+          },
+          "note": "Dimly lit time of day (GM's call): Shadow Bound creatures take 3d12 bludgeoning or necrotic at the start of each of their turns."
+        }
+      ]
+    },
+    "nara-shadow-neck-binding": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5emVQRkslIo1jQQ",
+          "type": "save",
+          "label": "Shadow Neck Binding",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "With the action for Shadow Possession or a Shadow Bound jutsu: each creature that fails takes the damage (bludgeoning or necrotic).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d12",
+                "type": "bludgeoning"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5emVQRkslIo1jQQ",
+                "type": "save",
+                "label": "Shadow Neck Binding",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "highest"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "With the action for Shadow Possession or a Shadow Bound jutsu: each creature that fails takes the damage (bludgeoning or necrotic).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d12) + (1d12)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5emVQRkslIo1jQQ",
+                "type": "save",
+                "label": "Shadow Neck Binding",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "highest"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "With the action for Shadow Possession or a Shadow Bound jutsu: each creature that fails takes the damage (bludgeoning or necrotic).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d12) + (2d12)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5emVQRkslIo1jQQ",
+                "type": "save",
+                "label": "Shadow Neck Binding",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "highest"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "With the action for Shadow Possession or a Shadow Bound jutsu: each creature that fails takes the damage (bludgeoning or necrotic).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d12) + (3d12)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5emVQRkslIo1jQQ",
+                "type": "save",
+                "label": "Shadow Neck Binding",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "highest"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "With the action for Shadow Possession or a Shadow Bound jutsu: each creature that fails takes the damage (bludgeoning or necrotic).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(3d12) + (4d12)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Bright",
+          "appliesTo": {
+            "namePrefix": "Shadow Neck Binding"
+          },
+          "note": "Bright time of day (GM's call): a creature that failed is knocked Prone."
+        },
+        {
+          "label": "Dimly Lit",
+          "appliesTo": {
+            "namePrefix": "Shadow Neck Binding"
+          },
+          "note": "Dimly lit time of day (GM's call): a creature that succeeded gains a rank of Demoralized or Shaken (pick)."
+        }
+      ]
+    },
+    "nara-shadow-sewing-needle": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eI2mEZoN3ZCQI4",
+          "type": "attack",
+          "label": "Shadow Sewing Needle",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "5 tendrils (+1 per rank): one attack per creature, up to 4 within 60 feet; +1d6 per extra tendril on the same creature.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "piercing"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5ejMm2CfilJmZFA",
+          "type": "save",
+          "label": "Shadow Sewing Needle: on a hit",
+          "save": {
+            "abilities": [
+              "str"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "nara-shadow-bound",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shadow Bound"
+            }
+          ],
+          "text": "Failure: Shadow Bound until the end of its next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Bright",
+          "appliesTo": {
+            "namePrefix": "Shadow Sewing Needle"
+          },
+          "note": "Bright time of day (GM's call): remake a missed attack, once per casting."
+        },
+        {
+          "label": "Dimly Lit",
+          "appliesTo": {
+            "namePrefix": "Shadow Sewing Needle"
+          },
+          "note": "Dimly lit time of day (GM's call): two or more tendrils on a hit: pulled 10 feet closer per tendril."
+        }
+      ]
+    },
+    "nara-shadow-silhouette-distraction": {
+      "status": "note",
+      "activities": [],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A paper-thin standing shadow within 60 feet that follows your will; it can't touch or carry. Cast from stealth without revealing you, and with a Stealth roll."
+        }
+      ]
+    },
+    "nara-shadow-tendrils": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e8SvrhWTYb6Jjx",
+          "type": "save",
+          "label": "Shadow Tendrils",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "nara-shadow-bound",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shadow Bound"
+            }
+          ],
+          "text": "A 15-foot cube within 60 feet; bludgeoning or necrotic. Failure: Shadow Bound for the duration (Strength or Dexterity save at the end of each turn); success: half.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "bludgeoning"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5e9BC1FekXtLboZ",
+          "type": "damage",
+          "label": "Ends its turn Shadow Bound",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "bludgeoning"
+              }
+            ]
+          },
+          "text": "Bludgeoning or necrotic; +1d6 from A-Rank."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5e8SvrhWTYb6Jjx",
+                "type": "save",
+                "label": "Shadow Tendrils",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "nara-shadow-bound",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shadow Bound"
+                  }
+                ],
+                "text": "A 15-foot cube within 60 feet; bludgeoning or necrotic. Failure: Shadow Bound for the duration (Strength or Dexterity save at the end of each turn); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (1d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5e9BC1FekXtLboZ",
+                "type": "damage",
+                "label": "Ends its turn Shadow Bound",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "3d6",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                },
+                "text": "Bludgeoning or necrotic; +1d6 from A-Rank."
+              }
+            ],
+            "A": [
+              {
+                "id": "n5e8SvrhWTYb6Jjx",
+                "type": "save",
+                "label": "Shadow Tendrils",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "nara-shadow-bound",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shadow Bound"
+                  }
+                ],
+                "text": "A 15-foot cube within 60 feet; bludgeoning or necrotic. Failure: Shadow Bound for the duration (Strength or Dexterity save at the end of each turn); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (2d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5e9BC1FekXtLboZ",
+                "type": "damage",
+                "label": "Ends its turn Shadow Bound",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "3d6",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                },
+                "text": "Bludgeoning or necrotic; +1d6 from A-Rank."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e8SvrhWTYb6Jjx",
+                "type": "save",
+                "label": "Shadow Tendrils",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "nara-shadow-bound",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shadow Bound"
+                  }
+                ],
+                "text": "A 15-foot cube within 60 feet; bludgeoning or necrotic. Failure: Shadow Bound for the duration (Strength or Dexterity save at the end of each turn); success: half.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (3d6)",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5e9BC1FekXtLboZ",
+                "type": "damage",
+                "label": "Ends its turn Shadow Bound",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "3d6",
+                      "type": "bludgeoning"
+                    }
+                  ]
+                },
+                "text": "Bludgeoning or necrotic; +1d6 from A-Rank."
+              }
+            ]
+          }
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Bright",
+          "appliesTo": {
+            "namePrefix": "Shadow Tendrils"
+          },
+          "note": "Bright time of day (GM's call): +5-foot cube."
+        },
+        {
+          "label": "Dimly Lit",
+          "appliesTo": {
+            "namePrefix": "Shadow Tendrils"
+          },
+          "note": "Dimly lit time of day (GM's call): creatures that fail are disarmed; picking a weapon up takes an Athletics check against your jutsu DC."
+        }
+      ]
+    },
+    "nara-shadow-transport-technique": {
+      "status": "note",
+      "activities": [],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus action: sink into your shadow and come out within 5 feet of a Shadow Bound creature."
+        }
+      ]
+    },
+    "nara-shadow-web-execution": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ebbpU7NKMTWF7L",
+          "type": "save",
+          "label": "Shadow Web Execution",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "exhaustion",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Exhaustion"
+            }
+          ],
+          "text": "Reaction: every Shadow Bound creature; bludgeoning, piercing or necrotic. Failure: 1 rank of Exhaustion; success: half.",
+          "activation": "reaction",
+          "damage": {
+            "parts": [
+              {
+                "formula": "12d8",
+                "type": "bludgeoning"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "nara-shogi-board": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Shadow Possession or a Shadow Bound Hijutsu with a Contingency up: dismiss one to have two allies use their reactions on a 1-Action jutsu or clan feature at the same target, in the order you pick. Human Boulder, Mind Body Transfer or Mind Body Disturbance: their attacks gain a rank of Mastery and the target's save takes −2."
+        }
+      ]
+    },
+    "nara-stance-shadow-art": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e46zOPX2C4wUdW",
+          "type": "effect",
+          "label": "Shadow Art",
+          "effect": {
+            "name": "Shadow Art",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Bonus action: the Shadow Art chakra stance.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5e0VHx4x9PW7TYF",
+          "type": "save",
+          "label": "Shadow Possession",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "nara-shadow-bound",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shadow Bound"
+            }
+          ],
+          "text": "A creature you can see within 40 feet (60 at 7th, 80 at 15th). Failure: Shadow Bound; it saves Strength or Dexterity at the end of each of its turns to end it. Hold 1 creature (2 at 7th, 3 at 15th). Not while you can't mold chakra or concentrate.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Shadow Bound (the condition item) ends early if the creature is moved, you're incapacitated, can't mold chakra or can't see it, or either of you is in total darkness."
+        }
+      ]
+    },
+    "nara-team-coordination": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e8e7c9f7967a1b",
+          "type": "effect",
+          "label": "Combat Coordinated",
+          "effect": {
+            "name": "Combat Coordinated",
+            "target": "targets",
+            "condition": "nara-combat-coordinated"
+          },
+          "text": "When you roll initiative: target your allies. Until initiative ends."
+        },
+        {
+          "id": "n5e3f713d62df707",
+          "type": "effect",
+          "label": "Diplomatic Coordinated",
+          "effect": {
+            "name": "Diplomatic Coordinated",
+            "target": "targets",
+            "condition": "nara-diplomatic-coordinated"
+          },
+          "text": "When a social encounter begins: target your allies. Each picks a skill in chat."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Combat and Diplomatic Coordinated are the condition items, until initiative or the social encounter ends."
+        }
+      ]
+    }
+  }
+}

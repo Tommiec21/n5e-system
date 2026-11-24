@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eJH7kenr1M8pwK",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Branding Savagery",
         "save": {
           "abilities": [
             "dex"
@@ -97,26 +96,44 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {
-            "success": "on a success. Regardless of a success or",
-            "failure": "failure, all creatures whom you dealt damage to becomes Branded reminding them of your savagery. All Branded creatures cannot declare attacks or cast jutsu within the given area for the next minute, being forced to escape the affected radius in order to fight effectively or until they spend a full-turn action to remove the branding"
-          },
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "Creatures you choose in your weapon's range. Success: half. Every creature damaged is Branded: no attacks or jutsu inside the area for 1 minute (or a full-turn action).",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "4d12",
+              "type": ""
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "4d12",
-        "roll": {
-          "formula": "4d12",
-          "note": "All creatures of your choice within range, must make a Dexterity saving throw, taking you [Weapons damage] + 4d12 or half as much on a success."
-        }
+        "id": "n5eW55QvkoGpHRdT",
+        "type": "effect",
+        "label": "Chain 3: Sealed",
+        "effect": {
+          "name": "Chain 3: Sealed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "sealed",
+              "kind": "condition",
+              "ranks": 4,
+              "label": "Sealed"
+            }
+          ]
+        },
+        "text": "Chain 3: 4 Sealed while Branded."
       }
     ],
     "featureType": "active",
@@ -198,7 +215,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "5230b2127c99713f"

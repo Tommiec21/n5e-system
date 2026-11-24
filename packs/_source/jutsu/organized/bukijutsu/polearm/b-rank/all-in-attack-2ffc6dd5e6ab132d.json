@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eNcMCj7y69uoKG",
         "type": "attack",
-        "label": "Attack",
+        "label": "All-In Attack",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "An ally within 30 feet must be able to cast a 1-Action C-Rank or lower Taijutsu or Bukijutsu. Target with jutsu DR: +2 critical range (the effect). Then each willing ally uses its reaction to cast a 1-Action Taijutsu or Bukijutsu at it (+1 critical range if it has jutsu DR).",
         "damage": {
           "parts": []
         },
@@ -106,13 +107,33 @@
         }
       },
       {
-        "id": "chain-2-parsed1",
+        "id": "n5e0lYv35I3g0PdF",
+        "type": "effect",
+        "label": "Jutsu DR: +2 critical range",
+        "effect": {
+          "name": "All-In Attack",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.critRange.weapon",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 0
+        },
+        "text": "Before the attack, if the target has jutsu DR."
+      },
+      {
+        "id": "n5ejIU9akmPJeUwj",
         "type": "heal",
-        "label": "Chain 2: Temporary HP",
+        "label": "Chain 2: temporary hit points",
         "heal": {
           "formula": "8",
           "pool": "tempHp"
-        }
+        },
+        "text": "You and every ally who cast, until the end of your next turn."
       }
     ],
     "featureType": "active",
@@ -194,7 +215,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "df4eaad46b8ce1b6"

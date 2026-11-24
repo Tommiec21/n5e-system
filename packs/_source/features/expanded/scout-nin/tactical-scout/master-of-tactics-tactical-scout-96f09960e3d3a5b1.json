@@ -32,14 +32,87 @@
       }
     },
     "tags": [],
-    "resourcePools": [],
-    "advancement": []
+    "resourcePools": [
+      {
+        "id": "tacticalInsight",
+        "label": "Tactical Insight",
+        "value": 0,
+        "max": "4",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": []
+      }
+    ],
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e2ruFiqifB4pW7",
+        "type": "roll",
+        "label": "Gain Tactical Insight",
+        "cost": {
+          "pool": "tacticalInsight",
+          "amount": 1,
+          "gain": true
+        },
+        "roll": {
+          "formula": "",
+          "note": "At the start of each of your turns, or once per turn performing a skill-based action."
+        }
+      },
+      {
+        "id": "n5eQ5ttFn9YmRkJy",
+        "type": "roll",
+        "label": "Updated Tactics",
+        "cost": {
+          "pool": "tacticalInsight",
+          "amount": 1
+        },
+        "roll": {
+          "formula": "",
+          "note": "On your turn: switch Generalization at no action cost."
+        }
+      },
+      {
+        "id": "n5e5oYdk7XCZ1fXr",
+        "type": "roll",
+        "label": "Follow Through",
+        "cost": {
+          "pool": "tacticalInsight",
+          "amount": 1
+        },
+        "roll": {
+          "formula": "",
+          "note": "Applying Follow Up or Set-Up: apply both."
+        }
+      },
+      {
+        "id": "n5ellcjX6ivP59x2",
+        "type": "roll",
+        "label": "Tactical Placement",
+        "cost": {
+          "pool": "tacticalInsight",
+          "amount": 1
+        },
+        "roll": {
+          "formula": "1d20 + @init",
+          "note": "On your turn: reroll initiative; at the end of your turn you move to the new result (no second turn this round)."
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Initiative: any Adaptive Initiative skill regardless of circumstance, at advantage. Always Prepared: Tactical Insight can pay Superiority Dice for class features that aren't maneuvers (spend from either pool). Tactical Insight resets when combat ends (empty it at the table)."
+        }
+      ]
     }
   },
   "ownership": {

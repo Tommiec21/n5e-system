@@ -9,7 +9,8 @@
   "flags": {
     "n5e": {
       "clanPackage": "vesper",
-      "sourceLine": 4440
+      "sourceLine": 4440,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -42,6 +43,129 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ebCbNvQb4lfDy4",
+        "type": "effect",
+        "label": "Umbral Monarch",
+        "effect": {
+          "name": "Umbral Monarch",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "amp": "umbral-monarch"
+        },
+        "text": "Bonus action, 1 minute. Again before a long rest: 1 rank of Exhaustion.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5e8mzigtflkPcYk",
+        "type": "effect",
+        "label": "Umbral Monarch (15th)",
+        "effect": {
+          "name": "Umbral Monarch (15th)",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "amp": "umbral-monarch-15"
+        },
+        "text": "At 15th level (Beast Claws +4).",
+        "activation": "bonus",
+        "minLevel": 15
+      },
+      {
+        "id": "n5eKike9GCf8Rxo5",
+        "type": "save",
+        "label": "Sonic Lance",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "deafened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Deafened"
+          }
+        ],
+        "text": "Action, in Umbral Monarch: a 60 by 5-foot line. Failure: the damage and Deafened until the end of its next turn; success: half.",
+        "activation": "action",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": "force"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eGS5AzV7cB6MeC",
+        "type": "save",
+        "label": "Umbral Shockwave",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: Dazzled until the end of its next turn.",
+            "failure": "Failure: Blinded until the end of its next turn.",
+            "critFailure": "Critical Failure: as a failure, and Confused."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          },
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          },
+          {
+            "key": "confused",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Confused"
+          }
+        ],
+        "text": "Action, in Umbral Monarch: a 20-foot radius on you (a Visual, Auditory, Tactile Genjutsu).",
+        "activation": "action",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eb3KwqCETWdXe5",
+        "type": "heal",
+        "label": "Crimson Feast",
+        "heal": {
+          "formula": "1d10",
+          "pool": "hp"
+        },
+        "text": "Once per turn, your [Unarmed]/[Weapon Damage] to a creature with Crimson Hemorrhage: its ranks drop to 0; regain 1d10 per rank (roll once per rank)."
+      }
+    ]
   }
 }

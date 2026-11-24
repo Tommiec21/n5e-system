@@ -1,0 +1,393 @@
+{
+  "clan": "kurama",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "kurama-deep-sleep": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ei4D8RTtbDJKWN",
+          "type": "effect",
+          "label": "Well Rested",
+          "effect": {
+            "name": "Well Rested",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "amp": "well-rested"
+          },
+          "text": "You and allies completing a long rest together."
+        }
+      ]
+    },
+    "kurama-deja-vu": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A contested check against a Charisma or Wisdom skill: advantage; then not for 10 minutes. (Its copy of Well Rested's Amp is removed, as King Q-E12.)"
+        }
+      ]
+    },
+    "kurama-dream-walker": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "After each rest, a Dream Walker (Fey, Beast, Dragon, Spider or Demon) obeys only you and acts on your turn: Move (free), Strike (forgo attacks for its Strike), Distort (Bonus action: its ability, your Ninjutsu or Genjutsu save DC); 7th: Pass Through (your Ninjutsu or Genjutsu can come from it) and Inflict Harm (its Strikes for your Taijutsu or Bukijutsu). At 0 it's gone until a rest. 2 Oni-Coils: use a chakra construct's stat block from a jutsu or feature instead. Its stat block (in this item; save bonuses blank) is held for King's (H8)."
+        }
+      ]
+    },
+    "kurama-illusion-made-manifest": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eZ5c0U5zjmEASf",
+          "type": "save",
+          "label": "Memory Haze",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            }
+          ],
+          "text": "Your manifest weapon's [Weapon Damage] (psychic). Failure: Confused.",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "oniCoils",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5eZTsGhcAjZLvGb",
+          "type": "save",
+          "label": "Stolen Thoughts",
+          "save": {
+            "abilities": [
+              "int"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Your manifest weapon's [Weapon Damage]. Failure: you learn its most immediate goals and it forgets them for 1 minute.",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "oniCoils",
+            "amount": 2
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "After a rest, proficiency with one weapon group; those weapons turn ethereal for you only and deal psychic. If the creature already saves against the damage, apply these on its failure."
+        }
+      ]
+    },
+    "kurama-inner-self": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eE5Q8e4Qea5EpT",
+          "type": "effect",
+          "label": "Inner Self",
+          "effect": {
+            "name": "Inner Self",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Bonus action, a Dream Walker active, once per long rest (or 2 Oni-Coils to do it early): fuse into it for 1 minute (its scores, attacks, abilities and hit points; your proficiencies and jutsu plus its own). At 0 you revert and it's dispelled.",
+          "activation": "bonus"
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "lr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      }
+    },
+    "kurama-lucid-dreams": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "One Lucid Dream for your Dream Walker (change it on any rest): the option items."
+        }
+      ]
+    },
+    "kurama-lucid-dreams-elemental": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Elemental: one nature release you have (or 1d6: Earth, Wind, Fire, Water, Lightning, reroll); two C-Rank or lower jutsu of it you know (or the listed pair) become abilities, twice per initiative each. (On the Dream Walker, held: H8.)"
+        }
+      ]
+    },
+    "kurama-lucid-dreams-vegetative": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Vegetative: Flowers (poison), Fungi (necrotic) or Moss (acid) (pick with Medical Release, or 1d4); two matching C-Rank or lower jutsu (or the listed pair), twice per initiative each. (On the Dream Walker, held: H8.)"
+        }
+      ]
+    },
+    "kurama-lucid-dreams-warrior": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Warrior: two C-Rank or lower Taijutsu or Bukijutsu you know (or Brute, Samurai or Ninja's pair), twice per initiative each. (On the Dream Walker, held: H8.)"
+        }
+      ]
+    },
+    "kurama-mental-resistance": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "A rank of Mastery on Intelligence and Wisdom saves."
+        }
+      ]
+    },
+    "kurama-onijutsu": {
+      "status": "partial",
+      "pools": [
+        {
+          "id": "oniCoils",
+          "label": "Oni-Coils",
+          "value": 0,
+          "max": "1 + @prof",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "rest",
+              "amount": "all",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Oni-Coils: 1 + proficiency bonus (the pool), back on a rest. Two Onijutsu (+1 at 7th and 15th): the option items; each appears in the cast dialog of your Genjutsu (once per turn, up to 2 per casting)."
+        }
+      ]
+    },
+    "kurama-onijutsu-infectious-genjutsu": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Onijutsu: Infectious Genjutsu (1 Oni-Coil)",
+          "appliesTo": {
+            "discipline": "gen"
+          },
+          "cost": {
+            "pool": "oniCoils",
+            "amount": 1
+          },
+          "note": "a failed save or hit makes it a relay until the start of your next turn: once per turn an ally of it moving within 10 feet saves against the Genjutsu as the original target."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Infectious Genjutsu: a failed save or hit makes it a relay until the start of your next turn: once per turn an ally of it moving within 10 feet saves against the Genjutsu as the original target."
+        }
+      ]
+    },
+    "kurama-onijutsu-overwhelming-illusions": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Onijutsu: Overwhelming Illusions (1 Oni-Coil)",
+          "appliesTo": {
+            "discipline": "gen"
+          },
+          "cost": {
+            "pool": "oniCoils",
+            "amount": 1
+          },
+          "note": "a creature that succeeds raises its jutsu costs by the rank (D +4 ... S +20) until the end of its next turn."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Overwhelming Illusions: a creature that succeeds raises its jutsu costs by the rank (D +4 ... S +20) until the end of its next turn."
+        }
+      ]
+    },
+    "kurama-onijutsu-punishing-illusions": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Onijutsu: Punishing Illusions (1 Oni-Coil)",
+          "appliesTo": {
+            "discipline": "gen"
+          },
+          "cost": {
+            "pool": "oniCoils",
+            "amount": 1
+          },
+          "note": "a creature that succeeds resaves; failing, it suffers the Success effects and is Confused."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Punishing Illusions: a creature that succeeds resaves; failing, it suffers the Success effects and is Confused."
+        }
+      ]
+    },
+    "kurama-onijutsu-sensory-domination": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Onijutsu: Sensory Domination (1 Oni-Coil)",
+          "appliesTo": {
+            "discipline": "gen"
+          },
+          "cost": {
+            "pool": "oniCoils",
+            "amount": 1
+          },
+          "note": "a failing creature with a special sense is Blinded for the duration (or until the start of your next turn)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Sensory Domination: a failing creature with a special sense is Blinded for the duration (or until the start of your next turn)."
+        }
+      ]
+    },
+    "kurama-onijutsu-subtle-illusion": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Onijutsu: Subtle Illusion (1 Oni-Coil)",
+          "appliesTo": {
+            "discipline": "gen"
+          },
+          "cost": {
+            "pool": "oniCoils",
+            "amount": 1
+          },
+          "note": "no HS or CS; you need eye or physical contact with the target."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Subtle Illusion: no HS or CS; you need eye or physical contact with the target."
+        }
+      ]
+    },
+    "kurama-onijutsu-the-pain-is-real": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Onijutsu: The Pain Is Real (2 Oni-Coils)",
+          "appliesTo": {
+            "keywords": [
+              "ninjutsu",
+              "taijutsu",
+              "bukijutsu"
+            ],
+            "activation": "action",
+            "requiresDamage": true
+          },
+          "cost": {
+            "pool": "oniCoils",
+            "amount": 2
+          },
+          "note": "It becomes a Genjutsu with Tactile (it loses its Ninjutsu, Taijutsu or Bukijutsu keywords)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Pain Is Real: a damaging Action Ninjutsu, Taijutsu or Bukijutsu becomes a Genjutsu (loses those keywords, gains Genjutsu and Tactile)."
+        }
+      ]
+    },
+    "kurama-onijutsu-versatile-authority": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Onijutsu: Versatile Authority (1 Oni-Coil)",
+          "appliesTo": {
+            "discipline": "gen"
+          },
+          "cost": {
+            "pool": "oniCoils",
+            "amount": 1
+          },
+          "note": "a creature with a Physical or Elemental condition gets no jutsu bonuses to its save."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Versatile Authority: a creature with a Physical or Elemental condition gets no jutsu bonuses to its save."
+        }
+      ]
+    },
+    "kurama-onijutsu-will-breaker": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Onijutsu: Will Breaker (1 Oni-Coil)",
+          "appliesTo": {
+            "discipline": "gen"
+          },
+          "cost": {
+            "pool": "oniCoils",
+            "amount": 1
+          },
+          "note": "a failing creature takes −1 on its next Strength or Dexterity save (−2 at 11th)."
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Will Breaker: a failing creature takes −1 on its next Strength or Dexterity save (−2 at 11th)."
+        }
+      ]
+    }
+  }
+}

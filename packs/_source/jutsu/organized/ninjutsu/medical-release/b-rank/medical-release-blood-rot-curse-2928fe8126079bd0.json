@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eOFzJhduquBqIk",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Blood Rot Curse",
         "save": {
           "abilities": [
             "cha"
@@ -98,22 +97,27 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "A creature you touch whose hit points aren't full (a Stealth check against its passive Insight hides it). Failure, 24 hours: no healing but long or full rests; +2d4 to acid, poison and necrotic damage it takes (the next button). B-Rank or higher dispels it.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d4",
-        "roll": {
-          "formula": "2d4",
-          "note": "The curse takes effect immediately, for the next 24 hours (1 Day), the target cannot regain hit points except as a result of long or full rests, if and when they would take Acid, Poison or Necrotic damage, they take 2d4 additional damage of that same type. This jutsu can be dispelled by a Jutsu of B-Rank or higher that can dispel jutsu."
-        }
+        "id": "n5eRfbD5ePb16z6r",
+        "type": "damage",
+        "label": "Curse: extra damage",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d4",
+              "type": ""
+            }
+          ]
+        },
+        "text": "Each time it takes acid, poison or necrotic damage (that type; set it)."
       }
     ],
     "featureType": "active",
@@ -193,9 +197,103 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eOFzJhduquBqIk",
+              "type": "save",
+              "label": "Blood Rot Curse",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A creature you touch whose hit points aren't full (a Stealth check against its passive Insight hides it). Failure, 24 hours: no healing but long or full rests; +2d4 to acid, poison and necrotic damage it takes (the next button). B-Rank or higher dispels it.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eRfbD5ePb16z6r",
+              "type": "damage",
+              "label": "Curse: extra damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d4",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "Each time it takes acid, poison or necrotic damage (that type; set it)."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eOFzJhduquBqIk",
+              "type": "save",
+              "label": "Blood Rot Curse",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A creature you touch whose hit points aren't full (a Stealth check against its passive Insight hides it). Failure, 24 hours: no healing but long or full rests; +2d4 to acid, poison and necrotic damage it takes (the next button). B-Rank or higher dispels it.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eRfbD5ePb16z6r",
+              "type": "damage",
+              "label": "Curse: extra damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d4",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "Each time it takes acid, poison or necrotic damage (that type; set it)."
+            },
+            {
+              "id": "n5eoNko8hAJn9GVy",
+              "type": "damage",
+              "label": "S-Rank: acid blood (per Bleed rank)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d6",
+                    "type": "acid"
+                  }
+                ]
+              },
+              "text": "At the start of its turns: roll once per rank of Bleed."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "When cast, roll all your spent hit dice and record the result."
+        }
+      ]
     }
   },
   "folder": "d1f8f3baa49a3e3a"

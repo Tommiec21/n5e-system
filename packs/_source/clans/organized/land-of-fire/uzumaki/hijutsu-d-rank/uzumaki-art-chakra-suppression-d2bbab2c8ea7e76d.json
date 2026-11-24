@@ -17,6 +17,14 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu, Fuinjutsu",
         "components": "CM, CS"
+      },
+      "reviewed": true,
+      "castOption": {
+        "label": "Seal Break",
+        "appliesTo": {
+          "namePrefix": "Uzumaki Art: Chakra Suppression"
+        },
+        "note": "In your Binding Chain stance, dispel 1 rank of Sealed from a creature within 30 feet: (a Sealed hostile creature in the radius) +5-foot radius."
       }
     }
   },
@@ -109,7 +117,28 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eb1l9Sc4viPkFt",
+        "type": "save",
+        "label": "Chakra Suppression",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "A 10-foot radius within 60 feet; creatures starting or ending a turn in it, or entering it. Failure: can't cast jutsu of this jutsu's cast rank.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

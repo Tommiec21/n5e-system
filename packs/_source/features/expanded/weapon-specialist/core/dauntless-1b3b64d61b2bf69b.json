@@ -33,13 +33,49 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eNts4UfuKLnEHD",
+        "type": "roll",
+        "label": "Dauntless: regain",
+        "roll": {
+          "formula": "",
+          "note": "At the start of each of your turns: regain 1 Discipline."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 1,
+          "gain": true
+        }
+      },
+      {
+        "id": "n5ey5WjnAaE1Gany",
+        "type": "roll",
+        "label": "Dauntless: reroll a save",
+        "roll": {
+          "formula": "",
+          "note": "An ally within 15 feet fails a save for the first time: it rerolls. Once per ally until it rests."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Katas cost 1 less Discipline (minimum 1): pay one less at the table."
+        }
+      ]
     }
   },
   "ownership": {

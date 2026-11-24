@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "bakuton",
-      "sourceLine": 4868
+      "sourceLine": 4868,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Primes active at once: 4 (5 at 7th, 6 at 15th), the Primes pool: each lasts 1 minute unless spent (King Q-E6); spend them from the pool when they detonate. Damage per Prime on the same target: multiply the damage roll by the count."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,61 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eiYFgUAGkKDyx5",
+        "type": "roll",
+        "label": "Prime",
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, dealing [Unarmed Damage], Clay Bombings or Bakuton Hijutsu damage: Prime every damaged creature. Or a Bonus action: Prime an object or structure you touch. 1 minute or until detonated; a creature can carry several."
+        },
+        "oncePerTurn": true,
+        "cost": {
+          "pool": "primes",
+          "amount": 1,
+          "gain": true
+        }
+      },
+      {
+        "id": "n5eV8kSYqN4AF0bh",
+        "type": "save",
+        "label": "Detonate Primes",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Action, Bonus Action or Reaction on your turn: every Prime explodes, a 5-foot radius (+5 feet per extra Prime on that creature or object). Each creature takes this damage for every Prime on that same target, half on a success; caught in overlapping explosions, only one (you choose).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(3:2d6,11:3d6)",
+              "type": "force"
+            }
+          ]
+        }
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "primes",
+        "label": "Primes",
+        "value": 0,
+        "max": "lvl(3:4,7:5,15:6)",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [],
+        "lifetime": 60
+      }
+    ]
   }
 }

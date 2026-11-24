@@ -17,6 +17,253 @@
         "cost": "5 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Inhale, Tactile), Fire Release, Water Release, Clash",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "C-Rank and A-Rank: +1 rank of Deteriorate or Scald each. B-Rank and S-Rank: +1 target each."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eDUYhW0tpsxkh6",
+              "type": "attack",
+              "label": "Steam Bullet",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (1d8)",
+                    "type": "acid"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e9VQ4at48ki8ft",
+              "type": "save",
+              "label": "Steam Bullet: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "futton-deteriorate",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Deteriorate"
+                },
+                {
+                  "key": "futton-scald",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Scald"
+                },
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                }
+              ],
+              "text": "Failure: 1 rank of Deteriorate or Scald (pick); critical failure: also Blinded.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eDUYhW0tpsxkh6",
+              "type": "attack",
+              "label": "Steam Bullet",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (2d8)",
+                    "type": "acid"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e9VQ4at48ki8ft",
+              "type": "save",
+              "label": "Steam Bullet: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "futton-deteriorate",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Deteriorate"
+                },
+                {
+                  "key": "futton-scald",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Scald"
+                },
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                }
+              ],
+              "text": "Failure: 1 rank of Deteriorate or Scald (pick); critical failure: also Blinded.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eDUYhW0tpsxkh6",
+              "type": "attack",
+              "label": "Steam Bullet",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (3d8)",
+                    "type": "acid"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e9VQ4at48ki8ft",
+              "type": "save",
+              "label": "Steam Bullet: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "futton-deteriorate",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Deteriorate"
+                },
+                {
+                  "key": "futton-scald",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Scald"
+                },
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                }
+              ],
+              "text": "Failure: 1 rank of Deteriorate or Scald (pick); critical failure: also Blinded.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eDUYhW0tpsxkh6",
+              "type": "attack",
+              "label": "Steam Bullet",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (4d8)",
+                    "type": "acid"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e9VQ4at48ki8ft",
+              "type": "save",
+              "label": "Steam Bullet: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "futton-deteriorate",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Deteriorate"
+                },
+                {
+                  "key": "futton-scald",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Scald"
+                },
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                }
+              ],
+              "text": "Failure: 1 rank of Deteriorate or Scald (pick); critical failure: also Blinded.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -113,7 +360,65 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eDUYhW0tpsxkh6",
+        "type": "attack",
+        "label": "Steam Bullet",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "acid"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e9VQ4at48ki8ft",
+        "type": "save",
+        "label": "Steam Bullet: on a hit",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "futton-deteriorate",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Deteriorate"
+          },
+          {
+            "key": "futton-scald",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Scald"
+          },
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          }
+        ],
+        "text": "Failure: 1 rank of Deteriorate or Scald (pick); critical failure: also Blinded.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

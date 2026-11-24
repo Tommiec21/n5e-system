@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "shoton",
-      "sourceLine": 6959
+      "sourceLine": 6959,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "On initiative, Crystal Weapon Dance or Crystal Aura (the option items) until combat ends; swap as a Bonus action. Hardness: 1 + proficiency bonus (the pool), back on a long rest."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,54 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eGXOcKLigeyzUW",
+        "type": "roll",
+        "label": "Regain Hardness (Shoton Hijutsu)",
+        "roll": {
+          "formula": "",
+          "note": "Casting a Shoton Hijutsu: by its rank (D 1, C 2, B 3, A 4, S 5)."
+        },
+        "cost": {
+          "pool": "hardness",
+          "choose": true,
+          "gain": true
+        }
+      },
+      {
+        "id": "n5eAYvFx37CR0hDf",
+        "type": "roll",
+        "label": "Crystallize a summon",
+        "roll": {
+          "formula": "",
+          "note": "A jutsu summoning a construct, structure or Barrier: it gains Earth Release and counts as from a Shoton Hijutsu."
+        },
+        "cost": {
+          "pool": "hardness",
+          "amount": 1
+        }
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "hardness",
+        "label": "Hardness",
+        "value": 0,
+        "max": "1 + @prof",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "lr",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ]
   }
 }

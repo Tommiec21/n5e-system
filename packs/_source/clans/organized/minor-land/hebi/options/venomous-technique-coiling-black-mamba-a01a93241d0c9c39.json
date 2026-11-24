@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "hebi",
       "sourceLine": 8311,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,100 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e9rZBnwABvBzPo",
+        "type": "attack",
+        "label": "Mamba Strike",
+        "attack": {
+          "discipline": "highest",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "In the stance, once per turn, Reaction to damage from a creature in reach: the damage roll reduces the trigger, then deals it to the creature.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:0,7:1d6,15:2d6)",
+              "type": ""
+            }
+          ]
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eWJ2Jkw2CJHUpp",
+        "type": "save",
+        "label": "Mamba: push",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Failure: pushed 20 feet.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5euQ8GgWus578He",
+        "type": "attack",
+        "label": "Mamba: follow-up",
+        "attack": {
+          "discipline": "highest",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "1 Viper Blood: move half your speed; in reach, one more attack that inflicts Virulent (the effect button).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:0,7:1d6,15:2d6)",
+              "type": ""
+            }
+          ]
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5e1X3gY8nLC4odD",
+        "type": "effect",
+        "label": "Virulent",
+        "effect": {
+          "name": "Virulent",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "condition": "hebi-virulent"
+        },
+        "text": "From the follow-up's hit.",
+        "cost": {
+          "pool": "viperBlood",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

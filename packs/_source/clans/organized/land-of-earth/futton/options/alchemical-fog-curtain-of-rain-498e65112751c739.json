@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "futton",
       "sourceLine": 5074,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Saves against Inhale Genjutsu inside the Solid Fog are at disadvantage."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,47 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eiX2wZj3rHkZkN",
+        "type": "save",
+        "label": "Curtain of Rain",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "corroded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Corroded"
+          },
+          {
+            "key": "futton-deteriorate",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Deteriorate"
+          }
+        ],
+        "text": "Reaction, a hostile creature moves within 15 feet: a Solid Fog in a 15-foot radius on you, with one of its effects. Failure: damage; success: half.",
+        "activation": "reaction",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:1d12,7:2d12,15:3d12)",
+              "type": "acid"
+            }
+          ]
+        }
+      }
+    ]
   }
 }

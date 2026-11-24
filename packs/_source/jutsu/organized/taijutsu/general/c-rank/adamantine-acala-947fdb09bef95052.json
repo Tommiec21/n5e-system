@@ -85,11 +85,11 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5euC4NxkxNGyJ50",
         "type": "attack",
-        "label": "Attack",
+        "label": "Adamantine Acala",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
@@ -106,10 +106,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5er9TsuonCvszIA",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Acala: push",
         "save": {
           "abilities": [
             "str"
@@ -118,36 +117,49 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Failure: pushed 30 feet.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "finisher-parsed1",
+        "id": "n5eRRdTh8WB7VAo4",
         "type": "attack",
-        "label": "Finisher: Attack",
+        "label": "Finisher: Adamantine Acala",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
         "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed + 4d8",
-              "type": "bludgeoning"
-            }
-          ]
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "4d8",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "2"
         }
       },
       {
-        "id": "finisher-parsed2",
+        "id": "n5eOxH92j7PPXSCb",
         "type": "save",
-        "label": "Finisher: Save",
+        "label": "Finisher: Dazed",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "dazed",
@@ -156,18 +168,7 @@
             "label": "Dazed"
           }
         ],
-        "save": {
-          "abilities": [
-            "str"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Failure: pushed 30 feet and Dazed.",
         "damage": {
           "parts": []
         }
@@ -268,9 +269,284 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5euC4NxkxNGyJ50",
+              "type": "attack",
+              "label": "Adamantine Acala",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d8 + 1d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5er9TsuonCvszIA",
+              "type": "save",
+              "label": "Acala: push",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Failure: pushed 30 feet.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eRRdTh8WB7VAo4",
+              "type": "attack",
+              "label": "Finisher: Adamantine Acala",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "4d8 + 1d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eOxH92j7PPXSCb",
+              "type": "save",
+              "label": "Finisher: Dazed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "Failure: pushed 30 feet and Dazed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5euC4NxkxNGyJ50",
+              "type": "attack",
+              "label": "Adamantine Acala",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d8 + 2d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5er9TsuonCvszIA",
+              "type": "save",
+              "label": "Acala: push",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Failure: pushed 30 feet.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eRRdTh8WB7VAo4",
+              "type": "attack",
+              "label": "Finisher: Adamantine Acala",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "4d8 + 2d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eOxH92j7PPXSCb",
+              "type": "save",
+              "label": "Finisher: Dazed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "Failure: pushed 30 feet and Dazed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5euC4NxkxNGyJ50",
+              "type": "attack",
+              "label": "Adamantine Acala",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d8 + 3d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5er9TsuonCvszIA",
+              "type": "save",
+              "label": "Acala: push",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Failure: pushed 30 feet.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eRRdTh8WB7VAo4",
+              "type": "attack",
+              "label": "Finisher: Adamantine Acala",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "4d8 + 3d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5eOxH92j7PPXSCb",
+              "type": "save",
+              "label": "Finisher: Dazed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "Failure: pushed 30 feet and Dazed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "aee26bc2434fe738"

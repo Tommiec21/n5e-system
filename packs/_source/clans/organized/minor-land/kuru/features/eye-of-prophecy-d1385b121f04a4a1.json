@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "kuru",
-      "sourceLine": 8508
+      "sourceLine": 8508,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Read each die of the roll separately."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,17 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ewWEREJJGio32e",
+        "type": "roll",
+        "label": "Prophetic Pool",
+        "roll": {
+          "formula": "1d20 + 1d12 + 1d8 + 1d6 + 1d4",
+          "note": "Rolling initiative with the Miraigan: record each die. Replace a seen creature's die of the same size (each size once per combat; 1 Foresight per extra die of that size in one roll)."
+        }
+      }
+    ]
   }
 }

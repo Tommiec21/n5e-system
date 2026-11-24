@@ -17,6 +17,24 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Earth Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "B-Rank and S-Rank: +1 target each."
+        }
+      ],
+      "castOption": {
+        "label": "Alomancy Infusion: interrupt (1 Ingot)",
+        "appliesTo": {
+          "namePrefix": "Steel Release: Steel Telekinesis"
+        },
+        "cost": {
+          "pool": "ingots",
+          "amount": 1
+        },
+        "note": "Needs Metallic Step. Cast it as an ally casts an area jutsu (as if Interrupt): failing creatures move up to 30 feet toward its area; Instant."
       }
     }
   },
@@ -108,7 +126,35 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e3ZZv4I2KQaf1g",
+        "type": "save",
+        "label": "Steel Telekinesis",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "A creature within 30 feet in metal armor. Failure: Restrained and moved up to 30 feet; a Bonus action moves it again; it resaves at the end of each of its turns.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

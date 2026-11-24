@@ -17,6 +17,45 @@
         "cost": "20 Chakra",
         "keywords": "Hijutsu, Ninjutsu",
         "components": "HS"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "One 10d12 roll dealt as both poison and chakra: 50 rolled is 50 poison and 50 chakra (King Q-E20)."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5ed4fx8U5bwkjrj",
+              "type": "save",
+              "label": "Parasitic Giant Insect",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Once per turn, a creature you can see within 120 feet with 5+ ranks of Infested (−1 per rank past 5). Failure: the damage and it loses all Infested.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(10d12) + (1d12)",
+                    "type": "poison",
+                    "alsoAs": "chakra"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -107,7 +146,34 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ed4fx8U5bwkjrj",
+        "type": "save",
+        "label": "Parasitic Giant Insect",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Once per turn, a creature you can see within 120 feet with 5+ ranks of Infested (−1 per rank past 5). Failure: the damage and it loses all Infested.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "10d12",
+              "type": "poison",
+              "alsoAs": "chakra"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

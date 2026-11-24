@@ -29,7 +29,49 @@
       "clan": ""
     },
     "tags": [],
-    "resourcePools": []
+    "resourcePools": [],
+    "activities": [
+      {
+        "id": "n5e0dhnZR3JTS9DP",
+        "type": "roll",
+        "label": "Frenetic Counter",
+        "roll": {
+          "formula": "",
+          "note": "Reaction: a creature with Reaver Echoes would damage you or an ally within 30 feet. Detonate them: no damage; reduce its damage by the dice they roll (no reaction if its action would detonate them anyway)."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "discipline",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5edyqHDY3VwThxw",
+        "type": "roll",
+        "label": "New Moon",
+        "roll": {
+          "formula": "",
+          "note": "[Weapon Damage] to two or more creatures with one jutsu, applying Reaver Echoes to one: 1 Reaver Echo on each instead (2 at 10th, 3 at 17th), Quarry or not."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5enxe8KxkphWXhd",
+        "type": "roll",
+        "label": "Sundering Detonation",
+        "roll": {
+          "formula": "",
+          "note": "A hostile creature's Barrier jutsu intercepts your [Weapon Damage]: 3 Reaver Echoes on the barrier; they detonate the next time it takes damage."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 1
+        }
+      }
+    ]
   },
   "effects": [],
   "folder": "n5eH8PwNBAlwIXBY",
@@ -39,7 +81,14 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "While wielding a Blade or Power weapon."
+        }
+      ]
     }
   },
   "_stats": {

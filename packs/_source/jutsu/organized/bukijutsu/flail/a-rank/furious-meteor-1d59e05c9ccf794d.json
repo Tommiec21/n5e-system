@@ -86,14 +86,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eDlYoYkOxGdFke",
         "type": "attack",
-        "label": "Attack",
+        "label": "Furious Meteor",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Chain 2: one more attack at a different creature. Chain 3: +2 critical range (the effect); a critical hit refunds the chakra.",
         "damage": {
           "parts": []
         },
@@ -107,9 +108,19 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eajouuwCU2vnuC",
         "type": "save",
-        "label": "Save",
+        "label": "Meteor: pinned",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "prone",
@@ -124,21 +135,29 @@
             "label": "Restrained"
           }
         ],
-        "save": {
-          "abilities": [
-            "str"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "On a hit. Failure: Prone and Restrained until the start of its next turn.",
         "damage": {
           "parts": []
         }
+      },
+      {
+        "id": "n5eJvaAdHR3o62rS",
+        "type": "effect",
+        "label": "Chain 3: +2 critical range",
+        "effect": {
+          "name": "Furious Meteor",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.critRange.weapon",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 0
+        },
+        "text": "Before the attack."
       }
     ],
     "featureType": "active",
@@ -220,7 +239,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "3d2e2375a5c550b3"

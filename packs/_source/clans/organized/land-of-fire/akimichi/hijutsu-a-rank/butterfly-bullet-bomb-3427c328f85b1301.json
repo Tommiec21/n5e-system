@@ -17,6 +17,72 @@
         "cost": "20 Chakra",
         "keywords": "Hijutsu, Taijutsu, Clash",
         "components": "HS, CM, M"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5etHFxT9unViEFf",
+              "type": "attack",
+              "label": "Butterfly Bullet Bomb",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Needs Butterfly Mode or Caloric Ignition.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(7d12) + (1d12)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e5e0mNOwDfXsZh",
+              "type": "save",
+              "label": "Butterfly Bullet Bomb: cone",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                }
+              ],
+              "text": "A 30-foot cone from the target. Failure: half the damage dealt, pushed 20 feet and Staggered.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eHVLeBLIXw8BiV",
+              "type": "roll",
+              "label": "Expansion Crash: Calories",
+              "roll": {
+                "formula": "",
+                "note": "Spend any Calories: 2 (+2 damage per Calorie), 4 (advantage), 6 (the target saves Strength or Stunned), 8 (saves at disadvantage), 10 (failures Stunned; no Calories until a long rest)."
+              },
+              "cost": {
+                "pool": "calories",
+                "choose": true
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -108,7 +174,67 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5etHFxT9unViEFf",
+        "type": "attack",
+        "label": "Butterfly Bullet Bomb",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Needs Butterfly Mode or Caloric Ignition.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "7d12",
+              "type": "bludgeoning"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e5e0mNOwDfXsZh",
+        "type": "save",
+        "label": "Butterfly Bullet Bomb: cone",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "staggered",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Staggered"
+          }
+        ],
+        "text": "A 30-foot cone from the target. Failure: half the damage dealt, pushed 20 feet and Staggered.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eHVLeBLIXw8BiV",
+        "type": "roll",
+        "label": "Expansion Crash: Calories",
+        "roll": {
+          "formula": "",
+          "note": "Spend any Calories: 2 (+2 damage per Calorie), 4 (advantage), 6 (the target saves Strength or Stunned), 8 (saves at disadvantage), 10 (failures Stunned; no Calories until a long rest)."
+        },
+        "cost": {
+          "pool": "calories",
+          "choose": true
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

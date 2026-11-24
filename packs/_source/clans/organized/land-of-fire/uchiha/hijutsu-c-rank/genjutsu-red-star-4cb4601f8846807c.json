@@ -17,7 +17,8 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Genjutsu (Visual, Tactile), Unaware",
         "components": "CM"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -110,7 +111,69 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e2rwvtStsDCbGI",
+        "type": "save",
+        "label": "Red Star",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "",
+            "success": "Off-Guard until the end of its next turn.",
+            "failure": "2 ranks of Shaken; it flees into darkness (reaction, movement, darkness jutsu); starting a turn in light: 5d6 psychic.",
+            "critFailure": "As failure, 6d6 psychic and −1 AC for the duration."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "shaken",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Shaken"
+          }
+        ],
+        "text": "A 20-foot radius within 30 feet; resave at the end of each turn.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5e58rtOrx9cd2MK",
+        "type": "damage",
+        "label": "Starts its turn in light",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "psychic"
+            }
+          ]
+        },
+        "text": "Critical failure: 6d6."
+      },
+      {
+        "id": "n5e2FDgPmuvru9u7",
+        "type": "damage",
+        "label": "Starts its turn in light (critical failure)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": "psychic"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "gen"

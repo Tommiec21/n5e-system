@@ -17,6 +17,67 @@
         "cost": "25 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu, Fuinjutsu",
         "components": "CM, M"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5eskOlOGf50ZUFn",
+              "type": "attack",
+              "label": "Sovereign Verdict",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Every hostile creature within 20 feet; [Unarmed] or [Weapon Damage].",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (1d6)",
+                    "type": ""
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eSNKN1bwAXnjNN",
+              "type": "save",
+              "label": "Verdict",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Damaged creatures. Failure: can't cast jutsu with one keyword you pick (a release, Medical, Fuinjutsu); resave at the end of each turn.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Dragon Rage",
+        "appliesTo": {
+          "namePrefix": "Conqueror’s Art: Sovereign Verdict"
+        },
+        "note": "In your Dragon's Rage: 3 Draconic Chakra: one creature you hit saves at disadvantage."
       }
     }
   },
@@ -110,7 +171,55 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eskOlOGf50ZUFn",
+        "type": "attack",
+        "label": "Sovereign Verdict",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Every hostile creature within 20 feet; [Unarmed] or [Weapon Damage].",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": ""
+            }
+          ]
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eSNKN1bwAXnjNN",
+        "type": "save",
+        "label": "Verdict",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Damaged creatures. Failure: can't cast jutsu with one keyword you pick (a release, Medical, Fuinjutsu); resave at the end of each turn.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

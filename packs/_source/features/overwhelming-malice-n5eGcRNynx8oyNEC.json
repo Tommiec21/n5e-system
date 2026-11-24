@@ -32,7 +32,52 @@
       "weapon-kata"
     ],
     "resourcePools": [],
-    "prerequisites": []
+    "prerequisites": [],
+    "activities": [
+      {
+        "id": "n5eHkaiD8KrOh3Ih",
+        "type": "effect",
+        "label": "Overflowing Malice stance",
+        "effect": {
+          "name": "Overflowing Malice",
+          "target": "self",
+          "changes": [],
+          "expires": "turnStart",
+          "seconds": 0,
+          "state": "overflowing-malice"
+        },
+        "text": "Action: the stance until the start of your next turn.",
+        "activation": "action"
+      },
+      {
+        "id": "n5epEI3ElFLt8uVk",
+        "type": "roll",
+        "label": "Retributive Strike",
+        "roll": {
+          "formula": "1d12",
+          "note": "Once per turn in the stance, melee weapon: a creature enters or leaves your weapon's range. Weapon attack: [Weapon Damage] + 1 Flurry Die, and a Dexterity save or Prone."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 3
+        },
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5euFFalVQ9Jpswj",
+        "type": "roll",
+        "label": "Pensive Shot",
+        "roll": {
+          "formula": "2d12",
+          "note": "Once per turn in the stance, ranged weapon: a creature moves within 15 feet of you. Weapon attack: 2 Flurry Dice of your weapon's damage type, and a Dexterity save or Restrained until the start of its next turn."
+        },
+        "cost": {
+          "pool": "discipline",
+          "amount": 3
+        },
+        "oncePerTurn": true
+      }
+    ]
   },
   "effects": [],
   "folder": "n5ecV5gB5Cd9gFuJ",
@@ -43,7 +88,8 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "optionGroup": "Kata: Pressure"
+      "optionGroup": "Kata: Pressure",
+      "reviewed": true
     }
   },
   "_stats": {

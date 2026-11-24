@@ -86,11 +86,11 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5expweCSihNrfTP",
         "type": "attack",
-        "label": "Attack",
+        "label": "Fury Kick",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
@@ -107,10 +107,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eqzixFVfzBEoi3",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Fury Kick: push",
         "save": {
           "abilities": [
             "str"
@@ -119,26 +118,18 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "On a hit. Failure: pushed 10 feet.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "finisher-parsed1",
+        "id": "n5eLnbyJN0FpZ2E5",
         "type": "save",
-        "label": "Finisher: Save",
-        "inflicts": [
-          {
-            "key": "prone",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Prone"
-          }
-        ],
+        "label": "Finisher: Fury Kick",
         "save": {
           "abilities": [
             "str"
@@ -147,10 +138,17 @@
             "source": "discipline"
           },
           "onSuccess": "half",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Finisher: every creature in a 15-foot cone. Failure: pushed 10 feet and Prone; success: half.",
         "damage": {
           "parts": [
             {
@@ -262,9 +260,311 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5expweCSihNrfTP",
+              "type": "attack",
+              "label": "Fury Kick",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d4 + 1d4",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eqzixFVfzBEoi3",
+              "type": "save",
+              "label": "Fury Kick: push",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit. Failure: pushed 10 feet.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eLnbyJN0FpZ2E5",
+              "type": "save",
+              "label": "Finisher: Fury Kick",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Finisher: every creature in a 15-foot cone. Failure: pushed 10 feet and Prone; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed + 4d4) + (1d4)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5expweCSihNrfTP",
+              "type": "attack",
+              "label": "Fury Kick",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d4 + 2d4",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eqzixFVfzBEoi3",
+              "type": "save",
+              "label": "Fury Kick: push",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit. Failure: pushed 10 feet.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eLnbyJN0FpZ2E5",
+              "type": "save",
+              "label": "Finisher: Fury Kick",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Finisher: every creature in a 15-foot cone. Failure: pushed 10 feet and Prone; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed + 4d4) + (2d4)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5expweCSihNrfTP",
+              "type": "attack",
+              "label": "Fury Kick",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d4 + 3d4",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eqzixFVfzBEoi3",
+              "type": "save",
+              "label": "Fury Kick: push",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit. Failure: pushed 10 feet.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eLnbyJN0FpZ2E5",
+              "type": "save",
+              "label": "Finisher: Fury Kick",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Finisher: every creature in a 15-foot cone. Failure: pushed 10 feet and Prone; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed + 4d4) + (3d4)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5expweCSihNrfTP",
+              "type": "attack",
+              "label": "Fury Kick",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d4 + 4d4",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eqzixFVfzBEoi3",
+              "type": "save",
+              "label": "Fury Kick: push",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "On a hit. Failure: pushed 10 feet.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eLnbyJN0FpZ2E5",
+              "type": "save",
+              "label": "Finisher: Fury Kick",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Finisher: every creature in a 15-foot cone. Failure: pushed 10 feet and Prone; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed + 4d4) + (4d4)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"

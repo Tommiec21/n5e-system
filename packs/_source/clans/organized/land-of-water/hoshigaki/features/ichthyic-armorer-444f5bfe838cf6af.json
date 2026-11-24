@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "hoshigaki",
-      "sourceLine": 4011
+      "sourceLine": 4011,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "1 Downtime: two grafts on one weapon (new ones replace them). Raking Dermis: Pierce 2, slashing or piercing. Wing Guard: Blocking 1 and the parry. Sawtooth: once per turn your [Weapon Damage] first drops temporary hit points or chakra to 0. Scale Plate: Fortified. Tiger Pattern: hit two or more creatures on your turn: +2 DR each until your next turn. Marlin Imprint: 2 ranks of Mastery underwater. Angler Lure: the save button. Set the weapon's properties on the item."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,46 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e54YJob11TC6DI",
+        "type": "save",
+        "label": "Angler Lure",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "shaken",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shaken"
+          }
+        ],
+        "text": "Bonus action, a creature in range. Failure: 1 rank of Shaken, and disadvantage on attacks against others than you until the end of its next turn.",
+        "activation": "bonus",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eNCA2IV3mTVi04",
+        "type": "roll",
+        "label": "Wing Guard: parry",
+        "roll": {
+          "formula": "",
+          "note": "Reaction to damage: reduce it by your [Weapon Damage] (roll your weapon's damage)."
+        },
+        "activation": "reaction"
+      }
+    ]
   }
 }

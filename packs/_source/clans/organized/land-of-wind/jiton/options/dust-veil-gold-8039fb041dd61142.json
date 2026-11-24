@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "jiton",
       "sourceLine": 3179,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,52 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e03NdzfhfpC07E",
+        "type": "save",
+        "label": "Gold wave",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "grappled",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Grappled"
+          }
+        ],
+        "text": "Once per turn, Bonus action: a 20-foot cone (40-foot at Potency II). Failure: Grappled until the end of its turn (Potency II: also Heavy and Slowed until the end of its following turn).",
+        "activation": "bonus",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5evKtwRrXsLnWNg",
+        "type": "effect",
+        "label": "Potency I: Heavy",
+        "effect": {
+          "name": "Heavy",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 6,
+          "condition": "jiton-heavy"
+        },
+        "text": "Once per turn, a creature fails a save against your Jiton Hijutsu: Heavy until the start of your next turn.",
+        "oncePerTurn": true
+      }
+    ]
   }
 }

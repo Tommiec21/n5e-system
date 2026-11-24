@@ -85,28 +85,23 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ejTbb7CvLZKjDv",
         "type": "attack",
-        "label": "Attack",
+        "label": "Night Guy",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "8th Gate. A creature or space within 120 feet in a straight line through everything; ignores barriers; no reactions for it until its next turn. Advantage, rerolling 1s and 2s (by hand).",
         "damage": {
-          "parts": [
-            {
-              "formula": "10d12+100",
-              "type": "bludgeoning"
-            }
-          ]
+          "parts": []
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5epZIJoctFhL1eJ",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Night Guy: death",
         "save": {
           "abilities": [
             "con"
@@ -115,12 +110,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "On a hit. Failure: it dies. Success: the damage.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "10d12 + 100",
+              "type": "bludgeoning"
+            }
+          ]
         }
       }
     ],
@@ -195,7 +195,14 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Afterward your 8 Inner Gates end."
+        }
+      ]
     }
   },
   "folder": "49c20138df26d73f"

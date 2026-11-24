@@ -17,7 +17,14 @@
         "cost": "14 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Wind Release, Sensory",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Heavily obscured inside. Upcast: +5 feet to the radius."
+        }
+      ]
     }
   },
   "ownership": {
@@ -109,7 +116,47 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eHzJA25eYTAYRm",
+        "type": "save",
+        "label": "High Wind Destruction",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          },
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          },
+          {
+            "key": "deafened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Deafened"
+          }
+        ],
+        "text": "Entering first on a turn or starting a turn in the 40-foot radius (up to 6 creatures and you are unaffected). Failure: Prone, Blinded and Deafened until the start of its next turn; success: difficult terrain. Flying creatures save at disadvantage.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

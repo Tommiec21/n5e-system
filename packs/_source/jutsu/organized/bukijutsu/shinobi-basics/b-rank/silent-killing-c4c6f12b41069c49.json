@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ezzc8a8OgGirdZ",
         "type": "attack",
-        "label": "Attack",
+        "label": "Silent Killing",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Hidden from or unseen by the target; +2 critical range (+1 per rank, the effect); then try to Hide again (Chain 2: advantage).",
         "damage": {
           "parts": []
         },
@@ -104,6 +105,25 @@
           "maximize": false,
           "attacks": "1"
         }
+      },
+      {
+        "id": "n5eHyG3KIYDjEW5q",
+        "type": "effect",
+        "label": "+2 critical range",
+        "effect": {
+          "name": "Silent Killing",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.critRange.weapon",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 0
+        },
+        "text": "Before the attack."
       }
     ],
     "featureType": "active",
@@ -183,9 +203,97 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5ezzc8a8OgGirdZ",
+              "type": "attack",
+              "label": "Silent Killing",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Hidden from or unseen by the target; +2 critical range (+1 per rank, the effect); then try to Hide again (Chain 2: advantage).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "4d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eHyG3KIYDjEW5q",
+              "type": "effect",
+              "label": "+2 critical range",
+              "effect": {
+                "name": "Silent Killing",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.critRange.weapon",
+                    "value": "3",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "Before the attack."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ezzc8a8OgGirdZ",
+              "type": "attack",
+              "label": "Silent Killing",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Hidden from or unseen by the target; +2 critical range (+1 per rank, the effect); then try to Hide again (Chain 2: advantage).",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "4d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eHyG3KIYDjEW5q",
+              "type": "effect",
+              "label": "+2 critical range",
+              "effect": {
+                "name": "Silent Killing",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.critRange.weapon",
+                    "value": "3",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "Before the attack."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0c3fd08eae955429"

@@ -17,6 +17,122 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Fuinjutsu, Bio Branch",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Bio Branch]"
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eNZNCqcaxYYBTr",
+              "type": "save",
+              "label": "Syphoning Biology",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Every creature you grapple. Failure: the damage and 1 rank of Weakened (+1 per rank) for 1 minute (resave at the end of its turns); success: half. You gain temporary hit points equal to the highest die, and your next damage +4 per rank of Weakened inflicted.",
+              "activation": "reaction",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (1d6)",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eNZNCqcaxYYBTr",
+              "type": "save",
+              "label": "Syphoning Biology",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Every creature you grapple. Failure: the damage and 1 rank of Weakened (+1 per rank) for 1 minute (resave at the end of its turns); success: half. You gain temporary hit points equal to the highest die, and your next damage +4 per rank of Weakened inflicted.",
+              "activation": "reaction",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (2d6)",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eNZNCqcaxYYBTr",
+              "type": "save",
+              "label": "Syphoning Biology",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Every creature you grapple. Failure: the damage and 1 rank of Weakened (+1 per rank) for 1 minute (resave at the end of its turns); success: half. You gain temporary hit points equal to the highest die, and your next damage +4 per rank of Weakened inflicted.",
+              "activation": "reaction",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (3d6)",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -110,7 +226,41 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eNZNCqcaxYYBTr",
+        "type": "save",
+        "label": "Syphoning Biology",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          }
+        ],
+        "text": "Every creature you grapple. Failure: the damage and 1 rank of Weakened (+1 per rank) for 1 minute (resave at the end of its turns); success: half. You gain temporary hit points equal to the highest die, and your next damage +4 per rank of Weakened inflicted.",
+        "activation": "reaction",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": "chakra"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

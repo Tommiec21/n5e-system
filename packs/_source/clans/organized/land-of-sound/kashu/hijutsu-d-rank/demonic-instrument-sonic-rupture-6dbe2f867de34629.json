@@ -17,6 +17,289 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Auditory, Tactile), Mnemonic Branch",
         "components": "CM, W (Shinobi Instrument)"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "[Mnemonic Branch]"
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eICmUbOUkSGmXY",
+              "type": "save",
+              "label": "Sonic Rupture",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: no effect.",
+                  "success": "Success: 1 rank of Dazzled.",
+                  "failure": "Failure: 3d8 psychic and 1 rank of Dazzled.",
+                  "critFailure": "Critical Failure: 5d8 psychic and Blinded until the end of its next turn."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                },
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                }
+              ],
+              "text": "Needs a Bell Wire: a 20-foot radius on it (up to 3 wires at B; one source per creature).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e9PHzWGJHV62wF",
+              "type": "damage",
+              "label": "Sonic Rupture: failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (1d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eC0CNATxwocODe",
+              "type": "damage",
+              "label": "Sonic Rupture: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (1d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eICmUbOUkSGmXY",
+              "type": "save",
+              "label": "Sonic Rupture",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: no effect.",
+                  "success": "Success: 1 rank of Dazzled.",
+                  "failure": "Failure: 3d8 psychic and 1 rank of Dazzled.",
+                  "critFailure": "Critical Failure: 5d8 psychic and Blinded until the end of its next turn."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                },
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                }
+              ],
+              "text": "Needs a Bell Wire: a 20-foot radius on it (up to 3 wires at B; one source per creature).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e9PHzWGJHV62wF",
+              "type": "damage",
+              "label": "Sonic Rupture: failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (2d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eC0CNATxwocODe",
+              "type": "damage",
+              "label": "Sonic Rupture: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (2d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eICmUbOUkSGmXY",
+              "type": "save",
+              "label": "Sonic Rupture",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: no effect.",
+                  "success": "Success: 1 rank of Dazzled.",
+                  "failure": "Failure: 3d8 psychic and 1 rank of Dazzled.",
+                  "critFailure": "Critical Failure: 5d8 psychic and Blinded until the end of its next turn."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                },
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                }
+              ],
+              "text": "Needs a Bell Wire: a 20-foot radius on it (up to 3 wires at B; one source per creature).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e9PHzWGJHV62wF",
+              "type": "damage",
+              "label": "Sonic Rupture: failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (3d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eC0CNATxwocODe",
+              "type": "damage",
+              "label": "Sonic Rupture: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (3d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eICmUbOUkSGmXY",
+              "type": "save",
+              "label": "Sonic Rupture",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: no effect.",
+                  "success": "Success: 1 rank of Dazzled.",
+                  "failure": "Failure: 3d8 psychic and 1 rank of Dazzled.",
+                  "critFailure": "Critical Failure: 5d8 psychic and Blinded until the end of its next turn."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                },
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                }
+              ],
+              "text": "Needs a Bell Wire: a 20-foot radius on it (up to 3 wires at B; one source per creature).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e9PHzWGJHV62wF",
+              "type": "damage",
+              "label": "Sonic Rupture: failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (4d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eC0CNATxwocODe",
+              "type": "damage",
+              "label": "Sonic Rupture: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (4d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -111,7 +394,74 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eICmUbOUkSGmXY",
+        "type": "save",
+        "label": "Sonic Rupture",
+        "save": {
+          "abilities": [
+            "int"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: no effect.",
+            "success": "Success: 1 rank of Dazzled.",
+            "failure": "Failure: 3d8 psychic and 1 rank of Dazzled.",
+            "critFailure": "Critical Failure: 5d8 psychic and Blinded until the end of its next turn."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          },
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          }
+        ],
+        "text": "Needs a Bell Wire: a 20-foot radius on it (up to 3 wires at B; one source per creature).",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5e9PHzWGJHV62wF",
+        "type": "damage",
+        "label": "Sonic Rupture: failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eC0CNATxwocODe",
+        "type": "damage",
+        "label": "Sonic Rupture: critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d8",
+              "type": "psychic"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

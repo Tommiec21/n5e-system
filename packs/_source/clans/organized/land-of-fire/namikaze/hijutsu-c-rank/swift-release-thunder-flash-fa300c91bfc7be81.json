@@ -17,6 +17,99 @@
         "cost": "7 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Bukijutsu, Fuinjutsu, Wind Release, Lightning Release.",
         "components": "HS, M, W (Any, Optional)"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5e7xpvv4tEoPFxO",
+              "type": "save",
+              "label": "Thunder Flash",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Move along a 30 by 5-foot line without provoking; each creature you pass. Failure: 6d6 wind or lightning (Taijutsu DC: [Unarmed]/[Weapon Damage] + 3d6); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (1d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e7xpvv4tEoPFxO",
+              "type": "save",
+              "label": "Thunder Flash",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Move along a 30 by 5-foot line without provoking; each creature you pass. Failure: 6d6 wind or lightning (Taijutsu DC: [Unarmed]/[Weapon Damage] + 3d6); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (2d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e7xpvv4tEoPFxO",
+              "type": "save",
+              "label": "Thunder Flash",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Move along a 30 by 5-foot line without provoking; each creature you pass. Failure: 6d6 wind or lightning (Taijutsu DC: [Unarmed]/[Weapon Damage] + 3d6); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (3d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Interdiction Seal",
+        "appliesTo": {
+          "namePrefix": "Swift Release: Thunder Flash"
+        },
+        "note": "On a creature marked with your Speed Seal: passing through it: +15 feet and you can change direction."
       }
     }
   },
@@ -112,7 +205,33 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e7xpvv4tEoPFxO",
+        "type": "save",
+        "label": "Thunder Flash",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Move along a 30 by 5-foot line without provoking; each creature you pass. Failure: 6d6 wind or lightning (Taijutsu DC: [Unarmed]/[Weapon Damage] + 3d6); success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": "wind"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

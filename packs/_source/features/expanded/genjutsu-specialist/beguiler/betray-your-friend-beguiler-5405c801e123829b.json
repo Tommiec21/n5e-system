@@ -33,13 +33,39 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5emUBmDAFqgnhS2",
+        "type": "save",
+        "label": "Betray your Friend",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "gen"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Your Duplicity wears a hostile creature's appearance. Targeted by an attack or jutsu within 5 feet of that creature: the attacker or caster saves; on a failure it targets its ally instead."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "With 2 or more hostile creatures in initiative, they no longer treat allies who share the Duplicity's appearance as allies until it's dismissed."
+        }
+      ]
     }
   },
   "ownership": {

@@ -85,25 +85,25 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eJ5gcZNb7INyKY",
         "type": "attack",
-        "label": "Attack",
+        "label": "Nadegiri",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Large or bigger: advantage. Beating its AC by 10+: a critical hit. Chain 2: ignores temporary hit points. Chain 3: Large or bigger can't react to the damage. S-Rank: Large or bigger is vulnerable to it.",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "6d8",
-        "roll": {
-          "formula": "6d8",
-          "note": "Make a melee taijutsu attack dealing your [Weapon’s damage] + 6d8. If the target of this jutsu is large or bigger, you make this attack at advantage."
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "6d8",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       }
     ],
@@ -184,9 +184,35 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5eJ5gcZNb7INyKY",
+              "type": "attack",
+              "label": "Nadegiri",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Large or bigger: advantage. Beating its AC by 10+: a critical hit. Chain 2: ignores temporary hit points. Chain 3: Large or bigger can't react to the damage. S-Rank: Large or bigger is vulnerable to it.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "6d8 + 1d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "405991324385ff7a"

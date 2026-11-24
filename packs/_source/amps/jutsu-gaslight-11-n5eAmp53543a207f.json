@@ -1,0 +1,124 @@
+{
+  "_id": "n5eAmp53543a207f",
+  "name": "Gaslight (11th)",
+  "type": "amp",
+  "img": "icons/svg/book.svg",
+  "folder": "n5eAmpFoldOther1",
+  "sort": 100002,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jutsu-gaslight-11",
+    "description": "<p><b>Gaslight</b> · 11th level · no type</p><p>+4 to Charisma skill checks directed at one creature that isn't hostile to you and can hear you within 10 feet.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3045",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "ampType": "",
+    "namedType": "",
+    "owner": {
+      "kind": "jutsu",
+      "id": "gaslight",
+      "subclass": ""
+    },
+    "summary": "+4 to Charisma skill checks directed at one creature that isn't hostile to you and can hear you within 10 feet.",
+    "activation": "",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": true
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [],
+    "aura": {},
+    "outsideLimits": false,
+    "series": "jutsu-gaslight",
+    "level": 11,
+    "rank": "",
+    "choose": {
+      "prompt": "Gaslight: how was it cast?",
+      "count": 1,
+      "changeable": false,
+      "options": [
+        {
+          "label": "As an Action (concentration, up to 1 minute)",
+          "changes": [],
+          "rules": [
+            {
+              "key": "note",
+              "text": "Can't be cast as an Action again for 10 minutes."
+            }
+          ],
+          "duration": {
+            "seconds": 60,
+            "until": "",
+            "concentration": true
+          }
+        },
+        {
+          "label": "As a Reaction (until the end of your next turn)",
+          "changes": [],
+          "rules": [
+            {
+              "key": "note",
+              "text": "Can't be cast as a Reaction again for 1 minute."
+            }
+          ],
+          "duration": {
+            "seconds": 0,
+            "until": "nextTurnEnd",
+            "concentration": false
+          }
+        }
+      ]
+    },
+    "buttons": [],
+    "onEnd": {
+      "condition": ""
+    },
+    "statuses": [],
+    "endsWith": ""
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "modifier",
+          "selector": "check",
+          "predicate": "ability:cha",
+          "value": 4,
+          "label": "Gaslight"
+        },
+        {
+          "key": "note",
+          "text": "Only on checks directed at the creature you chose."
+        },
+        {
+          "key": "note",
+          "text": "If it beats a contested check or a save from this social encounter by 5 or more, it realizes a jutsu influenced it when the jutsu ends."
+        }
+      ],
+      "amp1f": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.70.0"
+  },
+  "_key": "!items!n5eAmp53543a207f"
+}

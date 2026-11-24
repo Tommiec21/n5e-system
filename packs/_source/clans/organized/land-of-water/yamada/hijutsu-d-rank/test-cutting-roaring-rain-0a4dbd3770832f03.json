@@ -17,7 +17,30 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Bukijutsu, Taijutsu, Chain, Combo",
         "components": "W (Any Melee), M"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1d6 damage per rank (add it)."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Ideal Cut",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Roaring Rain"
+          },
+          "note": "With your Executioners Instrument: +1d6 damage per creature targeted."
+        },
+        {
+          "label": "Tao (7th)",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Roaring Rain"
+          },
+          "note": "With your Executioners Instrument, from 7th level (not with Ideal Cut, unless The Middle Path's Bonus action): each affected creature saves Constitution or is Severed."
+        }
+      ]
     }
   },
   "ownership": {
@@ -110,7 +133,66 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5enGFbu5ypSNHGM",
+        "type": "attack",
+        "label": "Roaring Rain",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "One attack roll against up to 3 creatures within your speed: [Weapons Damage]. Their reaction jutsu cost 4 more (+4 per rank); a reaction without a cost costs 12 chakra.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eIkwmLh6vCsQDx",
+        "type": "roll",
+        "label": "Ideal Cut: damage",
+        "roll": {
+          "formula": "1d6",
+          "note": "+1d6 per creature targeted."
+        }
+      },
+      {
+        "id": "n5eJikiO7FLaiJhB",
+        "type": "save",
+        "label": "Tao: sever",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "yamada-asaemon-discipline",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Severed"
+          }
+        ],
+        "text": "Each affected creature. Failure: Severed.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

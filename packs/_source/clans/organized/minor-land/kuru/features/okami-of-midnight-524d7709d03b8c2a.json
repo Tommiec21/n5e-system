@@ -9,7 +9,8 @@
   "flags": {
     "n5e": {
       "clanPackage": "kuru",
-      "sourceLine": 8504
+      "sourceLine": 8504,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -42,6 +43,61 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5elYOaEHlmfsEJF",
+        "type": "effect",
+        "label": "Black Okami Form",
+        "effect": {
+          "name": "Black Okami",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "amp": "black-okami"
+        },
+        "text": "Bonus action, Miraigan active and in Black Fang: up to 1 minute, once per long rest.",
+        "activation": "bonus",
+        "cost": {
+          "pool": "foresight",
+          "amount": 4
+        }
+      },
+      {
+        "id": "n5eAJBjX8HYyAoTi",
+        "type": "save",
+        "label": "Fang of Kuroi",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "stunned",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Stunned"
+          }
+        ],
+        "text": "In the form, [Unarmed Damage] to a Yin-Sealed creature: dispel its Yin-Seal. Failure: Stunned until the end of its next turn (once per rest per creature).",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
+    "uses": {
+      "max": "1",
+      "spent": 0,
+      "per": "lr",
+      "recharge": "",
+      "staminaEligible": false
+    }
   }
 }

@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "hebi",
-      "sourceLine": 8285
+      "sourceLine": 8285,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The stance item now holds only Serpent's Coil; its duplicate holding Venomous Technique's text is deleted (as King Q-E18). Hebi Hijutsu gain their Serpent Coil effects. 7th: two attacks without Extra Attack."
+        }
+      ]
     }
   },
   "ownership": {
@@ -29,6 +36,141 @@
     ],
     "clan": "hebi",
     "featureType": "passive",
-    "requirement": "Hebi clan"
+    "requirement": "Hebi clan",
+    "activities": [
+      {
+        "id": "n5ely1Vf6HoR67Ec",
+        "type": "effect",
+        "label": "Serpent's Coil",
+        "effect": {
+          "name": "Serpent's Coil",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "Enter the stance (Blade weapons).",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5eBZ9XApsVkmm6M",
+        "type": "roll",
+        "label": "Venom infusion",
+        "roll": {
+          "formula": "",
+          "note": "Entering, or start of each of your turns: 1 minute: [Weapon Damage] becomes poison with a rank of Mastery to damage (2 at 11th)."
+        },
+        "cost": {
+          "pool": "viperBlood",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eus8zg4StsCCm1",
+        "type": "attack",
+        "label": "Viper Strike",
+        "attack": {
+          "discipline": "highest",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Once per turn, in place of an attack: ignores temporary hit points; +1d6 at 7th and 15th.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(1:0,7:1d6,15:2d6)",
+              "type": "poison"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5e1lWmp6AfKccHZ",
+        "type": "save",
+        "label": "Viper Strike: Virulent",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "hebi-virulent",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Virulent"
+          }
+        ],
+        "text": "2 Viper Blood. Failure: Virulent until the start of your next turn (Envenomed: drop its ranks to 0 for 1 minute of Virulent).",
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "viperBlood",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5eOn38Hrf7aOyqS",
+        "type": "attack",
+        "label": "Python Strike",
+        "attack": {
+          "discipline": "highest",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Once per turn, in place of an attack: +1 critical range against a Grappled or Restrained target, or one slowed by you or an ally.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eRAqW4oBn6Gy3d",
+        "type": "roll",
+        "label": "Python Strike: Deadly",
+        "roll": {
+          "formula": "",
+          "note": "A critical hit: Deadly 2 (3 at 7th, 4 at 15th)."
+        },
+        "cost": {
+          "pool": "viperBlood",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eOKtlaGk4rIxJt",
+        "type": "roll",
+        "label": "Strike in a Hijutsu",
+        "roll": {
+          "formula": "",
+          "note": "Use a Strike ability as part of a Hebi Clan Hijutsu (its save on a hit or failed save)."
+        },
+        "cost": {
+          "pool": "viperBlood",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

@@ -33,13 +33,40 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5evt5rpLhYfASGZ",
+        "type": "save",
+        "label": "Reverse Summoning",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "nin"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Action, a creature with a Layered Anchor (two Anchors). Failure: summoned next to you, both seals gone; success: one Anchor breaks.",
+        "activation": "action"
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Vorpal Passthrough: with an attack jutsu or the Attack action, teleport next to the double-anchored creature as part of it."
+        }
+      ]
     }
   },
   "ownership": {

@@ -86,14 +86,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eqQkgCuMjbx0N5",
         "type": "attack",
-        "label": "Attack",
+        "label": "Tenebrous Claw",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 3
         },
+        "text": "One creature.",
         "damage": {
           "parts": []
         },
@@ -103,13 +104,44 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "3"
         }
       },
       {
-        "id": "finisher-parsed1",
+        "id": "n5e9aJeLL7uD4fEa",
+        "type": "attack",
+        "label": "Finisher: Tenebrous Claw",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 3
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "3d10",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "3"
+        }
+      },
+      {
+        "id": "n5ejjDYDWdxrQjrC",
         "type": "save",
-        "label": "Finisher: Save",
+        "label": "Finisher: Bruised, Dazzled",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "bruised",
@@ -124,25 +156,9 @@
             "label": "Dazzled"
           }
         ],
-        "save": {
-          "abilities": [
-            "str"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Hit at least once. Failure: Bruised and 3 Dazzled.",
         "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed + 3d10",
-              "type": "bludgeoning"
-            }
-          ]
+          "parts": []
         }
       }
     ],
@@ -241,9 +257,89 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5eqQkgCuMjbx0N5",
+              "type": "attack",
+              "label": "Tenebrous Claw",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "text": "One creature.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d10 + 1d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "3"
+              }
+            },
+            {
+              "id": "n5e9aJeLL7uD4fEa",
+              "type": "attack",
+              "label": "Finisher: Tenebrous Claw",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "3d10 + 1d10",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "3"
+              }
+            },
+            {
+              "id": "n5ejjDYDWdxrQjrC",
+              "type": "save",
+              "label": "Finisher: Bruised, Dazzled",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                },
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 3,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "Hit at least once. Failure: Bruised and 3 Dazzled.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ee1379d61e3505ec"

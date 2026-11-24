@@ -177,14 +177,17 @@ test("AMP1b: the scan sorts cards, buttons, candidates and dismissals, and ignor
   assert.equal(ampAuditOf({ type: "amp", name: "Feral", system: { ampType: "" } }).status, "untyped");
   assert.equal(ampAuditOf({ type: "amp", name: "W", system: { ampType: "battle", owner: { kind: "clan", id: "x" } } }).typeLabel, "Clan");
   assert.equal(ampAuditOf({ type: "feat", name: "Crash", system: { activities: [{ effect: { ampType: "battle" } }] } }).status, "linked");
-  assert.equal(ampAuditOf({ type: "stance", name: "Gentle Fist", system: {} }).status, "candidate");
+  const stance = ampAuditOf({ type: "stance", name: "Gentle Fist", system: {} });
+  assert.equal(stance.status, "stance", "King Q-E1: stances are labelled Stance, not offered as Amps");
+  assert.equal(stance.label, "Stance");
+  assert.equal(stance.reason, "Stance");
   const lasting = { uuid: "Item.a", type: "jutsu", name: "Sand Armor", system: { duration: { unit: "minute", value: 1 }, description: "<p>You gain 16 temporary hit points.</p>" } };
   assert.equal(ampAuditOf(lasting).status, "candidate");
   assert.equal(ampAuditOf(lasting, { dismissed: new Set(["Item.a"]) }).status, "dismissed");
   assert.equal(ampAuditOf({ type: "jutsu", name: "Punch", system: { duration: { unit: "instant" }, description: "<p>Make an attack. You gain a +2 bonus to this attack.</p>" } }), null, "a one-off bonus isn't an Amp");
   assert.equal(ampAuditOf({ type: "jutsu", name: "Up", system: { duration: { unit: "minute" }, description: "<p>The target takes damage. When you cast this jutsu above C-Rank, increase the damage by 1d6.</p>" } }), null, "upcasting isn't a bonus");
   assert.equal(ampAuditOf({ type: "clan", name: "Inuzuka", system: { description: "Battle Amp" } }), null, "whole clans aren't scanned");
-  assert.deepEqual(ampAuditCounts([{ status: "candidate" }, { status: "linked" }, { status: "candidate" }]), { typed: 0, untyped: 0, linked: 1, candidate: 2, dismissed: 0 });
+  assert.deepEqual(ampAuditCounts([{ status: "candidate" }, { status: "linked" }, { status: "candidate" }]), { typed: 0, untyped: 0, linked: 1, candidate: 2, dismissed: 0, stance: 0 });
 });
 
 // AMP1c: the Amp cards for every feature whose button started an Amp.
@@ -192,7 +195,7 @@ import { validateConditionalRules as validateCardRules } from "../module/rules/e
 test("AMP1c: every Amp card is valid, and every Amp button names an existing card", () => {
   const dir = path.join(import.meta.dirname, "..", "packs/_source/amps");
   const cards = fs.readdirSync(dir).filter(f => !f.startsWith("_folder")).map(f => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")));
-  assert.equal(cards.filter(c => !c.system.level).length, 59, "20 cards for the Amp buttons (AMP1c), 34 clan and 5 class cards (AMP1d); the rest are AMP1g versions");
+  assert.equal(cards.filter(c => !c.system.level && c.system.owner?.kind !== "jutsu").length, 60, "20 cards for the Amp buttons (AMP1c), 33 clan and 5 class cards (AMP1d; Combat Coordinated is a condition, King Q-E4), DYNAMIC FORM! and Flawless (AMP1e); the rest are AMP1g versions");
   const keys = new Set(cards.map(c => c.system.identifier));
   for ( const c of cards ) {
     validateCardRules(c.flags.n5e.rules ?? []);
@@ -212,7 +215,7 @@ test("AMP1c: every Amp card is valid, and every Amp button names an existing car
       if ( a.effect?.amp ) { buttons++; assert.ok(keys.has(a.effect.amp), `${f}: unknown card ${a.effect.amp}`); }
     }
   }
-  assert.equal(buttons, 25);
+  assert.equal(buttons, 28, "25, plus DYNAMIC FORM! and Flawless (AMP1e), plus Battle Trance entered again for more Discipline (STD6d Weapon Specialist)");
 });
 
 test("AMP1c: checks and saves know the ability they use (Battle Trance: your Taijutsu ability)", async () => {
@@ -246,10 +249,10 @@ test("a save jutsu with damage (Fireball) records its damage on the card", () =>
 import { validateEffectChanges, effectFieldCatalog } from "../module/rules/effect-authoring.mjs";
 import { N5E as N5E_CONFIG } from "../module/config/index.mjs";
 import { resolveLevelTables } from "../module/rules/effect-services.mjs";
-test("AMP1d: 34 clan Amp cards, typed Clan, owned by a real clan feature, with valid changes", () => {
+test("AMP1d: 33 clan Amp cards (Combat Coordinated became a condition, AMP1e), typed Clan, owned by a real clan feature, with valid changes", () => {
   const dir = path.join(import.meta.dirname, "..", "packs/_source/amps");
   const cards = fs.readdirSync(dir).filter(f => f.startsWith("clan-")).map(f => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")));
-  assert.equal(cards.length, 34);
+  assert.equal(cards.length, 33);
   const walk = d => fs.readdirSync(d, { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(path.join(d, e.name)) : e.name.endsWith(".json") ? [path.join(d, e.name)] : []);
   const ids = new Set(walk(path.join(import.meta.dirname, "..", "packs/_source/clans")).map(f => JSON.parse(fs.readFileSync(f, "utf8"))).filter(d => d?.system).map(d => d.system.identifier));
   const catalog = effectFieldCatalog(N5E_CONFIG);
@@ -315,7 +318,7 @@ test("King 2026-11-20: an Amp card appears only once the character has the featu
   assert.deepEqual(keys([cls, feat("chakra-surge")]), ["chakra-surge-crash", "chakra-surge-flow"], "3rd level: no Perfected versions");
   assert.deepEqual(keys([cls, feat("chakra-surge"), feat("ninjutsu-master")]),
     ["chakra-surge-crash", "chakra-surge-crash-perfected", "chakra-surge-flow", "chakra-surge-flow-perfected"], "20th level: the upgrades join");
-  for ( const [k, d] of Object.entries(registry) ) assert.equal(d.owner.kind === "feat" || d.owner.kind === "clan", true, `${k} belongs to a feature or a clan`);
+  for ( const [k, d] of Object.entries(registry) ) assert.equal(["feat", "clan", "jutsu"].includes(d.owner.kind), true, `${k} belongs to a feature, a clan or a jutsu (AMP1f)`);
 });
 
 // AMP1g (King 2026-11-20): every Amp that grows by level is a separate card per version.

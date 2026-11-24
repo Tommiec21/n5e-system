@@ -38,6 +38,11 @@
         "id": "n5eeRYUwZhoMX7VK",
         "type": "effect",
         "label": "Rending Critical",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1,
+          "roll": true
+        },
         "effect": {
           "name": "Rending Critical",
           "target": "targets",
@@ -56,12 +61,7 @@
           "expires": "turnStart",
           "seconds": 0
         },
-        "cost": {
-          "pool": "superiorityDice",
-          "amount": 1,
-          "roll": true
-        },
-        "text": "Your Combat Rival on a critical hit; it can't gain jutsu bonuses to AC or DR meanwhile."
+        "text": "Scout-Nin Keyword: Specialized (only the subclass that lists it can take it). A critical hit on your Combat Rival: −half the die to its AC and DR until the start of your next turn; no jutsu bonuses to them meanwhile."
       }
     ],
     "prerequisites": []
@@ -74,7 +74,8 @@
   },
   "flags": {
     "n5e": {
-      "generated": true
+      "generated": true,
+      "reviewed": true
     }
   },
   "_stats": {

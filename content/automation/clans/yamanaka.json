@@ -1,0 +1,1271 @@
+{
+  "clan": "yamanaka",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "yamanaka-bestial-mind-domination": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eCYxjAmRJqrSBr",
+          "type": "save",
+          "label": "Bestial Mind Domination",
+          "save": {
+            "abilities": [
+              "int"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "No further effects.",
+              "success": "Indifferent until the end of its next turn (forgets meeting you).",
+              "failure": "Friendly for 1 minute until you or allies act hostile.",
+              "critFailure": "Helpful; it fights for you and takes commands; you read its mood."
+            }
+          },
+          "inflicts": [],
+          "text": "An animal or weak-minded creature within 60 feet.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "yamanaka-deep-disruption": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eOBBIoeOfhX6T5",
+          "type": "save",
+          "label": "Pulse",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "yamanaka-mental-overwrite",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Mental Overwrite"
+            }
+          ],
+          "text": "7th: doesn't reveal you if hidden. Failure: 2 ranks of Mental Overwrite (3 at 15th).",
+          "activation": "bonus",
+          "damage": {
+            "parts": []
+          },
+          "minLevel": 7
+        },
+        {
+          "id": "n5eFIe1DZyE2fUk6",
+          "type": "save",
+          "label": "Wave",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "yamanaka-mental-overwrite",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Mental Overwrite"
+            }
+          ],
+          "text": "15th: creatures you choose within 30 feet (half the range). Failure: 5d6 psychic and 1 rank of Mental Overwrite.",
+          "activation": "bonus",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "psychic"
+              }
+            ]
+          },
+          "minLevel": 15
+        },
+        {
+          "id": "n5ecy1VQsuc77IXh",
+          "type": "roll",
+          "label": "Hold the Dominated",
+          "roll": {
+            "formula": "",
+            "note": "Reaction, a creature you Dominate succeeds its save to end it: −1 rank of Mental Overwrite and the status lasts another round (0 ranks ends it)."
+          },
+          "activation": "reaction"
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mind Body Transfer as a Bonus action instead of an Action (Pulse and Wave here; the Beam: your stance's button as a Bonus action)."
+        }
+      ]
+    },
+    "yamanaka-mass-mind-body-dance": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQkQFJDwDS5G4i",
+          "type": "save",
+          "label": "Mass Mind Body Dance",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "No further effects.",
+              "success": "Slowed until the end of its next turn.",
+              "failure": "Uses its Action on the command each turn.",
+              "critFailure": "As failure; damage only allows a resave."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "slowed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Slow"
+            }
+          ],
+          "text": "Up to 6 creatures within 60 feet that see and hear you, a command not to harm themselves (immune if they can't be Compelled). Resave at the end of each turn; damage ends it (critical failure: allows a resave) and gives 1 Mental Overwrite.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eSb3F0BnRaF4Vb",
+          "type": "effect",
+          "label": "Mental Overwrite",
+          "effect": {
+            "name": "Mental Overwrite",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "condition": "yamanaka-mental-overwrite"
+          },
+          "text": "A commanded creature takes damage."
+        }
+      ]
+    },
+    "yamanaka-mass-mind-body-disjunction": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e2YQCCZKW4z45f",
+          "type": "save",
+          "label": "Mass Mind Body Disjunction",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "2d6 psychic.",
+              "success": "4d6 psychic; Dazed.",
+              "failure": "8d6 psychic; Slowed; 1 Mental Overwrite.",
+              "critFailure": "10d6 psychic; Stunned; 3 Mental Overwrite."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            },
+            {
+              "key": "slowed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Slow"
+            },
+            {
+              "key": "yamanaka-mental-overwrite",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Mental Overwrite"
+            }
+          ],
+          "text": "Creatures you choose within 30 feet. A Reaction when an ally Shadow Binds or Human Boulders a hostile creature (that one's result is one degree worse).",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eqRecjLRSD8z2u",
+          "type": "damage",
+          "label": "Critical success",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "psychic"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5egreczKrHvXe17",
+          "type": "damage",
+          "label": "Success",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d6",
+                "type": "psychic"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eubnShYzdNaQUL",
+          "type": "damage",
+          "label": "Failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "8d6",
+                "type": "psychic"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5exMEwCpQYAQ93X",
+          "type": "damage",
+          "label": "Critical failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "10d6",
+                "type": "psychic"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5e2YQCCZKW4z45f",
+                "type": "save",
+                "label": "Mass Mind Body Disjunction",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "2d6 psychic.",
+                    "success": "4d6 psychic; Dazed.",
+                    "failure": "8d6 psychic; Slowed; 1 Mental Overwrite.",
+                    "critFailure": "10d6 psychic; Stunned; 3 Mental Overwrite."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "slowed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Slow"
+                  },
+                  {
+                    "key": "yamanaka-mental-overwrite",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Mental Overwrite"
+                  }
+                ],
+                "text": "Creatures you choose within 30 feet. A Reaction when an ally Shadow Binds or Human Boulders a hostile creature (that one's result is one degree worse).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eqRecjLRSD8z2u",
+                "type": "damage",
+                "label": "Critical success",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (1d6)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5egreczKrHvXe17",
+                "type": "damage",
+                "label": "Success",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (1d6)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eubnShYzdNaQUL",
+                "type": "damage",
+                "label": "Failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(8d6) + (1d6)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5exMEwCpQYAQ93X",
+                "type": "damage",
+                "label": "Critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(10d6) + (1d6)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5e2YQCCZKW4z45f",
+                "type": "save",
+                "label": "Mass Mind Body Disjunction",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "2d6 psychic.",
+                    "success": "4d6 psychic; Dazed.",
+                    "failure": "8d6 psychic; Slowed; 1 Mental Overwrite.",
+                    "critFailure": "10d6 psychic; Stunned; 3 Mental Overwrite."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  },
+                  {
+                    "key": "slowed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Slow"
+                  },
+                  {
+                    "key": "yamanaka-mental-overwrite",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Mental Overwrite"
+                  }
+                ],
+                "text": "Creatures you choose within 30 feet. A Reaction when an ally Shadow Binds or Human Boulders a hostile creature (that one's result is one degree worse).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5eqRecjLRSD8z2u",
+                "type": "damage",
+                "label": "Critical success",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d6) + (2d6)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5egreczKrHvXe17",
+                "type": "damage",
+                "label": "Success",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d6) + (2d6)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eubnShYzdNaQUL",
+                "type": "damage",
+                "label": "Failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(8d6) + (2d6)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5exMEwCpQYAQ93X",
+                "type": "damage",
+                "label": "Critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(10d6) + (2d6)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "yamanaka-mental-dance-performance": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eFJkXheou2C14W",
+          "type": "save",
+          "label": "Mental Dance",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "No further effects.",
+              "success": "Confused until the end of its next turn.",
+              "failure": "Dances: all its movement, disadvantage on ranged attacks.",
+              "critFailure": "As failure, and its Bonus action too."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            }
+          ],
+          "text": "A 15-foot cube within 30 feet (B: 60 feet; S: a 30-foot cube). Resave at the end of each turn; ending it gives 1 Mental Overwrite.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5e0jN6ab0zmlwP5",
+          "type": "effect",
+          "label": "Mental Overwrite",
+          "effect": {
+            "name": "Mental Overwrite",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "condition": "yamanaka-mental-overwrite"
+          },
+          "text": "A dancing creature succeeds its resave."
+        }
+      ]
+    },
+    "yamanaka-mental-recalibration": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mind Body Transfer or a Hijutsu that inflicts Mental Overwrite can carry one Recalibration (two from 11th): the option items, two known (+1 at 7th and 15th). The Dominated condition text printed here is the status the Mental Overwrite condition refers to."
+        }
+      ]
+    },
+    "yamanaka-mental-recalibration-efficient-mind": {
+      "status": "partial",
+      "castOptions": [
+        {
+          "label": "Efficient Mind",
+          "appliesTo": {
+            "keywords": [
+              "hijutsu"
+            ]
+          },
+          "note": "A Yamanaka Hijutsu: cost −1 per rank (D 1 ... S 5).",
+          "costDelta": "-rank"
+        }
+      ]
+    },
+    "yamanaka-mental-recalibration-far-thought": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mind Body Transfer +30 feet range (+60 at 15th); from 7th also Yamanaka Hijutsu."
+        }
+      ]
+    },
+    "yamanaka-mental-recalibration-mask-of-many-minds": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Dominating a creature: access its memories of the past 48 hours."
+        }
+      ]
+    },
+    "yamanaka-mental-recalibration-stolen-dreams": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Dominating a creature: you can cast its Genjutsu; when the Dominated status ends, keep 2 of them, each castable once within the next minute."
+        }
+      ]
+    },
+    "yamanaka-mental-recalibration-stolen-might": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Dominating a creature: you can cast its Taijutsu and Bukijutsu; when the Dominated status ends, keep 2 of them, each castable once within the next minute."
+        }
+      ]
+    },
+    "yamanaka-mental-recalibration-stolen-technique": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Dominating a creature: you can cast its Ninjutsu; when the Dominated status ends, keep 2 of them, each castable once within the next minute."
+        }
+      ]
+    },
+    "yamanaka-mental-recalibration-stupefy-concentration": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mental Overwrite you inflict: concentration slots −half its ranks."
+        }
+      ]
+    },
+    "yamanaka-mental-recalibration-stupefy-control": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mental Overwrite you inflict: its jutsu cost +2 per rank."
+        }
+      ]
+    },
+    "yamanaka-mental-recalibration-stupefy-coordination": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mental Overwrite you inflict: −1 per rank to its attack and damage rolls."
+        }
+      ]
+    },
+    "yamanaka-mental-recalibration-stupefy-migraine": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eY2NdZkqWrBjCH",
+          "type": "damage",
+          "label": "Migraine",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d8",
+                "type": "psychic"
+              }
+            ]
+          },
+          "text": "Start of each of its turns, per rank of Mental Overwrite (roll once per rank)."
+        }
+      ]
+    },
+    "yamanaka-mental-recalibration-un-armored-thoughts": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Inflicting Mental Overwrite: −2 on its next save before the start of your next turn; one telepathic yes / no / I don't know question it answers truthfully."
+        }
+      ]
+    },
+    "yamanaka-mind-body-augmentation": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eebFXyed6hRixB",
+          "type": "effect",
+          "label": "Mind Body Augmentation",
+          "effect": {
+            "name": "Mind Body Augmentation",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "A willing creature you touch (+1 at A): proficiency in Intelligence, Wisdom or Charisma saves (pick); already proficient: a rank of Mastery to them."
+        }
+      ]
+    },
+    "yamanaka-mind-body-disturbance": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eO64dHcq2H9PWY",
+          "type": "save",
+          "label": "Mind Body Disturbance",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "No further effects.",
+              "success": "2d8 psychic.",
+              "failure": "4d8 psychic and 1 Mental Overwrite.",
+              "critFailure": "5d8 psychic and 1 Mental Overwrite."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "yamanaka-mental-overwrite",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Mental Overwrite"
+            }
+          ],
+          "text": "A humanoid within 60 feet. Mental Overwrite +1 at B, +1 more at S.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "4d8",
+                "type": "psychic"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eeeayu2CqDq2aA",
+          "type": "damage",
+          "label": "Success",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d8",
+                "type": "psychic"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5ePsXOgZRx23I7E",
+          "type": "damage",
+          "label": "Critical failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d8",
+                "type": "psychic"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eO64dHcq2H9PWY",
+                "type": "save",
+                "label": "Mind Body Disturbance",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "No further effects.",
+                    "success": "2d8 psychic.",
+                    "failure": "4d8 psychic and 1 Mental Overwrite.",
+                    "critFailure": "5d8 psychic and 1 Mental Overwrite."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "yamanaka-mental-overwrite",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Mental Overwrite"
+                  }
+                ],
+                "text": "A humanoid within 60 feet. Mental Overwrite +1 at B, +1 more at S.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (1d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eeeayu2CqDq2aA",
+                "type": "damage",
+                "label": "Success",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (1d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ePsXOgZRx23I7E",
+                "type": "damage",
+                "label": "Critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (1d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eO64dHcq2H9PWY",
+                "type": "save",
+                "label": "Mind Body Disturbance",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "No further effects.",
+                    "success": "2d8 psychic.",
+                    "failure": "4d8 psychic and 1 Mental Overwrite.",
+                    "critFailure": "5d8 psychic and 1 Mental Overwrite."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "yamanaka-mental-overwrite",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Mental Overwrite"
+                  }
+                ],
+                "text": "A humanoid within 60 feet. Mental Overwrite +1 at B, +1 more at S.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (2d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eeeayu2CqDq2aA",
+                "type": "damage",
+                "label": "Success",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (2d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ePsXOgZRx23I7E",
+                "type": "damage",
+                "label": "Critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (2d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eO64dHcq2H9PWY",
+                "type": "save",
+                "label": "Mind Body Disturbance",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "No further effects.",
+                    "success": "2d8 psychic.",
+                    "failure": "4d8 psychic and 1 Mental Overwrite.",
+                    "critFailure": "5d8 psychic and 1 Mental Overwrite."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "yamanaka-mental-overwrite",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Mental Overwrite"
+                  }
+                ],
+                "text": "A humanoid within 60 feet. Mental Overwrite +1 at B, +1 more at S.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (3d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eeeayu2CqDq2aA",
+                "type": "damage",
+                "label": "Success",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (3d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ePsXOgZRx23I7E",
+                "type": "damage",
+                "label": "Critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (3d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eO64dHcq2H9PWY",
+                "type": "save",
+                "label": "Mind Body Disturbance",
+                "save": {
+                  "abilities": [
+                    "cha"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "No further effects.",
+                    "success": "2d8 psychic.",
+                    "failure": "4d8 psychic and 1 Mental Overwrite.",
+                    "critFailure": "5d8 psychic and 1 Mental Overwrite."
+                  }
+                },
+                "inflicts": [
+                  {
+                    "key": "yamanaka-mental-overwrite",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Mental Overwrite"
+                  }
+                ],
+                "text": "A humanoid within 60 feet. Mental Overwrite +1 at B, +1 more at S.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(4d8) + (4d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eeeayu2CqDq2aA",
+                "type": "damage",
+                "label": "Success",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(2d8) + (4d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ePsXOgZRx23I7E",
+                "type": "damage",
+                "label": "Critical failure",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (4d8)",
+                      "type": "psychic"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "yamanaka-mind-body-transfer": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus action: enter the Mind Disruption chakra stance (the clan's stance item); Mind Body Transfer is used from it."
+        }
+      ]
+    },
+    "yamanaka-mind-clone-technique": {
+      "status": "note",
+      "activities": [],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two or more creatures with enough Mental Overwrite to be Dominated: Dominate them both, following the status's rules."
+        }
+      ]
+    },
+    "yamanaka-mind-puppet-switch-cursed-seal": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezvXCJArEhWZCD",
+          "type": "save",
+          "label": "Mind Puppet Switch",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "No effect; immune 24 hours.",
+              "success": "Confused until the end of its next turn.",
+              "failure": "Its consciousness is bound in the item; its body is Incapacitated; resave every 10 minutes (success: immune 24 hours); destroying the item frees it.",
+              "critFailure": "As failure; resave every 24 hours."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            }
+          ],
+          "text": "A creature within 5 feet with 5 Mental Overwrite or 7 ranks of [Mental] conditions; a humanoid-shaped item.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "yamanaka-psionic-network": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Psionic Awareness: you sense creatures capable of complex thought within 30 feet (not incapacitated or unconscious; not those resistant to a Mental condition) through up to 1 foot of non-chakra walls: existence, distance and direction, and you recognize ones sensed before. Focusing: 1 minute 120 feet, 10 minutes 1 mile, 1 hour 100 miles (1 mile or more: only to find a familiar creature, stationary); expanded range lasts up to 1 minute."
+        }
+      ]
+    },
+    "yamanaka-psycho-mind-flux": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5etNdokjuXkBA5C",
+          "type": "save",
+          "label": "Psycho Mind Flux",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "No further effects.",
+              "success": "2d6 psychic.",
+              "failure": "It takes the Attack or Multiattack action against an ally in reach; 1 Mental Overwrite.",
+              "critFailure": "As failure, and it moves up to its speed to the closest ally first."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "yamanaka-mental-overwrite",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Mental Overwrite"
+            }
+          ],
+          "text": "A creature within 120 feet (+1 at B, +1 more at S).",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eZRaxNcyKf1UaT",
+          "type": "damage",
+          "label": "Success",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "psychic"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "yamanaka-shared-perception": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Creatures linked by your Telepathic Comms can focus 1 minute on another willing linked creature to perceive through its senses, up to 1 hour, then a rest."
+        }
+      ]
+    },
+    "yamanaka-stance-mind-disruption": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eWtXxRZwvE1PGK",
+          "type": "effect",
+          "label": "Mind Disruption",
+          "effect": {
+            "name": "Mind Disruption",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 0
+          },
+          "text": "Bonus action: the chakra stance.",
+          "activation": "bonus"
+        },
+        {
+          "id": "n5ezaUvFpG99vdkl",
+          "type": "attack",
+          "label": "Beam",
+          "attack": {
+            "discipline": "highest",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "Mind Body Transfer: a creature you see within 60 feet, as an Action or in place of an Attack action attack or a jutsu (constructs, objects, creatures not native to this world, and those immune to Compelled or Sealed are immune). On a hit: Mental Overwrite (2 ranks at 11th).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "lvl(1:1d6,11:2d6) + max(@mod.nin, @mod.tai, @mod.gen)",
+                "type": "psychic"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5emzhLVG3Su8ipT",
+          "type": "effect",
+          "label": "Beam: Mental Overwrite",
+          "effect": {
+            "name": "Mental Overwrite",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "condition": "yamanaka-mental-overwrite"
+          },
+          "text": "On a Beam hit: 1 rank (2 at 11th: apply twice)."
+        },
+        {
+          "id": "n5erLaqrSSjsERJ5",
+          "type": "save",
+          "label": "Pulse",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "yamanaka-mental-overwrite",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Mental Overwrite"
+            }
+          ],
+          "text": "7th: doesn't reveal you if hidden. Failure: 2 ranks of Mental Overwrite (3 at 15th).",
+          "damage": {
+            "parts": []
+          },
+          "minLevel": 7
+        },
+        {
+          "id": "n5elm806j9Amj961",
+          "type": "save",
+          "label": "Wave",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "yamanaka-mental-overwrite",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Mental Overwrite"
+            }
+          ],
+          "text": "15th: creatures you choose within 30 feet (half the range). Failure: 5d6 psychic and 1 rank of Mental Overwrite.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "psychic"
+              }
+            ]
+          },
+          "minLevel": 15
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Mental Overwrite is the condition item (Dominated by rank and creature type: its text)."
+        }
+      ]
+    }
+  }
+}

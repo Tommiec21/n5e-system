@@ -17,7 +17,8 @@
         "cost": "Special (20 Chakra)",
         "keywords": "Hijutsu, Ninjutsu, Fuinjutsu, Earth Release, Water Release",
         "components": "HS, CM, CS"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -110,7 +111,56 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eG9CK99FPbYZCw",
+        "type": "save",
+        "label": "Flourishing Burial",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          },
+          {
+            "key": "senju-drained",
+            "kind": "condition",
+            "ranks": 3,
+            "label": "Drained"
+          }
+        ],
+        "text": "A 90-foot tall, 30-foot wide tree within 90 feet (Earthen Artifact; 100 damage destroys it). Failure: Restrained inside, 3 ranks of Drained, total cover; two successes at the end of its turns escape. At 0 hit points it becomes part of the tree.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eI2qBhQmM4knrL",
+        "type": "damage",
+        "label": "Restrained: start of its turn",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d8",
+              "type": "earth",
+              "alsoAs": "chakra"
+            }
+          ]
+        },
+        "text": "Earth and chakra (King Q-E20: the same result as both)."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

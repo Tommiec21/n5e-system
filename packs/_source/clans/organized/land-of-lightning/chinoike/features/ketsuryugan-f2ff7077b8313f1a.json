@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "chinoike",
-      "sourceLine": 5557
+      "sourceLine": 5557,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Crimson Charges: 1 + proficiency bonus (the pool), back on a short or long rest. Two Crimson Evocations (more at 7th and 15th), usable only while the Ketsuryugan is active. Lifeforce Casting: a Chinoike Hijutsu's Blood Detonation for 2 Crimson Charges (a cast dialog option on each). Blood As A Resource: consume 1 rank of Bleed within 30 feet as a sufficient source of water for a Water Release jutsu."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,64 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5etrMjAopSJuF1Q",
+        "type": "effect",
+        "label": "Ketsuryugan",
+        "effect": {
+          "name": "Ketsuryugan",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 600,
+          "amp": "ketsuryugan"
+        },
+        "text": "Bonus action: up to 10 minutes, then 10 minutes of non-use before it activates again.",
+        "activation": "bonus"
+      },
+      {
+        "id": "n5efhCbVCstilcqC",
+        "type": "effect",
+        "label": "Ketsuryugan (11th)",
+        "effect": {
+          "name": "Ketsuryugan (11th)",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 600,
+          "amp": "ketsuryugan-11"
+        },
+        "text": "At 11th level: Blood Sight 60 feet.",
+        "activation": "bonus",
+        "minLevel": 11
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "crimsonCharges",
+        "label": "Crimson Charges",
+        "value": 0,
+        "max": "1 + @prof",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "sr",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          },
+          {
+            "on": "lr",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ]
   }
 }

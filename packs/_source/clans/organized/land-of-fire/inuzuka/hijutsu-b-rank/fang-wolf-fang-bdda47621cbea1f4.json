@@ -17,6 +17,65 @@
         "cost": "14 Chakra",
         "keywords": "Hijutsu, Taijutsu, Bukijutsu, Tag-Team",
         "components": "CM, M, W (Melee Blade, Optional)"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5evoSt4keM00XT3",
+              "type": "save",
+              "label": "Fang Wolf Fang",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Needs Feral, not in Two-Headed Wolf: a 60 by 10-foot line. Failure: [Unarmed Damage] (or [Weapon Damage]) + the Nin-Dog's Bite + 5d6 piercing, and −2 AC and DR until the start of your next turn (−1 more per rank); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (1d6)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5evoSt4keM00XT3",
+              "type": "save",
+              "label": "Fang Wolf Fang",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Needs Feral, not in Two-Headed Wolf: a 60 by 10-foot line. Failure: [Unarmed Damage] (or [Weapon Damage]) + the Nin-Dog's Bite + 5d6 piercing, and −2 AC and DR until the start of your next turn (−1 more per rank); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (2d6)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     }
   },
@@ -109,7 +168,33 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5evoSt4keM00XT3",
+        "type": "save",
+        "label": "Fang Wolf Fang",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Needs Feral, not in Two-Headed Wolf: a 60 by 10-foot line. Failure: [Unarmed Damage] (or [Weapon Damage]) + the Nin-Dog's Bite + 5d6 piercing, and −2 AC and DR until the start of your next turn (−1 more per rank); success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "piercing"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

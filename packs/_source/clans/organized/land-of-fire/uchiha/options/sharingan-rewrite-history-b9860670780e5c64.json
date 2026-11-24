@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "uchiha",
       "sourceLine": 2182,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,48 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eNv0Q2YzUp5nxA",
+        "type": "roll",
+        "label": "Rewrite History",
+        "roll": {
+          "formula": "",
+          "note": "Reaction, an ally fails a save: it rerolls. Failing again: 2 more Charges for another; then 1 more for a last one."
+        },
+        "activation": "reaction",
+        "cost": {
+          "pool": "ocularCharges",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eW0WvUsdyRxo8U",
+        "type": "roll",
+        "label": "Rewrite History: second",
+        "roll": {
+          "formula": "",
+          "note": "It failed again."
+        },
+        "cost": {
+          "pool": "ocularCharges",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5eiq8gZKL1kr8jK",
+        "type": "roll",
+        "label": "Rewrite History: third",
+        "roll": {
+          "formula": "",
+          "note": "It failed a third time."
+        },
+        "cost": {
+          "pool": "ocularCharges",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

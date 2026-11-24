@@ -17,6 +17,164 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Bukijutsu, Earth Release",
         "components": "HS, CM, W (Bulk 1)"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Add your [Weapons Damage] (a weapon die and modifier) to the roll."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eRewFlzn4Mfl3u",
+              "type": "save",
+              "label": "Steel Rain",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "A 15-foot sphere within 60 feet. Failure: the damage and 1 rank of Weakened; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d10) + (1d10)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eRewFlzn4Mfl3u",
+              "type": "save",
+              "label": "Steel Rain",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "A 15-foot sphere within 60 feet. Failure: the damage and 1 rank of Weakened; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d10) + (2d10)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eRewFlzn4Mfl3u",
+              "type": "save",
+              "label": "Steel Rain",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "A 15-foot sphere within 60 feet. Failure: the damage and 1 rank of Weakened; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d10) + (3d10)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eRewFlzn4Mfl3u",
+              "type": "save",
+              "label": "Steel Rain",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "A 15-foot sphere within 60 feet. Failure: the damage and 1 rank of Weakened; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d10) + (4d10)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Alomancy Infusion: heavy (1 Ingot)",
+        "appliesTo": {
+          "namePrefix": "Steel Release: Steel Rain"
+        },
+        "cost": {
+          "pool": "ingots",
+          "amount": 1
+        },
+        "note": "Needs Superheavy Metals or Metallic Fan. Failing creatures are knocked Prone."
       }
     }
   },
@@ -109,7 +267,40 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eRewFlzn4Mfl3u",
+        "type": "save",
+        "label": "Steel Rain",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          }
+        ],
+        "text": "A 15-foot sphere within 60 feet. Failure: the damage and 1 rank of Weakened; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d10",
+              "type": "piercing"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

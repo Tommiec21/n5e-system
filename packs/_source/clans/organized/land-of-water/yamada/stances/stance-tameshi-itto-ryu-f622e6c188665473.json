@@ -9,7 +9,15 @@
   "flags": {
     "n5e": {
       "clanPackage": "yamada",
-      "sourceLine": 4490
+      "sourceLine": 4490,
+      "textFrom": "yamada-tameshi-itto-ryu (King Q-E9)",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Tameshi Itto-ryu Bukijutsu stance (its text is Tameshi Itto-ryu's, as King Q-E9): a weapon from your Weapon Proficiency trait is your Executioners Instrument; it can use your Hijutsu Flexibility ability for Strength; Yamada Hijutsu with it can use Ideal Cut (or Tao from 7th; cast dialog options); the Attack action can use Empty Blade. At 7th, without Extra Attack, the Attack action attacks twice."
+        }
+      ]
     }
   },
   "ownership": {
@@ -17,7 +25,7 @@
   },
   "system": {
     "identifier": "yamada-stance-tameshi-itto-ryu",
-    "description": "<p>3rd Level Clan Feature</p>\n<p>The Yamada clan have strict training regimens enforcing their clansmen to be proficient in more than just the blade. They must also be skilled in a variety of other things to help them find some semblance of balance within themselves. You can select two of the listed disciplines to gain proficiency in. You gain another discipline at 7th and 15th levels. You use your highest jutsu attack bonus or save DC for effects that call for a saving throw.</p>\n<p>Anatomist</p>\n<p>You gain a rank of Mastery to Survival. This increases to two ranks of Mastery at 7th level and three ranks at 15th level.</p>\n<p>Once per turn, when you deal damage with an Executioners Instrument against a Bruised creature. You can force them to make a Constitution saving throw. On a failure, they lose the listed condition and instead they gain the Severed condition.</p>\n<p>Blind Blade</p>\n<p>While you can hear and mold chakra, You gain 10 feet of Blindsight. This increases to 15 feet at 7th level and 20 feet at 15th level. Attacks you make within your blindsight range cannot be made at disadvantage.</p>\n<p>Carpenter</p>\n<p>You gain a rank of Mastery to Crafting. This increases to two ranks of Mastery at 7th level and three ranks at 15th level.</p>\n<p>Once per turn, when you deal [Weapon Damage] to a Construct or Structure, and you use the 3rd bullet point effect of your Tameshi Itto-Ryu stance, you can roll 2 additional d6’s.</p>\n<p>Edge Sharpening</p>\n<p>You methodically sharpen every tool you find yourself in possession of. Over the course of a short rest, you take your Executioners Instrument and one weapon from each willing allied creature and work to sharpen or balance them. At the conclusion of your rest, the first time you roll initiative, all of your sharpened weapons come to fruition. Until the conclusion of this combat, you gain a rank of Mastery to your [Weapon Damage]. This increases to two ranks of Mastery at 11th level.</p>\n<p>Once you sharpen weapons in this way, you cannot do so again until you complete another rest.</p>\n<p>Interrogator</p>\n<p>You gain a rank of Mastery to Intimidation. This increases to two ranks of Mastery at 7th level and three ranks at 15th level.</p>\n<p>When you take the Demoralize skill action, the opposing creature does not make an opposing check, but instead you make your check vs the opposing creatures Wisdom DC.</p>\n<p>Additionally, by beating the target creatures Wisdom DC by 10 or more, if they are a Standard or Minion classed adversary, they drop their weapons, if any and must flee until the end of their next turn.</p>\n<p>Judge</p>\n<p>You gain a rank of Mastery on saving throws vs gaining the Charmed, Confused, Demoralized and Dazed conditions. This increases to two ranks of Mastery at 11th level.</p>\n<p>Lawyer</p>\n<p>You gain a rank of Mastery to Investigation. This increases to two ranks of Mastery at 7th level and three ranks at 15th level.</p>\n<p>Once per turn, when you deal damage with an Executioners Instrument against a creature with at least one rank of Confused or Dazed. You can force them to make a Constitution saving throw. On a failure, they lose the listed condition and instead gain the Severed condition.</p>\n<p>Politician</p>\n<p>You gain a rank of Mastery to Deception. This increases to two ranks of Mastery at 7th level and three ranks at 15th level.</p>\n<p>When you take the Create Diversion skill action, you may, as part of that action, make one Weapon attack against one target creature you can reach. On a successful check, you can instead make two weapon attacks.</p>\n<p>Surgeon</p>\n<p>You gain a rank of Mastery to Medicine. This increases to two ranks of Mastery at 7th level and three ranks at 15th level. Once per turn, when you deal damage with an Executioners Instrument against a creature with at least one rank of Bleed. You can force them to make a Constitution saving throw. On a failure, they lose the listed condition and instead they gain the Severed condition.</p>",
+    "description": "<p>Drawing your weapon is a show that peaceful options have been exhausted. With your weapon drawn you steady yourself and settle into an almost motionless stance, giving each foe that stands against you a verdict of guilt and execution. While in this stance, if you are wielding a weapon listed under your Weapon Proficiency trait, it becomes known as your Executioners Instrument. While in this Bukijutsu stance, you gain the following benefits:</p>\n<p>You can use your Hijutsu Flexibility ability mod in place of strength weapon attacks with Executioners Instrument weapons.</p>\n<p>Yamada clan Hijutsu you cast with your Executioners Instrument can use the Ideal Cut ability listed. Beginning at 7th level, you cast can use the Tao ability listed. If you use the Tao ability, you cannot use the Ideal Cut ability, and vice versa.</p>\n<p>When you take the Attack action with an Executioners Instrument, you can use the Empty Blade attack.</p>\n<p>Empty Blade: You can forgo all additional attacks beyond the first one as part of this Attack Action. When you do, roll a number of d6’s equal to the forgone attacks, plus 1 if the affected creature is Severed. If you roll a 5 or 6 with a d6, you can deal additional damage equal to your [Weapon Damage], which is not multiplied as part of a critical hit.</p>\n<p>Beginning at 7th level, if you do not have the Extra Attack class feature, you can attack twice while in this stance when you take the Attack action.</p>",
     "source": {
       "book": "Tsunade's Studies Compendium",
       "page": "",
@@ -29,6 +37,17 @@
     ],
     "clan": "yamada",
     "featureType": "passive",
-    "requirement": "Yamada clan"
+    "requirement": "Yamada clan",
+    "activities": [
+      {
+        "id": "n5e51Md2ySWvUrhr",
+        "type": "roll",
+        "label": "Empty Blade",
+        "roll": {
+          "formula": "1d6",
+          "note": "Forgo the Attack action's other attacks: one d6 per forgone attack (+1 if the target is Severed); each 5 or 6 adds your [Weapon Damage] (not doubled on a critical hit). Roll one per die."
+        }
+      }
+    ]
   }
 }

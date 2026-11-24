@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "jugo",
       "sourceLine": 6294,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,54 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eQ45RibqfOZC1v",
+        "type": "save",
+        "label": "Feral Purge",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "While Manic, Bonus action: creatures within 10 feet. Failure: the damage and Prone. Then lose 1d4 Nature Energy either way.",
+        "activation": "bonus",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(3:2d8,7:4d8,15:6d8)",
+              "type": "force"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e7P9CmJlveoJAu",
+        "type": "roll",
+        "label": "Purge: lose Nature Energy",
+        "roll": {
+          "formula": "1d4",
+          "note": "After the purge."
+        },
+        "cost": {
+          "pool": "natureEnergy",
+          "formula": "1d4"
+        }
+      }
+    ]
   }
 }

@@ -17,6 +17,24 @@
         "cost": "11 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Visual, Tactile), Wind Release, Fire Release",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +10 feet radius per rank."
+        }
+      ],
+      "castOption": {
+        "label": "Scorch: aura (4 Scorch Charges)",
+        "appliesTo": {
+          "namePrefix": "Scorch Release: Vengeful Mirage"
+        },
+        "cost": {
+          "pool": "scorchCharges",
+          "amount": 4
+        },
+        "note": "Add one Desiccated Heat aura's effect (even unknown) to its failure."
       }
     }
   },
@@ -112,7 +130,48 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eirTd41NX05nqe",
+        "type": "save",
+        "label": "Vengeful Mirage",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: 1 rank of Shaken and Dazzled until the end of its next turn.",
+            "failure": "Failure: 2 ranks of Shaken and Dazzled.",
+            "critFailure": "Critical Failure: 3 ranks of Shaken and Dazzled."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "shaken",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Shaken"
+          },
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Dazzled"
+          }
+        ],
+        "text": "Starting a turn or first entering the 20-foot radius.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

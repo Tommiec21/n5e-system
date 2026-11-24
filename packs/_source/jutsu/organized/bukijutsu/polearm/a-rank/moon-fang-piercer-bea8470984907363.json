@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eHidWtHSjhJJvp",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Moon-Fang Piercer",
         "save": {
           "abilities": [
             "dex"
@@ -98,22 +97,41 @@
             "source": "discipline"
           },
           "onSuccess": "half",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Within 10 feet of a point within 60 feet. Failure: AC −2 (by hand) (Chain 2: can't concentrate until the end of its next turn); success: half.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "@weapon",
+              "type": ""
+            },
+            {
+              "formula": "2d12",
+              "type": ""
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "2d12",
-        "roll": {
-          "formula": "2d12",
-          "note": "Select one point you can see within range, all creatures within 10ft of it must make a Dexterity saving throw, taking your [Weapons damage] + 2d12 damage and having their AC reduced by 2 on a failed save, half as much damage on a success."
-        }
+        "id": "n5e24CSTD8tG4ckF",
+        "type": "effect",
+        "label": "Chain 3: +6 DR",
+        "effect": {
+          "name": "Moon-Fang Piercer",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.dr",
+              "value": "6",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Until the start of your next turn."
       }
     ],
     "featureType": "active",
@@ -199,9 +217,62 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5eHidWtHSjhJJvp",
+              "type": "save",
+              "label": "Moon-Fang Piercer",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Within 10 feet of a point within 60 feet. Failure: AC −2 (by hand) (Chain 2: can't concentrate until the end of its next turn); success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "@weapon",
+                    "type": ""
+                  },
+                  {
+                    "formula": "(2d12) + (1d12)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e24CSTD8tG4ckF",
+              "type": "effect",
+              "label": "Chain 3: +6 DR",
+              "effect": {
+                "name": "Moon-Fang Piercer",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.dr",
+                    "value": "6",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Until the start of your next turn."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "notAmp": "An attack; Chain 3's +6 DR stays a rider on the jutsu (King, AMP1f batch 4).",
+      "reviewed": true
     }
   },
   "folder": "405991324385ff7a"

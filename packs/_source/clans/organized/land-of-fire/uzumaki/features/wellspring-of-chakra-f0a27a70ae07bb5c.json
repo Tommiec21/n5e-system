@@ -5,11 +5,51 @@
   "name": "Wellspring of Chakra",
   "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
   "folder": "e06f101025a44186",
-  "effects": [],
+  "effects": [
+    {
+      "_id": "n5eQmf8YANWOBm59",
+      "name": "Wellspring of Chakra",
+      "type": "generic",
+      "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+      "transfer": true,
+      "disabled": false,
+      "system": {
+        "category": "feature"
+      },
+      "changes": [
+        {
+          "key": "system.bonuses.cpPerLevel",
+          "value": "2",
+          "mode": 2,
+          "priority": null
+        }
+      ],
+      "duration": {},
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {
+        "n5e": {
+          "automation": true,
+          "std6d": true
+        }
+      },
+      "sort": 0,
+      "_key": "!items.effects!f0a27a70ae07bb5c.n5eQmf8YANWOBm59"
+    }
+  ],
   "flags": {
     "n5e": {
       "clanPackage": "uzumaki",
-      "sourceLine": 2350
+      "sourceLine": 2350,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Chakra points +2 per level (the effect). Spiral Cells: 2 (4 at 7th, 6 at 15th; Stubborn +2, +4 at 11th: raise the pool's maximum by hand), back on a rest."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +82,56 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eVgJgiBEQ0HiKG",
+        "type": "heal",
+        "label": "Spiral Cell: temporary chakra",
+        "heal": {
+          "formula": "lvl(1:4,11:6)",
+          "pool": "tempCp"
+        },
+        "text": "Once per turn, start of your turn, not incapacitated or Sealed.",
+        "cost": {
+          "pool": "spiralCells",
+          "amount": 1
+        },
+        "oncePerTurn": true
+      },
+      {
+        "id": "n5eESOaBt0fMOgWB",
+        "type": "roll",
+        "label": "Spiral Cell: ward",
+        "roll": {
+          "formula": "@level",
+          "note": "7th: chakra damage reduced by your level, or the ranks of a Mental or Sensory condition you'd gain reduced to 0."
+        },
+        "cost": {
+          "pool": "spiralCells",
+          "amount": 1
+        },
+        "minLevel": 7
+      }
+    ],
+    "resourcePools": [
+      {
+        "id": "spiralCells",
+        "label": "Spiral Cells",
+        "value": 0,
+        "max": "lvl(1:2,7:4,15:6)",
+        "die": "",
+        "steps": [],
+        "step": 0,
+        "recovery": [
+          {
+            "on": "rest",
+            "amount": "all",
+            "formula": "",
+            "requires": ""
+          }
+        ]
+      }
+    ]
   }
 }

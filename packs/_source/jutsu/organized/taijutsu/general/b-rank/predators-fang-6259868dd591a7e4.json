@@ -84,13 +84,13 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eaYgDulLeFTKiM",
         "type": "attack",
-        "label": "Attack",
+        "label": "Predators Fang",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 3
         },
         "damage": {
           "parts": []
@@ -101,14 +101,13 @@
           "dieSteps": 0,
           "pierce": 0,
           "maximize": false,
-          "attacks": "1"
+          "attacks": "3"
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eYZzUpETbN5VAP",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Per hit: −1",
         "save": {
           "abilities": [
             "str"
@@ -117,10 +116,10 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Once per hit. Failure: −1 Strength or Dexterity score for 1 minute (a Full-Turn Action restores them; apply by hand).",
         "damage": {
           "parts": []
         }
@@ -203,9 +202,97 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eaYgDulLeFTKiM",
+              "type": "attack",
+              "label": "Predators Fang",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 4
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "4"
+              }
+            },
+            {
+              "id": "n5eYZzUpETbN5VAP",
+              "type": "save",
+              "label": "Per hit: −1",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Once per hit. Failure: −1 Strength or Dexterity score for 1 minute (a Full-Turn Action restores them; apply by hand).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eaYgDulLeFTKiM",
+              "type": "attack",
+              "label": "Predators Fang",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 5
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "2d8",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "5"
+              }
+            },
+            {
+              "id": "n5eYZzUpETbN5VAP",
+              "type": "save",
+              "label": "Per hit: −1",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Once per hit. Failure: −1 Strength or Dexterity score for 1 minute (a Full-Turn Action restores them; apply by hand).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "64b78902f2631880"

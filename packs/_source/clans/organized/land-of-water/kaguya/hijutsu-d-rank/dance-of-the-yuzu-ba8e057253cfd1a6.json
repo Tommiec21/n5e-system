@@ -17,6 +17,252 @@
         "cost": "4 Chakra",
         "keywords": "Hijutsu, Taijutsu, Bukijutsu, Chain",
         "components": "M, W (Any Melee Weapon)"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "S-Rank: it can be a Reaction to a creature triggering your attack of opportunity."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5e67gpmYBbG4KJL",
+              "type": "attack",
+              "label": "Yuzu",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "[Weapons Damage] or [Unarmed Damage] + 1d6.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d6) + (1d6)",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5e9f012qWLJXCmA",
+              "type": "save",
+              "label": "Yuzu: on a hit",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Failure: Prone (B-Rank: pushed 10 feet too); you can move 10 feet.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5e67gpmYBbG4KJL",
+              "type": "attack",
+              "label": "Yuzu",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "[Weapons Damage] or [Unarmed Damage] + 1d6.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d6) + (2d6)",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5e9f012qWLJXCmA",
+              "type": "save",
+              "label": "Yuzu: on a hit",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Failure: Prone (B-Rank: pushed 10 feet too); you can move 10 feet.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e67gpmYBbG4KJL",
+              "type": "attack",
+              "label": "Yuzu",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "[Weapons Damage] or [Unarmed Damage] + 1d6.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d6) + (3d6)",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5e9f012qWLJXCmA",
+              "type": "save",
+              "label": "Yuzu: on a hit",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Failure: Prone (B-Rank: pushed 10 feet too); you can move 10 feet.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e67gpmYBbG4KJL",
+              "type": "attack",
+              "label": "Yuzu",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "[Weapons Damage] or [Unarmed Damage] + 1d6.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d6) + (4d6)",
+                    "type": "piercing"
+                  }
+                ]
+              },
+              "strike": {
+                "kind": "weapon",
+                "extraDice": "",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "2"
+              }
+            },
+            {
+              "id": "n5e9f012qWLJXCmA",
+              "type": "save",
+              "label": "Yuzu: on a hit",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Failure: Prone (B-Rank: pushed 10 feet too); you can move 10 feet.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Battle Lust (1)",
+        "appliesTo": {
+          "namePrefix": "Dance of the Yuzu"
+        },
+        "note": "The attacks are compared to every creature of your choice in your reach.",
+        "cost": {
+          "pool": "battleLust",
+          "amount": 1
+        }
       }
     }
   },
@@ -109,7 +355,62 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5e67gpmYBbG4KJL",
+        "type": "attack",
+        "label": "Yuzu",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 2
+        },
+        "text": "[Weapons Damage] or [Unarmed Damage] + 1d6.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d6",
+              "type": "piercing"
+            }
+          ]
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "2"
+        }
+      },
+      {
+        "id": "n5e9f012qWLJXCmA",
+        "type": "save",
+        "label": "Yuzu: on a hit",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Failure: Prone (B-Rank: pushed 10 feet too); you can move 10 feet.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

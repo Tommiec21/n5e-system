@@ -17,6 +17,138 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fire Release, Clash",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eEAMKRpmB1xL9R",
+              "type": "save",
+              "label": "Smoke Dragon",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                },
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "A 60 by 10-foot line (its range line says 90; you choose where it stops). Failure: the damage and 1 rank of Dazzled and Envenomed (+1 each at A).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (1d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eEAMKRpmB1xL9R",
+              "type": "save",
+              "label": "Smoke Dragon",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                },
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "A 60 by 10-foot line (its range line says 90; you choose where it stops). Failure: the damage and 1 rank of Dazzled and Envenomed (+1 each at A).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (2d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eEAMKRpmB1xL9R",
+              "type": "save",
+              "label": "Smoke Dragon",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                },
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "A 60 by 10-foot line (its range line says 90; you choose where it stops). Failure: the damage and 1 rank of Dazzled and Envenomed (+1 each at A).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (3d6)",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Smoke Style",
+        "appliesTo": {
+          "namePrefix": "Smoke Dragon"
+        },
+        "note": "In your Smoke Style stance: travel with the dragon without spending movement; creatures within 10 feet where you stop provoke attacks of opportunity."
       }
     }
   },
@@ -109,7 +241,46 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eEAMKRpmB1xL9R",
+        "type": "save",
+        "label": "Smoke Dragon",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          },
+          {
+            "key": "envenomed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Envenomed"
+          }
+        ],
+        "text": "A 60 by 10-foot line (its range line says 90; you choose where it stops). Failure: the damage and 1 rank of Dazzled and Envenomed (+1 each at A).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "fire"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

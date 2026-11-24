@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "kashu",
       "sourceLine": 6576,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,33 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5edaf37zABBImyq",
+        "type": "save",
+        "label": "Dissonant Chord",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Once per turn, a Shinobi Instrument hit with [Weapon] or [Unarmed Damage]. Failure: it loses concentration on 1 random jutsu.",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        },
+        "cost": {
+          "pool": "resonance",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

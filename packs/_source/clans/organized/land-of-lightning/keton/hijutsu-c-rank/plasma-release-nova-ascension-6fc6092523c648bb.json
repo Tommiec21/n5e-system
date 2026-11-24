@@ -17,7 +17,14 @@
         "cost": "8 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Fire Release, Lightning Release",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "A-Rank or higher: Stable."
+        }
+      ]
     }
   },
   "ownership": {
@@ -109,7 +116,54 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eymDJB3FSm5ZG2",
+        "type": "effect",
+        "label": "Nova Ascension",
+        "effect": {
+          "name": "Nova Ascension",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "1",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Willing allies in a 15-foot radius: +1 AC; Bonus action teleport into a Starlight's light within 60 feet; once per turn, a melee attacker saves Constitution or is Dazzled."
+      },
+      {
+        "id": "n5etNBFI3fvX0yBI",
+        "type": "save",
+        "label": "Nova Ascension: melee attacker",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          }
+        ],
+        "text": "Failure: Dazzled.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

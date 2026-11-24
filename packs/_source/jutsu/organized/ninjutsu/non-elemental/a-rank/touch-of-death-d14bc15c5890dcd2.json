@@ -84,28 +84,23 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eOSpE533jLBLKx",
         "type": "attack",
-        "label": "Attack",
+        "label": "Unwilling: touch",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "An unwilling creature: on a hit, the save.",
         "damage": {
-          "parts": [
-            {
-              "formula": "12d6",
-              "type": "necrotic"
-            }
-          ]
+          "parts": []
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eRsLVkkiITvJkI",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Touch of Death",
         "save": {
           "abilities": [
             "con"
@@ -113,13 +108,18 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "Success: half. You regain hit points equal to the damage. At 0 it dies and can't be revived; you gain one of its nature releases and a C-Rank or lower jutsu of it until a long rest.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "12d6",
+              "type": "necrotic"
+            }
+          ]
         }
       }
     ],
@@ -194,7 +194,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "cd82d923ec5480f5"

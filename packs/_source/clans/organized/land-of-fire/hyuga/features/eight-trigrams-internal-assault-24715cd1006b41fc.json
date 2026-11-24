@@ -9,7 +9,8 @@
   "flags": {
     "n5e": {
       "clanPackage": "hyuga",
-      "sourceLine": 959
+      "sourceLine": 959,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -42,6 +43,35 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5evpAkNhCEhDMOX",
+        "type": "save",
+        "label": "Internal Assault",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "hyuga-network-distortion",
+            "kind": "condition",
+            "ranks": 3,
+            "label": "Network Distortion"
+          }
+        ],
+        "text": "[Side Branch] Your necrotic or Medical jutsu: once per casting, an affected creature casting a CM jutsu. Failure: 3 ranks of Network Distortion.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "aburame",
-      "sourceLine": 541
+      "sourceLine": 541,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Aburame Hijutsu with \"If you have your Swarm active\" have it as a cast dialog option."
+        }
+      ]
     }
   },
   "ownership": {
@@ -29,6 +36,22 @@
     ],
     "clan": "aburame",
     "featureType": "passive",
-    "requirement": "Aburame clan"
+    "requirement": "Aburame clan",
+    "activities": [
+      {
+        "id": "n5e9zjziDblvFvdD",
+        "type": "effect",
+        "label": "Swarm released",
+        "effect": {
+          "name": "Swarm",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 0
+        },
+        "text": "Bonus action: your Swarm Chakra stance (your Swarm types' active benefits). Unconscious or fire damage ends it.",
+        "activation": "bonus"
+      }
+    ]
   }
 }

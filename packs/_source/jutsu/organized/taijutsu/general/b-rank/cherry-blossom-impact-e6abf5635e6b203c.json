@@ -86,9 +86,40 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eIPQPT2xlHXjuR",
+        "type": "attack",
+        "label": "Cherry Blossom Impact",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "4d12",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5e3gRf3Gwl95cN8",
         "type": "save",
-        "label": "Save",
+        "label": "Dazed and Bruised",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "dazed",
@@ -103,31 +134,25 @@
             "label": "Bruised"
           }
         ],
+        "text": "On a hit. Failure: Dazed and Bruised.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eEkElNOuGYnEM3",
+        "type": "save",
+        "label": "Finisher: shockwave",
         "save": {
           "abilities": [
-            "con"
+            "dex"
           ],
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
-        "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed + 4d12",
-              "type": "bludgeoning"
-            }
-          ]
-        }
-      },
-      {
-        "id": "finisher-parsed1",
-        "type": "save",
-        "label": "Finisher: Save",
         "inflicts": [
           {
             "key": "prone",
@@ -136,18 +161,7 @@
             "label": "Prone"
           }
         ],
-        "save": {
-          "abilities": [
-            "dex"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Finisher, on a hit: everything touching the ground within 30 feet of the target (not you); difficult terrain. Failure: Prone; success: half.",
         "damage": {
           "parts": [
             {
@@ -253,9 +267,187 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eIPQPT2xlHXjuR",
+              "type": "attack",
+              "label": "Cherry Blossom Impact",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "4d12 + 1d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5e3gRf3Gwl95cN8",
+              "type": "save",
+              "label": "Dazed and Bruised",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "On a hit. Failure: Dazed and Bruised.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eEkElNOuGYnEM3",
+              "type": "save",
+              "label": "Finisher: shockwave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Finisher, on a hit: everything touching the ground within 30 feet of the target (not you); difficult terrain. Failure: Prone; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (2d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eIPQPT2xlHXjuR",
+              "type": "attack",
+              "label": "Cherry Blossom Impact",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "4d12 + 2d12",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5e3gRf3Gwl95cN8",
+              "type": "save",
+              "label": "Dazed and Bruised",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                },
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "On a hit. Failure: Dazed and Bruised.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eEkElNOuGYnEM3",
+              "type": "save",
+              "label": "Finisher: shockwave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Finisher, on a hit: everything touching the ground within 30 feet of the target (not you); difficult terrain. Failure: Prone; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (4d6)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "64b78902f2631880"

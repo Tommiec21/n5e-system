@@ -10,7 +10,8 @@
     "n5e": {
       "clanPackage": "yoton",
       "sourceLine": 5397,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -45,6 +46,22 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eIfKkb4QpE1KIv",
+        "type": "damage",
+        "label": "Scalding",
+        "damage": {
+          "parts": [
+            {
+              "formula": "lvl(3:1d6,7:3d6,15:5d6)",
+              "type": "fire"
+            }
+          ]
+        },
+        "text": "A creature starting its turn on the terrain."
+      }
+    ]
   }
 }

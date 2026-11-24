@@ -33,12 +33,12 @@ import { coverFrom } from "../../rules/positioning.mjs";
 import * as S from "../fields/shared.mjs";
 import { abilities, skills, toolkits, castingDisciplines, disciplines, dcTables } from "../../config/core.mjs";
 import { critRangeCap } from "../../config/combat.mjs";
-import { containerTypes } from "../../config/equipment.mjs";
+import { containerTypes, armorCategories } from "../../config/equipment.mjs";
 import {
   abilityMod, proficiencyFor, masteryRank, masteryBonus, poolMax, inventorySlots, asiCount, masteryCap
 } from "../../rules/progression.mjs";
 import { aggregatePenalties } from "../../rules/conditions.mjs";
-import { computeAC } from "../../rules/ac.mjs";
+import { computeAC, overlayAC } from "../../rules/ac.mjs";
 import { evaluateFormula, dieFaces } from "../../rules/formula.mjs";
 import { parseN5eChanges } from "../../rules/change-keys.mjs";
 import { staminaPool } from "../../rules/trackers.mjs";
@@ -47,6 +47,10 @@ import { resolveFormula } from "../../rules/unarmed.mjs";
 import { rule } from "../../rules-settings.mjs";
 import { expandGrants } from "../../rules/proficiency.mjs";
 import { Breakdown } from "../../rules/breakdown.mjs";
+import { applyPoolOverride } from "../../rules/recovery-overrides.mjs";
+
+/** The GM's Class & Clan limit choices (world setting; none before settings are ready). */
+const limitOverrides = () => { try { return globalThis.game?.settings?.get?.("n5e", "limitRecovery") ?? {}; } catch { return {}; } };
 
 const F = () => foundry.data.fields;
 
@@ -198,7 +202,7 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     this.modifiers = mods;
     // n5e.resist / n5e.immune (NPC3): resistances and immunities from effects join the creature's own.
     // n5e.conditionResist: condition resistances (a condition key or group:<tag>) join traits.conditionResist.
-    for ( const [field, list] of [["resist", mods.resist], ["immune", mods.immune], ["conditionResist", mods.conditionResist ?? []],
+    for ( const [field, list] of [["resist", mods.resist], ["immune", mods.immune], ["vuln", mods.vulnerable ?? []], ["conditionResist", mods.conditionResist ?? []],
       ["conditionImmune", mods.conditionImmune ?? []], ["stateResist", mods.stateResist ?? []], ["stateImmune", mods.stateImmune ?? []]] ) {
       if ( !list.length ) continue;
       const set = this.traits[field] instanceof Set ? this.traits[field] : new Set(this.traits[field] ?? []);
@@ -233,6 +237,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
       this.resources[def.id] = {
         ...def, ...(stored ?? {}), label: stored?.label || def.label, max: stored?.max || def.max,
         recovery: stored?.recovery?.length ? stored.recovery : def.recovery,
+        // King Q-E6: the item's unit lifetime wins over a stored 0.
+        lifetime: def.lifetime || stored?.lifetime || 0,
         value: stored ? stored.value : null, fromItem: def.source, startsFull
       };
     }
@@ -372,10 +378,14 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     // CCOND1: a condition flag that sets DR to 0 (Bone Broken).
     this.dr = pen.flags?.drZero ? 0 : Math.max(0, drb.total);
     this.pierce = this.traits.pierce + mods.pierce;
+    const overlay = overlayAC(grants.acOverlays, {
+      abilityMod: k => mod(k), abilityLabel: k => abilities[k]?.abbr ?? k,
+      discipline: d => this.disciplines?.[d], disciplineLabel: d => disciplines[d]?.label ?? d,
+      hasState: st => [...(this.parent?.effects ?? [])].some(e => !e.disabled && e.flags?.n5e?.state === st) });
     const ac = this._baseAC({ bonus: this.bonuses.ac, penalty: pen.ac }) ?? computeAC({
-      calc: this.attributes.ac.calc, dexMod: mod("dex"), prof: this.prof, armor: grants.armor,
+      calc: this.attributes.ac.calc, dexMod: overlay.dexMod ?? mod("dex"), dexLabel: overlay.dexLabel, prof: this.prof, armor: grants.armor,
       flat: this.attributes.ac.flat, formula: this.attributes.ac.formula, rollData,
-      blocking: grants.blocking, bonus: this.bonuses.ac, penalty: pen.ac
+      blocking: grants.blocking, bonus: this.bonuses.ac, penalty: pen.ac, baseFloor: overlay.baseFloor
     });
     // Cover (POS1): +2 or +4 to AC from the token's cover status (the highest only).
     const cover = coverFrom(this.parent?.statuses);
@@ -459,6 +469,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
       switch ( item.type ) {
         case "class":
           g.classItem ??= item;
+          // King Q-D26: the player's pick of a discipline's ability ("" = the higher), kept on the class item.
+          g.disciplineAbilityChoice = { ...(g.disciplineAbilityChoice ?? {}), ...(item.flags?.n5e?.abilityChoice ?? {}) };
           g.hitDie ||= sys.hitDie;
           g.chakraDie ||= sys.chakraDie;
           for ( const s of sys.saves ?? [] ) g.saves.add(s);
@@ -490,6 +502,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
           if ( sys.tool ) g.tools.add(sys.tool);
           break;
         case "armor":
+          // King Q-D28: Illusory items are worn over armor and change how AC is worked out.
+          if ( sys.equipped && armorCategories[sys.category]?.overlay ) { (g.acOverlays ??= []).push({ name: item.name, ...sys.overlay }); break; }
           if ( sys.equipped ) {
             g.armor = { name: item.name, bonus: sys.armor.value, dexCap: sys.dexCap, category: sys.category,
               strRequirement: sys.strRequirement || sys.properties?.heavyweight || null, item };
@@ -522,7 +536,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
         }
       }
       // Resource pools defined by items (Focus, Superiority Dice, Pyroclasm...).
-      for ( const pool of sys.resourcePools ?? [] ) if ( pool.id ) g.pools.push({ ...pool, source: item.name });
+      // King 2026-11-21: the GM's Class & Clan limits menu can change when a pool comes back.
+      for ( const pool of sys.resourcePools ?? [] ) if ( pool.id ) g.pools.push({ ...applyPoolOverride(pool, sys.identifier, limitOverrides()), source: item.name });
       // Class table columns for formulas: @scale.<classCamelCase>.<column>.
       if ( item.type === "class" && sys.identifier ) {
         // Keyed by camel case so formulas can use them: "scout-nin" -> @scale.scoutNin.<column>.

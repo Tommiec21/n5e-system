@@ -34,6 +34,98 @@
     "resourcePools": [],
     "prerequisites": [
       "Blade Warden Subclass"
+    ],
+    "activities": [
+      {
+        "id": "n5e3PrvQvg9VeMxI",
+        "type": "damage",
+        "label": "Lethal Attack (forgo 1)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(max(0, @scale.hunterNin.lethalAttack - 1))d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true,
+        "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+      },
+      {
+        "id": "n5exMwzxktu69hB3",
+        "type": "damage",
+        "label": "Lethal Attack (forgo 1): Attack action or weapon",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 1))d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true,
+        "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+      },
+      {
+        "id": "n5e5x1AoFOqM5C09",
+        "type": "damage",
+        "label": "Lethal Attack (forgo 2)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(max(0, @scale.hunterNin.lethalAttack - 2))d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true,
+        "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+      },
+      {
+        "id": "n5eQ73MzPZhVy59T",
+        "type": "damage",
+        "label": "Lethal Attack (forgo 2): Attack action or weapon",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 2))d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true,
+        "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+      },
+      {
+        "id": "n5eWWe211k9rGoOS",
+        "type": "damage",
+        "label": "Lethal Attack (forgo 3)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(max(0, @scale.hunterNin.lethalAttack - 3))d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true,
+        "text": "Once per turn, on a hit with advantage or with an ally within 5 feet of the target."
+      },
+      {
+        "id": "n5eq306yClVOkPFT",
+        "type": "damage",
+        "label": "Lethal Attack (forgo 3): Attack action or weapon",
+        "damage": {
+          "parts": [
+            {
+              "formula": "(max(0, ceil(@scale.hunterNin.lethalAttack/2) - 3))d8",
+              "type": ""
+            }
+          ]
+        },
+        "oncePerTurn": true,
+        "text": "An attack of the Attack action or a weapon attack: half the dice, rounded up (minimum 1)."
+      }
     ]
   },
   "effects": [],
@@ -45,7 +137,14 @@
   "flags": {
     "n5e": {
       "generated": true,
-      "optionGroup": "Combat Exploits"
+      "optionGroup": "Combat Exploits",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Blade Warden, with your Warden Weapon: forgo up to 3 dice; repeat the attack once against each creature of your choice in range, each taking the original damage plus the remaining Lethal Attack dice."
+        }
+      ]
     }
   },
   "_stats": {

@@ -1,0 +1,98 @@
+{
+  "_id": "n5eAmpe52b52e416",
+  "name": "Psionics: Fortress (B-Rank)",
+  "type": "amp",
+  "img": "icons/svg/book.svg",
+  "folder": "n5eAmpFoldOther1",
+  "sort": 101701,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jutsu-psionics-fortress-b",
+    "description": "<p><b>Psionics: Fortress</b> · cast at B-Rank to A-Rank · no type</p><p>+1 AC (+2 against Genjutsu attacks).</p><p>A creature that hits you with a melee weapon or Taijutsu attack makes an Intelligence save: on a failure it falls Prone and drops its weapon; on a critical failure its speed is also 0 until the end of its next turn. It also takes 2d6 psychic damage (4d6 on a critical failure).</p><p>5 DR against psychic damage.</p>",
+    "source": {
+      "book": "Jiraiya’s Jutsu Compendium",
+      "page": "source line 3864",
+      "version": "4.0 Final Update",
+      "custom": ""
+    },
+    "ampType": "",
+    "namedType": "",
+    "owner": {
+      "kind": "jutsu",
+      "id": "psionics-fortress",
+      "subclass": ""
+    },
+    "summary": "+1 AC (+2 against Genjutsu attacks). A creature that hits you with a melee weapon or Taijutsu attack makes an Intelligence save: on a failure it falls Prone and drops its weapon; on a critical failure its speed is also 0 until the end of its next turn. It also takes 2d6 psychic damage (4d6 on a crit",
+    "activation": "",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": true
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "system.bonuses.ac",
+        "value": "1",
+        "mode": 2
+      }
+    ],
+    "aura": {},
+    "outsideLimits": false,
+    "series": "jutsu-psionics-fortress",
+    "level": 0,
+    "rank": "B",
+    "choose": {
+      "prompt": "",
+      "options": []
+    },
+    "buttons": [],
+    "onEnd": {
+      "condition": ""
+    },
+    "statuses": [],
+    "endsWith": ""
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "modifier",
+          "selector": "attack",
+          "direction": "against",
+          "predicate": "jutsu:discipline:gen",
+          "value": -1,
+          "label": "Fortress"
+        },
+        {
+          "key": "note",
+          "text": "Psychic feedback: a creature that hits you with a melee weapon or Taijutsu attack makes an Intelligence save (your Genjutsu DC). Failure: it falls Prone and drops its weapon. Critical failure: also speed 0 until the end of its next turn. It takes 2d6 psychic damage on a failure, 4d6 on a critical failure."
+        },
+        {
+          "key": "note",
+          "text": "You have 5 DR against psychic damage."
+        }
+      ],
+      "amp1f": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.70.0"
+  },
+  "_key": "!items!n5eAmpe52b52e416"
+}

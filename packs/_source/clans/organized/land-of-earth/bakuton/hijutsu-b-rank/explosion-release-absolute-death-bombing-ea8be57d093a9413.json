@@ -17,7 +17,184 @@
         "cost": "14 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Inhale, Tactile), Lightning Release, Earth Release",
         "components": "HS, CM, M"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Poison in place of force on a success or failure: change the type when you roll."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eBQQj6xwIo0SLx",
+              "type": "save",
+              "label": "Absolute Death Bombing",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 3d6 force or poison.",
+                  "failure": "Failure: 6d6 force or poison, and Weakened.",
+                  "critFailure": "Critical Failure: 9d6 force, Weakened and Staggered."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                },
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                }
+              ],
+              "text": "A 30-foot radius on a space within range.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eGfBPESuJy6t2r",
+              "type": "damage",
+              "label": "Absolute Death Bombing: success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eaZzb2XaMpQ7Yn",
+              "type": "damage",
+              "label": "Absolute Death Bombing: failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (1d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5epvHGA6tAEoYp7",
+              "type": "damage",
+              "label": "Absolute Death Bombing: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(9d6) + (1d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eBQQj6xwIo0SLx",
+              "type": "save",
+              "label": "Absolute Death Bombing",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 3d6 force or poison.",
+                  "failure": "Failure: 6d6 force or poison, and Weakened.",
+                  "critFailure": "Critical Failure: 9d6 force, Weakened and Staggered."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Weakened"
+                },
+                {
+                  "key": "staggered",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Staggered"
+                }
+              ],
+              "text": "A 30-foot radius on a space within range.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eGfBPESuJy6t2r",
+              "type": "damage",
+              "label": "Absolute Death Bombing: success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eaZzb2XaMpQ7Yn",
+              "type": "damage",
+              "label": "Absolute Death Bombing: failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (2d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5epvHGA6tAEoYp7",
+              "type": "damage",
+              "label": "Absolute Death Bombing: critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(9d6) + (2d6)",
+                    "type": "force"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "splitInto": [
+        "bakuton-explosion-release-clay-centipede",
+        "bakuton-explosion-release-chain-reaction-blitz"
+      ]
     }
   },
   "ownership": {
@@ -25,7 +202,7 @@
   },
   "system": {
     "identifier": "bakuton-explosion-release-absolute-death-bombing",
-    "description": "<p>You create a small, volatile ball of chakra, hurling it into the air, where it flies towards a space you can see within range towards the ground and explodes in a 30-foot radius.</p>\n<p>Critical Success: Affected creatures is able to resist this jutsu’s effects</p>\n<p>Success: Affected creatures take 3d6 force or poison damage.</p>\n<p>Failure: Affected creatures take 6d6 force or poison damage and are Weakened.</p>\n<p>Critical Failure: Same as failure, but they take 9d6 force damage and are also Staggered.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and damage by 1d6.</p>\n<p>Explosion Release: Clay Centipede</p>\n<p>Classification: Hijutsu Rank: B-Rank Casting Time: 1 Action Range: 10 feet Duration: 1 minutes</p>\n<p>Components: HS, CM, CS Cost: 14 Chakra Keywords: Hijutsu, Ninjutsu, Lightning Release, Earth Release, Fuinjutsu, Artistic Branch Description: You mold clay, earth or another inorganic earthen substance into the shape of two centipedes of your description that seems to come to life temporarily listening to your commands known as a Clay Centipedes into a space of your choice within range.</p>\n<p>The Clay Centipede has the listed statistics found on its stat block at the end of this clan and uses your Ninjutsu attack bonus or Save DC when an effect calls for it. You can command them as an Action or Bonus action. You can have two Clay Centipedes active at a time.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3.</p>\n<p>Explosion Release: Chain Reaction Blitz</p>\n<p>Classification: Hijutsu Rank: B-Rank Casting Time: 1 Action Range: Special Duration: Instant</p>\n<p>Components: CM, M Cost: 12 Chakra Keywords: Hijutsu, Ninjutsu, Taijutsu, Lightning Release, Earth Release, Reckless Branch Description: You throw a string of chakra laced grenades into the air and use them as guiding lights for your assault. Select a number of creatures you can see, that you could reach with your movement speed as your throw a grenade at each of them. You then dash between each of them, striking the grenade in an attempt to blow each of them to smithereens.</p>\n<p>Make a melee Ninjutsu (or Taijutsu) attack against each chosen creature, dealing your [Unarmed Damage] +4d10 and forcing all creatures, excluding yourself, within 5 feet of the target to make a Dexterity saving throw, taking half the result on a failure or no damage on a success.</p>\n<p>If the original target(s) fail their saving throw, they don’t take half damage, but are instead Blinded, Deafened and Staggered until the end of their next turn.</p>\n<p>At the end of this jutsu’s casting, select a space adjacent to a hostile creature you attacked, and move there. This movement does not provoke attacks of opportunity.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3, damage by 1d10 and the size of the cone by 5 feet.</p>",
+    "description": "<p>You create a small, volatile ball of chakra, hurling it into the air, where it flies towards a space you can see within range towards the ground and explodes in a 30-foot radius.</p>\n<p>Critical Success: Affected creatures is able to resist this jutsu’s effects</p>\n<p>Success: Affected creatures take 3d6 force or poison damage.</p>\n<p>Failure: Affected creatures take 6d6 force or poison damage and are Weakened.</p>\n<p>Critical Failure: Same as failure, but they take 9d6 force damage and are also Staggered.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and damage by 1d6.</p>",
     "source": {
       "book": "Tsunade's Studies Compendium",
       "page": "",
@@ -106,13 +283,93 @@
     "upcast": {
       "preset": "standard3",
       "costPerRank": 3,
-      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and damage by 1d6.</p>\n<p>Explosion Release: Clay Centipede</p>\n<p>Classification: Hijutsu Rank: B-Rank Casting Time: 1 Action Range: 10 feet Duration: 1 minutes</p>\n<p>Components: HS, CM, CS Cost: 14 Chakra Keywords: Hijutsu, Ninjutsu, Lightning Release, Earth Release, Fuinjutsu, Artistic Branch Description: You mold clay, earth or another inorganic earthen substance into the shape of two centipedes of your description that seems to come to life temporarily listening to your commands known as a Clay Centipedes into a space of your choice within range.</p>\n<p>The Clay Centipede has the listed statistics found on its stat block at the end of this clan and uses your Ninjutsu attack bonus or Save DC when an effect calls for it. You can command them as an Action or Bonus action. You can have two Clay Centipedes active at a time.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3.</p>\n<p>Explosion Release: Chain Reaction Blitz</p>\n<p>Classification: Hijutsu Rank: B-Rank Casting Time: 1 Action Range: Special Duration: Instant</p>\n<p>Components: CM, M Cost: 12 Chakra Keywords: Hijutsu, Ninjutsu, Taijutsu, Lightning Release, Earth Release, Reckless Branch Description: You throw a string of chakra laced grenades into the air and use them as guiding lights for your assault. Select a number of creatures you can see, that you could reach with your movement speed as your throw a grenade at each of them. You then dash between each of them, striking the grenade in an attempt to blow each of them to smithereens.</p>\n<p>Make a melee Ninjutsu (or Taijutsu) attack against each chosen creature, dealing your [Unarmed Damage] +4d10 and forcing all creatures, excluding yourself, within 5 feet of the target to make a Dexterity saving throw, taking half the result on a failure or no damage on a success.</p>\n<p>If the original target(s) fail their saving throw, they don’t take half damage, but are instead Blinded, Deafened and Staggered until the end of their next turn.</p>\n<p>At the end of this jutsu’s casting, select a space adjacent to a hostile creature you attacked, and move there. This movement does not provoke attacks of opportunity.</p>\n<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3, damage by 1d10 and the size of the cone by 5 feet.</p>"
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3 and damage by 1d6.</p>"
     },
     "learned": {
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eBQQj6xwIo0SLx",
+        "type": "save",
+        "label": "Absolute Death Bombing",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: 3d6 force or poison.",
+            "failure": "Failure: 6d6 force or poison, and Weakened.",
+            "critFailure": "Critical Failure: 9d6 force, Weakened and Staggered."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          },
+          {
+            "key": "staggered",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Staggered"
+          }
+        ],
+        "text": "A 30-foot radius on a space within range.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eGfBPESuJy6t2r",
+        "type": "damage",
+        "label": "Absolute Death Bombing: success",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "force"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eaZzb2XaMpQ7Yn",
+        "type": "damage",
+        "label": "Absolute Death Bombing: failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": "force"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5epvHGA6tAEoYp7",
+        "type": "damage",
+        "label": "Absolute Death Bombing: critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "9d6",
+              "type": "force"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

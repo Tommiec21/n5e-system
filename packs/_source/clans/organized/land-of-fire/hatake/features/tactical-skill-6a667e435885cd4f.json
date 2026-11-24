@@ -9,7 +9,8 @@
   "flags": {
     "n5e": {
       "clanPackage": "hatake",
-      "sourceLine": 870
+      "sourceLine": 870,
+      "reviewed": true
     }
   },
   "ownership": {
@@ -42,6 +43,34 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eAESG6QJxYFEAp",
+        "type": "roll",
+        "label": "Tactical Skill: White Chakra",
+        "roll": {
+          "formula": "lvl(3:1d4,11:1d6)",
+          "note": "A skill check out of combat."
+        },
+        "cost": {
+          "pool": "whiteChakra",
+          "amount": 1
+        }
+      },
+      {
+        "id": "n5eLfufZfmNca9KV",
+        "type": "roll",
+        "label": "Tactical Skill: team workshop",
+        "roll": {
+          "formula": "",
+          "note": "A rank of Mastery per ally who can aid (up to 3), past level limits."
+        },
+        "cost": {
+          "pool": "commandDice",
+          "amount": 1
+        }
+      }
+    ]
   }
 }

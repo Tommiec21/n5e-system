@@ -345,17 +345,45 @@ const evalNumber = expr => {
  * @param {Item|null} [o.item]    source item (image, origin, description)
  * @param {number|null} [o.poolRoll]  the pool die rolled when paying the activity's cost
  */
-export async function applyActivityEffect(actor, eff, { label = "Effect", item = null, poolRoll = null, targetActors = null } = {}) {
+/** STD6f F-D3: put conditions (with ranks) and states on a creature this client owns. */
+export async function inflictOn(actor, inflicts = []) {
+  for ( const i of inflicts ) {
+    if ( i.kind === "state" ) await actor.toggleStatusEffect(i.key, { active: true });
+    else await actor.addCondition(i.key, Number(i.ranks) || 1);
+  }
+  return true;
+}
+
+export async function applyActivityEffect(actor, eff, { label = "Effect", item = null, poolRoll = null, targetActors = null, rank = "" } = {}) {
   // STD6d: class table values (@scale.medicalNin.channeledHealing) resolve from the caster's roll data.
   const rollData = actor.getRollData?.() ?? {};
   // ENG1a: and the caster's save DCs (@dc.nin), so an effect on another creature keeps the caster's numbers.
   const scale = v => v.replace(/@scale\.([\w.]+)/g, (m, p) => String(p.split(".").reduce((o, k) => o?.[k], rollData.scale) ?? 0))
     .replace(/@dc\.(nin|tai|gen|buki)\b/g, (m, d) => String(actor.system?.disciplines?.[d === "buki" ? "tai" : d]?.dc ?? 10));
-  const sub = v => resolveFormula(scale(String(v ?? "").replace(/@poolRoll/g, String(poolRoll ?? 0))), actor);
+  // AMP1f batch 4: "@disciplines.tai.mod" is the caster's discipline modifier when the effect is placed
+  // (Supreme Violence: + half your Taijutsu modifier to AC, "floor(@disciplines.tai.mod / 2)").
+  const sub = v => resolveFormula(scale(String(v ?? "").replace(/@poolRoll/g, String(poolRoll ?? 0))
+    .replace(/@disciplines\.(\w+)\.mod/g, (m, d) => String(Number(actor?.system?.disciplines?.[d]?.mod) || 0))
+    // STD6d Scout-Nin: the caster's proficiency bonus and ability modifiers (Squad-Mates: up to @prof;
+    // Elemental Aura: half the Constitution modifier).
+    .replace(/@prof\b/g, String(Number(actor?.system?.prof) || 0))
+    .replace(/@abilities\.(\w+)\.mod/g, (m, a) => String(Number(actor?.system?.abilities?.[a]?.mod) || 0))), actor);
   const targets = eff.target === "targets" ? (targetActors ?? targetedActors()) : [actor];
   if ( !targets.length ) {
     ui.notifications.info("Target the creatures first (T over a token).");
     return null;
+  }
+  // STD6f F-D3: conditions and states with no save ({inflicts: [{key, kind, ranks, label}]}): put on each
+  // target, through the GM's client for a creature this user doesn't own (no approval step).
+  if ( eff.inflicts?.length ) {
+    const { submitIntent } = await import("../automation/owner-intents.mjs");
+    for ( const t of targets ) {
+      if ( t.isOwner ) await inflictOn(t, eff.inflicts);
+      else await submitIntent(actor, "inflictConditions", { targetUuid: t.uuid, inflicts: eff.inflicts });
+    }
+    if ( !eff.condition && !eff.amp && !(eff.changes ?? []).length && !eff.expires && !eff.state && !eff.rules?.length && !eff.tempHp ) {
+      return say(actor, `<b>${esc(eff.name || label)}</b>: ${esc(eff.inflicts.map(i => i.label || i.key).join(", "))} on ${esc(targets.map(t => t.name).join(", "))}`);
+    }
   }
   // CCOND1: an effect activity naming a condition card ({condition: key}) applies that condition
   // instead (owner warning, GM relay for creatures this user doesn't own, ends with the applier).
@@ -371,10 +399,13 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
   // AMP1a: an effect activity naming an Amp card ({amp: key}) starts that Amp (King Q-A2 confirmation,
   // uses and cooldown, GM relay for creatures this user doesn't own).
   if ( eff.amp ) {
-    const { applyAmp } = await import("./amp-cards.mjs");
+    const { applyAmp, pickAmpOption } = await import("./amp-cards.mjs");
     const done = [];
+    const choice = targets.length > 1 ? await pickAmpOption(eff.amp, actor, rank) : null;
+    if ( choice === false ) return null;
     for ( const t of targets ) {
-      try { if ( await applyAmp(t, eff.amp, { applier: actor, item }) ) done.push(t.name); }
+      // AMP1f: a jutsu's Amp starts at the version for the rank it was cast at (and asks for one pick, not one per target).
+      try { if ( await applyAmp(t, eff.amp, { applier: actor, item, rank, choice }) ) done.push(t.name); }
       catch(e) { ui.notifications.warn(e.message); }
     }
     return done.length ? { applied: done } : null;
@@ -382,17 +413,20 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
   const now = nowTurn();
   const changes = (eff.changes ?? []).map(c => {
     const v = sub(c.value);
-    return { key: c.key, mode: c.mode ?? 2, value: /^[-+*/\d\s().]+$/.test(v) ? String(evalNumber(v)) : v };
+    return { key: c.key, mode: c.mode ?? 2, value: /^(?:[-+*/\d\s().]|floor|ceil)+$/.test(v) ? String(evalNumber(v)) : v };
   });
   // Duration: the given seconds; otherwise 2 rounds for turn-ended effects (a safety net if the turn
   // hook never runs, e.g. out of combat) and 1 minute for the rest.
   const seconds = eff.seconds || (eff.expires ? 12 : 60);
   const data = { name: eff.name || label, img: eff.img || item?.img || "icons/svg/aura.svg", origin: item?.uuid ?? null, changes,
+    // AMP1f batch 3: statuses the effect carries while it lasts (an Amp's Invisible).
+    ...(eff.statuses?.length ? { statuses: [...eff.statuses] } : {}),
     description: item?.system?.description ? `<p>From ${esc(actor.name)}'s ${esc(item.name)}.</p>` : "",
     // AMP1d: a card that lasts until dismissed gets no duration.
     duration: eff.permanent ? { startTime: game.time.worldTime } : { seconds, rounds: Math.ceil(seconds / 6), startTime: game.time.worldTime, startRound: game.combat?.round ?? null, startTurn: game.combat?.turn ?? null },
     flags: { n5e: { expires: eff.expires ? { at: eff.expires, sourceUuid: actor.uuid, placed: now } : null,
       state: eff.state || null, exclusive: eff.exclusive || null,
+      ...(eff.ampChoice?.length ? { ampChoice: eff.ampChoice } : {}),
       // AMP1a: what ends an Amp card's effect (rules/amp-cards.mjs ampsEndingOn; King Q-A5).
       ...(eff.ampKey ? { ampEnds: [...(eff.endsOn ?? []), ...(eff.until === "combatEnd" || eff.until === "rest" ? [eff.until] : [])] } : {}),
       // STD6d: class table values ("@scale.…") become numbers here; lvl(...) values are read at roll time.
@@ -405,10 +439,10 @@ export async function applyActivityEffect(actor, eff, { label = "Effect", item =
       ...(eff.limit ? { mark: { sourceUuid: actor.uuid, name: eff.name || label } } : {}),
       // ENG1d: an aura; its child effect's element fields keep the caster's numbers too.
       ...(eff.aura?.radius ? { aura: { ...eff.aura, effect: eff.aura.effect ? { ...eff.aura.effect, rules: (eff.aura.effect.rules ?? []).map(r => Object.fromEntries(Object.entries(r).map(([k, v]) =>
-        [k, typeof v === "string" && /@(scale|dc|level)/.test(v) ? (["value", "dc", "amount"].includes(k) ? Number(evalNumber(sub(v))) || 0 : sub(v)) : v]))) } : undefined } } : {}),
+        [k, typeof v === "string" && /@(scale|dc|level|prof|abilities|disciplines)/.test(v) ? (["value", "dc", "amount"].includes(k) ? Number(evalNumber(sub(v))) || 0 : sub(v)) : v]))) } : undefined } } : {}),
       // Effects of a concentration jutsu end with that concentration (CONC1; effect-application.mjs).
       dependentOn: item?.system?.duration?.concentration ? { actorUuid: actor.uuid, itemId: item.id } : null } } };
-  if ( eff.ampType || eff.ampKey ) Object.assign(data, { type: "amp", system: { ampType: eff.ampType ?? "", key: eff.ampKey ?? "", sourceUuid: actor.uuid } });
+  if ( eff.ampType || eff.ampKey ) Object.assign(data, { type: "amp", system: { ampType: eff.ampType ?? "", key: eff.ampKey ?? "", sourceUuid: actor.uuid, outsideLimits: !!eff.outsideLimits } });
   const notes = [];
   if ( eff.limit ) {
     const max = Math.max(1, Number(evalNumber(sub(String(eff.limit)))) || 1);

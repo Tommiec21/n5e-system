@@ -85,38 +85,28 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5efgeO1ppSAYKsA",
         "type": "attack",
-        "label": "Attack",
+        "label": "Twinshot",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "One roll against two creatures; each makes Perception against your attack roll: failing, no jutsu temporary hit points or DR. Chain 3: advantage against Physical or Sensory conditions; a critical hit lets you recast it at others.",
         "damage": {
-          "parts": []
-        },
-        "strike": {
-          "kind": "weapon",
-          "extraDice": "",
-          "dieSteps": 0,
-          "pierce": 0,
-          "maximize": false,
-          "attacks": "1"
+          "parts": [
+            {
+              "formula": "@weapon + @weapon + 2d8",
+              "type": ""
+            }
+          ]
         }
       },
       {
-        "id": "chain-2-parsed1",
+        "id": "n5em7Hj8yDCXMaf4",
         "type": "save",
-        "label": "Chain 2: Save",
-        "inflicts": [
-          {
-            "key": "bleed",
-            "kind": "condition",
-            "ranks": 5,
-            "label": "Bleed"
-          }
-        ],
+        "label": "Chain 2: Bleed",
         "save": {
           "abilities": [
             "con"
@@ -125,21 +115,19 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 5,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Chain 2. Failure: 5 Bleed.",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "2d8",
-        "roll": {
-          "formula": "2d8",
-          "note": "On hit, chosen enemies take you [Weapons damage] + [Weapons damage] + 2d8 damage."
         }
       }
     ],
@@ -235,38 +223,28 @@
         "activitiesByRank": {
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5efgeO1ppSAYKsA",
               "type": "attack",
-              "label": "Attack",
+              "label": "Twinshot",
               "attack": {
-                "discipline": "tai",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "One roll against two creatures; each makes Perception against your attack roll: failing, no jutsu temporary hit points or DR. Chain 3: advantage against Physical or Sensory conditions; a critical hit lets you recast it at others.",
               "damage": {
-                "parts": []
-              },
-              "strike": {
-                "kind": "weapon",
-                "extraDice": "1d8",
-                "dieSteps": 0,
-                "pierce": 0,
-                "maximize": false,
-                "attacks": "1"
+                "parts": [
+                  {
+                    "formula": "(@weapon + @weapon + 2d8) + (1d8)",
+                    "type": ""
+                  }
+                ]
               }
             },
             {
-              "id": "chain-2-parsed1",
+              "id": "n5em7Hj8yDCXMaf4",
               "type": "save",
-              "label": "Chain 2: Save",
-              "inflicts": [
-                {
-                  "key": "bleed",
-                  "kind": "condition",
-                  "ranks": 5,
-                  "label": "Bleed"
-                }
-              ],
+              "label": "Chain 2: Bleed",
               "save": {
                 "abilities": [
                   "con"
@@ -275,27 +253,26 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 5,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Chain 2. Failure: 5 Bleed.",
               "damage": {
                 "parts": []
-              }
-            },
-            {
-              "id": "sourceRoll3",
-              "type": "roll",
-              "label": "2d8",
-              "roll": {
-                "formula": "2d8",
-                "note": "On hit, chosen enemies take you [Weapons damage] + [Weapons damage] + 2d8 damage."
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "26d6e19825ba0550"

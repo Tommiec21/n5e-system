@@ -17,7 +17,24 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile)",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "castOptions": [
+        {
+          "label": "Bright",
+          "appliesTo": {
+            "namePrefix": "Shadow Imitation Field"
+          },
+          "note": "Bright time of day (GM's call): −1 on their saves."
+        },
+        {
+          "label": "Dimly Lit",
+          "appliesTo": {
+            "namePrefix": "Shadow Imitation Field"
+          },
+          "note": "Dimly lit time of day (GM's call): Shadow Bound creatures take 3d12 bludgeoning or necrotic at the start of each of their turns."
+        }
+      ]
     }
   },
   "ownership": {
@@ -109,7 +126,35 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eXBqrCxj240UUE",
+        "type": "save",
+        "label": "Shadow Imitation Field",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "nara-shadow-bound",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shadow Bound"
+          }
+        ],
+        "text": "Creatures on your surface in a 20-foot radius on you (+5 feet per rank). Failure: Shadow Bound for the duration; on its turn it can save Strength to break free.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

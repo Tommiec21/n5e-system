@@ -17,6 +17,137 @@
         "cost": "14 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Genjutsu (Tactile)",
         "components": "HS, CM"
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eXC6qKdvTVJHkF",
+              "type": "attack",
+              "label": "Shadow Drill",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Action, reach 10 feet; piercing or necrotic. On a hit, its next Strength save has disadvantage.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (1d8)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ejSrEPiCMqkLPB",
+              "type": "save",
+              "label": "Sea of Spears",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "nara-shadow-bound",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shadow Bound"
+                }
+              ],
+              "text": "Action: creatures you choose within 10 feet; piercing or necrotic. Failure: Shadow Bound until the end of its next turn; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (1d8)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ev5p5EOn1ZGW9I",
+              "type": "heal",
+              "label": "Shadow Barrier",
+              "heal": {
+                "formula": "3d12 + 8",
+                "pool": "tempHp"
+              },
+              "text": "Action: up to two willing allies within 30 feet, until the start of your next turn."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eXC6qKdvTVJHkF",
+              "type": "attack",
+              "label": "Shadow Drill",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Action, reach 10 feet; piercing or necrotic. On a hit, its next Strength save has disadvantage.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d8) + (2d8)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ejSrEPiCMqkLPB",
+              "type": "save",
+              "label": "Sea of Spears",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "nara-shadow-bound",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shadow Bound"
+                }
+              ],
+              "text": "Action: creatures you choose within 10 feet; piercing or necrotic. Failure: Shadow Bound until the end of its next turn; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (2d8)",
+                    "type": "piercing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ev5p5EOn1ZGW9I",
+              "type": "heal",
+              "label": "Shadow Barrier",
+              "heal": {
+                "formula": "3d12 + 8",
+                "pool": "tempHp"
+              },
+              "text": "Action: up to two willing allies within 30 feet, until the start of your next turn."
+            }
+          ]
+        }
       }
     }
   },
@@ -109,7 +240,69 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eXC6qKdvTVJHkF",
+        "type": "attack",
+        "label": "Shadow Drill",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Action, reach 10 feet; piercing or necrotic. On a hit, its next Strength save has disadvantage.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d8",
+              "type": "piercing"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ejSrEPiCMqkLPB",
+        "type": "save",
+        "label": "Sea of Spears",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "nara-shadow-bound",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shadow Bound"
+          }
+        ],
+        "text": "Action: creatures you choose within 10 feet; piercing or necrotic. Failure: Shadow Bound until the end of its next turn; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "piercing"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ev5p5EOn1ZGW9I",
+        "type": "heal",
+        "label": "Shadow Barrier",
+        "heal": {
+          "formula": "3d12 + 8",
+          "pool": "tempHp"
+        },
+        "text": "Action: up to two willing allies within 30 feet, until the start of your next turn."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

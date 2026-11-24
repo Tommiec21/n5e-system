@@ -85,10 +85,26 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5eAQrs8aSqWErJE",
+        "type": "attack",
+        "label": "Multipoint Strike",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 3
+        },
+        "text": "Your [Weapon damage] die only (no modifier: subtract it by hand). Chain 1, 2+ hits: +20 speed and no opportunity attacks from it this turn.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "weapon",
+          "extraDice": "",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "3"
+        }
       }
     ],
     "featureType": "active",
@@ -165,7 +181,14 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "B-Rank: +2 bonus damage dice; S-Rank: +4 (add your weapon's dice by hand)."
+        }
+      ]
     }
   },
   "folder": "c23989398aafdb46"

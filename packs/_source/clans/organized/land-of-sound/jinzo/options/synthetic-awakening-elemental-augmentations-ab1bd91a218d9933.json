@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "jinzo",
       "sourceLine": 7253,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Fire: a cube, sphere, cylinder or radius area +5 feet. One effect if the jutsu has several releases."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,64 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eXpOQorX924zft",
+        "type": "save",
+        "label": "Water Augmentation",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "jinzo-doused",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Doused"
+          }
+        ],
+        "text": "Once per turn, a Water jutsu without an Elemental condition: affected creatures. Failure: Doused (1 rank; on a jutsu with a save, on its failure). 7th: Elemental-condition jutsu add 1 rank; 11th: +1 rank.",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eKqNH4PMxJkwCk",
+        "type": "save",
+        "label": "Lightning Augmentation",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "jinzo-stupor",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Stupor"
+          }
+        ],
+        "text": "Once per turn, a Lightning jutsu's Overcharge (or its own failed save): Stupor.",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

@@ -17,7 +17,31 @@
         "cost": "9 Chakra",
         "keywords": "Hijutsu, Bukijutsu, Chain",
         "components": "W (Any Melee), M"
-      }
+      },
+      "notAmp": "An instant attack; its temporary hit points and chakra have no lasting rider (King, AMP1f batch 2).",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1d12 per rank (add it). Roll your [Weapons Damage] for the damage."
+        }
+      ],
+      "castOptions": [
+        {
+          "label": "Ideal Cut",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Senta Piercing"
+          },
+          "note": "With your Executioners Instrument: roll Severed's d6 twice and pick; an already Severed creature can take the rolled result too, instead of Shaken."
+        },
+        {
+          "label": "Tao (7th)",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Senta Piercing"
+          },
+          "note": "With your Executioners Instrument, from 7th level (not with Ideal Cut, unless The Middle Path's Bonus action): temporary hit points and chakra, 1d6 per failing creature, for 1 minute."
+        }
+      ]
     }
   },
   "ownership": {
@@ -108,7 +132,45 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eFeKO5FWgvEMUN",
+        "type": "save",
+        "label": "Senta Piercing",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "yamada-asaemon-discipline",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Severed"
+          }
+        ],
+        "text": "A 30-foot line. Failure: [Weapons Damage] and Severed.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5e8WLaSnCe1ZQ9F",
+        "type": "heal",
+        "label": "Tao: drain",
+        "heal": {
+          "formula": "1d6",
+          "pool": "tempHp"
+        },
+        "text": "Per failing creature: temporary hit points and chakra for 1 minute (roll once per creature)."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai"

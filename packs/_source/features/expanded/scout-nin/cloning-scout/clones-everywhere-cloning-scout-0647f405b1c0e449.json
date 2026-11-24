@@ -33,13 +33,47 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eZiEcdZoEuaheZ",
+        "type": "save",
+        "label": "Clones Everywhere",
+        "oncePerTurn": true,
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "nin"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "scout-disoriented",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Disoriented"
+          }
+        ],
+        "text": "Once per turn with a clone or Bunshin active, a hit by you, a clone or a Bunshin Strike: a Wisdom save against your Stealth DC or Disoriented (until the end of its turn)."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The save uses your Stealth DC (8 + your Stealth bonus); the button uses your Ninjutsu DC, so adjust at the table. Downtime to learn, create or modify jutsu is reduced by the jutsu's rank."
+        }
+      ]
     }
   },
   "ownership": {

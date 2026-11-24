@@ -84,30 +84,76 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5erFFX47dfzqOit",
         "type": "attack",
-        "label": "Attack",
+        "label": "Violent Strangling",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "On a hit: grappled and restrained, no hand seals, 1 Exhaustion.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eJxSAZ53s40ukS",
+        "type": "effect",
+        "label": "On a hit",
+        "effect": {
+          "name": "Strangled",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "grappled",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Grappled"
+            },
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            },
+            {
+              "key": "exhaustion",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Exhaustion"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eFGKaNLXfkDZlm",
+        "type": "effect",
+        "label": "End of its turns: 2 Exhaustion",
+        "effect": {
+          "name": "Exhaustion",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "exhaustion",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Exhaustion"
+            }
+          ]
+        },
+        "text": "At the end of each of its turns."
+      },
+      {
+        "id": "n5eGYOwd19rGwOdL",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "exhaustion",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Exhaustion"
-          }
-        ],
+        "label": "Escape (its Action)",
         "save": {
           "abilities": [
             "str"
@@ -116,10 +162,10 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Success: free; it loses the Exhaustion from this jutsu.",
         "damage": {
           "parts": []
         }
@@ -189,7 +235,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ee1379d61e3505ec"

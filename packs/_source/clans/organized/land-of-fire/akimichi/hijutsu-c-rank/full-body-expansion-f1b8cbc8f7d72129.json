@@ -17,7 +17,29 @@
         "cost": "8 Chakra or 4 Calories",
         "keywords": "Hijutsu, Ninjutsu",
         "components": "HS, CM"
-      }
+      },
+      "reviewed": true,
+      "castOptions": [
+        {
+          "label": "Pay with Calories (4)",
+          "appliesTo": {
+            "namePrefix": "Full-Body-Expansion"
+          },
+          "note": "Cast it for 4 Calories instead of chakra (its upcast may add Calories: spend them by hand).",
+          "costDelta": "zero",
+          "cost": {
+            "pool": "calories",
+            "amount": 4
+          }
+        },
+        {
+          "label": "Expansion Crash",
+          "appliesTo": {
+            "namePrefix": "Full-Body-Expansion"
+          },
+          "note": "In your Expansion Technique stance: unarmed and weapon damage die +1 step."
+        }
+      ]
     }
   },
   "ownership": {
@@ -107,7 +129,32 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eHACyI0v1YFWTC",
+        "type": "effect",
+        "label": "Full-Body Expansion",
+        "effect": {
+          "name": "Full-Body Expansion",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.damage.unarmed",
+              "value": "1d6",
+              "mode": 2
+            },
+            {
+              "key": "n5e.damage.weapon",
+              "value": "1d6",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Concentration: Large (A-Rank: Huge, 2d6); advantage on Strength checks and saves; unarmed and weapon damage +1d6."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

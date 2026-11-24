@@ -85,30 +85,38 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eugTQVU05Z56DN",
         "type": "attack",
-        "label": "Attack",
+        "label": "Heaven Earth Impact",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "At disadvantage. +1 creature per rank above B.",
         "damage": {
-          "parts": []
-        },
-        "strike": {
-          "kind": "weapon",
-          "extraDice": "",
-          "dieSteps": 0,
-          "pierce": 0,
-          "maximize": false,
-          "attacks": "1"
+          "parts": [
+            {
+              "formula": "@weapon + @weapon + 2d6",
+              "type": ""
+            }
+          ]
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5ekQFRkBJIDiKyC",
         "type": "save",
-        "label": "Save",
+        "label": "Heaven Earth: buried",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "prone",
@@ -123,6 +131,15 @@
             "label": "Restrained"
           }
         ],
+        "text": "On a hit. Failure: Prone and Restrained; resave at the end of each of its turns.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5e4cElpHYgZuPTn",
+        "type": "save",
+        "label": "Chain 2: shockwave",
         "save": {
           "abilities": [
             "str"
@@ -131,18 +148,8 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
-        "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "chain-2-parsed1",
-        "type": "save",
-        "label": "Chain 2: Save",
         "inflicts": [
           {
             "key": "prone",
@@ -151,29 +158,9 @@
             "label": "Prone"
           }
         ],
-        "save": {
-          "abilities": [
-            "str"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Chain 2: creatures but you within 10 feet of the target. Failure: pushed 20 feet and Prone.",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "On a hit you deal your [Weapons damage] + [Weapons damage] + 2d6 and the affected creature must make a Strength Saving Throw, becoming Prone and Restrained into the ground. At the end of each of their turns, they can remake the Strength saving throw to end the Restrained condition."
         }
       }
     ],
@@ -262,7 +249,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "f69fa4fab70e66b3"

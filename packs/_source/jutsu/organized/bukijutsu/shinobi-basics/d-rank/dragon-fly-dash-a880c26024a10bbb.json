@@ -85,25 +85,22 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eQKNGwb2sMxCPP",
         "type": "attack",
-        "label": "Attack",
+        "label": "Dragon Fly Dash (ally's attack)",
         "attack": {
-          "discipline": "tai",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Throw your weapon to a willing creature within 60 feet; its reaction: one melee attack with its own statistics (Chain 1: two), then it returns the weapon.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d8",
-        "roll": {
-          "formula": "2d8",
-          "note": "The target creature can spend their reaction to make one melee taijutsu attack, targeting a creature in their range, dealing the weapons damage +2d8 using their statistics and immediately return the weapon back to you as part of the same action."
+          "parts": [
+            {
+              "formula": "@weapon + 2d8",
+              "type": ""
+            }
+          ]
         }
       }
     ],
@@ -184,9 +181,101 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eQKNGwb2sMxCPP",
+              "type": "attack",
+              "label": "Dragon Fly Dash (ally's attack)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Throw your weapon to a willing creature within 60 feet; its reaction: one melee attack with its own statistics (Chain 1: two), then it returns the weapon.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 2d8) + (1d8)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eQKNGwb2sMxCPP",
+              "type": "attack",
+              "label": "Dragon Fly Dash (ally's attack)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Throw your weapon to a willing creature within 60 feet; its reaction: one melee attack with its own statistics (Chain 1: two), then it returns the weapon.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 2d8) + (2d8)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eQKNGwb2sMxCPP",
+              "type": "attack",
+              "label": "Dragon Fly Dash (ally's attack)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Throw your weapon to a willing creature within 60 feet; its reaction: one melee attack with its own statistics (Chain 1: two), then it returns the weapon.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 2d8) + (3d8)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eQKNGwb2sMxCPP",
+              "type": "attack",
+              "label": "Dragon Fly Dash (ally's attack)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Throw your weapon to a willing creature within 60 feet; its reaction: one melee attack with its own statistics (Chain 1: two), then it returns the weapon.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@weapon + 2d8) + (4d8)",
+                    "type": ""
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The ally rolls the attack with its own bonus; the damage button uses your weapon."
+        }
+      ]
     }
   },
   "folder": "1b8bbde86064544a"

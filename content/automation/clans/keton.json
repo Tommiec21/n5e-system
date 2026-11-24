@@ -1,0 +1,1883 @@
+{
+  "clan": "keton",
+  "spec": "docs/STD6e_SPEC.md",
+  "reviewed": "2026-11-21",
+  "features": {
+    "keton-event-horizon": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ePWoltf0HAOI4q",
+          "type": "effect",
+          "label": "Event Horizon",
+          "effect": {
+            "name": "Event Horizon",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 60,
+            "amp": "event-horizon"
+          },
+          "text": "Bonus action, 4 Stellar Charges, consuming up to 4 Starlights (dispelled; spend them from the Starlights pool): up to 1 minute, once per long rest.",
+          "activation": "bonus",
+          "cost": {
+            "pool": "stellarCharges",
+            "amount": 4
+          }
+        },
+        {
+          "id": "n5e0wccgxSvsV0Kx",
+          "type": "roll",
+          "label": "Consume Starlights",
+          "roll": {
+            "formula": "",
+            "note": "The Starlights the Event Horizon consumes (its benefits by count)."
+          },
+          "cost": {
+            "pool": "starlights",
+            "choose": true
+          }
+        }
+      ],
+      "system": {
+        "uses": {
+          "max": "1",
+          "spent": 0,
+          "per": "lr",
+          "recharge": "",
+          "staminaEligible": false
+        }
+      }
+    },
+    "keton-plasma-fission-fusion": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e4wT5HTkquhmbC",
+          "type": "save",
+          "label": "Starlight Fission: radiation",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "keton-convergence",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Convergence"
+            }
+          ],
+          "text": "In place of a new Starlight at the start of your turn. Hostile creatures starting their turn within 20 feet. Failure: Convergence and 3 ranks of Dazzled, Weakened or Concussed (pick).",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5echxQaCXypTBKC",
+          "type": "save",
+          "label": "Starlight Fission: explosion",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "At the start of your next turn: all creatures in a 20-foot radius.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "8d6",
+                "type": "fire"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Starlight Fusion: two Starlights fuse at a point within 120 feet until the start of your next turn (light 40 feet, dim 40 more); effects from it gain a rank of Mastery to attacks and +1 to its save DC (2 and +2 by fusing a third). Fission's damage can be fire or lightning."
+        }
+      ]
+    },
+    "keton-plasma-release-light-binding-step": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "ampd954b785b5df8",
+          "type": "effect",
+          "label": "Plasma Release: Light Binding Step",
+          "effect": {
+            "name": "Plasma Release: Light Binding Step",
+            "target": "self",
+            "amp": "jutsu-keton-plasma-release-light-binding-step"
+          },
+          "text": "Starts the jutsu's Amp at the rank it was cast at."
+        },
+        {
+          "id": "n5e9ZzrcgIWRIX5P",
+          "type": "save",
+          "label": "Light Binding Step: seal eyes",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Action, standing in a Starlight's light: a hostile creature within 60 feet. Failure: creatures more than 30 feet from it are Invisible to it; resave at the end of each of its turns.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its Amp button stays (+30 speed, ranged attacks against you at disadvantage). Its upcast's special reaction line is a mistake and isn't there (King Q-F14). S-Rank: speed tripled."
+        }
+      ]
+    },
+    "keton-plasma-release-manifestation": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "You gain the release you didn't pick for Plasma Release Affinity (set it on the sheet); Fire or Lightning jutsu can swap their damage between fire and lightning when you roll. Two ranks of Mastery on social checks with natives of the Land of Lightning or those who know your clan's station."
+        }
+      ]
+    },
+    "keton-plasma-release-nova-ascension": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eymDJB3FSm5ZG2",
+          "type": "effect",
+          "label": "Nova Ascension",
+          "effect": {
+            "name": "Nova Ascension",
+            "target": "targets",
+            "changes": [
+              {
+                "key": "system.bonuses.ac",
+                "value": "1",
+                "mode": 2
+              }
+            ],
+            "expires": "",
+            "seconds": 60
+          },
+          "text": "Willing allies in a 15-foot radius: +1 AC; Bonus action teleport into a Starlight's light within 60 feet; once per turn, a melee attacker saves Constitution or is Dazzled."
+        },
+        {
+          "id": "n5etNBFI3fvX0yBI",
+          "type": "save",
+          "label": "Nova Ascension: melee attacker",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            }
+          ],
+          "text": "Failure: Dazzled.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "A-Rank or higher: Stable."
+        }
+      ]
+    },
+    "keton-plasma-release-plasma-beam": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ewLGX3rPRFFAk7",
+          "type": "attack",
+          "label": "Plasma Beam",
+          "attack": {
+            "discipline": "discipline",
+            "range": "ranged",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d8",
+                "type": "fire"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eORlcUEtnzvHBR",
+          "type": "save",
+          "label": "Plasma Beam: on a hit",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "keton-convergence",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Convergence"
+            }
+          ],
+          "text": "Failure: Convergence until the start of your next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1 attack per rank."
+        }
+      ]
+    },
+    "keton-plasma-release-plasma-cage": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eIdgx8159MlJSu",
+          "type": "save",
+          "label": "Plasma Cage",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Failure: caged (a 5-foot space; 15-foot cube and all creatures in it at B-Rank, 25 at S); the cage has 20 hit points (+8 per rank) and AC 15.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5euc8JyJf4hyxGM",
+          "type": "damage",
+          "label": "Plasma Cage: leaving or striking",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "fire"
+              }
+            ]
+          },
+          "text": "It tries to leave by moving or attacks the cage."
+        },
+        {
+          "id": "n5ei94okHPYQZ0Xe",
+          "type": "save",
+          "label": "Plasma Cage: burn",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "burned",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Burned"
+            }
+          ],
+          "text": "Failure: Burned.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eIdgx8159MlJSu",
+                "type": "save",
+                "label": "Plasma Cage",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Failure: caged (a 5-foot space; 15-foot cube and all creatures in it at B-Rank, 25 at S); the cage has 20 hit points (+8 per rank) and AC 15.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5euc8JyJf4hyxGM",
+                "type": "damage",
+                "label": "Plasma Cage: leaving or striking",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (1d6)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "It tries to leave by moving or attacks the cage."
+              },
+              {
+                "id": "n5ei94okHPYQZ0Xe",
+                "type": "save",
+                "label": "Plasma Cage: burn",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "Failure: Burned.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eIdgx8159MlJSu",
+                "type": "save",
+                "label": "Plasma Cage",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Failure: caged (a 5-foot space; 15-foot cube and all creatures in it at B-Rank, 25 at S); the cage has 20 hit points (+8 per rank) and AC 15.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5euc8JyJf4hyxGM",
+                "type": "damage",
+                "label": "Plasma Cage: leaving or striking",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (2d6)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "It tries to leave by moving or attacks the cage."
+              },
+              {
+                "id": "n5ei94okHPYQZ0Xe",
+                "type": "save",
+                "label": "Plasma Cage: burn",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "Failure: Burned.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eIdgx8159MlJSu",
+                "type": "save",
+                "label": "Plasma Cage",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Failure: caged (a 5-foot space; 15-foot cube and all creatures in it at B-Rank, 25 at S); the cage has 20 hit points (+8 per rank) and AC 15.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5euc8JyJf4hyxGM",
+                "type": "damage",
+                "label": "Plasma Cage: leaving or striking",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (3d6)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "It tries to leave by moving or attacks the cage."
+              },
+              {
+                "id": "n5ei94okHPYQZ0Xe",
+                "type": "save",
+                "label": "Plasma Cage: burn",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "Failure: Burned.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eIdgx8159MlJSu",
+                "type": "save",
+                "label": "Plasma Cage",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Failure: caged (a 5-foot space; 15-foot cube and all creatures in it at B-Rank, 25 at S); the cage has 20 hit points (+8 per rank) and AC 15.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5euc8JyJf4hyxGM",
+                "type": "damage",
+                "label": "Plasma Cage: leaving or striking",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (4d6)",
+                      "type": "fire"
+                    }
+                  ]
+                },
+                "text": "It tries to leave by moving or attacks the cage."
+              },
+              {
+                "id": "n5ei94okHPYQZ0Xe",
+                "type": "save",
+                "label": "Plasma Cage: burn",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "burned",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Burned"
+                  }
+                ],
+                "text": "Failure: Burned.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "keton-plasma-release-plasma-flash": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eGpPwGNWyzXLWp",
+          "type": "save",
+          "label": "Plasma Flash",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            }
+          ],
+          "text": "Reaction, you are struck by an attack: all creatures in a 10-foot radius. Failure: Blinded until the start of your next turn (an action ends it early).",
+          "activation": "reaction",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "keton-plasma-release-plasma-straight": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eFuv1IiYeHk5Ir",
+          "type": "attack",
+          "label": "Plasma Straight",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "fire"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5ePSA6bJO6s7UeO",
+          "type": "save",
+          "label": "Plasma Straight: on a hit",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "Failure: it counts as a Starlight until the end of your next turn (not against your maximum).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "B-Rank: a second attack on a different creature; S-Rank: a third."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "C": [
+              {
+                "id": "n5eFuv1IiYeHk5Ir",
+                "type": "attack",
+                "label": "Plasma Straight",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (1d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ePSA6bJO6s7UeO",
+                "type": "save",
+                "label": "Plasma Straight: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Failure: it counts as a Starlight until the end of your next turn (not against your maximum).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "B": [
+              {
+                "id": "n5eFuv1IiYeHk5Ir",
+                "type": "attack",
+                "label": "Plasma Straight",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (2d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ePSA6bJO6s7UeO",
+                "type": "save",
+                "label": "Plasma Straight: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Failure: it counts as a Starlight until the end of your next turn (not against your maximum).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5eFuv1IiYeHk5Ir",
+                "type": "attack",
+                "label": "Plasma Straight",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (3d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ePSA6bJO6s7UeO",
+                "type": "save",
+                "label": "Plasma Straight: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Failure: it counts as a Starlight until the end of your next turn (not against your maximum).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eFuv1IiYeHk5Ir",
+                "type": "attack",
+                "label": "Plasma Straight",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 1
+                },
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (4d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5ePSA6bJO6s7UeO",
+                "type": "save",
+                "label": "Plasma Straight: on a hit",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "Failure: it counts as a Starlight until the end of your next turn (not against your maximum).",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "keton-plasma-release-solar-prominence": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ezHd3qfk73xYFR",
+          "type": "save",
+          "label": "Solar Prominence: Dexterity",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "keton-convergence",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Convergence"
+            }
+          ],
+          "text": "Needs 1+ Starlight; each detonates in a 20-foot radius (two or more: disadvantage), then all are dispelled. Failure: the damage and Convergence until the end of your next turn.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d10",
+                "type": "fire"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eaCZCGvvEGnGXO",
+          "type": "save",
+          "label": "Solar Prominence: Constitution",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            },
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 3,
+              "label": "Dazzled"
+            },
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            }
+          ],
+          "text": "Failure: Blinded, 3 ranks of Dazzled and Dazed for 1 minute (a Constitution save ends Blinded and Dazed).",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5egOShhqirfItIr",
+          "type": "roll",
+          "label": "Starlights dispelled",
+          "roll": {
+            "formula": "",
+            "note": "All active Starlights."
+          },
+          "cost": {
+            "pool": "starlights",
+            "choose": true
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "S": [
+              {
+                "id": "n5ezHd3qfk73xYFR",
+                "type": "save",
+                "label": "Solar Prominence: Dexterity",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "keton-convergence",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Convergence"
+                  }
+                ],
+                "text": "Needs 1+ Starlight; each detonates in a 20-foot radius (two or more: disadvantage), then all are dispelled. Failure: the damage and Convergence until the end of your next turn.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d10) + (1d10)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eaCZCGvvEGnGXO",
+                "type": "save",
+                "label": "Solar Prominence: Constitution",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  },
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 3,
+                    "label": "Dazzled"
+                  },
+                  {
+                    "key": "dazed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazed"
+                  }
+                ],
+                "text": "Failure: Blinded, 3 ranks of Dazzled and Dazed for 1 minute (a Constitution save ends Blinded and Dazed).",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5egOShhqirfItIr",
+                "type": "roll",
+                "label": "Starlights dispelled",
+                "roll": {
+                  "formula": "",
+                  "note": "All active Starlights."
+                },
+                "cost": {
+                  "pool": "starlights",
+                  "choose": true
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "keton-plasma-release-sparkler-chain": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5egY0oMQRJMqCC5",
+          "type": "attack",
+          "label": "Sparkler Chain",
+          "attack": {
+            "discipline": "discipline",
+            "range": "melee",
+            "count": 2
+          },
+          "text": "Teleport into the light of up to 2 Starlights within 60 feet (3 at A-Rank), attacking at each. In Solar Flare: add Plasma Burst's 1d12.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "6d6",
+                "type": "fire"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5e5CVyFvh5kwZnG",
+          "type": "save",
+          "label": "Sparkler Chain: damaged",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "keton-convergence",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Convergence"
+            }
+          ],
+          "text": "Failure: Convergence until the end of your next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5egY0oMQRJMqCC5",
+                "type": "attack",
+                "label": "Sparkler Chain",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "text": "Teleport into the light of up to 2 Starlights within 60 feet (3 at A-Rank), attacking at each. In Solar Flare: add Plasma Burst's 1d12.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d6) + (1d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5e5CVyFvh5kwZnG",
+                "type": "save",
+                "label": "Sparkler Chain: damaged",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "keton-convergence",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Convergence"
+                  }
+                ],
+                "text": "Failure: Convergence until the end of your next turn.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5egY0oMQRJMqCC5",
+                "type": "attack",
+                "label": "Sparkler Chain",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "text": "Teleport into the light of up to 2 Starlights within 60 feet (3 at A-Rank), attacking at each. In Solar Flare: add Plasma Burst's 1d12.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d6) + (2d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5e5CVyFvh5kwZnG",
+                "type": "save",
+                "label": "Sparkler Chain: damaged",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "keton-convergence",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Convergence"
+                  }
+                ],
+                "text": "Failure: Convergence until the end of your next turn.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5egY0oMQRJMqCC5",
+                "type": "attack",
+                "label": "Sparkler Chain",
+                "attack": {
+                  "discipline": "discipline",
+                  "range": "melee",
+                  "count": 2
+                },
+                "text": "Teleport into the light of up to 2 Starlights within 60 feet (3 at A-Rank), attacking at each. In Solar Flare: add Plasma Burst's 1d12.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(6d6) + (3d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5e5CVyFvh5kwZnG",
+                "type": "save",
+                "label": "Sparkler Chain: damaged",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "keton-convergence",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Convergence"
+                  }
+                ],
+                "text": "Failure: Convergence until the end of your next turn.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "keton-plasma-release-stellar-wave": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ez9ZRy9Sc2YSl7",
+          "type": "save",
+          "label": "Stellar Wave",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "half",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A 30-foot cone. Barriers and temporary hit points in it are halved first.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d6",
+                "type": "fire"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Upcast: +1 damage and +5 feet per rank (add them)."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5ez9ZRy9Sc2YSl7",
+                "type": "save",
+                "label": "Stellar Wave",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A 30-foot cone. Barriers and temporary hit points in it are halved first.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (1d10)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ],
+            "A": [
+              {
+                "id": "n5ez9ZRy9Sc2YSl7",
+                "type": "save",
+                "label": "Stellar Wave",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A 30-foot cone. Barriers and temporary hit points in it are halved first.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (2d10)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5ez9ZRy9Sc2YSl7",
+                "type": "save",
+                "label": "Stellar Wave",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "half",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A 30-foot cone. Barriers and temporary hit points in it are halved first.",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d6) + (3d10)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "keton-plasma-release-stellar-web": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eto1zKPBFPCwEG",
+          "type": "save",
+          "label": "Stellar Web",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "keton-convergence",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Convergence"
+            },
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            }
+          ],
+          "text": "Needs 2+ Starlights. Hostile creatures passing through a line first on a turn or starting their turn in one. Failure: the damage, Convergence for the duration and Blinded (a Constitution save ends it).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "8d6",
+                "type": "fire"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "activitiesByRank": {
+            "A": [
+              {
+                "id": "n5eto1zKPBFPCwEG",
+                "type": "save",
+                "label": "Stellar Web",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "keton-convergence",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Convergence"
+                  },
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  }
+                ],
+                "text": "Needs 2+ Starlights. Hostile creatures passing through a line first on a turn or starting their turn in one. Failure: the damage, Convergence for the duration and Blinded (a Constitution save ends it).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(8d6) + (1d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ],
+            "S": [
+              {
+                "id": "n5eto1zKPBFPCwEG",
+                "type": "save",
+                "label": "Stellar Web",
+                "save": {
+                  "abilities": [
+                    "dex"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [
+                  {
+                    "key": "keton-convergence",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Convergence"
+                  },
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  }
+                ],
+                "text": "Needs 2+ Starlights. Hostile creatures passing through a line first on a turn or starting their turn in one. Failure: the damage, Convergence for the duration and Blinded (a Constitution save ends it).",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(8d6) + (2d6)",
+                      "type": "fire"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "keton-stance-solar-flare": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eU4mWVbq5AfV8f",
+          "type": "attack",
+          "label": "Stellar Knuckle",
+          "attack": {
+            "discipline": "highest",
+            "range": "melee",
+            "count": 1
+          },
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d8 + max(@mod.nin, @mod.tai, @mod.gen)",
+                "type": "fire"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5e8dvNLxYoaoget",
+          "type": "attack",
+          "label": "Plasma Burst",
+          "attack": {
+            "discipline": "highest",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "A creature you can see within 60 feet; it can come from a Starlight.",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d12",
+                "type": "fire"
+              }
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Attack action can use these in place of its attacks (two at 7th without Extra Attack). Keton Hijutsu ranged attacks can come from an active Starlight. Stellar Knuckle adds your highest jutsu ability modifier."
+        }
+      ]
+    },
+    "keton-stargazer": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e16ZePiWWAWHmj",
+          "type": "roll",
+          "label": "Manifest Starlight",
+          "roll": {
+            "formula": "",
+            "note": "In combat, once per turn at the start of your turn: a Starlight at a point within 30 feet (60 at 11th) for up to 1 minute; bright light 20 feet, dim 20 more. Over your maximum the oldest is dispelled (spend one first)."
+          },
+          "oncePerTurn": true,
+          "cost": {
+            "pool": "starlights",
+            "amount": 1,
+            "gain": true
+          }
+        },
+        {
+          "id": "n5e1zm79ULyxAAHU",
+          "type": "roll",
+          "label": "Dismiss Starlights",
+          "roll": {
+            "formula": "",
+            "note": "Bonus action, or you end your movement more than 120 feet from them."
+          },
+          "activation": "bonus",
+          "cost": {
+            "pool": "starlights",
+            "choose": true
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "starlights",
+          "label": "Starlights",
+          "value": 0,
+          "max": "lvl(1:4,7:5,15:6)",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "encounter",
+              "amount": "empty",
+              "formula": "",
+              "requires": ""
+            }
+          ],
+          "lifetime": 60
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Starlights: up to 4 (5 at 7th, 6 at 15th), the pool; each lasts 1 minute and all end with combat. While one is active, enter the Solar Flare chakra stance as a Bonus action (the clan's stance item)."
+        }
+      ]
+    },
+    "keton-stellar-convergence": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5er8JFtRwDy4xkF",
+          "type": "roll",
+          "label": "Gain a Stellar Charge",
+          "roll": {
+            "formula": "",
+            "note": "In combat, 1 per trigger per turn: you damage a hostile creature, a hostile creature damages you, you start your turn concentrating on a Keton Hijutsu, or you give an ally a bonus to attack or damage."
+          },
+          "cost": {
+            "pool": "stellarCharges",
+            "amount": 1,
+            "gain": true
+          }
+        }
+      ],
+      "pools": [
+        {
+          "id": "stellarCharges",
+          "label": "Stellar Charges",
+          "value": 0,
+          "max": "1 + @prof",
+          "die": "",
+          "steps": [],
+          "step": 0,
+          "recovery": [
+            {
+              "on": "encounter",
+              "amount": "empty",
+              "formula": "",
+              "requires": ""
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Stellar Charges: 1 + proficiency bonus (the pool); 0 at the start and end of combat. Two Constellations (more at 7th and 15th); their saves and attacks use your highest jutsu save DC and attack bonus."
+        }
+      ]
+    },
+    "keton-stellar-convergence-aphelion-the-mirror": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ehB2Fyt8Auk9DG",
+          "type": "heal",
+          "label": "Aphelion – The Mirror",
+          "heal": {
+            "formula": "lvl(1:3d6,7:5d6,15:7d6)",
+            "pool": "tempHp"
+          },
+          "text": "Reaction, damage to you or an ally you can see within 20 feet of a Starlight. (Its Stellar Charge cost isn't given: Q-E13.)",
+          "activation": "reaction"
+        },
+        {
+          "id": "n5eRG6pNKGapAzhN",
+          "type": "save",
+          "label": "Aphelion: blind the attacker",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            }
+          ],
+          "text": "Failure: Blinded until the start of your next turn.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its Event Horizon Amp copy is removed (King Q-E12)."
+        }
+      ]
+    },
+    "keton-stellar-convergence-kagayaki-the-glittering": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eh7u4Irzinf9bm",
+          "type": "roll",
+          "label": "Kagayaki – The Glittering",
+          "roll": {
+            "formula": "",
+            "note": "Bonus action (3 charges at 15th: no Bonus action, once a turn), an ally within 60 feet: it moves up to its speed (7th: 10 feet of it can teleport to a Starlight) and casts a jutsu with its Reaction."
+          },
+          "activation": "bonus",
+          "cost": {
+            "pool": "stellarCharges",
+            "amount": 2
+          }
+        },
+        {
+          "id": "n5ezNrsYZxilkurO",
+          "type": "save",
+          "label": "Kagayaki: Convergence",
+          "save": {
+            "abilities": [
+              "dex"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "keton-convergence",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Convergence"
+            }
+          ],
+          "text": "A hostile creature the jutsu affects without a save (one that fails the jutsu's own save becomes a Convergence anyway). Failure: Convergence for 1 minute.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ]
+    },
+    "keton-stellar-convergence-karasuki-the-plow": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eMaYtSI2BB6QCO",
+          "type": "effect",
+          "label": "Karasuki – The Plow",
+          "effect": {
+            "name": "Karasuki",
+            "target": "self",
+            "changes": [
+              {
+                "key": "n5e.damage.unarmed",
+                "value": "lvl(1:2,7:4,15:6)",
+                "mode": 2
+              }
+            ],
+            "expires": "turnEnd",
+            "seconds": 0
+          },
+          "text": "Stellar Knuckle, Plasma Burst or a damaging Keton Hijutsu: +2 damage until the end of the turn (+4 at 7th, +6 at 15th; add it to Plasma Burst and Hijutsu).",
+          "cost": {
+            "pool": "stellarCharges",
+            "amount": 1
+          }
+        }
+      ]
+    },
+    "keton-stellar-convergence-mikogami-the-shrine-maiden": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5erNnvinaBqj9zA",
+          "type": "roll",
+          "label": "Mikogami – The Shrine Maiden",
+          "roll": {
+            "formula": "1d6",
+            "note": "Reaction, an ally takes damage from an attack: subtract the roll from the attack total; the jutsu's later attacks take a 1d4 penalty (1d6 at 15th). 7th: a 6 makes the attacker a Convergence for 1 minute."
+          },
+          "activation": "reaction",
+          "cost": {
+            "pool": "stellarCharges",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "keton-stellar-convergence-sazanami-the-ripple": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eJ0i5QgICn5MOJ",
+          "type": "save",
+          "label": "Sazanami – The Ripple",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "highest"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            },
+            {
+              "key": "keton-convergence",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Convergence"
+            }
+          ],
+          "text": "Bonus action, creatures within 10 feet of one Starlight (two at 7th). Failure: 1 rank of Dazzled (2 at 15th) and Convergence for 1 minute.",
+          "activation": "bonus",
+          "damage": {
+            "parts": []
+          },
+          "cost": {
+            "pool": "stellarCharges",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "keton-stellar-convergence-tokaichi-the-market": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eBesvaXHs3kduK",
+          "type": "roll",
+          "label": "Tokaichi – The Market",
+          "roll": {
+            "formula": "",
+            "note": "Casting a Keton Hijutsu: its area becomes a 20-foot cube, 10-foot radius around corners, 30 by 5-foot line or 30-foot cone from a Starlight (7th: place a new one for it). All creatures in it save Dexterity: the jutsu's effects on a failure, half damage on a success. 15th: Convergences save at disadvantage and keep it."
+          },
+          "cost": {
+            "pool": "stellarCharges",
+            "amount": 2
+          }
+        }
+      ]
+    },
+    "keton-stellar-convergence-urashima-the-fisherman": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eKNtN41J1qqW6Q",
+          "type": "effect",
+          "label": "Urashima – The Fisherman",
+          "effect": {
+            "name": "Urashima",
+            "target": "targets",
+            "changes": [],
+            "expires": "turnStart",
+            "seconds": 0
+          },
+          "text": "Bonus action, an ally within 60 feet (two at 15th) until the start of your next turn: it rerolls one attack or check; 7th: +2 AC and to its next save (add them).",
+          "activation": "bonus",
+          "cost": {
+            "pool": "stellarCharges",
+            "amount": 1
+          }
+        },
+        {
+          "id": "n5ee8uEUJe0Fdpa4",
+          "type": "attack",
+          "label": "Urashima: Starlight Plasma Bursts",
+          "attack": {
+            "discipline": "highest",
+            "range": "ranged",
+            "count": 1
+          },
+          "text": "Reaction, a hostile creature attacks the ally in melee: one Plasma Burst per Starlight within 60 feet (15th: an extra Reaction just for this).",
+          "damage": {
+            "parts": [
+              {
+                "formula": "1d12",
+                "type": "fire"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

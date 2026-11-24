@@ -10,7 +10,14 @@
     "n5e": {
       "clanPackage": "futton",
       "sourceLine": 5093,
-      "repeatable": false
+      "repeatable": false,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Dash as a reaction on your turn, or as a reaction when a hostile creature moves away (move up to your speed toward it)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -45,6 +52,55 @@
       "clan-option"
     ],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5euZ74gwKvK6Ge6",
+        "type": "roll",
+        "label": "Piston: no opportunity attacks",
+        "roll": {
+          "formula": "",
+          "note": "Dashing: your movement doesn't provoke."
+        },
+        "cost": {
+          "pool": "pressure",
+          "amount": 2
+        }
+      },
+      {
+        "id": "n5edprq4yXk6EG8x",
+        "type": "save",
+        "label": "Piston",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "highest"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          },
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Once per turn, creatures you pass within 5 feet during your Dash. Failure: Dazed and Prone.",
+        "oncePerTurn": true,
+        "damage": {
+          "parts": []
+        }
+      }
+    ]
   }
 }

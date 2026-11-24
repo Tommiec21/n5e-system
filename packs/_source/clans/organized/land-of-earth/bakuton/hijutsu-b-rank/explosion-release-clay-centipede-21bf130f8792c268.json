@@ -1,0 +1,138 @@
+{
+  "_id": "21bf130f8792c268",
+  "_key": "!items!21bf130f8792c268",
+  "type": "jutsu",
+  "name": "Explosion Release: Clay Centipede",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "1e0691ec9e03e45a",
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "clanPackage": "bakuton",
+      "sourceHeader": {
+        "time": "1 Action",
+        "range": "10 feet",
+        "duration": "1 minutes",
+        "cost": "14 Chakra",
+        "keywords": "Hijutsu, Ninjutsu, Lightning Release, Earth Release, Fuinjutsu, Artistic Branch",
+        "components": "HS, CM, CS"
+      },
+      "splitFrom": "bakuton-explosion-release-absolute-death-bombing",
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Two Clay Centipedes in spaces within 10 feet; two active at a time; 1 minute. Command them as an Action or Bonus action."
+        }
+      ]
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "bakuton-explosion-release-clay-centipede",
+    "description": "<p>You mold clay, earth or another inorganic earthen substance into the shape of two centipedes of your description that seems to come to life temporarily listening to your commands known as a Clay Centipedes into a space of your choice within range.</p>\n<p>The Clay Centipede has the listed statistics found on its stat block at the end of this clan and uses your Ninjutsu attack bonus or Save DC when an effect calls for it. You can command them as an Action or Bonus action. You can have two Clay Centipedes active at a time.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Split from Explosion Release: Absolute Death Bombing (King Q-E5, 2026-11-21)."
+    },
+    "rank": "B",
+    "discipline": "nin",
+    "section": "clan",
+    "keywords": [
+      "hijutsu",
+      "ninjutsu",
+      "lightningRelease",
+      "earthRelease",
+      "fuinjutsu",
+      "artisticBranch"
+    ],
+    "activation": {
+      "type": "action",
+      "value": 1,
+      "unit": "",
+      "trigger": {
+        "event": "",
+        "text": ""
+      }
+    },
+    "target": {
+      "range": {
+        "type": "feet",
+        "value": 10,
+        "long": null,
+        "text": "10 feet"
+      },
+      "area": {
+        "shape": "",
+        "size": null,
+        "width": null,
+        "height": null
+      }
+    },
+    "duration": {
+      "value": 1,
+      "unit": "minutes",
+      "concentration": false,
+      "text": "1 Minute"
+    },
+    "cost": {
+      "mode": "chakra",
+      "value": 14,
+      "text": "14 Chakra"
+    },
+    "components": {
+      "hs": true,
+      "cm": true,
+      "cs": true,
+      "m": false,
+      "weapon": {
+        "required": false,
+        "groups": [],
+        "any": false,
+        "range": "",
+        "count": 1,
+        "dualWield": false,
+        "text": "HS, CM, CS"
+      },
+      "tool": {
+        "required": false,
+        "kit": "",
+        "charges": 0,
+        "text": "HS, CM, CS"
+      }
+    },
+    "hijutsu": {
+      "clan": "bakuton",
+      "branch": ""
+    },
+    "upcast": {
+      "preset": "standard3",
+      "costPerRank": 3,
+      "text": "<p>At Higher Ranks: For each rank you cast this jutsu above B-Rank, increase the cost of this jutsu by 3.</p>"
+    },
+    "learned": {
+      "mode": "known",
+      "grantedBy": ""
+    },
+    "activities": [
+      {
+        "id": "n5eRdBl3ZZWUd6j2",
+        "type": "summon",
+        "label": "Clay Centipede",
+        "summon": {
+          "uuid": "Compendium.n5e.summons.Actor.n5eHyxkqEZZIChuD",
+          "count": 2,
+          "template": ""
+        }
+      }
+    ],
+    "featureType": "active",
+    "disciplines": [
+      "nin"
+    ]
+  }
+}

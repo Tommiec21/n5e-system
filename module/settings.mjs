@@ -13,6 +13,7 @@ import AutomationRecovery from "./applications/gm/automation-recovery.mjs";
 import ChatAppearanceConfig from "./applications/settings/chat-appearance.mjs";
 import JournalDesk from "./applications/gm/journal-desk.mjs";
 import { applyChatAppearance } from "./workflow/chat-appearance.mjs";
+import LimitsConfig from "./applications/settings/limits-config.mjs";
 
 /**
  * Called at init: one hidden world setting per rule in config/rules.mjs (edited through the N5e Rules
@@ -59,6 +60,20 @@ export function registerSettings() {
     hint: "Turn N5e rules and automations on or off, and set rest limits and the Ration Pool. Everyone can view; the GM can change.",
     icon: "fa-solid fa-scroll",
     type: RulesConfig,
+    restricted: false
+  });
+  // King 2026-11-21: when each class, subclass and clan limit comes back (rules/recovery-overrides.mjs).
+  game.settings.register("n5e", "limitRecovery", { scope: "world", config: false, type: Object, default: {},
+    onChange: async () => {
+      (await import("./workflow/amp-cards.mjs")).refreshAmpLimits();
+      for ( const a of game.actors ?? [] ) { a.reset?.(); a.sheet?.rendered && a.sheet.render(); }
+    } });
+  game.settings.registerMenu("n5e", "limitsConfig", {
+    name: "N5e Class & Clan Limits",
+    label: "Open Class & Clan Limits",
+    hint: "When each class, subclass and clan limit comes back: Short Rest, Long Rest, half on a Short Rest and all on a Long Rest, Full Rest, 10 minutes, Initiative and more. Everyone can view; the GM can change.",
+    icon: "fa-solid fa-hourglass-half",
+    type: LimitsConfig,
     restricted: false
   });
   // CHATUI1 (King 2026-11-16): chat font sizes and fonts. The GM's world setting is everyone's

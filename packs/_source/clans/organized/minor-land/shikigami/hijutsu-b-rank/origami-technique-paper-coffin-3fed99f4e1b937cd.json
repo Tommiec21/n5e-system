@@ -17,7 +17,8 @@
         "cost": "14 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Efficient",
         "components": "CS"
-      }
+      },
+      "reviewed": true
     }
   },
   "ownership": {
@@ -108,7 +109,49 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5eUlvDY6BtBXrte",
+        "type": "save",
+        "label": "Paper Coffin",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "A creature within 60 feet. Failure: Restrained, no HS jutsu, no weapons or speech (your choice each turn); Strength save at the end of its turns breaks free. The coffin: AC your Ninjutsu save DC, 25 hit points, vulnerable to fire.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eI9SOwwhk3fSCz",
+        "type": "damage",
+        "label": "Suffocating",
+        "damage": {
+          "parts": [
+            {
+              "formula": "9d6",
+              "type": "necrotic"
+            }
+          ]
+        },
+        "text": "Start of its turns, ignoring resistance and DR (none if allowed to talk or it doesn't breathe)."
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin"

@@ -17,6 +17,181 @@
         "cost": "6 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Wind Release, Fire Release, Stable, Clash",
         "components": "HS, CM, M"
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The extra damage is fire."
+        }
+      ],
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5ea5Lb2uzlU9B8Q",
+              "type": "attack",
+              "label": "Painful Violence",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "One roll against every creature in a 20-foot line; again as an Action each turn.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(4d10) + (1d10)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eYPOj55VYlUy9f",
+              "type": "save",
+              "label": "Painful Violence: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shakuton-immolation",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Immolation"
+                }
+              ],
+              "text": "Failure: Immolated.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ea5Lb2uzlU9B8Q",
+              "type": "attack",
+              "label": "Painful Violence",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "One roll against every creature in a 20-foot line; again as an Action each turn.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(4d10) + (2d10)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eYPOj55VYlUy9f",
+              "type": "save",
+              "label": "Painful Violence: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shakuton-immolation",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Immolation"
+                }
+              ],
+              "text": "Failure: Immolated.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ea5Lb2uzlU9B8Q",
+              "type": "attack",
+              "label": "Painful Violence",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "One roll against every creature in a 20-foot line; again as an Action each turn.",
+              "damage": {
+                "parts": []
+              },
+              "strike": {
+                "kind": "unarmed",
+                "extraDice": "(4d10) + (3d10)",
+                "dieSteps": 0,
+                "pierce": 0,
+                "maximize": false,
+                "attacks": "1"
+              }
+            },
+            {
+              "id": "n5eYPOj55VYlUy9f",
+              "type": "save",
+              "label": "Painful Violence: on a hit",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shakuton-immolation",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Immolation"
+                }
+              ],
+              "text": "Failure: Immolated.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        }
+      },
+      "castOption": {
+        "label": "Scorch: extend (any Scorch Charges)",
+        "appliesTo": {
+          "namePrefix": "Scorch Release: Painful Violence"
+        },
+        "cost": {
+          "pool": "scorchCharges",
+          "choose": true
+        },
+        "note": "+10 feet to the spear per charge; a creature within 5 feet: roll one more d20 and use either against it."
       }
     }
   },
@@ -112,7 +287,57 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ea5Lb2uzlU9B8Q",
+        "type": "attack",
+        "label": "Painful Violence",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "One roll against every creature in a 20-foot line; again as an Action each turn.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "4d10",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
+        }
+      },
+      {
+        "id": "n5eYPOj55VYlUy9f",
+        "type": "save",
+        "label": "Painful Violence: on a hit",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "shakuton-immolation",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Immolation"
+          }
+        ],
+        "text": "Failure: Immolated.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

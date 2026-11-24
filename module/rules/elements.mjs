@@ -166,7 +166,7 @@ export function contextualRoll(actor, spec = {}, target = null, extra = []) {
       case "rerollBelow": out.rerollBelow = Math.max(out.rerollBelow, Math.trunc(Number(e.value) || 0)); break;
       case "maximizeAfter": out.maximizeAfter += Math.max(0, Math.trunc(Number(e.value) || 0)); break;
       case "critAbilityMod": out.critAbilityMod += Math.max(0, Math.trunc(Number(e.value) || 0)); break;
-      case "damage": if ( e.formula ) out.damage.push({ formula: String(e.formula), type: e.damageType ?? "", label }); break;
+      case "damage": if ( e.formula ) out.damage.push({ formula: String(e.formula), type: e.damageType ?? "", label, ...(e.optional ? { optional: true } : {}) }); break;
       case "damageHandling": out.handling = mergeHandling(out.handling, e); break;
       case "addRanks": out.addRanks += Math.trunc(Number(e.value) || 0); break;
       case "note": out.notes.push(`${label}: ${e.text ?? ""}`.trim()); break;
@@ -267,6 +267,14 @@ export function rollOptions(actor, spec = {}, target = null) {
   if ( ab ) {
     options.add(`ability:${ab}`);
     for ( const d of ["nin", "tai", "gen"] ) if ( actor?.system?.disciplines?.[d]?.ability === ab ) options.add(`ability:${d}`);
+  }
+  // STD6d Weapon Specialist: a class's level-up options as facts, "option:<key>:<value>" (the Weapon
+  // Focus group: "option:weaponFocus:blade"; "Thrown/Ammunition" becomes "thrown-ammunition").
+  for ( const item of list(actor?.items).filter(i => i.type === "class") ) {
+    for ( const adv of list(item.system?.advancement) ) {
+      if ( adv?.type !== "option" || !adv.key ) continue;
+      for ( const v of list(adv.chosen) ) options.add(`option:${adv.key}:${String(v).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`);
+    }
   }
   // STD6b: facts the roll carries (the weapon's groups and properties, weapon:stance, attack:opportunity).
   for ( const fact of list(spec.facts) ) if ( typeof fact === "string" && fact ) options.add(fact);

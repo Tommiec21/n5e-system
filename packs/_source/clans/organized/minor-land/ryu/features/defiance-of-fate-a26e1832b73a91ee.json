@@ -9,7 +9,14 @@
   "flags": {
     "n5e": {
       "clanPackage": "ryu",
-      "sourceLine": 8707
+      "sourceLine": 8707,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Untamable: Dragon's Rage ends only at 5 ranks of Sealed."
+        }
+      ]
     }
   },
   "ownership": {
@@ -42,6 +49,21 @@
     },
     "tags": [],
     "prerequisites": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5ezlCrf04Ka2YkM",
+        "type": "roll",
+        "label": "Dragon Kings Decree",
+        "roll": {
+          "formula": "",
+          "note": "Rolling initiative, per 5 Draconic Chakra, one decree for the combat: your attacks and damage can't be intercepted by Barriers or creatures; once, at 0 hit points stay at 1 and enter Awakened Dragon's Rage free, ending all conditions; effects that change your die results let you reroll and keep the higher."
+        },
+        "cost": {
+          "pool": "draconicChakra",
+          "choose": true
+        }
+      }
+    ]
   }
 }

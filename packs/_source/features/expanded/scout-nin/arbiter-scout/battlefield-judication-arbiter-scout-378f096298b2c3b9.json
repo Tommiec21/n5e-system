@@ -33,13 +33,76 @@
     },
     "tags": [],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5e3JUG1WDW35Nhl",
+        "type": "effect",
+        "label": "Choose Squad-Mates",
+        "effect": {
+          "name": "Squad-Mate",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "state": "squad-mate",
+          "limit": "@prof"
+        },
+        "text": "After a rest: creatures other than you, up to your proficiency bonus."
+      },
+      {
+        "id": "n5ecuCdCiWMuyHiK",
+        "type": "roll",
+        "label": "Command",
+        "oncePerTurn": true,
+        "roll": {
+          "formula": "",
+          "note": "Once per turn, in place of an attack of the Attack action: a Squad-Mate who can see or hear you makes a weapon attack, casts a D-Rank or lower attack jutsu (C-Rank at 10th, B-Rank at 17th), takes a skill-based action (you regain 1 die), Dodges, or Disengages and moves half its speed (you regain 1 die)."
+        }
+      },
+      {
+        "id": "n5eZFAPZjpWIDcrw",
+        "type": "roll",
+        "label": "Command: regain a die",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1,
+          "gain": true
+        },
+        "roll": {
+          "formula": "",
+          "note": "After a Command to take a skill-based action or Disengage."
+        }
+      },
+      {
+        "id": "n5eC1UZxCMEPUWap",
+        "type": "roll",
+        "label": "Join the attack",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1,
+          "roll": true
+        },
+        "activation": "reaction",
+        "roll": {
+          "formula": "",
+          "note": "Reaction, a Squad-Mate attacks: a weapon attack against the same target; on a hit, add the die to both your damage and theirs."
+        }
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "In combat, you and your Squad add your Charisma modifier to initiative (at the table)."
+        }
+      ]
     }
   },
   "ownership": {

@@ -36,13 +36,53 @@
       "scout-maneuver"
     ],
     "resourcePools": [],
-    "advancement": []
+    "advancement": [],
+    "activities": [
+      {
+        "id": "n5eHlElM2wDQVEvg",
+        "type": "roll",
+        "label": "Debilitate: Strength",
+        "cost": {
+          "pool": "superiorityDice",
+          "amount": 1
+        },
+        "roll": {
+          "formula": "",
+          "note": "An attack or jutsu affecting a hostile creature: a creature failing the jutsu's save gains 1 rank of Weakened."
+        }
+      },
+      {
+        "id": "n5eIEfC5dAnC4UmG",
+        "type": "save",
+        "label": "Debilitate: Strength: Charisma save",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "tai"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          }
+        ],
+        "text": "When the attack forces no save (Discipline already spent): a Charisma save (the jutsu's DC; Taijutsu for weapons or unarmed). Failure: 1 rank of Weakened."
+      }
+    ]
   },
   "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
-      "classExpansion": true
+      "classExpansion": true,
+      "reviewed": true
     }
   },
   "ownership": {

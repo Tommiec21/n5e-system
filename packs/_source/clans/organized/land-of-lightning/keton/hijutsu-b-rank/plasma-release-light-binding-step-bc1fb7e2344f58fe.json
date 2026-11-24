@@ -17,7 +17,14 @@
         "cost": "12 Chakra",
         "keywords": "Hijutsu, Ninjutsu, Taijutsu, Fire Release, Lightning Release, Fuinjutsu",
         "components": "HS, CM, CS"
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Its Amp button stays (+30 speed, ranged attacks against you at disadvantage). Its upcast's special reaction line is a mistake and isn't there (King Q-F14). S-Rank: speed tripled."
+        }
+      ]
     }
   },
   "ownership": {
@@ -111,7 +118,39 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "ampd954b785b5df8",
+        "type": "effect",
+        "label": "Plasma Release: Light Binding Step",
+        "effect": {
+          "name": "Plasma Release: Light Binding Step",
+          "target": "self",
+          "amp": "jutsu-keton-plasma-release-light-binding-step"
+        },
+        "text": "Starts the jutsu's Amp at the rank it was cast at."
+      },
+      {
+        "id": "n5e9ZzrcgIWRIX5P",
+        "type": "save",
+        "label": "Light Binding Step: seal eyes",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Action, standing in a Starlight's light: a hostile creature within 60 feet. Failure: creatures more than 30 feet from it are Invisible to it; resave at the end of each of its turns.",
+        "damage": {
+          "parts": []
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "nin",

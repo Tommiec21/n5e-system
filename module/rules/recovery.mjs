@@ -5,8 +5,21 @@
  *   encounter  combat start and combat end
  * Item uses whose `per` matches reset `spent` to 0; resource pools with a matching `recovery.on`
  * refill to their maximum. A recovery that requires a feature only applies when the actor has it.
+ * A pool's recovery amount counts here too: "formula" regains that many (Jiton's 1 Magnetic Charge a
+ * turn), "half" half the max, and "empty" drops it to 0 (STD6e E3: Stellar Charges and Voltage begin
+ * each combat at 0; Starlights end with it).
  */
 import { recoveryAllowed } from "./features.mjs";
+import { resolveFormula } from "./unarmed.mjs";
+
+/** A pool's value after one combat recovery. */
+export function combatRecoveredValue(pool, r, actor) {
+  const max = pool.maxValue ?? 0, v = pool.value ?? 0;
+  if ( r.amount === "empty" ) return 0;
+  if ( r.amount === "formula" ) return Math.min(max, v + (Number(resolveFormula(r.formula, actor)) || 0));
+  if ( r.amount === "half" ) return Math.min(max, v + Math.floor(max / 2));
+  return max;
+}
 
 export const COMBAT_PERIODS = Object.freeze(["turn", "round", "encounter"]);
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
@@ -22,8 +35,10 @@ export function combatRecoveryPlan(actor, periods) {
   if ( !wanted.size ) return { update, itemUpdates, recovered };
   for ( const [id, pool] of Object.entries(actor.system?.resources ?? {}) ) {
     const r = list(pool.recovery).find(x => wanted.has(x.on) && recoveryAllowed(actor, x));
-    if ( !r || (pool.value ?? 0) === (pool.maxValue ?? 0) ) continue;
-    update[`system.resources.${id}.value`] = pool.maxValue ?? 0;
+    if ( !r ) continue;
+    const value = combatRecoveredValue(pool, r, actor);
+    if ( value === (pool.value ?? 0) ) continue;
+    update[`system.resources.${id}.value`] = value;
     recovered.push(pool.label || id);
   }
   for ( const item of list(actor.items) ) {

@@ -84,25 +84,47 @@
     },
     "activities": [
       {
-        "id": "parsed1",
-        "type": "damage",
-        "label": "Damage",
+        "id": "n5eyfACo8plKrlbM",
+        "type": "attack",
+        "label": "Twin Heavenly Swallow",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 2
+        },
+        "text": "Combination (32 chakra): each caster makes these (+1 attack per caster beyond the second). Each hit twice or more: one more each.",
         "damage": {
-          "parts": [
-            {
-              "formula": "@unarmed + 1d12",
-              "type": "bludgeoning"
-            }
-          ]
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "1d12",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "2"
         }
       },
       {
-        "id": "sourceRoll4",
-        "type": "roll",
-        "label": "2d12",
-        "roll": {
-          "formula": "2d12",
-          "note": "If the final attacks are successful, the target takes each casters [Unarmed Damage] + 2d12 and are pushed 20 away, landing Prone."
+        "id": "n5ec2ZcXvxBWdluE",
+        "type": "attack",
+        "label": "Final strike",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "If the final attacks hit: each caster's damage; pushed 20 feet, Prone.",
+        "damage": {
+          "parts": []
+        },
+        "strike": {
+          "kind": "unarmed",
+          "extraDice": "2d12",
+          "dieSteps": 0,
+          "pierce": 0,
+          "maximize": false,
+          "attacks": "1"
         }
       }
     ],
@@ -195,7 +217,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "aee26bc2434fe738"

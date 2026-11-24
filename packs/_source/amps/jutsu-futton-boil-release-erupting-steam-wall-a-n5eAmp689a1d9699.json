@@ -1,0 +1,92 @@
+{
+  "_id": "n5eAmp689a1d9699",
+  "name": "Boil Release: Erupting Steam Wall (A-Rank)",
+  "type": "amp",
+  "img": "icons/sundries/scrolls/scroll-bound-brown.webp",
+  "folder": "n5eAmpFoldOther1",
+  "sort": 100203,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "jutsu-futton-boil-release-erupting-steam-wall-a",
+    "description": "<p><b>Boil Release: Erupting Steam Wall</b> · cast at A-Rank · no type</p><p>40 temporary hit points; at the start of each of your turns you regain them up to 40.</p><p>A creature that hits you with a melee attack takes 20 acid damage.</p><p>When you take damage from an attack, you can expel the barrier as a shockwave: each creature within 10 feet takes the acid damage.</p>",
+    "source": {
+      "book": "Tsunade's Studies Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": "Source Markdown line 5140; contextual rules require adjudication."
+    },
+    "ampType": "",
+    "namedType": "",
+    "owner": {
+      "kind": "jutsu",
+      "id": "futton-boil-release-erupting-steam-wall",
+      "subclass": ""
+    },
+    "summary": "40 temporary hit points; at the start of each of your turns you regain them up to 40. A creature that hits you with a melee attack takes 20 acid damage. When you take damage from an attack, you can expel the barrier as a shockwave: each creature within 10 feet takes the acid damage.",
+    "activation": "",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 60,
+      "until": "",
+      "concentration": true
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "40",
+    "endsOn": [],
+    "changes": [],
+    "aura": {},
+    "outsideLimits": false,
+    "series": "jutsu-futton-boil-release-erupting-steam-wall",
+    "level": 0,
+    "rank": "A",
+    "choose": {
+      "prompt": "",
+      "options": []
+    },
+    "buttons": [],
+    "onEnd": {
+      "condition": ""
+    },
+    "statuses": [],
+    "endsWith": ""
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "heal",
+          "on": "turnStart",
+          "formula": "40",
+          "pool": "tempHp",
+          "who": "self",
+          "label": "Erupting Steam Wall"
+        },
+        {
+          "key": "note",
+          "text": "A creature that hits you with a melee attack takes 20 acid damage."
+        },
+        {
+          "key": "note",
+          "text": "When you take damage from an attack, you can expel the barrier outward: each creature within 10 feet takes 20 acid damage."
+        }
+      ],
+      "amp1f": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.70.0"
+  },
+  "_key": "!items!n5eAmp689a1d9699"
+}

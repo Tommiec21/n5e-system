@@ -17,7 +17,110 @@
         "cost": "14 Chakra",
         "keywords": "Hijutsu, Bukijutsu, Genjutsu (Visual, Tactile), Chain",
         "components": "W (Any Melee), M"
-      }
+      },
+      "reviewed": true,
+      "jutsuBookImport": {
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5ejWVSDWGtAYr3N",
+              "type": "save",
+              "label": "Demon Rain",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half damage.",
+                  "success": "Success: half of [Weapons Damage] + 2d12.",
+                  "failure": "Failure: [Weapons Damage] + 2d12 and Severed.",
+                  "critFailure": "Critical Failure: as a failure, and it can't regain hit points until the end of your next turn."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "yamada-asaemon-discipline",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Severed"
+                }
+              ],
+              "text": "Right after another Yamada Hijutsu deals damage: the creatures it damaged. Then not again until the end of your next turn.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (1d12)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ejWVSDWGtAYr3N",
+              "type": "save",
+              "label": "Demon Rain",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: half damage.",
+                  "success": "Success: half of [Weapons Damage] + 2d12.",
+                  "failure": "Failure: [Weapons Damage] + 2d12 and Severed.",
+                  "critFailure": "Critical Failure: as a failure, and it can't regain hit points until the end of your next turn."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "yamada-asaemon-discipline",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Severed"
+                }
+              ],
+              "text": "Right after another Yamada Hijutsu deals damage: the creatures it damaged. Then not again until the end of your next turn.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (2d12)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "castOptions": [
+        {
+          "label": "Ideal Cut",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Demon Rain"
+          },
+          "note": "With your Executioners Instrument: one failing creature: Empty Blade as if forgoing 3 attacks."
+        },
+        {
+          "label": "Tao (7th)",
+          "appliesTo": {
+            "namePrefix": "Test Cutting: Demon Rain"
+          },
+          "note": "With your Executioners Instrument, from 7th level (not with Ideal Cut, unless The Middle Path's Bonus action): up to two failing creatures: roll Severed's d6 for each (no repeat effects)."
+        }
+      ]
     }
   },
   "ownership": {
@@ -111,7 +214,47 @@
       "mode": "known",
       "grantedBy": ""
     },
-    "activities": [],
+    "activities": [
+      {
+        "id": "n5ejWVSDWGtAYr3N",
+        "type": "save",
+        "label": "Demon Rain",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: half damage.",
+            "success": "Success: half of [Weapons Damage] + 2d12.",
+            "failure": "Failure: [Weapons Damage] + 2d12 and Severed.",
+            "critFailure": "Critical Failure: as a failure, and it can't regain hit points until the end of your next turn."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "yamada-asaemon-discipline",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Severed"
+          }
+        ],
+        "text": "Right after another Yamada Hijutsu deals damage: the creatures it damaged. Then not again until the end of your next turn.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d12",
+              "type": "slashing"
+            }
+          ]
+        }
+      }
+    ],
     "featureType": "active",
     "disciplines": [
       "tai",

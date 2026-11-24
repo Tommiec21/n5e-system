@@ -85,17 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ejCB7vNLLGUok1",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "prone",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Prone"
-          }
-        ],
+        "label": "Swallow Dance",
         "save": {
           "abilities": [
             "dex"
@@ -104,21 +96,24 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "A 10-foot cone. Failure: launched 15 feet up until the end of the turn, then Prone. No half damage on a success.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "1d8",
-        "roll": {
-          "formula": "1d8",
-          "note": "On a failed save they take your unarmed damage + 1d8 and are launched 15 feet into the air until the end of the current turn, falling Prone."
+          "parts": [
+            {
+              "formula": "@unarmed + 1d8",
+              "type": "bludgeoning"
+            }
+          ]
         }
       }
     ],
@@ -199,9 +194,147 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5ejCB7vNLLGUok1",
+              "type": "save",
+              "label": "Swallow Dance",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 10-foot cone. Failure: launched 15 feet up until the end of the turn, then Prone. No half damage on a success.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed + 1d8) + (1d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5ejCB7vNLLGUok1",
+              "type": "save",
+              "label": "Swallow Dance",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 10-foot cone. Failure: launched 15 feet up until the end of the turn, then Prone. No half damage on a success.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed + 1d8) + (2d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ejCB7vNLLGUok1",
+              "type": "save",
+              "label": "Swallow Dance",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 10-foot cone. Failure: launched 15 feet up until the end of the turn, then Prone. No half damage on a success.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed + 1d8) + (3d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ejCB7vNLLGUok1",
+              "type": "save",
+              "label": "Swallow Dance",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 10-foot cone. Failure: launched 15 feet up until the end of the turn, then Prone. No half damage on a success.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(@unarmed + 1d8) + (4d8)",
+                    "type": "bludgeoning"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b31b1b0d97c02089"
