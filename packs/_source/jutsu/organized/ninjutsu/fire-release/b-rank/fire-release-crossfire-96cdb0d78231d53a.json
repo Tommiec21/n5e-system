@@ -85,17 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eXSpUwIych0dYM",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "burned",
-            "kind": "condition",
-            "ranks": 3,
-            "label": "Burned"
-          }
-        ],
+        "label": "Crossfire",
         "save": {
           "abilities": [
             "dex"
@@ -104,26 +96,24 @@
             "source": "discipline"
           },
           "onSuccess": "half",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 3,
+            "label": "Burned"
+          }
+        ],
+        "text": "Combination: four 30 by 5-foot beams from a point within 120 feet (+1 beam and +1d6 + 1 per extra caster). Failure: 3 Burned; success: half.",
         "damage": {
           "parts": [
             {
-              "formula": "8d6+8",
+              "formula": "8d6 + 8",
               "type": "fire"
             }
           ]
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "1d6+1",
-        "roll": {
-          "formula": "1d6+1",
-          "note": "Combination: Increase the damage dealt by 1d6+1 and the number of beams by +1, for every additional creature aiding in casting this jutsu, beyond the first two."
         }
       }
     ],
@@ -204,7 +194,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c03a256155b16b00"

@@ -1,6 +1,6 @@
 # STD6f function spec: jutsu as data
 
-Status: **Approved by King 2026-11-22 (Q-J1 yes; Q-J2 fix and finish). F1 Taijutsu I (0.87.0-alpha.1) and F2 Taijutsu II (0.88.0-alpha.1) built: Taijutsu is done. F3 Bukijutsu I (0.89.0-alpha.1) F4 Bukijutsu II (0.90.0-alpha.1) and F5 Bukijutsu III (0.91.0-alpha.1) built: Bukijutsu is done. F6 Non-Elemental (0.92.0-alpha.1) F7 Medical (0.93.0-alpha.1) and F8 Earth + Wind (0.94.0-alpha.1) built. Next: F9 Fire + Water.**
+Status: **Approved by King 2026-11-22 (Q-J1 yes; Q-J2 fix and finish). F1 Taijutsu I (0.87.0-alpha.1) and F2 Taijutsu II (0.88.0-alpha.1) built: Taijutsu is done. F3 Bukijutsu I (0.89.0-alpha.1) F4 Bukijutsu II (0.90.0-alpha.1) and F5 Bukijutsu III (0.91.0-alpha.1) built: Bukijutsu is done. F6 Non-Elemental (0.92.0-alpha.1) F7 Medical (0.93.0-alpha.1) F8 Earth + Wind (0.94.0-alpha.1) and F9 Fire + Water (0.95.0-alpha.1) built. Next: F10 Lightning.**
 
 Plan: `docs/STD_SPEC.md` (STD6f: "Every jutsu's riders as Active Effects and elements, emitted by an upgraded importer where the pattern is regular; a review table per section for King"). Same method as the clan pass (`docs/STD6e_SPEC.md`).
 
@@ -277,6 +277,36 @@ Review tables: `docs/jutsu/ninjutsu-earth-release-automation.md` (54 jutsu: 46 p
 - Bursting Compressed Air: "can't shatters"; no upcast.
 - Typos: Calcite Boons "gain advantaged"; Geo Genesis "you chose"; Golden Gems "to enhanced", "in one the following"; Mud Wave "not additional effect"; Mausoleum Rock "affect.."; Geo Stone Weapon "one of your hands are"; Crystalized Ascension "creature's gains"; Earth Clone "weights", "When command"; Geo Progeniture "or more than 1 shard", "each share", "half as much on and"; Sand Coffin Binding "damage that would be dealt to him", "they makes"; Cradle of Jade "When a you"; Crystal Arcanum "within range 30 feet"; Gravity Break "40 wide"; Dust Wind "until the end of their next."; Gryphon's Surge "creature s"; Lion's Roar "benefits of the duration"; Palm Vortex "additional affects"; Whirlwind Spear "longline"; Wind Rider "1 feet"; Vacuum Field "who's hit points"; Splitting Breeze "Infront".
 
+## F9 Ninjutsu IV: Fire + Water (0.95.0-alpha.1)
+
+Review tables: `docs/jutsu/ninjutsu-fire-release-automation.md` (51 jutsu: 41 partly automated, 10 notes only) and `docs/jutsu/ninjutsu-water-release-automation.md` (50 jutsu: 39 partly automated, 11 notes only).
+
+- **Summons built** from the Summon Stat Blocks section: Flame Spider (Summons > Ninjutsu > Fire Release; AC 10 + 2 and 18 + 8 hit points per rank above D), Water Shark (14 + 1 AC and 18 + 10 hit points per rank above D; Piranha Shark places one, Shark Bomb two, three at S-Rank), Medical Jellyfish (12 + 2 AC and 20 + 8 hit points per rank above C) and Supreme Water Lion (AC 23, 105 hit points, Huge) in Water Release. Explosive Clone and Water Clone place the shared Clone. The summon builder's release label is now a parameter (the Fire and Water summons say their own release).
+- **Kept** (Q-J2): the Flame Armor, Investiture of Flame, Body of Dawn, Viscous Water Mass and Blessing of Poseidon Amps (their extra buttons rebuilt: Investiture's fire cone, Body of Dawn's blinding light and water damage, Poseidon's tridents).
+- **Fixed:** attacks the import made saves (Dolphin Break, Syrup Water Shuriken, Tsunami Mallet, Shark's Maw); wrong conditions (Drown's Dying, Heavenly Mirror of Pain's Sealed, Syrup Water Shuriken's Shaken on every failure, Tsunami Mallet's Grappled, Geo-style conditions on every failure); loose rolls turned into damage, healing and temporary hit point buttons.
+- **Upcasts:** every "+1d6 + 1" style upcast grows both the dice and the flat bonus; Blazing Ash Cloud (C-Rank ignite, A-Rank Burned), Phoenix Fire (+2 attacks per rank), Devastating Blaze (Burned), Dragon Flame Bolt (attacks, Dazzled), Flame Coat, Hellfire Rejection (Shaken), Sanguine Weapon (autonomous and Pyronado attacks), Flaming Seals, Heavenly Flame, Dolphin Break and Tsunami Mallet (attacks), Water Shield, Raging Bubble Tide, Foul Legacy, Water Droplets of Change (Reflect), Hydra Scorpion (Shield, Swarm, Symphony), Blessing of Poseidon, Explosive Colliding Tsunami, Tsunami Bow, Shark Bomb.
+- **Notes only:** utility, sensing and revival jutsu (21).
+- **By hand:** the "near a sufficient source of water" options, Heat Snap's maximum Burned damage, Heavenly Mirror of Pain's shared damage, Delayed Fire Missile's growing dice, die-step increases (Tsunami Mallet, Water Dragon), Pierce DR.
+- **No new holds:** all four stat blocks are complete.
+
+## Text issues found in F9
+
+- Built on a reading; confirm: Water Shield (B-Rank +1 AC, S-Rank +2) built as +4 AC at S, DR +2 at C and +2 more at A; Flaming Seals (A-Rank +1, S-Rank +2) built as +2 at A, +3 at S; Tsunami Mallet (+1 attack at B, +2 at S) built as 2 attacks at B and A, 3 at S; Blessing of Poseidon's A-Rank trident bonus built for A and S; Supreme Water Lion Claw and Bite (no bonus in the block) built with your Ninjutsu attack bonus.
+- Phoenix Fire: two S-Rank lines (three times, then four times).
+- Searing Rush: range "120 Foot Line", text "90 feet long".
+- Crimson Butterfly: "On a failed save they take" is cut off.
+- Flaming Trap: 5e leftovers ("spell", "spell save DC", "glyph"); "Investigation or Ninjutsu" (Ninshou?).
+- Investiture of Flame: a 15-foot cone, then "Each creature in the line".
+- Water Droplets of Change (C-Rank): upcast "above D-Rank"; "struct".
+- Piranha Shark: an upcast that only raises the cost.
+- Water Clone: upcast "and the number of Clones" (no cost); "can on cast".
+- Heavenly Mirror of Pain: the last sentences are garbled ("Once the mirror is broken or you dismiss this jutsu as a bonus action. If you do neither…").
+- Explosive Colliding Tsunami: A-Rank "only half as much damage on a failed save".
+- Drown: "begin to Drown" (drowning isn't a condition; built as Suffocating).
+- Supreme Water Lion block: CHA +5 with a −5 save; CON save +5 below its +9 modifier. Flame Spider block: "flame Spider"; Bite "+2 for every rank above D-Rank" (by hand); Flame Web "Recharge 9–10".
+- Wall of Water: casting time "1 Action, 1 Reaction"; "a 5d6 Hit points".
+- Typos: Fireball "success save"; Dragon Flame Bolt "effected creature" and its upcast split across lines; Fox Fire "3 chakras", "neither you or"; Green Fire "Self(45-Radius)"; Heavenly Prison "S-Rank, and its duration"; Everflame Fruit "who's"; Great Fire Cage "ranks of Burn"; Body of Dawn "effect cause by"; Explosive Clone "the they"; Dolphin Break "On a success you deal"; Shark's Maw "a sharks"; Viscous Water Mass "cast a B-Rank"; Water Formation "up to two twice"; Raging Bubble Tide "Ranging wave"; Hydra Scorpion "for its the duration", "use this, Action"; Blessing of Poseidon "a Atlantean"; Tsunami Bow "have not moves"; Great Shark Bullet "successful on"; Water Dragon "target creature 14d6"; Giant Water Prison Dance "60 radius".
+
 ## Progress log
 
 - 2026-11-22 King: "Next batch" (after STD6e E8). Claude: spec proposed from a survey of the jutsu pack. Nothing built.
@@ -288,3 +318,4 @@ Review tables: `docs/jutsu/ninjutsu-earth-release-automation.md` (54 jutsu: 46 p
 - 2026-11-23 King: "Next batch." Claude: F6 Non-Elemental built (86 jutsu); six summons from the Summon Stat Blocks (Ink Bat/Snake, Ink Reptile, Ink Predator, Inanimate Puppet, Ink Oni, Clone); published 0.92.0-alpha.1. No new questions.
 - 2026-11-23 King: "Make sure all missing pieces are being recorded in the MD file. Then move on to the next batch." Claude: F1–F6 text issues and built-on-a-reading items added to the context text-issues files (10a, 10b); F7 Medical built (68 jutsu) with the Supreme Poison Deity; published 0.93.0-alpha.1. No new questions.
 - 2026-11-24 King: "Next Batch." Claude: F8 Earth + Wind built (104 jutsu) with the Mud Wolf and Stone Dragon; text issues logged in 10a; published 0.94.0-alpha.1. No new questions.
+- 2026-11-24 King: "Next Batch." Claude: F9 Fire + Water built (101 jutsu) with the Flame Spider, Water Shark, Medical Jellyfish and Supreme Water Lion; text issues logged in 10a; published 0.95.0-alpha.1. No new questions.

@@ -85,9 +85,19 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eWhkSbhNZmgCgK",
         "type": "save",
-        "label": "Save",
+        "label": "Sunburst",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "blinded",
@@ -96,22 +106,11 @@
             "label": "Blinded"
           }
         ],
-        "save": {
-          "abilities": [
-            "con"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "A 60-foot radius within 150 feet. Failure: Blinded for 1 minute; success: half, nothing else.",
         "damage": {
           "parts": [
             {
-              "formula": "8d6+8",
+              "formula": "8d6 + 8",
               "type": "fire"
             }
           ]
@@ -198,9 +197,19 @@
         "activitiesByRank": {
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eWhkSbhNZmgCgK",
               "type": "save",
-              "label": "Save",
+              "label": "Sunburst",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "blinded",
@@ -209,22 +218,11 @@
                   "label": "Blinded"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "con"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "A 60-foot radius within 150 feet. Failure: Blinded for 1 minute; success: half, nothing else.",
               "damage": {
                 "parts": [
                   {
-                    "formula": "(8d6+8) + (1d6+1)",
+                    "formula": "9d6 + 9",
                     "type": "fire"
                   }
                 ]
@@ -233,7 +231,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "6d60386b2f6cb7c3"

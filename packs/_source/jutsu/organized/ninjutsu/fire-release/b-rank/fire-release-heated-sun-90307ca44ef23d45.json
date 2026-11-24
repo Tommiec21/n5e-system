@@ -85,17 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eF4cuFHex1rtH6",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "weakened",
-            "kind": "condition",
-            "ranks": 2,
-            "label": "Weakened"
-          }
-        ],
+        "label": "Heated Sun",
         "save": {
           "abilities": [
             "con"
@@ -104,18 +96,34 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Weakened"
+          }
+        ],
+        "text": "Concentration: starting a turn within 20 feet of the globe (an Action moves it 30 feet). Failure: 2 Weakened.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eT7gvglhdODfBu",
+        "type": "damage",
+        "label": "Hot metal",
         "damage": {
           "parts": [
             {
-              "formula": "6d6+6",
+              "formula": "6d6 + 6",
               "type": "fire"
             }
           ]
-        }
+        },
+        "text": "Wearing or holding metal within 20 feet, at the start of each turn."
       }
     ],
     "featureType": "active",
@@ -198,17 +206,9 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eF4cuFHex1rtH6",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "weakened",
-                  "kind": "condition",
-                  "ranks": 2,
-                  "label": "Weakened"
-                }
-              ],
+              "label": "Heated Sun",
               "save": {
                 "abilities": [
                   "con"
@@ -217,33 +217,41 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Concentration: starting a turn within 20 feet of the globe (an Action moves it 30 feet). Failure: 2 Weakened.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eT7gvglhdODfBu",
+              "type": "damage",
+              "label": "Hot metal",
               "damage": {
                 "parts": [
                   {
-                    "formula": "(6d6+6) + (1d6+1)",
+                    "formula": "7d6 + 7",
                     "type": "fire"
                   }
                 ]
-              }
+              },
+              "text": "Wearing or holding metal within 20 feet, at the start of each turn."
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eF4cuFHex1rtH6",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "weakened",
-                  "kind": "condition",
-                  "ranks": 2,
-                  "label": "Weakened"
-                }
-              ],
+              "label": "Heated Sun",
               "save": {
                 "abilities": [
                   "con"
@@ -252,23 +260,40 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "weakened",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Weakened"
+                }
+              ],
+              "text": "Concentration: starting a turn within 20 feet of the globe (an Action moves it 30 feet). Failure: 2 Weakened.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eT7gvglhdODfBu",
+              "type": "damage",
+              "label": "Hot metal",
               "damage": {
                 "parts": [
                   {
-                    "formula": "(6d6+6) + (2d6+2)",
+                    "formula": "8d6 + 8",
                     "type": "fire"
                   }
                 ]
-              }
+              },
+              "text": "Wearing or holding metal within 20 feet, at the start of each turn."
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c03a256155b16b00"

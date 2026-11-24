@@ -85,35 +85,28 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5edAjswpYYobxP5",
         "type": "attack",
-        "label": "Attack",
+        "label": "Phoenix Fire",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "ranged",
-          "count": 1
+          "count": 4
         },
+        "text": "No creature more than twice (S-Rank: four times).",
         "damage": {
           "parts": [
             {
-              "formula": "1d6+1",
+              "formula": "1d6 + 1",
               "type": "fire"
             }
           ]
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eISNjK400QtcvQ",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "burned",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Burned"
-          }
-        ],
+        "label": "Two hits: Burned",
         "save": {
           "abilities": [
             "con"
@@ -122,10 +115,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Burned"
+          }
+        ],
+        "text": "Two hits on one creature. Failure: 1 Burned (B-Rank, 2+ Burned: you can trigger its Burned damage, then it loses them).",
         "damage": {
           "parts": []
         }
@@ -202,9 +202,203 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5edAjswpYYobxP5",
+              "type": "attack",
+              "label": "Phoenix Fire",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 6
+              },
+              "text": "No creature more than twice (S-Rank: four times).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d6 + 1",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eISNjK400QtcvQ",
+              "type": "save",
+              "label": "Two hits: Burned",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "Two hits on one creature. Failure: 1 Burned (B-Rank, 2+ Burned: you can trigger its Burned damage, then it loses them).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5edAjswpYYobxP5",
+              "type": "attack",
+              "label": "Phoenix Fire",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 8
+              },
+              "text": "No creature more than twice (S-Rank: four times).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d6 + 1",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eISNjK400QtcvQ",
+              "type": "save",
+              "label": "Two hits: Burned",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "Two hits on one creature. Failure: 1 Burned (B-Rank, 2+ Burned: you can trigger its Burned damage, then it loses them).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5edAjswpYYobxP5",
+              "type": "attack",
+              "label": "Phoenix Fire",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 10
+              },
+              "text": "No creature more than twice (S-Rank: four times).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d6 + 1",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eISNjK400QtcvQ",
+              "type": "save",
+              "label": "Two hits: Burned",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "Two hits on one creature. Failure: 1 Burned (B-Rank, 2+ Burned: you can trigger its Burned damage, then it loses them).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5edAjswpYYobxP5",
+              "type": "attack",
+              "label": "Phoenix Fire",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 12
+              },
+              "text": "No creature more than twice (S-Rank: four times).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d6 + 1",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eISNjK400QtcvQ",
+              "type": "save",
+              "label": "Two hits: Burned",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "Two hits on one creature. Failure: 1 Burned (B-Rank, 2+ Burned: you can trigger its Burned damage, then it loses them).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5eegPtnn07turpr"

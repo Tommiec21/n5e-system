@@ -483,7 +483,9 @@ const kujakuBeast = actor("kujaku-beast", "Kujaku Beast", hoshi._id, {
 // and save DC; AC and hit points grow by the rank you cast the jutsu at.
 const ninjutsu = folder("Ninjutsu", null, "ninjutsu");
 const nonElemental = folder("Non-Elemental", ninjutsu._id, "ninjutsu/non-elemental");
-const MENTAL = ["berserk", "charmed", "confused", "demoralized", "shaken"];
+const MENTAL = ["berserk", "charmed", "confused", "demoralized", "shaken", "concussed"];
+const PHYSICAL = ["bruised", "staggered", "bleed", "dazed", "weakened", "slowed"];
+const ELEMENTAL = ["burned", "chilled", "corroded", "shocked", "envenomed"];
 const SENSORY = ["blinded", "dazzled", "deafened"];
 const NIN = { "bonuses.saveDC.nin": "@dc.nin - 8 - @prof", "bonuses.attack.nin": "@attack.nin - @prof" };
 const mods = m => Object.fromEntries(ABILITIES.map((k, i) => [k, { value: 10 + 2 * m[i] }]));
@@ -494,10 +496,10 @@ const ninSave = (seed, label, ab, extra = {}) => act(seed, label, "save", { save
 const ninAtk = (seed, label, formula, type, count = 1, text) => act(seed, label, "attack", { attack: { discipline: "nin", range: "melee", count, bonus: "0" },
   damage: { parts: [{ formula, type }] }, ...(text ? { text } : {}) });
 const rankUp = (base, per, from) => `${base} + ${per} * max(0, @rankValue - ${from})`;
-function inkSummon(seed, name, { jutsu, size = "medium", ac, hp, speed, fly = 0, m, sv, senses = { darkvision: 30 }, resist = [], immune = [], vuln = [], condImmune = [], stateImmune = [], dr = 0, extraBio = "" }, items) {
-  const a = actor(seed, name, nonElemental._id, {
-    details: { build: "character", level: 1, template: "summon", creatureType: "construct", blurb: `Non-Elemental: ${jutsu}`, summonRole: name,
-      biography: html(`<p><em>${jutsu} (Non-Elemental Ninjutsu).</em> It uses your Ninjutsu attack bonus and save DC. You command it as a Bonus Action; it can take reactions it's able to, such as opportunity attacks.</p>`,
+function inkSummon(seed, name, { jutsu, size = "medium", ac, hp, speed, fly = 0, m, sv, senses = { darkvision: 30 }, resist = [], immune = [], vuln = [], condImmune = [], stateImmune = [], dr = 0, extraBio = "", release = "Non-Elemental", dir = nonElemental }, items) {
+  const a = actor(seed, name, dir._id, {
+    details: { build: "character", level: 1, template: "summon", creatureType: "construct", blurb: jutsu.startsWith(release) ? jutsu : `${release}: ${jutsu}`, summonRole: name,
+      biography: html(`<p><em>${jutsu} (${release} Ninjutsu).</em> It uses your Ninjutsu attack bonus and save DC. You command it as a Bonus Action; it can take reactions it's able to, such as opportunity attacks.</p>`,
         `<p><strong>${size[0].toUpperCase() + size.slice(1)} Construct.</strong> <strong>Armor Class</strong> ${ac[0]} + ${ac[1]} for every rank above ${"EDCBAS"[ac[2]]}-Rank${dr ? `, DR ${dr}` : ""} · <strong>Hit Points</strong> ${hp[0]} + ${hp[1]} for every rank above ${"EDCBAS"[hp[2]]}-Rank · <strong>Speed</strong> ${speed} ft.${fly ? `, ${fly} ft. fly` : ""}.</p>`,
         `<p><strong>Abilities</strong> ${statLine(m, sv)}.${extraBio}</p>`,
         "<p><strong>Linked to you when summoned:</strong> AC and hit points by the rank you cast the jutsu at, and your Ninjutsu attack bonus and save DC.</p>") },
@@ -661,8 +663,70 @@ const stoneDragon = actor("stone-dragon", "Stone Dragon", earth._id, {
 ], { "details.level": "@level", ...NIN, "attributes.ac.flat": `13 + ${NINMOD}`, hpMax: rankUp(80, 20, 4) }, "icons/svg/mystery-man-black.svg");
 stoneDragon.prototypeToken.width = stoneDragon.prototypeToken.height = 2;
 
+
+// Fire and Water Release summons (STD6f F9), from the Summon Stat Blocks section.
+const fire = folder("Fire Release", ninjutsu._id, "ninjutsu/fire-release");
+const water = folder("Water Release", ninjutsu._id, "ninjutsu/water-release");
+const flameSpider = inkSummon("flame-spider", "Flame Spider", { jutsu: "Fire Release: Crimson Spider (D-Rank)", release: "Fire Release", dir: fire, ac: [10, 2, 1], hp: [18, 8, 1], speed: 40,
+  m: [2, 3, 1, -5, 0, -5], sv: [2, 3, 0, -5, 0, -5], senses: {}, immune: ["fire", "psychic"], condImmune: [...MENTAL, "petrified", "envenomed"], stateImmune: ["stunned"],
+  extraBio: " <strong>Damage Immunities</strong> Fire, Psychic. <strong>Condition Immunities</strong> All Mental, Stunned, Petrified, Envenomed. <strong>Senses</strong> passive Perception 10." }, id => [
+  item(id, "Bite", "npcStrikes", html("<em>Multiattack.</em> The Flame Spider attacks 2 times with its Bite. <em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 2d4 + 2 fire damage (+2 for every rank above D-Rank it is summoned)."),
+    [ninAtk("flame-spider", "Bite", "2d4 + 2", "fire", 2, "+2 damage per rank above D-Rank (add it by hand).")]),
+  item(id, "Flame Web (Recharge 9–10)", "npcAbilities", html("<em>Ranged Weapon Attack:</em> your Ninjutsu attack bonus, range 30/60 ft., one creature. The target is covered in solidified flaming webs and is Restrained by them, taking 2d6 + 2 fire damage. As an action the Restrained target can make a Strength ability check, bursting from the webbing on a success. The webbing can also be attacked and destroyed (AC 10, 5 hit points; vulnerability to cold damage)."),
+    [act("flame-spider", "Flame Web", "attack", { attack: { discipline: "nin", range: "ranged", count: 1, bonus: "0" }, damage: { parts: [{ formula: "2d6 + 2", type: "fire" }] }, text: "Recharge 9–10 (as written). On a hit: Restrained." }),
+     act("flame-spider-web", "Webbed: Restrained", "effect", { effect: { name: "Flame Web", target: "targets", changes: [], expires: "", seconds: 0, inflicts: [inf("restrained", "state")] } })])
+]);
+const waterShark = inkSummon("water-shark", "Water Shark", { jutsu: "Water Release: Piranha Shark (D-Rank) and Shark Bomb (B-Rank)", release: "Water Release", dir: water, ac: [14, 1, 1], hp: [18, 10, 1], speed: 0,
+  m: [4, 1, 3, -5, 0, -5], sv: [4, 1, 5, -5, 0, -5], senses: {}, immune: ["cold"], resist: ["fire"], vuln: ["earth"], condImmune: [...MENTAL, ...PHYSICAL, "exhaustion", "petrified", "envenomed"], stateImmune: ["stunned"],
+  extraBio: " <strong>Speed</strong> fly 30 ft., swim 90 ft. <strong>Damage Immunities</strong> Cold. <strong>Damage Resistances</strong> Fire. <strong>Damage Vulnerabilities</strong> Earth. <strong>Condition Immunities</strong> All Mental, All Physical, Exhaustion, Stunned, Petrified, Envenomed. <strong>Senses</strong> passive Perception 10." }, id => [
+  item(id, "Water Predator", "npcTraits", html("If the Water Shark and its target are submerged in a body of water, its attacks are made at advantage against its target.")),
+  item(id, "Shark Trigger (Shark Bomb only)", "npcAbilities", html("When the Water Shark is reduced to 0 hit points, it explodes, forcing all creatures within 10 feet (excluding the caster) to make a Dexterity saving throw, taking 5d6 cold damage and 1 rank of Chilled on a failed save, or half as much damage and no further effect on a success."),
+    [ninSave("water-shark", "Shark Trigger", "dex", { half: true, damage: [{ formula: "5d6", type: "cold" }], inflicts: [inf("chilled")], text: "Only if summoned by Shark Bomb; at 0 hit points." })]),
+  item(id, "Bite", "npcStrikes", html("<em>Multiattack.</em> The Water Shark attacks 2 times with its Bite or Rip and Tear. <em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 2d4 cold damage + 2d4 piercing damage. On a hit the target must make a Strength saving throw, being Grappled by this Water Shark on a failure (one creature at a time)."),
+    [act("water-shark", "Bite", "attack", { attack: { discipline: "nin", range: "melee", count: 2, bonus: "0" }, damage: { parts: [{ formula: "2d4", type: "cold" }, { formula: "2d4", type: "piercing" }] } }),
+     ninSave("water-shark", "Bite: Grappled", "str", { inflicts: [inf("grappled", "state")] })]),
+  item(id, "Rip and Tear (Shark Bomb only)", "npcStrikes", html("<em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 3d6 cold damage + 3d6 piercing damage. On a hit the target must make a Dexterity saving throw, gaining 1 rank of Bleed on a failure."),
+    [act("water-shark-rip", "Rip and Tear", "attack", { attack: { discipline: "nin", range: "melee", count: 2, bonus: "0" }, damage: { parts: [{ formula: "3d6", type: "cold" }, { formula: "3d6", type: "piercing" }] }, text: "Only if summoned by Shark Bomb." }),
+     ninSave("water-shark-rip", "Rip and Tear: Bleed", "dex", { inflicts: [inf("bleed")] })])
+]);
+waterShark.system.traits.speed = { walk: 0, climb: 0, swim: 90, fly: 30, burrow: 0, hover: false };
+const jellyfish = inkSummon("medical-jellyfish", "Medical Jellyfish", { jutsu: "Water Release: Medical Jellyfish (C-Rank)", release: "Water Release", dir: water, size: "small", ac: [12, 2, 2], hp: [20, 8, 2], speed: 0,
+  m: [0, 0, 0, -5, 0, -5], sv: [2, 2, 0, -5, 0, -5], senses: {}, immune: ["cold"], resist: ["bludgeoning", "poison"], vuln: ["earth"], condImmune: [...MENTAL, ...SENSORY],
+  extraBio: " <strong>Speed</strong> fly 30 ft. <strong>Damage Immunities</strong> Cold. <strong>Damage Resistances</strong> Bludgeoning, Poison. <strong>Damage Vulnerabilities</strong> Earth. <strong>Condition Immunities</strong> All Mental, All Sensory. <strong>Senses</strong> passive Perception 10." }, id => [
+  item(id, "Medical Pool", "npcTraits", html("The Medical Jellyfish has a pool of Medical Chakra equal to 20 + 5 for every rank above C-Rank it is summoned (track it by hand).")),
+  item(id, "Jelly Sting", "npcStrikes", html("<em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 10 ft., one creature. <em>Hit:</em> 2d8 + 2 cold damage (+2 for every rank above C-Rank it is summoned)."),
+    [ninAtk("medical-jellyfish", "Jelly Sting", "2d8 + 2", "cold", 1, "+2 damage per rank above C-Rank (add it by hand).")]),
+  item(id, "Top Up Jelly Shot", "npcAbilities", html("The Medical Jellyfish places one of its cnidocytes on a willing creature, granting it 2d4 + 2 temporary hit points (+2 for every rank above C-Rank it is summoned)."),
+    [act("medical-jellyfish", "Top Up Jelly Shot", "heal", { heal: { formula: "2d4 + 2", pool: "tempHp" }, text: "+2 per rank above C-Rank (add it by hand)." })]),
+  item(id, "Aura of Recovery", "npcAbilities", html("The Medical Jellyfish releases an aura of Medical chakra across all creatures of its summoner's choice within a 10-foot radius. For each creature, it draws from its Medical Pool to restore hit points, up to the amount remaining in the pool."))
+]);
+jellyfish.system.traits.speed = { walk: 0, climb: 0, swim: 0, fly: 30, burrow: 0, hover: false };
+const waterLion = actor("supreme-water-lion", "Supreme Water Lion", water._id, {
+  details: { build: "character", level: 1, template: "summon", creatureType: "construct", blurb: "Water Release: Supreme Water Lion", summonRole: "Supreme Water Lion",
+    biography: html("<p><em>Water Release: Supreme Water Lion (S-Rank, concentration up to 1 minute).</em> It uses your Ninjutsu attack bonus and save DC; you command it as a Bonus Action, and can merge into its head (total cover) while touching it.</p>",
+      "<p><strong>Huge Construct.</strong> <strong>Armor Class</strong> 23 · <strong>Hit Points</strong> 105 · <strong>Speed</strong> 40 ft.</p>",
+      `<p><strong>Abilities</strong> ${statLine([6, 3, 9, -5, 0, 5], [9, 5, 5, -5, 0, -5])}. <strong>Damage Resistances</strong> Fire. <strong>Damage Vulnerabilities</strong> Earth. <strong>Condition Immunities</strong> All Mental, Sensory and Elemental, Incapacitated. <strong>Senses</strong> Darkvision 60 ft., passive Perception 10.</p>`,
+      "<p><strong>Linked to you when summoned:</strong> your Ninjutsu attack bonus and save DC.</p>") },
+  abilities: mods([6, 3, 9, -5, 0, 5]),
+  attributes: { ac: { calc: "flat", flat: 23, formula: "" }, init: { bonus: "" } },
+  traits: { size: "huge", resist: ["fire"], vuln: ["earth"], conditionImmune: [...MENTAL, ...SENSORY, ...ELEMENTAL], stateImmune: ["incapacitated"],
+    speed: { walk: 40, climb: 0, swim: 0, fly: 0, burrow: 0, hover: false }, senses: { darkvision: 60 } },
+  hpMax: 105, cpMax: 0, diesAtZero: true
+}, id => [
+  item(id, "One with Water", "npcTraits", html("When the lion is in contact with a body of water large enough for it to submerge itself, it gains a 250-foot swim speed and truesight 90 feet against other submerged creatures.")),
+  item(id, "Claw", "npcStrikes", html("<em>Multiattack.</em> The Supreme Water Lion attacks 3 times: twice with its claws and once with its bite. <em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 10 ft., one creature. <em>Hit:</em> 3d6 + 6 cold damage."),
+    [ninAtk("water-lion", "Claw", "3d6 + 6", "cold", 2)]),
+  item(id, "Bite", "npcStrikes", html("<em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 6d6 + 6 cold damage. Once per turn, a creature hit must make a Strength saving throw. On a failure it is Grappled; until this grapple ends, the target is Restrained and the Lion can't bite another target."),
+    [ninAtk("water-lion-bite", "Bite", "6d6 + 6", "cold"), ninSave("water-lion-bite", "Bite: Grappled", "str", { inflicts: [inf("grappled", "state"), inf("restrained", "state")], text: "Once per turn." })]),
+  item(id, "Swallow", "npcAbilities", html("The Water Lion makes one bite attack against a Large or smaller creature it is grappling. If it hits, the target is swallowed and the grapple ends. The swallowed target is Restrained, fully visible in the Lion's belly, and can't be the target of any jutsu. It must be able to breathe underwater or it begins to drown: it survives rounds equal to its Constitution modifier (minimum 1), then falls unconscious; an unconscious drowning creature takes 6d6 + 6 cold damage at the start of its turn. A creature that's no longer drowning can be woken by another as a bonus action."),
+    [act("water-lion-swallow", "Drowning (unconscious)", "damage", { damage: { parts: [{ formula: "6d6 + 6", type: "cold" }] }, text: "At the start of an unconscious drowning creature's turn." })]),
+  item(id, "Hydro Discharge (2 Charges)", "npcAbilities", html("The Lion exhales pure Water Release chakra in a 60-foot cone. Each creature except its summoner in that cone must make a Dexterity saving throw, taking 10d10 cold damage and 2 ranks of Chilled on a failed save, or half as much damage on a success."),
+    [ninSave("water-lion", "Hydro Discharge", "dex", { half: true, damage: [{ formula: "10d10", type: "cold" }], inflicts: [inf("chilled", "condition", 2)], text: "2 charges." })])
+], { "details.level": "@level", ...NIN }, "icons/svg/mystery-man-black.svg");
+waterLion.prototypeToken.width = waterLion.prototypeToken.height = 3;
+
 /* -------------------------------------------- */
-export const SUMMONS = { bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone, poisonDeity, mudWolf, stoneDragon, folders: [scout, cloning, voidHeart, genjutsu, beguiler, illusionist, bakuton, chinoike, hozuki, kashu, shoton, tsuchigumo, hoshi, ninjutsu, nonElemental, medical, earth] };
+export const SUMMONS = { bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone, poisonDeity, mudWolf, stoneDragon, flameSpider, waterShark, jellyfish, waterLion, folders: [scout, cloning, voidHeart, genjutsu, beguiler, illusionist, bakuton, chinoike, hozuki, kashu, shoton, tsuchigumo, hoshi, ninjutsu, nonElemental, medical, earth, fire, water] };
 
 if ( import.meta.url === `file://${process.argv[1]}` ) {
   fs.rmSync(OUT, { recursive: true, force: true });
@@ -699,9 +763,13 @@ if ( import.meta.url === `file://${process.argv[1]}` ) {
   write("ninjutsu/non-elemental/_folder.json", nonElemental);
   write("ninjutsu/medical-release/_folder.json", medical);
   write("ninjutsu/earth-release/_folder.json", earth);
+  write("ninjutsu/fire-release/_folder.json", fire);
+  write(`ninjutsu/fire-release/flame-spider-${flameSpider._id}.json`, flameSpider);
+  write("ninjutsu/water-release/_folder.json", water);
+  for ( const d of [waterShark, jellyfish, waterLion] ) write(`ninjutsu/water-release/${d.name.toLowerCase().replace(/[^a-z]+/g, "-")}-${d._id}.json`, d);
   write(`ninjutsu/earth-release/mud-wolf-${mudWolf._id}.json`, mudWolf);
   write(`ninjutsu/earth-release/stone-dragon-${stoneDragon._id}.json`, stoneDragon);
   write(`ninjutsu/medical-release/supreme-poison-deity-${poisonDeity._id}.json`, poisonDeity);
   for ( const d of [inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone] ) write(`ninjutsu/non-elemental/${d.name.toLowerCase().replace(/[^a-z]+/g, "-").replace(/-$/, "")}-${d._id}.json`, d);
-  console.log(`✓ summons: 27 NPCs (${[bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone, poisonDeity, mudWolf, stoneDragon].map(d => `${d.name} ${d._id}`).join(", ")})`);
+  console.log(`✓ summons: 31 NPCs (${[bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone, poisonDeity, mudWolf, stoneDragon, flameSpider, waterShark, jellyfish, waterLion].map(d => `${d.name} ${d._id}`).join(", ")})`);
 }

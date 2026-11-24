@@ -86,13 +86,14 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d6 + 4",
-        "roll": {
-          "formula": "2d6+4",
-          "note": "They also gain a number of Temporary Hit points equal to 2d6 + 4. A creature can gain the benefits of this jutsu once every hour."
-        }
+        "id": "n5eEyqHgAEfzlQyP",
+        "type": "heal",
+        "label": "Gem: temporary hit points",
+        "heal": {
+          "formula": "2d6 + 4",
+          "pool": "tempHp"
+        },
+        "text": "Two gems; a creature eats one as a Bonus Action: it also spends up to 2 Hit Dice to heal; once per hour."
       }
     ],
     "featureType": "active",
@@ -172,9 +173,47 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eEyqHgAEfzlQyP",
+              "type": "heal",
+              "label": "Gem: temporary hit points",
+              "heal": {
+                "formula": "(2d6 + 4) + (1d6)",
+                "pool": "tempHp"
+              },
+              "text": "Two gems; a creature eats one as a Bonus Action: it also spends up to 2 Hit Dice to heal; once per hour."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eEyqHgAEfzlQyP",
+              "type": "heal",
+              "label": "Gem: temporary hit points",
+              "heal": {
+                "formula": "(2d6 + 4) + (2d6)",
+                "pool": "tempHp"
+              },
+              "text": "Two gems; a creature eats one as a Bonus Action: it also spends up to 2 Hit Dice to heal; once per hour."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eEyqHgAEfzlQyP",
+              "type": "heal",
+              "label": "Gem: temporary hit points",
+              "heal": {
+                "formula": "(2d6 + 4) + (3d6)",
+                "pool": "tempHp"
+              },
+              "text": "Two gems; a creature eats one as a Bonus Action: it also spends up to 2 Hit Dice to heal; once per hour."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "d322c5d25b2d40d2"

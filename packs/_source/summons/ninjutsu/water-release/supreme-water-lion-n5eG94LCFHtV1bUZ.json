@@ -1,0 +1,419 @@
+{
+  "_id": "n5eG94LCFHtV1bUZ",
+  "_key": "!actors!n5eG94LCFHtV1bUZ",
+  "name": "Supreme Water Lion",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Water Release: Supreme Water Lion",
+      "summonRole": "Supreme Water Lion",
+      "biography": "<p><em>Water Release: Supreme Water Lion (S-Rank, concentration up to 1 minute).</em> It uses your Ninjutsu attack bonus and save DC; you command it as a Bonus Action, and can merge into its head (total cover) while touching it.</p><p><strong>Huge Construct.</strong> <strong>Armor Class</strong> 23 · <strong>Hit Points</strong> 105 · <strong>Speed</strong> 40 ft.</p><p><strong>Abilities</strong> STR +6 (save +9), DEX +3 (save +5), CON +9 (save +5), INT −5 (save −5), WIS +0 (save +0), CHA +5 (save −5). <strong>Damage Resistances</strong> Fire. <strong>Damage Vulnerabilities</strong> Earth. <strong>Condition Immunities</strong> All Mental, Sensory and Elemental, Incapacitated. <strong>Senses</strong> Darkvision 60 ft., passive Perception 10.</p><p><strong>Linked to you when summoned:</strong> your Ninjutsu attack bonus and save DC.</p>"
+    },
+    "abilities": {
+      "str": {
+        "value": 22
+      },
+      "dex": {
+        "value": 16
+      },
+      "con": {
+        "value": 28
+      },
+      "int": {
+        "value": 0
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 20
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 23,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "huge",
+      "resist": [
+        "fire"
+      ],
+      "vuln": [
+        "earth"
+      ],
+      "conditionImmune": [
+        "berserk",
+        "charmed",
+        "confused",
+        "demoralized",
+        "shaken",
+        "concussed",
+        "blinded",
+        "dazzled",
+        "deafened",
+        "burned",
+        "chilled",
+        "corroded",
+        "shocked",
+        "envenomed"
+      ],
+      "stateImmune": [
+        "incapacitated"
+      ],
+      "speed": {
+        "walk": 40,
+        "climb": 0,
+        "swim": 0,
+        "fly": 0,
+        "burrow": 0,
+        "hover": false
+      },
+      "senses": {
+        "darkvision": 60
+      }
+    },
+    "hpMax": 105,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5eUPe3cIV7XhPn1",
+      "_key": "!actors.items!n5eG94LCFHtV1bUZ.n5eUPe3cIV7XhPn1",
+      "name": "One with Water",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>When the lion is in contact with a body of water large enough for it to submerge itself, it gains a 250-foot swim speed and truesight 90 feet against other submerged creatures.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.95.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eU7JYfE5Fou9Nn",
+      "_key": "!actors.items!n5eG94LCFHtV1bUZ.n5eU7JYfE5Fou9Nn",
+      "name": "Claw",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Multiattack.</em> The Supreme Water Lion attacks 3 times: twice with its claws and once with its bite. <em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 10 ft., one creature. <em>Hit:</em> 3d6 + 6 cold damage.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eABLEquLZDrsEj",
+            "type": "attack",
+            "label": "Claw",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 2,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "3d6 + 6",
+                  "type": "cold"
+                }
+              ]
+            }
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.95.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5ehcd8TyBRWfXvD",
+      "_key": "!actors.items!n5eG94LCFHtV1bUZ.n5ehcd8TyBRWfXvD",
+      "name": "Bite",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 6d6 + 6 cold damage. Once per turn, a creature hit must make a Strength saving throw. On a failure it is Grappled; until this grapple ends, the target is Restrained and the Lion can't bite another target.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eMyEIF3eDHdcb9",
+            "type": "attack",
+            "label": "Bite",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 1,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "6d6 + 6",
+                  "type": "cold"
+                }
+              ]
+            }
+          },
+          {
+            "id": "n5evsv2V99GgIzqW",
+            "type": "save",
+            "label": "Bite: Grappled",
+            "save": {
+              "abilities": [
+                "str"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "inflicts": [
+              {
+                "key": "grappled",
+                "kind": "state",
+                "ranks": 1,
+                "label": "Grappled"
+              },
+              {
+                "key": "restrained",
+                "kind": "state",
+                "ranks": 1,
+                "label": "Restrained"
+              }
+            ],
+            "text": "Once per turn."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.95.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eT1D263wh5f943",
+      "_key": "!actors.items!n5eG94LCFHtV1bUZ.n5eT1D263wh5f943",
+      "name": "Swallow",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Water Lion makes one bite attack against a Large or smaller creature it is grappling. If it hits, the target is swallowed and the grapple ends. The swallowed target is Restrained, fully visible in the Lion's belly, and can't be the target of any jutsu. It must be able to breathe underwater or it begins to drown: it survives rounds equal to its Constitution modifier (minimum 1), then falls unconscious; an unconscious drowning creature takes 6d6 + 6 cold damage at the start of its turn. A creature that's no longer drowning can be woken by another as a bonus action.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5e3lCcQmhZnbqgD",
+            "type": "damage",
+            "label": "Drowning (unconscious)",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "6d6 + 6",
+                  "type": "cold"
+                }
+              ]
+            },
+            "text": "At the start of an unconscious drowning creature's turn."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.95.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eZDy1v4LyJmkzb",
+      "_key": "!actors.items!n5eG94LCFHtV1bUZ.n5eZDy1v4LyJmkzb",
+      "name": "Hydro Discharge (2 Charges)",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Lion exhales pure Water Release chakra in a 60-foot cone. Each creature except its summoner in that cone must make a Dexterity saving throw, taking 10d10 cold damage and 2 ranks of Chilled on a failed save, or half as much damage on a success.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5ec3n4d8fArRT2u",
+            "type": "save",
+            "label": "Hydro Discharge",
+            "save": {
+              "abilities": [
+                "dex"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "half",
+              "resave": false
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "10d10",
+                  "type": "cold"
+                }
+              ]
+            },
+            "inflicts": [
+              {
+                "key": "chilled",
+                "kind": "condition",
+                "ranks": 2,
+                "label": "Chilled"
+              }
+            ],
+            "text": "2 charges."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.95.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5ecuxsLU21wGxa0",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "bonuses.saveDC.nin": "@dc.nin - 8 - @prof",
+        "bonuses.attack.nin": "@attack.nin - @prof"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Supreme Water Lion",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 3,
+    "height": 3
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.95.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

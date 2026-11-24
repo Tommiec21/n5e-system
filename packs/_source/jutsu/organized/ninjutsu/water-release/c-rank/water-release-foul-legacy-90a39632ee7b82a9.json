@@ -86,9 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5evNTsqq3YizoS4",
         "type": "damage",
-        "label": "Damage",
+        "label": "Foul Legacy: +2d4",
         "damage": {
           "parts": [
             {
@@ -96,7 +96,8 @@
               "type": "cold"
             }
           ]
-        }
+        },
+        "text": "Concentration: one weapon of you and each ally within 10 feet, twice per turn; the wielder gains as many temporary hit points."
       }
     ],
     "featureType": "active",
@@ -182,9 +183,59 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5evNTsqq3YizoS4",
+              "type": "damage",
+              "label": "Foul Legacy: +2d4",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d4",
+                    "type": "cold"
+                  }
+                ]
+              },
+              "text": "Concentration: one weapon of you and each ally within 10 feet, twice per turn; the wielder gains as many temporary hit points."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5evNTsqq3YizoS4",
+              "type": "damage",
+              "label": "Foul Legacy: +2d4",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d8",
+                    "type": "cold"
+                  }
+                ]
+              },
+              "text": "Concentration: one weapon of you and each ally within 10 feet, twice per turn; the wielder gains as many temporary hit points."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5evNTsqq3YizoS4",
+              "type": "damage",
+              "label": "Foul Legacy: +2d4",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d8",
+                    "type": "cold"
+                  }
+                ]
+              },
+              "text": "Concentration: one weapon of you and each ally within 10 feet, twice per turn; the wielder gains as many temporary hit points."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0c43a048cce4a087"

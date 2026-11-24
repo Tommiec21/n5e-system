@@ -85,17 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eVANPRjwjvVTEl",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "restrained",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Restrained"
-          }
-        ],
+        "label": "Raging Bubble Tide",
         "save": {
           "abilities": [
             "dex"
@@ -104,10 +96,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "A 20-foot cone (+10 feet per rank; A-Rank: or a 60-foot line at −2). Failure: the damage and Restrained until the end of its next turn (C-Rank: pushed 10 feet first). Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
         "damage": {
           "parts": [
             {
@@ -201,9 +200,147 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eVANPRjwjvVTEl",
+              "type": "save",
+              "label": "Raging Bubble Tide",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "A 20-foot cone (+10 feet per rank; A-Rank: or a 60-foot line at −2). Failure: the damage and Restrained until the end of its next turn (C-Rank: pushed 10 feet first). Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d8",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eVANPRjwjvVTEl",
+              "type": "save",
+              "label": "Raging Bubble Tide",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "A 20-foot cone (+10 feet per rank; A-Rank: or a 60-foot line at −2). Failure: the damage and Restrained until the end of its next turn (C-Rank: pushed 10 feet first). Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d8",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eVANPRjwjvVTEl",
+              "type": "save",
+              "label": "Raging Bubble Tide",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "A 20-foot cone (+10 feet per rank; A-Rank: or a 60-foot line at −2). Failure: the damage and Restrained until the end of its next turn (C-Rank: pushed 10 feet first). Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d8",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eVANPRjwjvVTEl",
+              "type": "save",
+              "label": "Raging Bubble Tide",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "A 20-foot cone (+10 feet per rank; A-Rank: or a 60-foot line at −2). Failure: the damage and Restrained until the end of its next turn (C-Rank: pushed 10 feet first). Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "6d8",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "3b09f83137c247b7"

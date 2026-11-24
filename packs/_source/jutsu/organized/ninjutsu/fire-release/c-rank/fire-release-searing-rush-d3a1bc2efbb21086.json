@@ -86,9 +86,19 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eC1dXeMfupPeQ3",
         "type": "save",
-        "label": "Save",
+        "label": "Searing Rush",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "burned",
@@ -97,34 +107,14 @@
             "label": "Burned"
           }
         ],
-        "save": {
-          "abilities": [
-            "dex"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Combination: a 90 by 10-foot line (+2d8 + 2 per extra caster). Failure: 3 Burned; success: half, nothing else.",
         "damage": {
           "parts": [
             {
-              "formula": "6d8+6",
+              "formula": "6d8 + 6",
               "type": "fire"
             }
           ]
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "2d8+2",
-        "roll": {
-          "formula": "2d8+2",
-          "note": "Combination: Increase the damage by 2d8+2, for every additional creature aiding in casting this jutsu, beyond the first two."
         }
       }
     ],
@@ -205,7 +195,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "d322c5d25b2d40d2"

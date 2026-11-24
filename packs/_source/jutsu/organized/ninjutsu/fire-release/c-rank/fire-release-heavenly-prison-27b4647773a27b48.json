@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eXuNhMSYGavIvB",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Heavenly Prison",
         "save": {
           "abilities": [
             "cha"
@@ -98,10 +97,18 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "A creature within 5 feet. Failure: branded for 10 minutes (B-Rank: 1 hour; A-Rank: 1 week and no chakra molding; S-Rank: until dispelled). Its Ninshou check as an Action breaks it.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eOxko7LksyZjK0",
+        "type": "damage",
+        "label": "Branded: failed molding",
         "damage": {
           "parts": [
             {
@@ -109,7 +116,8 @@
               "type": "fire"
             }
           ]
-        }
+        },
+        "text": "It casts a jutsu with chakra molding: a Chakra Control check at disadvantage against your Ninjutsu save DC; failure: this."
       }
     ],
     "featureType": "active",
@@ -185,7 +193,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "d322c5d25b2d40d2"

@@ -271,3 +271,36 @@ test("STD6f F8 Earth and Wind: every jutsu reviewed; Mud Wolf and Stone Dragon f
   assert.ok(!e("bottomless-swamp").system.activities.some(a => (a.inflicts ?? []).some(x => x.key === "dying")));
   assert.ok(!w("cherishing-breezes").system.activities.some(a => a.inflicts?.length));
 });
+
+test("STD6f F9 Fire and Water: every jutsu reviewed; Flame Spider, Water Shark, Medical Jellyfish and Supreme Water Lion built; Clones place the Clone", async () => {
+  for ( const [section, count] of [["ninjutsu/fire-release", 51], ["ninjutsu/water-release", 50]] ) {
+    const t = table(section);
+    const items = sectionJutsu(section, t.ranks);
+    assert.equal(items.size, count, section);
+    for ( const [id, { doc }] of items ) {
+      assert.ok(t.features[id], id);
+      assert.equal(doc.flags.n5e.reviewed, true, id);
+    }
+  }
+  assert.deepEqual(tableProblems().filter(p => p.startsWith("jutsu/")), []);
+  const f = id => jutsu("ninjutsu/fire-release", `fire-release-${id}`), w = id => jutsu("ninjutsu/water-release", `water-release-${id}`);
+  for ( const id of ["flame-armor", "investiture-of-flame", "body-of-dawn"] ) assert.ok(f(id).system.activities.some(a => a.effect?.amp === `jutsu-fire-release-${id}`), id);
+  for ( const id of ["viscous-water-mass", "blessing-of-poseidon"] ) assert.ok(w(id).system.activities.some(a => a.effect?.amp === `jutsu-water-release-${id}`), id);
+  const { SUMMONS } = await import("../tools/content/build-summons.mjs");
+  const uuid = d => `Compendium.n5e.summons.Actor.${d._id}`;
+  for ( const [j, d, count] of [[f("crimson-spider"), SUMMONS.flameSpider, 1], [w("piranha-shark"), SUMMONS.waterShark, 1], [w("shark-bomb"), SUMMONS.waterShark, 2],
+    [w("medical-jellyfish"), SUMMONS.jellyfish, 1], [w("supreme-water-lion"), SUMMONS.waterLion, 1], [f("explosive-clone"), SUMMONS.clone, 1], [w("water-clone"), SUMMONS.clone, 1]] ) {
+    const s = j.system.activities.find(a => a.type === "summon");
+    assert.equal(s.summon.uuid, uuid(d), j.name);
+    assert.equal(s.summon.count, count, j.name);
+  }
+  assert.equal(w("shark-bomb").flags.n5e.jutsuBookImport.activitiesByRank.S[0].summon.count, 3);
+  assert.deepEqual([SUMMONS.waterLion.system.attributes.ac.flat, SUMMONS.waterLion.system.hpMax, SUMMONS.waterLion.system.traits.size], [23, 105, "huge"]);
+  assert.equal(SUMMONS.flameSpider.system.details.blurb, "Fire Release: Crimson Spider (D-Rank)");
+  // Flat-bonus dice grow both parts (4d6 + 4 → 8d6 + 8 at S); attacks the import made saves are attacks again.
+  assert.equal(f("fireball").flags.n5e.jutsuBookImport.activitiesByRank.S[0].damage.parts[0].formula, "8d6 + 8");
+  for ( const id of ["dolphin-break", "syrup-water-shuriken", "tsunami-mallet", "sharks-maw"] ) assert.equal(w(id).system.activities[0].type, "attack", id);
+  // Drown and Heavenly Mirror of Pain no longer apply Dying or Sealed.
+  assert.ok(!w("drown").system.activities.some(a => (a.inflicts ?? []).some(x => x.key === "dying")));
+  assert.ok(!w("heavenly-mirror-of-pain").system.activities.some(a => a.inflicts?.length));
+});

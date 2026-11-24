@@ -85,10 +85,14 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5erwr5bbQnnaNEN",
+        "type": "summon",
+        "label": "Water Sharks (two)",
+        "summon": {
+          "uuid": "Compendium.n5e.summons.Actor.n5emxJkNuvMqXcN0",
+          "count": 2,
+          "template": ""
+        }
       }
     ],
     "featureType": "active",
@@ -155,9 +159,41 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5erwr5bbQnnaNEN",
+              "type": "summon",
+              "label": "Water Sharks (two)",
+              "summon": {
+                "uuid": "Compendium.n5e.summons.Actor.n5emxJkNuvMqXcN0",
+                "count": 2,
+                "template": ""
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5erwr5bbQnnaNEN",
+              "type": "summon",
+              "label": "Water Sharks (three)",
+              "summon": {
+                "uuid": "Compendium.n5e.summons.Actor.n5emxJkNuvMqXcN0",
+                "count": 3,
+                "template": ""
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Concentration. Command them all as a Bonus Action; Shark Trigger and Rip and Tear apply. S-Rank: three."
+        }
+      ]
     }
   },
   "folder": "d3253d03dc1bed22"

@@ -1,3 +1,11 @@
+## 0.95.0-alpha.1 — STD6f F9 Fire and Water Ninjutsu; Fire and Water summons
+
+King 2026-11-24: "Next Batch." Fire Release (51) and Water Release (50) Ninjutsu reviewed at every rank (80 partly automated, 21 notes only). Review tables docs/jutsu/ninjutsu-fire-release-automation.md and ninjutsu-water-release-automation.md; spec docs/STD6f_SPEC.md (F9).
+
+- **Summons:** Flame Spider, Water Shark, Medical Jellyfish and Supreme Water Lion from the source book's Summon Stat Blocks (Summons > Ninjutsu > Fire Release / Water Release). Explosive Clone and Water Clone place the Clone.
+- **Fixed buttons:** Dolphin Break, Syrup Water Shuriken, Tsunami Mallet and Shark's Maw are attacks again; Drown, Heavenly Mirror of Pain and Tsunami Mallet no longer apply wrong conditions.
+- **Fire and Water:** "+1d6 + 1" upcasts grow dice and bonus together; attacks, saves, barriers and rank riders; five Amps kept.
+
 ## 0.94.1-alpha.1 — GM06 Journal Desk usability
 
 Design A styling, collapsible navigation, responsive Ideas tray, clearer save actions, character profile headings and explicit native page-access controls. No gameplay rules or imported content changed; no live verification.

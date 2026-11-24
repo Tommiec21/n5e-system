@@ -99,9 +99,10 @@ test("conditional and repeating damage is not silently combined into one base ro
 });
 
 test("source-clear upcasting selects ranked damage without mutating the base or mixing in finisher damage", () => {
+  // STD6f F9: Flame Whip is reviewed; each rank's button carries its full dice and flat bonus.
   const whip = byName("Fire Release: Flame Whip"), base = effectiveActivities(whip), raised = effectiveActivities(whip, { rank: "C" });
-  assert.equal(base[0].damage.parts[0].formula, "2d10+2"); assert.match(raised[0].damage.parts[0].formula, /1d10\+1/);
-  assert.equal(whip.system.activities[0].damage.parts[0].formula, "2d10+2");
+  assert.equal(base[0].damage.parts[0].formula, "2d10 + 2"); assert.equal(raised[0].damage.parts[0].formula, "3d10 + 3");
+  assert.equal(whip.system.activities[0].damage.parts[0].formula, "2d10 + 2");
   // STD6f F1: Leaf Hurricane is reviewed; its table gives each rank its dice, the Finisher's too, kept apart.
   const leaf = byName("Leaf Hurricane").flags.n5e.jutsuBookImport.activitiesByRank;
   assert.deepEqual(Object.keys(leaf), ["B", "A", "S"]);

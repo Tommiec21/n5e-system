@@ -87,12 +87,36 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
+        "id": "n5eVoskQQGH4rrQ5",
+        "type": "effect",
+        "label": "Water Shield: +2 AC, DR 4",
+        "effect": {
+          "name": "Water Shield",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "2",
+              "mode": 2
+            },
+            {
+              "key": "n5e.dr",
+              "value": "4",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Reaction to damage or a save, until the start of your next turn. Against fire from a jutsu: a Clash, +1d6 (the roll). Near a sufficient source of water: 2 less chakra, or its listed option (by hand)."
+      },
+      {
+        "id": "n5eC6uP2aBrHjoK8",
         "type": "roll",
-        "label": "1d6",
+        "label": "Clash: +1d6",
         "roll": {
           "formula": "1d6",
-          "note": "If this jutsu would reduce Fire damage from another jutsu, you instead initiate a Clash, and add 1d6 to your clash check."
+          "note": ""
         }
       }
     ],
@@ -167,9 +191,151 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eVoskQQGH4rrQ5",
+              "type": "effect",
+              "label": "Water Shield: +2 AC, DR 6",
+              "effect": {
+                "name": "Water Shield",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "2",
+                    "mode": 2
+                  },
+                  {
+                    "key": "n5e.dr",
+                    "value": "6",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction to damage or a save, until the start of your next turn. Against fire from a jutsu: a Clash, +1d6 (the roll). Near a sufficient source of water: 2 less chakra, or its listed option (by hand)."
+            },
+            {
+              "id": "n5eC6uP2aBrHjoK8",
+              "type": "roll",
+              "label": "Clash: +1d6",
+              "roll": {
+                "formula": "1d6",
+                "note": ""
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eVoskQQGH4rrQ5",
+              "type": "effect",
+              "label": "Water Shield: +3 AC, DR 6",
+              "effect": {
+                "name": "Water Shield",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "3",
+                    "mode": 2
+                  },
+                  {
+                    "key": "n5e.dr",
+                    "value": "6",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction to damage or a save, until the start of your next turn. Against fire from a jutsu: a Clash, +1d6 (the roll). Near a sufficient source of water: 2 less chakra, or its listed option (by hand)."
+            },
+            {
+              "id": "n5eC6uP2aBrHjoK8",
+              "type": "roll",
+              "label": "Clash: +1d6",
+              "roll": {
+                "formula": "1d6",
+                "note": ""
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eVoskQQGH4rrQ5",
+              "type": "effect",
+              "label": "Water Shield: +3 AC, DR 8",
+              "effect": {
+                "name": "Water Shield",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "3",
+                    "mode": 2
+                  },
+                  {
+                    "key": "n5e.dr",
+                    "value": "8",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction to damage or a save, until the start of your next turn. Against fire from a jutsu: a Clash, +1d6 (the roll). Near a sufficient source of water: 2 less chakra, or its listed option (by hand)."
+            },
+            {
+              "id": "n5eC6uP2aBrHjoK8",
+              "type": "roll",
+              "label": "Clash: +1d6",
+              "roll": {
+                "formula": "1d6",
+                "note": ""
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eVoskQQGH4rrQ5",
+              "type": "effect",
+              "label": "Water Shield: +4 AC, DR 8",
+              "effect": {
+                "name": "Water Shield",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "4",
+                    "mode": 2
+                  },
+                  {
+                    "key": "n5e.dr",
+                    "value": "8",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction to damage or a save, until the start of your next turn. Against fire from a jutsu: a Clash, +1d6 (the roll). Near a sufficient source of water: 2 less chakra, or its listed option (by hand)."
+            },
+            {
+              "id": "n5eC6uP2aBrHjoK8",
+              "type": "roll",
+              "label": "Clash: +1d6",
+              "roll": {
+                "formula": "1d6",
+                "note": ""
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "3b09f83137c247b7"

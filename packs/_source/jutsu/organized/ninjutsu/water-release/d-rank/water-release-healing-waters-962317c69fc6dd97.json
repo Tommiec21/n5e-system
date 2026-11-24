@@ -85,13 +85,14 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d10",
-        "roll": {
+        "id": "n5e19wAzLlrZjSp8",
+        "type": "heal",
+        "label": "Healing Waters",
+        "heal": {
           "formula": "2d10",
-          "note": "Roll 2d10, healing the target creature by the total."
-        }
+          "pool": "tempHp"
+        },
+        "text": "A willing creature you touch. Near water: 2 less chakra, or also remove Bleed, Burned, Envenomed, Shocked or Weakened (by hand)."
       }
     ],
     "featureType": "active",
@@ -171,9 +172,59 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5e19wAzLlrZjSp8",
+              "type": "heal",
+              "label": "Healing Waters",
+              "heal": {
+                "formula": "(2d10) + (1d10)",
+                "pool": "tempHp"
+              },
+              "text": "A willing creature you touch. Near water: 2 less chakra, or also remove Bleed, Burned, Envenomed, Shocked or Weakened (by hand)."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5e19wAzLlrZjSp8",
+              "type": "heal",
+              "label": "Healing Waters",
+              "heal": {
+                "formula": "(2d10) + (2d10)",
+                "pool": "tempHp"
+              },
+              "text": "A willing creature you touch. Near water: 2 less chakra, or also remove Bleed, Burned, Envenomed, Shocked or Weakened (by hand)."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e19wAzLlrZjSp8",
+              "type": "heal",
+              "label": "Healing Waters",
+              "heal": {
+                "formula": "(2d10) + (3d10)",
+                "pool": "tempHp"
+              },
+              "text": "A willing creature you touch. Near water: 2 less chakra, or also remove Bleed, Burned, Envenomed, Shocked or Weakened (by hand)."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e19wAzLlrZjSp8",
+              "type": "heal",
+              "label": "Healing Waters",
+              "heal": {
+                "formula": "(2d10) + (4d10)",
+                "pool": "tempHp"
+              },
+              "text": "A willing creature you touch. Near water: 2 less chakra, or also remove Bleed, Burned, Envenomed, Shocked or Weakened (by hand)."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "3b09f83137c247b7"

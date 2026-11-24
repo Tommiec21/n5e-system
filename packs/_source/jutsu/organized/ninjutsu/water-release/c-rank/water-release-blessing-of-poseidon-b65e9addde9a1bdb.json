@@ -97,21 +97,41 @@
         "text": "Starts the jutsu's Amp at the rank it was cast at."
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d8",
-        "roll": {
-          "formula": "2d8",
-          "note": "melee Ninjutsu Attack, reach 5ft, Hit: 2d8 + Ninjutsu ability modifier cold damage."
+        "id": "n5eHa5wDAbsv6O2a",
+        "type": "attack",
+        "label": "Atlantean Trident (melee)",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "In place of a weapon attack of your Attack action. A creature you deal cold damage is Shaken until the start of your next turn.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d8 + @mod.nin",
+              "type": "cold"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "1d8",
-        "roll": {
-          "formula": "1d8",
-          "note": "Atlantean Trident (ranged) ranged Ninjutsu Attack, reach 60ft, Hit: 1d8 + Ninjutsu ability modifier cold damage"
+        "id": "n5eEjEfkvaFDJpv6",
+        "type": "attack",
+        "label": "Atlantean Trident (ranged)",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "60 feet.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d8 + @mod.nin",
+              "type": "cold"
+            }
+          ]
         }
       }
     ],
@@ -198,9 +218,164 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "amp0613203dd3047",
+              "type": "effect",
+              "label": "Water Release: Blessing of Poseidon",
+              "effect": {
+                "name": "Water Release: Blessing of Poseidon",
+                "target": "self",
+                "amp": "jutsu-water-release-blessing-of-poseidon"
+              },
+              "text": "Starts the jutsu's Amp at the rank it was cast at."
+            },
+            {
+              "id": "n5eHa5wDAbsv6O2a",
+              "type": "attack",
+              "label": "Atlantean Trident (melee)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "In place of a weapon attack of your Attack action. A creature you deal cold damage is Shaken until the start of your next turn.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d8 + @mod.nin",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEjEfkvaFDJpv6",
+              "type": "attack",
+              "label": "Atlantean Trident (ranged)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d8 + @mod.nin",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "amp0613203dd3047",
+              "type": "effect",
+              "label": "Water Release: Blessing of Poseidon",
+              "effect": {
+                "name": "Water Release: Blessing of Poseidon",
+                "target": "self",
+                "amp": "jutsu-water-release-blessing-of-poseidon"
+              },
+              "text": "Starts the jutsu's Amp at the rank it was cast at."
+            },
+            {
+              "id": "n5eHa5wDAbsv6O2a",
+              "type": "attack",
+              "label": "Atlantean Trident (melee)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "In place of a weapon attack of your Attack action. A creature you deal cold damage is Shaken until the start of your next turn. A-Rank: +1 critical range (by hand); 2+ Chilled can become as many Shaken.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d8 + 1d8 + @mod.nin",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEjEfkvaFDJpv6",
+              "type": "attack",
+              "label": "Atlantean Trident (ranged)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet. A-Rank: +1 critical range (by hand); 2+ Chilled can become as many Shaken.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d8 + 1d8 + @mod.nin",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "amp0613203dd3047",
+              "type": "effect",
+              "label": "Water Release: Blessing of Poseidon",
+              "effect": {
+                "name": "Water Release: Blessing of Poseidon",
+                "target": "self",
+                "amp": "jutsu-water-release-blessing-of-poseidon"
+              },
+              "text": "Starts the jutsu's Amp at the rank it was cast at."
+            },
+            {
+              "id": "n5eHa5wDAbsv6O2a",
+              "type": "attack",
+              "label": "Atlantean Trident (melee)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "In place of a weapon attack of your Attack action. A creature you deal cold damage is Shaken until the start of your next turn. A-Rank: +1 critical range (by hand); 2+ Chilled can become as many Shaken.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d8 + 1d8 + @mod.nin",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEjEfkvaFDJpv6",
+              "type": "attack",
+              "label": "Atlantean Trident (ranged)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet. A-Rank: +1 critical range (by hand); 2+ Chilled can become as many Shaken.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d8 + 1d8 + @mod.nin",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0c43a048cce4a087"

@@ -1,0 +1,256 @@
+{
+  "_id": "n5eAaqTXcmUt3mZO",
+  "_key": "!actors!n5eAaqTXcmUt3mZO",
+  "name": "Flame Spider",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Fire Release: Crimson Spider (D-Rank)",
+      "summonRole": "Flame Spider",
+      "biography": "<p><em>Fire Release: Crimson Spider (D-Rank) (Fire Release Ninjutsu).</em> It uses your Ninjutsu attack bonus and save DC. You command it as a Bonus Action; it can take reactions it's able to, such as opportunity attacks.</p><p><strong>Medium Construct.</strong> <strong>Armor Class</strong> 10 + 2 for every rank above D-Rank · <strong>Hit Points</strong> 18 + 8 for every rank above D-Rank · <strong>Speed</strong> 40 ft..</p><p><strong>Abilities</strong> STR +2 (save +2), DEX +3 (save +3), CON +1 (save +0), INT −5 (save −5), WIS +0 (save +0), CHA −5 (save −5). <strong>Damage Immunities</strong> Fire, Psychic. <strong>Condition Immunities</strong> All Mental, Stunned, Petrified, Envenomed. <strong>Senses</strong> passive Perception 10.</p><p><strong>Linked to you when summoned:</strong> AC and hit points by the rank you cast the jutsu at, and your Ninjutsu attack bonus and save DC.</p>"
+    },
+    "abilities": {
+      "str": {
+        "value": 14
+      },
+      "dex": {
+        "value": 16
+      },
+      "con": {
+        "value": 12
+      },
+      "int": {
+        "value": 0
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 0
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 10,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "medium",
+      "resist": [],
+      "immune": [
+        "fire",
+        "psychic"
+      ],
+      "vuln": [],
+      "conditionImmune": [
+        "berserk",
+        "charmed",
+        "confused",
+        "demoralized",
+        "shaken",
+        "concussed",
+        "petrified",
+        "envenomed"
+      ],
+      "stateImmune": [
+        "stunned"
+      ],
+      "dr": 0,
+      "speed": {
+        "walk": 40,
+        "climb": 0,
+        "swim": 0,
+        "fly": 0,
+        "burrow": 0,
+        "hover": false
+      },
+      "senses": {}
+    },
+    "hpMax": 18,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5egvfHGgQASswAD",
+      "_key": "!actors.items!n5eAaqTXcmUt3mZO.n5egvfHGgQASswAD",
+      "name": "Bite",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Multiattack.</em> The Flame Spider attacks 2 times with its Bite. <em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 2d4 + 2 fire damage (+2 for every rank above D-Rank it is summoned).",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eUimSBkDreoJ2Z",
+            "type": "attack",
+            "label": "Bite",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 2,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "2d4 + 2",
+                  "type": "fire"
+                }
+              ]
+            },
+            "text": "+2 damage per rank above D-Rank (add it by hand)."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.95.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5ete7m54XWQQJny",
+      "_key": "!actors.items!n5eAaqTXcmUt3mZO.n5ete7m54XWQQJny",
+      "name": "Flame Web (Recharge 9–10)",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Ranged Weapon Attack:</em> your Ninjutsu attack bonus, range 30/60 ft., one creature. The target is covered in solidified flaming webs and is Restrained by them, taking 2d6 + 2 fire damage. As an action the Restrained target can make a Strength ability check, bursting from the webbing on a success. The webbing can also be attacked and destroyed (AC 10, 5 hit points; vulnerability to cold damage).",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5evSC1uZYSxJoIG",
+            "type": "attack",
+            "label": "Flame Web",
+            "attack": {
+              "discipline": "nin",
+              "range": "ranged",
+              "count": 1,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "2d6 + 2",
+                  "type": "fire"
+                }
+              ]
+            },
+            "text": "Recharge 9–10 (as written). On a hit: Restrained."
+          },
+          {
+            "id": "n5eI4ttpNiAd6O7q",
+            "type": "effect",
+            "label": "Webbed: Restrained",
+            "effect": {
+              "name": "Flame Web",
+              "target": "targets",
+              "changes": [],
+              "expires": "",
+              "seconds": 0,
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ]
+            }
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.95.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5esqw50wxXluCaw",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "attributes.ac.flat": "10 + 2 * max(0, @rankValue - 1)",
+        "hpMax": "18 + 8 * max(0, @rankValue - 1)",
+        "bonuses.saveDC.nin": "@dc.nin - 8 - @prof",
+        "bonuses.attack.nin": "@attack.nin - @prof"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Flame Spider",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.95.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

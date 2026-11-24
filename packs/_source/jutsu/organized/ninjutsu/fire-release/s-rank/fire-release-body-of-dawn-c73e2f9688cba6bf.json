@@ -98,17 +98,9 @@
         "text": "Starts the jutsu's Amp at the rank it was cast at."
       },
       {
-        "id": "parsed1",
+        "id": "n5ebcLAHpdRQEt9z",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "blinded",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Blinded"
-          }
-        ],
+        "label": "Dawn light",
         "save": {
           "abilities": [
             "con"
@@ -117,10 +109,25 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          }
+        ],
+        "text": "When cast: creatures within 30 feet that see you and don't avert their gaze (reaction). Failure: Blinded for the duration.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5edCGIl8zlLy7xl",
+        "type": "damage",
+        "label": "In water",
         "damage": {
           "parts": [
             {
@@ -128,7 +135,8 @@
               "type": "cold"
             }
           ]
-        }
+        },
+        "text": "Each round you remain in water."
       }
     ],
     "featureType": "active",
@@ -202,7 +210,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c61a843009817aea"

@@ -86,30 +86,28 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eUNOz2OBSBTrkA",
         "type": "attack",
-        "label": "Attack",
+        "label": "Spinning Claw",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
+        "text": "Concentration: an Action; each roll against every creature you choose within 5 feet. Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "cold"
+            }
+          ]
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5ekf1QjYGqGUC6A",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "bleed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bleed"
-          }
-        ],
+        "label": "Spinning Claw: Bleed",
         "save": {
           "abilities": [
             "con"
@@ -118,31 +116,53 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Once per turn, a creature hit. Failure: 1 Bleed.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "On a hit, you deal 2d6 cold damage and once per turn force affected creatures to make a Constitution Saving throw, gaining 1 rank of Bleed, on a failed save."
+        "id": "n5eChov5ZHIpWqRe",
+        "type": "attack",
+        "label": "Slicing Water",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "Instead: 15 feet; sheathed in vibrating water until the start of your next turn.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "slashing"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "1d6",
-        "roll": {
-          "formula": "1d6",
-          "note": "If the target moves or is moved at least 5 feet before the start of your next turn, it explodes, dealing 1d6 cold damage to the affected creature and all creatures of your choice within 5 feet of the original target."
-        }
+        "id": "n5eEzqqqpIVUA57x",
+        "type": "damage",
+        "label": "Slicing Water: explodes",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d6",
+              "type": "cold"
+            }
+          ]
+        },
+        "text": "It moves or is moved 5+ feet: it and creatures you choose within 5 feet."
       }
     ],
     "featureType": "active",
@@ -235,9 +255,335 @@
           "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically.",
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eUNOz2OBSBTrkA",
+              "type": "attack",
+              "label": "Spinning Claw",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Concentration: an Action; each roll against every creature you choose within 5 feet. Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ekf1QjYGqGUC6A",
+              "type": "save",
+              "label": "Spinning Claw: Bleed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Once per turn, a creature hit. Failure: 1 Bleed.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eChov5ZHIpWqRe",
+              "type": "attack",
+              "label": "Slicing Water",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Instead: 15 feet; sheathed in vibrating water until the start of your next turn.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEzqqqpIVUA57x",
+              "type": "damage",
+              "label": "Slicing Water: explodes",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d6) + (1d6)",
+                    "type": "cold"
+                  }
+                ]
+              },
+              "text": "It moves or is moved 5+ feet: it and creatures you choose within 5 feet."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eUNOz2OBSBTrkA",
+              "type": "attack",
+              "label": "Spinning Claw",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Concentration: an Action; each roll against every creature you choose within 5 feet. Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ekf1QjYGqGUC6A",
+              "type": "save",
+              "label": "Spinning Claw: Bleed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Once per turn, a creature hit. Failure: 1 Bleed.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eChov5ZHIpWqRe",
+              "type": "attack",
+              "label": "Slicing Water",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Instead: 15 feet; sheathed in vibrating water until the start of your next turn.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEzqqqpIVUA57x",
+              "type": "damage",
+              "label": "Slicing Water: explodes",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d6) + (2d6)",
+                    "type": "cold"
+                  }
+                ]
+              },
+              "text": "It moves or is moved 5+ feet: it and creatures you choose within 5 feet."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eUNOz2OBSBTrkA",
+              "type": "attack",
+              "label": "Spinning Claw",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Concentration: an Action; each roll against every creature you choose within 5 feet. Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (3d6)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ekf1QjYGqGUC6A",
+              "type": "save",
+              "label": "Spinning Claw: Bleed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Once per turn, a creature hit. Failure: 1 Bleed.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eChov5ZHIpWqRe",
+              "type": "attack",
+              "label": "Slicing Water",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Instead: 15 feet; sheathed in vibrating water until the start of your next turn.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (3d6)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEzqqqpIVUA57x",
+              "type": "damage",
+              "label": "Slicing Water: explodes",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d6) + (3d6)",
+                    "type": "cold"
+                  }
+                ]
+              },
+              "text": "It moves or is moved 5+ feet: it and creatures you choose within 5 feet."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eUNOz2OBSBTrkA",
+              "type": "attack",
+              "label": "Spinning Claw",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Concentration: an Action; each roll against every creature you choose within 5 feet. Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (4d6)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ekf1QjYGqGUC6A",
+              "type": "save",
+              "label": "Spinning Claw: Bleed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Once per turn, a creature hit. Failure: 1 Bleed.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eChov5ZHIpWqRe",
+              "type": "attack",
+              "label": "Slicing Water",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Instead: 15 feet; sheathed in vibrating water until the start of your next turn.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (4d6)",
+                    "type": "slashing"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEzqqqpIVUA57x",
+              "type": "damage",
+              "label": "Slicing Water: explodes",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d6) + (4d6)",
+                    "type": "cold"
+                  }
+                ]
+              },
+              "text": "It moves or is moved 5+ feet: it and creatures you choose within 5 feet."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "3b09f83137c247b7"

@@ -87,23 +87,28 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e0g4SCSKftpuPN",
+        "type": "attack",
+        "label": "Tsunami Mallet",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Ninjutsu (or Taijutsu); 10 feet. Elemental conditions on it: −2 on the save and one die step up; Grappled: one die step up (by hand). B-Rank: +1 attack; S-Rank: +2. Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "cold"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eWSxMgxZ5nscGC",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "bruised",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bruised"
-          },
-          {
-            "key": "grappled",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Grappled"
-          }
-        ],
+        "label": "Mallet: Bruised",
         "save": {
           "abilities": [
             "con"
@@ -112,17 +117,19 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bruised",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bruised"
+          }
+        ],
+        "text": "On a hit. Failure: Bruised.",
         "damage": {
-          "parts": [
-            {
-              "formula": "4d6",
-              "type": "cold"
-            }
-          ]
+          "parts": []
         }
       }
     ],
@@ -198,9 +205,203 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5e0g4SCSKftpuPN",
+              "type": "attack",
+              "label": "Tsunami Mallet",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Ninjutsu (or Taijutsu); 10 feet. Elemental conditions on it: −2 on the save and one die step up; Grappled: one die step up (by hand). B-Rank: +1 attack; S-Rank: +2. Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d6",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eWSxMgxZ5nscGC",
+              "type": "save",
+              "label": "Mallet: Bruised",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "On a hit. Failure: Bruised.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5e0g4SCSKftpuPN",
+              "type": "attack",
+              "label": "Tsunami Mallet",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Ninjutsu (or Taijutsu); 10 feet. Elemental conditions on it: −2 on the save and one die step up; Grappled: one die step up (by hand). B-Rank: +1 attack; S-Rank: +2. Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d6",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eWSxMgxZ5nscGC",
+              "type": "save",
+              "label": "Mallet: Bruised",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "On a hit. Failure: Bruised.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e0g4SCSKftpuPN",
+              "type": "attack",
+              "label": "Tsunami Mallet",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Ninjutsu (or Taijutsu); 10 feet. Elemental conditions on it: −2 on the save and one die step up; Grappled: one die step up (by hand). B-Rank: +1 attack; S-Rank: +2. Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d6",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eWSxMgxZ5nscGC",
+              "type": "save",
+              "label": "Mallet: Bruised",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "On a hit. Failure: Bruised.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e0g4SCSKftpuPN",
+              "type": "attack",
+              "label": "Tsunami Mallet",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "text": "Ninjutsu (or Taijutsu); 10 feet. Elemental conditions on it: −2 on the save and one die step up; Grappled: one die step up (by hand). B-Rank: +1 attack; S-Rank: +2. Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d6",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eWSxMgxZ5nscGC",
+              "type": "save",
+              "label": "Mallet: Bruised",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bruised",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bruised"
+                }
+              ],
+              "text": "On a hit. Failure: Bruised.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "3b09f83137c247b7"

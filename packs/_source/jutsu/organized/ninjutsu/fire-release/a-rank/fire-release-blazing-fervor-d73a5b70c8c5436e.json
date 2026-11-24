@@ -86,26 +86,32 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5en7LLaqTdQ7gOu",
         "type": "damage",
-        "label": "Damage",
+        "label": "Blazing Fervor: +2d8 + 2",
         "damage": {
           "parts": [
             {
-              "formula": "2d8+2",
+              "formula": "2d8 + 2",
               "type": "fire"
             }
           ]
-        }
+        },
+        "text": "Concentration: Strength and Dexterity 20 (or +2); your jutsu's Taijutsu attacks, twice per turn; your Taijutsu and Bukijutsu deal fire."
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "12",
-        "roll": {
-          "formula": "12",
-          "note": "melee attacks that strike you deals 12 Fire damage to all creatures within 10 feet of you as you release a mass of heat from your body in response. Taijutsu attacks as a result of Jutsu you cast deal an additional 2d8+2 Fire damage, twice per turn. Taijutsu and Bukijutsu you cast gains the Fire Release Keyword and deals Fire damage instead of its listed type, if any."
-        }
+        "id": "n5e4OgUp6XPopedF",
+        "type": "damage",
+        "label": "Struck in melee",
+        "damage": {
+          "parts": [
+            {
+              "formula": "12",
+              "type": "fire"
+            }
+          ]
+        },
+        "text": "Creatures within 10 feet of you, each time a melee attack hits you."
       }
     ],
     "featureType": "active",
@@ -185,7 +191,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "6d60386b2f6cb7c3"

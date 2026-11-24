@@ -87,10 +87,28 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5eCsaXVY6wL7N9G",
+        "type": "effect",
+        "label": "Flaming Seals: +1 saves",
+        "effect": {
+          "name": "Flaming Seals",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.save",
+              "value": "1",
+              "mode": 2
+            },
+            {
+              "key": "n5e.resist",
+              "value": "fire",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Concentration: a willing creature you touch, not you."
       }
     ],
     "featureType": "active",
@@ -157,9 +175,89 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eCsaXVY6wL7N9G",
+              "type": "effect",
+              "label": "Flaming Seals: +1 saves",
+              "effect": {
+                "name": "Flaming Seals",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.save",
+                    "value": "1",
+                    "mode": 2
+                  },
+                  {
+                    "key": "n5e.resist",
+                    "value": "fire",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              },
+              "text": "Concentration: a willing creature you touch, not you."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eCsaXVY6wL7N9G",
+              "type": "effect",
+              "label": "Flaming Seals: +2 saves",
+              "effect": {
+                "name": "Flaming Seals",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.save",
+                    "value": "2",
+                    "mode": 2
+                  },
+                  {
+                    "key": "n5e.resist",
+                    "value": "fire",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              },
+              "text": "Concentration: a willing creature you touch, not you."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eCsaXVY6wL7N9G",
+              "type": "effect",
+              "label": "Flaming Seals: +3 saves",
+              "effect": {
+                "name": "Flaming Seals",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.save",
+                    "value": "3",
+                    "mode": 2
+                  },
+                  {
+                    "key": "n5e.resist",
+                    "value": "fire",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              },
+              "text": "Concentration: a willing creature you touch, not you."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "d322c5d25b2d40d2"

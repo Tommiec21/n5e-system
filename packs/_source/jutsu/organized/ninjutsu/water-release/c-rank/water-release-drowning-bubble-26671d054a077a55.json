@@ -85,14 +85,43 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e95Gxtzs58VsFy",
         "type": "attack",
-        "label": "Attack",
+        "label": "Drowning Bubble",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "Concentration: 45 feet. On a hit it suffocates: half speed and the next button at the start of each of its turns.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eWfXAtq7Uwt5CH",
+        "type": "effect",
+        "label": "On a hit: Suffocating",
+        "effect": {
+          "name": "On a hit: Suffocating",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "suffocating",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Suffocating"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eHaGU0dDH5DmKA",
+        "type": "damage",
+        "label": "Oxygen loss: start of its turn",
         "damage": {
           "parts": [
             {
@@ -100,6 +129,27 @@
               "type": "necrotic"
             }
           ]
+        },
+        "text": "Ignores DR and resistance."
+      },
+      {
+        "id": "n5eyTBHdptVynw7F",
+        "type": "save",
+        "label": "Escape",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "At the end of each of its turns; success ends it.",
+        "damage": {
+          "parts": []
         }
       }
     ],
@@ -174,7 +224,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0c43a048cce4a087"

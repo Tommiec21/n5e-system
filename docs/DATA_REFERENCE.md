@@ -1048,3 +1048,7 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 ### Earth Release summons (STD6f F8)
 
 - Summons compendium, folder Ninjutsu > Earth Release: Mud Wolf, Stone Dragon. `attributes.ac.flat` links `12 (or 13) + (@attack.nin - @prof)` (your Ninjutsu modifier), `hpMax` by `@rankValue`, plus your Ninjutsu attack bonus and save DC.
+
+### Fire and Water summons (STD6f F9)
+
+- Summons compendium: Ninjutsu > Fire Release (Flame Spider) and Ninjutsu > Water Release (Water Shark, Medical Jellyfish, Supreme Water Lion). AC and hit points by `@rankValue` where the block grows by rank; your Ninjutsu attack bonus and save DC. `inkSummon(..., { release, dir })` sets the release label and folder.

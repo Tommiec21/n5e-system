@@ -86,17 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5edlkm3ClpgXpN7",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "dying",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Dying"
-          }
-        ],
+        "label": "Drown",
         "save": {
           "abilities": [
             "con"
@@ -105,12 +97,32 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Concentration: up to 7 creatures within 120 feet. Failure: air-breathers breathe only water (and vice versa); where they can't breathe they drown: Constitution modifier rounds (minimum 1), then 0 hit points and Dying; starting a turn Dying from it: dead. No speech.",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5ex5bL8SYhh1wAp",
+        "type": "effect",
+        "label": "Drowning",
+        "effect": {
+          "name": "Drowning",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "suffocating",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Suffocating"
+            }
+          ]
         }
       }
     ],
@@ -178,7 +190,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "e7a143830c8c5356"

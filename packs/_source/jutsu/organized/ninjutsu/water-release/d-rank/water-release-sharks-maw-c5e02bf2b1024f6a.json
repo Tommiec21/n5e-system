@@ -88,17 +88,28 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5esqlKoC1bMThKs",
+        "type": "attack",
+        "label": "Shark's Maw",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Concentration: an Action each turn, Ninjutsu (or Taijutsu). Underwater: swim 60 and advantage. Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "cold"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5et848rqsKsSdy2",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "grappled",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Grappled"
-          }
-        ],
+        "label": "Maw: Grappled",
         "save": {
           "abilities": [
             "str"
@@ -107,30 +118,32 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "grappled",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Grappled"
+          }
+        ],
+        "text": "On a hit. Failure: Grappled.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "3d8",
-        "roll": {
-          "formula": "3d8",
-          "note": "On a hit, you deal 3d8 cold damage and forcing the target to make a Strength saving throw, being Grappled by the shark’s head on a failed save."
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "1d8",
-        "roll": {
-          "formula": "1d8",
-          "note": "A creature Grappled by you this way takes 1d8 cold damage at the start of each of their turns as the sharks bite deeper into them."
+        "id": "n5ewCvVxuIQqLr51",
+        "type": "damage",
+        "label": "Grappled: start of its turn",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d8",
+              "type": "cold"
+            }
+          ]
         }
       }
     ],
@@ -219,9 +232,255 @@
           "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically.",
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5esqlKoC1bMThKs",
+              "type": "attack",
+              "label": "Shark's Maw",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration: an Action each turn, Ninjutsu (or Taijutsu). Underwater: swim 60 and advantage. Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (1d8)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5et848rqsKsSdy2",
+              "type": "save",
+              "label": "Maw: Grappled",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "On a hit. Failure: Grappled.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ewCvVxuIQqLr51",
+              "type": "damage",
+              "label": "Grappled: start of its turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d8",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5esqlKoC1bMThKs",
+              "type": "attack",
+              "label": "Shark's Maw",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration: an Action each turn, Ninjutsu (or Taijutsu). Underwater: swim 60 and advantage. Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (2d8)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5et848rqsKsSdy2",
+              "type": "save",
+              "label": "Maw: Grappled",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "On a hit. Failure: Grappled.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ewCvVxuIQqLr51",
+              "type": "damage",
+              "label": "Grappled: start of its turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d8",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5esqlKoC1bMThKs",
+              "type": "attack",
+              "label": "Shark's Maw",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration: an Action each turn, Ninjutsu (or Taijutsu). Underwater: swim 60 and advantage. Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (3d8)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5et848rqsKsSdy2",
+              "type": "save",
+              "label": "Maw: Grappled",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "On a hit. Failure: Grappled.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ewCvVxuIQqLr51",
+              "type": "damage",
+              "label": "Grappled: start of its turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d8",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5esqlKoC1bMThKs",
+              "type": "attack",
+              "label": "Shark's Maw",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration: an Action each turn, Ninjutsu (or Taijutsu). Underwater: swim 60 and advantage. Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (4d8)",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5et848rqsKsSdy2",
+              "type": "save",
+              "label": "Maw: Grappled",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "On a hit. Failure: Grappled.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ewCvVxuIQqLr51",
+              "type": "damage",
+              "label": "Grappled: start of its turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d8",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "3b09f83137c247b7"

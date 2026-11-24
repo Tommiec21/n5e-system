@@ -50,27 +50,38 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5elIdXDxyZNn1td",
         "type": "attack",
-        "label": "Attack",
+        "label": "Flame Whip",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "A creature within 20 feet.",
         "damage": {
           "parts": [
             {
-              "formula": "2d10+2",
+              "formula": "2d10 + 2",
               "type": "fire"
             }
           ]
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5ewBQdkqYpyR97s",
         "type": "save",
-        "label": "Save",
+        "label": "Whip: pulled",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "prone",
@@ -85,18 +96,7 @@
             "label": "Burned"
           }
         ],
-        "save": {
-          "abilities": [
-            "dex"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Failure: pulled 10 feet; ending within 5 feet of you: Prone and Burned.",
         "damage": {
           "parts": []
         }
@@ -218,27 +218,38 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5elIdXDxyZNn1td",
               "type": "attack",
-              "label": "Attack",
+              "label": "Flame Whip",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "A creature within 20 feet.",
               "damage": {
                 "parts": [
                   {
-                    "formula": "(2d10+2) + (1d10+1)",
+                    "formula": "3d10 + 3",
                     "type": "fire"
                   }
                 ]
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5ewBQdkqYpyR97s",
               "type": "save",
-              "label": "Save",
+              "label": "Whip: pulled",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "prone",
@@ -253,18 +264,7 @@
                   "label": "Burned"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "dex"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "Failure: pulled 10 feet; ending within 5 feet of you: Prone and Burned.",
               "damage": {
                 "parts": []
               }
@@ -272,27 +272,38 @@
           ],
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5elIdXDxyZNn1td",
               "type": "attack",
-              "label": "Attack",
+              "label": "Flame Whip",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "A creature within 20 feet.",
               "damage": {
                 "parts": [
                   {
-                    "formula": "(2d10+2) + (2d10+2)",
+                    "formula": "4d10 + 4",
                     "type": "fire"
                   }
                 ]
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5ewBQdkqYpyR97s",
               "type": "save",
-              "label": "Save",
+              "label": "Whip: pulled",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "prone",
@@ -307,18 +318,7 @@
                   "label": "Burned"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "dex"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "Failure: pulled 10 feet; ending within 5 feet of you: Prone and Burned.",
               "damage": {
                 "parts": []
               }
@@ -326,27 +326,38 @@
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5elIdXDxyZNn1td",
               "type": "attack",
-              "label": "Attack",
+              "label": "Flame Whip",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "A creature within 20 feet.",
               "damage": {
                 "parts": [
                   {
-                    "formula": "(2d10+2) + (3d10+3)",
+                    "formula": "5d10 + 5",
                     "type": "fire"
                   }
                 ]
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5ewBQdkqYpyR97s",
               "type": "save",
-              "label": "Save",
+              "label": "Whip: pulled",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "prone",
@@ -361,18 +372,7 @@
                   "label": "Burned"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "dex"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "Failure: pulled 10 feet; ending within 5 feet of you: Prone and Burned.",
               "damage": {
                 "parts": []
               }
@@ -380,27 +380,38 @@
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5elIdXDxyZNn1td",
               "type": "attack",
-              "label": "Attack",
+              "label": "Flame Whip",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "A creature within 20 feet.",
               "damage": {
                 "parts": [
                   {
-                    "formula": "(2d10+2) + (4d10+4)",
+                    "formula": "6d10 + 6",
                     "type": "fire"
                   }
                 ]
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5ewBQdkqYpyR97s",
               "type": "save",
-              "label": "Save",
+              "label": "Whip: pulled",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "prone",
@@ -415,18 +426,7 @@
                   "label": "Burned"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "dex"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "Failure: pulled 10 feet; ending within 5 feet of you: Prone and Burned.",
               "damage": {
                 "parts": []
               }
@@ -434,7 +434,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5eegPtnn07turpr"

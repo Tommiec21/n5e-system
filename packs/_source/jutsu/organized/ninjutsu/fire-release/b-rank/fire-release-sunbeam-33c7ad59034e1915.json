@@ -86,9 +86,19 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eq4jsfUPTfJ87q",
         "type": "save",
-        "label": "Save",
+        "label": "Sunbeam",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "blinded",
@@ -97,22 +107,11 @@
             "label": "Blinded"
           }
         ],
-        "save": {
-          "abilities": [
-            "con"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Concentration: a 60 by 5-foot line; again as your Action each turn (sunlight 30 feet). Failure: Blinded until the end of your next turn; success: half, nothing else.",
         "damage": {
           "parts": [
             {
-              "formula": "5d10+5",
+              "formula": "5d10 + 5",
               "type": "fire"
             }
           ]
@@ -190,7 +189,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c03a256155b16b00"

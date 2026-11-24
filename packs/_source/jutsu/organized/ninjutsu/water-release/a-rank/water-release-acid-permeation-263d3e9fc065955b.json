@@ -85,17 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eDCYNeBFrjWUpm",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "corroded",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Corroded"
-          }
-        ],
+        "label": "Acid Permeation",
         "save": {
           "abilities": [
             "dex"
@@ -104,10 +96,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "corroded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Corroded"
+          }
+        ],
+        "text": "Concentration: a 15-foot radius moving with you (creatures you exempt are spared): half speed inside; first entering or starting a turn. Failure: the damage and Corroded.",
         "damage": {
           "parts": [
             {
@@ -198,17 +197,9 @@
         "activitiesByRank": {
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eDCYNeBFrjWUpm",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "corroded",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Corroded"
-                }
-              ],
+              "label": "Acid Permeation",
               "save": {
                 "abilities": [
                   "dex"
@@ -217,10 +208,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "corroded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Corroded"
+                }
+              ],
+              "text": "Concentration: a 15-foot radius moving with you (creatures you exempt are spared): half speed inside; first entering or starting a turn. Failure: the damage and Corroded.",
               "damage": {
                 "parts": [
                   {
@@ -233,7 +231,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "d643965c516da2e4"

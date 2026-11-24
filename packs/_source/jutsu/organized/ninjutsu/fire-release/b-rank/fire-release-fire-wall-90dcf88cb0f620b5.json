@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e1WgwW9F24PUL5",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Fire Wall",
         "save": {
           "abilities": [
             "dex"
@@ -97,22 +96,32 @@
             "source": "discipline"
           },
           "onSuccess": "half",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Concentration: a wall up to 60 feet long, 20 high and 1 thick within 120 feet (60 hit points; healed by wind and fire; vulnerable to cold); creatures in it when it appears. Success: half.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "5d10 + 5",
+              "type": "fire"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "5d10+5",
-        "roll": {
-          "formula": "5d10+5",
-          "note": "On a failed save, a creature takes 5d10+5 Fire damage, or half as much damage on a successful save. This wall of Fire has 60 hit points, and regains hit points equal to the amount of wind or Fire damage it takes. It has vulnerability to cold damage."
-        }
+        "id": "n5ebASA7BHuJnkbj",
+        "type": "damage",
+        "label": "Burning side",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d10 + 5",
+              "type": "fire"
+            }
+          ]
+        },
+        "text": "Ending a turn within 10 feet of the side you chose or inside, or first entering on a turn."
       }
     ],
     "featureType": "active",
@@ -194,7 +203,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c03a256155b16b00"

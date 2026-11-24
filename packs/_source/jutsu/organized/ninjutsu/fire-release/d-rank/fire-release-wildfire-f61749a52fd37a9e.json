@@ -86,17 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eZP3DSallhGNjj",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "burned",
-            "kind": "condition",
-            "ranks": 2,
-            "label": "Burned"
-          }
-        ],
+        "label": "Wildfire",
         "save": {
           "abilities": [
             "dex"
@@ -105,15 +97,42 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Burned"
+          }
+        ],
+        "text": "A creature within 45 feet. Failure: the damage and 2 Burned (already Burned: also trigger its Burned damage now); success: 1 Burned (the effect), no damage.",
         "damage": {
           "parts": [
             {
-              "formula": "1d12+1",
+              "formula": "1d12 + 1",
               "type": "fire"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eGdHAswhmNO0RY",
+        "type": "effect",
+        "label": "Success: 1 Burned",
+        "effect": {
+          "name": "Success: 1 Burned",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "burned",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Burned"
             }
           ]
         }
@@ -190,7 +209,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5eegPtnn07turpr"

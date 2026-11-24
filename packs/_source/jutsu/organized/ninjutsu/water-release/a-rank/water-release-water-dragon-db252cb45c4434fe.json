@@ -86,14 +86,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eaFuP72urIrkM9",
         "type": "attack",
-        "label": "Attack",
+        "label": "Water Dragon",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "60 feet. Near water: 2 less chakra, or d8s instead of d6s (by hand).",
         "damage": {
           "parts": [
             {
@@ -104,9 +105,19 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eE9zwiyO7O8rV1",
         "type": "save",
-        "label": "Save",
+        "label": "Water Dragon: Stunned, Prone",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "stunned",
@@ -121,29 +132,9 @@
             "label": "Prone"
           }
         ],
-        "save": {
-          "abilities": [
-            "con"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "On a hit. Failure: Stunned until the end of its next turn and Prone.",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "d8",
-        "roll": {
-          "formula": "d8",
-          "note": "If used near a sufficient source of water, reduce the chakra cost of this jutsu by 2 or you can choose to increase the damage die to a d8."
         }
       }
     ],
@@ -233,14 +224,15 @@
         "activitiesByRank": {
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eaFuP72urIrkM9",
               "type": "attack",
-              "label": "Attack",
+              "label": "Water Dragon",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "60 feet. Near water: 2 less chakra, or d8s instead of d6s (by hand).",
               "damage": {
                 "parts": [
                   {
@@ -251,9 +243,19 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eE9zwiyO7O8rV1",
               "type": "save",
-              "label": "Save",
+              "label": "Water Dragon: Stunned, Prone",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
               "inflicts": [
                 {
                   "key": "stunned",
@@ -268,35 +270,16 @@
                   "label": "Prone"
                 }
               ],
-              "save": {
-                "abilities": [
-                  "con"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
-              },
+              "text": "On a hit. Failure: Stunned until the end of its next turn and Prone.",
               "damage": {
                 "parts": []
-              }
-            },
-            {
-              "id": "sourceRoll2",
-              "type": "roll",
-              "label": "d8",
-              "roll": {
-                "formula": "d8",
-                "note": "If used near a sufficient source of water, reduce the chakra cost of this jutsu by 2 or you can choose to increase the damage die to a d8."
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "d643965c516da2e4"

@@ -83,14 +83,7 @@
       "per": "",
       "staminaEligible": false
     },
-    "activities": [
-      {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
-      }
-    ],
+    "activities": [],
     "featureType": "active",
     "ability": "",
     "upcast": {
@@ -168,9 +161,139 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5elyesaTfYeiJAu",
+              "type": "save",
+              "label": "Ignite (Bonus action or reaction)",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "C-Rank: every creature inside. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d6 + 4",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5elyesaTfYeiJAu",
+              "type": "save",
+              "label": "Ignite (Bonus action or reaction)",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "C-Rank: every creature inside. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "5d6 + 5",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5elyesaTfYeiJAu",
+              "type": "save",
+              "label": "Ignite (Bonus action or reaction)",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Burned"
+                }
+              ],
+              "text": "C-Rank: every creature inside. Success: half. Failure: 2 Burned.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "6d6 + 6",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5elyesaTfYeiJAu",
+              "type": "save",
+              "label": "Ignite (Bonus action or reaction)",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Burned"
+                }
+              ],
+              "text": "C-Rank: every creature inside. Success: half. Failure: 2 Burned.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "7d6 + 7",
+                    "type": "fire"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "A 20-foot radius within 60 feet, heavily obscured for 1 minute or until a strong wind."
+        }
+      ]
     }
   },
   "folder": "n5eegPtnn07turpr"

@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5efCZO9JcT74Ano",
         "type": "attack",
-        "label": "Attack",
+        "label": "Tsunami Bow",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "ranged",
-          "count": 1
+          "count": 2
         },
+        "text": "Bonus action, concentration up to 10 minutes: an Action each turn, 120 feet; advantage against a creature that hasn't moved 5 feet since your last turn. Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
         "damage": {
           "parts": [
             {
@@ -103,17 +104,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5ezlUgBJOEBTfvK",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "chilled",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Chilled"
-          }
-        ],
+        "label": "Bow: Chilled",
         "save": {
           "abilities": [
             "con"
@@ -122,10 +115,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "chilled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Chilled"
+          }
+        ],
+        "text": "A creature hit. Failure: Chilled.",
         "damage": {
           "parts": []
         }
@@ -208,9 +208,107 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5efCZO9JcT74Ano",
+              "type": "attack",
+              "label": "Tsunami Bow",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 2
+              },
+              "text": "Bonus action, concentration up to 10 minutes: an Action each turn, 120 feet; advantage against a creature that hasn't moved 5 feet since your last turn. Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d12",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ezlUgBJOEBTfvK",
+              "type": "save",
+              "label": "Bow: Chilled",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Chilled"
+                }
+              ],
+              "text": "A creature hit. Failure: Chilled.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5efCZO9JcT74Ano",
+              "type": "attack",
+              "label": "Tsunami Bow",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 2
+              },
+              "text": "Bonus action, concentration up to 10 minutes: an Action each turn, 120 feet; advantage against a creature that hasn't moved 5 feet since your last turn. Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d12",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ezlUgBJOEBTfvK",
+              "type": "save",
+              "label": "Bow: Chilled",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Chilled"
+                }
+              ],
+              "text": "A creature hit. Failure: Chilled.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "d3253d03dc1bed22"

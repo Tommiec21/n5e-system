@@ -1,0 +1,400 @@
+{
+  "_id": "n5emxJkNuvMqXcN0",
+  "_key": "!actors!n5emxJkNuvMqXcN0",
+  "name": "Water Shark",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Water Release: Piranha Shark (D-Rank) and Shark Bomb (B-Rank)",
+      "summonRole": "Water Shark",
+      "biography": "<p><em>Water Release: Piranha Shark (D-Rank) and Shark Bomb (B-Rank) (Water Release Ninjutsu).</em> It uses your Ninjutsu attack bonus and save DC. You command it as a Bonus Action; it can take reactions it's able to, such as opportunity attacks.</p><p><strong>Medium Construct.</strong> <strong>Armor Class</strong> 14 + 1 for every rank above D-Rank · <strong>Hit Points</strong> 18 + 10 for every rank above D-Rank · <strong>Speed</strong> 0 ft..</p><p><strong>Abilities</strong> STR +4 (save +4), DEX +1 (save +1), CON +3 (save +5), INT −5 (save −5), WIS +0 (save +0), CHA −5 (save −5). <strong>Speed</strong> fly 30 ft., swim 90 ft. <strong>Damage Immunities</strong> Cold. <strong>Damage Resistances</strong> Fire. <strong>Damage Vulnerabilities</strong> Earth. <strong>Condition Immunities</strong> All Mental, All Physical, Exhaustion, Stunned, Petrified, Envenomed. <strong>Senses</strong> passive Perception 10.</p><p><strong>Linked to you when summoned:</strong> AC and hit points by the rank you cast the jutsu at, and your Ninjutsu attack bonus and save DC.</p>"
+    },
+    "abilities": {
+      "str": {
+        "value": 18
+      },
+      "dex": {
+        "value": 12
+      },
+      "con": {
+        "value": 16
+      },
+      "int": {
+        "value": 0
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 0
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 14,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "medium",
+      "resist": [
+        "fire"
+      ],
+      "immune": [
+        "cold"
+      ],
+      "vuln": [
+        "earth"
+      ],
+      "conditionImmune": [
+        "berserk",
+        "charmed",
+        "confused",
+        "demoralized",
+        "shaken",
+        "concussed",
+        "bruised",
+        "staggered",
+        "bleed",
+        "dazed",
+        "weakened",
+        "slowed",
+        "exhaustion",
+        "petrified",
+        "envenomed"
+      ],
+      "stateImmune": [
+        "stunned"
+      ],
+      "dr": 0,
+      "speed": {
+        "walk": 0,
+        "climb": 0,
+        "swim": 90,
+        "fly": 30,
+        "burrow": 0,
+        "hover": false
+      },
+      "senses": {}
+    },
+    "hpMax": 18,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5edi6hfplyiWwHE",
+      "_key": "!actors.items!n5emxJkNuvMqXcN0.n5edi6hfplyiWwHE",
+      "name": "Water Predator",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>If the Water Shark and its target are submerged in a body of water, its attacks are made at advantage against its target.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.95.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eGYq9Su1WHtg4C",
+      "_key": "!actors.items!n5emxJkNuvMqXcN0.n5eGYq9Su1WHtg4C",
+      "name": "Shark Trigger (Shark Bomb only)",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>When the Water Shark is reduced to 0 hit points, it explodes, forcing all creatures within 10 feet (excluding the caster) to make a Dexterity saving throw, taking 5d6 cold damage and 1 rank of Chilled on a failed save, or half as much damage and no further effect on a success.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5e7fc5BgQG5mAY1",
+            "type": "save",
+            "label": "Shark Trigger",
+            "save": {
+              "abilities": [
+                "dex"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "half",
+              "resave": false
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "5d6",
+                  "type": "cold"
+                }
+              ]
+            },
+            "inflicts": [
+              {
+                "key": "chilled",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Chilled"
+              }
+            ],
+            "text": "Only if summoned by Shark Bomb; at 0 hit points."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.95.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5egdQxahWCSlsIR",
+      "_key": "!actors.items!n5emxJkNuvMqXcN0.n5egdQxahWCSlsIR",
+      "name": "Bite",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Multiattack.</em> The Water Shark attacks 2 times with its Bite or Rip and Tear. <em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 2d4 cold damage + 2d4 piercing damage. On a hit the target must make a Strength saving throw, being Grappled by this Water Shark on a failure (one creature at a time).",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eAxOkTB8Dj2pwG",
+            "type": "attack",
+            "label": "Bite",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 2,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "2d4",
+                  "type": "cold"
+                },
+                {
+                  "formula": "2d4",
+                  "type": "piercing"
+                }
+              ]
+            }
+          },
+          {
+            "id": "n5eRNam6OGRbGvaB",
+            "type": "save",
+            "label": "Bite: Grappled",
+            "save": {
+              "abilities": [
+                "str"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "inflicts": [
+              {
+                "key": "grappled",
+                "kind": "state",
+                "ranks": 1,
+                "label": "Grappled"
+              }
+            ]
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.95.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eFCIQmSVLtHVuh",
+      "_key": "!actors.items!n5emxJkNuvMqXcN0.n5eFCIQmSVLtHVuh",
+      "name": "Rip and Tear (Shark Bomb only)",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 3d6 cold damage + 3d6 piercing damage. On a hit the target must make a Dexterity saving throw, gaining 1 rank of Bleed on a failure.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eNzhz9ATl4vHiF",
+            "type": "attack",
+            "label": "Rip and Tear",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 2,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "3d6",
+                  "type": "cold"
+                },
+                {
+                  "formula": "3d6",
+                  "type": "piercing"
+                }
+              ]
+            },
+            "text": "Only if summoned by Shark Bomb."
+          },
+          {
+            "id": "n5egUPZIXKXdMSMv",
+            "type": "save",
+            "label": "Rip and Tear: Bleed",
+            "save": {
+              "abilities": [
+                "dex"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "inflicts": [
+              {
+                "key": "bleed",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Bleed"
+              }
+            ]
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.95.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5ecuxsLU21wGxa0",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "attributes.ac.flat": "14 + 1 * max(0, @rankValue - 1)",
+        "hpMax": "18 + 10 * max(0, @rankValue - 1)",
+        "bonuses.saveDC.nin": "@dc.nin - 8 - @prof",
+        "bonuses.attack.nin": "@attack.nin - @prof"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Water Shark",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.95.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

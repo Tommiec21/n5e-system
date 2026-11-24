@@ -85,23 +85,23 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eLKFkv3OEdM0aZ",
         "type": "attack",
-        "label": "Attack",
+        "label": "Throw the bead (Bonus action)",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "Concentration: on a hit it detonates there; a miss gives the target advantage on its save.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5e0hWTBJtPHSvcy",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Detonation",
         "save": {
           "abilities": [
             "dex"
@@ -110,31 +110,32 @@
             "source": "discipline"
           },
           "onSuccess": "half",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "A 20-foot radius. Damage: 8d8 + 8, +4d8 + 4 each turn end it hasn't detonated (raise the dice by hand). Success: half.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "8d8 + 8",
+              "type": "fire"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "8d8+8",
-        "roll": {
-          "formula": "8d8+8",
-          "note": "The jutsu base damage is 8d8+8. If at the end of your turn, the bead has not yet detonated, the damage increases by 4d8+4."
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "4d8+4",
-        "roll": {
-          "formula": "4d8+4",
-          "note": "If at the end of your turn, the bead has not yet detonated, the damage increases by 4d8+4."
-        }
+        "id": "n5eVWXHKL4Y4zbfQ",
+        "type": "damage",
+        "label": "+ per turn held",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8 + 4",
+              "type": "fire"
+            }
+          ]
+        },
+        "text": "Add once per turn end the bead didn't detonate."
       }
     ],
     "featureType": "active",
@@ -220,9 +221,66 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5eLKFkv3OEdM0aZ",
+              "type": "attack",
+              "label": "Throw the bead (Bonus action)",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Concentration: on a hit it detonates there; a miss gives the target advantage on its save.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e0hWTBJtPHSvcy",
+              "type": "save",
+              "label": "Detonation",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 20-foot radius. Damage: 8d8 + 8, +4d8 + 4 each turn end it hasn't detonated (raise the dice by hand). Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "9d8 + 9",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eVWXHKL4Y4zbfQ",
+              "type": "damage",
+              "label": "+ per turn held",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "5d8 + 5",
+                    "type": "fire"
+                  }
+                ]
+              },
+              "text": "Add once per turn end the bead didn't detonate."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "6d60386b2f6cb7c3"

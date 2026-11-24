@@ -86,23 +86,28 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eWW3TcNW80qFp7",
+        "type": "attack",
+        "label": "Syrup Water Shuriken",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "Ninjutsu (or Taijutsu); 60 feet. Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "cold"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eO6e7TvzceSpiu",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "chilled",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Chilled"
-          },
-          {
-            "key": "shaken",
-            "kind": "condition",
-            "ranks": 2,
-            "label": "Shaken"
-          }
-        ],
+        "label": "Syrup: Chilled",
         "save": {
           "abilities": [
             "con"
@@ -111,15 +116,37 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "chilled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Chilled"
+          }
+        ],
+        "text": "On a hit. Failure: 1 Chilled.",
         "damage": {
-          "parts": [
+          "parts": []
+        }
+      },
+      {
+        "id": "n5euh6TKhCGrA1tH",
+        "type": "effect",
+        "label": "Critical hit: 2 Shaken",
+        "effect": {
+          "name": "Critical hit: 2 Shaken",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
             {
-              "formula": "3d8",
-              "type": "cold"
+              "key": "shaken",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Shaken"
             }
           ]
         }
@@ -206,35 +233,15 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
-              "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "chilled",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Chilled"
-                },
-                {
-                  "key": "shaken",
-                  "kind": "condition",
-                  "ranks": 2,
-                  "label": "Shaken"
-                }
-              ],
-              "save": {
-                "abilities": [
-                  "con"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
+              "id": "n5eWW3TcNW80qFp7",
+              "type": "attack",
+              "label": "Syrup Water Shuriken",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
               },
+              "text": "Ninjutsu (or Taijutsu); 60 feet. Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
               "damage": {
                 "parts": [
                   {
@@ -243,27 +250,11 @@
                   }
                 ]
               }
-            }
-          ],
-          "B": [
+            },
             {
-              "id": "parsed1",
+              "id": "n5eO6e7TvzceSpiu",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "chilled",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Chilled"
-                },
-                {
-                  "key": "shaken",
-                  "kind": "condition",
-                  "ranks": 2,
-                  "label": "Shaken"
-                }
-              ],
+              "label": "Syrup: Chilled",
               "save": {
                 "abilities": [
                   "con"
@@ -272,10 +263,53 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Chilled"
+                }
+              ],
+              "text": "On a hit. Failure: 1 Chilled.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5euh6TKhCGrA1tH",
+              "type": "effect",
+              "label": "Critical hit: 2 Shaken",
+              "effect": {
+                "name": "Critical hit: 2 Shaken",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Shaken"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eWW3TcNW80qFp7",
+              "type": "attack",
+              "label": "Syrup Water Shuriken",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Ninjutsu (or Taijutsu); 60 feet. Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
               "damage": {
                 "parts": [
                   {
@@ -284,27 +318,11 @@
                   }
                 ]
               }
-            }
-          ],
-          "A": [
+            },
             {
-              "id": "parsed1",
+              "id": "n5eO6e7TvzceSpiu",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "chilled",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Chilled"
-                },
-                {
-                  "key": "shaken",
-                  "kind": "condition",
-                  "ranks": 2,
-                  "label": "Shaken"
-                }
-              ],
+              "label": "Syrup: Chilled",
               "save": {
                 "abilities": [
                   "con"
@@ -313,10 +331,53 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Chilled"
+                }
+              ],
+              "text": "On a hit. Failure: 1 Chilled.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5euh6TKhCGrA1tH",
+              "type": "effect",
+              "label": "Critical hit: 2 Shaken",
+              "effect": {
+                "name": "Critical hit: 2 Shaken",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Shaken"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eWW3TcNW80qFp7",
+              "type": "attack",
+              "label": "Syrup Water Shuriken",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Ninjutsu (or Taijutsu); 60 feet. Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
               "damage": {
                 "parts": [
                   {
@@ -325,27 +386,11 @@
                   }
                 ]
               }
-            }
-          ],
-          "S": [
+            },
             {
-              "id": "parsed1",
+              "id": "n5eO6e7TvzceSpiu",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "chilled",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Chilled"
-                },
-                {
-                  "key": "shaken",
-                  "kind": "condition",
-                  "ranks": 2,
-                  "label": "Shaken"
-                }
-              ],
+              "label": "Syrup: Chilled",
               "save": {
                 "abilities": [
                   "con"
@@ -354,10 +399,53 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Chilled"
+                }
+              ],
+              "text": "On a hit. Failure: 1 Chilled.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5euh6TKhCGrA1tH",
+              "type": "effect",
+              "label": "Critical hit: 2 Shaken",
+              "effect": {
+                "name": "Critical hit: 2 Shaken",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Shaken"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eWW3TcNW80qFp7",
+              "type": "attack",
+              "label": "Syrup Water Shuriken",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Ninjutsu (or Taijutsu); 60 feet. Near a sufficient source of water: 2 less chakra, or its listed option (by hand).",
               "damage": {
                 "parts": [
                   {
@@ -366,11 +454,59 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5eO6e7TvzceSpiu",
+              "type": "save",
+              "label": "Syrup: Chilled",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Chilled"
+                }
+              ],
+              "text": "On a hit. Failure: 1 Chilled.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5euh6TKhCGrA1tH",
+              "type": "effect",
+              "label": "Critical hit: 2 Shaken",
+              "effect": {
+                "name": "Critical hit: 2 Shaken",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Shaken"
+                  }
+                ]
+              }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "3b09f83137c247b7"

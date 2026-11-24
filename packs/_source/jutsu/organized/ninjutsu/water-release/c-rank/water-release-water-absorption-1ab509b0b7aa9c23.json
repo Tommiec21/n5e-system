@@ -86,13 +86,18 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d10",
-        "roll": {
-          "formula": "2d10",
-          "note": "They gain resistance to Bludgeoning damage and the first time each turn, that they would deal unarmed or weapon damage they deal additional damage equal to 2d10. When this jutsu ends, the creature becomes Weakened and Slowed until the end of their next turn as their body recovers from the over saturation of water in their system."
-        }
+        "id": "n5eRkZHZxGEMrVH6",
+        "type": "damage",
+        "label": "Water Absorption: +2d10",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d10",
+              "type": ""
+            }
+          ]
+        },
+        "text": "Concentration: a willing creature you touch: Strength 20 (or 22), double jump, resistance to bludgeoning; the first unarmed or weapon damage each turn (its type). When it ends: Weakened and Slowed until the end of its next turn."
       }
     ],
     "featureType": "active",
@@ -166,7 +171,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0c43a048cce4a087"

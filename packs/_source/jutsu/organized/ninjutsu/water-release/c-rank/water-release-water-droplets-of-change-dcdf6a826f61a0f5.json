@@ -86,22 +86,37 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eaKvupsU5o1yHf",
         "type": "heal",
-        "label": "Temporary HP",
+        "label": "Encourage",
         "heal": {
           "formula": "3d12",
           "pool": "tempHp"
-        }
+        },
+        "text": "A willing creature within 30 feet: and Encouraged Momentum (Dash, Hide, Disengage or Dodge) until the end of its next turn."
       },
       {
-        "id": "parsed2",
+        "id": "n5eqUUc4slBvvgj6",
         "type": "heal",
-        "label": "Healing",
+        "label": "Cleanse",
         "heal": {
           "formula": "3d6",
-          "pool": "hp"
-        }
+          "pool": "tempHp"
+        },
+        "text": "And it loses all ranks of Bleed, Burned, Chilled or Envenomed."
+      },
+      {
+        "id": "n5eMkxwfZDXxSbtd",
+        "type": "effect",
+        "label": "Crush",
+        "effect": {
+          "name": "Crush",
+          "target": "targets",
+          "changes": [],
+          "expires": "nextTurnEnd",
+          "seconds": 0
+        },
+        "text": "Until the end of its next turn: its Water Release jutsu get a rank of Mastery on attacks, +1 initial save DC and +2 damage (by hand)."
       }
     ],
     "featureType": "active",
@@ -193,9 +208,209 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eaKvupsU5o1yHf",
+              "type": "heal",
+              "label": "Encourage",
+              "heal": {
+                "formula": "3d12",
+                "pool": "tempHp"
+              },
+              "text": "A willing creature within 30 feet: and Encouraged Momentum (Dash, Hide, Disengage or Dodge) until the end of its next turn."
+            },
+            {
+              "id": "n5eqUUc4slBvvgj6",
+              "type": "heal",
+              "label": "Cleanse",
+              "heal": {
+                "formula": "3d6",
+                "pool": "tempHp"
+              },
+              "text": "And it loses all ranks of Bleed, Burned, Chilled or Envenomed."
+            },
+            {
+              "id": "n5eMkxwfZDXxSbtd",
+              "type": "effect",
+              "label": "Crush",
+              "effect": {
+                "name": "Crush",
+                "target": "targets",
+                "changes": [],
+                "expires": "nextTurnEnd",
+                "seconds": 0
+              },
+              "text": "Until the end of its next turn: its Water Release jutsu get a rank of Mastery on attacks, +1 initial save DC and +2 damage (by hand)."
+            },
+            {
+              "id": "n5ehC1t2hbGBlVjW",
+              "type": "heal",
+              "label": "Reflect: barrier",
+              "heal": {
+                "formula": "6d8",
+                "pool": "tempHp"
+              },
+              "text": "B-Rank: intercepts its damage until the end of its next turn (resistant to cold and fire, vulnerable to earth)."
+            },
+            {
+              "id": "n5eYbbYattnbvLqd",
+              "type": "attack",
+              "label": "Reflect: mote",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Each time the barrier is struck: at the attacker.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d8",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eaKvupsU5o1yHf",
+              "type": "heal",
+              "label": "Encourage",
+              "heal": {
+                "formula": "3d12",
+                "pool": "tempHp"
+              },
+              "text": "A willing creature within 30 feet: and Encouraged Momentum (Dash, Hide, Disengage or Dodge) until the end of its next turn."
+            },
+            {
+              "id": "n5eqUUc4slBvvgj6",
+              "type": "heal",
+              "label": "Cleanse",
+              "heal": {
+                "formula": "3d6",
+                "pool": "tempHp"
+              },
+              "text": "And it loses all ranks of Bleed, Burned, Chilled or Envenomed."
+            },
+            {
+              "id": "n5eMkxwfZDXxSbtd",
+              "type": "effect",
+              "label": "Crush",
+              "effect": {
+                "name": "Crush",
+                "target": "targets",
+                "changes": [],
+                "expires": "nextTurnEnd",
+                "seconds": 0
+              },
+              "text": "Until the end of its next turn: its Water Release jutsu get a rank of Mastery on attacks, +1 initial save DC and +2 damage (by hand)."
+            },
+            {
+              "id": "n5ehC1t2hbGBlVjW",
+              "type": "heal",
+              "label": "Reflect: barrier",
+              "heal": {
+                "formula": "6d8",
+                "pool": "tempHp"
+              },
+              "text": "B-Rank: intercepts its damage until the end of its next turn (resistant to cold and fire, vulnerable to earth)."
+            },
+            {
+              "id": "n5eYbbYattnbvLqd",
+              "type": "attack",
+              "label": "Reflect: mote",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Each time the barrier is struck: at the attacker.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d8",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eaKvupsU5o1yHf",
+              "type": "heal",
+              "label": "Encourage",
+              "heal": {
+                "formula": "3d12",
+                "pool": "tempHp"
+              },
+              "text": "A willing creature within 30 feet: and Encouraged Momentum (Dash, Hide, Disengage or Dodge) until the end of its next turn."
+            },
+            {
+              "id": "n5eqUUc4slBvvgj6",
+              "type": "heal",
+              "label": "Cleanse",
+              "heal": {
+                "formula": "3d6",
+                "pool": "tempHp"
+              },
+              "text": "And it loses all ranks of Bleed, Burned, Chilled or Envenomed."
+            },
+            {
+              "id": "n5eMkxwfZDXxSbtd",
+              "type": "effect",
+              "label": "Crush",
+              "effect": {
+                "name": "Crush",
+                "target": "targets",
+                "changes": [],
+                "expires": "nextTurnEnd",
+                "seconds": 0
+              },
+              "text": "Until the end of its next turn: its Water Release jutsu get a rank of Mastery on attacks, +1 initial save DC and +2 damage (by hand)."
+            },
+            {
+              "id": "n5ehC1t2hbGBlVjW",
+              "type": "heal",
+              "label": "Reflect: barrier",
+              "heal": {
+                "formula": "6d8",
+                "pool": "tempHp"
+              },
+              "text": "B-Rank: intercepts its damage until the end of its next turn (resistant to cold and fire, vulnerable to earth)."
+            },
+            {
+              "id": "n5eYbbYattnbvLqd",
+              "type": "attack",
+              "label": "Reflect: mote",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Each time the barrier is struck: at the attacker.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d8",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "S-Rank: pick two effects."
+        }
+      ]
     }
   },
   "folder": "0c43a048cce4a087"

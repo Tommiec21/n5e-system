@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5el4ME0X16j5S2y",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Hellfire Rejection",
         "save": {
           "abilities": [
             "dex"
@@ -96,15 +95,15 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "Reaction to damage: creatures you choose within 15 feet (A-Rank: 30). Success: half. B-Rank: failure 2 Shaken.",
         "damage": {
           "parts": [
             {
-              "formula": "3d8+3",
+              "formula": "3d8 + 3",
               "type": "fire"
             }
           ]
@@ -191,10 +190,9 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5el4ME0X16j5S2y",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Hellfire Rejection",
               "save": {
                 "abilities": [
                   "dex"
@@ -202,15 +200,15 @@
                 "dc": {
                   "source": "discipline"
                 },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
+                "onSuccess": "half",
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Reaction to damage: creatures you choose within 15 feet (A-Rank: 30). Success: half. B-Rank: failure 2 Shaken.",
               "damage": {
                 "parts": [
                   {
-                    "formula": "(3d8+3) + (1d8+1)",
+                    "formula": "4d8 + 4",
                     "type": "fire"
                   }
                 ]
@@ -219,10 +217,9 @@
           ],
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5el4ME0X16j5S2y",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Hellfire Rejection",
               "save": {
                 "abilities": [
                   "dex"
@@ -230,15 +227,22 @@
                 "dc": {
                   "source": "discipline"
                 },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
+                "onSuccess": "half",
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "Reaction to damage: creatures you choose within 15 feet (A-Rank: 30). Success: half. B-Rank: failure 2 Shaken.",
               "damage": {
                 "parts": [
                   {
-                    "formula": "(3d8+3) + (2d8+2)",
+                    "formula": "5d8 + 5",
                     "type": "fire"
                   }
                 ]
@@ -247,10 +251,9 @@
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5el4ME0X16j5S2y",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Hellfire Rejection",
               "save": {
                 "abilities": [
                   "dex"
@@ -258,15 +261,22 @@
                 "dc": {
                   "source": "discipline"
                 },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
+                "onSuccess": "half",
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "Reaction to damage: creatures you choose within 15 feet (A-Rank: 30). Success: half. B-Rank: failure 2 Shaken.",
               "damage": {
                 "parts": [
                   {
-                    "formula": "(3d8+3) + (3d8+3)",
+                    "formula": "6d8 + 6",
                     "type": "fire"
                   }
                 ]
@@ -275,10 +285,9 @@
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5el4ME0X16j5S2y",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Hellfire Rejection",
               "save": {
                 "abilities": [
                   "dex"
@@ -286,15 +295,22 @@
                 "dc": {
                   "source": "discipline"
                 },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
+                "onSuccess": "half",
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "Reaction to damage: creatures you choose within 15 feet (A-Rank: 30). Success: half. B-Rank: failure 2 Shaken.",
               "damage": {
                 "parts": [
                   {
-                    "formula": "(3d8+3) + (4d8+4)",
+                    "formula": "7d8 + 7",
                     "type": "fire"
                   }
                 ]
@@ -303,7 +319,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5eegPtnn07turpr"

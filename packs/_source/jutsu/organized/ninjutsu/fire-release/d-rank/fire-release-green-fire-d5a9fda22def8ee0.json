@@ -85,17 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eBm7Kt5n2Q2Mor",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "shaken",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Shaken"
-          }
-        ],
+        "label": "Green Fire",
         "save": {
           "abilities": [
             "dex"
@@ -104,12 +96,32 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Concentration, Bonus action: a creature within 60 feet (B-Rank: up to 3; S-Rank: creatures you choose within 45 feet). Failure: marked: each failed save against a Fire Release jutsu gives it 1 Shaken (the effect).",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5ef1BZV3ejdnxri",
+        "type": "effect",
+        "label": "Marked: failed a Fire Release save",
+        "effect": {
+          "name": "Marked: failed a Fire Release save",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "shaken",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shaken"
+            }
+          ]
         }
       }
     ],
@@ -179,7 +191,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5eegPtnn07turpr"

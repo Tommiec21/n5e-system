@@ -86,41 +86,28 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ePkZwNdPcTgTj2",
         "type": "attack",
-        "label": "Attack",
+        "label": "Great Shark Bullet",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "120 feet.",
         "damage": {
           "parts": [
             {
-              "formula": "4d6",
+              "formula": "9d8",
               "type": "cold"
             }
           ]
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5embk13u64KObAT",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "restrained",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Restrained"
-          },
-          {
-            "key": "prone",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Prone"
-          }
-        ],
+        "label": "Shark: Restrained",
         "save": {
           "abilities": [
             "str"
@@ -129,21 +116,51 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "On a hit. Failure: Restrained and no hand-seal jutsu.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "9d8",
-        "roll": {
-          "formula": "9d8",
-          "note": "On a success they take cold damage equal to 9d8, and must make a Strength saving throw. On a failed save, the shark slams its fangs into the target, leaving it Restrained and unable to cast jutsu that require Hand Seals (HS)."
+        "id": "n5eqG2nU30md7H1i",
+        "type": "save",
+        "label": "Its path",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Creatures on the line to the target. Failure: Prone; success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "cold"
+            }
+          ]
         }
       }
     ],
@@ -233,41 +250,28 @@
         "activitiesByRank": {
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5ePkZwNdPcTgTj2",
               "type": "attack",
-              "label": "Attack",
+              "label": "Great Shark Bullet",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "120 feet.",
               "damage": {
                 "parts": [
                   {
-                    "formula": "(4d6) + (2d8)",
+                    "formula": "(9d8) + (2d8)",
                     "type": "cold"
                   }
                 ]
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5embk13u64KObAT",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "restrained",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Restrained"
-                },
-                {
-                  "key": "prone",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Prone"
-                }
-              ],
+              "label": "Shark: Restrained",
               "save": {
                 "abilities": [
                   "str"
@@ -276,27 +280,58 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "On a hit. Failure: Restrained and no hand-seal jutsu.",
               "damage": {
                 "parts": []
               }
             },
             {
-              "id": "sourceRoll1",
-              "type": "roll",
-              "label": "9d8",
-              "roll": {
-                "formula": "9d8",
-                "note": "On a success they take cold damage equal to 9d8, and must make a Strength saving throw. On a failed save, the shark slams its fangs into the target, leaving it Restrained and unable to cast jutsu that require Hand Seals (HS)."
+              "id": "n5eqG2nU30md7H1i",
+              "type": "save",
+              "label": "Its path",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "Creatures on the line to the target. Failure: Prone; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d6",
+                    "type": "cold"
+                  }
+                ]
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "d643965c516da2e4"

@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eC7FePyeLXffkC",
         "type": "attack",
-        "label": "Attack",
+        "label": "Water Drill",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "Concentration, 10 minutes: an Action, a creature within 60 feet.",
         "damage": {
           "parts": [
             {
@@ -103,9 +104,29 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5e3E7OAVnHBzrDC",
+        "type": "heal",
+        "label": "Water Armor (reaction)",
+        "heal": {
+          "formula": "30",
+          "pool": "tempHp"
+        },
+        "text": "When an attack hits you, until the start of your next turn."
+      },
+      {
+        "id": "n5eqFPmDCRPh96mg",
         "type": "save",
-        "label": "Save",
+        "label": "Watery Chains",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "restrained",
@@ -120,29 +141,9 @@
             "label": "Shaken"
           }
         ],
-        "save": {
-          "abilities": [
-            "str"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "An Action: a creature within 60 feet. Failure: Restrained and 3 Shaken while Restrained; a Strength save on its turns ends it.",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "parsed3",
-        "type": "heal",
-        "label": "Temporary HP",
-        "heal": {
-          "formula": "30",
-          "pool": "tempHp"
         }
       }
     ],
@@ -218,7 +219,8 @@
         "activitiesByRank": {},
         "manualCost": false
       },
-      "notAmp": "It grants actions and a reaction (King Q-F19)."
+      "notAmp": "It grants actions and a reaction (King Q-F19).",
+      "reviewed": true
     }
   },
   "folder": "e7a143830c8c5356"

@@ -86,23 +86,28 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5esPZixwCq97Ee3",
         "type": "attack",
-        "label": "Attack",
+        "label": "Hydra Stinger",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Concentration: when cast, then a Bonus Action; 15 feet (near water: +3d6 chakra, the next button).",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "cold"
+            }
+          ]
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eTKuz5psf3F7Ki",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Stinger: vulnerable",
         "save": {
           "abilities": [
             "con"
@@ -111,21 +116,25 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Once per turn, a creature hit. Failure: if it regains hit points or chakra before your next turn, it's vulnerable to your next hit with this jutsu.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "3d6",
-        "roll": {
-          "formula": "3d6",
-          "note": "melee Ninjutsu attack against a creature within 15 feet, dealing 3d6 Cold damage On a hit. Once per turn, an affected creature must make a Constitution saving throw. On a failed save, if the target would regain hit points or chakra points before the beginning of your next turn, it gains vulnerability against the next successful attack from this jutsu until the end of your next turn. You must have at least 1 Stinger available."
+        "id": "n5edl0G5JFyeh9MK",
+        "type": "damage",
+        "label": "Near water: chakra",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "chakra"
+            }
+          ]
         }
       }
     ],
@@ -225,9 +234,270 @@
           "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically.",
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5esPZixwCq97Ee3",
+              "type": "attack",
+              "label": "Hydra Stinger",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration: when cast, then a Bonus Action; 15 feet (near water: +3d6 chakra, the next button).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eTKuz5psf3F7Ki",
+              "type": "save",
+              "label": "Stinger: vulnerable",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Once per turn, a creature hit. Failure: if it regains hit points or chakra before your next turn, it's vulnerable to your next hit with this jutsu.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5edl0G5JFyeh9MK",
+              "type": "damage",
+              "label": "Near water: chakra",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEIFh0R2jsbQ5V",
+              "type": "roll",
+              "label": "B-Rank: Stinger Shield (reaction)",
+              "roll": {
+                "formula": "4d8",
+                "note": "Reduce the triggering damage; spends 1 stinger (3 stingers at B-Rank)."
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5esPZixwCq97Ee3",
+              "type": "attack",
+              "label": "Hydra Stinger",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration: when cast, then a Bonus Action; 15 feet (near water: +3d6 chakra, the next button).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eTKuz5psf3F7Ki",
+              "type": "save",
+              "label": "Stinger: vulnerable",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Once per turn, a creature hit. Failure: if it regains hit points or chakra before your next turn, it's vulnerable to your next hit with this jutsu.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5edl0G5JFyeh9MK",
+              "type": "damage",
+              "label": "Near water: chakra",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEIFh0R2jsbQ5V",
+              "type": "roll",
+              "label": "B-Rank: Stinger Shield (reaction)",
+              "roll": {
+                "formula": "4d8",
+                "note": "Reduce the triggering damage; spends 1 stinger (3 stingers at B-Rank)."
+              }
+            },
+            {
+              "id": "n5ee94mX7N0HycpD",
+              "type": "attack",
+              "label": "A-Rank: Stinger Swarm",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "text": "An Action, 15 feet; spends 1 stinger (6 at A-Rank).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5esPZixwCq97Ee3",
+              "type": "attack",
+              "label": "Hydra Stinger",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration: when cast, then a Bonus Action; 15 feet (near water: +3d6 chakra, the next button).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eTKuz5psf3F7Ki",
+              "type": "save",
+              "label": "Stinger: vulnerable",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Once per turn, a creature hit. Failure: if it regains hit points or chakra before your next turn, it's vulnerable to your next hit with this jutsu.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5edl0G5JFyeh9MK",
+              "type": "damage",
+              "label": "Near water: chakra",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEIFh0R2jsbQ5V",
+              "type": "roll",
+              "label": "B-Rank: Stinger Shield (reaction)",
+              "roll": {
+                "formula": "4d8",
+                "note": "Reduce the triggering damage; spends 1 stinger (3 stingers at B-Rank)."
+              }
+            },
+            {
+              "id": "n5ee94mX7N0HycpD",
+              "type": "attack",
+              "label": "A-Rank: Stinger Swarm",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "text": "An Action, 15 feet; spends 1 stinger (6 at A-Rank).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "cold"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ea4RH4E6jVvSPB",
+              "type": "save",
+              "label": "S-Rank: Stinger Symphony",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Chilled"
+                }
+              ],
+              "text": "An Action: creatures you choose; spends 2 stingers (9 at S-Rank). Failure: 1 Chilled; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "8d8",
+                    "type": "cold"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0c43a048cce4a087"

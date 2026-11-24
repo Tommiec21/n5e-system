@@ -1,0 +1,297 @@
+{
+  "_id": "n5euYFKuGUbOwTrG",
+  "_key": "!actors!n5euYFKuGUbOwTrG",
+  "name": "Medical Jellyfish",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Water Release: Medical Jellyfish (C-Rank)",
+      "summonRole": "Medical Jellyfish",
+      "biography": "<p><em>Water Release: Medical Jellyfish (C-Rank) (Water Release Ninjutsu).</em> It uses your Ninjutsu attack bonus and save DC. You command it as a Bonus Action; it can take reactions it's able to, such as opportunity attacks.</p><p><strong>Small Construct.</strong> <strong>Armor Class</strong> 12 + 2 for every rank above C-Rank · <strong>Hit Points</strong> 20 + 8 for every rank above C-Rank · <strong>Speed</strong> 0 ft..</p><p><strong>Abilities</strong> STR +0 (save +2), DEX +0 (save +2), CON +0 (save +0), INT −5 (save −5), WIS +0 (save +0), CHA −5 (save −5). <strong>Speed</strong> fly 30 ft. <strong>Damage Immunities</strong> Cold. <strong>Damage Resistances</strong> Bludgeoning, Poison. <strong>Damage Vulnerabilities</strong> Earth. <strong>Condition Immunities</strong> All Mental, All Sensory. <strong>Senses</strong> passive Perception 10.</p><p><strong>Linked to you when summoned:</strong> AC and hit points by the rank you cast the jutsu at, and your Ninjutsu attack bonus and save DC.</p>"
+    },
+    "abilities": {
+      "str": {
+        "value": 10
+      },
+      "dex": {
+        "value": 10
+      },
+      "con": {
+        "value": 10
+      },
+      "int": {
+        "value": 0
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 0
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 12,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "small",
+      "resist": [
+        "bludgeoning",
+        "poison"
+      ],
+      "immune": [
+        "cold"
+      ],
+      "vuln": [
+        "earth"
+      ],
+      "conditionImmune": [
+        "berserk",
+        "charmed",
+        "confused",
+        "demoralized",
+        "shaken",
+        "concussed",
+        "blinded",
+        "dazzled",
+        "deafened"
+      ],
+      "stateImmune": [],
+      "dr": 0,
+      "speed": {
+        "walk": 0,
+        "climb": 0,
+        "swim": 0,
+        "fly": 30,
+        "burrow": 0,
+        "hover": false
+      },
+      "senses": {}
+    },
+    "hpMax": 20,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5eOJlhhWv3DoPHK",
+      "_key": "!actors.items!n5euYFKuGUbOwTrG.n5eOJlhhWv3DoPHK",
+      "name": "Medical Pool",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Medical Jellyfish has a pool of Medical Chakra equal to 20 + 5 for every rank above C-Rank it is summoned (track it by hand).</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.95.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eEgtCHZqUXaxrf",
+      "_key": "!actors.items!n5euYFKuGUbOwTrG.n5eEgtCHZqUXaxrf",
+      "name": "Jelly Sting",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 10 ft., one creature. <em>Hit:</em> 2d8 + 2 cold damage (+2 for every rank above C-Rank it is summoned).",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eFNqlkNzVmSHzV",
+            "type": "attack",
+            "label": "Jelly Sting",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 1,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "2d8 + 2",
+                  "type": "cold"
+                }
+              ]
+            },
+            "text": "+2 damage per rank above C-Rank (add it by hand)."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.95.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5ekpZ6xHDq4EWra",
+      "_key": "!actors.items!n5euYFKuGUbOwTrG.n5ekpZ6xHDq4EWra",
+      "name": "Top Up Jelly Shot",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Medical Jellyfish places one of its cnidocytes on a willing creature, granting it 2d4 + 2 temporary hit points (+2 for every rank above C-Rank it is summoned).</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5efi9HcQiPpdDnw",
+            "type": "heal",
+            "label": "Top Up Jelly Shot",
+            "heal": {
+              "formula": "2d4 + 2",
+              "pool": "tempHp"
+            },
+            "text": "+2 per rank above C-Rank (add it by hand)."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.95.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5ei5b3R77BhARFX",
+      "_key": "!actors.items!n5euYFKuGUbOwTrG.n5ei5b3R77BhARFX",
+      "name": "Aura of Recovery",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Medical Jellyfish releases an aura of Medical chakra across all creatures of its summoner's choice within a 10-foot radius. For each creature, it draws from its Medical Pool to restore hit points, up to the amount remaining in the pool.</p>",
+        "category": "npcAbilities",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.95.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5ecuxsLU21wGxa0",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "attributes.ac.flat": "12 + 2 * max(0, @rankValue - 2)",
+        "hpMax": "20 + 8 * max(0, @rankValue - 2)",
+        "bonuses.saveDC.nin": "@dc.nin - 8 - @prof",
+        "bonuses.attack.nin": "@attack.nin - @prof"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Medical Jellyfish",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.95.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

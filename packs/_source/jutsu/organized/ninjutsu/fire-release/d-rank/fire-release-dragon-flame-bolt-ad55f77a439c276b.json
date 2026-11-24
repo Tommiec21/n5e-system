@@ -86,35 +86,28 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eKHy0EM8M4dxvo",
         "type": "attack",
-        "label": "Attack",
+        "label": "Dragon Flame Bolt",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "60 feet; C-Rank: +1 attack at a different creature.",
         "damage": {
           "parts": [
             {
-              "formula": "3d10+3",
+              "formula": "3d10 + 3",
               "type": "fire"
             }
           ]
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eyx1htTip0YBK6",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "dazzled",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Dazzled"
-          }
-        ],
+        "label": "Bolt: Dazzled",
         "save": {
           "abilities": [
             "con"
@@ -123,10 +116,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          }
+        ],
+        "text": "On a hit. Failure: 1 Dazzled (B-Rank: 2; S-Rank: 3).",
         "damage": {
           "parts": []
         }
@@ -209,9 +209,203 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eKHy0EM8M4dxvo",
+              "type": "attack",
+              "label": "Dragon Flame Bolt",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 2
+              },
+              "text": "60 feet; C-Rank: +1 attack at a different creature.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d10 + 4",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eyx1htTip0YBK6",
+              "type": "save",
+              "label": "Bolt: Dazzled",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "On a hit. Failure: 1 Dazzled (B-Rank: 2; S-Rank: 3).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eKHy0EM8M4dxvo",
+              "type": "attack",
+              "label": "Dragon Flame Bolt",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 2
+              },
+              "text": "60 feet; C-Rank: +1 attack at a different creature.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "5d10 + 5",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eyx1htTip0YBK6",
+              "type": "save",
+              "label": "Bolt: Dazzled",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "On a hit. Failure: 1 Dazzled (B-Rank: 2; S-Rank: 3).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eKHy0EM8M4dxvo",
+              "type": "attack",
+              "label": "Dragon Flame Bolt",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 2
+              },
+              "text": "60 feet; C-Rank: +1 attack at a different creature.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "6d10 + 6",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eyx1htTip0YBK6",
+              "type": "save",
+              "label": "Bolt: Dazzled",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "On a hit. Failure: 1 Dazzled (B-Rank: 2; S-Rank: 3).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eKHy0EM8M4dxvo",
+              "type": "attack",
+              "label": "Dragon Flame Bolt",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 2
+              },
+              "text": "60 feet; C-Rank: +1 attack at a different creature.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "7d10 + 7",
+                    "type": "fire"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eyx1htTip0YBK6",
+              "type": "save",
+              "label": "Bolt: Dazzled",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 3,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "On a hit. Failure: 1 Dazzled (B-Rank: 2; S-Rank: 3).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5eegPtnn07turpr"

@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e7rF48A930FANK",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Crossing the cage",
         "save": {
           "abilities": [
             "str"
@@ -98,17 +97,44 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Full turn, concentration: a 30-foot cube within 120 feet; a creature tries to cross a wall. Failure: the damage and pushed back 10 feet; success: it breaches (then the next save).",
         "damage": {
           "parts": [
             {
-              "formula": "4d10+4",
+              "formula": "4d10 + 4",
               "type": "fire"
             }
           ]
+        }
+      },
+      {
+        "id": "n5eAhlVXkKQE8N01",
+        "type": "save",
+        "label": "Breached: Burned",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Burned"
+          }
+        ],
+        "text": "Failure: 2 Burned.",
+        "damage": {
+          "parts": []
         }
       }
     ],
@@ -183,7 +209,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c03a256155b16b00"
