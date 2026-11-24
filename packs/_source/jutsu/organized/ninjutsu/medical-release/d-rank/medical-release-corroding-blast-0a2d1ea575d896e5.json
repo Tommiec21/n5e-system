@@ -85,17 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eEqrFZcpHKLZa1",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "corroded",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Corroded"
-          }
-        ],
+        "label": "Corroding Blast",
         "save": {
           "abilities": [
             "dex"
@@ -104,31 +96,39 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "corroded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Corroded"
+          }
+        ],
+        "text": "A 30 by 5-foot line (B-Rank: or a 30-foot cone). Failure: the damage (necrotic or acid, set it) and Corroded. Constructs and structures of earth, metal or wood vulnerable.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": ""
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "3d6",
-        "roll": {
-          "formula": "3d6",
-          "note": "On a failed save, affected creatures become Corroded, takes 3d6 Necrotic or Acid damage (Your choice) and at the beginning of an affected creature’s next turn, they take 3d4 damage of the same type."
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "3d4",
-        "roll": {
-          "formula": "3d4",
-          "note": "On a failed save, affected creatures become Corroded, takes 3d6 Necrotic or Acid damage (Your choice) and at the beginning of an affected creature’s next turn, they take 3d4 damage of the same type."
-        }
+        "id": "n5ehhvpzx6lmX5zN",
+        "type": "damage",
+        "label": "Lingering (its next turn start)",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d4",
+              "type": ""
+            }
+          ]
+        },
+        "text": "S-Rank: every turn until it spends a full turn removing the acid."
       }
     ],
     "featureType": "active",
@@ -220,9 +220,203 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eEqrFZcpHKLZa1",
+              "type": "save",
+              "label": "Corroding Blast",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "corroded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Corroded"
+                }
+              ],
+              "text": "A 30 by 5-foot line (B-Rank: or a 30-foot cone). Failure: the damage (necrotic or acid, set it) and Corroded. Constructs and structures of earth, metal or wood vulnerable.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ehhvpzx6lmX5zN",
+              "type": "damage",
+              "label": "Lingering (its next turn start)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d4) + (1d4)",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "S-Rank: every turn until it spends a full turn removing the acid."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eEqrFZcpHKLZa1",
+              "type": "save",
+              "label": "Corroding Blast",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "corroded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Corroded"
+                }
+              ],
+              "text": "A 30 by 5-foot line (B-Rank: or a 30-foot cone). Failure: the damage (necrotic or acid, set it) and Corroded. Constructs and structures of earth, metal or wood vulnerable.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ehhvpzx6lmX5zN",
+              "type": "damage",
+              "label": "Lingering (its next turn start)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d4) + (2d4)",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "S-Rank: every turn until it spends a full turn removing the acid."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eEqrFZcpHKLZa1",
+              "type": "save",
+              "label": "Corroding Blast",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "corroded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Corroded"
+                }
+              ],
+              "text": "A 30 by 5-foot line (B-Rank: or a 30-foot cone). Failure: the damage (necrotic or acid, set it) and Corroded. Constructs and structures of earth, metal or wood vulnerable.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (3d6)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ehhvpzx6lmX5zN",
+              "type": "damage",
+              "label": "Lingering (its next turn start)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d4) + (3d4)",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "S-Rank: every turn until it spends a full turn removing the acid."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eEqrFZcpHKLZa1",
+              "type": "save",
+              "label": "Corroding Blast",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "corroded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Corroded"
+                }
+              ],
+              "text": "A 30 by 5-foot line (B-Rank: or a 30-foot cone). Failure: the damage (necrotic or acid, set it) and Corroded. Constructs and structures of earth, metal or wood vulnerable.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (4d6)",
+                    "type": ""
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ehhvpzx6lmX5zN",
+              "type": "damage",
+              "label": "Lingering (its next turn start)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d4) + (4d4)",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "S-Rank: every turn until it spends a full turn removing the acid."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c44c91ecdf316b93"

@@ -85,17 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ekz0j7hWH9dGhp",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "blinded",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Blinded"
-          }
-        ],
+        "label": "Spore Caller",
         "save": {
           "abilities": [
             "con"
@@ -104,10 +96,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          }
+        ],
+        "text": "Concentration: a 15-foot aura (A-Rank: creatures you choose, or instead an instant 30-foot cone); starting a turn or first entering. Failure: the damage and Blinded until the end of its next turn (already Blinded: +1 round; S-Rank: 1 minute, resave each turn).",
         "damage": {
           "parts": [
             {
@@ -198,17 +197,9 @@
         "activitiesByRank": {
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5ekz0j7hWH9dGhp",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "blinded",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Blinded"
-                }
-              ],
+              "label": "Spore Caller",
               "save": {
                 "abilities": [
                   "con"
@@ -217,10 +208,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                }
+              ],
+              "text": "Concentration: a 15-foot aura (A-Rank: creatures you choose, or instead an instant 30-foot cone); starting a turn or first entering. Failure: the damage and Blinded until the end of its next turn (already Blinded: +1 round; S-Rank: 1 minute, resave each turn).",
               "damage": {
                 "parts": [
                   {
@@ -229,21 +227,11 @@
                   }
                 ]
               }
-            }
-          ],
-          "A": [
+            },
             {
-              "id": "parsed1",
+              "id": "n5ecs4M9kHpuvduc",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "blinded",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Blinded"
-                }
-              ],
+              "label": "Blinded: struck",
               "save": {
                 "abilities": [
                   "con"
@@ -252,10 +240,46 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "B-Rank: once per turn, a creature Blinded by it takes bludgeoning, piercing or slashing damage. Failure: Envenomed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ekz0j7hWH9dGhp",
+              "type": "save",
+              "label": "Spore Caller",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                }
+              ],
+              "text": "Concentration: a 15-foot aura (A-Rank: creatures you choose, or instead an instant 30-foot cone); starting a turn or first entering. Failure: the damage and Blinded until the end of its next turn (already Blinded: +1 round; S-Rank: 1 minute, resave each turn).",
               "damage": {
                 "parts": [
                   {
@@ -264,21 +288,11 @@
                   }
                 ]
               }
-            }
-          ],
-          "S": [
+            },
             {
-              "id": "parsed1",
+              "id": "n5ecs4M9kHpuvduc",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "blinded",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Blinded"
-                }
-              ],
+              "label": "Blinded: struck",
               "save": {
                 "abilities": [
                   "con"
@@ -287,10 +301,46 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "B-Rank: once per turn, a creature Blinded by it takes bludgeoning, piercing or slashing damage. Failure: Envenomed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ekz0j7hWH9dGhp",
+              "type": "save",
+              "label": "Spore Caller",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "blinded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Blinded"
+                }
+              ],
+              "text": "Concentration: a 15-foot aura (A-Rank: creatures you choose, or instead an instant 30-foot cone); starting a turn or first entering. Failure: the damage and Blinded until the end of its next turn (already Blinded: +1 round; S-Rank: 1 minute, resave each turn).",
               "damage": {
                 "parts": [
                   {
@@ -299,11 +349,39 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5ecs4M9kHpuvduc",
+              "type": "save",
+              "label": "Blinded: struck",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "B-Rank: once per turn, a creature Blinded by it takes bludgeoning, piercing or slashing damage. Failure: Envenomed.",
+              "damage": {
+                "parts": []
+              }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0359bedeffa2100b"

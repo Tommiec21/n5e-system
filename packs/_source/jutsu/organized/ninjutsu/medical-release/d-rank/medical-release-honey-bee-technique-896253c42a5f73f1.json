@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ekqCrB4kxGXdtr",
         "type": "attack",
-        "label": "Attack",
+        "label": "Honey Bee Technique",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "Bonus action; +1 creature per rank.",
         "damage": {
           "parts": [
             {
@@ -103,10 +104,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5ehGKMASGkeUU3n",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Seized joints",
         "save": {
           "abilities": [
             "con"
@@ -115,21 +115,41 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "On a hit. Failure: for 1 minute, at the start of its turn it rolls 1d12; 1 or 2: Stunned until the end of its turn. Resave at the end of each turn; ending Envenomed ends it too.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll2",
+        "id": "n5ebiLaw1Dtnwh1l",
         "type": "roll",
-        "label": "1d12",
+        "label": "Start of its turn: 1d12",
         "roll": {
           "formula": "1d12",
-          "note": "At the beginning of the target creatures turn they roll 1d12. On a roll of 1 or 2 the pain keeps them from moving Stunning them until the end of their turn. The target remakes the constitution save at the end of each of their turns ending this on a success. A Jutsu or effect that ends the Envenomed condition can also end this condition."
+          "note": "1 or 2: Stunned (the effect)."
+        }
+      },
+      {
+        "id": "n5ewoEIB3KApzC3b",
+        "type": "effect",
+        "label": "Stunned",
+        "effect": {
+          "name": "Stunned",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "stunned",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Stunned"
+            }
+          ]
         }
       }
     ],
@@ -219,14 +239,15 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5ekqCrB4kxGXdtr",
               "type": "attack",
-              "label": "Attack",
+              "label": "Honey Bee Technique",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "Bonus action; +1 creature per rank.",
               "damage": {
                 "parts": [
                   {
@@ -237,10 +258,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5ehGKMASGkeUU3n",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Seized joints",
               "save": {
                 "abilities": [
                   "con"
@@ -249,34 +269,55 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "On a hit. Failure: for 1 minute, at the start of its turn it rolls 1d12; 1 or 2: Stunned until the end of its turn. Resave at the end of each turn; ending Envenomed ends it too.",
               "damage": {
                 "parts": []
               }
             },
             {
-              "id": "sourceRoll2",
+              "id": "n5ebiLaw1Dtnwh1l",
               "type": "roll",
-              "label": "1d12",
+              "label": "Start of its turn: 1d12",
               "roll": {
                 "formula": "1d12",
-                "note": "At the beginning of the target creatures turn they roll 1d12. On a roll of 1 or 2 the pain keeps them from moving Stunning them until the end of their turn. The target remakes the constitution save at the end of each of their turns ending this on a success. A Jutsu or effect that ends the Envenomed condition can also end this condition."
+                "note": "1 or 2: Stunned (the effect)."
+              }
+            },
+            {
+              "id": "n5ewoEIB3KApzC3b",
+              "type": "effect",
+              "label": "Stunned",
+              "effect": {
+                "name": "Stunned",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "stunned",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Stunned"
+                  }
+                ]
               }
             }
           ],
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5ekqCrB4kxGXdtr",
               "type": "attack",
-              "label": "Attack",
+              "label": "Honey Bee Technique",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "Bonus action; +1 creature per rank.",
               "damage": {
                 "parts": [
                   {
@@ -287,10 +328,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5ehGKMASGkeUU3n",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Seized joints",
               "save": {
                 "abilities": [
                   "con"
@@ -299,34 +339,55 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "On a hit. Failure: for 1 minute, at the start of its turn it rolls 1d12; 1 or 2: Stunned until the end of its turn. Resave at the end of each turn; ending Envenomed ends it too.",
               "damage": {
                 "parts": []
               }
             },
             {
-              "id": "sourceRoll2",
+              "id": "n5ebiLaw1Dtnwh1l",
               "type": "roll",
-              "label": "1d12",
+              "label": "Start of its turn: 1d12",
               "roll": {
                 "formula": "1d12",
-                "note": "At the beginning of the target creatures turn they roll 1d12. On a roll of 1 or 2 the pain keeps them from moving Stunning them until the end of their turn. The target remakes the constitution save at the end of each of their turns ending this on a success. A Jutsu or effect that ends the Envenomed condition can also end this condition."
+                "note": "1 or 2: Stunned (the effect)."
+              }
+            },
+            {
+              "id": "n5ewoEIB3KApzC3b",
+              "type": "effect",
+              "label": "Stunned",
+              "effect": {
+                "name": "Stunned",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "stunned",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Stunned"
+                  }
+                ]
               }
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5ekqCrB4kxGXdtr",
               "type": "attack",
-              "label": "Attack",
+              "label": "Honey Bee Technique",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "Bonus action; +1 creature per rank.",
               "damage": {
                 "parts": [
                   {
@@ -337,10 +398,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5ehGKMASGkeUU3n",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Seized joints",
               "save": {
                 "abilities": [
                   "con"
@@ -349,34 +409,55 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "On a hit. Failure: for 1 minute, at the start of its turn it rolls 1d12; 1 or 2: Stunned until the end of its turn. Resave at the end of each turn; ending Envenomed ends it too.",
               "damage": {
                 "parts": []
               }
             },
             {
-              "id": "sourceRoll2",
+              "id": "n5ebiLaw1Dtnwh1l",
               "type": "roll",
-              "label": "1d12",
+              "label": "Start of its turn: 1d12",
               "roll": {
                 "formula": "1d12",
-                "note": "At the beginning of the target creatures turn they roll 1d12. On a roll of 1 or 2 the pain keeps them from moving Stunning them until the end of their turn. The target remakes the constitution save at the end of each of their turns ending this on a success. A Jutsu or effect that ends the Envenomed condition can also end this condition."
+                "note": "1 or 2: Stunned (the effect)."
+              }
+            },
+            {
+              "id": "n5ewoEIB3KApzC3b",
+              "type": "effect",
+              "label": "Stunned",
+              "effect": {
+                "name": "Stunned",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "stunned",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Stunned"
+                  }
+                ]
               }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5ekqCrB4kxGXdtr",
               "type": "attack",
-              "label": "Attack",
+              "label": "Honey Bee Technique",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "Bonus action; +1 creature per rank.",
               "damage": {
                 "parts": [
                   {
@@ -387,10 +468,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5ehGKMASGkeUU3n",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Seized joints",
               "save": {
                 "abilities": [
                   "con"
@@ -399,27 +479,48 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "On a hit. Failure: for 1 minute, at the start of its turn it rolls 1d12; 1 or 2: Stunned until the end of its turn. Resave at the end of each turn; ending Envenomed ends it too.",
               "damage": {
                 "parts": []
               }
             },
             {
-              "id": "sourceRoll2",
+              "id": "n5ebiLaw1Dtnwh1l",
               "type": "roll",
-              "label": "1d12",
+              "label": "Start of its turn: 1d12",
               "roll": {
                 "formula": "1d12",
-                "note": "At the beginning of the target creatures turn they roll 1d12. On a roll of 1 or 2 the pain keeps them from moving Stunning them until the end of their turn. The target remakes the constitution save at the end of each of their turns ending this on a success. A Jutsu or effect that ends the Envenomed condition can also end this condition."
+                "note": "1 or 2: Stunned (the effect)."
+              }
+            },
+            {
+              "id": "n5ewoEIB3KApzC3b",
+              "type": "effect",
+              "label": "Stunned",
+              "effect": {
+                "name": "Stunned",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "stunned",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Stunned"
+                  }
+                ]
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c44c91ecdf316b93"

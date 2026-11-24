@@ -85,9 +85,33 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5elUDoC2XM37IQT",
+        "type": "damage",
+        "label": "Submerged: start of its turn",
+        "damage": {
+          "parts": [
+            {
+              "formula": "7d6",
+              "type": "acid"
+            }
+          ]
+        },
+        "text": "Concentration: 15 feet of water becomes acid (A-Rank: 30; S-Rank: 60); creatures standing on it sink."
+      },
+      {
+        "id": "n5e8Yzhze6WSFRAZ",
         "type": "save",
-        "label": "Save",
+        "label": "Water to Acid",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "blinded",
@@ -102,25 +126,9 @@
             "label": "Corroded"
           }
         ],
-        "save": {
-          "abilities": [
-            "con"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Starting its turn submerged. Failure: Blinded and Corroded.",
         "damage": {
-          "parts": [
-            {
-              "formula": "7d6",
-              "type": "acid"
-            }
-          ]
+          "parts": []
         }
       }
     ],
@@ -197,7 +205,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "d1f8f3baa49a3e3a"

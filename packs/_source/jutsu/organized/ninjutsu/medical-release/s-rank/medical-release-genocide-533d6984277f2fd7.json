@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e0jmyJFX5RIVwP",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Genocide",
         "save": {
           "abilities": [
             "con"
@@ -96,34 +95,43 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {
-            "failure": "On a failure, the target takes 10d6+50 necrotic damage, or half as much on a successful save. At the beginning of the affected creatures turn, pass or fail, tendrils of necrotic chakra leap out from that creature, up to 100 feet, to all other creatures that share the targets clan, or bloodline based on what you chose. All such creatures, excluding the original target, must make the same saving throw, taking 50 necrotic damage on a failed save, or half as much",
-            "success": "on a success. At the beginning of a creature who fails their saving throws from the tendrils, more tendrils leap out from them with the same restrictions an additional 100 feet repeating the previous process, but excluding all creatures who were previously affected by the jutsu. This affect repeats until no other creatures who share the original targets clan or bloodline are within range of the tendrils."
-          },
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "A creature of your level or lower that you can see within 120 feet (−2 per differently named condition on it). Success: half.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "10d6 + 50",
+              "type": "necrotic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "10d6+50",
-        "roll": {
-          "formula": "10d6+50",
-          "note": "On a failure, the target takes 10d6+50 necrotic damage, or half as much on a successful save."
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "50",
-        "roll": {
-          "formula": "50",
-          "note": "All such creatures, excluding the original target, must make the same saving throw, taking 50 necrotic damage on a failed save, or half as much on a success."
+        "id": "n5esxmqdWWFdR7QY",
+        "type": "save",
+        "label": "Tendrils",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "At the start of the target's turn, every creature of its clan or bloodline within 100 feet (and on from those that fail). Success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "50",
+              "type": "necrotic"
+            }
+          ]
         }
       }
     ],
@@ -204,7 +212,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b0d365bba0d080fc"

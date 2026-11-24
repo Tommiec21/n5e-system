@@ -87,17 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e2k2153MFWIrgl",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "sealed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Sealed"
-          }
-        ],
+        "label": "Grim Siphon",
         "save": {
           "abilities": [
             "cha"
@@ -106,10 +98,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "sealed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Sealed"
+          }
+        ],
+        "text": "A creature within 60 feet (+1 per rank); Elemental or Mental conditions: at disadvantage. Failure: the damage and 1 Sealed.",
         "damage": {
           "parts": [
             {
@@ -118,6 +117,25 @@
             }
           ]
         }
+      },
+      {
+        "id": "n5ecsSzTDSFrvwdz",
+        "type": "effect",
+        "label": "+1 critical range",
+        "effect": {
+          "name": "Grim Siphon",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.critRange.all",
+              "value": "1",
+              "mode": 2
+            }
+          ],
+          "expires": "nextTurnEnd",
+          "seconds": 0
+        },
+        "text": "Against the target, until the end of your next turn."
       }
     ],
     "featureType": "active",
@@ -193,7 +211,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c44c91ecdf316b93"

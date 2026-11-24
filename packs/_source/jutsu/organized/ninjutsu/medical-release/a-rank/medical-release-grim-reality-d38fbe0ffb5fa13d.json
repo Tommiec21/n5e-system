@@ -87,34 +87,60 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eX3jf7lCwktalE",
         "type": "attack",
-        "label": "Attack",
+        "label": "Reaper's Tanto",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 2
         },
+        "text": "Concentration (a hit die each turn): a critical hit on 18–20 (the effect).",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "2d6 + @mod.nin",
+              "type": "necrotic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "If Tanto, the weapon deals 2d6 + Ninjutsu ability modifier necrotic damage, and scores a critical hit on a roll of 18~20. If scythe, the weapon deals 2d10 + Ninjutsu ability modifier necrotic damage, has reach 2, Deadly, and Two-Handed weapon properties. Regardless of the weapon chosen, as an action, you can make two melee ninjutsu attacks using the construct weapons."
-        }
+        "id": "n5eqGFfYB6Cv3EsZ",
+        "type": "effect",
+        "label": "Tanto: 18–20",
+        "effect": {
+          "name": "Grim Reality: Tanto",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.critRange.nin",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "While you wield the tanto."
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "2d10",
-        "roll": {
-          "formula": "2d10",
-          "note": "If scythe, the weapon deals 2d10 + Ninjutsu ability modifier necrotic damage, has reach 2, Deadly, and Two-Handed weapon properties. Regardless of the weapon chosen, as an action, you can make two melee ninjutsu attacks using the construct weapons."
+        "id": "n5eLT4oQwvFde2Xo",
+        "type": "attack",
+        "label": "Reaper's Scythe",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 2
+        },
+        "text": "Reach 2, Deadly, Two-Handed.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d10 + @mod.nin",
+              "type": "necrotic"
+            }
+          ]
         }
       }
     ],
@@ -195,7 +221,14 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "The Cloak: your AC becomes your Ninjutsu save DC if higher (set it). Grim Medical jutsu's necrotic damage ignores resistance and immunity. Ends only at the end of your turn; only S-Rank dispels it."
+        }
+      ]
     }
   },
   "folder": "49121ed59e0d3922"

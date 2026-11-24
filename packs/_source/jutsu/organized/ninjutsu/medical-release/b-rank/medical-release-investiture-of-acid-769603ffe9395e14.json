@@ -98,9 +98,19 @@
         "text": "Starts the jutsu's Amp at the rank it was cast at."
       },
       {
-        "id": "parsed1",
+        "id": "n5ehyZMTwfUlwdA3",
         "type": "save",
-        "label": "Save",
+        "label": "Acid blast",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "corroded",
@@ -109,18 +119,7 @@
             "label": "Corroded"
           }
         ],
-        "save": {
-          "abilities": [
-            "con"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "An Action: a 15-foot cone. Failure: Corroded; success: half, nothing else.",
         "damage": {
           "parts": [
             {
@@ -202,7 +201,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "d1f8f3baa49a3e3a"

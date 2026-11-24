@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ednGFcEIoNNc1W",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Wither and Bloom",
         "save": {
           "abilities": [
             "con"
@@ -97,10 +96,10 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Creatures you choose within 10 feet of a point within 60 feet. Failure: the damage.",
         "damage": {
           "parts": [
             {
@@ -111,13 +110,14 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eAwaROBIMhCz5e",
         "type": "heal",
-        "label": "Healing",
+        "label": "Bloom",
         "heal": {
           "formula": "3d6",
-          "pool": "hp"
-        }
+          "pool": "tempHp"
+        },
+        "text": "One creature you choose in the area."
       }
     ],
     "featureType": "active",
@@ -212,10 +212,9 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5ednGFcEIoNNc1W",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Wither and Bloom",
               "save": {
                 "abilities": [
                   "con"
@@ -224,10 +223,10 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Creatures you choose within 10 feet of a point within 60 feet. Failure: the damage.",
               "damage": {
                 "parts": [
                   {
@@ -238,21 +237,21 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eAwaROBIMhCz5e",
               "type": "heal",
-              "label": "Healing",
+              "label": "Bloom",
               "heal": {
-                "formula": "3d6",
-                "pool": "hp"
-              }
+                "formula": "(3d6) + (1d6)",
+                "pool": "tempHp"
+              },
+              "text": "One creature you choose in the area."
             }
           ],
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5ednGFcEIoNNc1W",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Wither and Bloom",
               "save": {
                 "abilities": [
                   "con"
@@ -261,10 +260,10 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Creatures you choose within 10 feet of a point within 60 feet. Failure: the damage.",
               "damage": {
                 "parts": [
                   {
@@ -275,21 +274,21 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eAwaROBIMhCz5e",
               "type": "heal",
-              "label": "Healing",
+              "label": "Bloom",
               "heal": {
-                "formula": "3d6",
-                "pool": "hp"
-              }
+                "formula": "(3d6) + (2d6)",
+                "pool": "tempHp"
+              },
+              "text": "One creature you choose in the area."
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5ednGFcEIoNNc1W",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Wither and Bloom",
               "save": {
                 "abilities": [
                   "con"
@@ -298,10 +297,10 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Creatures you choose within 10 feet of a point within 60 feet. Failure: the damage.",
               "damage": {
                 "parts": [
                   {
@@ -312,21 +311,21 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eAwaROBIMhCz5e",
               "type": "heal",
-              "label": "Healing",
+              "label": "Bloom",
               "heal": {
-                "formula": "3d6",
-                "pool": "hp"
-              }
+                "formula": "(3d6) + (3d6)",
+                "pool": "tempHp"
+              },
+              "text": "One creature you choose in the area."
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5ednGFcEIoNNc1W",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Wither and Bloom",
               "save": {
                 "abilities": [
                   "con"
@@ -335,10 +334,10 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Creatures you choose within 10 feet of a point within 60 feet. Failure: the damage.",
               "damage": {
                 "parts": [
                   {
@@ -349,18 +348,20 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eAwaROBIMhCz5e",
               "type": "heal",
-              "label": "Healing",
+              "label": "Bloom",
               "heal": {
-                "formula": "3d6",
-                "pool": "hp"
-              }
+                "formula": "(3d6) + (4d6)",
+                "pool": "tempHp"
+              },
+              "text": "One creature you choose in the area."
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c44c91ecdf316b93"

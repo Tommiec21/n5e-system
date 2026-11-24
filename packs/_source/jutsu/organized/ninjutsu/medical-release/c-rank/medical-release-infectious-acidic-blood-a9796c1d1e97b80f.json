@@ -85,22 +85,18 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "D20",
-        "roll": {
-          "formula": "D20",
-          "note": "The first time each turn the creature would attack to move or take an Action or Bonus Action, they must roll a D20. If they roll below a 12, their body seizes as they fall Prone unable to resist the infection wreaking havoc across their body. / While a creature has any of the above infections, they cannot gain the benefits of a Long rest. A creature can only be cured of these infections if an effect would remove ranks of Weakened or Envenomed of a rank equal to, or greater than the rank Acidic Blood was cast at. |"
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "12",
-        "roll": {
-          "formula": "12",
-          "note": "All creatures within 5 feet of the affected creature takes 12 acid damage."
-        }
+        "id": "n5ed9CxTL1pMPfjR",
+        "type": "damage",
+        "label": "Acidic blood",
+        "damage": {
+          "parts": [
+            {
+              "formula": "12",
+              "type": "acid"
+            }
+          ]
+        },
+        "text": "A willing creature within 30 feet takes bludgeoning, piercing or slashing damage before the end of your next turn: creatures within 5 feet of it."
       }
     ],
     "featureType": "active",
@@ -180,9 +176,128 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5ed9CxTL1pMPfjR",
+              "type": "damage",
+              "label": "Acidic blood",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "16",
+                    "type": "acid"
+                  }
+                ]
+              },
+              "text": "A willing creature within 30 feet takes bludgeoning, piercing or slashing damage before the end of your next turn: creatures within 5 feet of it."
+            },
+            {
+              "id": "n5eBjuVQbeAVz5hz",
+              "type": "save",
+              "label": "Infection",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "B-Rank: creatures that took the acid. Failure: Filth Fever (disadvantage on Strength and Dexterity checks, saves and attacks); A-Rank: or Mind Fire (Intelligence and Wisdom); S-Rank: or Seizing Doom. No long rest while infected; cured by removing Weakened or Envenomed of an equal or higher rank.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ed9CxTL1pMPfjR",
+              "type": "damage",
+              "label": "Acidic blood",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "20",
+                    "type": "acid"
+                  }
+                ]
+              },
+              "text": "A willing creature within 30 feet takes bludgeoning, piercing or slashing damage before the end of your next turn: creatures within 5 feet of it."
+            },
+            {
+              "id": "n5eBjuVQbeAVz5hz",
+              "type": "save",
+              "label": "Infection",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "B-Rank: creatures that took the acid. Failure: Filth Fever (disadvantage on Strength and Dexterity checks, saves and attacks); A-Rank: or Mind Fire (Intelligence and Wisdom); S-Rank: or Seizing Doom. No long rest while infected; cured by removing Weakened or Envenomed of an equal or higher rank.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ed9CxTL1pMPfjR",
+              "type": "damage",
+              "label": "Acidic blood",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "24",
+                    "type": "acid"
+                  }
+                ]
+              },
+              "text": "A willing creature within 30 feet takes bludgeoning, piercing or slashing damage before the end of your next turn: creatures within 5 feet of it."
+            },
+            {
+              "id": "n5eBjuVQbeAVz5hz",
+              "type": "save",
+              "label": "Infection",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "B-Rank: creatures that took the acid. Failure: Filth Fever (disadvantage on Strength and Dexterity checks, saves and attacks); A-Rank: or Mind Fire (Intelligence and Wisdom); S-Rank: or Seizing Doom. No long rest while infected; cured by removing Weakened or Envenomed of an equal or higher rank.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e7Zu2jIrhDlPsc",
+              "type": "roll",
+              "label": "Seizing Doom: d20",
+              "roll": {
+                "formula": "1d20",
+                "note": "The first time each turn it moves or takes an Action or Bonus Action: below 12, it falls Prone."
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0359bedeffa2100b"

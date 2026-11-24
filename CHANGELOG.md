@@ -1,3 +1,11 @@
+## 0.93.0-alpha.1 — STD6f F7 Medical Ninjutsu; Supreme Poison Deity
+
+King 2026-11-23: "Next batch." Medical Release Ninjutsu (68) reviewed at every rank (52 partly automated, 16 notes only). Review table docs/jutsu/ninjutsu-medical-release-automation.md; spec docs/STD6f_SPEC.md (F7).
+
+- **Supreme Poison Deity:** built from the source book's Summon Stat Blocks (Summons > Ninjutsu > Medical Release); the jutsu's button places it.
+- **Fixed buttons:** Wounds, Chakra Needles and Grim Blade are attacks again; Ensnaring Strike's and Water to Acid's damage no longer ride on the save; Corrosive Plume no longer gives 5 Envenomed.
+- **Medical:** healing, temporary hit points, attacks, saves and upcasts (Acid Armor, Acid Whips, Adept Healing, Healing Elixir, Wounds and others); seven Amps kept.
+
 ## 0.92.0-alpha.1 — STD6f F6 Non-Elemental Ninjutsu; Non-Elemental summons
 
 King 2026-11-23: "Next batch." Non-Elemental Ninjutsu (86) reviewed at every rank (43 partly automated, 43 notes only). Review table docs/jutsu/ninjutsu-non-elemental-automation.md; spec docs/STD6f_SPEC.md (F6).

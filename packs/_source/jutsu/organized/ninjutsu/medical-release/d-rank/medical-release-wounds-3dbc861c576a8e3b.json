@@ -86,17 +86,28 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ekaCZegKBhh6Ie",
+        "type": "attack",
+        "label": "Wounds",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "30 feet.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d10",
+              "type": "necrotic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ePaGZTyRIFW0xE",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "bleed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bleed"
-          }
-        ],
+        "label": "Wounds: Bleed",
         "save": {
           "abilities": [
             "con"
@@ -105,17 +116,19 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "text": "On a hit. Failure: 1 Bleed (+1 per rank).",
         "damage": {
-          "parts": [
-            {
-              "formula": "3d10",
-              "type": "necrotic"
-            }
-          ]
+          "parts": []
         }
       }
     ],
@@ -199,29 +212,15 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
-              "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "bleed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bleed"
-                }
-              ],
-              "save": {
-                "abilities": [
-                  "con"
-                ],
-                "dc": {
-                  "source": "discipline"
-                },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
-                "resave": false
+              "id": "n5ekaCZegKBhh6Ie",
+              "type": "attack",
+              "label": "Wounds",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
               },
+              "text": "30 feet.",
               "damage": {
                 "parts": [
                   {
@@ -230,21 +229,11 @@
                   }
                 ]
               }
-            }
-          ],
-          "B": [
+            },
             {
-              "id": "parsed1",
+              "id": "n5ePaGZTyRIFW0xE",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "bleed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bleed"
-                }
-              ],
+              "label": "Wounds: Bleed",
               "save": {
                 "abilities": [
                   "con"
@@ -253,10 +242,33 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "On a hit. Failure: 1 Bleed (+1 per rank).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5ekaCZegKBhh6Ie",
+              "type": "attack",
+              "label": "Wounds",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "30 feet.",
               "damage": {
                 "parts": [
                   {
@@ -265,21 +277,11 @@
                   }
                 ]
               }
-            }
-          ],
-          "A": [
+            },
             {
-              "id": "parsed1",
+              "id": "n5ePaGZTyRIFW0xE",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "bleed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bleed"
-                }
-              ],
+              "label": "Wounds: Bleed",
               "save": {
                 "abilities": [
                   "con"
@@ -288,10 +290,33 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 3,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "On a hit. Failure: 1 Bleed (+1 per rank).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ekaCZegKBhh6Ie",
+              "type": "attack",
+              "label": "Wounds",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "30 feet.",
               "damage": {
                 "parts": [
                   {
@@ -300,21 +325,11 @@
                   }
                 ]
               }
-            }
-          ],
-          "S": [
+            },
             {
-              "id": "parsed1",
+              "id": "n5ePaGZTyRIFW0xE",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "bleed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bleed"
-                }
-              ],
+              "label": "Wounds: Bleed",
               "save": {
                 "abilities": [
                   "con"
@@ -323,10 +338,33 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 4,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "On a hit. Failure: 1 Bleed (+1 per rank).",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ekaCZegKBhh6Ie",
+              "type": "attack",
+              "label": "Wounds",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "30 feet.",
               "damage": {
                 "parts": [
                   {
@@ -335,11 +373,39 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5ePaGZTyRIFW0xE",
+              "type": "save",
+              "label": "Wounds: Bleed",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 5,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "On a hit. Failure: 1 Bleed (+1 per rank).",
+              "damage": {
+                "parts": []
+              }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c44c91ecdf316b93"

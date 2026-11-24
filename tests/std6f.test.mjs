@@ -203,3 +203,34 @@ test("STD6f F6 Non-Elemental: every jutsu reviewed; its summons are built from t
     [["5d8", 1, 1], ["5d8", 2, 1], ["5d8", 2, 2], ["6d8", 2, 2]]);
   assert.deepEqual(jutsu(section, "chakra-hands").system.activities, []);
 });
+
+test("STD6f F7 Medical: every jutsu reviewed; Amps kept; wrong buttons fixed; the Supreme Poison Deity summon", async () => {
+  const section = "ninjutsu/medical-release";
+  const t = table(section);
+  const items = sectionJutsu(section, t.ranks);
+  assert.equal(items.size, 68);
+  for ( const [id, { doc }] of items ) {
+    assert.ok(t.features[id], id);
+    assert.equal(doc.flags.n5e.reviewed, true, id);
+  }
+  assert.deepEqual(tableProblems().filter(p => p.startsWith("jutsu/")), []);
+  const j = id => jutsu(section, `medical-release-${id}`);
+  for ( const id of ["acid-armor", "grim-mask", "medical-aura", "investiture-of-acid", "strength-of-100", "aura-of-power", "strength-of-1000"] )
+    assert.ok(j(id).system.activities.some(a => a.effect?.amp === `jutsu-medical-release-${id}`), id);
+  // Wounds and Chakra Needles are attacks (the import made them saves); Wounds' Bleed grows by rank.
+  assert.equal(j("wounds").system.activities[0].type, "attack");
+  assert.equal(j("chakra-needles").system.activities[0].type, "attack");
+  assert.equal(j("wounds").flags.n5e.jutsuBookImport.activitiesByRank.S.find(a => a.type === "save").inflicts[0].ranks, 5);
+  // Corrosive Plume no longer gives 5 Envenomed; Ensnaring Strike's damage is its own button.
+  assert.deepEqual(j("corrosive-plume").system.activities[0].inflicts.map(x => x.key), ["corroded"]);
+  assert.ok(!j("ensnaring-strike").system.activities.find(a => a.type === "save").damage?.parts?.length);
+  // Healing Elixir: 4d8+12 at B and A, 4d12+24 at S; Acid Armor's temporary hit points 10 + 5 per rank.
+  const elixir = j("healing-elixir").flags.n5e.jutsuBookImport.activitiesByRank;
+  assert.deepEqual(["C", "B", "A", "S"].map(r => elixir[r][0].heal.formula), ["4d6 + 6", "4d8 + 12", "4d8 + 12", "4d12 + 24"]);
+  assert.equal(j("acid-armor").flags.n5e.jutsuBookImport.activitiesByRank.S.find(a => a.type === "heal").heal.formula, "30");
+  // The Supreme Poison Deity: fixed numbers, your Ninjutsu numbers.
+  const { SUMMONS } = await import("../tools/content/build-summons.mjs");
+  const deity = SUMMONS.poisonDeity;
+  assert.deepEqual([deity.system.attributes.ac.flat, deity.system.hpMax, deity.system.traits.dr, deity.system.traits.size], [22, 90, 8, "huge"]);
+  assert.equal(j("supreme-poison-deity").system.activities[0].summon.uuid, `Compendium.n5e.summons.Actor.${deity._id}`);
+});

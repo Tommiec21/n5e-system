@@ -86,9 +86,19 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eqgldos3kRDpCH",
         "type": "save",
-        "label": "Save",
+        "label": "Wall of Bees",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "incapacitated",
@@ -97,18 +107,7 @@
             "label": "Incapacitated"
           }
         ],
-        "save": {
-          "abilities": [
-            "con"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Concentration: a wall up to 30 feet long, 10 high, 5 thick within 120 feet; starting a turn in it or coming within 5 feet. Failure: Incapacitated until the end of the turn; success: half, nothing else. Immune to poison: automatic success.",
         "damage": {
           "parts": [
             {
@@ -190,7 +189,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "0359bedeffa2100b"

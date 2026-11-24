@@ -1,0 +1,366 @@
+{
+  "_id": "n5eKdFGfIZ9l5wFl",
+  "_key": "!actors!n5eKdFGfIZ9l5wFl",
+  "name": "Supreme Poison Deity",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Medical Release: Supreme Poison Deity",
+      "summonRole": "Supreme Poison Deity",
+      "biography": "<p><em>Medical Release: Supreme Poison Deity (S-Rank, concentration up to 1 minute).</em> A huge construct scorpion of poison, toxins and venom. It uses your Ninjutsu attack bonus and save DC, and rolls its own initiative using your Ninjutsu ability modifier + proficiency bonus.</p><p><strong>Huge Construct.</strong> <strong>Armor Class</strong> 22, DR 8 · <strong>Hit Points</strong> 90 · <strong>Speed</strong> 60 ft.</p><p><strong>Abilities</strong> STR +8 (save +8), DEX +2 (save +1), CON +5 (save +5), INT −5 (save −5), WIS +0 (save +0), CHA −5 (save −5). <strong>Damage Immunities</strong> Acid, Poison, Psychic, Cold, Bludgeoning, Piercing, Slashing. <strong>Damage Resistances</strong> Lightning, Wind. <strong>Damage Vulnerabilities</strong> Earth, Fire. <strong>Condition Immunities</strong> Charmed, Chilled, Bleeding, Shocked, Exhaustion, Stunned, Envenomed. <strong>Senses</strong> Darkvision 60 ft., passive Perception 10.</p><p><strong>Linked to you when summoned:</strong> your Ninjutsu attack bonus and save DC, and its initiative bonus.</p>"
+    },
+    "abilities": {
+      "str": {
+        "value": 26
+      },
+      "dex": {
+        "value": 14
+      },
+      "con": {
+        "value": 20
+      },
+      "int": {
+        "value": 0
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 0
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 22,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "huge",
+      "dr": 8,
+      "immune": [
+        "acid",
+        "poison",
+        "psychic",
+        "cold",
+        "bludgeoning",
+        "piercing",
+        "slashing"
+      ],
+      "resist": [
+        "lightning",
+        "wind"
+      ],
+      "vuln": [
+        "earth",
+        "fire"
+      ],
+      "conditionImmune": [
+        "charmed",
+        "chilled",
+        "bleed",
+        "shocked",
+        "exhaustion",
+        "envenomed"
+      ],
+      "stateImmune": [
+        "stunned"
+      ],
+      "speed": {
+        "walk": 60,
+        "climb": 0,
+        "swim": 0,
+        "fly": 0,
+        "burrow": 0,
+        "hover": false
+      },
+      "senses": {
+        "darkvision": 60
+      }
+    },
+    "hpMax": 90,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5eU7KbAKGwBmb2Z",
+      "_key": "!actors.items!n5eKdFGfIZ9l5wFl.n5eU7KbAKGwBmb2Z",
+      "name": "One with Poison",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>When the Deity is in contact with a body of water, regardless of size, it turns it into poison up to 100 feet out from it.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eItidFJGwUi7TW",
+      "_key": "!actors.items!n5eKdFGfIZ9l5wFl.n5eItidFJGwUi7TW",
+      "name": "Stinger",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Multiattack.</em> The Supreme Poison Deity attacks 3 times: twice with its Stinger and once with its Pincer. <em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 15 ft., one creature. <em>Hit:</em> 2d8 + 8 poison damage. A creature hit must make a Constitution saving throw, gaining 2 ranks of Envenomed on a failure.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eqCKfzxTl3vG6P",
+            "type": "attack",
+            "label": "Stinger",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 2,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "2d8 + 8",
+                  "type": "poison"
+                }
+              ]
+            }
+          },
+          {
+            "id": "n5eXCGjayWswJbTL",
+            "type": "save",
+            "label": "Stinger: Envenomed",
+            "save": {
+              "abilities": [
+                "con"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "inflicts": [
+              {
+                "key": "envenomed",
+                "kind": "condition",
+                "ranks": 2,
+                "label": "Envenomed"
+              }
+            ],
+            "text": "A creature hit."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eLR38NrlAPrRz9",
+      "_key": "!actors.items!n5eKdFGfIZ9l5wFl.n5eLR38NrlAPrRz9",
+      "name": "Pincer",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 10 ft., one creature. <em>Hit:</em> 2d6 + 8 poison damage. A creature hit must make a Strength saving throw, being Grappled and Restrained on a failure; a Grappled creature can make a Strength saving throw, escaping on a success.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eGBrOK6BBIMrmO",
+            "type": "attack",
+            "label": "Pincer",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 1,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "2d6 + 8",
+                  "type": "poison"
+                }
+              ]
+            }
+          },
+          {
+            "id": "n5eNGukHjEnnst58",
+            "type": "save",
+            "label": "Pincer: Grappled",
+            "save": {
+              "abilities": [
+                "str"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "inflicts": [
+              {
+                "key": "grappled",
+                "kind": "state",
+                "ranks": 1,
+                "label": "Grappled"
+              },
+              {
+                "key": "restrained",
+                "kind": "state",
+                "ranks": 1,
+                "label": "Restrained"
+              }
+            ],
+            "text": "A creature hit; Strength save to escape."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5epu039eBYOFjSG",
+      "_key": "!actors.items!n5eKdFGfIZ9l5wFl.n5epu039eBYOFjSG",
+      "name": "Poison Charges (6)",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Deity has 6 charges, which it can use to cast Ninjutsu with the Medical keyword that deal poison damage, spending charges equal to the jutsu's rank (D-Rank: 1, C-Rank: 2, B-Rank: 3).</p>",
+        "category": "npcAbilities",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.93.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5eT5rlEIhUzKEoY",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "bonuses.saveDC.nin": "@dc.nin - 8 - @prof",
+        "bonuses.attack.nin": "@attack.nin - @prof",
+        "attributes.init.bonus": "@attack.nin - 2"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Supreme Poison Deity",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 3,
+    "height": 3
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.93.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

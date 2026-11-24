@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ea4qvpasqj0MaP",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Venom Sphere",
         "save": {
           "abilities": [
             "dex"
@@ -96,41 +95,58 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "A 30-foot cylinder within 60 feet. Success: half.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "poison"
+            },
+            {
+              "formula": "3d6",
+              "type": "acid"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "3d6",
-        "roll": {
-          "formula": "3d6",
-          "note": "Each creature in the cylinder must make a Dexterity saving throw taking 3d6 poison and 3d6 acid damage on a failed save and half as much on a successful save. A creature that failed their save takes 3d4 poison and 3d4 acid damage at the start of their next turn."
+        "id": "n5eotoHaXhOAiExs",
+        "type": "damage",
+        "label": "Failed: start of its next turn",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d4",
+              "type": "poison"
+            },
+            {
+              "formula": "3d4",
+              "type": "acid"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "3d4",
-        "roll": {
-          "formula": "3d4",
-          "note": "A creature that failed their save takes 3d4 poison and 3d4 acid damage at the start of their next turn."
-        }
-      },
-      {
-        "id": "sourceRoll5",
-        "type": "roll",
-        "label": "1d6",
-        "roll": {
-          "formula": "1d6",
-          "note": "Creatures who that enter the area of poisonous thorns takes 1d6 poison and 1d6 acid damage for each 5 feet they move through the affected area."
-        }
+        "id": "n5e7SzsMDVEdtXcL",
+        "type": "damage",
+        "label": "Thorns: per 5 feet moved",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d6",
+              "type": "poison"
+            },
+            {
+              "formula": "1d6",
+              "type": "acid"
+            }
+          ]
+        },
+        "text": "For 1 minute in the area."
       }
     ],
     "featureType": "active",
@@ -241,9 +257,143 @@
           "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically.",
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5ea4qvpasqj0MaP",
+              "type": "save",
+              "label": "Venom Sphere",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 30-foot cylinder within 60 feet. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "poison"
+                  },
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "acid"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eotoHaXhOAiExs",
+              "type": "damage",
+              "label": "Failed: start of its next turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d4",
+                    "type": "poison"
+                  },
+                  {
+                    "formula": "3d4",
+                    "type": "acid"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e7SzsMDVEdtXcL",
+              "type": "damage",
+              "label": "Thorns: per 5 feet moved",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d6",
+                    "type": "poison"
+                  },
+                  {
+                    "formula": "1d6",
+                    "type": "acid"
+                  }
+                ]
+              },
+              "text": "For 1 minute in the area."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ea4qvpasqj0MaP",
+              "type": "save",
+              "label": "Venom Sphere",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 30-foot cylinder within 60 feet. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "poison"
+                  },
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "acid"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eotoHaXhOAiExs",
+              "type": "damage",
+              "label": "Failed: start of its next turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d4",
+                    "type": "poison"
+                  },
+                  {
+                    "formula": "3d4",
+                    "type": "acid"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e7SzsMDVEdtXcL",
+              "type": "damage",
+              "label": "Thorns: per 5 feet moved",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d6",
+                    "type": "poison"
+                  },
+                  {
+                    "formula": "1d6",
+                    "type": "acid"
+                  }
+                ]
+              },
+              "text": "For 1 minute in the area."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "d1f8f3baa49a3e3a"

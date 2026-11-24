@@ -85,14 +85,25 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5egDV1IOO9FJCse",
+        "type": "heal",
+        "label": "Reconstructive Hand: heal",
+        "heal": {
+          "formula": "5d8 + 12",
+          "pool": "tempHp"
+        },
+        "text": "A willing creature you touch."
+      },
+      {
+        "id": "n5euUAcWO1jWleYs",
         "type": "attack",
-        "label": "Attack",
+        "label": "Reconstructive Hand: compromise",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "A hostile creature: on a hit, compromised for 1 minute: AC, attack rolls and Strength, Dexterity and Intelligence saves −2 (S-Rank: −4); A-Rank: its jutsu cost +2. Removing a Physical condition ends it.",
         "damage": {
           "parts": [
             {
@@ -103,10 +114,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5ewz3hQFrGr3jDS",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Compromised: start of its turn",
         "save": {
           "abilities": [
             "con"
@@ -115,21 +125,12 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Each turn for 1 minute; three successes end it.",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "5d8 + 12",
-        "roll": {
-          "formula": "5d8+12",
-          "note": "The creature regains hit points equal to 5d8 + 12."
         }
       }
     ],
@@ -212,7 +213,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "d1f8f3baa49a3e3a"

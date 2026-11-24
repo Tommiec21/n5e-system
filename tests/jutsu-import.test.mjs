@@ -80,7 +80,7 @@ test("same-named Brutal Block variants are separate and prior core jutsu IDs are
 });
 
 test("conditional and repeating damage is not silently combined into one base roll", () => {
-  for ( const name of ["Mental Prison", "Medical Release: Acid Whips", "Lightning Release: Lightning Ball"] ) {
+  for ( const name of ["Mental Prison", "Lightning Release: Lightning Ball"] ) {
     const doc = byName(name);
     assert.ok(doc.flags.n5e.jutsuBookImport.manual.length);
     assert.ok(doc.system.activities.every(a => (a.damage?.parts?.length ?? 0) <= 1), name);
@@ -92,6 +92,10 @@ test("conditional and repeating damage is not silently combined into one base ro
   const claws = byName("Breath of Wind: Claws").system.activities;
   assert.deepEqual(claws.find(a => a.label === "Claws: damage").damage.parts.map(p => p.formula), ["@weapon", "1d8"]);
   assert.ok(claws.some(a => a.label === "Each hit beyond the first"));
+  // Reviewed in STD6f F7: Acid Whips' hits and its start-of-turn damage on a Grappled creature are separate buttons.
+  const whips = byName("Medical Release: Acid Whips").system.activities;
+  assert.ok(whips.every(a => (a.damage?.parts?.length ?? 0) <= 1));
+  assert.deepEqual(whips.filter(a => a.damage?.parts?.length).map(a => a.damage.parts[0].formula), ["2d6", "1d12"]);
 });
 
 test("source-clear upcasting selects ranked damage without mutating the base or mixing in finisher damage", () => {

@@ -85,13 +85,14 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5etCQQ4Lef3xwHS",
         "type": "heal",
-        "label": "Healing",
+        "label": "Healing Elixir",
         "heal": {
-          "formula": "4d6+6",
-          "pool": "hp"
-        }
+          "formula": "4d6 + 6",
+          "pool": "tempHp"
+        },
+        "text": "An Action to drink or give; also removes 2 Bleed or Envenomed (B-Rank: ends Envenomed, Dazed or Weakened, or 4 Bleed; S-Rank: any one condition but Exhaustion, Prone or Invisible)."
       }
     ],
     "featureType": "active",
@@ -177,9 +178,59 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5etCQQ4Lef3xwHS",
+              "type": "heal",
+              "label": "Healing Elixir",
+              "heal": {
+                "formula": "4d6 + 6",
+                "pool": "tempHp"
+              },
+              "text": "An Action to drink or give; also removes 2 Bleed or Envenomed (B-Rank: ends Envenomed, Dazed or Weakened, or 4 Bleed; S-Rank: any one condition but Exhaustion, Prone or Invisible)."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5etCQQ4Lef3xwHS",
+              "type": "heal",
+              "label": "Healing Elixir",
+              "heal": {
+                "formula": "4d8 + 12",
+                "pool": "tempHp"
+              },
+              "text": "An Action to drink or give; also removes 2 Bleed or Envenomed (B-Rank: ends Envenomed, Dazed or Weakened, or 4 Bleed; S-Rank: any one condition but Exhaustion, Prone or Invisible)."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5etCQQ4Lef3xwHS",
+              "type": "heal",
+              "label": "Healing Elixir",
+              "heal": {
+                "formula": "4d8 + 12",
+                "pool": "tempHp"
+              },
+              "text": "An Action to drink or give; also removes 2 Bleed or Envenomed (B-Rank: ends Envenomed, Dazed or Weakened, or 4 Bleed; S-Rank: any one condition but Exhaustion, Prone or Invisible)."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5etCQQ4Lef3xwHS",
+              "type": "heal",
+              "label": "Healing Elixir",
+              "heal": {
+                "formula": "4d12 + 24",
+                "pool": "tempHp"
+              },
+              "text": "An Action to drink or give; also removes 2 Bleed or Envenomed (B-Rank: ends Envenomed, Dazed or Weakened, or 4 Bleed; S-Rank: any one condition but Exhaustion, Prone or Invisible)."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c44c91ecdf316b93"

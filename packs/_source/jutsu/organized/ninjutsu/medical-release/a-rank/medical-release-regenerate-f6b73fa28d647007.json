@@ -85,13 +85,24 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ezxohgJB9MjUGc",
         "type": "heal",
-        "label": "Healing",
+        "label": "Regenerate",
         "heal": {
-          "formula": "2d10+10",
-          "pool": "hp"
-        }
+          "formula": "2d10 + 10",
+          "pool": "tempHp"
+        },
+        "text": "A creature you touch; severed parts restored if you stay for the full duration."
+      },
+      {
+        "id": "n5ek9V4IXRVqFnHj",
+        "type": "heal",
+        "label": "Start of its turn",
+        "heal": {
+          "formula": "10",
+          "pool": "tempHp"
+        },
+        "text": "Concentration: while you end your movement next to it."
       }
     ],
     "featureType": "active",
@@ -165,7 +176,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "49121ed59e0d3922"

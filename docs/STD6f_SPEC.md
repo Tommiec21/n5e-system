@@ -1,6 +1,6 @@
 # STD6f function spec: jutsu as data
 
-Status: **Approved by King 2026-11-22 (Q-J1 yes; Q-J2 fix and finish). F1 Taijutsu I (0.87.0-alpha.1) and F2 Taijutsu II (0.88.0-alpha.1) built: Taijutsu is done. F3 Bukijutsu I (0.89.0-alpha.1) F4 Bukijutsu II (0.90.0-alpha.1) and F5 Bukijutsu III (0.91.0-alpha.1) built: Bukijutsu is done. F6 Non-Elemental (0.92.0-alpha.1) built. Next: F7 Medical.**
+Status: **Approved by King 2026-11-22 (Q-J1 yes; Q-J2 fix and finish). F1 Taijutsu I (0.87.0-alpha.1) and F2 Taijutsu II (0.88.0-alpha.1) built: Taijutsu is done. F3 Bukijutsu I (0.89.0-alpha.1) F4 Bukijutsu II (0.90.0-alpha.1) and F5 Bukijutsu III (0.91.0-alpha.1) built: Bukijutsu is done. F6 Non-Elemental (0.92.0-alpha.1) and F7 Medical (0.93.0-alpha.1) built. Next: F8 Earth + Wind.**
 
 Plan: `docs/STD_SPEC.md` (STD6f: "Every jutsu's riders as Active Effects and elements, emitted by an upgraded importer where the pattern is regular; a review table per section for King"). Same method as the clan pass (`docs/STD6e_SPEC.md`).
 
@@ -224,6 +224,31 @@ Review table: `docs/jutsu/ninjutsu-non-elemental-automation.md` (86 jutsu: 43 pa
 - Arms of Buddha: "that you can seem".
 - Touch of Death: "a willing creature" then "an unwilling creature".
 
+## F7 Ninjutsu II: Medical (0.93.0-alpha.1)
+
+Review table: `docs/jutsu/ninjutsu-medical-release-automation.md` (68 jutsu: 52 partly automated, 16 notes only). Table: `content/automation/jutsu/ninjutsu-medical-release.json`.
+
+- **Summon built:** the Supreme Poison Deity (Summons > Ninjutsu > Medical Release), from the Summon Stat Blocks section: AC 22, DR 8, 90 hit points, Huge; your Ninjutsu attack bonus and save DC; its initiative bonus linked to your Ninjutsu modifier + proficiency bonus.
+- **Kept** (Q-J2): the Acid Armor, Grim Mask, Medical Aura, Investiture of Acid, Strength of 100, Aura of Power and Strength of 1000 Amps (Strength of 100's loose 2d8 roll removed; the others' extra buttons rebuilt).
+- **Fixed:** attacks the import made saves (Wounds, Chakra Needles, Grim Blade); damage put on the wrong save (Ensnaring Strike's start-of-turn poison, Water to Acid's submerged acid); wrong conditions (Corrosive Plume's 5 Envenomed); loose rolls turned into damage, healing and temporary hit point buttons.
+- **Upcasts:** Acid Armor (temporary hit points, armor acid, Acid Tail), Acid Whips (attacks and the Grappled damage), Adept Healing (all three versions), Necrosis (B-Rank burst), Corrupted Weapon, Healing Elixir, Infectious Acidic Blood (acid and the infections), Wounds (Bleed ranks), Venomous Shards (Envenomed), Spore Caller (B-Rank save), Blood Rot Curse (S-Rank acid blood), Virtue (by level).
+- **Notes only:** utility, sensing, revival and ritual jutsu (16).
+- **By hand:** damage type choices (Corroding Blast, Corrupted Weapon, Blood Rot Curse), Vampiric Touch's half healing, Grim Reality's cloak AC, the Infectious Acidic Blood infections, Healing Wave and Heal (split healing).
+- **No new holds:** the Supreme Poison Deity's stat block is complete.
+
+## Text issues found in F7
+
+- Already on the errata list: Ray of Sickness (C-Rank in the D-Rank section); Blood Rot Curse (B-Rank) upcast "above C-Rank"; Acid Whips "Once per Creatures you hit"; Body Pathway Derangement "Up to 1 minute" without Concentration; Healing Elixir lists "Invisible".
+- No success result: Grim Legion, Spore Caller, Corrosive Plume, Wither and Bloom (damage).
+- Chakra Needles: "Make a ranged Ninjutsu check" (an attack). Wounds: "range ninjutsu attack".
+- Honey Bee Technique: "can also end this condition" (the seized joints aren't a named condition). Reconstructive Hand: "compromised" isn't a condition in the rules.
+- Grim Legion: upcast grows "the size of the cube" (it's a radius).
+- Blood Rot Curse: "roll all spent hit die. Recording the result" (the result is never used); "who's hit points".
+- Water to Acid: "such as stand on top of it".
+- Necrosis: the B-Rank burst's damage isn't stated (built as the jutsu's damage at that rank).
+- Upcast runs into the paragraph: Ensnaring Strike, Restorative, Vampiric Touch.
+- Adept Healing "15-f00t", "30-f00t"; Necrosis "You infused"; Corrupt Missile "If this jutsu its cast"; Corruption "designed spread", "All creature who begins"; Venom Shock "un controllable"; Wither and Bloom "All creature of your choice"; Acidic Bolt "much make"; Infectious Acidic Blood "would attack to move"; Play Dead "when you case"; Poison Mist "begins to reeling"; Spore Caller "first enter your, poisonous aura"; Dead Heartbeat "can only be temporarily be"; Death Ward "talesman"; Reconstructive Hand "affect"; Venom Sphere "a ball of acidic point", "Creatures who that"; Regenerate "dull duration", "10 hit point"; Strength of 1000 "jutsu with both the Medical keyword"; Genocide "At the beginning of a creature who fails"; Wall of Bee's (apostrophe).
+
 ## Progress log
 
 - 2026-11-22 King: "Next batch" (after STD6e E8). Claude: spec proposed from a survey of the jutsu pack. Nothing built.
@@ -233,3 +258,4 @@ Review table: `docs/jutsu/ninjutsu-non-elemental-automation.md` (86 jutsu: 43 pa
 - 2026-11-23 King: "Next batch." Claude: F4 Bukijutsu II built (66 jutsu: Flail and Polearm); F-D5 adds @wdie (the weapon damage die alone); published 0.90.0-alpha.1. No new questions.
 - 2026-11-23 King: "Next batch." Claude: F5 Bukijutsu III built (83 jutsu: Power and Ammunition): Bukijutsu complete; F-D2 (Fury tracker from data; Binding Fury Stance's trigger on its effect); published 0.91.0-alpha.1. No new questions.
 - 2026-11-23 King: "Next batch." Claude: F6 Non-Elemental built (86 jutsu); six summons from the Summon Stat Blocks (Ink Bat/Snake, Ink Reptile, Ink Predator, Inanimate Puppet, Ink Oni, Clone); published 0.92.0-alpha.1. No new questions.
+- 2026-11-23 King: "Make sure all missing pieces are being recorded in the MD file. Then move on to the next batch." Claude: F1–F6 text issues and built-on-a-reading items added to the context text-issues files (10a, 10b); F7 Medical built (68 jutsu) with the Supreme Poison Deity; published 0.93.0-alpha.1. No new questions.

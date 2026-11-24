@@ -85,22 +85,33 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eGpQNHcwQRpRWH",
         "type": "heal",
-        "label": "Healing",
+        "label": "1 Action: touch",
         "heal": {
-          "formula": "3d8+4",
-          "pool": "hp"
+          "formula": "3d8",
+          "pool": "tempHp"
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "3d8",
-        "roll": {
-          "formula": "3d8",
-          "note": "1 Action: When cast, this Jutsu's range becomes Touch and an affected creature regains a number of hit points equal to 3d8."
-        }
+        "id": "n5eD3ZXMFv7sAn8D",
+        "type": "heal",
+        "label": "Bonus Action: 15 feet",
+        "heal": {
+          "formula": "8",
+          "pool": "tempHp"
+        },
+        "text": "Creatures of your choice within 15 feet."
+      },
+      {
+        "id": "n5elyWR9M46ssJ8H",
+        "type": "heal",
+        "label": "Full turn: 30 feet",
+        "heal": {
+          "formula": "3d8 + 4",
+          "pool": "tempHp"
+        },
+        "text": "Creatures of your choice within 30 feet."
       }
     ],
     "featureType": "active",
@@ -180,9 +191,141 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eGpQNHcwQRpRWH",
+              "type": "heal",
+              "label": "1 Action: touch",
+              "heal": {
+                "formula": "4d8",
+                "pool": "tempHp"
+              }
+            },
+            {
+              "id": "n5eD3ZXMFv7sAn8D",
+              "type": "heal",
+              "label": "Bonus Action: 15 feet",
+              "heal": {
+                "formula": "12",
+                "pool": "tempHp"
+              },
+              "text": "Creatures of your choice within 15 feet."
+            },
+            {
+              "id": "n5elyWR9M46ssJ8H",
+              "type": "heal",
+              "label": "Full turn: 30 feet",
+              "heal": {
+                "formula": "4d8 + 4",
+                "pool": "tempHp"
+              },
+              "text": "Creatures of your choice within 30 feet."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eGpQNHcwQRpRWH",
+              "type": "heal",
+              "label": "1 Action: touch",
+              "heal": {
+                "formula": "5d8",
+                "pool": "tempHp"
+              }
+            },
+            {
+              "id": "n5eD3ZXMFv7sAn8D",
+              "type": "heal",
+              "label": "Bonus Action: 15 feet",
+              "heal": {
+                "formula": "16",
+                "pool": "tempHp"
+              },
+              "text": "Creatures of your choice within 15 feet."
+            },
+            {
+              "id": "n5elyWR9M46ssJ8H",
+              "type": "heal",
+              "label": "Full turn: 30 feet",
+              "heal": {
+                "formula": "5d8 + 4",
+                "pool": "tempHp"
+              },
+              "text": "Creatures of your choice within 30 feet."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eGpQNHcwQRpRWH",
+              "type": "heal",
+              "label": "1 Action: touch",
+              "heal": {
+                "formula": "6d8",
+                "pool": "tempHp"
+              }
+            },
+            {
+              "id": "n5eD3ZXMFv7sAn8D",
+              "type": "heal",
+              "label": "Bonus Action: 15 feet",
+              "heal": {
+                "formula": "20",
+                "pool": "tempHp"
+              },
+              "text": "Creatures of your choice within 15 feet."
+            },
+            {
+              "id": "n5elyWR9M46ssJ8H",
+              "type": "heal",
+              "label": "Full turn: 30 feet",
+              "heal": {
+                "formula": "6d8 + 4",
+                "pool": "tempHp"
+              },
+              "text": "Creatures of your choice within 30 feet."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eGpQNHcwQRpRWH",
+              "type": "heal",
+              "label": "1 Action: touch",
+              "heal": {
+                "formula": "7d8",
+                "pool": "tempHp"
+              }
+            },
+            {
+              "id": "n5eD3ZXMFv7sAn8D",
+              "type": "heal",
+              "label": "Bonus Action: 15 feet",
+              "heal": {
+                "formula": "24",
+                "pool": "tempHp"
+              },
+              "text": "Creatures of your choice within 15 feet."
+            },
+            {
+              "id": "n5elyWR9M46ssJ8H",
+              "type": "heal",
+              "label": "Full turn: 30 feet",
+              "heal": {
+                "formula": "7d8 + 4",
+                "pool": "tempHp"
+              },
+              "text": "Creatures of your choice within 30 feet."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "No effect on undead or constructs."
+        }
+      ]
     }
   },
   "folder": "c44c91ecdf316b93"

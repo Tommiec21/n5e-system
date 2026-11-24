@@ -85,10 +85,14 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5ebeykU10UK7Bmq",
+        "type": "heal",
+        "label": "Virtue",
+        "heal": {
+          "formula": "4 + 2 * floor((@level + 1) / 6)",
+          "pool": "tempHp"
+        },
+        "text": "A willing creature with at least 1 hit point: temporary hit points until the end of its next turn (4; 6 at 5th, 8 at 11th, 10 at 17th level)."
       }
     ],
     "featureType": "active",
@@ -155,7 +159,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "98c5c8eeaa99aca2"

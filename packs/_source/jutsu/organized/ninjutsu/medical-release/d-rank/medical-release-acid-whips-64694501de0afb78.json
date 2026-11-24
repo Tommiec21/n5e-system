@@ -85,30 +85,28 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eybBjtTzWBC73j",
         "type": "attack",
-        "label": "Attack",
+        "label": "Acid Whips",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "ranged",
-          "count": 1
+          "count": 2
         },
+        "text": "Concentration: an Action each turn; within 15 feet (S-Rank: 30).",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "acid"
+            }
+          ]
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5esmxYrUalDEwDJ",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "grappled",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Grappled"
-          }
-        ],
+        "label": "Whips: Grappled",
         "save": {
           "abilities": [
             "str"
@@ -117,30 +115,32 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "grappled",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Grappled"
+          }
+        ],
+        "text": "Once per creature hit. Failure: Grappled for the duration (B-Rank: AC −2).",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "As an action on each of your turns, you can make two ranged ninjutsu attack, dealing 2d6 acid damage on a hit against a creature you target within range. Once per Creatures you hit must make a Strength saving throw. On a failed save, they become Grappled by you and your acid whips for the duration. A creature Grappled by your acid whips takes 1d12 acid damage at the beginning of each of their turns."
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "1d12",
-        "roll": {
-          "formula": "1d12",
-          "note": "A creature Grappled by your acid whips takes 1d12 acid damage at the beginning of each of their turns."
+        "id": "n5eiV4TDhJCxYUJa",
+        "type": "damage",
+        "label": "Grappled: start of its turn",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d12",
+              "type": "acid"
+            }
+          ]
         }
       }
     ],
@@ -234,9 +234,255 @@
           "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically.",
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eybBjtTzWBC73j",
+              "type": "attack",
+              "label": "Acid Whips",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 3
+              },
+              "text": "Concentration: an Action each turn; within 15 feet (S-Rank: 30).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "acid"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5esmxYrUalDEwDJ",
+              "type": "save",
+              "label": "Whips: Grappled",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "Once per creature hit. Failure: Grappled for the duration (B-Rank: AC −2).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eiV4TDhJCxYUJa",
+              "type": "damage",
+              "label": "Grappled: start of its turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d12",
+                    "type": "acid"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eybBjtTzWBC73j",
+              "type": "attack",
+              "label": "Acid Whips",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 4
+              },
+              "text": "Concentration: an Action each turn; within 15 feet (S-Rank: 30).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "acid"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5esmxYrUalDEwDJ",
+              "type": "save",
+              "label": "Whips: Grappled",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "Once per creature hit. Failure: Grappled for the duration (B-Rank: AC −2).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eiV4TDhJCxYUJa",
+              "type": "damage",
+              "label": "Grappled: start of its turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d12",
+                    "type": "acid"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eybBjtTzWBC73j",
+              "type": "attack",
+              "label": "Acid Whips",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 5
+              },
+              "text": "Concentration: an Action each turn; within 15 feet (S-Rank: 30).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "acid"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5esmxYrUalDEwDJ",
+              "type": "save",
+              "label": "Whips: Grappled",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "Once per creature hit. Failure: Grappled for the duration (B-Rank: AC −2).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eiV4TDhJCxYUJa",
+              "type": "damage",
+              "label": "Grappled: start of its turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d12",
+                    "type": "acid"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eybBjtTzWBC73j",
+              "type": "attack",
+              "label": "Acid Whips",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 6
+              },
+              "text": "Concentration: an Action each turn; within 15 feet (S-Rank: 30).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "acid"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5esmxYrUalDEwDJ",
+              "type": "save",
+              "label": "Whips: Grappled",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "grappled",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Grappled"
+                }
+              ],
+              "text": "Once per creature hit. Failure: Grappled for the duration (B-Rank: AC −2).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eiV4TDhJCxYUJa",
+              "type": "damage",
+              "label": "Grappled: start of its turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d12",
+                    "type": "acid"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c44c91ecdf316b93"

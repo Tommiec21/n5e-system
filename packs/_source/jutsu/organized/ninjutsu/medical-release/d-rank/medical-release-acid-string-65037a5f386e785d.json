@@ -85,13 +85,18 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "7",
-        "roll": {
-          "formula": "7",
-          "note": "For the duration, creatures, excluding you, who would begin their turn or enter for the first time on their turn, the affected area, they take 7 acid damage and an additional 7 acid damage for every 5 feet they would move through the affected area."
-        }
+        "id": "n5e01Hx7alTX8FYQ",
+        "type": "damage",
+        "label": "Acid String",
+        "damage": {
+          "parts": [
+            {
+              "formula": "7",
+              "type": "acid"
+            }
+          ]
+        },
+        "text": "Concentration: a 20-foot cube from you (+5 feet per rank). Starting its turn or first entering on its turn, and per 5 feet moved inside; each space once per round."
       }
     ],
     "featureType": "active",
@@ -173,7 +178,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c44c91ecdf316b93"

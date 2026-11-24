@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ePoeP5hfkPVkFc",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Venomous Shards",
         "save": {
           "abilities": [
             "con"
@@ -96,11 +95,11 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "A 15-foot cube from you (+5 feet per rank). Failure: −10 speed for 1 minute (ending Envenomed ends it; A-Rank: difficult terrain); success: half, nothing else.",
         "damage": {
           "parts": [
             {
@@ -191,10 +190,9 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5ePoeP5hfkPVkFc",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Venomous Shards",
               "save": {
                 "abilities": [
                   "con"
@@ -202,11 +200,11 @@
                 "dc": {
                   "source": "discipline"
                 },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
+                "onSuccess": "half",
                 "resave": false
               },
+              "inflicts": [],
+              "text": "A 15-foot cube from you (+5 feet per rank). Failure: −10 speed for 1 minute (ending Envenomed ends it; A-Rank: difficult terrain); success: half, nothing else.",
               "damage": {
                 "parts": [
                   {
@@ -219,10 +217,9 @@
           ],
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5ePoeP5hfkPVkFc",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Venomous Shards",
               "save": {
                 "abilities": [
                   "con"
@@ -230,11 +227,18 @@
                 "dc": {
                   "source": "discipline"
                 },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
+                "onSuccess": "half",
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "A 15-foot cube from you (+5 feet per rank). Failure: −10 speed for 1 minute (ending Envenomed ends it; A-Rank: difficult terrain); success: half, nothing else.",
               "damage": {
                 "parts": [
                   {
@@ -247,10 +251,9 @@
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5ePoeP5hfkPVkFc",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Venomous Shards",
               "save": {
                 "abilities": [
                   "con"
@@ -258,11 +261,18 @@
                 "dc": {
                   "source": "discipline"
                 },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
+                "onSuccess": "half",
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "A 15-foot cube from you (+5 feet per rank). Failure: −10 speed for 1 minute (ending Envenomed ends it; A-Rank: difficult terrain); success: half, nothing else.",
               "damage": {
                 "parts": [
                   {
@@ -275,10 +285,9 @@
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5ePoeP5hfkPVkFc",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Venomous Shards",
               "save": {
                 "abilities": [
                   "con"
@@ -286,11 +295,18 @@
                 "dc": {
                   "source": "discipline"
                 },
-                "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
+                "onSuccess": "half",
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "envenomed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Envenomed"
+                }
+              ],
+              "text": "A 15-foot cube from you (+5 feet per rank). Failure: −10 speed for 1 minute (ending Envenomed ends it; A-Rank: difficult terrain); success: half, nothing else.",
               "damage": {
                 "parts": [
                   {
@@ -303,7 +319,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c44c91ecdf316b93"

@@ -98,35 +98,51 @@
         "text": "Starts the jutsu's Amp at the rank it was cast at."
       },
       {
-        "id": "parsed1",
-        "type": "attack",
-        "label": "Attack",
-        "attack": {
-          "discipline": "nin",
-          "range": "melee",
-          "count": 1
-        },
+        "id": "n5eWIKuR560OurgA",
+        "type": "heal",
+        "label": "Temporary hit points",
+        "heal": {
+          "formula": "10",
+          "pool": "tempHp"
+        }
+      },
+      {
+        "id": "n5es9FDvyH9AbImP",
+        "type": "damage",
+        "label": "Armor: melee attacker",
         "damage": {
           "parts": [
             {
-              "formula": "2d6+6",
+              "formula": "6",
+              "type": "acid"
+            }
+          ]
+        },
+        "text": "A creature that damages you with a melee attack while the temporary hit points last."
+      },
+      {
+        "id": "n5e36robTMEEyM5O",
+        "type": "attack",
+        "label": "Acid Tail",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Bonus action while the temporary hit points last: one roll against every creature in a 15-foot cone.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6 + 6",
               "type": "acid"
             }
           ]
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5e7ElnGsBXnYiTH",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "corroded",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Corroded"
-          }
-        ],
+        "label": "Acid Tail: Corroded",
         "save": {
           "abilities": [
             "con"
@@ -135,21 +151,19 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "corroded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Corroded"
+          }
+        ],
+        "text": "Each creature hit. Failure: Corroded.",
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "6",
-        "roll": {
-          "formula": "6",
-          "note": "Each time a creature deals damage to you with a melee attack, they take 6 acid damage while you have temporary hit points granted by this jutsu."
         }
       }
     ],
@@ -236,9 +250,339 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "amp3cd7ace1106b0",
+              "type": "effect",
+              "label": "Medical Release: Acid Armor",
+              "effect": {
+                "name": "Medical Release: Acid Armor",
+                "target": "self",
+                "amp": "jutsu-medical-release-acid-armor"
+              },
+              "text": "Starts the jutsu's Amp at the rank it was cast at."
+            },
+            {
+              "id": "n5eWIKuR560OurgA",
+              "type": "heal",
+              "label": "Temporary hit points",
+              "heal": {
+                "formula": "15",
+                "pool": "tempHp"
+              }
+            },
+            {
+              "id": "n5es9FDvyH9AbImP",
+              "type": "damage",
+              "label": "Armor: melee attacker",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "9",
+                    "type": "acid"
+                  }
+                ]
+              },
+              "text": "A creature that damages you with a melee attack while the temporary hit points last."
+            },
+            {
+              "id": "n5e36robTMEEyM5O",
+              "type": "attack",
+              "label": "Acid Tail",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Bonus action while the temporary hit points last: one roll against every creature in a 15-foot cone.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6 + 6) + (1d6)",
+                    "type": "acid"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e7ElnGsBXnYiTH",
+              "type": "save",
+              "label": "Acid Tail: Corroded",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "corroded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Corroded"
+                }
+              ],
+              "text": "Each creature hit. Failure: Corroded.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "amp3cd7ace1106b0",
+              "type": "effect",
+              "label": "Medical Release: Acid Armor",
+              "effect": {
+                "name": "Medical Release: Acid Armor",
+                "target": "self",
+                "amp": "jutsu-medical-release-acid-armor"
+              },
+              "text": "Starts the jutsu's Amp at the rank it was cast at."
+            },
+            {
+              "id": "n5eWIKuR560OurgA",
+              "type": "heal",
+              "label": "Temporary hit points",
+              "heal": {
+                "formula": "20",
+                "pool": "tempHp"
+              }
+            },
+            {
+              "id": "n5es9FDvyH9AbImP",
+              "type": "damage",
+              "label": "Armor: melee attacker",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "12",
+                    "type": "acid"
+                  }
+                ]
+              },
+              "text": "A creature that damages you with a melee attack while the temporary hit points last."
+            },
+            {
+              "id": "n5e36robTMEEyM5O",
+              "type": "attack",
+              "label": "Acid Tail",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Bonus action while the temporary hit points last: one roll against every creature in a 15-foot cone.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6 + 6) + (2d6)",
+                    "type": "acid"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e7ElnGsBXnYiTH",
+              "type": "save",
+              "label": "Acid Tail: Corroded",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "corroded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Corroded"
+                }
+              ],
+              "text": "Each creature hit. Failure: Corroded.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "amp3cd7ace1106b0",
+              "type": "effect",
+              "label": "Medical Release: Acid Armor",
+              "effect": {
+                "name": "Medical Release: Acid Armor",
+                "target": "self",
+                "amp": "jutsu-medical-release-acid-armor"
+              },
+              "text": "Starts the jutsu's Amp at the rank it was cast at."
+            },
+            {
+              "id": "n5eWIKuR560OurgA",
+              "type": "heal",
+              "label": "Temporary hit points",
+              "heal": {
+                "formula": "25",
+                "pool": "tempHp"
+              }
+            },
+            {
+              "id": "n5es9FDvyH9AbImP",
+              "type": "damage",
+              "label": "Armor: melee attacker",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "15",
+                    "type": "acid"
+                  }
+                ]
+              },
+              "text": "A creature that damages you with a melee attack while the temporary hit points last."
+            },
+            {
+              "id": "n5e36robTMEEyM5O",
+              "type": "attack",
+              "label": "Acid Tail",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Bonus action while the temporary hit points last: one roll against every creature in a 15-foot cone.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6 + 6) + (3d6)",
+                    "type": "acid"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e7ElnGsBXnYiTH",
+              "type": "save",
+              "label": "Acid Tail: Corroded",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "corroded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Corroded"
+                }
+              ],
+              "text": "Each creature hit. Failure: Corroded.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "amp3cd7ace1106b0",
+              "type": "effect",
+              "label": "Medical Release: Acid Armor",
+              "effect": {
+                "name": "Medical Release: Acid Armor",
+                "target": "self",
+                "amp": "jutsu-medical-release-acid-armor"
+              },
+              "text": "Starts the jutsu's Amp at the rank it was cast at."
+            },
+            {
+              "id": "n5eWIKuR560OurgA",
+              "type": "heal",
+              "label": "Temporary hit points",
+              "heal": {
+                "formula": "30",
+                "pool": "tempHp"
+              }
+            },
+            {
+              "id": "n5es9FDvyH9AbImP",
+              "type": "damage",
+              "label": "Armor: melee attacker",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "18",
+                    "type": "acid"
+                  }
+                ]
+              },
+              "text": "A creature that damages you with a melee attack while the temporary hit points last."
+            },
+            {
+              "id": "n5e36robTMEEyM5O",
+              "type": "attack",
+              "label": "Acid Tail",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Bonus action while the temporary hit points last: one roll against every creature in a 15-foot cone.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6 + 6) + (4d6)",
+                    "type": "acid"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e7ElnGsBXnYiTH",
+              "type": "save",
+              "label": "Acid Tail: Corroded",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "corroded",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Corroded"
+                }
+              ],
+              "text": "Each creature hit. Failure: Corroded.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c44c91ecdf316b93"

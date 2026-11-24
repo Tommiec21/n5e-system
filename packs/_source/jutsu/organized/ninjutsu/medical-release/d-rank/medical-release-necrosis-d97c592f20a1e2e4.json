@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e2ZFyDlT1hYD0J",
         "type": "attack",
-        "label": "Attack",
+        "label": "Necrosis",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Plants and creatures of water vulnerable. S-Rank: creatures with 100 or fewer hit points die (once per full rest).",
         "damage": {
           "parts": [
             {
@@ -103,10 +104,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eNVcBpDN4Rj7j1",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Necrosis: disarmed",
         "save": {
           "abilities": [
             "con"
@@ -115,10 +115,10 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Failure: disarmed of what it holds.",
         "damage": {
           "parts": []
         }
@@ -204,14 +204,15 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5e2ZFyDlT1hYD0J",
               "type": "attack",
-              "label": "Attack",
+              "label": "Necrosis",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Plants and creatures of water vulnerable. S-Rank: creatures with 100 or fewer hit points die (once per full rest).",
               "damage": {
                 "parts": [
                   {
@@ -222,10 +223,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eNVcBpDN4Rj7j1",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Necrosis: disarmed",
               "save": {
                 "abilities": [
                   "con"
@@ -234,10 +234,10 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Failure: disarmed of what it holds.",
               "damage": {
                 "parts": []
               }
@@ -245,14 +245,15 @@
           ],
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5e2ZFyDlT1hYD0J",
               "type": "attack",
-              "label": "Attack",
+              "label": "Necrosis",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Plants and creatures of water vulnerable. S-Rank: creatures with 100 or fewer hit points die (once per full rest).",
               "damage": {
                 "parts": [
                   {
@@ -263,10 +264,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eNVcBpDN4Rj7j1",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Necrosis: disarmed",
               "save": {
                 "abilities": [
                   "con"
@@ -275,25 +275,51 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Failure: disarmed of what it holds.",
               "damage": {
                 "parts": []
+              }
+            },
+            {
+              "id": "n5epLNkbhpVzqZeB",
+              "type": "save",
+              "label": "B-Rank: 20-foot burst",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Instead: every creature but you within 20 feet. Failure: the damage and disarmed; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d12",
+                    "type": "necrotic"
+                  }
+                ]
               }
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5e2ZFyDlT1hYD0J",
               "type": "attack",
-              "label": "Attack",
+              "label": "Necrosis",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Plants and creatures of water vulnerable. S-Rank: creatures with 100 or fewer hit points die (once per full rest).",
               "damage": {
                 "parts": [
                   {
@@ -304,10 +330,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eNVcBpDN4Rj7j1",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Necrosis: disarmed",
               "save": {
                 "abilities": [
                   "con"
@@ -316,25 +341,51 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Failure: disarmed of what it holds.",
               "damage": {
                 "parts": []
+              }
+            },
+            {
+              "id": "n5epLNkbhpVzqZeB",
+              "type": "save",
+              "label": "B-Rank: 20-foot burst",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Instead: every creature but you within 20 feet. Failure: the damage and disarmed; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "5d12",
+                    "type": "necrotic"
+                  }
+                ]
               }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5e2ZFyDlT1hYD0J",
               "type": "attack",
-              "label": "Attack",
+              "label": "Necrosis",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "Plants and creatures of water vulnerable. S-Rank: creatures with 100 or fewer hit points die (once per full rest).",
               "damage": {
                 "parts": [
                   {
@@ -345,10 +396,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eNVcBpDN4Rj7j1",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Necrosis: disarmed",
               "save": {
                 "abilities": [
                   "con"
@@ -357,18 +407,44 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [],
+              "text": "Failure: disarmed of what it holds.",
               "damage": {
                 "parts": []
+              }
+            },
+            {
+              "id": "n5epLNkbhpVzqZeB",
+              "type": "save",
+              "label": "B-Rank: 20-foot burst",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Instead: every creature but you within 20 feet. Failure: the damage and disarmed; success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "6d12",
+                    "type": "necrotic"
+                  }
+                ]
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c44c91ecdf316b93"

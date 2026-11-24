@@ -85,12 +85,12 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
+        "id": "n5e25UetHnCICY0t",
         "type": "roll",
-        "label": "4d6",
+        "label": "Healing prevented",
         "roll": {
           "formula": "4d6",
-          "note": "Roll 4d6, you reduce the amount of hit points regained by the result."
+          "note": "Reaction: a creature within 60 feet regains hit points; reduce it by this (+1 creature per rank)."
         }
       }
     ],
@@ -171,9 +171,55 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5e25UetHnCICY0t",
+              "type": "roll",
+              "label": "Healing prevented",
+              "roll": {
+                "formula": "(4d6) + (1d6)",
+                "note": "Reaction: a creature within 60 feet regains hit points; reduce it by this (+1 creature per rank)."
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5e25UetHnCICY0t",
+              "type": "roll",
+              "label": "Healing prevented",
+              "roll": {
+                "formula": "(4d6) + (2d6)",
+                "note": "Reaction: a creature within 60 feet regains hit points; reduce it by this (+1 creature per rank)."
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e25UetHnCICY0t",
+              "type": "roll",
+              "label": "Healing prevented",
+              "roll": {
+                "formula": "(4d6) + (3d6)",
+                "note": "Reaction: a creature within 60 feet regains hit points; reduce it by this (+1 creature per rank)."
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e25UetHnCICY0t",
+              "type": "roll",
+              "label": "Healing prevented",
+              "roll": {
+                "formula": "(4d6) + (4d6)",
+                "note": "Reaction: a creature within 60 feet regains hit points; reduce it by this (+1 creature per rank)."
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c44c91ecdf316b93"

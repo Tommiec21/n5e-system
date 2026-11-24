@@ -85,17 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ex94kA1JY0i3uu",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "envenomed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Envenomed"
-          }
-        ],
+        "label": "Plague",
         "save": {
           "abilities": [
             "con"
@@ -104,10 +96,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "envenomed",
+            "kind": "condition",
+            "ranks": 5,
+            "label": "Envenomed"
+          }
+        ],
+        "text": "Everyone under the clouds but you and 10 creatures you choose (diseased or Envenomed: −5); ignores immunity. Failure: 5 Envenomed, permanent until an S-Rank Medical removal; can't drop below 0 from it. Contact, waking under the clouds: the same save.",
         "damage": {
           "parts": []
         }
@@ -177,7 +176,14 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "1 mile, growing a mile each month; three S-Rank Fuinjutsu Ninjutsu within 10 feet of where it was cast dispel it."
+        }
+      ]
     }
   },
   "folder": "b0d365bba0d080fc"

@@ -1040,3 +1040,7 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 ### Non-Elemental summons (STD6f F6)
 
 - Summons compendium, folder Ninjutsu > Non-Elemental: Ink Bat/Snake, Ink Reptile, Ink Predator, Inanimate Puppet, Ink Oni, Clone. Links: `attributes.ac.flat` and `hpMax` from `@rankValue` (the rank the jutsu was cast at), `bonuses.attack.nin` and `bonuses.saveDC.nin` from yours; the Clone links like the Bunshin (AC your Ninjutsu save DC).
+
+### Medical summons (STD6f F7)
+
+- Summons compendium, folder Ninjutsu > Medical Release: Supreme Poison Deity. Fixed AC and hit points; links `bonuses.attack.nin`, `bonuses.saveDC.nin` and `attributes.init.bonus` (`@attack.nin - 2`: your Ninjutsu modifier + proficiency less its own Dexterity).

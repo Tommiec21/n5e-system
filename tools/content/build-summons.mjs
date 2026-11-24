@@ -592,8 +592,34 @@ const clone = actor("clone", "Clone", nonElemental._id, {
       act("clone-cast", `${r}-Rank damage`, "damage", { damage: { parts: [{ formula: f, type: "" }] }, text: `The jutsu's damage at ${r}-Rank (an area: one die fewer).` })))
 ], cloneLinks, "icons/svg/mystery-man.svg");
 
+
+// Medical Release: Supreme Poison Deity (S-Rank): the Summon Stat Blocks section (Medical Release Summons). Fixed numbers;
+// your Ninjutsu attack bonus and save DC; its own initiative (your Ninjutsu modifier + proficiency).
+const medical = folder("Medical Release", ninjutsu._id, "ninjutsu/medical-release");
+const poisonDeity = actor("supreme-poison-deity", "Supreme Poison Deity", medical._id, {
+  details: { build: "character", level: 1, template: "summon", creatureType: "construct", blurb: "Medical Release: Supreme Poison Deity", summonRole: "Supreme Poison Deity",
+    biography: html("<p><em>Medical Release: Supreme Poison Deity (S-Rank, concentration up to 1 minute).</em> A huge construct scorpion of poison, toxins and venom. It uses your Ninjutsu attack bonus and save DC, and rolls its own initiative using your Ninjutsu ability modifier + proficiency bonus.</p>",
+      "<p><strong>Huge Construct.</strong> <strong>Armor Class</strong> 22, DR 8 · <strong>Hit Points</strong> 90 · <strong>Speed</strong> 60 ft.</p>",
+      `<p><strong>Abilities</strong> ${statLine([8, 2, 5, -5, 0, -5], [8, 1, 5, -5, 0, -5])}. <strong>Damage Immunities</strong> Acid, Poison, Psychic, Cold, Bludgeoning, Piercing, Slashing. <strong>Damage Resistances</strong> Lightning, Wind. <strong>Damage Vulnerabilities</strong> Earth, Fire. <strong>Condition Immunities</strong> Charmed, Chilled, Bleeding, Shocked, Exhaustion, Stunned, Envenomed. <strong>Senses</strong> Darkvision 60 ft., passive Perception 10.</p>`,
+      "<p><strong>Linked to you when summoned:</strong> your Ninjutsu attack bonus and save DC, and its initiative bonus.</p>") },
+  abilities: mods([8, 2, 5, -5, 0, -5]),
+  attributes: { ac: { calc: "flat", flat: 22, formula: "" }, init: { bonus: "" } },
+  traits: { size: "huge", dr: 8, immune: ["acid", "poison", "psychic", "cold", "bludgeoning", "piercing", "slashing"], resist: ["lightning", "wind"], vuln: ["earth", "fire"],
+    conditionImmune: ["charmed", "chilled", "bleed", "shocked", "exhaustion", "envenomed"], stateImmune: ["stunned"],
+    speed: { walk: 60, climb: 0, swim: 0, fly: 0, burrow: 0, hover: false }, senses: { darkvision: 60 } },
+  hpMax: 90, cpMax: 0, diesAtZero: true
+}, id => [
+  item(id, "One with Poison", "npcTraits", html("When the Deity is in contact with a body of water, regardless of size, it turns it into poison up to 100 feet out from it.")),
+  item(id, "Stinger", "npcStrikes", html("<em>Multiattack.</em> The Supreme Poison Deity attacks 3 times: twice with its Stinger and once with its Pincer. <em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 15 ft., one creature. <em>Hit:</em> 2d8 + 8 poison damage. A creature hit must make a Constitution saving throw, gaining 2 ranks of Envenomed on a failure."),
+    [ninAtk("poison-deity", "Stinger", "2d8 + 8", "poison", 2), ninSave("poison-deity", "Stinger: Envenomed", "con", { inflicts: [inf("envenomed", "condition", 2)], text: "A creature hit." })]),
+  item(id, "Pincer", "npcStrikes", html("<em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 10 ft., one creature. <em>Hit:</em> 2d6 + 8 poison damage. A creature hit must make a Strength saving throw, being Grappled and Restrained on a failure; a Grappled creature can make a Strength saving throw, escaping on a success."),
+    [ninAtk("poison-deity", "Pincer", "2d6 + 8", "poison"), ninSave("poison-deity", "Pincer: Grappled", "str", { inflicts: [inf("grappled", "state"), inf("restrained", "state")], text: "A creature hit; Strength save to escape." })]),
+  item(id, "Poison Charges (6)", "npcAbilities", html("The Deity has 6 charges, which it can use to cast Ninjutsu with the Medical keyword that deal poison damage, spending charges equal to the jutsu's rank (D-Rank: 1, C-Rank: 2, B-Rank: 3)."))
+], { "details.level": "@level", ...NIN, "attributes.init.bonus": "@attack.nin - 2" }, "icons/svg/mystery-man-black.svg");
+poisonDeity.prototypeToken.width = poisonDeity.prototypeToken.height = 3;
+
 /* -------------------------------------------- */
-export const SUMMONS = { bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone, folders: [scout, cloning, voidHeart, genjutsu, beguiler, illusionist, bakuton, chinoike, hozuki, kashu, shoton, tsuchigumo, hoshi, ninjutsu, nonElemental] };
+export const SUMMONS = { bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone, poisonDeity, folders: [scout, cloning, voidHeart, genjutsu, beguiler, illusionist, bakuton, chinoike, hozuki, kashu, shoton, tsuchigumo, hoshi, ninjutsu, nonElemental, medical] };
 
 if ( import.meta.url === `file://${process.argv[1]}` ) {
   fs.rmSync(OUT, { recursive: true, force: true });
@@ -628,6 +654,8 @@ if ( import.meta.url === `file://${process.argv[1]}` ) {
   write(`hoshi/kujaku-beast-${kujakuBeast._id}.json`, kujakuBeast);
   write("ninjutsu/_folder.json", ninjutsu);
   write("ninjutsu/non-elemental/_folder.json", nonElemental);
+  write("ninjutsu/medical-release/_folder.json", medical);
+  write(`ninjutsu/medical-release/supreme-poison-deity-${poisonDeity._id}.json`, poisonDeity);
   for ( const d of [inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone] ) write(`ninjutsu/non-elemental/${d.name.toLowerCase().replace(/[^a-z]+/g, "-").replace(/-$/, "")}-${d._id}.json`, d);
-  console.log(`✓ summons: 24 NPCs (${[bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone].map(d => `${d.name} ${d._id}`).join(", ")})`);
+  console.log(`✓ summons: 25 NPCs (${[bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone, poisonDeity].map(d => `${d.name} ${d._id}`).join(", ")})`);
 }
