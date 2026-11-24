@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eEelEHpU36Uvbu",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Lion's Presence",
         "save": {
           "abilities": [
             "cha"
@@ -98,10 +97,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
-          "tiers": {},
-          "resave": false
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: no effect.",
+            "failure": "Failure: while within range: no critical hits; −5 to attack rolls, skill and ability checks; concentration on 1 jutsu at most; no resistance or immunity to fear; vulnerable to psychic damage.",
+            "critFailure": "Critical Failure: as a failure."
+          }
         },
+        "inflicts": [],
+        "text": "10 minutes: hostile creatures within 60 feet of you.",
         "damage": {
           "parts": []
         }
@@ -171,7 +177,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "e6c3bf38d4144669"

@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eNGIdOB6CGnZzj",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Heavenly Worded Song",
         "save": {
           "abilities": [
             "int"
@@ -98,16 +97,39 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature is able to resist this jutsu’s effects.",
-            "failure": "Failure: Affected creature suffers the songs effects.",
-            "critFailure": "Critical Failure: Affected creature suffers the songs effects plus the critical bonus. Ancient Song. Hostile creatures who fail suffers a break of madness, attacking the closest creature to them on their turn until with lowest ranked jutsu. If they critically fail, they instead target themselves automatically scoring a hit. Painful Song. Hostile creatures who fail experience extreme pain, losing the ability to cast jutsu with the Mobility (M) component. If they critically fail, they also fall Prone."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: resists.",
+            "failure": "Failure: the song's effect.",
+            "critFailure": "Critical Failure: the song's effect and its critical bonus."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: creatures starting a turn within 20 feet; switch songs as a Bonus Action at the start of your turn. Ancient Song: hostile creatures that fail attack the closest creature with their lowest-rank jutsu (critical failure: themselves, an automatic hit). Painful Song: no Mobility jutsu (critical failure: also Prone). B-Rank Reversal Song: no benefit from jutsu bonuses (critical failure: they become penalties). A-Rank War Song: −2 AC and saves (critical failure: on every roll with dice).",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5ePQaLYEZd5GRas",
+        "type": "effect",
+        "label": "Painful Song, critical failure: Prone",
+        "effect": {
+          "name": "Painful Song, critical failure: Prone",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ]
         }
       }
     ],
@@ -175,9 +197,255 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eNGIdOB6CGnZzj",
+              "type": "save",
+              "label": "Heavenly Worded Song",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: the song's effect.",
+                  "critFailure": "Critical Failure: the song's effect and its critical bonus."
+                }
+              },
+              "inflicts": [],
+              "text": "Concentration: creatures starting a turn within 20 feet; switch songs as a Bonus Action at the start of your turn. Ancient Song: hostile creatures that fail attack the closest creature with their lowest-rank jutsu (critical failure: themselves, an automatic hit). Painful Song: no Mobility jutsu (critical failure: also Prone). B-Rank Reversal Song: no benefit from jutsu bonuses (critical failure: they become penalties). A-Rank War Song: −2 AC and saves (critical failure: on every roll with dice).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ePQaLYEZd5GRas",
+              "type": "effect",
+              "label": "Painful Song, critical failure: Prone",
+              "effect": {
+                "name": "Painful Song, critical failure: Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eNGIdOB6CGnZzj",
+              "type": "save",
+              "label": "Heavenly Worded Song",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: the song's effect.",
+                  "critFailure": "Critical Failure: the song's effect and its critical bonus."
+                }
+              },
+              "inflicts": [],
+              "text": "Concentration: creatures starting a turn within 20 feet; switch songs as a Bonus Action at the start of your turn. Ancient Song: hostile creatures that fail attack the closest creature with their lowest-rank jutsu (critical failure: themselves, an automatic hit). Painful Song: no Mobility jutsu (critical failure: also Prone). B-Rank Reversal Song: no benefit from jutsu bonuses (critical failure: they become penalties). A-Rank War Song: −2 AC and saves (critical failure: on every roll with dice).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ePQaLYEZd5GRas",
+              "type": "effect",
+              "label": "Painful Song, critical failure: Prone",
+              "effect": {
+                "name": "Painful Song, critical failure: Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eNGIdOB6CGnZzj",
+              "type": "save",
+              "label": "Heavenly Worded Song",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: the song's effect.",
+                  "critFailure": "Critical Failure: the song's effect and its critical bonus."
+                }
+              },
+              "inflicts": [],
+              "text": "Concentration: creatures starting a turn within 20 feet; switch songs as a Bonus Action at the start of your turn. Ancient Song: hostile creatures that fail attack the closest creature with their lowest-rank jutsu (critical failure: themselves, an automatic hit). Painful Song: no Mobility jutsu (critical failure: also Prone). B-Rank Reversal Song: no benefit from jutsu bonuses (critical failure: they become penalties). A-Rank War Song: −2 AC and saves (critical failure: on every roll with dice).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ePQaLYEZd5GRas",
+              "type": "effect",
+              "label": "Painful Song, critical failure: Prone",
+              "effect": {
+                "name": "Painful Song, critical failure: Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5exnSXDxk2QeXyx",
+              "type": "effect",
+              "label": "War Song: −2 AC and saves",
+              "effect": {
+                "name": "War Song",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "-2",
+                    "mode": 2
+                  },
+                  {
+                    "key": "system.bonuses.save",
+                    "value": "-2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              },
+              "text": "A-Rank: hostile creatures that fail."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eNGIdOB6CGnZzj",
+              "type": "save",
+              "label": "Heavenly Worded Song",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: the song's effect.",
+                  "critFailure": "Critical Failure: the song's effect and its critical bonus."
+                }
+              },
+              "inflicts": [],
+              "text": "Concentration: creatures starting a turn within 20 feet; switch songs as a Bonus Action at the start of your turn. Ancient Song: hostile creatures that fail attack the closest creature with their lowest-rank jutsu (critical failure: themselves, an automatic hit). Painful Song: no Mobility jutsu (critical failure: also Prone). B-Rank Reversal Song: no benefit from jutsu bonuses (critical failure: they become penalties). A-Rank War Song: −2 AC and saves (critical failure: on every roll with dice).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ePQaLYEZd5GRas",
+              "type": "effect",
+              "label": "Painful Song, critical failure: Prone",
+              "effect": {
+                "name": "Painful Song, critical failure: Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5exnSXDxk2QeXyx",
+              "type": "effect",
+              "label": "War Song: −2 AC and saves",
+              "effect": {
+                "name": "War Song",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "-2",
+                    "mode": 2
+                  },
+                  {
+                    "key": "system.bonuses.save",
+                    "value": "-2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              },
+              "text": "A-Rank: hostile creatures that fail."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ce2ca0a8e089b9d2"

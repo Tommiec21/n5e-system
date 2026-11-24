@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eYpWcrNun0SFuc",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Corruption: Asperity",
         "save": {
           "abilities": [
             "cha"
@@ -98,14 +97,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature is able to resist most of this jutsu’s effects.",
-            "failure": "failure, but this effect lasts for the duration.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists most of it.",
+            "failure": "Failure: the next jutsu it casts that excludes allies must include one ally for every hostile creature it picks; then this jutsu ends.",
+            "critFailure": "Critical Failure: as a failure, for the whole duration."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: a creature within 60 feet (+1 per rank).",
         "damage": {
           "parts": []
         }
@@ -177,7 +179,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ce2ca0a8e089b9d2"

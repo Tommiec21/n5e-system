@@ -87,14 +87,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eMa8FQfD9cEdbE",
         "type": "attack",
-        "label": "Attack",
+        "label": "Frenzy: Mind Burst",
         "attack": {
-          "discipline": "gen",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "A creature within 60 feet (B-Rank +1, S-Rank +1 more). On a hit: the save.",
         "damage": {
           "parts": [
             {
@@ -105,10 +106,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5ekAn4l4PW042GW",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Mind Burst: Berserk",
         "save": {
           "abilities": [
             "wis"
@@ -117,16 +117,46 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature is able to resist this Genjutsu’s effects.",
-            "failure": "Failure: They become Berserked.",
-            "critFailure": "Critical Failure: Affected creature falls Prone and falls into a bout of insanity becoming Berserked for the duration."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: resists.",
+            "failure": "Failure: Berserk.",
+            "critFailure": "Critical Failure: Prone (the effect) and Berserk for the duration."
+          }
         },
+        "inflicts": [
+          {
+            "key": "berserk",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Berserk"
+          }
+        ],
+        "text": "1 minute.",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5eBYLWSqauXbDma",
+        "type": "effect",
+        "label": "Critical failure: Prone",
+        "effect": {
+          "name": "Critical failure: Prone",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ]
         }
       }
     ],
@@ -210,14 +240,15 @@
         "activitiesByRank": {
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5eMa8FQfD9cEdbE",
               "type": "attack",
-              "label": "Attack",
+              "label": "Frenzy: Mind Burst",
               "attack": {
-                "discipline": "gen",
+                "discipline": "discipline",
                 "range": "ranged",
-                "count": 1
+                "count": 2
               },
+              "text": "A creature within 60 feet (B-Rank +1, S-Rank +1 more). On a hit: the save.",
               "damage": {
                 "parts": [
                   {
@@ -228,10 +259,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5ekAn4l4PW042GW",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Mind Burst: Berserk",
               "save": {
                 "abilities": [
                   "wis"
@@ -240,29 +270,60 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
+                "resave": false,
                 "fourTier": true,
                 "tiers": {
-                  "success": "Success: Affected creature is able to resist this Genjutsu’s effects.",
-                  "failure": "Failure: They become Berserked.",
-                  "critFailure": "Critical Failure: Affected creature falls Prone and falls into a bout of insanity becoming Berserked for the duration."
-                },
-                "resave": false
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: Berserk.",
+                  "critFailure": "Critical Failure: Prone (the effect) and Berserk for the duration."
+                }
               },
+              "inflicts": [
+                {
+                  "key": "berserk",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Berserk"
+                }
+              ],
+              "text": "1 minute.",
               "damage": {
                 "parts": []
+              }
+            },
+            {
+              "id": "n5eBYLWSqauXbDma",
+              "type": "effect",
+              "label": "Critical failure: Prone",
+              "effect": {
+                "name": "Critical failure: Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
               }
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eMa8FQfD9cEdbE",
               "type": "attack",
-              "label": "Attack",
+              "label": "Frenzy: Mind Burst",
               "attack": {
-                "discipline": "gen",
+                "discipline": "discipline",
                 "range": "ranged",
-                "count": 1
+                "count": 2
               },
+              "text": "A creature within 60 feet (B-Rank +1, S-Rank +1 more). On a hit: the save.",
               "damage": {
                 "parts": [
                   {
@@ -273,10 +334,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5ekAn4l4PW042GW",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Mind Burst: Berserk",
               "save": {
                 "abilities": [
                   "wis"
@@ -285,29 +345,60 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
+                "resave": false,
                 "fourTier": true,
                 "tiers": {
-                  "success": "Success: Affected creature is able to resist this Genjutsu’s effects.",
-                  "failure": "Failure: They become Berserked.",
-                  "critFailure": "Critical Failure: Affected creature falls Prone and falls into a bout of insanity becoming Berserked for the duration."
-                },
-                "resave": false
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: Berserk.",
+                  "critFailure": "Critical Failure: Prone (the effect) and Berserk for the duration."
+                }
               },
+              "inflicts": [
+                {
+                  "key": "berserk",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Berserk"
+                }
+              ],
+              "text": "1 minute.",
               "damage": {
                 "parts": []
+              }
+            },
+            {
+              "id": "n5eBYLWSqauXbDma",
+              "type": "effect",
+              "label": "Critical failure: Prone",
+              "effect": {
+                "name": "Critical failure: Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
               }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eMa8FQfD9cEdbE",
               "type": "attack",
-              "label": "Attack",
+              "label": "Frenzy: Mind Burst",
               "attack": {
-                "discipline": "gen",
+                "discipline": "discipline",
                 "range": "ranged",
-                "count": 1
+                "count": 3
               },
+              "text": "A creature within 60 feet (B-Rank +1, S-Rank +1 more). On a hit: the save.",
               "damage": {
                 "parts": [
                   {
@@ -318,10 +409,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5ekAn4l4PW042GW",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Mind Burst: Berserk",
               "save": {
                 "abilities": [
                   "wis"
@@ -330,22 +420,53 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
+                "resave": false,
                 "fourTier": true,
                 "tiers": {
-                  "success": "Success: Affected creature is able to resist this Genjutsu’s effects.",
-                  "failure": "Failure: They become Berserked.",
-                  "critFailure": "Critical Failure: Affected creature falls Prone and falls into a bout of insanity becoming Berserked for the duration."
-                },
-                "resave": false
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: Berserk.",
+                  "critFailure": "Critical Failure: Prone (the effect) and Berserk for the duration."
+                }
               },
+              "inflicts": [
+                {
+                  "key": "berserk",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Berserk"
+                }
+              ],
+              "text": "1 minute.",
               "damage": {
                 "parts": []
+              }
+            },
+            {
+              "id": "n5eBYLWSqauXbDma",
+              "type": "effect",
+              "label": "Critical failure: Prone",
+              "effect": {
+                "name": "Critical failure: Prone",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  }
+                ]
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "68fe90231eaf9f92"

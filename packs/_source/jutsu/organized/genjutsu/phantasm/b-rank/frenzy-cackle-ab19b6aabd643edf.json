@@ -88,10 +88,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eGUbTqOH3swGDV",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Frenzy: Cackle",
         "save": {
           "abilities": [
             "int"
@@ -100,44 +99,81 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
-            "success": "on a success.",
-            "failure": "Failure: Affected creatures takes 4d12 psychic damage and becomes Blinded for the next minute, remaking saving throws at the end of each of their turns, ending this jutsu’s effect",
-            "critFailure": "Critical Failure: Affected creatures takes 6d12 psychic damage and becomes Blinded, Deafened, and incapable of smelling or tasting as they begin to laugh manically for the next minute, remaking their saving throw at the end of each of their turns, with a 1d4 penalty ending this jutsu’s effect"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: Blinded until the end of the turn.",
+            "failure": "Failure: 4d12 psychic and Blinded for 1 minute; resave at the end of each of its turns.",
+            "critFailure": "Critical Failure: 6d12 psychic, Blinded, Deafened (the effect) and no smell or taste for 1 minute; resave with −1d4."
+          }
         },
+        "inflicts": [
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          }
+        ],
+        "text": "Every creature within 30 feet, you included (you at advantage).",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "4d12",
-        "roll": {
-          "formula": "4d12",
-          "note": "Failure: Affected creatures takes 4d12 psychic damage and becomes Blinded for the next minute, remaking saving throws at the end of each of their turns, ending this jutsu’s effect on a success."
+        "id": "n5eZzQBUxqzNGKjz",
+        "type": "damage",
+        "label": "Failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d12",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "6d12",
-        "roll": {
-          "formula": "6d12",
-          "note": "Critical Failure: Affected creatures takes 6d12 psychic damage and becomes Blinded, Deafened, and incapable of smelling or tasting as they begin to laugh manically for the next minute, remaking their saving throw at the end of each of their turns, with a 1d4 penalty ending this jutsu’s effect on a success."
+        "id": "n5e1tucRf9ItsBF4",
+        "type": "damage",
+        "label": "Critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d12",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll3",
+        "id": "n5eWuZnjShGApFTD",
+        "type": "effect",
+        "label": "Critical failure: Deafened",
+        "effect": {
+          "name": "Critical failure: Deafened",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "deafened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Deafened"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e0hHsTrE7Jdhc2",
         "type": "roll",
-        "label": "1d4",
+        "label": "Critical failure: resave penalty",
         "roll": {
           "formula": "1d4",
-          "note": "Critical Failure: Affected creatures takes 6d12 psychic damage and becomes Blinded, Deafened, and incapable of smelling or tasting as they begin to laugh manically for the next minute, remaking their saving throw at the end of each of their turns, with a 1d4 penalty ending this jutsu’s effect on a success."
+          "note": ""
         }
       }
     ],
@@ -224,7 +260,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "779eb1d0d06757f5"

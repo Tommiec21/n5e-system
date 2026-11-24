@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ejlltCWyS9bv70",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Antipathy/Sympathy",
         "save": {
           "abilities": [
             "wis"
@@ -98,10 +97,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
-          "tiers": {},
-          "resave": false
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: no effect.",
+            "failure": "Failure: the aura's effect.",
+            "critFailure": "Critical Failure: as a failure."
+          }
         },
+        "inflicts": [],
+        "text": "1 hour to cast, 10 days: a Huge or smaller target or up to a 200-foot cube, and a kind of intelligent creature. When one sees the target or comes within 60 feet. Antipathy: on a failure it must move to the nearest spot where it can't see the target. Sympathy: on a failure it must move to the target and can't willingly leave. Ending its turn away from the target, or every 24 hours, it resaves; a success ends it and gives 1 minute of immunity.",
         "damage": {
           "parts": []
         }
@@ -171,7 +177,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "e6c3bf38d4144669"

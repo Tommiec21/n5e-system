@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eFxrUSZZVrUfsq",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Lotus: Bitter Petals",
         "save": {
           "abilities": [
             "cha"
@@ -98,15 +97,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist most of this jutsu’s effects.",
-            "success": "on a success.",
-            "failure": "failure, but they gain an additional reaction which can only be used to interpose attacks targeting their allies.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists most of it.",
+            "success": "Success: no jutsu bonuses from allies until the end of its next turn.",
+            "failure": "Failure: when an ally within its speed would take damage from an attack, it uses its reaction to interpose and becomes the target; resave at the end of each of its turns.",
+            "critFailure": "Critical Failure: as a failure, with an extra reaction only to interpose."
+          }
         },
+        "inflicts": [],
+        "text": "1 minute: two 5-foot radii within 30 feet. A creature that failed this jutsu's save can't be affected again for 1 minute.",
         "damage": {
           "parts": []
         }
@@ -176,7 +177,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5eerYeblcK91isN"

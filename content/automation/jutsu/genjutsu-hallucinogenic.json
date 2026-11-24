@@ -1,0 +1,1567 @@
+{
+  "section": "genjutsu/hallucinogenic",
+  "ranks": [
+    "E",
+    "D",
+    "C",
+    "B",
+    "A",
+    "S"
+  ],
+  "spec": "docs/STD6f_SPEC.md",
+  "reviewed": "2026-11-22",
+  "features": {
+    "catnap": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e5soyDvm0uEa9T",
+          "type": "effect",
+          "label": "Catnap: Unconscious",
+          "effect": {
+            "name": "Catnap: Unconscious",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "inflicts": [
+              {
+                "key": "unconscious",
+                "kind": "state",
+                "ranks": 1,
+                "label": "Unconscious"
+              }
+            ]
+          },
+          "text": "Concentration, up to 10 minutes, no chakra to maintain: up to 3 willing creatures within 30 feet. Damage or an Action to wake one ends it early; the full duration gives a Short Rest (once per Long Rest)."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "version": 1,
+          "sourceLine": 4124,
+          "sourceHash": "93c157f91d39c93c428ad5df99ce8011172a8f3046cde413e07e5c574e1c3b30",
+          "discipline": "Genjutsu",
+          "group": "Hallucinogenic",
+          "header": {
+            "rank": "C",
+            "time": "1 action",
+            "range": "30 Feet",
+            "duration": "Concentration, up to 10 Minutes",
+            "cost": "7 Chakra",
+            "components": "HS, CM",
+            "keywords": "Genjutsu (Auditory, Visual)"
+          },
+          "sourceText": "Rank: C-Rank Casting Time: 1 action Range: 30 Feet Duration: Concentration, up to 10 Minutes\nComponents: HS, CM Cost: 7 Chakra Keywords: Genjutsu (Auditory, Visual) Description: You make a calming gesture, and up to three willing creatures of your choice that you can see within range fall unconscious for the Genjutsu’s duration. You do not need to spend chakra to maintain concentration on this jutsu. The Genjutsu ends on a target early if it takes damage or someone uses an action to shake or slap it awake. If a target remains unconscious for the full duration, that target gains the benefit of a short rest, and it can’t be affected by this Genjutsu again until it finishes a long rest.",
+          "expressions": [],
+          "manual": [],
+          "activitiesByRank": {},
+          "manualCost": false
+        }
+      }
+    },
+    "chaotic-world": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eXxAQY1tcYCbsj",
+          "type": "save",
+          "label": "Chaotic World",
+          "save": {
+            "abilities": [
+              "int"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists, and knows it was an illusion.",
+              "success": "Success: resists.",
+              "failure": "Failure: Blinded, Deafened and Prone.",
+              "critFailure": "Critical Failure: as a failure; leaving, it must resave at the end of each of its turns to end them."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            },
+            {
+              "key": "deafened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Deafened"
+            },
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ],
+          "text": "Concentration: a 25-foot cube (+5 feet per rank) at a point within 60 feet (+15 feet per rank); a creature starting its turn inside. It can't stand or end these conditions inside; they end when it leaves or the jutsu ends.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "version": 1,
+          "sourceLine": 4161,
+          "sourceHash": "467c87ac4f03e02e7c42520af195e43a83111e6832bd5337d0b9997458c09c50",
+          "discipline": "Genjutsu",
+          "group": "Hallucinogenic",
+          "header": {
+            "rank": "B",
+            "time": "1 Action",
+            "range": "60 feet",
+            "duration": "Concentration, up to 1 minute.",
+            "cost": "14 Chakra",
+            "components": "HS, CM, NT (Poison Kit)",
+            "keywords": "Genjutsu (Auditory, Inhale, Visual, Unaware)"
+          },
+          "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: 60 feet Duration: Concentration, up to 1 minute.\nComponents: HS, CM, NT (Poison Kit)\nCost: 14 Chakra Keywords: Genjutsu (Auditory, Inhale, Visual, Unaware)  Description: You throw a handful of colorful dust into the air while saying a litany of disjointed phrases. A moment later, a 25-foot cube centered on a point you can see within range fills with multicolored light, cacophonous sound, and overpowering scents and other confusing sensory information.\nThe effect is dizzying and overwhelming. A creature who begins its turn while within the cube, must make an Intelligence saving throw.\nCritical Success: Affected creature is able to resist this Genjutsu’s effects and becomes aware that they were a target of some Illusory effect.\nSuccess: Affected creature is able to resist this Genjutsu’s effects.\nFailure: Affected creature becomes Blinded, Deafened and falls Prone. An affected creature cannot stand up or recover from any single condition granted by this jutsu, while within the area. However, all conditions automatically end if a creature leaves this jutsu’s area or this jutsu ends.\nCritical Failure: Same effect as failure, but affected creature instead must begin to remake their saving throws at the end of each of their turns to end the jutsu’s effect, if they leave the area of the jutsu.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3, the range of this jutsu by 15 feet, and the size of the cube by 5 feet.",
+          "expressions": [],
+          "manual": [
+            "Conditional rider instructions are preserved; choose the applicable source activity manually."
+          ],
+          "activitiesByRank": {},
+          "manualCost": false
+        }
+      }
+    },
+    "corruption-delusions": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e0kjlPBAFE0tiP",
+          "type": "save",
+          "label": "Corruption: Delusions",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: as a success.",
+              "success": "Success: resists.",
+              "failure": "Failure: marked; at the start of each of its turns it resaves: a failure Dazes it (the effect), a success ends it.",
+              "critFailure": "Critical Failure: as a failure; the mark stays until it succeeds or the duration ends."
+            }
+          },
+          "inflicts": [],
+          "text": "Concentration: a creature you can see within 60 feet. An ally instead gets a quick rest: it can spend Hit Dice to heal.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5ez9UYuKhjN4fiB",
+          "type": "effect",
+          "label": "Marked, failed a resave: Dazed",
+          "effect": {
+            "name": "Marked, failed a resave: Dazed",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "inflicts": [
+              {
+                "key": "dazed",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Dazed"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "version": 1,
+          "sourceLine": 4043,
+          "sourceHash": "70a4d3f6ca6bbff5031170d76451e9eb1886312507c392aafd4be36c1167959b",
+          "discipline": "Genjutsu",
+          "group": "Hallucinogenic",
+          "header": {
+            "rank": "D",
+            "time": "1 Action",
+            "range": "60 Feet",
+            "duration": "Concentration, Up to 1 minute",
+            "cost": "5 Chakra",
+            "components": "HS, CM, NT (Poison Kit, 1 Charge)",
+            "keywords": "Genjutsu (Inhale, Visual)"
+          },
+          "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: 60 Feet Duration: Concentration, Up to 1 minute\nComponents:  HS, CM, NT (Poison Kit, 1 Charge)\nCost: 5 Chakra Keywords: Genjutsu (Inhale, Visual) Description: You infuse chakra into chakra seals as you attempt to mark a creature you can see in range with the seal of the desires. You can either target an allied creature or a hostile creature. If you target an allied creature, you can force the creature to experience a hyper accelerated sleep pattern. The target creature gains some of the benefit of a short rest only allowing them to spend hit die to recover hit points.\nIf targeting a hostile creature, the target must make a Charisma Saving throw.\nSuccess: Affected creature is able to resist this jutsu’s effects.\nFailure: Affected creature is marked with the seal of desires as they begin to see flashes and visions of the things they want most in life causing them to freeze in place, focusing on the things before them. For the duration, at the beginning a marked creatures turn remake the saving throw, being Dazed on a failed save ending this jutsu’s effect on them.\nCritical Failure: Same as failure but the seal remains until the affected creature passes their save or the duration expires.",
+          "expressions": [],
+          "manual": [],
+          "activitiesByRank": {},
+          "manualCost": false
+        }
+      }
+    },
+    "devil-sight": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Concentration: a willing creature you touch (+1 per rank) gains Perceptive Authority: a rank of Mastery on Identify Genjutsu checks and 30 feet of darkvision. A-Rank: no concentration."
+        }
+      ],
+      "activities": [],
+      "flags": {
+        "jutsuBookImport": {
+          "version": 1,
+          "sourceLine": 4051,
+          "sourceHash": "21b675d85bc3602f4bf1685fed985418c3c56794c36dbb6a337eaf5ef1e69ccf",
+          "discipline": "Genjutsu",
+          "group": "Hallucinogenic",
+          "header": {
+            "rank": "D",
+            "time": "1 Action",
+            "range": "Touch",
+            "duration": "Concentration, up to 1 Minute",
+            "cost": "6 Chakra",
+            "components": "HS, CM",
+            "keywords": "Genjutsu (Visual)"
+          },
+          "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: Touch Duration: Concentration, up to 1 Minute\nComponents: HS, CM\nCost: 6 Chakra Keywords: Genjutsu (Visual)  Description: You touch a willing creature who you can see. You impart upon them the special sense Perceptive Authority for the duration.\nPerceptive Authority. Creatures with this sense have a rank of mastery to Identify Genjutsu checks and 30 Feet of Dark Vision.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the number of target creatures by +1. If this jutsu is cast at A-Rank or higher this jutsu no longer requires concentration.",
+          "expressions": [],
+          "manual": [
+            "Conditional rider instructions are preserved; choose the applicable source activity manually."
+          ],
+          "activitiesByRank": {},
+          "manualCost": false
+        }
+      }
+    },
+    "forget-me-not": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eT79pyKsPSzyt4",
+          "type": "save",
+          "label": "Forget Me Not: Constitution",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: as a success.",
+              "success": "Success: no effect.",
+              "failure": "Failure: Envenomed for 1 hour, and the next save at disadvantage.",
+              "critFailure": "Critical Failure: as a failure."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "envenomed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Envenomed"
+            }
+          ],
+          "text": "Creatures except you within 5 feet of the released flower: Constitution, then Intelligence.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5e6lTZVHo30iXsm",
+          "type": "save",
+          "label": "Forget Me Not: Intelligence",
+          "save": {
+            "abilities": [
+              "int"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: as a success.",
+              "success": "Success: no effect.",
+              "failure": "Failure: the last 24 hours are a haze for 1 hour (remembering: an Intelligence save at disadvantage; A-Rank: permanent until Dispelled).",
+              "critFailure": "Critical Failure: as a failure."
+            }
+          },
+          "inflicts": [],
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "version": 1,
+          "sourceLine": 4171,
+          "sourceHash": "c012ae9da1be2e85e1bdafe782d7fef4e156756fdbe992c26a2d3c95c9dc6f86",
+          "discipline": "Genjutsu",
+          "group": "Hallucinogenic",
+          "header": {
+            "rank": "B",
+            "time": "1 Action",
+            "range": "Touch",
+            "duration": "Special",
+            "cost": "11 Chakra",
+            "components": "HS, CM, NT (Poison Kit or Poisonous Flower)",
+            "keywords": "Genjutsu, Inhale, Unaware"
+          },
+          "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: Touch Duration: Special\nComponents: HS, CM, NT (Poison Kit or Poisonous Flower)\nCost: 11 Chakra Keywords: Genjutsu, Inhale, Unaware  Description: You infuse chakra into a poisonous flower that you are holding. When you release the flower, all creatures except yourself within 5 feet of the flower are hit with a powerfully potent, yet odorless plume of poisonous pollen laced with your chakra. Creatures within range must make a Constitution and Intelligence saving throw, in that order.\nOn a failed Constitution saving throw, the affected creature becomes Envenomed for 1 hour and a creature Envenomed by this jutsu makes the next saving throw at disadvantage.\nOn a failed Intelligence saving throw, they lose all memory of the past 24 hours, for the next hour as it becomes a haze. This memory is still there, but clouded and hazy. If they attempt to remember, they must make an Intelligence save throw at disadvantage.\nAt Higher Ranks: For each rank you cast this jutsu above B-Rank increase the cost of this jutsu by 3. When you cast this jutsu at A-Rank, on a failed save, their memory is permanently clouded over by this jutsu until Dispelled.",
+          "expressions": [],
+          "manual": [
+            "Conditional rider instructions are preserved; choose the applicable source activity manually."
+          ],
+          "activitiesByRank": {},
+          "manualCost": false
+        }
+      }
+    },
+    "lotus-anxious-petals": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ehAjo1JdHR3SBM",
+          "type": "save",
+          "label": "Lotus: Anxious Petals",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists most of it.",
+              "success": "Success: Dazed (the effect).",
+              "failure": "Failure: panic: it spends its action to Dash; resave at the end of each of its turns; speed 0 ends it.",
+              "critFailure": "Critical Failure: as a failure, and its bonus action on a DC 15 Athletics check for +10 speed."
+            }
+          },
+          "inflicts": [],
+          "text": "1 minute: a 10-foot cube within 30 feet. A creature that failed this jutsu's save can't be affected again for 1 minute.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eK60z8CDnu37Rl",
+          "type": "effect",
+          "label": "Success: Dazed",
+          "effect": {
+            "name": "Success: Dazed",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "inflicts": [
+              {
+                "key": "dazed",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Dazed"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "version": 1,
+          "sourceLine": 4057,
+          "sourceHash": "33e23b2c1e5ae48d23ef64e768d4762712df6f0cef317c60c8ec599f61849d8e",
+          "discipline": "Genjutsu",
+          "group": "Hallucinogenic",
+          "header": {
+            "rank": "D",
+            "time": "1 Action",
+            "range": "30 feet (10-foot cube)",
+            "duration": "1 Minute",
+            "cost": "5 Chakra",
+            "components": "HS, CM, NT (Poison Kit, 1 Charges)",
+            "keywords": "Genjutsu (Inhale)"
+          },
+          "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: 30 feet (10-foot cube) Duration: 1 Minute\nComponents: HS, CM, NT (Poison Kit, 1 Charges)\nCost: 5 Chakra Keywords: Genjutsu (Inhale) Description: You grasp a hand full of poisonous Lotus petals, spreading them in a unique way. Select a space you can within range as you fill a 10-foot cube with a petal dance of revulsion. A creature who’s failed this jutsu’s save once before, cannot be affected again for 1 minute.\nAs they flutter in front of you, all creatures within range must make a Charisma saving throw to as the pollen begins to affect their emotional state.\nCritical Success: Affected creature is able to resist most of this jutsu’s effects.\nSuccess: Affected creature is Dazed.\nFailure: Affected creatures enters a state of panic. For the duration, creatures must spend its action to take the Dash action. At the end of an affected creatures turns, remake their saving throw, ending this effect on a success. If it cannot move or has a movement speed of 0, this jutsu immediately ends.\nCritical Failure: Same as failure, but the target must also spend its bonus action to make an Athletics check vs a DC 15, to gain an additional +10 movement speed.",
+          "expressions": [],
+          "manual": [],
+          "activitiesByRank": {},
+          "manualCost": false
+        }
+      }
+    },
+    "lotus-bitter-petals": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eFxrUSZZVrUfsq",
+          "type": "save",
+          "label": "Lotus: Bitter Petals",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists most of it.",
+              "success": "Success: no jutsu bonuses from allies until the end of its next turn.",
+              "failure": "Failure: when an ally within its speed would take damage from an attack, it uses its reaction to interpose and becomes the target; resave at the end of each of its turns.",
+              "critFailure": "Critical Failure: as a failure, with an extra reaction only to interpose."
+            }
+          },
+          "inflicts": [],
+          "text": "1 minute: two 5-foot radii within 30 feet. A creature that failed this jutsu's save can't be affected again for 1 minute.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "version": 1,
+          "sourceLine": 4066,
+          "sourceHash": "face3bed384db31e25301efa29df54a4c1a8f24f53fd6a923ae13687189506a8",
+          "discipline": "Genjutsu",
+          "group": "Hallucinogenic",
+          "header": {
+            "rank": "D",
+            "time": "1 Action",
+            "range": "30 feet (5-foot radius)",
+            "duration": "1 Minute",
+            "cost": "5 Chakra",
+            "components": "HS, CM, NT (Poison Kit, 1 Charges)",
+            "keywords": "Genjutsu (Inhale, Unaware)"
+          },
+          "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: 30 feet (5-foot radius) Duration: 1 Minute\nComponents: HS, CM, NT (Poison Kit, 1 Charges)\nCost: 5 Chakra Keywords: Genjutsu (Inhale, Unaware)  Description: You grasp a hand full of poisonous Lotus petals, spreading them in a unique way. Select two points you can within range as you fill two, 5-foot radii with a petal dance of bitterness. A creature who’s failed this jutsu’s save once before, cannot be affected again for 1 minute.\nAs they flutter, all creatures within range must make a Charisma saving throw to as the pollen begins to affect their emotional state.\nCritical Success: Affected creature is able to resist most of this jutsu’s effects.\nSuccess: Affected creature cannot gain a Jutsu based bonus from an allied creature until the end of their next turn.\nFailure: Affected creature enters a bitter state of mind as for the duration, if a creature allied to themselves, within their movement speed range would take damage from an attack, they must spend their reaction to interpose the attack, becoming the new target. At the end of an affected creatures turns, remake their saving throw, ending this effect on a success.\nCritical Failure: Same as failure, but they gain an additional reaction which can only be used to interpose attacks targeting their allies.",
+          "expressions": [],
+          "manual": [],
+          "activitiesByRank": {},
+          "manualCost": false
+        }
+      }
+    },
+    "lotus-calming-petals": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eU75EkvRrG4gr7",
+          "type": "save",
+          "label": "Lotus: Calming Petals",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: as a success.",
+              "success": "Success: resists most of it.",
+              "failure": "Failure: Charmed, every creature it sees its Compeller, for the duration.",
+              "critFailure": "Critical Failure: as a failure, for 10 minutes."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "charmed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Charmed"
+            }
+          ],
+          "text": "1 minute: a 20-foot cube from you. A creature that failed this jutsu's save can't be affected again for 1 minute.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "version": 1,
+          "sourceLine": 4075,
+          "sourceHash": "08715e7a9d80a2596afc88c04b1c2176a65ad149b989ef7706290286533daa65",
+          "discipline": "Genjutsu",
+          "group": "Hallucinogenic",
+          "header": {
+            "rank": "D",
+            "time": "1 Action",
+            "range": "Self (20-foot Cube)",
+            "duration": "1 Minute",
+            "cost": "5 Chakra",
+            "components": "HS, CM, NT (Poison Kit, 1 Charges)",
+            "keywords": "Genjutsu (Inhale)"
+          },
+          "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: Self (20-foot Cube) Duration: 1 Minute\nComponents: HS, CM, NT (Poison Kit, 1 Charges)\nCost: 5 Chakra Keywords: Genjutsu (Inhale) Description: You grasp a hand full of poisonous Lotus petals, spreading them enough to fill a 20-foot cube originating from yourself in a dance of serenity. A creature who’s failed this jutsu’s save once before, cannot be affected again for 1 minute.\nAs they flutter in front of you, all creatures within range must make a Charisma saving throw to as the pollen begins to affect their emotional state.\nSuccess: Affected creature is able to resist most of this jutsu’s effects.\nFailure: Affected creature enters a calm and becomes Charmed, treating all creatures it can see as its compeller for the duration.\nCritical Failure: Same as failure, but this jutsu’s duration is increased to 10 minutes.",
+          "expressions": [],
+          "manual": [],
+          "activitiesByRank": {},
+          "manualCost": false
+        }
+      }
+    },
+    "lotus-dancing-petals": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eHTB72RUWlTCbJ",
+          "type": "save",
+          "label": "Lotus: Dancing Petals",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists most of it.",
+              "success": "Success: 2d6 poison.",
+              "failure": "Failure: 3d6 poison; it loses concentration on its ninjutsu for the duration; as an action, a DC 10 Constitution check ends it.",
+              "critFailure": "Critical Failure: as a failure; trying the check makes unaffected creatures within 10 feet save as if targeted."
+            }
+          },
+          "inflicts": [],
+          "text": "1 minute: creatures within 10 feet of you.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eP0RjGVq6AwyOO",
+          "type": "damage",
+          "label": "Success",
+          "damage": {
+            "parts": [
+              {
+                "formula": "2d6",
+                "type": "poison"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5e9pr9NO7BCtFzB",
+          "type": "damage",
+          "label": "Failure",
+          "damage": {
+            "parts": [
+              {
+                "formula": "3d6",
+                "type": "poison"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "version": 1,
+          "sourceLine": 4083,
+          "sourceHash": "b98e3f74a7ffbf54c3a58e2ca012123e52af5ad6c61a64ad0bbb6b997c42bed9",
+          "discipline": "Genjutsu",
+          "group": "Hallucinogenic",
+          "header": {
+            "rank": "D",
+            "time": "1 Action",
+            "range": "Self (10-foot radius)",
+            "duration": "1 Minute",
+            "cost": "4 Chakra",
+            "components": "HS, CM, NT (Poison Kit, 1 Charges)",
+            "keywords": "Genjutsu (Inhale, Tactile)"
+          },
+          "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: Self (10-foot radius) Duration: 1 Minute\nComponents: HS, CM, NT (Poison Kit, 1 Charges)\nCost: 4 Chakra Keywords: Genjutsu (Inhale, Tactile) Description: You grasp a hand full of poisonous Lotus petals, spreading them around yourself in a dance of despair.\nAs they flutter around you, all creatures within range must make a Charisma saving throw to realize they should hold their breath before inhaling the poisonous pollen.\nCritical Success: Affected creature is able to resist most of this jutsu’s effects.\nSuccess: Affected creature is able to resist most of this jutsu’s effects, but still takes 2d6 poison damage.\nFailure: Affected creature inhales a mass of poisonous petal pollen taking 3d6 poison damage and begin to retch in an attempt to expel the pollen from within, losing concentration of any ninjutsu they are concentrating on for the duration. As an action on an affected creatures turn, they can make a DC 10 Constitution check. On a success, this jutsu’s effects end.\nCritical Failure: Same as failure, but if the target attempts the ability check to end its effects, all creatures who are currently unaffected by this jutsu, within 10 feet of the retching target must also make a Charisma saving throw, as if they were the original targets of this jutsu.",
+          "expressions": [
+            {
+              "expression": "2d6",
+              "offset": 446,
+              "context": "Success: Affected creature is able to resist most of this jutsu’s effects, but still takes 2d6 poison damage.",
+              "section": "Base"
+            },
+            {
+              "expression": "3d6",
+              "offset": 540,
+              "context": "Failure: Affected creature inhales a mass of poisonous petal pollen taking 3d6 poison damage and begin to retch in an attempt to expel the pollen from within, losing concentration of any ninjutsu they are concentrating on for the duration. As an action on an affected creatures turn, they can make a DC 10 Constitution check. On a success, this jutsu’s effects end.",
+              "section": "Base"
+            }
+          ],
+          "manual": [],
+          "activitiesByRank": {},
+          "manualCost": false
+        }
+      }
+    },
+    "lotus-false-visions": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e6GJSVzlWurhOK",
+          "type": "save",
+          "label": "Lotus: False Visions",
+          "save": {
+            "abilities": [
+              "int"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists.",
+              "success": "Success: resists.",
+              "failure": "Failure: Blinded, it sees only what you describe; taking damage, it resaves and ends it on a success.",
+              "critFailure": "Critical Failure: as a failure; its resave takes −1d4."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            }
+          ],
+          "text": "Concentration: a creature you can see within 90 feet (+1 per rank).",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eqUr8QDZLmLwCU",
+          "type": "roll",
+          "label": "Critical failure: resave penalty",
+          "roll": {
+            "formula": "1d4",
+            "note": ""
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "version": 1,
+          "sourceLine": 4127,
+          "sourceHash": "87e6a04c56b50a97ec7927137bc49f62fba6b3363c986e81c66fc570e9a7d9c3",
+          "discipline": "Genjutsu",
+          "group": "Hallucinogenic",
+          "header": {
+            "rank": "C",
+            "time": "1 Action",
+            "range": "90 feet",
+            "duration": "Concentration, Up to 1 minute.",
+            "cost": "7 Chakra",
+            "components": "HS, CM, NT (Poison kit, 1 Charge)",
+            "keywords": "Genjutsu (Visual, Unaware)"
+          },
+          "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: 90 feet Duration: Concentration, Up to 1 minute.\nComponents:  HS, CM, NT (Poison kit, 1 Charge)\nCost: 7 Chakra Keywords: Genjutsu (Visual, Unaware)  Description: You begin to create false visions that a creature will see regardless of what is really happening.\nSelect one creature that you can see within range. The target creature must make an Intelligence saving throw.\nSuccess: Affected creature is able to resist this jutsu’s effects.\nFailure: Affected creature becomes Blinded, but begins to hallucinate seeing only what you declare they see. Describe what the affected creature will see other creatures do on their respective turns. This can be anywhere from attempting to cast a jutsu, attempt to attack them, go in another direction, attempt to hide or anything they would be able to see. When they take damage, the damage is dealt as normal, and they remake the saving throw ending this jutsu on a success.\nCritical Failure: Affected creature suffers the effects of a failure but instead they make their saving throw to end this jutsu with a 1d4 penalty to the result.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the number of creatures you can target by +1.",
+          "expressions": [
+            {
+              "expression": "1d4",
+              "offset": 889,
+              "context": "Critical Failure: Affected creature suffers the effects of a failure but instead they make their saving throw to end this jutsu with a 1d4 penalty to the result.",
+              "section": "Base"
+            }
+          ],
+          "manual": [
+            "Conditional rider instructions are preserved; choose the applicable source activity manually."
+          ],
+          "activitiesByRank": {},
+          "manualCost": false
+        }
+      }
+    },
+    "lotus-furious-petals": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5efBm8BLYMdtmMA",
+          "type": "save",
+          "label": "Lotus: Furious Petals",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists.",
+              "success": "Success: resists.",
+              "failure": "Failure: its jutsu cost 4 more (+2 per rank); resave at the end of each of its turns.",
+              "critFailure": "Critical Failure: as a failure, with no resave."
+            }
+          },
+          "inflicts": [],
+          "text": "Concentration: a 20-foot cone (+1 target per rank).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "version": 1,
+          "sourceLine": 4092,
+          "sourceHash": "d2ae2632b072c17f06084233fd216782499c3c6586600ca333056ad065676f7e",
+          "discipline": "Genjutsu",
+          "group": "Hallucinogenic",
+          "header": {
+            "rank": "D",
+            "time": "1 Action",
+            "range": "Self (20-foot Cone)",
+            "duration": "Concentration, up to 1 Minute",
+            "cost": "5 Chakra",
+            "components": "HS, CM, NT (Poison Kit, 1 Charges)",
+            "keywords": "Genjutsu (Inhale)"
+          },
+          "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: Self (20-foot Cone) Duration: Concentration, up to 1 Minute\nComponents: HS, CM, NT (Poison Kit, 1 Charges)\nCost: 5 Chakra Keywords: Genjutsu (Inhale) Description: You grasp a hand full of poisonous Lotus petals, spreading them in a wide cone originating from yourself in a dance of anger.\nAs they flutter in front of you, all creatures within range must make a Charisma saving throw to as the pollen begins to affect their emotional state.\nSuccess: Affected creature is able to resist this jutsu’s effects.\nFailure: Affected creature enters an enraged state. For the duration, enraged creatures increase the cost of all Jutsu they cast by +4 believing they are upcasting and putting more force behind their castings. Affected creatures remake their saving throw at the end of each of their turns, ending this effect on a success.\nCritical Failure: Same as failure, but they do not remake their saving throw at the end of each of their turns.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3, the number of targets by +1 and the cost of the affected creatures jutsu by +2.",
+          "expressions": [],
+          "manual": [
+            "Conditional rider instructions are preserved; choose the applicable source activity manually."
+          ],
+          "activitiesByRank": {},
+          "manualCost": false
+        }
+      }
+    },
+    "lotus-hypnotic-hypnosis": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eHesUkV47bxzIC",
+          "type": "save",
+          "label": "Lotus: Hypnotic Hypnosis",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists.",
+              "success": "Success: Slowed until the end of its next turn (the effect).",
+              "failure": "Failure: daydreams: blind and deaf beyond 5 feet (C-Rank: deaf beyond 5 feet; B-Rank: it answers you truthfully); anything affecting it or within 5 feet breaks it.",
+              "critFailure": "Critical Failure: functionally Unconscious for 10 minutes (the effect); yells, shaking or damage wake it; it answers only you, truthfully."
+            }
+          },
+          "inflicts": [],
+          "text": "Concentration: a 15-foot cube within 60 feet (A-Rank: a second cube); creatures in combat are immune.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5ekFnxOqpIzRblc",
+          "type": "effect",
+          "label": "Success: Slowed",
+          "effect": {
+            "name": "Success: Slowed",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "inflicts": [
+              {
+                "key": "slowed",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Slowed"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eMDSwH3k3f95io",
+          "type": "effect",
+          "label": "Critical failure: Unconscious",
+          "effect": {
+            "name": "Critical failure: Unconscious",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "inflicts": [
+              {
+                "key": "unconscious",
+                "kind": "state",
+                "ranks": 1,
+                "label": "Unconscious"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "version": 1,
+          "sourceLine": 4101,
+          "sourceHash": "98717cdb28054224c1811802e06bc78a8cfbfde124a609c7fdaa1b636ea13479",
+          "discipline": "Genjutsu",
+          "group": "Hallucinogenic",
+          "header": {
+            "rank": "D",
+            "time": "1 Action",
+            "range": "60 Feet (15-Foot Cube)",
+            "duration": "Concentration, up to 1 minute.",
+            "cost": "5 Chakra",
+            "components": "HS, CM, NT (Poison Kit, 1 Charges)",
+            "keywords": "Genjutsu (Visual), Unaware"
+          },
+          "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: 60 Feet (15-Foot Cube) Duration: Concentration, up to 1 minute.\nComponents:  HS, CM, NT (Poison Kit, 1 Charges) Cost: 5 Chakra Keywords: Genjutsu (Visual), Unaware  Description: You manifest a collection of sheep wool in the form of pollen as you attempt to lull a creature into a deep sleep.\nSelect a point you can see in range as you fill the affected area with the pollen like wool. All creatures in range must make a Wisdom saving throw. A creature who is currently in combat is immune to this jutsu’s effects.\nCritical Success: Affected creature is able to resist this jutsu’s effects.\nSuccess: Affected creature is Slowed until the end of the next turn as they are only slightly drowsy.\nFailure: Affected creature begins to daydream. They become blind and Deafened to all events and happenings that is further than 5 feet away from them. Anything that would affect them or the area within 5 feet of them would break them from this day dream.\nCritical Failure: Affected creature falls into a hypnotic dream rending them functionally unconscious for the next 10 minutes. While in this hypnotic dream a creature can be awoken by yells, screams or loud sounds or by being physically shaken or taking damage of any type. They can also respond to only you and your questions answering truthfully.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3. If this jutsu is cast at C-Rank or higher, affected creatures become Deafened to all sounds further than 5 feet away from them. If this jutsu is cast at B-Rank or higher, creatures who fail can also respond to you answering truthfully. If this jutsu is cast at A-Rank or higher, you can select a second point to generate a second 15-foot cube affecting all creatures in the chosen area.",
+          "expressions": [],
+          "manual": [
+            "Conditional rider instructions are preserved; choose the applicable source activity manually."
+          ],
+          "activitiesByRank": {},
+          "manualCost": false
+        }
+      }
+    },
+    "lotus-reviled-petals": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eYxDZ6YoXR7CJM",
+          "type": "save",
+          "label": "Lotus: Reviled Petals",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: as a success.",
+              "success": "Success: resists most of it.",
+              "failure": "Failure: it can't be a willing creature for any beneficial effect.",
+              "critFailure": "Critical Failure: as a failure, and it can't target allies with beneficial effects."
+            }
+          },
+          "inflicts": [],
+          "text": "1 minute: two 10-foot cubes within 30 feet.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "version": 1,
+          "sourceLine": 4110,
+          "sourceHash": "d685fbaa7dfc106ca077400ec21ba39df10210d708ee7a26c2a44c76bc54275f",
+          "discipline": "Genjutsu",
+          "group": "Hallucinogenic",
+          "header": {
+            "rank": "D",
+            "time": "1 Action",
+            "range": "30 feet (10-foot Cube)",
+            "duration": "1 Minute",
+            "cost": "5 Chakra",
+            "components": "HS, CM, NT (Poison Kit, 1 Charges)",
+            "keywords": "Genjutsu (Inhale)"
+          },
+          "sourceText": "Rank: D-Rank Casting Time: 1 Action Range: 30 feet (10-foot Cube) Duration: 1 Minute\nComponents: HS, CM, NT (Poison Kit, 1 Charges)\nCost: 5 Chakra Keywords: Genjutsu (Inhale) Description: You grasp a hand full of poisonous Lotus petals, spreading them in a unique way. Select two points you can within range as you fill both 10-foot cubes with a petal dance of revulsion.\nAs they flutter in front of you, all creatures within range must make a Charisma saving throw to as the pollen begins to affect their emotional state.\nSuccess: Affected creature is able to resist most of this jutsu’s effects.\nFailure: Affected creature enters a state of repulsion. For the duration, affected creatures cannot be a willing creature to any beneficial effect that would affect them.\nCritical Failure: Same as failure, but they also cannot target allied creatures with beneficial effects.",
+          "expressions": [],
+          "manual": [],
+          "activitiesByRank": {},
+          "manualCost": false
+        }
+      }
+    },
+    "medical-release-healed-thoughts": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Bonus Action: reduce one Mental or Sensory condition on a creature within 60 feet by 1 rank (+1 condition with a different name per rank)."
+        }
+      ],
+      "activities": [],
+      "flags": {
+        "jutsuBookImport": {
+          "version": 1,
+          "sourceLine": 4118,
+          "sourceHash": "9e442871695d78747f7f8251eb62eaf521795a8e967033c9883f7c4600082886",
+          "discipline": "Genjutsu",
+          "group": "Hallucinogenic",
+          "header": {
+            "rank": "D",
+            "time": "1 Bonus Action",
+            "range": "60 feet",
+            "duration": "Instant",
+            "cost": "4 Chakra",
+            "components": "HS, CM, NT (Poison Kit, 1 Charge)",
+            "keywords": "Genjutsu (Inhale, Visual), Medical"
+          },
+          "sourceText": "Rank: D-Rank Casting Time: 1 Bonus Action Range: 60 feet Duration: Instant\nComponents:  HS, CM, NT (Poison Kit, 1 Charge) Cost: 4 Chakra Keywords: Genjutsu (Inhale, Visual), Medical  Description: Your compose a stimulant restorative designed to help soothe the mental scars of battle.\nSelect one Mental or Sensory condition a creature is under the effects of and reduce it by 1 rank.\nAt Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the number of conditions with different names this jutsu can select by +1.",
+          "expressions": [],
+          "manual": [
+            "Conditional rider instructions are preserved; choose the applicable source activity manually."
+          ],
+          "activitiesByRank": {},
+          "manualCost": false
+        }
+      }
+    },
+    "medical-release-shared-pain": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Reaction when you would take damage: a willing ally within 60 feet (+1 per rank) shares it: you take half, and the ally takes psychic damage equal to the damage you took (several allies: divide it among them)."
+        }
+      ],
+      "activities": [],
+      "flags": {
+        "jutsuBookImport": {
+          "version": 1,
+          "sourceLine": 4150,
+          "sourceHash": "447f59adfaa225bc006ebc8ebe57b4b20c17fd73e65e8f2be53c503264a88dc8",
+          "discipline": "Genjutsu",
+          "group": "Hallucinogenic",
+          "header": {
+            "rank": "C",
+            "time": "1 Reaction, which you take when you would take damage",
+            "range": "60 feet",
+            "duration": "Instant",
+            "cost": "6 Chakra",
+            "components": "HS, CM",
+            "keywords": "Genjutsu (Visual, Tactile), Medical"
+          },
+          "sourceText": "Rank: C-Rank Casting Time: 1 Reaction, which you take when you would take damage Range: 60 feet Duration: Instant\nComponents:  HS, CM Cost: 6 Chakra Keywords: Genjutsu (Visual, Tactile), Medical  Description: You manifest a self-sustaining illusion designed to help soothe the mental scars of battle.\nSelect one willing allied creature within range. You share your pain with them, reducing the damage you take by half, and inflicting psychic damage on the target ally equal to the damage you took.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the number of allies you can target by +1. You instead divide the damage you take, by the number of allied creatures you target with this jutsu.",
+          "expressions": [],
+          "manual": [
+            "Conditional rider instructions are preserved; choose the applicable source activity manually."
+          ],
+          "activitiesByRank": {},
+          "manualCost": false
+        }
+      }
+    },
+    "mind-body-recovery": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5erXo0p3fqf0HpY",
+          "type": "heal",
+          "label": "Mind-Body Recovery",
+          "heal": {
+            "formula": "2d6 + 5",
+            "pool": "tempHp"
+          },
+          "text": "Bonus Action: up to 3 willing creatures within 30 feet, for 10 minutes. Also remove one Mental condition from a C-Rank or lower jutsu (+1 rank per rank)."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "version": 1,
+          "sourceLine": 4155,
+          "sourceHash": "436beeeb1e1393fb3880e14c47b133dbc2dd1787eccf311aa8961930289f4547",
+          "discipline": "Genjutsu",
+          "group": "Hallucinogenic",
+          "header": {
+            "rank": "C",
+            "time": "1 Bonus Action",
+            "range": "30 Feet",
+            "duration": "Instant",
+            "cost": "8 Chakra",
+            "components": "HS, CM",
+            "keywords": "Genjutsu (Tactile)"
+          },
+          "sourceText": "Rank: C-Rank Casting Time: 1 Bonus Action Range: 30 Feet Duration: Instant\nComponents: HS, CM Cost: 8 Chakra Keywords: Genjutsu (Tactile) Description: You soothe a target's suffering and pain by making their mind unaware of it while also raising their tolerance for pain. Select up to 3 willing creatures within range. Target creatures gain 2d6+5 Temporary Hit points which last for the next 10 minutes.\nAdditionally, you are able to remove one Mental condition gained as a result of jutsu of C-Rank of lower.\nAt Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the temporary hit points by 1d6 and the rank of mental condition you can remove by one.",
+          "expressions": [
+            {
+              "expression": "2d6+5",
+              "offset": 190,
+              "context": "Target creatures gain 2d6+5 Temporary Hit points which last for the next 10 minutes.",
+              "section": "Base"
+            },
+            {
+              "expression": "1d6",
+              "offset": 493,
+              "context": "At Higher Ranks: For each rank you cast this jutsu above C-Rank, increase the cost of this jutsu by 3 and the temporary hit points by 1d6 and the rank of mental condition you can remove by one.",
+              "section": "At Higher Ranks"
+            }
+          ],
+          "manual": [
+            "Conditional rider instructions are preserved; choose the applicable source activity manually."
+          ],
+          "activitiesByRank": {
+            "B": [
+              {
+                "id": "n5erXo0p3fqf0HpY",
+                "type": "heal",
+                "label": "Mind-Body Recovery",
+                "heal": {
+                  "formula": "(2d6 + 5) + (1d6)",
+                  "pool": "tempHp"
+                },
+                "text": "Bonus Action: up to 3 willing creatures within 30 feet, for 10 minutes. Also remove one Mental condition from a C-Rank or lower jutsu (+1 rank per rank)."
+              }
+            ],
+            "A": [
+              {
+                "id": "n5erXo0p3fqf0HpY",
+                "type": "heal",
+                "label": "Mind-Body Recovery",
+                "heal": {
+                  "formula": "(2d6 + 5) + (2d6)",
+                  "pool": "tempHp"
+                },
+                "text": "Bonus Action: up to 3 willing creatures within 30 feet, for 10 minutes. Also remove one Mental condition from a C-Rank or lower jutsu (+1 rank per rank)."
+              }
+            ],
+            "S": [
+              {
+                "id": "n5erXo0p3fqf0HpY",
+                "type": "heal",
+                "label": "Mind-Body Recovery",
+                "heal": {
+                  "formula": "(2d6 + 5) + (3d6)",
+                  "pool": "tempHp"
+                },
+                "text": "Bonus Action: up to 3 willing creatures within 30 feet, for 10 minutes. Also remove one Mental condition from a C-Rank or lower jutsu (+1 rank per rank)."
+              }
+            ]
+          },
+          "manualCost": false
+        }
+      }
+    },
+    "parasitic-rider": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5e3ZV8jwTkwPjw0",
+          "type": "save",
+          "label": "Parasitic Rider",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists, and knows someone tried.",
+              "success": "Success: resists.",
+              "failure": "Failure: you enter its mind and share its senses, without control; when it takes damage you make a Charisma save against your own DC to stay.",
+              "critFailure": "Critical Failure: as a failure, and you can speak as its thoughts and make Charisma checks to influence it."
+            }
+          },
+          "inflicts": [],
+          "text": "Concentration, up to 10 minutes, chakra to maintain: a creature you can see within 120 feet (aware of you: automatic success). If your body dies, permanent.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5eS7toEOzFc4RHW",
+          "type": "effect",
+          "label": "Your body: Prone, Stunned",
+          "effect": {
+            "name": "Parasitic Rider",
+            "target": "self",
+            "changes": [],
+            "expires": "",
+            "seconds": 600,
+            "inflicts": [
+              {
+                "key": "prone",
+                "kind": "state",
+                "ranks": 1,
+                "label": "Prone"
+              },
+              {
+                "key": "stunned",
+                "kind": "state",
+                "ranks": 1,
+                "label": "Stunned"
+              }
+            ]
+          },
+          "text": "Your body, while you ride."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "version": 1,
+          "sourceLine": 4178,
+          "sourceHash": "ad45d17aac3cd3409e83cb4e11f7f1f8bd51ea13b09a0d14170a3d9c3a179126",
+          "discipline": "Genjutsu",
+          "group": "Hallucinogenic",
+          "header": {
+            "rank": "B",
+            "time": "1 Action",
+            "range": "120 feet",
+            "duration": "Concentration, up to 10 minutes",
+            "cost": "14 Chakra",
+            "components": "HS, CM, NT (Poison Kit or Poisonous Flower)",
+            "keywords": "Genjutsu, Fuinjutsu, Unaware, Stable"
+          },
+          "sourceText": "Rank: B-Rank Casting Time: 1 Action Range: 120 feet Duration: Concentration, up to 10 minutes\nComponents:  HS, CM, NT (Poison Kit or Poisonous Flower) Cost: 14 Chakra Keywords: Genjutsu, Fuinjutsu, Unaware, Stable Description: You invade the mind of another creature you can see within range. You fire your consciousness into the target creature, as they make a Charisma saving throw. A creature aware of your presence automatically passes their saving throw. Your body is forced to spend chakra to maintain concentration so long as you occupy the body of another creature.\nWhen you cast this jutsu your body remains where it is, falling Prone and becoming Stunned for the duration. You lose all ability to experience sensations your body experiences, such as pain etc. If your body is killed this jutsu’s duration becomes permanent or until dispelled, as you have no body to return to, remaining trapped in the body you chose to inhabit.\nCritical Success: Affected creature is able to resist this jutsu’s effects and becomes aware that something or someone has attempted to enter their mind.\nSuccess: Affected creature is able to resist this jutsu’s effects.\nFailure: You enter the mind of the target creature. You cannot control or influence them by any means, but you can see and experience everything they do through their senses. If they would take damage, you must make a Charisma saving throw vs your own Save DC to remain within the body of the creature.\nCritical Failure: You gain the effects of the Failure effect, and you can occasionally act as a voice in their mind speaking to them as if you were their normal thoughts. This does not control them or take away their free will, but you may make Charisma based skill checks to attempt to influence them.",
+          "expressions": [],
+          "manual": [],
+          "activitiesByRank": {},
+          "manualCost": false
+        }
+      }
+    },
+    "poison-forest": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5eQu0eohRn9QaV3",
+          "type": "save",
+          "label": "Poison Forest",
+          "save": {
+            "abilities": [
+              "int"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: as a success.",
+              "success": "Success: no effect.",
+              "failure": "Failure: under the Genjutsu.",
+              "critFailure": "Critical Failure: as a failure."
+            }
+          },
+          "inflicts": [],
+          "text": "Concentration: a 30-foot sphere in front of you; on a failure it is trapped in a forest of poison trees inside it.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5egDtqxHLS75C8D",
+          "type": "damage",
+          "label": "Ending a turn trapped",
+          "damage": {
+            "parts": [
+              {
+                "formula": "5d8",
+                "type": "poison"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5eARsjSu624TuRH",
+          "type": "save",
+          "label": "End of each turn: Constitution",
+          "save": {
+            "abilities": [
+              "con"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false
+          },
+          "inflicts": [],
+          "text": "A success ends it on the creature.",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "version": 1,
+          "sourceLine": 4187,
+          "sourceHash": "a4917fc486325c3341a373b528f500643295d86d8ba526e9d3ffba8caac10a4e",
+          "discipline": "Genjutsu",
+          "group": "Hallucinogenic",
+          "header": {
+            "rank": "A",
+            "time": "1 Action",
+            "range": "60 Foot Cube",
+            "duration": "Concentration, up to 1 minute",
+            "cost": "19 Chakra",
+            "components": "HS, CM, NT (Poison Kit)",
+            "keywords": "Genjutsu, Inhale, Visual, Tactile"
+          },
+          "sourceText": "Rank: A-Rank Casting Time: 1 Action Range: 60 Foot Cube Duration: Concentration, up to 1 minute\nComponents: HS, CM, NT (Poison Kit) Cost: 19 Chakra Keywords: Genjutsu, Inhale, Visual, Tactile Description: As part of the activation of this jutsu, you spread the poison dust you need for this jutsu in a 30 Foot Sphere in front of you. Creatures in the target area must make a Intelligence saving throw, being under the effects of this Genjutsu on a failed save. Creatures affected by this Genjutsu are trapped inside a Forest of Poison trees unable to leave the 30ft sphere turning around and running away from the edges of the radius. For the duration, creatures who end their turn under this Genjutsu take 5d8 poison damage. At the end of each target's turn, they make a constitution save to end the Jutsu’s effect on them.\nAt Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and the damage by 2d8.",
+          "expressions": [
+            {
+              "expression": "5d8",
+              "offset": 502,
+              "context": "For the duration, creatures who end their turn under this Genjutsu take 5d8 poison damage. At the end of each target's turn, they make a constitution save to end the Jutsu’s effect on them.",
+              "section": "Base"
+            },
+            {
+              "expression": "2d8",
+              "offset": 740,
+              "context": "At Higher Ranks: For each rank you cast this jutsu above A-Rank, increase the cost of this jutsu by 3 and the damage by 2d8.",
+              "section": "At Higher Ranks"
+            }
+          ],
+          "manual": [
+            "Conditional rider instructions are preserved; choose the applicable source activity manually."
+          ],
+          "activitiesByRank": {
+            "S": [
+              {
+                "id": "n5eQu0eohRn9QaV3",
+                "type": "save",
+                "label": "Poison Forest",
+                "save": {
+                  "abilities": [
+                    "int"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false,
+                  "fourTier": true,
+                  "tiers": {
+                    "critSuccess": "Critical Success: as a success.",
+                    "success": "Success: no effect.",
+                    "failure": "Failure: under the Genjutsu.",
+                    "critFailure": "Critical Failure: as a failure."
+                  }
+                },
+                "inflicts": [],
+                "text": "Concentration: a 30-foot sphere in front of you; on a failure it is trapped in a forest of poison trees inside it.",
+                "damage": {
+                  "parts": []
+                }
+              },
+              {
+                "id": "n5egDtqxHLS75C8D",
+                "type": "damage",
+                "label": "Ending a turn trapped",
+                "damage": {
+                  "parts": [
+                    {
+                      "formula": "(5d8) + (2d8)",
+                      "type": "poison"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "n5eARsjSu624TuRH",
+                "type": "save",
+                "label": "End of each turn: Constitution",
+                "save": {
+                  "abilities": [
+                    "con"
+                  ],
+                  "dc": {
+                    "source": "discipline"
+                  },
+                  "onSuccess": "none",
+                  "resave": false
+                },
+                "inflicts": [],
+                "text": "A success ends it on the creature.",
+                "damage": {
+                  "parts": []
+                }
+              }
+            ]
+          },
+          "manualCost": false
+        }
+      }
+    },
+    "rabenda-enigmatic-storm": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5ejkCl02lPVIZWG",
+          "type": "save",
+          "label": "Rabenda: Enigmatic Storm",
+          "save": {
+            "abilities": [
+              "cha"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: resists.",
+              "success": "Success: Envenomed until the end of its next turn (the effect).",
+              "failure": "Failure: Slowed for the duration and 1 Concussed at the start of each of its turns inside (the effect).",
+              "critFailure": "Critical Failure: as a failure, 2 Concussed instead."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "slowed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Slowed"
+            }
+          ],
+          "text": "Concentration: a 10-foot radius within 30 feet (move it 30 feet as an Action); a creature starting its turn inside. Not again until the end of your next turn after it ends.",
+          "damage": {
+            "parts": []
+          }
+        },
+        {
+          "id": "n5efyCr44FzjlEBA",
+          "type": "effect",
+          "label": "Success: Envenomed",
+          "effect": {
+            "name": "Success: Envenomed",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "inflicts": [
+              {
+                "key": "envenomed",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Envenomed"
+              }
+            ]
+          }
+        },
+        {
+          "id": "n5e9dFckUEIKugWJ",
+          "type": "effect",
+          "label": "Start of a turn inside: Concussed",
+          "effect": {
+            "name": "Start of a turn inside: Concussed",
+            "target": "targets",
+            "changes": [],
+            "expires": "",
+            "seconds": 0,
+            "inflicts": [
+              {
+                "key": "concussed",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Concussed"
+              }
+            ]
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "version": 1,
+          "sourceLine": 4136,
+          "sourceHash": "1410e218bcecd3bfdc8dec4f64263dccc7412c5768778e25cd65dba873fd914d",
+          "discipline": "Genjutsu",
+          "group": "Hallucinogenic",
+          "header": {
+            "rank": "C",
+            "time": "1 Action",
+            "range": "30 feet (10-foot radius)",
+            "duration": "Concentration, up to 1 minute",
+            "cost": "7 Chakra",
+            "components": "HS, CM, NT (Poison Kit, 1 Charges)",
+            "keywords": "Genjutsu (Inhale)"
+          },
+          "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: 30 feet (10-foot radius) Duration: Concentration, up to 1 minute\nComponents: HS, CM, NT (Poison Kit, 1 Charges)\nCost: 7 Chakra Keywords: Genjutsu (Inhale) Description: You grasp a hand full of poisonous Rabenda flower buds, enhancing them with your chakra and spreading its spores into a storm filling a 10-foot radius, centered on a space you can see in range. Once this jutsu is cast, you cannot cast it again until the end of your next turn after this jutsu ends.\nAll creatures who begin their turns in this jutsu’s range must make a Charisma saving throw as their mind is overwhelmed with intruding thoughts from the Genjutsu enhanced flower buds. You can move the torrent of flower buds, as an action on each of your turns, up to 30 feet in any direction.\nCritical Success: Affected creature is able to resist this jutsu’s effects.\nSuccess: Affected creature is Envenomed until the end of their next turn.\nFailure: Affected creature becomes Slowed for the duration and at the beginning of each affected creatures turns, they gain 1 rank of Concussed, while inside the affected area.\nCritical Failure: Same as failure, but they instead gain 2 ranks of Concussed.",
+          "expressions": [],
+          "manual": [],
+          "activitiesByRank": {},
+          "manualCost": false
+        }
+      }
+    },
+    "sleep-of-the-deep": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "n5euVjyw8YTfFShl",
+          "type": "save",
+          "label": "Sleep of the Deep",
+          "save": {
+            "abilities": [
+              "wis"
+            ],
+            "dc": {
+              "source": "discipline"
+            },
+            "onSuccess": "none",
+            "resave": false,
+            "fourTier": true,
+            "tiers": {
+              "critSuccess": "Critical Success: as a success.",
+              "success": "Success: no effect.",
+              "failure": "Failure: no benefit from rest; waking from any rest it gains 1 Exhaustion, and Demoralized while it has that Exhaustion.",
+              "critFailure": "Critical Failure: as a failure."
+            }
+          },
+          "inflicts": [
+            {
+              "key": "exhaustion",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Exhaustion"
+            },
+            {
+              "key": "demoralized",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Demoralized"
+            }
+          ],
+          "text": "8 hours: any number of sleeping creatures you're aware of within 60 feet (not ones that don't sleep).",
+          "damage": {
+            "parts": []
+          }
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "version": 1,
+          "sourceLine": 4145,
+          "sourceHash": "329e54a6e860e2807b73d5b8a23127f82d91b2f61882c24616cbc2b78e916c02",
+          "discipline": "Genjutsu",
+          "group": "Hallucinogenic",
+          "header": {
+            "rank": "C",
+            "time": "1 Action",
+            "range": "60 Foot Radius",
+            "duration": "8 Hours",
+            "cost": "6 Chakra",
+            "components": "HS, CM",
+            "keywords": "Genjutsu (Auditory, Unaware)"
+          },
+          "sourceText": "Rank: C-Rank Casting Time: 1 Action Range: 60 Foot Radius Duration: 8 Hours\nComponents: HS, CM\nCost: 6 Chakra Keywords: Genjutsu (Auditory, Unaware) Description: Your chakra creeps into the dreams of others, haunting and terrifying them. Choose any number of sleeping creatures that you are aware of within range. Creatures that do not need to sleep, cannot be targeted.\nThe creature must make a wisdom saving throw. On a failed save it garners no benefits from any form of rest for the duration and when it awakens from any rest it may take, it gains 1 rank of Exhaustion and Demoralized for as long as it has any ranks of Exhaustion granted by this jutsu.",
+          "expressions": [],
+          "manual": [],
+          "activitiesByRank": {},
+          "manualCost": false
+        }
+      }
+    },
+    "slug-dance": {
+      "status": "note",
+      "rules": [
+        {
+          "key": "note",
+          "text": "Until your next Short Rest (cost can't be reduced): when targeted by a Genjutsu that calls for a save, you can choose to succeed automatically; then this jutsu ends."
+        }
+      ],
+      "activities": [],
+      "flags": {
+        "jutsuBookImport": {
+          "version": 1,
+          "sourceLine": 4197,
+          "sourceHash": "b87e0f65705a72a4745f72d5f3277b236de1c73cc056fb763eb9996eb4902639",
+          "discipline": "Genjutsu",
+          "group": "Hallucinogenic",
+          "header": {
+            "rank": "S",
+            "time": "1 Action",
+            "range": "Self",
+            "duration": "Next Short Rest",
+            "cost": "30 Chakra",
+            "components": "HS, CM, NT (Poison Kit)",
+            "keywords": "Genjutsu, Fuinjutsu, Kinjutsu"
+          },
+          "sourceText": "Rank: S-Rank Casting Time: 1 Action Range: Self Duration: Next Short Rest\nComponents: HS, CM, NT (Poison Kit) Cost: 30 Chakra Keywords: Genjutsu, Fuinjutsu, Kinjutsu Description: You place yourself under a powerful Genjutsu designed to snap you out of any other Genjutsu effect you may be under at any point of time by transferring the Genjutsu to a Chakra Seal you have prepared. You cannot reduce the cost of this jutsu. When targeted by an Jutsu or Art that requires a Saving throw with the Genjutsu Keyword, you can choose to automatically succeed. This jutsu then ends.",
+          "expressions": [],
+          "manual": [],
+          "activitiesByRank": {},
+          "manualCost": false
+        }
+      }
+    },
+    "unlimited-pleasure": {
+      "status": "partial",
+      "activities": [
+        {
+          "id": "ampacb492d16269d",
+          "type": "effect",
+          "label": "Unlimited Pleasure",
+          "effect": {
+            "name": "Unlimited Pleasure",
+            "target": "targets",
+            "amp": "jutsu-unlimited-pleasure"
+          },
+          "text": "Starts the jutsu's Amp at the rank it was cast at. Target the creatures first."
+        }
+      ],
+      "flags": {
+        "jutsuBookImport": {
+          "version": 1,
+          "sourceLine": 4191,
+          "sourceHash": "0b9cd56887bf7fbef8a57d10f44454f551b3f421daebb7a83e16fd78b8d2ea42",
+          "discipline": "Genjutsu",
+          "group": "Hallucinogenic",
+          "header": {
+            "rank": "A",
+            "time": "1 Action",
+            "range": "60 Feet",
+            "duration": "Concentration, Up to 1 minute",
+            "cost": "18 Chakra",
+            "components": "HS, CM, NT (Poison Kit)",
+            "keywords": "Genjutsu, Tactile"
+          },
+          "sourceText": "Rank: A-Rank Casting Time: 1 Action Range: 60 Feet Duration: Concentration, Up to 1 minute\nComponents: HS, CM, NT (Poison Kit) Cost: 18 Chakra Keywords: Genjutsu, Tactile Description: You target willing creature(s) and maximize their nervous systems sensitivity to pleasure and recouperation.\nThree creature(s) you can see within range who would gain temporary hit points, also regains a number of hit points equal to the number of temporary hit points gained.\nAt Higher Ranks: For each rank you cast this jutsu above A-Rank increase the cost of this jutsu by 3 and the number of creatures this jutsu can target by +1.",
+          "expressions": [],
+          "manual": [
+            "Conditional rider instructions are preserved; choose the applicable source activity manually."
+          ],
+          "activitiesByRank": {},
+          "manualCost": false
+        }
+      }
+    }
+  }
+}

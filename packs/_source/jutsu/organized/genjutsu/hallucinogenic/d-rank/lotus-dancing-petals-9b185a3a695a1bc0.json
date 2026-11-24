@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eHTB72RUWlTCbJ",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Lotus: Dancing Petals",
         "save": {
           "abilities": [
             "cha"
@@ -99,35 +98,45 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist most of this jutsu’s effects.",
-            "success": "On a success, this jutsu’s effects end.",
-            "failure": "failure, but if the target attempts the ability check to end its effects, all creatures who are currently unaffected by this jutsu, within 10 feet of the retching target must also make a Charisma saving throw, as if they were the original targets of this jutsu.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists most of it.",
+            "success": "Success: 2d6 poison.",
+            "failure": "Failure: 3d6 poison; it loses concentration on its ninjutsu for the duration; as an action, a DC 10 Constitution check ends it.",
+            "critFailure": "Critical Failure: as a failure; trying the check makes unaffected creatures within 10 feet save as if targeted."
+          }
         },
+        "inflicts": [],
+        "text": "1 minute: creatures within 10 feet of you.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "Success: Affected creature is able to resist most of this jutsu’s effects, but still takes 2d6 poison damage."
+        "id": "n5eP0RjGVq6AwyOO",
+        "type": "damage",
+        "label": "Success",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "poison"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "3d6",
-        "roll": {
-          "formula": "3d6",
-          "note": "Failure: Affected creature inhales a mass of poisonous petal pollen taking 3d6 poison damage and begin to retch in an attempt to expel the pollen from within, losing concentration of any ninjutsu they are concentrating on for the duration. As an action on an affected creatures turn, they can make a DC 10 Constitution check. On a success, this jutsu’s effects end."
+        "id": "n5e9pr9NO7BCtFzB",
+        "type": "damage",
+        "label": "Failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "poison"
+            }
+          ]
         }
       }
     ],
@@ -208,7 +217,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5eerYeblcK91isN"

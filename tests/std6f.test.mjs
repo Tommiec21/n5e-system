@@ -334,3 +334,32 @@ test("STD6f F10 Lightning: every jutsu reviewed; Lightning Beast and Lightning D
   assert.equal(claw.flags.n5e.jutsuBookImport.activitiesByRank.B[0].attack.count, 2);
   assert.equal(claw.flags.n5e.jutsuBookImport.activitiesByRank.A[0].damage.parts[0].formula, "6d6");
 });
+
+test("STD6f F11 Phantasm and Hallucinogenic: every jutsu reviewed; four-tier Genjutsu saves; Dance Macabre places 4 Dark Phantasms", async () => {
+  for ( const [section, count] of [["genjutsu/phantasm", 53], ["genjutsu/hallucinogenic", 22]] ) {
+    const t = table(section);
+    const items = sectionJutsu(section, t.ranks);
+    assert.equal(items.size, count, section);
+    for ( const [id, { doc }] of items ) {
+      assert.ok(t.features[id], id);
+      assert.equal(doc.flags.n5e.reviewed, true, id);
+    }
+  }
+  assert.deepEqual(tableProblems().filter(p => p.startsWith("jutsu/")), []);
+  const p = id => jutsu("genjutsu/phantasm", id), h = id => jutsu("genjutsu/hallucinogenic", id);
+  for ( const [j, id] of [[p, "gaslight"], [p, "semblance-of-dread"], [h, "unlimited-pleasure"]] ) assert.ok(j(id).system.activities.some(a => a.effect?.amp === `jutsu-${id}`), id);
+  // Genjutsu saves carry their four tiers as text.
+  const fear = p("cause-fear").system.activities[0];
+  assert.equal(fear.save.fourTier, true);
+  assert.match(fear.save.tiers.failure, /^Failure:/);
+  assert.equal(p("cause-fear").flags.n5e.jutsuBookImport.activitiesByRank.S[0].inflicts[0].ranks, 3);
+  // Damage that differs by tier is one button per tier.
+  assert.deepEqual(p("corruption-abhorrent-apparition").system.activities.filter(a => a.type === "damage").map(a => a.damage.parts[0].formula), ["2d8", "4d8", "7d8"]);
+  // Phantom Dragon's Sealed comes from Draconic Madness on a hit, not the save.
+  assert.ok(!p("phantom-dragon").system.activities.find(a => a.type === "save").inflicts?.length);
+  const { SUMMONS } = await import("../tools/content/build-summons.mjs");
+  const s = p("dance-macabre").system.activities.find(a => a.type === "summon");
+  assert.equal(s.summon.uuid, `Compendium.n5e.summons.Actor.${SUMMONS.darkPhantasm._id}`);
+  assert.equal(s.summon.count, 4);
+  assert.deepEqual([SUMMONS.darkPhantasm.system.attributes.ac.flat, SUMMONS.darkPhantasm.system.hpMax], [20, 10]);
+});

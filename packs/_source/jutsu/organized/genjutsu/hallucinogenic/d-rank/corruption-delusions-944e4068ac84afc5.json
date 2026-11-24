@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e0kjlPBAFE0tiP",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Corruption: Delusions",
         "save": {
           "abilities": [
             "cha"
@@ -99,16 +98,39 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature is able to resist this jutsu’s effects.",
-            "failure": "Failure: Affected creature is marked with the seal of desires as they begin to see flashes and visions of the things they want most in life causing them to freeze in place, focusing on the things before them. For the duration, at the beginning a marked creatures turn remake the saving throw, being Dazed on a failed save ending this jutsu’s effect on them.",
-            "critFailure": "Critical Failure: Same as failure but the seal remains until the affected creature passes their save or the duration expires."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists.",
+            "failure": "Failure: marked; at the start of each of its turns it resaves: a failure Dazes it (the effect), a success ends it.",
+            "critFailure": "Critical Failure: as a failure; the mark stays until it succeeds or the duration ends."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: a creature you can see within 60 feet. An ally instead gets a quick rest: it can spend Hit Dice to heal.",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5ez9UYuKhjN4fiB",
+        "type": "effect",
+        "label": "Marked, failed a resave: Dazed",
+        "effect": {
+          "name": "Marked, failed a resave: Dazed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            }
+          ]
         }
       }
     ],
@@ -176,7 +198,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5eerYeblcK91isN"

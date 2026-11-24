@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eT2wHlESpFAe0c",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Corruption: Mind Mist",
         "save": {
           "abilities": [
             "wis"
@@ -98,14 +97,30 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature is able to resist this jutsu’s effects.",
-            "failure": "failure, and the affected creature also reduces their speed by 10 Feet.",
-            "critFailure": "Critical Failure: Same a"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: resists.",
+            "failure": "Failure: Envenomed and Weakened for the duration.",
+            "critFailure": "Critical Failure: as a failure, and −10 feet speed."
+          }
         },
+        "inflicts": [
+          {
+            "key": "envenomed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Envenomed"
+          },
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          }
+        ],
+        "text": "Concentration: a creature within 30 feet. +1 rank of Envenomed or Weakened per rank (by hand).",
         "damage": {
           "parts": []
         }
@@ -177,7 +192,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ce2ca0a8e089b9d2"

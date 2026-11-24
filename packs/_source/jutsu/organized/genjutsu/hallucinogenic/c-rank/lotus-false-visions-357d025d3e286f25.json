@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e6GJSVzlWurhOK",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Lotus: False Visions",
         "save": {
           "abilities": [
             "int"
@@ -98,25 +97,35 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "on a success.",
-            "failure": "Failure: Affected creature becomes Blinded, but begins to hallucinate seeing only what you declare they see. Describe what the affected creature will see other creatures do on their respective turns. This can be anywhere from attempting to cast a jutsu, attempt to attack them, go in another direction, attempt to hide or anything they would be able to see. When they take damage, the damage is dealt as normal, and they remake the saving throw ending this jutsu",
-            "critFailure": "Critical Failure: Affected creature suffers the effects of a failure but instead they make their saving throw to end this jutsu with a 1d4 penalty to the result."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: resists.",
+            "failure": "Failure: Blinded, it sees only what you describe; taking damage, it resaves and ends it on a success.",
+            "critFailure": "Critical Failure: as a failure; its resave takes −1d4."
+          }
         },
+        "inflicts": [
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          }
+        ],
+        "text": "Concentration: a creature you can see within 90 feet (+1 per rank).",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
+        "id": "n5eqUr8QDZLmLwCU",
         "type": "roll",
-        "label": "1d4",
+        "label": "Critical failure: resave penalty",
         "roll": {
           "formula": "1d4",
-          "note": "Critical Failure: Affected creature suffers the effects of a failure but instead they make their saving throw to end this jutsu with a 1d4 penalty to the result."
+          "note": ""
         }
       }
     ],
@@ -193,7 +202,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b7e33102dfc09350"

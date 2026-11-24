@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e5cCSO6oapqWrh",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Shadow Monsters",
         "save": {
           "abilities": [
             "wis"
@@ -98,25 +97,35 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "On a success, they end the Berserk condition.",
-            "failure": "failure, but you and up to 3 other creatures of your choice transform to it and begin to look like its allies as it mentally sees you as allied creatures for the duration. Affected creature makes a Wisdom saving throw with a d4 penalty if they deal damage to one of their allies.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: resists.",
+            "failure": "Failure: Berserk for the duration, its allies look like monsters; damaging an ally, it resaves and ends Berserk on a success.",
+            "critFailure": "Critical Failure: as a failure, and you and up to 3 creatures look like its allies; its resave takes −1d4."
+          }
         },
+        "inflicts": [
+          {
+            "key": "berserk",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Berserk"
+          }
+        ],
+        "text": "Concentration: a creature within 120 feet (+1 per rank).",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
+        "id": "n5erVuYVfIFpReMQ",
         "type": "roll",
-        "label": "d4",
+        "label": "Critical failure: resave penalty",
         "roll": {
-          "formula": "d4",
-          "note": "Affected creature makes a Wisdom saving throw with a d4 penalty if they deal damage to one of their allies. On a success, they end the Berserk condition."
+          "formula": "1d4",
+          "note": ""
         }
       }
     ],
@@ -193,7 +202,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "68fe90231eaf9f92"

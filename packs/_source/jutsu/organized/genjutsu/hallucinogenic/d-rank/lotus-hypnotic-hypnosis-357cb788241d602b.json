@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eHesUkV47bxzIC",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Lotus: Hypnotic Hypnosis",
         "save": {
           "abilities": [
             "wis"
@@ -98,17 +97,59 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
-            "success": "Success: Affected creature is Slowed until the end of the next turn as they are only slightly drowsy.",
-            "failure": "Failure: Affected creature begins to daydream. They become blind and Deafened to all events and happenings that is further than 5 feet away from them. Anything that would affect them or the area within 5 feet of them would break them from this day dream.",
-            "critFailure": "Critical Failure: Affected creature falls into a hypnotic dream rending them functionally unconscious for the next 10 minutes. While in this hypnotic dream a creature can be awoken by yells, screams or loud sounds or by being physically shaken or taking damage of any type. They can also respond to only you and your questions answering truthfully."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: Slowed until the end of its next turn (the effect).",
+            "failure": "Failure: daydreams: blind and deaf beyond 5 feet (C-Rank: deaf beyond 5 feet; B-Rank: it answers you truthfully); anything affecting it or within 5 feet breaks it.",
+            "critFailure": "Critical Failure: functionally Unconscious for 10 minutes (the effect); yells, shaking or damage wake it; it answers only you, truthfully."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: a 15-foot cube within 60 feet (A-Rank: a second cube); creatures in combat are immune.",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5ekFnxOqpIzRblc",
+        "type": "effect",
+        "label": "Success: Slowed",
+        "effect": {
+          "name": "Success: Slowed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "slowed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Slowed"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eMDSwH3k3f95io",
+        "type": "effect",
+        "label": "Critical failure: Unconscious",
+        "effect": {
+          "name": "Critical failure: Unconscious",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "unconscious",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Unconscious"
+            }
+          ]
         }
       }
     ],
@@ -178,7 +219,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5eerYeblcK91isN"

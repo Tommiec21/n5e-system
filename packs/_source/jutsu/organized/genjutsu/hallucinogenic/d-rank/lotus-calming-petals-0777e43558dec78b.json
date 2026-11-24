@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eU75EkvRrG4gr7",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Lotus: Calming Petals",
         "save": {
           "abilities": [
             "cha"
@@ -98,14 +97,24 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature is able to resist most of this jutsu’s effects.",
-            "failure": "failure, but this jutsu’s duration is increased to 10 minutes.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists most of it.",
+            "failure": "Failure: Charmed, every creature it sees its Compeller, for the duration.",
+            "critFailure": "Critical Failure: as a failure, for 10 minutes."
+          }
         },
+        "inflicts": [
+          {
+            "key": "charmed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Charmed"
+          }
+        ],
+        "text": "1 minute: a 20-foot cube from you. A creature that failed this jutsu's save can't be affected again for 1 minute.",
         "damage": {
           "parts": []
         }
@@ -175,7 +184,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5eerYeblcK91isN"

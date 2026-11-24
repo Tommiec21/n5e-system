@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e5r90bvznbP3sJ",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Corruption: Vitriol",
         "save": {
           "abilities": [
             "cha"
@@ -98,17 +97,46 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist most of this jutsu’s effects.",
-            "success": "Success: Affected creature is Weakened until the end of their next turn.",
-            "failure": "failure, but the attack roll penalty becomes -4.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists most of it.",
+            "success": "Success: Weakened until the end of its next turn (the effect).",
+            "failure": "Failure: −2 to Strength and Dexterity attacks and 1 Weakened for the duration.",
+            "critFailure": "Critical Failure: as a failure, −4 instead."
+          }
         },
+        "inflicts": [
+          {
+            "key": "weakened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Weakened"
+          }
+        ],
+        "text": "Concentration: a creature within 60 feet (+1 per rank).",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5ehUQh5CXqbhjzJ",
+        "type": "effect",
+        "label": "Success: Weakened",
+        "effect": {
+          "name": "Success: Weakened",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "weakened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Weakened"
+            }
+          ]
         }
       }
     ],
@@ -178,7 +206,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ce2ca0a8e089b9d2"

@@ -86,10 +86,31 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5eFixXv8xujFEf7",
+        "type": "save",
+        "label": "Sanctuary",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: it attacks normally.",
+            "failure": "Failure: it picks a new target or loses the attack or jutsu.",
+            "critFailure": "Critical Failure: as a failure."
+          }
+        },
+        "inflicts": [],
+        "text": "1 minute: a creature within 30 feet (+1 per rank) is warded; a creature targeting it with an attack or jutsu (not areas) saves first. Ends if the warded creature attacks or casts at a creature.",
+        "damage": {
+          "parts": []
+        }
       }
     ],
     "featureType": "active",
@@ -158,7 +179,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ce2ca0a8e089b9d2"

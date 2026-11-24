@@ -88,10 +88,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eMxmS6ELBrXSuQ",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Maddening Shadows",
         "save": {
           "abilities": [
             "cha"
@@ -100,44 +99,78 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
-            "success": "Success: Affected creature is able to resist this Genjutsu’s effects, taking only 3d8 psychic damage.",
-            "failure": "Failure: Affected creature takes 6d8 psychic damage. A creature whose HP is reduced to 0 as a result of this jutsu has its HP instead reduced to 1.",
-            "critFailure": "Critical Failure: Affected creature takes 8d8 psychic damage. A creature whose HP is reduced to 0 as a result of this jutsu has its HP instead reduced to 1 and they gain 5 ranks of Demoralized for the next 24 hours or until they have a Jutsu with the medical keyword of B-Rank or higher that can end the fear condition cast on them."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: 3d8 psychic.",
+            "failure": "Failure: 6d8 psychic.",
+            "critFailure": "Critical Failure: 8d8 psychic and 5 Demoralized for 24 hours (or a B-Rank or higher Medical jutsu ends it)."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: a sphere of darkness at a point within 150 feet (darkvision and chakra sight can't see through); a creature starting its turn inside. Dropped to 0 hit points by it: 1 instead.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "3d8",
-        "roll": {
-          "formula": "3d8",
-          "note": "Success: Affected creature is able to resist this Genjutsu’s effects, taking only 3d8 psychic damage."
+        "id": "n5e1f7btCWuk7m4o",
+        "type": "damage",
+        "label": "Success",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "6d8",
-        "roll": {
-          "formula": "6d8",
-          "note": "Failure: Affected creature takes 6d8 psychic damage. A creature whose HP is reduced to 0 as a result of this jutsu has its HP instead reduced to 1."
+        "id": "n5ei1fqv0VCqmARY",
+        "type": "damage",
+        "label": "Failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d8",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "8d8",
-        "roll": {
-          "formula": "8d8",
-          "note": "Critical Failure: Affected creature takes 8d8 psychic damage. A creature whose HP is reduced to 0 as a result of this jutsu has its HP instead reduced to 1 and they gain 5 ranks of Demoralized for the next 24 hours or until they have a Jutsu with the medical keyword of B-Rank or higher that can end the fear condition cast on them."
+        "id": "n5eHrl4heem2LDwU",
+        "type": "damage",
+        "label": "Critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "8d8",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eHVPgFShsy16ta",
+        "type": "effect",
+        "label": "Critical failure: 5 Demoralized",
+        "effect": {
+          "name": "Critical failure: 5 Demoralized",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "demoralized",
+              "kind": "condition",
+              "ranks": 5,
+              "label": "Demoralized"
+            }
+          ]
         }
       }
     ],
@@ -230,9 +263,187 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eMxmS6ELBrXSuQ",
+              "type": "save",
+              "label": "Maddening Shadows",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 3d8 psychic.",
+                  "failure": "Failure: 6d8 psychic.",
+                  "critFailure": "Critical Failure: 8d8 psychic and 5 Demoralized for 24 hours (or a B-Rank or higher Medical jutsu ends it)."
+                }
+              },
+              "inflicts": [],
+              "text": "Concentration: a sphere of darkness at a point within 150 feet (darkvision and chakra sight can't see through); a creature starting its turn inside. Dropped to 0 hit points by it: 1 instead.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e1f7btCWuk7m4o",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (1d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ei1fqv0VCqmARY",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d8) + (1d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eHrl4heem2LDwU",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(8d8) + (1d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eHVPgFShsy16ta",
+              "type": "effect",
+              "label": "Critical failure: 5 Demoralized",
+              "effect": {
+                "name": "Critical failure: 5 Demoralized",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "demoralized",
+                    "kind": "condition",
+                    "ranks": 5,
+                    "label": "Demoralized"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eMxmS6ELBrXSuQ",
+              "type": "save",
+              "label": "Maddening Shadows",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 3d8 psychic.",
+                  "failure": "Failure: 6d8 psychic.",
+                  "critFailure": "Critical Failure: 8d8 psychic and 5 Demoralized for 24 hours (or a B-Rank or higher Medical jutsu ends it)."
+                }
+              },
+              "inflicts": [],
+              "text": "Concentration: a sphere of darkness at a point within 150 feet (darkvision and chakra sight can't see through); a creature starting its turn inside. Dropped to 0 hit points by it: 1 instead.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e1f7btCWuk7m4o",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (2d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ei1fqv0VCqmARY",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d8) + (2d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eHrl4heem2LDwU",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(8d8) + (2d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eHVPgFShsy16ta",
+              "type": "effect",
+              "label": "Critical failure: 5 Demoralized",
+              "effect": {
+                "name": "Critical failure: 5 Demoralized",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "demoralized",
+                    "kind": "condition",
+                    "ranks": 5,
+                    "label": "Demoralized"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "779eb1d0d06757f5"

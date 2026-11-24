@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5erPp3QGNIVS5Pk",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Unmistakable Fear",
         "save": {
           "abilities": [
             "cha"
@@ -99,35 +98,52 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
-            "success": "Success: Affected creature drops whatever it is holding.",
-            "failure": "Failure, but affected creatures instead take 6d6 psychic damage.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: it drops what it holds.",
+            "failure": "Failure: it drops what it holds and gains 2 Demoralized; for the duration, psychic damage to a Demoralized creature deals 4d6 more.",
+            "critFailure": "Critical Failure: as a failure, 6d6 more instead."
+          }
         },
+        "inflicts": [
+          {
+            "key": "demoralized",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Demoralized"
+          }
+        ],
+        "text": "Concentration: a 90-foot cube from you.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "4d6",
-        "roll": {
-          "formula": "4d6",
-          "note": "For the duration, when a creature with ranks of Demoralized would take psychic damage, they take an additional 4d6 psychic damage."
+        "id": "n5e7jBFRTIIKWrZv",
+        "type": "damage",
+        "label": "Failure: extra psychic",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "6d6",
-        "roll": {
-          "formula": "6d6",
-          "note": "Critical Failure: Same as Failure, but affected creatures instead take 6d6 psychic damage."
+        "id": "n5eE7oT8r5Tpt3yG",
+        "type": "damage",
+        "label": "Critical failure: extra psychic",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": "psychic"
+            }
+          ]
         }
       }
     ],
@@ -214,9 +230,135 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5erPp3QGNIVS5Pk",
+              "type": "save",
+              "label": "Unmistakable Fear",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: it drops what it holds.",
+                  "failure": "Failure: it drops what it holds and gains 2 Demoralized; for the duration, psychic damage to a Demoralized creature deals 4d6 more.",
+                  "critFailure": "Critical Failure: as a failure, 6d6 more instead."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "demoralized",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Demoralized"
+                }
+              ],
+              "text": "Concentration: a 90-foot cube from you.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e7jBFRTIIKWrZv",
+              "type": "damage",
+              "label": "Failure: extra psychic",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eE7oT8r5Tpt3yG",
+              "type": "damage",
+              "label": "Critical failure: extra psychic",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (1d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5erPp3QGNIVS5Pk",
+              "type": "save",
+              "label": "Unmistakable Fear",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: it drops what it holds.",
+                  "failure": "Failure: it drops what it holds and gains 2 Demoralized; for the duration, psychic damage to a Demoralized creature deals 4d6 more.",
+                  "critFailure": "Critical Failure: as a failure, 6d6 more instead."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "demoralized",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Demoralized"
+                }
+              ],
+              "text": "Concentration: a 90-foot cube from you.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e7jBFRTIIKWrZv",
+              "type": "damage",
+              "label": "Failure: extra psychic",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eE7oT8r5Tpt3yG",
+              "type": "damage",
+              "label": "Critical failure: extra psychic",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "779eb1d0d06757f5"

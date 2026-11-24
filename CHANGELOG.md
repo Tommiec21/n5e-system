@@ -1,3 +1,11 @@
+## 0.97.0-alpha.1 — STD6f F11 Phantasm and Hallucinogenic Genjutsu; Dark Phantasm
+
+King 2026-11-24: "Next batch." Phantasm (53) and Hallucinogenic (22) Genjutsu reviewed at every rank (70 partly automated, 5 notes only). Review tables docs/jutsu/genjutsu-phantasm-automation.md and genjutsu-hallucinogenic-automation.md; spec docs/STD6f_SPEC.md (F11).
+
+- **Summon:** Dark Phantasm from the source book's Summon Stat Blocks (Summons > Genjutsu); Dance Macabre places 4.
+- **Four-tier saves:** each Genjutsu save shows its four results; Success and Critical Failure conditions and per-tier damage are their own buttons.
+- **Fixed buttons:** loose rolls are damage, temporary hit point and penalty buttons; Phantom Dragon's Sealed comes from Draconic Madness on a hit; three Amps kept.
+
 ## 0.96.0-alpha.1 — STD6f F10 Lightning Ninjutsu; Lightning Beast and Lightning Dragon
 
 King 2026-11-24: "Next batch." Lightning Release Ninjutsu (44) reviewed at every rank (39 partly automated, 5 notes only). Review table docs/jutsu/ninjutsu-lightning-release-automation.md; spec docs/STD6f_SPEC.md (F10).

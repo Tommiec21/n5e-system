@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5evekYUcF049e4y",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Die",
         "save": {
           "abilities": [
             "cha"
@@ -99,26 +98,52 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this Jutsu's effects.",
-            "success": "Success: Affected creature is Confused until the end of their next turn.",
-            "failure": "Failure: On the affected creatures next turn, they must cast a jutsu or make an attack of the caster’s choice, targeting themselves. If commanded to perform an attack they do not know or are able to perform, they perform the last offensive damaging attack they used in combat, but on themselves. If they have not performed any damaging actions this combat, they instead take 8d10 psychic damage.",
-            "critFailure": "Critical Failure: Same as Failure but affected creature automatically scores a critical hit against themselves on the first attack made."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: Confused until the end of its next turn (the effect).",
+            "failure": "Failure: on its next turn it casts a jutsu or makes an attack of your choice at itself (one it can't: its last damaging attack; none this combat: 8d10 psychic).",
+            "critFailure": "Critical Failure: as a failure, and its first attack on itself is a critical hit."
+          }
         },
+        "inflicts": [],
+        "text": "Creatures that see and hear you within 30 feet.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "8d10",
-        "roll": {
-          "formula": "8d10",
-          "note": "If they have not performed any damaging actions this combat, they instead take 8d10 psychic damage."
+        "id": "n5e3L3I37ja0IrTu",
+        "type": "effect",
+        "label": "Success: Confused",
+        "effect": {
+          "name": "Success: Confused",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ePvOUCPWIyPWv3",
+        "type": "damage",
+        "label": "No damaging action this combat",
+        "damage": {
+          "parts": [
+            {
+              "formula": "8d10",
+              "type": "psychic"
+            }
+          ]
         }
       }
     ],
@@ -193,7 +218,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "31317d7b8ae082be"

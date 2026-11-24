@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eWG9OVTfI67QuF",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Request of the Damned",
         "save": {
           "abilities": [
             "cha"
@@ -98,17 +97,39 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
-            "success": "on a success.",
-            "failure": "failure, but they instead only remake their saving throw when they take damage.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: Confused until the end of its next turn (the effect).",
+            "failure": "Failure: it commits its Action to the task; resave at the end of each of its turns.",
+            "critFailure": "Critical Failure: as a failure; it resaves only when it takes damage."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: a command of up to 25 words to a named creature you can see within 90 feet (+1 per rank) that hears you; it must be doable within a minute.",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5e4IDdxJLIObKFj",
+        "type": "effect",
+        "label": "Success: Confused",
+        "effect": {
+          "name": "Success: Confused",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            }
+          ]
         }
       }
     ],
@@ -178,7 +199,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "779eb1d0d06757f5"

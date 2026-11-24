@@ -88,10 +88,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eXtGST3dosaFI1",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Corruption: Alienation",
         "save": {
           "abilities": [
             "int"
@@ -100,26 +99,32 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature begins to see the world shift slightly becoming unable to take the dash or dodge actions until the end of their next turn.",
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
-            "failure": "Failure: Affected creature loses the ability to communicated with or understand others for the duration and feels the world is closing in on it as it cannot take the Dash or Dodge actions and attacks or checks it makes are at disadvantage for the duration.",
-            "critFailure": "Critical Failure: Same as failure and the affected creature suffers a mental break taking 3d12 psychic damage at the beginning of each of its turns."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: no Dash or Dodge until the end of its next turn.",
+            "failure": "Failure: it can't communicate or understand others, no Dash or Dodge, and its attacks and checks are at disadvantage.",
+            "critFailure": "Critical Failure: as a failure, and 3d12 psychic at the start of each of its turns."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: a creature within 60 feet (A-Rank: +1); resave at the end of each of its turns.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "3d12",
-        "roll": {
-          "formula": "3d12",
-          "note": "Critical Failure: Same as failure and the affected creature suffers a mental break taking 3d12 psychic damage at the beginning of each of its turns."
+        "id": "n5eSd7bkJPjQBgjG",
+        "type": "damage",
+        "label": "Critical failure: start of each turn",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d12",
+              "type": "psychic"
+            }
+          ]
         }
       }
     ],
@@ -196,7 +201,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "68fe90231eaf9f92"

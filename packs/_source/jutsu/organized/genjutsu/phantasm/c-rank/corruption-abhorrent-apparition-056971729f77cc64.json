@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5emJ2VqL3P5useQ",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Abhorrent Apparition",
         "save": {
           "abilities": [
             "int"
@@ -99,44 +98,58 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this Jutsu's effects.",
-            "success": "on a success.",
-            "failure": "failure, but the affected creature takes 7d8 psychic damage instead.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: 2d8 psychic.",
+            "failure": "Failure: 4d8 psychic; before the end of your next turn, when it next sees an ally cast a jutsu, it uses its reaction to attack that ally (moving up to 15 feet); resave at the end of each of its turns.",
+            "critFailure": "Critical Failure: as a failure, 7d8 psychic instead."
+          }
         },
+        "inflicts": [],
+        "text": "Creatures (up to your proficiency bonus) that see you within 90 feet.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d8",
-        "roll": {
-          "formula": "2d8",
-          "note": "Success: Affected creature takes 2d8 psychic damage."
+        "id": "n5eeKoAUX0vy9Ddu",
+        "type": "damage",
+        "label": "Success",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d8",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "4d8",
-        "roll": {
-          "formula": "4d8",
-          "note": "Failure: Affected creature takes 4d8 psychic damage and before the end of your next turn, the next time the affected creature see’s their allies cast a jutsu, it must spend its reaction to take the Attack action, with a weapon or unarmed attack whichever has the larger damage dice and can reach, against the triggering creature. If the target is not in the attacking creature range, they move up to 15 feet closer as part of the reaction. An affected creature remakes saving throws at the end of each of its turns, ending this jutsu on a success."
+        "id": "n5emTkDsfepNUxJx",
+        "type": "damage",
+        "label": "Failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "7d8",
-        "roll": {
-          "formula": "7d8",
-          "note": "Critical Failure: Same as failure, but the affected creature takes 7d8 psychic damage instead."
+        "id": "n5ebvTgZ6RaCtv1n",
+        "type": "damage",
+        "label": "Critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "7d8",
+              "type": "psychic"
+            }
+          ]
         }
       }
     ],
@@ -223,7 +236,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "68fe90231eaf9f92"

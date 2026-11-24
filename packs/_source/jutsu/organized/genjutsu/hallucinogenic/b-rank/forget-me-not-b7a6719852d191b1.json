@@ -86,10 +86,64 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5eT79pyKsPSzyt4",
+        "type": "save",
+        "label": "Forget Me Not: Constitution",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: no effect.",
+            "failure": "Failure: Envenomed for 1 hour, and the next save at disadvantage.",
+            "critFailure": "Critical Failure: as a failure."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "envenomed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Envenomed"
+          }
+        ],
+        "text": "Creatures except you within 5 feet of the released flower: Constitution, then Intelligence.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5e6lTZVHo30iXsm",
+        "type": "save",
+        "label": "Forget Me Not: Intelligence",
+        "save": {
+          "abilities": [
+            "int"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: no effect.",
+            "failure": "Failure: the last 24 hours are a haze for 1 hour (remembering: an Intelligence save at disadvantage; A-Rank: permanent until Dispelled).",
+            "critFailure": "Critical Failure: as a failure."
+          }
+        },
+        "inflicts": [],
+        "damage": {
+          "parts": []
+        }
       }
     ],
     "featureType": "active",
@@ -158,7 +212,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "1f4ded8719811acd"

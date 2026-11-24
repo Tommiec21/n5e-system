@@ -758,8 +758,37 @@ const lightningDragon = actor("lightning-dragon", "Lightning Dragon", lightning.
 ], { "details.level": "@level", ...NIN }, "icons/svg/mystery-man-black.svg");
 lightningDragon.prototypeToken.width = lightningDragon.prototypeToken.height = 2;
 
+// Genjutsu summons (STD6f F11), from the Summon Stat Blocks section (Genjutsu Summons).
+const genjutsuJutsu = folder("Genjutsu", null, "genjutsu");
+const GEN = { "bonuses.attack.gen": "@attack.gen - @prof", "bonuses.saveDC.gen": "@dc.gen - 8 - @prof" };
+const genSave = (seed, label, ab, extra = {}) => act(seed, label, "save", { save: { abilities: [ab], dc: { source: "gen" }, onSuccess: "none", resave: false, fourTier: true, tiers: extra.tiers ?? {} },
+  ...(extra.inflicts ? { inflicts: extra.inflicts } : {}), ...(extra.text ? { text: extra.text } : {}) });
+const darkPhantasm = actor("dark-phantasm", "Dark Phantasm", genjutsuJutsu._id, {
+  details: { build: "character", level: 1, template: "summon", creatureType: "construct", blurb: "Genjutsu: Dance Macabre (A-Rank)", summonRole: "Dark Phantasm",
+    biography: html("<p><em>Dance Macabre (A-Rank Genjutsu, concentration up to 10 minutes) conjures 4.</em> It uses your Genjutsu attack bonus and save DC; you command them as a Bonus Action, with the same or different orders.</p>",
+      "<p><strong>Medium Construct.</strong> <strong>Armor Class</strong> 20 · <strong>Hit Points</strong> 10 · <strong>Speed</strong> 30 ft.</p>",
+      `<p><strong>Abilities</strong> ${statLine([2, 6, 0, -5, 0, -5], [1, 9, 1, -5, 0, -5])}. <strong>Damage Immunities</strong> all except psychic, force and necrotic. <strong>Condition Immunities</strong> all. <strong>Senses</strong> Darkvision 60 ft., passive Perception 10.</p>`,
+      "<p><strong>Linked to you when summoned:</strong> your Genjutsu attack bonus and save DC.</p>") },
+  abilities: mods([2, 6, 0, -5, 0, -5]),
+  attributes: { ac: { calc: "flat", flat: 20, formula: "" }, init: { bonus: "" } },
+  traits: { size: "medium", immune: DAMAGE.filter(t => !["psychic", "force", "necrotic"].includes(t)), conditionImmune: CONDITIONS, stateImmune: STATES,
+    speed: { walk: 30, climb: 0, swim: 0, fly: 0, burrow: 0, hover: false }, senses: { darkvision: 60 } },
+  hpMax: 10, cpMax: 0, diesAtZero: true
+}, id => [
+  item(id, "Illusory Construct", "npcTraits", html("The phantasm can move through other creatures and objects as if they were difficult terrain. It takes 5 damage if it ends its turn inside an object.")),
+  item(id, "Claws", "npcStrikes", html("<em>Melee Weapon Attack:</em> your Genjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 2d6 + 4 psychic damage. On a critical hit, the target gains +1 rank of Demoralized."),
+    [act("dark-phantasm", "Claws", "attack", { attack: { discipline: "gen", range: "melee", count: 1, bonus: "0" }, damage: { parts: [{ formula: "2d6 + 4", type: "psychic" }] }, text: "Critical hit: +1 Demoralized (the effect)." }),
+     act("dark-phantasm-crit", "Critical hit: Demoralized", "effect", { effect: { name: "Claws", target: "targets", changes: [], expires: "", seconds: 0, inflicts: [inf("demoralized")] } })]),
+  item(id, "Phantom Fangs (1/Summon)", "npcAbilities", html("The Dark Phantasm opens its maw revealing a twisted jaw of incomprehensible darkness, teeth and misery. All creatures in a 15-foot cone from it that aren't Blinded must make a Wisdom saving throw against your Genjutsu save DC. Once it uses this ability, it dispels itself.",
+    "<strong>Success:</strong> resists. <strong>Failure:</strong> 3d6 psychic damage and 1 rank of Berserk. <strong>Critical Failure:</strong> 4d6 psychic damage and 3 ranks of Berserk."),
+    [genSave("dark-phantasm", "Phantom Fangs", "wis", { inflicts: [inf("berserk")], tiers: { critSuccess: "Critical Success: resists.", success: "Success: resists.", failure: "Failure: 3d6 psychic and 1 Berserk.", critFailure: "Critical Failure: 4d6 psychic and 3 Berserk." }, text: "Once per summon; it then dispels itself." }),
+     act("dark-phantasm-fangs", "Phantom Fangs: failure", "damage", { damage: { parts: [{ formula: "3d6", type: "psychic" }] } }),
+     act("dark-phantasm-fangs-cf", "Phantom Fangs: critical failure", "damage", { damage: { parts: [{ formula: "4d6", type: "psychic" }] } }),
+     act("dark-phantasm-fangs-cf", "Critical failure: 3 Berserk", "effect", { effect: { name: "Phantom Fangs", target: "targets", changes: [], expires: "", seconds: 0, inflicts: [inf("berserk", "condition", 3)] } })])
+], { "details.level": "@level", ...GEN }, "icons/svg/mystery-man-black.svg");
+
 /* -------------------------------------------- */
-export const SUMMONS = { bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone, poisonDeity, mudWolf, stoneDragon, flameSpider, waterShark, jellyfish, waterLion, lightningBeast, lightningDragon, folders: [scout, cloning, voidHeart, genjutsu, beguiler, illusionist, bakuton, chinoike, hozuki, kashu, shoton, tsuchigumo, hoshi, ninjutsu, nonElemental, medical, earth, fire, water, lightning] };
+export const SUMMONS = { bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone, poisonDeity, mudWolf, stoneDragon, flameSpider, waterShark, jellyfish, waterLion, lightningBeast, lightningDragon, darkPhantasm, folders: [scout, cloning, voidHeart, genjutsu, beguiler, illusionist, bakuton, chinoike, hozuki, kashu, shoton, tsuchigumo, hoshi, ninjutsu, nonElemental, medical, earth, fire, water, lightning, genjutsuJutsu] };
 
 if ( import.meta.url === `file://${process.argv[1]}` ) {
   fs.rmSync(OUT, { recursive: true, force: true });
@@ -800,11 +829,13 @@ if ( import.meta.url === `file://${process.argv[1]}` ) {
   write(`ninjutsu/fire-release/flame-spider-${flameSpider._id}.json`, flameSpider);
   write("ninjutsu/water-release/_folder.json", water);
   write("ninjutsu/lightning-release/_folder.json", lightning);
+  write("genjutsu/_folder.json", genjutsuJutsu);
+  write(`genjutsu/dark-phantasm-${darkPhantasm._id}.json`, darkPhantasm);
   for ( const d of [lightningBeast, lightningDragon] ) write(`ninjutsu/lightning-release/${d.name.toLowerCase().replace(/[^a-z]+/g, "-")}-${d._id}.json`, d);
   for ( const d of [waterShark, jellyfish, waterLion] ) write(`ninjutsu/water-release/${d.name.toLowerCase().replace(/[^a-z]+/g, "-")}-${d._id}.json`, d);
   write(`ninjutsu/earth-release/mud-wolf-${mudWolf._id}.json`, mudWolf);
   write(`ninjutsu/earth-release/stone-dragon-${stoneDragon._id}.json`, stoneDragon);
   write(`ninjutsu/medical-release/supreme-poison-deity-${poisonDeity._id}.json`, poisonDeity);
   for ( const d of [inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone] ) write(`ninjutsu/non-elemental/${d.name.toLowerCase().replace(/[^a-z]+/g, "-").replace(/-$/, "")}-${d._id}.json`, d);
-  console.log(`✓ summons: 33 NPCs (${[bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone, poisonDeity, mudWolf, stoneDragon, flameSpider, waterShark, jellyfish, waterLion, lightningBeast, lightningDragon].map(d => `${d.name} ${d._id}`).join(", ")})`);
+  console.log(`✓ summons: 34 NPCs (${[bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone, poisonDeity, mudWolf, stoneDragon, flameSpider, waterShark, jellyfish, waterLion, lightningBeast, lightningDragon, darkPhantasm].map(d => `${d.name} ${d._id}`).join(", ")})`);
 }

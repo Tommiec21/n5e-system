@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eXQbrObm69fFym",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Frenzy: Red",
         "save": {
           "abilities": [
             "wis"
@@ -98,17 +97,59 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
-            "success": "on a success.",
-            "failure": "failure, they now seek to aid or protect their Compeller for the duration.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: Confused until the end of its next turn (the effect).",
+            "failure": "Failure: the first creature it targets becomes its Compeller: Charmed (the effect), not ended by harm; resave at the end of each of its turns.",
+            "critFailure": "Critical Failure: as a failure, and it seeks to aid or protect its Compeller."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: a creature you're aware of that can hear you within 30 feet (+1 per rank).",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5emQC7F52brQrSE",
+        "type": "effect",
+        "label": "Success: Confused",
+        "effect": {
+          "name": "Success: Confused",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eIdSqFIisSzRhb",
+        "type": "effect",
+        "label": "Its first target: Charmed",
+        "effect": {
+          "name": "Its first target: Charmed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "charmed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Charmed"
+            }
+          ]
         }
       }
     ],
@@ -178,7 +219,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ce2ca0a8e089b9d2"

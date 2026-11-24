@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eyWIf8UPpWR3V8",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Corruption: Audacity",
         "save": {
           "abilities": [
             "cha"
@@ -98,15 +97,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist most of this jutsu’s effects.",
-            "success": "Success: Affected creature reduces the number of damage die they roll by 1. If multiple damage dice of different sizes are rolled, remove one of the largest until the end of their next turn.",
-            "failure": "failure, but the damage die reduction becomes 2.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists most of it.",
+            "success": "Success: 1 less damage die (the largest) until the end of its next turn.",
+            "failure": "Failure: 1 less damage die when it attacks your allies (B-Rank +1, S-Rank +2).",
+            "critFailure": "Critical Failure: as a failure, 2 less damage dice."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: a creature within 60 feet.",
         "damage": {
           "parts": []
         }
@@ -178,7 +179,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ce2ca0a8e089b9d2"

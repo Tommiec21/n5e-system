@@ -87,10 +87,25 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5e5soyDvm0uEa9T",
+        "type": "effect",
+        "label": "Catnap: Unconscious",
+        "effect": {
+          "name": "Catnap: Unconscious",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "unconscious",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Unconscious"
+            }
+          ]
+        },
+        "text": "Concentration, up to 10 minutes, no chakra to maintain: up to 3 willing creatures within 30 feet. Damage or an Action to wake one ends it early; the full duration gives a Short Rest (once per Long Rest)."
       }
     ],
     "featureType": "active",
@@ -157,7 +172,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b7e33102dfc09350"

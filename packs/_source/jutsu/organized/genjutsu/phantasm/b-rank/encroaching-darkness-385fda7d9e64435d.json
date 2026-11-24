@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eUiaPRHDfiZLxA",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "See through the darkness",
         "save": {
           "abilities": [
             "wis"
@@ -98,10 +97,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
-          "tiers": {},
-          "resave": false
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: it sees through until the start of its next turn.",
+            "failure": "Failure: nothing.",
+            "critFailure": "Critical Failure: as a failure."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration, up to 1 hour: a 60-foot sphere at a point within 150 feet; creatures can't see bright or dim light (C-Rank or lower light is invisible); you and up to 3 creatures are immune and concealed from them. A B-Rank or higher light jutsu inside ends it. As an Action, a creature saves.",
         "damage": {
           "parts": []
         }
@@ -172,7 +178,8 @@
         "activitiesByRank": {},
         "manualCost": false
       },
-      "notAmp": "A darkness zone; the chosen creatures' immunity is part of the zone (King, AMP1f batch 3)."
+      "notAmp": "A darkness zone; the chosen creatures' immunity is part of the zone (King, AMP1f batch 3).",
+      "reviewed": true
     }
   },
   "folder": "779eb1d0d06757f5"

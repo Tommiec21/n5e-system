@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eWyz6Rwklwh5IH",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Compelled Duel",
         "save": {
           "abilities": [
             "wis"
@@ -99,25 +98,28 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature ignores this jutsu and suffers no effects.",
-            "failure": "Failure: Affected creature becomes drawn to you suffering a -1d6 penalty to all attacks rolls against creatures other than you for the duration. A compelled creature must remake their saving throw at the end of each of its turns to end this effect on them. This jutsu ends if you attack any other creature or if a friendly creature to you, would assist you in any way.",
-            "critFailure": "Critical Failure: Affected creatures becomes drawn to you, becoming unable to target any other creature other than you for the duration. This jutsu ends if you attack any other creature or if a friendly creature to you would assist you."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: no effect.",
+            "failure": "Failure: −1d6 to attack rolls against creatures other than you; resave at the end of each of its turns.",
+            "critFailure": "Critical Failure: it can't target any creature but you."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: a creature you can see within 30 feet. Ends if you attack another creature or an ally helps you.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
+        "id": "n5eLtik2DIFGB1Km",
         "type": "roll",
-        "label": "1d6",
+        "label": "Penalty: attacks on others",
         "roll": {
           "formula": "1d6",
-          "note": "Failure: Affected creature becomes drawn to you suffering a -1d6 penalty to all attacks rolls against creatures other than you for the duration. A compelled creature must remake their saving throw at the end of each of its turns to end this effect on them. This jutsu ends if you attack any other creature or if a friendly creature to you, would assist you in any way."
+          "note": ""
         }
       }
     ],
@@ -192,7 +194,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ce2ca0a8e089b9d2"

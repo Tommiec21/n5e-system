@@ -88,10 +88,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eJ9jeSgifijsbI",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Corruption: Malfeasance",
         "save": {
           "abilities": [
             "cha"
@@ -100,26 +99,34 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "on a success. Psychic Malignance is treated as a Mental Condition for its duration.",
-            "failure": "failure, but creatures instead gain 3 Psychic Malignance.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists most of it.",
+            "failure": "Failure: 2 Psychic Malignance (a Mental condition) at the start of each of its turns, up to 20 (track by hand); when the jutsu ends by a save or the duration, they detonate. It can resave once on each of its turns.",
+            "critFailure": "Critical Failure: as a failure, 3 a turn."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: a creature within 90 feet (+1 per rank).",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "1d10",
-        "roll": {
-          "formula": "1d10",
-          "note": "When this jutsu ends as a result of a successful saving throw or the duration expiring, all Psychic Malignance a creature has detonates, dealing 1d10 psychic damage for each Psychic Malignance a creature has when it detonates. A creature can choose to remake their saving throw, once on each of its turns, ending this jutsu on a success. Psychic Malignance is treated as a Mental Condition for its duration."
-        }
+        "id": "n5euLJCzMAFRgRCg",
+        "type": "damage",
+        "label": "Detonate: per Malignance",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d10",
+              "type": "psychic"
+            }
+          ]
+        },
+        "text": "Roll 1d10 per Psychic Malignance (the extra dice by hand)."
       }
     ],
     "featureType": "active",
@@ -195,7 +202,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "68fe90231eaf9f92"

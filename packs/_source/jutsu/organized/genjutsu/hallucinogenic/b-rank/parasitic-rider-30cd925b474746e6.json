@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e3ZV8jwTkwPjw0",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Parasitic Rider",
         "save": {
           "abilities": [
             "cha"
@@ -98,18 +97,47 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects and becomes aware that something or someone has attempted to enter their mind.",
-            "success": "Success: Affected creature is able to resist this jutsu’s effects.",
-            "failure": "Failure: You enter the mind of the target creature. You cannot control or influence them by any means, but you can see and experience everything they do through their senses. If they would take damage, you must make a Charisma saving throw vs your own Save DC to remain within the body of the creature.",
-            "critFailure": "Critical Failure: You gain the effects of the Failure effect, and you can occasionally act as a voice in their mind speaking to them as if you were their normal thoughts. This does not control them or take away their free will, but you may make Charisma based skill checks to attempt to influence them."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists, and knows someone tried.",
+            "success": "Success: resists.",
+            "failure": "Failure: you enter its mind and share its senses, without control; when it takes damage you make a Charisma save against your own DC to stay.",
+            "critFailure": "Critical Failure: as a failure, and you can speak as its thoughts and make Charisma checks to influence it."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration, up to 10 minutes, chakra to maintain: a creature you can see within 120 feet (aware of you: automatic success). If your body dies, permanent.",
         "damage": {
           "parts": []
         }
+      },
+      {
+        "id": "n5eS7toEOzFc4RHW",
+        "type": "effect",
+        "label": "Your body: Prone, Stunned",
+        "effect": {
+          "name": "Parasitic Rider",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 600,
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            },
+            {
+              "key": "stunned",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Stunned"
+            }
+          ]
+        },
+        "text": "Your body, while you ride."
       }
     ],
     "featureType": "active",
@@ -176,7 +204,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "1f4ded8719811acd"

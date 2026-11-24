@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eYoo3jYyQDeo0m",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Corruption: Gall",
         "save": {
           "abilities": [
             "cha"
@@ -98,15 +97,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist most of this jutsu’s effects.",
-            "success": "Success: Affected creature increases the cost of the next jutsu they cast by +4, before the end of their next turn.",
-            "failure": "failure, but the affected creature must attempt to upcast their jutsu cast to the highest rank possible, spending the chakra as normal, but its effects remain as its base rank.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists most of it.",
+            "success": "Success: its next jutsu before the end of its next turn costs 4 more.",
+            "failure": "Failure: it can't upcast (chakra spent, effect at base rank).",
+            "critFailure": "Critical Failure: it must upcast as high as it can, effect at base rank."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: a creature within 60 feet (+1 per rank).",
         "damage": {
           "parts": []
         }
@@ -178,7 +179,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ce2ca0a8e089b9d2"

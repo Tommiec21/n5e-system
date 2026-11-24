@@ -88,39 +88,76 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "7d8",
-        "roll": {
-          "formula": "7d8",
-          "note": "Success: Affected creature takes 7d8 psychic damage."
+        "id": "n5eo9dVc7QMvm67o",
+        "type": "save",
+        "label": "Will Breaker",
+        "save": {
+          "abilities": [
+            "int",
+            "wis",
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: 7d8 psychic.",
+            "failure": "Failure: the ability score drops by 1d4 for the duration; at 0, 14d8 psychic and the jutsu ends.",
+            "critFailure": "Critical Failure: as a failure, 1d6 instead."
+          }
+        },
+        "inflicts": [],
+        "text": "Concentration: a creature within 120 feet (+2 per rank), at the start of each of its turns; you pick the save once. A creature within 5 feet can use its Action for a Wisdom (Illusions) check against your Genjutsu save DC to end it.",
+        "damage": {
+          "parts": []
         }
       },
       {
-        "id": "sourceRoll2",
+        "id": "n5emetnehuTjddS5",
+        "type": "damage",
+        "label": "Success",
+        "damage": {
+          "parts": [
+            {
+              "formula": "7d8",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eLR34CxBtmFuo8",
         "type": "roll",
-        "label": "1d4",
+        "label": "Failure: ability reduction",
         "roll": {
           "formula": "1d4",
-          "note": "Failure: Affected creature reduces the chosen Ability score by 1d4 for the duration. A creature whose ability score is reduced to 0 by this jutsu takes psychic damage equal to 14d8, this jutsu then immediately ends. A creature within 5 feet of the affected creature use its action to make a Wisdom (Illusions) check vs your Genjutsu Save DC. On a success, they tear the break this Genjutsu’s hold on the affected creature immediately ending this jutsu."
+          "note": ""
         }
       },
       {
-        "id": "sourceRoll3",
+        "id": "n5eVmxCJxBjLA3e1",
         "type": "roll",
-        "label": "14d8",
-        "roll": {
-          "formula": "14d8",
-          "note": "A creature whose ability score is reduced to 0 by this jutsu takes psychic damage equal to 14d8, this jutsu then immediately ends. A creature within 5 feet of the affected creature use its action to make a Wisdom (Illusions) check vs your Genjutsu Save DC. On a success, they tear the break this Genjutsu’s hold on the affected creature immediately ending this jutsu."
-        }
-      },
-      {
-        "id": "sourceRoll4",
-        "type": "roll",
-        "label": "1d6",
+        "label": "Critical failure: ability reduction",
         "roll": {
           "formula": "1d6",
-          "note": "Critical Failure: Same as Failure, but instead they reduce the chosen ability score by 1d6."
+          "note": ""
+        }
+      },
+      {
+        "id": "n5euKY8yn4x9POAV",
+        "type": "damage",
+        "label": "Ability reduced to 0",
+        "damage": {
+          "parts": [
+            {
+              "formula": "14d8",
+              "type": "psychic"
+            }
+          ]
         }
       }
     ],
@@ -215,7 +252,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "31317d7b8ae082be"

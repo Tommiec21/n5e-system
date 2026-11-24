@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e2BKktQkfvscvd",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Charming Dissonance",
         "save": {
           "abilities": [
             "cha"
@@ -98,14 +97,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature resists this jutsu’s effect.",
-            "failure": "failure, but also affected creatures loses all hostile desires for the duration. If the target is attacked or damaged this jutsu’s effects immediately end on all affected creatures.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: resists.",
+            "failure": "Failure: its Demoralized and Charmed are suppressed for the duration (they resume if still there when it ends).",
+            "critFailure": "Critical Failure: as a failure, and it loses hostile desires; attacking or damaging one ends it on all."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration, up to 10 minutes: up to 3 creatures (+1 per rank) that can see and hear you within 60 feet; a creature can choose to fail or critically fail.",
         "damage": {
           "parts": []
         }
@@ -177,7 +179,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ce2ca0a8e089b9d2"

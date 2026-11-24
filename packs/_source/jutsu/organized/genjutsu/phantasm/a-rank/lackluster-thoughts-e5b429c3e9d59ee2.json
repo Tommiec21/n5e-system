@@ -87,10 +87,31 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5eUOf7IdwGvwJFB",
+        "type": "save",
+        "label": "Lackluster Thoughts",
+        "save": {
+          "abilities": [
+            "int"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: it acts normally this turn.",
+            "failure": "Failure: it spends its turn on unproductive activities.",
+            "critFailure": "Critical Failure: as a failure."
+          }
+        },
+        "inflicts": [],
+        "text": "Concentration: a creature you can see within 90 feet (+1 per rank), at the start of each of its turns. Succeeding by 10 or more ends it and makes it immune for 1 hour.",
+        "damage": {
+          "parts": []
+        }
       }
     ],
     "featureType": "active",
@@ -159,7 +180,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "31317d7b8ae082be"

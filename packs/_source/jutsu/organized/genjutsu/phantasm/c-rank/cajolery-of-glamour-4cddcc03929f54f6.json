@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5et0tfC9to3CTxY",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Cajolery of Glamour",
         "save": {
           "abilities": [
             "cha"
@@ -99,14 +98,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature is able to resist this jutsu’s effects.",
-            "failure": "Failure: They are also more inclined to believe the worst-case scenario and are more willing to go against their better judgement and their own goals.",
-            "critFailure": "Critical Failure: Affected creature suffers the effects of a failure and becomes paranoid of all other creatures excluding the caster for the duration."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: resists.",
+            "failure": "Failure: it believes the worst case and goes against its better judgement and goals.",
+            "critFailure": "Critical Failure: as a failure, and paranoid of every creature but you."
+          }
         },
+        "inflicts": [],
+        "text": "1 minute: a creature you can see within 30 feet.",
         "damage": {
           "parts": []
         }
@@ -176,7 +178,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "68fe90231eaf9f92"

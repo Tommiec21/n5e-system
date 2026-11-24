@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e0GODa7cZ0X2Hx",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Effortless Paralysis",
         "save": {
           "abilities": [
             "wis"
@@ -99,35 +98,52 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
-            "success": "on a success.",
-            "failure": "failure, but affected creature is Stunned for the duration and remakes its saves at the end of each of its turns or when it takes damage, ending this jutsu’s effect on it,",
-            "critFailure": "Critical Failure: Same effect as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: 3d12 psychic.",
+            "failure": "Failure: 4d12 psychic and Stunned until the end of your next turn.",
+            "critFailure": "Critical Failure: as a failure, Stunned for the duration; resave at the end of each of its turns or when it takes damage."
+          }
         },
+        "inflicts": [
+          {
+            "key": "stunned",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Stunned"
+          }
+        ],
+        "text": "Concentration: a creature you can see within 90 feet; no effect on undead, constructs, plants or Demons.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "3d12",
-        "roll": {
-          "formula": "3d12",
-          "note": "Success: Affected creatures mind is wounded, as they take 3d12 psychic damage."
+        "id": "n5ehNSIZ72DCPZUu",
+        "type": "damage",
+        "label": "Success",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d12",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "4d12",
-        "roll": {
-          "formula": "4d12",
-          "note": "Failure: Affected creature becomes Stunned until the end of your next turn and takes 4d12 psychic damage."
+        "id": "n5ecP0ZHTvMOQnsG",
+        "type": "damage",
+        "label": "Failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d12",
+              "type": "psychic"
+            }
+          ]
         }
       }
     ],
@@ -208,7 +224,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "779eb1d0d06757f5"

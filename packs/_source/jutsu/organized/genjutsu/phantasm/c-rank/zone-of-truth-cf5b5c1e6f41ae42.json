@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e5lPASISvQqBuA",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Zone of Truth",
         "save": {
           "abilities": [
             "cha"
@@ -99,26 +98,28 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this Genjutsu’s effects and you are unaware if it passed or failed the save.",
-            "success": "Success: Affected creature is able to resist some of this jutsu’s effects but they still find it difficult to lie. They suffer a 1d4 penalty to Deception checks.",
-            "failure": "Failure: Affected creature find it very difficult to speak any deliberate or intentional lies as they show a look of obvious discomfort and make Deception checks at disadvantage.",
-            "critFailure": "Critical Failure: Affected creature becomes unable to speak if they would lie."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists, and you don't know the result.",
+            "success": "Success: −1d4 to Deception checks.",
+            "failure": "Failure: Deception checks at disadvantage.",
+            "critFailure": "Critical Failure: it can't speak a lie."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration, up to 10 minutes: a sphere at a point within range; entering it first on a turn or starting a turn there. You know each result.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
+        "id": "n5etWSFEUYiFbRTb",
         "type": "roll",
-        "label": "1d4",
+        "label": "Success: Deception penalty",
         "roll": {
           "formula": "1d4",
-          "note": "They suffer a 1d4 penalty to Deception checks."
+          "note": ""
         }
       }
     ],
@@ -193,7 +194,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "68fe90231eaf9f92"

@@ -1,0 +1,375 @@
+{
+  "_id": "n5edSIqgDQtl5A4E",
+  "_key": "!actors!n5edSIqgDQtl5A4E",
+  "name": "Dark Phantasm",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Genjutsu: Dance Macabre (A-Rank)",
+      "summonRole": "Dark Phantasm",
+      "biography": "<p><em>Dance Macabre (A-Rank Genjutsu, concentration up to 10 minutes) conjures 4.</em> It uses your Genjutsu attack bonus and save DC; you command them as a Bonus Action, with the same or different orders.</p><p><strong>Medium Construct.</strong> <strong>Armor Class</strong> 20 · <strong>Hit Points</strong> 10 · <strong>Speed</strong> 30 ft.</p><p><strong>Abilities</strong> STR +2 (save +1), DEX +6 (save +9), CON +0 (save +1), INT −5 (save −5), WIS +0 (save +0), CHA −5 (save −5). <strong>Damage Immunities</strong> all except psychic, force and necrotic. <strong>Condition Immunities</strong> all. <strong>Senses</strong> Darkvision 60 ft., passive Perception 10.</p><p><strong>Linked to you when summoned:</strong> your Genjutsu attack bonus and save DC.</p>"
+    },
+    "abilities": {
+      "str": {
+        "value": 14
+      },
+      "dex": {
+        "value": 22
+      },
+      "con": {
+        "value": 10
+      },
+      "int": {
+        "value": 0
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 0
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 20,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "medium",
+      "immune": [
+        "bludgeoning",
+        "piercing",
+        "slashing",
+        "acid",
+        "cold",
+        "earth",
+        "fire",
+        "lightning",
+        "poison",
+        "wind",
+        "chakra"
+      ],
+      "conditionImmune": [
+        "exhaustion",
+        "envenomed",
+        "burned",
+        "chilled",
+        "corroded",
+        "shocked",
+        "petrified",
+        "bruised",
+        "staggered",
+        "bleed",
+        "dazed",
+        "shaken",
+        "weakened",
+        "concussed",
+        "demoralized",
+        "berserk",
+        "charmed",
+        "confused",
+        "slowed",
+        "sealed",
+        "blinded",
+        "dazzled",
+        "invisible",
+        "deafened"
+      ],
+      "stateImmune": [
+        "prone",
+        "grappled",
+        "restrained",
+        "suffocating",
+        "incapacitated",
+        "stunned",
+        "unconscious"
+      ],
+      "speed": {
+        "walk": 30,
+        "climb": 0,
+        "swim": 0,
+        "fly": 0,
+        "burrow": 0,
+        "hover": false
+      },
+      "senses": {
+        "darkvision": 60
+      }
+    },
+    "hpMax": 10,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5esF7jI3oVvXc5T",
+      "_key": "!actors.items!n5edSIqgDQtl5A4E.n5esF7jI3oVvXc5T",
+      "name": "Illusory Construct",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The phantasm can move through other creatures and objects as if they were difficult terrain. It takes 5 damage if it ends its turn inside an object.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.97.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5ezlfyMTCtlKN8u",
+      "_key": "!actors.items!n5edSIqgDQtl5A4E.n5ezlfyMTCtlKN8u",
+      "name": "Claws",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Melee Weapon Attack:</em> your Genjutsu attack bonus, reach 5 ft., one creature. <em>Hit:</em> 2d6 + 4 psychic damage. On a critical hit, the target gains +1 rank of Demoralized.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eTPfmZr9aXNIYx",
+            "type": "attack",
+            "label": "Claws",
+            "attack": {
+              "discipline": "gen",
+              "range": "melee",
+              "count": 1,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "2d6 + 4",
+                  "type": "psychic"
+                }
+              ]
+            },
+            "text": "Critical hit: +1 Demoralized (the effect)."
+          },
+          {
+            "id": "n5ecoaJ2kz25F93x",
+            "type": "effect",
+            "label": "Critical hit: Demoralized",
+            "effect": {
+              "name": "Claws",
+              "target": "targets",
+              "changes": [],
+              "expires": "",
+              "seconds": 0,
+              "inflicts": [
+                {
+                  "key": "demoralized",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Demoralized"
+                }
+              ]
+            }
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.97.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eWlKKYilcyfg0C",
+      "_key": "!actors.items!n5edSIqgDQtl5A4E.n5eWlKKYilcyfg0C",
+      "name": "Phantom Fangs (1/Summon)",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The Dark Phantasm opens its maw revealing a twisted jaw of incomprehensible darkness, teeth and misery. All creatures in a 15-foot cone from it that aren't Blinded must make a Wisdom saving throw against your Genjutsu save DC. Once it uses this ability, it dispels itself.</p><strong>Success:</strong> resists. <strong>Failure:</strong> 3d6 psychic damage and 1 rank of Berserk. <strong>Critical Failure:</strong> 4d6 psychic damage and 3 ranks of Berserk.",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eeyvkvTvAh7i2I",
+            "type": "save",
+            "label": "Phantom Fangs",
+            "save": {
+              "abilities": [
+                "wis"
+              ],
+              "dc": {
+                "source": "gen"
+              },
+              "onSuccess": "none",
+              "resave": false,
+              "fourTier": true,
+              "tiers": {
+                "critSuccess": "Critical Success: resists.",
+                "success": "Success: resists.",
+                "failure": "Failure: 3d6 psychic and 1 Berserk.",
+                "critFailure": "Critical Failure: 4d6 psychic and 3 Berserk."
+              }
+            },
+            "inflicts": [
+              {
+                "key": "berserk",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Berserk"
+              }
+            ],
+            "text": "Once per summon; it then dispels itself."
+          },
+          {
+            "id": "n5enscLIuHex4ynS",
+            "type": "damage",
+            "label": "Phantom Fangs: failure",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "3d6",
+                  "type": "psychic"
+                }
+              ]
+            }
+          },
+          {
+            "id": "n5enM6Fdqnk0miDS",
+            "type": "damage",
+            "label": "Phantom Fangs: critical failure",
+            "damage": {
+              "parts": [
+                {
+                  "formula": "4d6",
+                  "type": "psychic"
+                }
+              ]
+            }
+          },
+          {
+            "id": "n5eNx0DjmfyOJm04",
+            "type": "effect",
+            "label": "Critical failure: 3 Berserk",
+            "effect": {
+              "name": "Phantom Fangs",
+              "target": "targets",
+              "changes": [],
+              "expires": "",
+              "seconds": 0,
+              "inflicts": [
+                {
+                  "key": "berserk",
+                  "kind": "condition",
+                  "ranks": 3,
+                  "label": "Berserk"
+                }
+              ]
+            }
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.97.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5eYKP30VE1OzmYO",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "bonuses.attack.gen": "@attack.gen - @prof",
+        "bonuses.saveDC.gen": "@dc.gen - 8 - @prof"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Dark Phantasm",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.97.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

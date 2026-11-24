@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ejkCl02lPVIZWG",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Rabenda: Enigmatic Storm",
         "save": {
           "abilities": [
             "cha"
@@ -98,17 +97,66 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
-            "success": "Success: Affected creature is Envenomed until the end of their next turn.",
-            "failure": "failure, but they instead gain 2 ranks of Concussed.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: Envenomed until the end of its next turn (the effect).",
+            "failure": "Failure: Slowed for the duration and 1 Concussed at the start of each of its turns inside (the effect).",
+            "critFailure": "Critical Failure: as a failure, 2 Concussed instead."
+          }
         },
+        "inflicts": [
+          {
+            "key": "slowed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Slowed"
+          }
+        ],
+        "text": "Concentration: a 10-foot radius within 30 feet (move it 30 feet as an Action); a creature starting its turn inside. Not again until the end of your next turn after it ends.",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5efyCr44FzjlEBA",
+        "type": "effect",
+        "label": "Success: Envenomed",
+        "effect": {
+          "name": "Success: Envenomed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "envenomed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Envenomed"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e9dFckUEIKugWJ",
+        "type": "effect",
+        "label": "Start of a turn inside: Concussed",
+        "effect": {
+          "name": "Start of a turn inside: Concussed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "concussed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Concussed"
+            }
+          ]
         }
       }
     ],
@@ -176,7 +224,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b7e33102dfc09350"

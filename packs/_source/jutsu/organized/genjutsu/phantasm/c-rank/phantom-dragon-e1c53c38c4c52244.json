@@ -88,17 +88,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5evsDPD2BUmLsrO",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "sealed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Sealed"
-          }
-        ],
+        "label": "Phantom Dragon",
         "save": {
           "abilities": [
             "wis"
@@ -107,13 +99,47 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
-          "tiers": {},
-          "resave": false
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: it doesn't see the dragon.",
+            "failure": "Failure: it sees the dragon.",
+            "critFailure": "Critical Failure: as a failure."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: creatures you choose within 30 feet that aren't blind, when cast and at the start of each of their turns.",
         "damage": {
           "parts": []
         }
+      },
+      {
+        "id": "n5eAMEKilGX0ufz5",
+        "type": "effect",
+        "label": "Hit while it sees the dragon: Draconic Madness",
+        "effect": {
+          "name": "Hit while it sees the dragon: Draconic Madness",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "demoralized",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Demoralized"
+            },
+            {
+              "key": "sealed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Sealed"
+            }
+          ]
+        },
+        "text": "Draconic Madness (a Mental condition): 1 Demoralized and 1 Sealed until the end of its next turn (A-Rank: 1 minute or until removed)."
       }
     ],
     "featureType": "active",
@@ -182,7 +208,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "68fe90231eaf9f92"

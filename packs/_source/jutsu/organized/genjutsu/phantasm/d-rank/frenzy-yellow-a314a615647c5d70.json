@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eLmusUa90izsuu",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Frenzy: Yellow",
         "save": {
           "abilities": [
             "wis"
@@ -98,35 +97,57 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
-            "success": "Success: Affected creature is able to resist most of this jutsu’s effects, instead only becoming Concussed until the end of the next turn.",
-            "failure": "failure, but they instead must roll a 1d6, failing to cast normally on a roll of a 4 or lower.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: Concussed until the end of its next turn (the effect).",
+            "failure": "Failure: casting a Bonus Action jutsu, it rolls 1d4: 1–2, it fails; resave at the end of each of its turns.",
+            "critFailure": "Critical Failure: as a failure, 1d6: 4 or lower fails."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: a creature you're aware of that can hear you within 30 feet.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "1d4",
-        "roll": {
-          "formula": "1d4",
-          "note": "For the duration, if they would attempt to cast a Jutsu with a casting time of a Bonus Action, they must roll a 1d4. On a roll of 1 or 2, they fail to cast it as they lose focus with constant mutterings. At the end of each of their turns, they remake their saving throw to end this jutsu’s effects, while still unaware it is affected by this Genjutsu."
+        "id": "n5eLVfhSAEwkQWFh",
+        "type": "effect",
+        "label": "Success: Concussed",
+        "effect": {
+          "name": "Success: Concussed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "concussed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Concussed"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
+        "id": "n5enjH8qRmz7FCwB",
         "type": "roll",
-        "label": "1d6",
+        "label": "Bonus Action jutsu: 1d4",
+        "roll": {
+          "formula": "1d4",
+          "note": ""
+        }
+      },
+      {
+        "id": "n5eYpyVnSzyuXjHA",
+        "type": "roll",
+        "label": "Critical failure: 1d6",
         "roll": {
           "formula": "1d6",
-          "note": "Critical Failure: Same as failure, but they instead must roll a 1d6, failing to cast normally on a roll of a 4 or lower."
+          "note": ""
         }
       }
     ],
@@ -207,7 +228,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ce2ca0a8e089b9d2"

@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5esqLRETpTLwjSK",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Frenzy: Blue",
         "save": {
           "abilities": [
             "wis"
@@ -98,17 +97,59 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
-            "success": "Success: Affected creature is Slowed until the end of their next turn.",
-            "failure": "failure, but their speed is instead reduced to 0.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: Slowed until the end of its next turn (the effect).",
+            "failure": "Failure: each save it fails during the duration also knocks it Prone and halves its speed until the end of its next turn; resave at the end of each of its turns.",
+            "critFailure": "Critical Failure: as a failure, speed 0 instead."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: a creature you're aware of that can hear you within 45 feet (+1 per rank).",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5e7Rg3XvOcgGaYo",
+        "type": "effect",
+        "label": "Success: Slowed",
+        "effect": {
+          "name": "Success: Slowed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "slowed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Slowed"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ePdsGdviqvoFwM",
+        "type": "effect",
+        "label": "Failed another save: Prone",
+        "effect": {
+          "name": "Failed another save: Prone",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            }
+          ]
         }
       }
     ],
@@ -178,7 +219,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ce2ca0a8e089b9d2"

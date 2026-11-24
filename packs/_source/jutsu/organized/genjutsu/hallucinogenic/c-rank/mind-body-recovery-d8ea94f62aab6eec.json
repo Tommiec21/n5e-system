@@ -86,13 +86,14 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5erXo0p3fqf0HpY",
         "type": "heal",
-        "label": "Temporary HP",
+        "label": "Mind-Body Recovery",
         "heal": {
-          "formula": "2d6+5",
+          "formula": "2d6 + 5",
           "pool": "tempHp"
-        }
+        },
+        "text": "Bonus Action: up to 3 willing creatures within 30 feet, for 10 minutes. Also remove one Mental condition from a C-Rank or lower jutsu (+1 rank per rank)."
       }
     ],
     "featureType": "active",
@@ -172,9 +173,47 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5erXo0p3fqf0HpY",
+              "type": "heal",
+              "label": "Mind-Body Recovery",
+              "heal": {
+                "formula": "(2d6 + 5) + (1d6)",
+                "pool": "tempHp"
+              },
+              "text": "Bonus Action: up to 3 willing creatures within 30 feet, for 10 minutes. Also remove one Mental condition from a C-Rank or lower jutsu (+1 rank per rank)."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5erXo0p3fqf0HpY",
+              "type": "heal",
+              "label": "Mind-Body Recovery",
+              "heal": {
+                "formula": "(2d6 + 5) + (2d6)",
+                "pool": "tempHp"
+              },
+              "text": "Bonus Action: up to 3 willing creatures within 30 feet, for 10 minutes. Also remove one Mental condition from a C-Rank or lower jutsu (+1 rank per rank)."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5erXo0p3fqf0HpY",
+              "type": "heal",
+              "label": "Mind-Body Recovery",
+              "heal": {
+                "formula": "(2d6 + 5) + (3d6)",
+                "pool": "tempHp"
+              },
+              "text": "Bonus Action: up to 3 willing creatures within 30 feet, for 10 minutes. Also remove one Mental condition from a C-Rank or lower jutsu (+1 rank per rank)."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b7e33102dfc09350"

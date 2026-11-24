@@ -1056,3 +1056,7 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 ### Lightning summons (STD6f F10)
 
 - Summons compendium: Ninjutsu > Lightning Release (Lightning Beast, Lightning Dragon). Lightning Beast's AC and hit points by `@rankValue` above B-Rank; both use your Ninjutsu attack bonus and save DC.
+
+### Genjutsu summons (STD6f F11)
+
+- Summons compendium: Genjutsu (Dark Phantasm). Linked to your Genjutsu attack bonus and save DC (`GEN` links, `genSave` four-tier save helper).

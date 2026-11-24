@@ -199,7 +199,7 @@ test("Genjutsu Specialist: Black Fangs on Shadow Bite (jutsu:id), Rending Though
 
 test("Genjutsu Specialist: Duplicity and Phantasm summons, Mentally Compromised", () => {
   const summon = id => load("features", id).system.activities.find(x => x.type === "summon").summon.uuid;
-  const dup = load("summons", "duplicity-"), ph = load("summons", "phantasm-");
+  const dup = load("summons", "duplicity-"), ph = load("summons", "illusionist/phantasm-");
   assert.equal(summon("beguiling-duplicity"), `Compendium.n5e.summons.Actor.${dup._id}`);
   assert.equal(summon("phantasm"), `Compendium.n5e.summons.Actor.${ph._id}`);
   assert.deepEqual([dup.system.hpMax, dup.flags.n5e.fromSummoner["attributes.ac.flat"]], [1, "@dc.gen"]);

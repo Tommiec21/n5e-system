@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5euQxCOGhPNNyoS",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Slow",
         "save": {
           "abilities": [
             "int"
@@ -99,17 +98,46 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
-            "success": "Success: Affected creature becomes Slow until the end of the next turn.",
-            "failure": "Failure, but they remake their saving throw with a -2 penalty.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: Slowed until the end of its next turn (the effect).",
+            "failure": "Failure: Slowed for the duration; resave at the end of each of its turns.",
+            "critFailure": "Critical Failure: as a failure; its resave takes −2."
+          }
         },
+        "inflicts": [
+          {
+            "key": "slowed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Slowed"
+          }
+        ],
+        "text": "Concentration: up to 2 creatures within 60 feet (+2 per rank).",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5eSlF9CDIVExtw0",
+        "type": "effect",
+        "label": "Success: Slowed",
+        "effect": {
+          "name": "Success: Slowed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "slowed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Slowed"
+            }
+          ]
         }
       }
     ],
@@ -179,7 +207,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "779eb1d0d06757f5"

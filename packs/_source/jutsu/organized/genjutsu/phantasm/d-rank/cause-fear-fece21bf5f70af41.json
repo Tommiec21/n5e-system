@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e6gHbpnA88DZBF",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Cause Fear",
         "save": {
           "abilities": [
             "wis"
@@ -99,16 +98,46 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature resists this jutsu’s effect.",
-            "failure": "failure, but gains 2 ranks of Shaken.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: resists.",
+            "failure": "Failure: 1 Shaken for the duration (B-Rank +1, S-Rank +1 more).",
+            "critFailure": "Critical Failure: as a failure, +1 Shaken (the effect)."
+          }
         },
+        "inflicts": [
+          {
+            "key": "shaken",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shaken"
+          }
+        ],
+        "text": "Concentration: a creature within 60 feet (+1 per rank); constructs and undead are immune.",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5edEikNVQyj6wkO",
+        "type": "effect",
+        "label": "Critical failure: +1 Shaken",
+        "effect": {
+          "name": "Critical failure: +1 Shaken",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "shaken",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shaken"
+            }
+          ]
         }
       }
     ],
@@ -183,9 +212,263 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5e6gHbpnA88DZBF",
+              "type": "save",
+              "label": "Cause Fear",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: 1 Shaken for the duration (B-Rank +1, S-Rank +1 more).",
+                  "critFailure": "Critical Failure: as a failure, +1 Shaken (the effect)."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "Concentration: a creature within 60 feet (+1 per rank); constructs and undead are immune. C-Rank: a Shaken creature spends its movement and Action moving away from you.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5edEikNVQyj6wkO",
+              "type": "effect",
+              "label": "Critical failure: +1 Shaken",
+              "effect": {
+                "name": "Critical failure: +1 Shaken",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5e6gHbpnA88DZBF",
+              "type": "save",
+              "label": "Cause Fear",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: 1 Shaken for the duration (B-Rank +1, S-Rank +1 more).",
+                  "critFailure": "Critical Failure: as a failure, +1 Shaken (the effect)."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "Concentration: a creature within 60 feet (+1 per rank); constructs and undead are immune. C-Rank: a Shaken creature spends its movement and Action moving away from you.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5edEikNVQyj6wkO",
+              "type": "effect",
+              "label": "Critical failure: +1 Shaken",
+              "effect": {
+                "name": "Critical failure: +1 Shaken",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e6gHbpnA88DZBF",
+              "type": "save",
+              "label": "Cause Fear",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: 1 Shaken for the duration (B-Rank +1, S-Rank +1 more).",
+                  "critFailure": "Critical Failure: as a failure, +1 Shaken (the effect)."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "Concentration: a creature within 60 feet (+1 per rank); constructs and undead are immune. C-Rank: a Shaken creature spends its movement and Action moving away from you.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5edEikNVQyj6wkO",
+              "type": "effect",
+              "label": "Critical failure: +1 Shaken",
+              "effect": {
+                "name": "Critical failure: +1 Shaken",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e8uXg2Hvqqqg80",
+              "type": "damage",
+              "label": "Shaken: end of each turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d6",
+                    "type": "psychic"
+                  }
+                ]
+              },
+              "text": "A-Rank: a creature Shaken by this jutsu, at the end of each of its turns."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e6gHbpnA88DZBF",
+              "type": "save",
+              "label": "Cause Fear",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: 1 Shaken for the duration (B-Rank +1, S-Rank +1 more).",
+                  "critFailure": "Critical Failure: as a failure, +1 Shaken (the effect)."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "shaken",
+                  "kind": "condition",
+                  "ranks": 3,
+                  "label": "Shaken"
+                }
+              ],
+              "text": "Concentration: a creature within 60 feet (+1 per rank); constructs and undead are immune. C-Rank: a Shaken creature spends its movement and Action moving away from you.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5edEikNVQyj6wkO",
+              "type": "effect",
+              "label": "Critical failure: +1 Shaken",
+              "effect": {
+                "name": "Critical failure: +1 Shaken",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e8uXg2Hvqqqg80",
+              "type": "damage",
+              "label": "Shaken: end of each turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d6",
+                    "type": "psychic"
+                  }
+                ]
+              },
+              "text": "A-Rank: a creature Shaken by this jutsu, at the end of each of its turns."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ce2ca0a8e089b9d2"

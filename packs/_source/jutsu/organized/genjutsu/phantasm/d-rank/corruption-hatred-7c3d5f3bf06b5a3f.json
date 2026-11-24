@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eVFXoY4gDc3SIG",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Corruption: Hatred",
         "save": {
           "abilities": [
             "int"
@@ -98,25 +97,28 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature is able to resist most of this jutsu’s effects.",
-            "failure": "failure, but on a roll of 6 or higher their jutsu is Interrupted and Dispelled.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists most of it.",
+            "failure": "Failure: when it casts an Interrupt jutsu as a reaction, it rolls a d20: 11 or higher, its jutsu is Interrupted and Dispelled.",
+            "critFailure": "Critical Failure: as a failure, on 6 or higher."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: a creature within 60 feet.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
+        "id": "n5eb3Klu7b1ggLhg",
         "type": "roll",
-        "label": "d20",
+        "label": "Interrupt jutsu: d20",
         "roll": {
-          "formula": "d20",
-          "note": "Failure: Affected creatures who would attempt to cast a jutsu as a reaction, that has the Interrupt keyword, must roll a d20. On a roll of 11 or higher, the jutsu they cast is, itself Interrupted and Dispelled before its effects are applied."
+          "formula": "1d20",
+          "note": ""
         }
       }
     ],
@@ -191,7 +193,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ce2ca0a8e089b9d2"

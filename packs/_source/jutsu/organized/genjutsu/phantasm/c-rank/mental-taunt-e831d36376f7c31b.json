@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eP0W0WcMIyatKM",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Mental Taunt",
         "save": {
           "abilities": [
             "cha"
@@ -98,15 +97,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this Jutsu's effects.",
-            "success": "Success: If the affected creature makes an attack during their turn, they have disadvantage on this attack, unless they target you.",
-            "failure": "failure, and they cannot cast jutsu or used features, effects or items that would heal them.",
-            "critFailure": "Critical Failure: Same effect as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: its attacks this turn are at disadvantage unless they target you.",
+            "failure": "Failure: it must target you with every jutsu it casts until the end of its next turn.",
+            "critFailure": "Critical Failure: as a failure, and no healing from jutsu, features, effects or items."
+          }
         },
+        "inflicts": [],
+        "text": "A creature within 60 feet (+1 per rank).",
         "damage": {
           "parts": []
         }
@@ -178,7 +179,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "68fe90231eaf9f92"

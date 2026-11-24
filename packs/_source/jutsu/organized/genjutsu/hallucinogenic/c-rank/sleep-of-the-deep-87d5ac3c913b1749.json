@@ -86,9 +86,26 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5euVjyw8YTfFShl",
         "type": "save",
-        "label": "Save",
+        "label": "Sleep of the Deep",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: no effect.",
+            "failure": "Failure: no benefit from rest; waking from any rest it gains 1 Exhaustion, and Demoralized while it has that Exhaustion.",
+            "critFailure": "Critical Failure: as a failure."
+          }
+        },
         "inflicts": [
           {
             "key": "exhaustion",
@@ -103,18 +120,7 @@
             "label": "Demoralized"
           }
         ],
-        "save": {
-          "abilities": [
-            "wis"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": true,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "8 hours: any number of sleeping creatures you're aware of within 60 feet (not ones that don't sleep).",
         "damage": {
           "parts": []
         }
@@ -184,7 +190,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b7e33102dfc09350"

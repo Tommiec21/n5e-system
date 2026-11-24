@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eL2t8xpIHjHUQ5",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Suggestion",
         "save": {
           "abilities": [
             "wis"
@@ -98,15 +97,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this Genjutsu’s effects and is aware you attempted to control it.",
-            "success": "Success: Affected creature is able to resist this Genjutsu’s effects.",
-            "failure": "failure, but the concentration duration becomes 1 hour.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists, and knows you tried.",
+            "success": "Success: resists.",
+            "failure": "Failure: it follows the suggestion for up to 1 minute or until done.",
+            "critFailure": "Critical Failure: as a failure, up to 1 hour."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: a creature you can see within 30 feet that hears and understands you; creatures that can't be Compelled or are in initiative are immune. A harmful suggestion ends it.",
         "damage": {
           "parts": []
         }
@@ -176,7 +177,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "68fe90231eaf9f92"

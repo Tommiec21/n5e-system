@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ekEilSpBhKg1Fh",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Bane",
         "save": {
           "abilities": [
             "cha"
@@ -98,25 +97,28 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: No further effects.",
-            "failure": "Failure: Affected creatures suffers a 1d4 penalty to all attack roll and saving throws it makes for the duration.",
-            "critFailure": "Critical Failure: Same as failure and it cannot gain the benefit of jutsu that provide bonuses to it of the same rank or lower for the duration."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: nothing.",
+            "failure": "Failure: −1d4 to its attack rolls and saving throws.",
+            "critFailure": "Critical Failure: as a failure, and no benefit from jutsu bonuses of this rank or lower (B-Rank: rolls of 2 or lower are critical misses or failures)."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: hostile creatures you choose within 30 feet (+10 feet per rank). S-Rank: each result moves up a tier and there is no critical failure (by hand).",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
+        "id": "n5eT6e7c24Cqd6sA",
         "type": "roll",
-        "label": "1d4",
+        "label": "Bane: penalty",
         "roll": {
           "formula": "1d4",
-          "note": "Failure: Affected creatures suffers a 1d4 penalty to all attack roll and saving throws it makes for the duration."
+          "note": "Subtract from the creature's attack roll or save."
         }
       }
     ],
@@ -193,7 +195,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ce2ca0a8e089b9d2"

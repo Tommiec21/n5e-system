@@ -50,10 +50,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ehAjo1JdHR3SBM",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Lotus: Anxious Petals",
         "save": {
           "abilities": [
             "cha"
@@ -62,17 +61,39 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist most of this jutsu’s effects.",
-            "success": "on a success. If it cannot move or has a movement speed of 0, this jutsu immediately ends.",
-            "failure": "failure, but the target must also spend its bonus action to make an Athletics check vs a DC 15, to gain an additional +10 movement speed.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists most of it.",
+            "success": "Success: Dazed (the effect).",
+            "failure": "Failure: panic: it spends its action to Dash; resave at the end of each of its turns; speed 0 ends it.",
+            "critFailure": "Critical Failure: as a failure, and its bonus action on a DC 15 Athletics check for +10 speed."
+          }
         },
+        "inflicts": [],
+        "text": "1 minute: a 10-foot cube within 30 feet. A creature that failed this jutsu's save can't be affected again for 1 minute.",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5eK60z8CDnu37Rl",
+        "type": "effect",
+        "label": "Success: Dazed",
+        "effect": {
+          "name": "Success: Dazed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "dazed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazed"
+            }
+          ]
         }
       }
     ],
@@ -177,7 +198,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5eerYeblcK91isN"

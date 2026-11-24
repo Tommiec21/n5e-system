@@ -86,10 +86,31 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5eEU3IO74QIF1ZT",
+        "type": "save",
+        "label": "Flash",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: nothing.",
+            "failure": "Failure: the next attack targeting it has advantage.",
+            "critFailure": "Critical Failure: as a failure."
+          }
+        },
+        "inflicts": [],
+        "text": "Creatures within 5 feet of a space within 30 feet.",
+        "damage": {
+          "parts": []
+        }
       }
     ],
     "featureType": "active",
@@ -156,7 +177,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "fbad0bb2ff7800c1"

@@ -88,10 +88,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eQu0eohRn9QaV3",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Poison Forest",
         "save": {
           "abilities": [
             "int"
@@ -100,10 +99,25 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
-          "tiers": {},
-          "resave": false
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: no effect.",
+            "failure": "Failure: under the Genjutsu.",
+            "critFailure": "Critical Failure: as a failure."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: a 30-foot sphere in front of you; on a failure it is trapped in a forest of poison trees inside it.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5egDtqxHLS75C8D",
+        "type": "damage",
+        "label": "Ending a turn trapped",
         "damage": {
           "parts": [
             {
@@ -111,6 +125,26 @@
               "type": "poison"
             }
           ]
+        }
+      },
+      {
+        "id": "n5eARsjSu624TuRH",
+        "type": "save",
+        "label": "End of each turn: Constitution",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "A success ends it on the creature.",
+        "damage": {
+          "parts": []
         }
       }
     ],
@@ -194,10 +228,9 @@
         "activitiesByRank": {
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eQu0eohRn9QaV3",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Poison Forest",
               "save": {
                 "abilities": [
                   "int"
@@ -206,10 +239,25 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
+                "resave": false,
                 "fourTier": true,
-                "tiers": {},
-                "resave": false
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: no effect.",
+                  "failure": "Failure: under the Genjutsu.",
+                  "critFailure": "Critical Failure: as a failure."
+                }
               },
+              "inflicts": [],
+              "text": "Concentration: a 30-foot sphere in front of you; on a failure it is trapped in a forest of poison trees inside it.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5egDtqxHLS75C8D",
+              "type": "damage",
+              "label": "Ending a turn trapped",
               "damage": {
                 "parts": [
                   {
@@ -218,11 +266,32 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5eARsjSu624TuRH",
+              "type": "save",
+              "label": "End of each turn: Constitution",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A success ends it on the creature.",
+              "damage": {
+                "parts": []
+              }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "edb1c8a904938cc4"

@@ -88,10 +88,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eGLlIwJj34iM1s",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Mind Prison",
         "save": {
           "abilities": [
             "wis"
@@ -100,44 +99,37 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this Genjutsu’s effects and becomes immune to this jutsu until the end of its next turn.",
-            "success": "Success: Affected creature is able to resist this Genjutsu’s effects.",
-            "failure": "failure, but affected creature instead must roll a d8. | Mind prison Effects / | D10 | Behavior | / | 1 | The creature uses all its movement to move in a random direction. To determine the direction, roll a d8 and assign a direction to each die face. The creature doesn’t take an action this turn. | / | 2-6 | The creature doesn’t move or take actions this turn. | / | 7-8 | The creature uses its action to make a melee attack against a randomly determined creature within its reach. If there is no creature within its reach, the creature does nothing this turn. | / | 9-10 | The creature can act and move normally. | |",
-            "critFailure": "Critical Failure: Same effect as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists, and immune until the end of its next turn.",
+            "success": "Success: resists.",
+            "failure": "Failure: no reactions; a d10 at the start of each of its turns: 1 moves randomly (d8 direction), no action; 2–6 nothing; 7–8 melee attack on a random creature in reach; 9–10 acts normally.",
+            "critFailure": "Critical Failure: as a failure, a d8 instead."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: a 10-foot radius at a point within 90 feet.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
+        "id": "n5eJua10IZjcgqI8",
         "type": "roll",
-        "label": "d10",
+        "label": "Behavior: d10",
         "roll": {
-          "formula": "d10",
-          "note": "Failure: Affected creature cannot take reactions and must roll a d10 at the start of each of its turns to determine its behavior for that turn."
+          "formula": "1d10",
+          "note": ""
         }
       },
       {
-        "id": "sourceRoll2",
+        "id": "n5eumGe8Rj1Id2Hj",
         "type": "roll",
-        "label": "d8",
+        "label": "Critical failure behavior: d8",
         "roll": {
-          "formula": "d8",
-          "note": "Critical Failure: Same effect as failure, but affected creature instead must roll a d8."
-        }
-      },
-      {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "D10",
-        "roll": {
-          "formula": "D10",
-          "note": "| Mind prison Effects / | D10 | Behavior | / | 1 | The creature uses all its movement to move in a random direction. To determine the direction, roll a d8 and assign a direction to each die face. The creature doesn’t take an action this turn. | / | 2-6 | The creature doesn’t move or take actions this turn. | / | 7-8 | The creature uses its action to make a melee attack against a randomly determined creature within its reach. If there is no creature within its reach, the creature does nothing this turn. | / | 9-10 | The creature can act and move normally. | |"
+          "formula": "1d8",
+          "note": ""
         }
       }
     ],
@@ -230,7 +222,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "779eb1d0d06757f5"

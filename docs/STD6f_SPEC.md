@@ -1,6 +1,6 @@
 # STD6f function spec: jutsu as data
 
-Status: **Approved by King 2026-11-22 (Q-J1 yes; Q-J2 fix and finish). F1 Taijutsu I (0.87.0-alpha.1) and F2 Taijutsu II (0.88.0-alpha.1) built: Taijutsu is done. F3 Bukijutsu I (0.89.0-alpha.1) F4 Bukijutsu II (0.90.0-alpha.1) and F5 Bukijutsu III (0.91.0-alpha.1) built: Bukijutsu is done. F6 Non-Elemental (0.92.0-alpha.1) F7 Medical (0.93.0-alpha.1) F8 Earth + Wind (0.94.0-alpha.1) F9 Fire + Water (0.95.0-alpha.1) and F10 Lightning (0.96.0-alpha.1) built. Next: F11 Phantasm + Hallucinogenic.**
+Status: **Approved by King 2026-11-22 (Q-J1 yes; Q-J2 fix and finish). F1 Taijutsu I (0.87.0-alpha.1) and F2 Taijutsu II (0.88.0-alpha.1) built: Taijutsu is done. F3 Bukijutsu I (0.89.0-alpha.1) F4 Bukijutsu II (0.90.0-alpha.1) and F5 Bukijutsu III (0.91.0-alpha.1) built: Bukijutsu is done. F6 Non-Elemental (0.92.0-alpha.1) F7 Medical (0.93.0-alpha.1) F8 Earth + Wind (0.94.0-alpha.1) F9 Fire + Water (0.95.0-alpha.1) and F10 Lightning (0.96.0-alpha.1) built: Ninjutsu is done. F11 Phantasm + Hallucinogenic (0.97.0-alpha.1) built. Next: F12 Psionic + Trickery.**
 
 Plan: `docs/STD_SPEC.md` (STD6f: "Every jutsu's riders as Active Effects and elements, emitted by an upgraded importer where the pattern is regular; a review table per section for King"). Same method as the clan pass (`docs/STD6e_SPEC.md`).
 
@@ -335,6 +335,37 @@ Review table: `docs/jutsu/ninjutsu-lightning-release-automation.md` (44 jutsu: 3
 - Thunder Bolt: "has their legs begins to seize up".
 - Typos: Banquet "gain an additional rank"; Lightning Buckler "shields you manifest sits", "can only be take"; Spark "Overcharge … you would take" (it's the target); Chained Lightning "that be targeted"; Lightning Shield "Reaction, to being damaged"; Storm Breaker "is plummeted", "Creatures … is Blinded"; Penance "a creature have"; Jolt "a creature have"; Lightning Chakra Armor "the bonus to attacks" (no attack bonus listed); Raging Storm "until it covering".
 
+## F11 Genjutsu I: Phantasm + Hallucinogenic (0.97.0-alpha.1)
+
+Review tables: `docs/jutsu/genjutsu-phantasm-automation.md` (53 jutsu: 52 partly automated, 1 notes only) and `docs/jutsu/genjutsu-hallucinogenic-automation.md` (22 jutsu: 18 partly automated, 4 notes only).
+
+- **Summon built** from the Summon Stat Blocks section (Genjutsu Summons): Dark Phantasm (Summons > Genjutsu; AC 20, 10 hit points; Claws, Phantom Fangs), linked to your Genjutsu attack bonus and save DC. Dance Macabre places 4.
+- **Kept** (Q-J2): the Gaslight, Semblance of Dread and Unlimited Pleasure Amps.
+- **Four-tier saves:** every Genjutsu save carries its Critical Success, Success, Failure and Critical Failure text on the button (a plain save reads Critical Success as Success and Critical Failure as Failure). Failure conditions are on the save; Success and Critical Failure conditions are their own effect buttons; damage that differs by tier is one button per tier (Abhorrent Apparition, Effortless Paralysis, Frenzy: Cackle, Maddening Shadows, Unmistakable Fear, Will Breaker, Lotus: Dancing Petals).
+- **Fixed:** loose rolls turned into damage, temporary hit point and penalty buttons; Phantom Dragon's Sealed moved from the save to Draconic Madness on a hit (with Demoralized); Mental Prison's 5d10 on either result; Poison Forest's Constitution resave; Frenzy: Mind Burst's attack then save; Catnap, Toad Song and Lotus: Hypnotic Hypnosis apply Unconscious; Parasitic Rider puts your body Prone and Stunned.
+- **Upcasts:** Cause Fear (Shaken 2 at B, 3 at S; A-Rank 4d6 at the end of its turns), Frenzy: Mind Burst (+1d8; +1 attack at B and S), Heavenly Worded Song (A-Rank War Song effect), Heroism, Mind-Body Recovery, Maddening Shadows and Unmistakable Fear (+1 die per rank), Poison Forest (+2d8); target, radius and duration upcasts are in the button text.
+- **Level scaling:** Feather Burst's 2d4, 3d4 and 4d4 buttons appear at 5th, 11th and 17th level.
+- **Notes only:** Mental Clone, Devil Sight, Healed Thoughts, Shared Pain, Slug Dance.
+- **By hand:** dice penalties (Bane, Compelled Duel, Zone of Truth), Psychic Malignance, Mind Prison's behavior table, Will Breaker's ability reduction, Toad Song's added modifiers, songs and tunes, upcasting and cost changes on the target's jutsu.
+- **No new holds:** the Dark Phantasm block is complete.
+
+## Text issues found in F11
+
+- Built on a reading; confirm: Bane, Flash, Sanctuary, Encroaching Darkness, Lackluster Thoughts, Sleep of the Deep, Snake Play, Lion's Presence, Antipathy/Sympathy, Mental Prison, Poison Forest and Forget Me Not have plain saves; built as four-tier with Critical Success as Success and Critical Failure as Failure; Cause Fear's critical failure +1 Shaken stacks with the B- and S-Rank +1s; Phantom Dragon's Draconic Madness applied as 1 Demoralized and 1 Sealed.
+- Soft Spoken Song: the A-Rank War Tune is named but never described (missing piece).
+- Devil Sight: a D-Rank jutsu whose upcast says "above C-Rank".
+- Antipathy/Sympathy: 5e leftovers ("frightened", "magical", "enchantment"; Frightened isn't an N5e condition).
+- Lion's Presence: "the Fear condition" (not an N5e condition); Maddening Shadows: "end the fear condition".
+- Zone of Truth: range "15 Foot radius Sphere", text "a 30-foot sphere … within range".
+- Maddening Shadows: range "30-foot radius sphere", text "60-foot radius sphere".
+- Poison Forest: range "60 Foot Cube", text "30 Foot Sphere"; the Genjutsu save is Intelligence, the resave Constitution.
+- Heavenly Worded Song: Ancient Song "until with lowest ranked jutsu".
+- Frenzy: Yellow: "causing their eyes to glow green" (Yellow); Frenzy: Blue "on a failed save, they after suffering".
+- Mental Taunt: "used features".
+- Corruption: Audacity: same opening line as Asperity.
+- Lotus jutsu: "a space you can within range", "saving throw to as the pollen", "who's failed".
+- Typos: Bane "feel deep seeded"; Bless "deep seeded Pride"; Cause Fear "incents"; Corruption: Mind Mist "Same a failure"; Frenzy: Black "all creatures in the turn initiative, is treated"; Heroism "All willing creatures in range is imbued"; Corruption: Alienation "communicated with"; Effortless Paralysis "Affected creatures mind"; Request of the Damned "who's name"; Shadow Monsters "The select creature"; Will Breaker "they tear the break"; Unlimited Pleasure "recouperation"; Snake Play "under the impression, they"; Medical Release: Healed Thoughts "compose a stimulant"; Chaotic World "Genjutsu’s effects and becomes aware"; Mind-Body recovery "C-Rank of lower".
+
 ## Progress log
 
 - 2026-11-22 King: "Next batch" (after STD6e E8). Claude: spec proposed from a survey of the jutsu pack. Nothing built.
@@ -348,3 +379,4 @@ Review table: `docs/jutsu/ninjutsu-lightning-release-automation.md` (44 jutsu: 3
 - 2026-11-24 King: "Next Batch." Claude: F8 Earth + Wind built (104 jutsu) with the Mud Wolf and Stone Dragon; text issues logged in 10a; published 0.94.0-alpha.1. No new questions.
 - 2026-11-24 King: "Next Batch." Claude: F9 Fire + Water built (101 jutsu) with the Flame Spider, Water Shark, Medical Jellyfish and Supreme Water Lion; text issues logged in 10a; published 0.95.0-alpha.1. No new questions.
 - 2026-11-24 King: "Next batch." Claude: F10 Lightning built (44 jutsu) with the Lightning Beast and Lightning Dragon; text issues logged in 10a; published 0.96.0-alpha.1. No new questions.
+- 2026-11-24 King: "Next batch." Claude: F11 Phantasm + Hallucinogenic built (75 jutsu) with the Dark Phantasm; text issues logged in 10a; published 0.97.0-alpha.1. No new questions.

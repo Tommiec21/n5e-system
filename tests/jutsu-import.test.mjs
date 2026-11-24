@@ -80,12 +80,11 @@ test("same-named Brutal Block variants are separate and prior core jutsu IDs are
 });
 
 test("conditional and repeating damage is not silently combined into one base roll", () => {
-  for ( const name of ["Mental Prison"] ) {
-    const doc = byName(name);
-    assert.ok(doc.flags.n5e.jutsuBookImport.manual.length);
-    assert.ok(doc.system.activities.every(a => (a.damage?.parts?.length ?? 0) <= 1), name);
-    assert.ok(doc.system.activities.some(a => a.type === "roll"), name);
-  }
+  // Reviewed in STD6f F11: Mental Prison's either-way 5d10 and its 10d10 are separate damage buttons beside the save.
+  const prison = byName("Mental Prison");
+  assert.ok(prison.flags.n5e.jutsuBookImport.manual.length);
+  assert.ok(prison.system.activities.every(a => (a.damage?.parts?.length ?? 0) <= 1));
+  assert.deepEqual(prison.system.activities.filter(a => a.type === "damage").map(a => a.damage.parts[0].formula), ["5d10", "10d10"]);
   const tusk = byName("Earth Release: Lazuli Tusk");
   assert.equal(tusk.system.activities.find(a => a.type === "attack").damage.parts.length, 2, "explicit simultaneous piercing + earth is retained");
   // Reviewed in STD6f F3: [Weapon damage] + 1d8 wind on one button, each extra hit its own roll.

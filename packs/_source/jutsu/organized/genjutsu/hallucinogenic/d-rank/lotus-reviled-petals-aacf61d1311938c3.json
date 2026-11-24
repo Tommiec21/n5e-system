@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eYxDZ6YoXR7CJM",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Lotus: Reviled Petals",
         "save": {
           "abilities": [
             "cha"
@@ -98,14 +97,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature is able to resist most of this jutsu’s effects.",
-            "failure": "failure, but they also cannot target allied creatures with beneficial effects.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists most of it.",
+            "failure": "Failure: it can't be a willing creature for any beneficial effect.",
+            "critFailure": "Critical Failure: as a failure, and it can't target allies with beneficial effects."
+          }
         },
+        "inflicts": [],
+        "text": "1 minute: two 10-foot cubes within 30 feet.",
         "damage": {
           "parts": []
         }
@@ -175,7 +177,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5eerYeblcK91isN"

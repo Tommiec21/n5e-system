@@ -88,17 +88,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eGAWt72ymwPWDE",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "restrained",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Restrained"
-          }
-        ],
+        "label": "Mental Prison",
         "save": {
           "abilities": [
             "int"
@@ -107,31 +99,55 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
-          "tiers": {},
-          "resave": false
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: the damage, and the jutsu ends.",
+            "failure": "Failure: the damage, and it can't see or hear beyond the illusion and is Restrained; moved out of it, attacking through it or reaching through it: 10d10 psychic and the jutsu ends.",
+            "critFailure": "Critical Failure: as a failure."
+          }
         },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "Up to 1 minute: a creature you can see within 120 feet (automatic success if immune to Charmed). Either way: 5d10 psychic.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "5d10",
-        "roll": {
-          "formula": "5d10",
-          "note": "On a successful save, the target takes 5d10 psychic damage, and the genjutsu ends. On a failed save, the target takes 5d10 psychic damage, and you make the area immediately around the target’s space appear dangerous to it in some way. You might cause the target to perceive itself as being surrounded by Fire, floating razors, or hideous maws filled with dripping teeth. Whatever form the illusion takes, the target can’t see or hear anything beyond it and is Restrained for the genjutsu’s duration. If the target is moved out of the illusion, makes a melee attack through it, or reaches any part of its body through it, the target takes 10d10 psychic damage, and the genjutsu ends."
-        }
+        "id": "n5efE3lce69rWUc1",
+        "type": "damage",
+        "label": "Either result: 5d10",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d10",
+              "type": "psychic"
+            }
+          ]
+        },
+        "text": "On a success or a failure."
       },
       {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "10d10",
-        "roll": {
-          "formula": "10d10",
-          "note": "If the target is moved out of the illusion, makes a melee attack through it, or reaches any part of its body through it, the target takes 10d10 psychic damage, and the genjutsu ends."
-        }
+        "id": "n5eVZDXHaNuvXYuy",
+        "type": "damage",
+        "label": "Moved out or reaching through",
+        "damage": {
+          "parts": [
+            {
+              "formula": "10d10",
+              "type": "psychic"
+            }
+          ]
+        },
+        "text": "Then the jutsu ends."
       }
     ],
     "featureType": "active",
@@ -219,7 +235,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "e6c3bf38d4144669"

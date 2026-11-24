@@ -86,22 +86,14 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d6+4",
-        "roll": {
-          "formula": "2d6+4",
-          "note": "Additionally, affected creatures gains 2d6+4 temporary hit points. When the Genjutsu ends, the target loses any remaining temporary hit points.       At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the temporary hit points gained by 1d6."
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "1d6",
-        "roll": {
-          "formula": "1d6",
-          "note": "At Higher Ranks: For each rank you cast this jutsu above D-Rank, increase the cost of this jutsu by 3 and the temporary hit points gained by 1d6."
-        }
+        "id": "n5ekhe8IwIViEtwn",
+        "type": "heal",
+        "label": "Heroism: temporary hit points",
+        "heal": {
+          "formula": "2d6 + 4",
+          "pool": "tempHp"
+        },
+        "text": "Concentration: willing creatures within 15 feet; immune to Demoralized or Shaken (pick one) for the duration; the temporary hit points end with it."
       }
     ],
     "featureType": "active",
@@ -181,9 +173,59 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5ekhe8IwIViEtwn",
+              "type": "heal",
+              "label": "Heroism: temporary hit points",
+              "heal": {
+                "formula": "(2d6 + 4) + (1d6)",
+                "pool": "tempHp"
+              },
+              "text": "Concentration: willing creatures within 15 feet; immune to Demoralized or Shaken (pick one) for the duration; the temporary hit points end with it."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5ekhe8IwIViEtwn",
+              "type": "heal",
+              "label": "Heroism: temporary hit points",
+              "heal": {
+                "formula": "(2d6 + 4) + (2d6)",
+                "pool": "tempHp"
+              },
+              "text": "Concentration: willing creatures within 15 feet; immune to Demoralized or Shaken (pick one) for the duration; the temporary hit points end with it."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ekhe8IwIViEtwn",
+              "type": "heal",
+              "label": "Heroism: temporary hit points",
+              "heal": {
+                "formula": "(2d6 + 4) + (3d6)",
+                "pool": "tempHp"
+              },
+              "text": "Concentration: willing creatures within 15 feet; immune to Demoralized or Shaken (pick one) for the duration; the temporary hit points end with it."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ekhe8IwIViEtwn",
+              "type": "heal",
+              "label": "Heroism: temporary hit points",
+              "heal": {
+                "formula": "(2d6 + 4) + (4d6)",
+                "pool": "tempHp"
+              },
+              "text": "Concentration: willing creatures within 15 feet; immune to Demoralized or Shaken (pick one) for the duration; the temporary hit points end with it."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "ce2ca0a8e089b9d2"

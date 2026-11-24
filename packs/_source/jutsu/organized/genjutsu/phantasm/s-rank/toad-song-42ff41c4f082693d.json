@@ -88,12 +88,32 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
+        "id": "n5eblLhiLEZaOHit",
         "type": "roll",
-        "label": "20d10",
+        "label": "Toad Song: hit points",
         "roll": {
           "formula": "20d10",
-          "note": "Roll 20d10 + Genjutsu Modifier + Proficiency modifier. The total is how many hit points of creatures this jutsu can affect. All creatures who have less Hit Points than the rolled result immediately fall asleep, unable to awake without the user releasing the effect of this jutsu, being released by another creature or Jutsu or being killed."
+          "note": "Creatures within 30 feet that hear you, with fewer hit points than the total (add your Genjutsu modifier and proficiency bonus by hand), fall into a deep sleep until you release them, another creature or jutsu releases them, or they die."
+        }
+      },
+      {
+        "id": "n5eVFRrtiBxM0m49",
+        "type": "effect",
+        "label": "Asleep",
+        "effect": {
+          "name": "Asleep",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "unconscious",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Unconscious"
+            }
+          ]
         }
       }
     ],
@@ -168,7 +188,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "e6c3bf38d4144669"

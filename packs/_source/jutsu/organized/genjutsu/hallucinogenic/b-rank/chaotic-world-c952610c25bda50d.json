@@ -88,10 +88,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eXxAQY1tcYCbsj",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Chaotic World",
         "save": {
           "abilities": [
             "int"
@@ -100,15 +99,36 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this Genjutsu’s effects and becomes aware that they were a target of some Illusory effect.",
-            "success": "Success: Affected creature is able to resist this Genjutsu’s effects.",
-            "failure": "failure, but affected creature instead must begin to remake their saving throws at the end of each of their turns to end the jutsu’s effect, if they leave the area of the jutsu.",
-            "critFailure": "Critical Failure: Same effect as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists, and knows it was an illusion.",
+            "success": "Success: resists.",
+            "failure": "Failure: Blinded, Deafened and Prone.",
+            "critFailure": "Critical Failure: as a failure; leaving, it must resave at the end of each of its turns to end them."
+          }
         },
+        "inflicts": [
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          },
+          {
+            "key": "deafened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Deafened"
+          },
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "Concentration: a 25-foot cube (+5 feet per rank) at a point within 60 feet (+15 feet per rank); a creature starting its turn inside. It can't stand or end these conditions inside; they end when it leaves or the jutsu ends.",
         "damage": {
           "parts": []
         }
@@ -180,7 +200,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "1f4ded8719811acd"

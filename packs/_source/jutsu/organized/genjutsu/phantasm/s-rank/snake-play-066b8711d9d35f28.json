@@ -87,9 +87,26 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eTvSH1rn6D5ICK",
         "type": "save",
-        "label": "Save",
+        "label": "Snake Play",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists.",
+            "failure": "Failure: Stunned and 1 Exhaustion.",
+            "critFailure": "Critical Failure: as a failure."
+          }
+        },
         "inflicts": [
           {
             "key": "stunned",
@@ -104,20 +121,29 @@
             "label": "Exhaustion"
           }
         ],
-        "save": {
-          "abilities": [
-            "wis"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": true,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Concentration: up to 7 creatures within 120 feet; at the end of each of their turns they save again (the effect on a failure).",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5ebnO6QBMslLo0b",
+        "type": "effect",
+        "label": "Failed again: +1 Exhaustion",
+        "effect": {
+          "name": "Failed again: +1 Exhaustion",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "exhaustion",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Exhaustion"
+            }
+          ]
         }
       }
     ],
@@ -185,7 +211,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "e6c3bf38d4144669"
