@@ -568,3 +568,9 @@ Additive selective-import batch based on 2d04d62. Seven new entries (27 total), 
 - Engine: save DC source / attack discipline "highest" (workflow/activity-buttons.mjs highestDiscipline); summon rank → `@rankValue` in summoner links (workflow/allied.mjs, rules/summoner-links.mjs); table entry `system` fields.
 - Codex's Journal Desk files untouched.
 - 0.80.0-alpha.1 STD6e E2 Land of Wind: clan tables fushin, hanami, jiton, konjiki, shakuton. Hijutsu can carry their own cast options (Scorch, Alomancy Infusion, Monstrous Burst/Healers Touch).
+
+## GM05 — Codex, 2026-11-20
+
+Native idea library and existing-tool entry points implemented on 7f344c0. Existing campaign data/gameplay logic preserved. Three focused offline tests/lint passed; no live testing. PR/main checks reserved. docs/GM_WORKSPACE.md records exact integration behavior, GM05b expansion and remaining batches. GM04c release confirmed v0.68.1-alpha.3.
+
+2026-11-24: reconciled with 0682cbff / 0.93.0-alpha.1; all newer gameplay work retained. Earlier merge was not executed because approval review hit a usage limit. GM05 now targets 0.93.1-alpha.1. No local tests repeated.

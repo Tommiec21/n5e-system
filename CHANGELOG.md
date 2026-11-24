@@ -1,3 +1,8 @@
+## 0.93.1-alpha.1 — GM05 mission ideas and tools
+
+Six filterable original mission prompts, editable idea saving/insertion, and links to native mission budgets, adversary building and social encounter setup. Existing rules and saved entries are preserved. No live verification; Design A polish remains GM06.
+
+
 ## 0.93.0-alpha.1 — STD6f F7 Medical Ninjutsu; Supreme Poison Deity
 
 King 2026-11-23: "Next batch." Medical Release Ninjutsu (68) reviewed at every rank (52 partly automated, 16 notes only). Review table docs/jutsu/ninjutsu-medical-release-automation.md; spec docs/STD6f_SPEC.md (F7).
