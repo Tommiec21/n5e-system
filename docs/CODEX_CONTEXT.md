@@ -574,3 +574,14 @@ Additive selective-import batch based on 2d04d62. Seven new entries (27 total), 
 Native idea library and existing-tool entry points implemented on 7f344c0. Existing campaign data/gameplay logic preserved. Three focused offline tests/lint passed; no live testing. PR/main checks reserved. docs/GM_WORKSPACE.md records exact integration behavior, GM05b expansion and remaining batches. GM04c release confirmed v0.68.1-alpha.3.
 
 2026-11-24: reconciled with 0682cbff / 0.93.0-alpha.1; all newer gameplay work retained. Earlier merge was not executed because approval review hit a usage limit. GM05 now targets 0.93.1-alpha.1. No local tests repeated.
+
+## GM06 — Codex, 2026-11-24 — Front End User System
+
+Based on bd126d30; scope limited to Journal Desk UI/navigation and documentation. Design A paper/forest palette, compact selected library rows, tab accents, collapsible library, smaller-window Ideas tray, sticky save actions and keyboard search. Character profile headings append appearance, affiliation, motivation, connections and GM secrets without replacing text or creating Actors.
+
+Player access requires a clean saved draft and explicit whole-page warning before opening native page ownership controls; linked records retain their own permissions. No auto-sharing or secret redaction is claimed. The GM reviews text before granting access; players use native journals, not the GM-only desk. Existing private creation defaults and unrelated sheets remain unchanged.
+
+Validation budget: one local focused pass, PR CI second, main release CI third; stop after two failures. No live verification or local installation. Visual acceptance remains with the user. GM05 published v0.93.1-alpha.1; GM06 targets v0.93.2-alpha.1.
+
+Remaining additional batches: GM04d broader Part I atlas; GM05b expanded recipes/linked-NPC social setup; GM07 later eras; GM08 Campaign Board; GM09 World & Story; GM10 Writer journal. GM06b covers any user-reported visual refinements after in-game review.
+GM06 local attempt 1 passed: three focused checks and lint; publication pending.

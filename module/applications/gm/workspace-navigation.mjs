@@ -15,7 +15,7 @@ export function visit(history, cursor, uuid) {
 /** Templates supply editable headings only, never game rulings or automatic actors. */
 export function starterText(kind) {
   const sections = { mission: ["Briefing", "Objectives", "People and places", "GM notes"],
-    campaign: ["Premise", "Themes", "Open threads"], character: ["Description", "Motivation", "Connections"],
+    campaign: ["Premise", "Themes", "Open threads"], character: ["Appearance and manner", "Village and affiliation", "Motivation", "Connections", "GM secrets"],
     session: ["Notes", "Possible encounters", "After the session"], location: ["Description", "People", "Secrets"] };
   return (sections[kind] ?? ["Notes", "Connections"]).map(s => `<h2>${s}</h2><p></p>`).join("");
 }

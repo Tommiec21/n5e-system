@@ -1,3 +1,7 @@
+## 0.93.2-alpha.1 — GM06 Journal Desk usability
+
+Design A styling, collapsible navigation, responsive Ideas tray, clearer save actions, character profile headings and explicit native page-access controls. No gameplay rules or imported content changed; no live verification.
+
 ## 0.93.1-alpha.1 — GM05 mission ideas and tools
 
 Six filterable original mission prompts, editable idea saving/insertion, and links to native mission budgets, adversary building and social encounter setup. Existing rules and saved entries are preserved. No live verification; Design A polish remains GM06.
