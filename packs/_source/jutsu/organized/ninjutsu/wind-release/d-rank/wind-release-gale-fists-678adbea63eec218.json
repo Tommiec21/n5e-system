@@ -87,25 +87,22 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e6MC0O2zIFZ9Dm",
         "type": "attack",
-        "label": "Attack",
+        "label": "Gale Fist",
         "attack": {
-          "discipline": "",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Concentration: your Attack action's unarmed attacks can be melee Ninjutsu attacks with this damage (B-Rank: or a willing creature within 10 feet).",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "1d10",
-        "roll": {
-          "formula": "1d10",
-          "note": "For the duration of this jutsu, when you take the attack action to make an unarmed attack, you can make a melee ninjutsu attack and your unarmed damage becomes 1d10 + ninjutsu ability modifier and deals wind damage."
+          "parts": [
+            {
+              "formula": "1d10 + @mod.nin",
+              "type": "wind"
+            }
+          ]
         }
       }
     ],
@@ -186,9 +183,175 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5e6MC0O2zIFZ9Dm",
+              "type": "attack",
+              "label": "Gale Fist",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration: your Attack action's unarmed attacks can be melee Ninjutsu attacks with this damage (B-Rank: or a willing creature within 10 feet).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d10 + @mod.nin",
+                    "type": "wind"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e5PmbKkuwyMlp0",
+              "type": "save",
+              "label": "C-Rank: pushed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "When you deal the unarmed damage. Failure: pushed 20 feet.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5e6MC0O2zIFZ9Dm",
+              "type": "attack",
+              "label": "Gale Fist",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration: your Attack action's unarmed attacks can be melee Ninjutsu attacks with this damage (B-Rank: or a willing creature within 10 feet).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d10 + @mod.nin",
+                    "type": "wind"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e5PmbKkuwyMlp0",
+              "type": "save",
+              "label": "C-Rank: pushed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "When you deal the unarmed damage. Failure: pushed 20 feet.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e6MC0O2zIFZ9Dm",
+              "type": "attack",
+              "label": "Gale Fist",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration: your Attack action's unarmed attacks can be melee Ninjutsu attacks with this damage (B-Rank: or a willing creature within 10 feet).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d10 + @mod.nin",
+                    "type": "wind"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e5PmbKkuwyMlp0",
+              "type": "save",
+              "label": "C-Rank: pushed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "When you deal the unarmed damage. Failure: pushed 20 feet.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e6MC0O2zIFZ9Dm",
+              "type": "attack",
+              "label": "Gale Fist",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration: your Attack action's unarmed attacks can be melee Ninjutsu attacks with this damage (B-Rank: or a willing creature within 10 feet).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d10 + @mod.nin",
+                    "type": "wind"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e5PmbKkuwyMlp0",
+              "type": "save",
+              "label": "C-Rank: pushed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "When you deal the unarmed damage. Failure: pushed 20 feet.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "20268cc1727cd95c"

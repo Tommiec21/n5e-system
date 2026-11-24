@@ -85,17 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5evAkRqKAg0cLEM",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "blinded",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Blinded"
-          }
-        ],
+        "label": "Dust Wind",
         "save": {
           "abilities": [
             "wis"
@@ -104,10 +96,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          }
+        ],
+        "text": "A 15-foot cone (+10 feet per rank). Failure: Blinded until the end of its next turn. Swirl (by hand): a creature that fails spreads 1 rank of each Elemental condition on it to hostile creatures within 5 feet of it.",
         "damage": {
           "parts": []
         }
@@ -179,7 +178,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "20268cc1727cd95c"

@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eNYFYA32lyNMk0",
         "type": "attack",
-        "label": "Attack",
+        "label": "Slicing Wind Bullet",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "ranged",
-          "count": 1
+          "count": 2
         },
+        "text": "60 feet; same or different creatures.",
         "damage": {
           "parts": [
             {
@@ -101,6 +102,27 @@
             }
           ]
         }
+      },
+      {
+        "id": "n5eWEOU9Avz5Ljba",
+        "type": "effect",
+        "label": "Once per turn: Bleed",
+        "effect": {
+          "name": "Once per turn: Bleed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "bleed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bleed"
+            }
+          ]
+        },
+        "text": "A creature hit (A-Rank: 2)."
       }
     ],
     "featureType": "active",
@@ -183,14 +205,15 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5eNYFYA32lyNMk0",
               "type": "attack",
-              "label": "Attack",
+              "label": "Slicing Wind Bullet",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "ranged",
-                "count": 1
+                "count": 2
               },
+              "text": "60 feet; same or different creatures.",
               "damage": {
                 "parts": [
                   {
@@ -199,18 +222,60 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5eWEOU9Avz5Ljba",
+              "type": "effect",
+              "label": "Once per turn: Bleed",
+              "effect": {
+                "name": "Once per turn: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ]
+              },
+              "text": "A creature hit (A-Rank: 2)."
+            },
+            {
+              "id": "n5eHWOQzva9ka17U",
+              "type": "save",
+              "label": "C-Rank: pushed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A creature hit. Failure: pushed 10 feet.",
+              "damage": {
+                "parts": []
+              }
             }
           ],
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5eNYFYA32lyNMk0",
               "type": "attack",
-              "label": "Attack",
+              "label": "Slicing Wind Bullet",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "ranged",
-                "count": 1
+                "count": 2
               },
+              "text": "60 feet; same or different creatures.",
               "damage": {
                 "parts": [
                   {
@@ -219,18 +284,60 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5eWEOU9Avz5Ljba",
+              "type": "effect",
+              "label": "Once per turn: Bleed",
+              "effect": {
+                "name": "Once per turn: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bleed"
+                  }
+                ]
+              },
+              "text": "A creature hit (A-Rank: 2)."
+            },
+            {
+              "id": "n5eHWOQzva9ka17U",
+              "type": "save",
+              "label": "C-Rank: pushed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A creature hit. Failure: pushed 10 feet. B-Rank: Swirl (by hand): a creature that fails spreads 1 rank of each Elemental condition on it to hostile creatures within 5 feet of it.",
+              "damage": {
+                "parts": []
+              }
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eNYFYA32lyNMk0",
               "type": "attack",
-              "label": "Attack",
+              "label": "Slicing Wind Bullet",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "ranged",
-                "count": 1
+                "count": 2
               },
+              "text": "60 feet; same or different creatures.",
               "damage": {
                 "parts": [
                   {
@@ -239,18 +346,60 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5eWEOU9Avz5Ljba",
+              "type": "effect",
+              "label": "Once per turn: 2 Bleed",
+              "effect": {
+                "name": "Once per turn: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Bleed"
+                  }
+                ]
+              },
+              "text": "A creature hit (A-Rank: 2)."
+            },
+            {
+              "id": "n5eHWOQzva9ka17U",
+              "type": "save",
+              "label": "C-Rank: pushed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A creature hit. Failure: pushed 10 feet. B-Rank: Swirl (by hand): a creature that fails spreads 1 rank of each Elemental condition on it to hostile creatures within 5 feet of it.",
+              "damage": {
+                "parts": []
+              }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eNYFYA32lyNMk0",
               "type": "attack",
-              "label": "Attack",
+              "label": "Slicing Wind Bullet",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "ranged",
-                "count": 1
+                "count": 2
               },
+              "text": "60 feet; same or different creatures.",
               "damage": {
                 "parts": [
                   {
@@ -259,11 +408,53 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5eWEOU9Avz5Ljba",
+              "type": "effect",
+              "label": "Once per turn: 2 Bleed",
+              "effect": {
+                "name": "Once per turn: Bleed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bleed",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Bleed"
+                  }
+                ]
+              },
+              "text": "A creature hit (A-Rank: 2)."
+            },
+            {
+              "id": "n5eHWOQzva9ka17U",
+              "type": "save",
+              "label": "C-Rank: pushed",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A creature hit. Failure: pushed 10 feet. B-Rank: Swirl (by hand): a creature that fails spreads 1 rank of each Elemental condition on it to hostile creatures within 5 feet of it.",
+              "damage": {
+                "parts": []
+              }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "20268cc1727cd95c"

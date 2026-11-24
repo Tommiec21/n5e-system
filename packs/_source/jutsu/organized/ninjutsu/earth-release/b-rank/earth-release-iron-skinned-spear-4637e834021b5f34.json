@@ -86,19 +86,60 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5erlaYlW3CrumHV",
         "type": "attack",
-        "label": "Attack",
+        "label": "Iron Skinned Spear",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "On a hit: marked for petrification for 1 minute.",
         "damage": {
           "parts": [
             {
               "formula": "8d6",
               "type": "earth"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eKXCBF21iL0NiS",
+        "type": "save",
+        "label": "Petrification: start of its turn",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Three failures: Petrified for 24 hours; three successes end it (again within 24 hours: at advantage).",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eKLbXZRO7fWm22",
+        "type": "effect",
+        "label": "Third failure: Petrified",
+        "effect": {
+          "name": "Third failure: Petrified",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "petrified",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Petrified"
             }
           ]
         }
@@ -184,14 +225,15 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5erlaYlW3CrumHV",
               "type": "attack",
-              "label": "Attack",
+              "label": "Iron Skinned Spear",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "On a hit: marked for petrification for 1 minute.",
               "damage": {
                 "parts": [
                   {
@@ -200,18 +242,59 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5eKXCBF21iL0NiS",
+              "type": "save",
+              "label": "Petrification: start of its turn",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Three failures: Petrified for 24 hours; three successes end it (again within 24 hours: at advantage).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eKLbXZRO7fWm22",
+              "type": "effect",
+              "label": "Third failure: Petrified",
+              "effect": {
+                "name": "Third failure: Petrified",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "petrified",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Petrified"
+                  }
+                ]
+              }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5erlaYlW3CrumHV",
               "type": "attack",
-              "label": "Attack",
+              "label": "Iron Skinned Spear",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "On a hit: marked for petrification for 1 minute.",
               "damage": {
                 "parts": [
                   {
@@ -220,11 +303,52 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5eKXCBF21iL0NiS",
+              "type": "save",
+              "label": "Petrification: start of its turn",
+              "save": {
+                "abilities": [
+                  "con"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Three failures: Petrified for 24 hours; three successes end it (again within 24 hours: at advantage).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eKLbXZRO7fWm22",
+              "type": "effect",
+              "label": "Third failure: Petrified",
+              "effect": {
+                "name": "Third failure: Petrified",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "petrified",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Petrified"
+                  }
+                ]
+              }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b7e6162521e0f78f"

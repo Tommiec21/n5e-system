@@ -86,9 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eThLajt1WzJGlM",
         "type": "damage",
-        "label": "Damage",
+        "label": "Stone's Might: +1d6",
         "damage": {
           "parts": [
             {
@@ -96,7 +96,8 @@
               "type": "earth"
             }
           ]
-        }
+        },
+        "text": "Concentration: a willing creature within 30 feet (B-Rank: or you; S-Rank: all you choose within 15 feet). Stone's Might: Strength 18, +1d6 earth on unarmed, weapon and Taijutsu attacks. Stone's Swiftness: Dexterity 18, a rank of Mastery on Dexterity saves, +20 speed."
       }
     ],
     "featureType": "active",
@@ -182,9 +183,157 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eThLajt1WzJGlM",
+              "type": "damage",
+              "label": "Stone's Might: +1d6",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d6",
+                    "type": "earth"
+                  }
+                ]
+              },
+              "text": "Concentration: a willing creature within 30 feet (B-Rank: or you; S-Rank: all you choose within 15 feet). Stone's Might: Strength 18, +1d6 earth on unarmed, weapon and Taijutsu attacks. Stone's Swiftness: Dexterity 18, a rank of Mastery on Dexterity saves, +20 speed."
+            },
+            {
+              "id": "n5eEnBlKZBJmOmod",
+              "type": "damage",
+              "label": "Stone's Power: +2d8",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d8",
+                    "type": "earth"
+                  }
+                ]
+              },
+              "text": "C-Rank: once per jutsu casting."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eThLajt1WzJGlM",
+              "type": "damage",
+              "label": "Stone's Might: +1d6",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d6",
+                    "type": "earth"
+                  }
+                ]
+              },
+              "text": "Concentration: a willing creature within 30 feet (B-Rank: or you; S-Rank: all you choose within 15 feet). Stone's Might: Strength 18, +1d6 earth on unarmed, weapon and Taijutsu attacks. Stone's Swiftness: Dexterity 18, a rank of Mastery on Dexterity saves, +20 speed."
+            },
+            {
+              "id": "n5eEnBlKZBJmOmod",
+              "type": "damage",
+              "label": "Stone's Power: +2d8",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d8",
+                    "type": "earth"
+                  }
+                ]
+              },
+              "text": "C-Rank: once per jutsu casting."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eThLajt1WzJGlM",
+              "type": "damage",
+              "label": "Stone's Might: +1d6",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d6",
+                    "type": "earth"
+                  }
+                ]
+              },
+              "text": "Concentration: a willing creature within 30 feet (B-Rank: or you; S-Rank: all you choose within 15 feet). Stone's Might: Strength 18, +1d6 earth on unarmed, weapon and Taijutsu attacks. Stone's Swiftness: Dexterity 18, a rank of Mastery on Dexterity saves, +20 speed."
+            },
+            {
+              "id": "n5eEnBlKZBJmOmod",
+              "type": "damage",
+              "label": "Stone's Power: +2d8",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d8",
+                    "type": "earth"
+                  }
+                ]
+              },
+              "text": "C-Rank: once per jutsu casting."
+            },
+            {
+              "id": "n5ejazfXizf6CoR8",
+              "type": "heal",
+              "label": "Stone's Tenacity",
+              "heal": {
+                "formula": "2d6 + 4",
+                "pool": "tempHp"
+              },
+              "text": "A-Rank: at the start of each of its turns with at least 1 hit point."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eThLajt1WzJGlM",
+              "type": "damage",
+              "label": "Stone's Might: +1d6",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d6",
+                    "type": "earth"
+                  }
+                ]
+              },
+              "text": "Concentration: a willing creature within 30 feet (B-Rank: or you; S-Rank: all you choose within 15 feet). Stone's Might: Strength 18, +1d6 earth on unarmed, weapon and Taijutsu attacks. Stone's Swiftness: Dexterity 18, a rank of Mastery on Dexterity saves, +20 speed."
+            },
+            {
+              "id": "n5eEnBlKZBJmOmod",
+              "type": "damage",
+              "label": "Stone's Power: +2d8",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d8",
+                    "type": "earth"
+                  }
+                ]
+              },
+              "text": "C-Rank: once per jutsu casting."
+            },
+            {
+              "id": "n5ejazfXizf6CoR8",
+              "type": "heal",
+              "label": "Stone's Tenacity",
+              "heal": {
+                "formula": "2d6 + 4",
+                "pool": "tempHp"
+              },
+              "text": "A-Rank: at the start of each of its turns with at least 1 hit point."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "C-Rank: Stone's Power (+2d8 earth once per jutsu casting, +1 to its save DC). A-Rank: Stone's Tenacity (advantage on Strength, Dexterity and Constitution saves; immune to Physical conditions but Grappled and Restrained; 2d6 + 4 at the start of its turns)."
+        }
+      ]
     }
   },
   "folder": "59ce6e14db17de3b"

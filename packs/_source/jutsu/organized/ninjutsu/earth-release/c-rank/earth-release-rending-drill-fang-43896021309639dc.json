@@ -86,19 +86,40 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eQsqThNQorryiT",
         "type": "attack",
-        "label": "Attack",
+        "label": "Rending Drill Fang",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "A critical hit triples the damage dice instead of doubling them (by hand).",
         "damage": {
           "parts": [
             {
               "formula": "6d6",
               "type": "earth"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e4KRwh4dK8RQB5",
+        "type": "effect",
+        "label": "On a hit: Bruised",
+        "effect": {
+          "name": "On a hit: Bruised",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
             }
           ]
         }
@@ -184,14 +205,15 @@
         "activitiesByRank": {
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5eQsqThNQorryiT",
               "type": "attack",
-              "label": "Attack",
+              "label": "Rending Drill Fang",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "A critical hit triples the damage dice instead of doubling them (by hand).",
               "damage": {
                 "parts": [
                   {
@@ -200,18 +222,39 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5e4KRwh4dK8RQB5",
+              "type": "effect",
+              "label": "On a hit: Bruised",
+              "effect": {
+                "name": "On a hit: Bruised",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ]
+              }
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eQsqThNQorryiT",
               "type": "attack",
-              "label": "Attack",
+              "label": "Rending Drill Fang",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "A critical hit triples the damage dice instead of doubling them (by hand).",
               "damage": {
                 "parts": [
                   {
@@ -220,18 +263,39 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5e4KRwh4dK8RQB5",
+              "type": "effect",
+              "label": "On a hit: Bruised",
+              "effect": {
+                "name": "On a hit: Bruised",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ]
+              }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eQsqThNQorryiT",
               "type": "attack",
-              "label": "Attack",
+              "label": "Rending Drill Fang",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "A critical hit triples the damage dice instead of doubling them (by hand).",
               "damage": {
                 "parts": [
                   {
@@ -240,11 +304,32 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5e4KRwh4dK8RQB5",
+              "type": "effect",
+              "label": "On a hit: Bruised",
+              "effect": {
+                "name": "On a hit: Bruised",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ]
+              }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "bdb81013175b0aa5"

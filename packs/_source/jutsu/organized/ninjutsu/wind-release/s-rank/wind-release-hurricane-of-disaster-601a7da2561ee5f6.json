@@ -86,17 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eDjqc4oafG1YGa",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "restrained",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Restrained"
-          }
-        ],
+        "label": "Hurricane of Disaster",
         "save": {
           "abilities": [
             "str"
@@ -105,39 +97,33 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "Combination, full turn, 1 minute: a 120-foot radius, 250 feet high (+2d6 per extra caster); moves 90 feet at the end of your turns (the d8). Failure: thrown 250 feet up, the damage and Restrained; resave at the end of its turns (failure: the damage again; success: lands safely). Structures fail.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "14d6",
+              "type": "wind"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll1",
+        "id": "n5eWkGJFHCWtuJmb",
         "type": "roll",
-        "label": "1d8",
+        "label": "Direction",
         "roll": {
           "formula": "1d8",
-          "note": "At the end of each of your turns, it moves 90 feet in a random direction (Roll 1d8. 1: North, 2: North East, 3: East, 4: South East, 5: South, 6: South West, 7: West, 8: North West.). Creatures within this jutsu’s area of effect must make a Strength saving throw being ripped from their current position and thrown 250 feet into the air taking 14d6 wind damage and being Restrained by the wind on a failed save. A creature thrown into the air may repeat their Strength Saving throw to escape this wind at the end of each of their turns, taking 14d6 wind damage on a failed save. On a successful save, they are able to end their restrained condition, and even fall to the ground taking no fall damage on a successful save."
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "14d6",
-        "roll": {
-          "formula": "14d6",
-          "note": "Creatures within this jutsu’s area of effect must make a Strength saving throw being ripped from their current position and thrown 250 feet into the air taking 14d6 wind damage and being Restrained by the wind on a failed save. A creature thrown into the air may repeat their Strength Saving throw to escape this wind at the end of each of their turns, taking 14d6 wind damage on a failed save. On a successful save, they are able to end their restrained condition, and even fall to the ground taking no fall damage on a successful save."
-        }
-      },
-      {
-        "id": "sourceRoll4",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "Combination: Increases the damage dealt by 2d6, for every additional creature aiding in casting this jutsu, beyond the first two."
+          "note": "1 N, 2 NE, 3 E, 4 SE, 5 S, 6 SW, 7 W, 8 NW."
         }
       }
     ],
@@ -232,7 +218,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "efe41c5a36c311aa"

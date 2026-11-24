@@ -234,3 +234,40 @@ test("STD6f F7 Medical: every jutsu reviewed; Amps kept; wrong buttons fixed; th
   assert.deepEqual([deity.system.attributes.ac.flat, deity.system.hpMax, deity.system.traits.dr, deity.system.traits.size], [22, 90, 8, "huge"]);
   assert.equal(j("supreme-poison-deity").system.activities[0].summon.uuid, `Compendium.n5e.summons.Actor.${deity._id}`);
 });
+
+test("STD6f F8 Earth and Wind: every jutsu reviewed; Mud Wolf and Stone Dragon from the Summon Stat Blocks; Earth Clone uses the Clone", async () => {
+  for ( const [section, count] of [["ninjutsu/earth-release", 54], ["ninjutsu/wind-release", 50]] ) {
+    const t = table(section);
+    const items = sectionJutsu(section, t.ranks);
+    assert.equal(items.size, count, section);
+    for ( const [id, { doc }] of items ) {
+      assert.ok(t.features[id], id);
+      assert.equal(doc.flags.n5e.reviewed, true, id);
+    }
+  }
+  assert.deepEqual(tableProblems().filter(p => p.startsWith("jutsu/")), []);
+  const e = id => jutsu("ninjutsu/earth-release", `earth-release-${id}`), w = id => jutsu("ninjutsu/wind-release", `wind-release-${id}`);
+  for ( const id of ["jade-devotion", "sand-armor", "diamond-bone-hardening"] ) assert.ok(e(id).system.activities.some(a => a.effect?.amp === `jutsu-earth-release-${id}`), id);
+  for ( const id of ["zephyr-strike", "wind-rider", "neverending-breath"] ) assert.ok(w(id).system.activities.some(a => a.effect?.amp === `jutsu-wind-release-${id}`), id);
+  const { SUMMONS } = await import("../tools/content/build-summons.mjs");
+  const { linkValue, summonerData } = await import("../module/rules/summoner-links.mjs");
+  const uuid = d => `Compendium.n5e.summons.Actor.${d._id}`;
+  assert.equal(e("mud-wolf").system.activities[0].summon.uuid, uuid(SUMMONS.mudWolf));
+  assert.equal(e("mud-wolf").system.activities[0].summon.count, 2);
+  assert.equal(e("mud-wolf").flags.n5e.jutsuBookImport.activitiesByRank.S[0].summon.count, 5);
+  assert.equal(e("stone-dragon").system.activities[0].summon.uuid, uuid(SUMMONS.stoneDragon));
+  assert.equal(e("earth-clone").system.activities[0].summon.uuid, uuid(SUMMONS.clone));
+  // Mud Wolf AC: 12 + your Ninjutsu modifier (+3 with a +6 Ninjutsu attack at proficiency 3); 35 hit points at B-Rank.
+  const links = SUMMONS.mudWolf.flags.n5e.fromSummoner, data = { ...summonerData({ prof: 3, level: 7 }), attack: { nin: 6 }, prof: 3, rankValue: 3 };
+  assert.equal(linkValue(links["attributes.ac.flat"], data), 15);
+  assert.equal(linkValue(links.hpMax, data), 35);
+  assert.equal(SUMMONS.stoneDragon.system.traits.dr, 8);
+  // Upcasts: Crystalized Ascension's bonuses, Sand Binding's riders, Splitting Breeze's S-Rank shockwave.
+  const crys = e("crystalized-ascension").flags.n5e.jutsuBookImport.activitiesByRank;
+  assert.deepEqual(["B", "A", "S"].map(r => crys[r].find(a => a.type === "heal").heal.formula), ["24", "24", "32"]);
+  assert.equal(e("sand-binding").flags.n5e.jutsuBookImport.activitiesByRank.A.length, 4);
+  assert.ok(w("splitting-breeze").flags.n5e.jutsuBookImport.activitiesByRank.S.some(a => a.label === "S-Rank critical: shockwave"));
+  // Wrong import conditions removed: Bottomless Swamp's Dying, Cherishing Breezes' Dead and Dying.
+  assert.ok(!e("bottomless-swamp").system.activities.some(a => (a.inflicts ?? []).some(x => x.key === "dying")));
+  assert.ok(!w("cherishing-breezes").system.activities.some(a => a.inflicts?.length));
+});

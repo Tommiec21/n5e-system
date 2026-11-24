@@ -86,29 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eKy5TguFUFMH9C",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "dazed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Dazed"
-          },
-          {
-            "key": "stunned",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Stunned"
-          },
-          {
-            "key": "petrified",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Petrified"
-          }
-        ],
+        "label": "Geo Progeniture",
         "save": {
           "abilities": [
             "dex"
@@ -116,11 +96,18 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "Up to 3 shards (8 chakra each); an Action triggers them: creatures within 15 feet of a shard (one save; −1 per extra shard). Failure: Dazed; by 5+: Stunned for as many turns as shards; by 10+ within three: Petrified for 3 turns. Success: half.",
         "damage": {
           "parts": [
             {
@@ -131,12 +118,57 @@
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "2d8",
-        "roll": {
-          "formula": "2d8",
-          "note": "If a creature is within range or more than 1 shard, increase the damage dealt by 2d8 for each share they are near beyond the first."
+        "id": "n5eNemOBM2Oiotg1",
+        "type": "damage",
+        "label": "Per extra shard",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d8",
+              "type": "earth"
+            }
+          ]
+        },
+        "text": "A creature within range of more than one shard: per extra shard."
+      },
+      {
+        "id": "n5e7zUVMQI88NC6J",
+        "type": "effect",
+        "label": "Failed by 5+: Stunned",
+        "effect": {
+          "name": "Failed by 5+: Stunned",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "stunned",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Stunned"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eCrkWWxEI3Powg",
+        "type": "effect",
+        "label": "Failed by 10+, three shards: Petrified",
+        "effect": {
+          "name": "Failed by 10+, three shards: Petrified",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "petrified",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Petrified"
+            }
+          ]
         }
       }
     ],
@@ -217,7 +249,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "bdb81013175b0aa5"

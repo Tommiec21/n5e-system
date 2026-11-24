@@ -86,13 +86,14 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e99IQN7eGFc9dt",
         "type": "heal",
-        "label": "Healing",
+        "label": "Recovering Breeze",
         "heal": {
           "formula": "4d6",
-          "pool": "hp"
-        }
+          "pool": "tempHp"
+        },
+        "text": "Creatures you choose in a 30-foot cone, not you; also removes Weakened and Bruised."
       }
     ],
     "featureType": "active",
@@ -172,9 +173,47 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5e99IQN7eGFc9dt",
+              "type": "heal",
+              "label": "Recovering Breeze",
+              "heal": {
+                "formula": "(4d6) + (1d6)",
+                "pool": "tempHp"
+              },
+              "text": "Creatures you choose in a 30-foot cone, not you; also removes Weakened and Bruised."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e99IQN7eGFc9dt",
+              "type": "heal",
+              "label": "Recovering Breeze",
+              "heal": {
+                "formula": "(4d6) + (2d6)",
+                "pool": "tempHp"
+              },
+              "text": "Creatures you choose in a 30-foot cone, not you; also removes Weakened and Bruised."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e99IQN7eGFc9dt",
+              "type": "heal",
+              "label": "Recovering Breeze",
+              "heal": {
+                "formula": "(4d6) + (3d6)",
+                "pool": "tempHp"
+              },
+              "text": "Creatures you choose in a 30-foot cone, not you; also removes Weakened and Bruised."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c316a04b2e905f38"

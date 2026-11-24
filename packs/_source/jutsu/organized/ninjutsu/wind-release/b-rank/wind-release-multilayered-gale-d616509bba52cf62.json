@@ -86,13 +86,24 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
+        "id": "n5eITbbH91UY8gLa",
+        "type": "heal",
+        "label": "Barrier",
+        "heal": {
+          "formula": "30",
+          "pool": "tempHp"
+        },
+        "text": "Concentration: a barrier in your space (vulnerable to fire, resistant to lightning); ranged attacks against you have disadvantage."
+      },
+      {
+        "id": "n5evZOYgjekVNRL3",
+        "type": "heal",
+        "label": "Restabilize (Bonus action)",
+        "heal": {
           "formula": "2d6",
-          "note": "At the start of each of your turns you can spend a bonus action to restabilize this barrier regenerating 2d6 of the shields hit points. This barrier has a vulnerability to Fire damage, and resistance to Lightning damage."
-        }
+          "pool": "tempHp"
+        },
+        "text": "At the start of your turn."
       }
     ],
     "featureType": "active",
@@ -166,9 +177,55 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eITbbH91UY8gLa",
+              "type": "heal",
+              "label": "Barrier",
+              "heal": {
+                "formula": "38",
+                "pool": "tempHp"
+              },
+              "text": "Concentration: a barrier in your space (vulnerable to fire, resistant to lightning); ranged attacks against you have disadvantage."
+            },
+            {
+              "id": "n5evZOYgjekVNRL3",
+              "type": "heal",
+              "label": "Restabilize (Bonus action)",
+              "heal": {
+                "formula": "2d6",
+                "pool": "tempHp"
+              },
+              "text": "At the start of your turn."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eITbbH91UY8gLa",
+              "type": "heal",
+              "label": "Barrier",
+              "heal": {
+                "formula": "46",
+                "pool": "tempHp"
+              },
+              "text": "Concentration: a barrier in your space (vulnerable to fire, resistant to lightning); ranged attacks against you have disadvantage."
+            },
+            {
+              "id": "n5evZOYgjekVNRL3",
+              "type": "heal",
+              "label": "Restabilize (Bonus action)",
+              "heal": {
+                "formula": "2d6",
+                "pool": "tempHp"
+              },
+              "text": "At the start of your turn."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "df8acb8c158b687b"

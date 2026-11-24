@@ -85,29 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eTaE80IRk517eQ",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "restrained",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Restrained"
-          },
-          {
-            "key": "suffocating",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Suffocating"
-          },
-          {
-            "key": "dying",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Dying"
-          }
-        ],
+        "label": "Bottomless Swamp",
         "save": {
           "abilities": [
             "str"
@@ -116,15 +96,55 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Concentration: a 60-foot cube within 120 feet (difficult terrain; no dashing, jumping or water walking); in the area when cast, entering or starting a turn there, and each turn. Each failure: the damage and the next stage: 1st −20 speed; 2nd Restrained; 3rd submerged and suffocating. A success removes the last stage.",
         "damage": {
           "parts": [
             {
               "formula": "4d8",
               "type": "earth"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eJwsOxLTMOpPzQ",
+        "type": "effect",
+        "label": "2nd failure: Restrained",
+        "effect": {
+          "name": "2nd failure: Restrained",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "restrained",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Restrained"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eV6EAr7smboAYZ",
+        "type": "effect",
+        "label": "3rd failure: Suffocating",
+        "effect": {
+          "name": "3rd failure: Suffocating",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "suffocating",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Suffocating"
             }
           ]
         }
@@ -201,7 +221,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b7e6162521e0f78f"

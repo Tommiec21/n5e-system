@@ -85,23 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ekvLZwCXGQT7ds",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "suffocating",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Suffocating"
-          },
-          {
-            "key": "unconscious",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Unconscious"
-          }
-        ],
+        "label": "Vacuum Rain",
         "save": {
           "abilities": [
             "con"
@@ -110,30 +96,48 @@
             "source": "discipline"
           },
           "onSuccess": "half",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "suffocating",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Suffocating"
+          }
+        ],
+        "text": "Combination, concentration: a 60-foot tall, 20-foot wide cylinder within 90 feet (+5 feet and +1d6 of each per extra caster); at the start of each turn inside. Failure: the damage and Suffocating (Constitution modifier rounds, then Unconscious); success: half. No speed bonuses; difficult terrain.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "slashing"
+            },
+            {
+              "formula": "2d6",
+              "type": "wind"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "On a failed save they are slashed with blades of wind taking 2d6 slashing damage and 2d6 wind damage and are robbed of their air in their lungs as they begin suffocating. A Suffocating creature can only survive a number of rounds equal to their constitution modifier before passing out falling unconscious from the lack of air or half as much damage on a successful save. A creature makes this saving throw the start of each turn they begin within this cylinder. An unconscious creature can regain consciousness when another creature spends an action waking them."
-        }
-      },
-      {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "1d6",
-        "roll": {
-          "formula": "1d6",
-          "note": "Combination: Increase the damage dealt by 1d6 for each damage type and the width of the cylinder by 5-feet, for every additional creature aiding in casting this jutsu, beyond the first two."
+        "id": "n5eHDqT5AmpGIPav",
+        "type": "effect",
+        "label": "Out of air: Unconscious",
+        "effect": {
+          "name": "Out of air: Unconscious",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "unconscious",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Unconscious"
+            }
+          ]
         }
       }
     ],
@@ -222,7 +226,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "20268cc1727cd95c"

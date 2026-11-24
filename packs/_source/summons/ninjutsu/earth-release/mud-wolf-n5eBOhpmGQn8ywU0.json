@@ -1,0 +1,273 @@
+{
+  "_id": "n5eBOhpmGQn8ywU0",
+  "_key": "!actors!n5eBOhpmGQn8ywU0",
+  "name": "Mud Wolf",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Earth Release: Mud Wolf",
+      "summonRole": "Mud Wolf",
+      "biography": "<p><em>Earth Release: Mud Wolf (C-Rank, concentration up to 1 minute).</em> Two wolves (+1 per rank above C); Earthen Artifacts. They use your Ninjutsu attack bonus and save DC; you command them all as a Bonus Action.</p><p><strong>Medium Construct.</strong> <strong>Armor Class</strong> 12 + your Ninjutsu ability modifier · <strong>Hit Points</strong> 25 + 10 for every rank above C-Rank · <strong>Speed</strong> 40 ft.</p><p><strong>Abilities</strong> STR +1 (save +3), DEX +1 (save +3), CON +1 (save +5), INT −5 (save −5), WIS +0 (save +0), CHA −5 (save −5). <strong>Damage Immunities</strong> Acid, Poison, Psychic. <strong>Condition Immunities</strong> All Mental, Stunned, Petrified, Envenomed. <strong>Senses</strong> Darkvision 60 ft., passive Perception 10.</p><p><strong>Linked to you when summoned:</strong> AC from your Ninjutsu modifier, hit points by the rank you cast the jutsu at, your Ninjutsu attack bonus and save DC.</p>"
+    },
+    "abilities": {
+      "str": {
+        "value": 12
+      },
+      "dex": {
+        "value": 12
+      },
+      "con": {
+        "value": 12
+      },
+      "int": {
+        "value": 0
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 0
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 12,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "medium",
+      "immune": [
+        "acid",
+        "poison",
+        "psychic"
+      ],
+      "conditionImmune": [
+        "berserk",
+        "charmed",
+        "confused",
+        "demoralized",
+        "shaken",
+        "petrified",
+        "envenomed"
+      ],
+      "stateImmune": [
+        "stunned"
+      ],
+      "speed": {
+        "walk": 40,
+        "climb": 0,
+        "swim": 0,
+        "fly": 0,
+        "burrow": 0,
+        "hover": false
+      },
+      "senses": {
+        "darkvision": 60
+      }
+    },
+    "hpMax": 25,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5exuPhnxGxdwoJH",
+      "_key": "!actors.items!n5eBOhpmGQn8ywU0.n5exuPhnxGxdwoJH",
+      "name": "Pack Tactics",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>While the Mud Wolf and an ally to the wolf are both within 5 feet of the same hostile creature, the wolf makes its attack at advantage.</p>",
+        "category": "npcTraits",
+        "featureType": "passive",
+        "activities": [],
+        "activation": {
+          "type": "",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.94.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5ejDDwbEC34xSxj",
+      "_key": "!actors.items!n5eBOhpmGQn8ywU0.n5ejDDwbEC34xSxj",
+      "name": "Bite",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Natural Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one target. <em>Hit:</em> 1d8 + your Ninjutsu ability modifier earth damage.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eMiGJJgFmyYJDg",
+            "type": "attack",
+            "label": "Bite",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 1,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "1d8",
+                  "type": "earth"
+                }
+              ]
+            },
+            "text": "Add your Ninjutsu ability modifier to the damage."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.94.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5eWFnv77eqCVKvN",
+      "_key": "!actors.items!n5eBOhpmGQn8ywU0.n5eWFnv77eqCVKvN",
+      "name": "Grab",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>If the target is hit by its Bite attack, it must make a Strength save. On a failed save it is knocked Prone.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eVbYo5o94cZ6Y5",
+            "type": "save",
+            "label": "Grab",
+            "save": {
+              "abilities": [
+                "str"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "none",
+              "resave": false
+            },
+            "inflicts": [
+              {
+                "key": "prone",
+                "kind": "state",
+                "ranks": 1,
+                "label": "Prone"
+              }
+            ],
+            "text": "A creature hit by the Bite."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.94.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5e96DMDbGzXrHct",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "bonuses.saveDC.nin": "@dc.nin - 8 - @prof",
+        "bonuses.attack.nin": "@attack.nin - @prof",
+        "attributes.ac.flat": "12 + (@attack.nin - @prof)",
+        "hpMax": "25 + 10 * max(0, @rankValue - 2)"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Mud Wolf",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.94.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

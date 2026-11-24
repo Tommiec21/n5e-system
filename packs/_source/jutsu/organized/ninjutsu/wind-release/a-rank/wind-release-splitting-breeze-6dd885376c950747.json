@@ -86,14 +86,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eIjr4nLFEjAIrv",
         "type": "attack",
-        "label": "Attack",
+        "label": "Splitting Breeze",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "+2 critical range (the effect; +1 per rank).",
         "damage": {
           "parts": [
             {
@@ -104,17 +105,28 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eLhADtPEVS3Izo",
+        "type": "effect",
+        "label": "+2 critical range",
+        "effect": {
+          "name": "Splitting Breeze",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.critRange.nin",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 0
+        },
+        "text": "Before the attack."
+      },
+      {
+        "id": "n5eFw15R0B0CGcuq",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "bleed",
-            "kind": "condition",
-            "ranks": 5,
-            "label": "Bleed"
-          }
-        ],
+        "label": "Splitting: Bleed",
         "save": {
           "abilities": [
             "con"
@@ -123,10 +135,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 5,
+            "label": "Bleed"
+          }
+        ],
+        "text": "On a hit. Failure: 5 Bleed.",
         "damage": {
           "parts": []
         }
@@ -218,14 +237,15 @@
         "activitiesByRank": {
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eIjr4nLFEjAIrv",
               "type": "attack",
-              "label": "Attack",
+              "label": "Splitting Breeze",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "+2 critical range (the effect; +1 per rank).",
               "damage": {
                 "parts": [
                   {
@@ -236,17 +256,28 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eLhADtPEVS3Izo",
+              "type": "effect",
+              "label": "+3 critical range",
+              "effect": {
+                "name": "Splitting Breeze",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.critRange.nin",
+                    "value": "3",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnEnd",
+                "seconds": 0
+              },
+              "text": "Before the attack."
+            },
+            {
+              "id": "n5eFw15R0B0CGcuq",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "bleed",
-                  "kind": "condition",
-                  "ranks": 5,
-                  "label": "Bleed"
-                }
-              ],
+              "label": "Splitting: Bleed",
               "save": {
                 "abilities": [
                   "con"
@@ -255,18 +286,58 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 5,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "On a hit. Failure: 5 Bleed.",
               "damage": {
                 "parts": []
+              }
+            },
+            {
+              "id": "n5efC5k3BGnydPFB",
+              "type": "save",
+              "label": "S-Rank critical: shockwave",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 5,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "A critical hit: creatures within 20 feet of the target, not it. Failure: the damage and 5 Bleed.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "6d6",
+                    "type": "wind"
+                  }
+                ]
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "2bad3181bb3e61ad"

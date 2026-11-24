@@ -86,23 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eK3aGlIiVEJDy3",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "dead",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Dead"
-          },
-          {
-            "key": "dying",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Dying"
-          }
-        ],
+        "label": "Cherishing Breezes",
         "save": {
           "abilities": [
             "con"
@@ -111,21 +97,21 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "A creature dead within the last minute or dying: it saves + 2d4 against DC 15 + 1 per round dead (set the DC). Success: back with 1 hit point and temporary hit points equal to three times its level for 10 minutes.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
+        "id": "n5eQYAu6EEoaah3Z",
         "type": "roll",
-        "label": "2d4",
+        "label": "+2d4",
         "roll": {
           "formula": "2d4",
-          "note": "When you do, the dead or dying creature makes a Constitution Saving throw adding 2d4 to their roll vs a DC 15 + 1 for each round they have been dead. On a Success, they immediately end the dead or dying condition regaining consciousness with 1 Hit Point and a number of Temporary Hit points equal to three times their level. These Temporary hit points last for 10 minutes."
+          "note": "Add to its save."
         }
       }
     ],
@@ -200,7 +186,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "df8acb8c158b687b"

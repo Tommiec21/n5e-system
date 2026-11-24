@@ -85,23 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eMDfIXH7d9Zk2x",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "dazed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Dazed"
-          },
-          {
-            "key": "bruised",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bruised"
-          }
-        ],
+        "label": "Sandwich Technique",
         "save": {
           "abilities": [
             "str"
@@ -110,15 +96,42 @@
             "source": "discipline"
           },
           "onSuccess": "half",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "dazed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazed"
+          }
+        ],
+        "text": "A 20-foot cube within 60 feet (B-Rank: a second; once per creature). Failure: Dazed (more than one creature affected: also Bruised; S-Rank, failing by 5+: Stunned until the end of its next turn instead); success: half.",
         "damage": {
           "parts": [
             {
               "formula": "2d12",
               "type": "earth"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ejnDi409vxkB1c",
+        "type": "effect",
+        "label": "Several affected: Bruised",
+        "effect": {
+          "name": "Several affected: Bruised",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "bruised",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Bruised"
             }
           ]
         }
@@ -204,23 +217,9 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5eMDfIXH7d9Zk2x",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "dazed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Dazed"
-                },
-                {
-                  "key": "bruised",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bruised"
-                }
-              ],
+              "label": "Sandwich Technique",
               "save": {
                 "abilities": [
                   "str"
@@ -229,10 +228,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "half",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "A 20-foot cube within 60 feet (B-Rank: a second; once per creature). Failure: Dazed (more than one creature affected: also Bruised; S-Rank, failing by 5+: Stunned until the end of its next turn instead); success: half.",
               "damage": {
                 "parts": [
                   {
@@ -241,27 +247,33 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5ejnDi409vxkB1c",
+              "type": "effect",
+              "label": "Several affected: Bruised",
+              "effect": {
+                "name": "Several affected: Bruised",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ]
+              }
             }
           ],
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5eMDfIXH7d9Zk2x",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "dazed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Dazed"
-                },
-                {
-                  "key": "bruised",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bruised"
-                }
-              ],
+              "label": "Sandwich Technique",
               "save": {
                 "abilities": [
                   "str"
@@ -270,10 +282,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "half",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "A 20-foot cube within 60 feet (B-Rank: a second; once per creature). Failure: Dazed (more than one creature affected: also Bruised; S-Rank, failing by 5+: Stunned until the end of its next turn instead); success: half.",
               "damage": {
                 "parts": [
                   {
@@ -282,27 +301,33 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5ejnDi409vxkB1c",
+              "type": "effect",
+              "label": "Several affected: Bruised",
+              "effect": {
+                "name": "Several affected: Bruised",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ]
+              }
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eMDfIXH7d9Zk2x",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "dazed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Dazed"
-                },
-                {
-                  "key": "bruised",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bruised"
-                }
-              ],
+              "label": "Sandwich Technique",
               "save": {
                 "abilities": [
                   "str"
@@ -311,10 +336,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "half",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "A 20-foot cube within 60 feet (B-Rank: a second; once per creature). Failure: Dazed (more than one creature affected: also Bruised; S-Rank, failing by 5+: Stunned until the end of its next turn instead); success: half.",
               "damage": {
                 "parts": [
                   {
@@ -323,27 +355,33 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5ejnDi409vxkB1c",
+              "type": "effect",
+              "label": "Several affected: Bruised",
+              "effect": {
+                "name": "Several affected: Bruised",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ]
+              }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eMDfIXH7d9Zk2x",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "dazed",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Dazed"
-                },
-                {
-                  "key": "bruised",
-                  "kind": "condition",
-                  "ranks": 1,
-                  "label": "Bruised"
-                }
-              ],
+              "label": "Sandwich Technique",
               "save": {
                 "abilities": [
                   "str"
@@ -352,10 +390,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "half",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "dazed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazed"
+                }
+              ],
+              "text": "A 20-foot cube within 60 feet (B-Rank: a second; once per creature). Failure: Dazed (more than one creature affected: also Bruised; S-Rank, failing by 5+: Stunned until the end of its next turn instead); success: half.",
               "damage": {
                 "parts": [
                   {
@@ -364,11 +409,52 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5ejnDi409vxkB1c",
+              "type": "effect",
+              "label": "Several affected: Bruised",
+              "effect": {
+                "name": "Several affected: Bruised",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "bruised",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Bruised"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eltKhcRGEDyGcl",
+              "type": "effect",
+              "label": "S-Rank: failed by 5+: Stunned",
+              "effect": {
+                "name": "S-Rank: failed by 5+: Stunned",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "stunned",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Stunned"
+                  }
+                ]
+              }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "59ce6e14db17de3b"

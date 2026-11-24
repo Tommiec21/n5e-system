@@ -85,10 +85,23 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5eDAaaGrqoarDfh",
+        "type": "effect",
+        "label": "Bedrock Skin: DR 8",
+        "effect": {
+          "name": "Bedrock Skin",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.dr",
+              "value": "8",
+              "mode": 2
+            }
+          ],
+          "expires": "turnStart",
+          "seconds": 0
+        },
+        "text": "Reaction to damage: reduce damage you take until the start of your next turn by 8 (not lightning)."
       }
     ],
     "featureType": "active",
@@ -155,9 +168,95 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eDAaaGrqoarDfh",
+              "type": "effect",
+              "label": "Bedrock Skin: DR 8",
+              "effect": {
+                "name": "Bedrock Skin",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.dr",
+                    "value": "10",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction to damage: reduce damage you take until the start of your next turn by 8 (not lightning)."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eDAaaGrqoarDfh",
+              "type": "effect",
+              "label": "Bedrock Skin: DR 8",
+              "effect": {
+                "name": "Bedrock Skin",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.dr",
+                    "value": "12",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction to damage: reduce damage you take until the start of your next turn by 8 (not lightning)."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eDAaaGrqoarDfh",
+              "type": "effect",
+              "label": "Bedrock Skin: DR 8",
+              "effect": {
+                "name": "Bedrock Skin",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.dr",
+                    "value": "14",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction to damage: reduce damage you take until the start of your next turn by 8 (not lightning)."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eDAaaGrqoarDfh",
+              "type": "effect",
+              "label": "Bedrock Skin: DR 8",
+              "effect": {
+                "name": "Bedrock Skin",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.dr",
+                    "value": "16",
+                    "mode": 2
+                  }
+                ],
+                "expires": "turnStart",
+                "seconds": 0
+              },
+              "text": "Reaction to damage: reduce damage you take until the start of your next turn by 8 (not lightning)."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "59ce6e14db17de3b"

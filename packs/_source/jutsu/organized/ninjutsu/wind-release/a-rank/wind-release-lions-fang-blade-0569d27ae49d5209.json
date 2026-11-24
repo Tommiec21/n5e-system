@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eSoMgMTIS0QCpt",
         "type": "attack",
-        "label": "Attack",
+        "label": "Lion's Fang Blade",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 6
         },
+        "text": "Up to 6 creatures within 120 feet, once each.",
         "damage": {
           "parts": [
             {
@@ -103,17 +104,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5ewO21bYgNhVbgE",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "bleed",
-            "kind": "condition",
-            "ranks": 4,
-            "label": "Bleed"
-          }
-        ],
+        "label": "Fang: Bleed",
         "save": {
           "abilities": [
             "con"
@@ -122,10 +115,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 4,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Each creature damaged. Failure: 4 Bleed.",
         "damage": {
           "parts": []
         }
@@ -211,14 +211,15 @@
         "activitiesByRank": {
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eSoMgMTIS0QCpt",
               "type": "attack",
-              "label": "Attack",
+              "label": "Lion's Fang Blade",
               "attack": {
-                "discipline": "nin",
+                "discipline": "discipline",
                 "range": "melee",
-                "count": 1
+                "count": 6
               },
+              "text": "Up to 6 creatures within 120 feet, once each.",
               "damage": {
                 "parts": [
                   {
@@ -229,17 +230,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5ewO21bYgNhVbgE",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "bleed",
-                  "kind": "condition",
-                  "ranks": 4,
-                  "label": "Bleed"
-                }
-              ],
+              "label": "Fang: Bleed",
               "save": {
                 "abilities": [
                   "con"
@@ -248,10 +241,17 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
-                "fourTier": false,
-                "tiers": {},
                 "resave": false
               },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 4,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Each creature damaged. Failure: 4 Bleed.",
               "damage": {
                 "parts": []
               }
@@ -259,7 +259,8 @@
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "2bad3181bb3e61ad"

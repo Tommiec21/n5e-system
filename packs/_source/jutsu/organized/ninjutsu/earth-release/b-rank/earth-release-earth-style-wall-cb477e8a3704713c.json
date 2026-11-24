@@ -86,12 +86,12 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
+        "id": "n5egOakXUOAAIUr9",
         "type": "roll",
-        "label": "5d6+25",
+        "label": "Wall hit points",
         "roll": {
-          "formula": "5d6+25",
-          "note": "The Wall has an AC of 20, 5d6+25 Hit Points, and 6 DR vs all damage excluding Lightning damage. This wall is also resistant to bludgeoning, piercing and slashing damage that are not a result of a jutsu."
+          "formula": "5d6 + 25",
+          "note": "Action or reaction: a 30-foot long, 25-foot high, 5-foot thick wall within 30 feet: AC 20, DR 6 (not lightning), resistant to non-jutsu bludgeoning, piercing and slashing; an Earthen Artifact."
         }
       }
     ],
@@ -172,9 +172,33 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5egOakXUOAAIUr9",
+              "type": "roll",
+              "label": "Wall hit points",
+              "roll": {
+                "formula": "6d6 + 30",
+                "note": "Action or reaction: a 30-foot long, 25-foot high, 5-foot thick wall within 30 feet: AC 20, DR 6 (not lightning), resistant to non-jutsu bludgeoning, piercing and slashing; an Earthen Artifact."
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5egOakXUOAAIUr9",
+              "type": "roll",
+              "label": "Wall hit points",
+              "roll": {
+                "formula": "7d6 + 35",
+                "note": "Action or reaction: a 30-foot long, 25-foot high, 5-foot thick wall within 30 feet: AC 20, DR 6 (not lightning), resistant to non-jutsu bludgeoning, piercing and slashing; an Earthen Artifact."
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b7e6162521e0f78f"

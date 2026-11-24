@@ -86,41 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eUOD9HHBMpHr8D",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "burned",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Burned"
-          },
-          {
-            "key": "chilled",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Chilled"
-          },
-          {
-            "key": "corroded",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Corroded"
-          },
-          {
-            "key": "shocked",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Shocked"
-          },
-          {
-            "key": "envenomed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Envenomed"
-          }
-        ],
+        "label": "Whirlwind Spear",
         "save": {
           "abilities": [
             "dex"
@@ -128,32 +96,33 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "A 120 by 5-foot line. Success: half. Swirl (by hand): a creature that fails spreads 1 rank of each Elemental condition on it to hostile creatures within 5 feet of it.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "wind"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "5d6",
-        "roll": {
-          "formula": "5d6",
-          "note": "All creatures in range must make a Dexterity Saving throw taking 5d6 wind damage on a failed Save or half as much on a successful one."
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "2d10",
-        "roll": {
-          "formula": "2d10",
-          "note": "That creature takes 2d10 Fire damage if they are Burned, cold damage if they are Chilled, acid damage if they are Corroded, lightning damage if they are Shocked or poison damage if they are Envenomed. On a successful save no additional damage is done."
-        }
+        "id": "n5eh38WqMIXfjQIx",
+        "type": "damage",
+        "label": "Exacerbated condition",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d10",
+              "type": ""
+            }
+          ]
+        },
+        "text": "The first creature it passes with Burned (fire), Chilled (cold), Corroded (acid), Shocked (lightning) or Envenomed (poison), on a failure; set the type."
       }
     ],
     "featureType": "active",
@@ -246,9 +215,134 @@
           "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically.",
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eUOD9HHBMpHr8D",
+              "type": "save",
+              "label": "Whirlwind Spear",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 120 by 5-foot line. Success: half. Swirl (by hand): a creature that fails spreads 1 rank of each Elemental condition on it to hostile creatures within 5 feet of it.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (1d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eh38WqMIXfjQIx",
+              "type": "damage",
+              "label": "Exacerbated condition",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (1d10)",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "The first creature it passes with Burned (fire), Chilled (cold), Corroded (acid), Shocked (lightning) or Envenomed (poison), on a failure; set the type."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eUOD9HHBMpHr8D",
+              "type": "save",
+              "label": "Whirlwind Spear",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 120 by 5-foot line. Success: half. Swirl (by hand): a creature that fails spreads 1 rank of each Elemental condition on it to hostile creatures within 5 feet of it.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (2d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eh38WqMIXfjQIx",
+              "type": "damage",
+              "label": "Exacerbated condition",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (2d10)",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "The first creature it passes with Burned (fire), Chilled (cold), Corroded (acid), Shocked (lightning) or Envenomed (poison), on a failure; set the type."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eUOD9HHBMpHr8D",
+              "type": "save",
+              "label": "Whirlwind Spear",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 120 by 5-foot line. Success: half. Swirl (by hand): a creature that fails spreads 1 rank of each Elemental condition on it to hostile creatures within 5 feet of it.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (3d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eh38WqMIXfjQIx",
+              "type": "damage",
+              "label": "Exacerbated condition",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d10) + (3d10)",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "The first creature it passes with Burned (fire), Chilled (cold), Corroded (acid), Shocked (lightning) or Envenomed (poison), on a failure; set the type."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c316a04b2e905f38"

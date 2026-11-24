@@ -1044,3 +1044,7 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 ### Medical summons (STD6f F7)
 
 - Summons compendium, folder Ninjutsu > Medical Release: Supreme Poison Deity. Fixed AC and hit points; links `bonuses.attack.nin`, `bonuses.saveDC.nin` and `attributes.init.bonus` (`@attack.nin - 2`: your Ninjutsu modifier + proficiency less its own Dexterity).
+
+### Earth Release summons (STD6f F8)
+
+- Summons compendium, folder Ninjutsu > Earth Release: Mud Wolf, Stone Dragon. `attributes.ac.flat` links `12 (or 13) + (@attack.nin - @prof)` (your Ninjutsu modifier), `hpMax` by `@rankValue`, plus your Ninjutsu attack bonus and save DC.

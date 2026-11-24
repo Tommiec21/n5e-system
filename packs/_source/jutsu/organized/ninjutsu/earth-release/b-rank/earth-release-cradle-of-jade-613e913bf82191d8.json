@@ -86,12 +86,12 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
+        "id": "n5e4rB8N0n1vW6H1",
         "type": "roll",
-        "label": "10d6",
+        "label": "Damage reduced",
         "roll": {
           "formula": "10d6",
-          "note": "The Crystalline jade reduces the incoming damage by 10d6. The Crystalline jade has resistance to Cold damage, and Vulnerability to Lightning damage. The Crystalline jade does not protect against Genjutsu. The Crystalline jade then dissolves at the beginning of the affected creatures turn."
+          "note": "Reaction: a creature within 30 feet takes damage (not Genjutsu); dissolves at the start of its turn."
         }
       }
     ],
@@ -172,9 +172,33 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5e4rB8N0n1vW6H1",
+              "type": "roll",
+              "label": "Damage reduced",
+              "roll": {
+                "formula": "(10d6) + (1d6)",
+                "note": "Reaction: a creature within 30 feet takes damage (not Genjutsu); dissolves at the start of its turn."
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e4rB8N0n1vW6H1",
+              "type": "roll",
+              "label": "Damage reduced",
+              "roll": {
+                "formula": "(10d6) + (2d6)",
+                "note": "Reaction: a creature within 30 feet takes damage (not Genjutsu); dissolves at the start of its turn."
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b7e6162521e0f78f"
