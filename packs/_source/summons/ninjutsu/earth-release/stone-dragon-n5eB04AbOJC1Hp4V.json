@@ -1,0 +1,253 @@
+{
+  "_id": "n5eB04AbOJC1Hp4V",
+  "_key": "!actors!n5eB04AbOJC1Hp4V",
+  "name": "Stone Dragon",
+  "type": "npc",
+  "img": "icons/svg/mystery-man-black.svg",
+  "system": {
+    "details": {
+      "build": "character",
+      "level": 1,
+      "template": "summon",
+      "creatureType": "construct",
+      "blurb": "Earth Release: Stone Dragon",
+      "summonRole": "Stone Dragon",
+      "biography": "<p><em>Earth Release: Stone Dragon (A-Rank, concentration up to 1 minute).</em> It uses your Ninjutsu attack bonus and save DC; you command it as a Bonus Action.</p><p><strong>Large Construct.</strong> <strong>Armor Class</strong> 13 + your Ninjutsu ability modifier, DR 8 · <strong>Hit Points</strong> 80 + 20 for every rank above A-Rank · <strong>Speed</strong> 40 ft. fly.</p><p><strong>Abilities</strong> STR +5 (save +9), DEX +0 (save +4), CON +8 (save +12), INT −5 (save −5), WIS +0 (save +0), CHA −5 (save −5). <strong>Damage Immunities</strong> Cold, Poison, Psychic, Bludgeoning, Piercing, Slashing. <strong>Damage Vulnerabilities</strong> Lightning. <strong>Condition Immunities</strong> All Mental, Stunned, Petrified, Envenomed. <strong>Senses</strong> Darkvision 60 ft., passive Perception 10.</p><p><strong>Linked to you when summoned:</strong> AC from your Ninjutsu modifier, hit points by the rank you cast the jutsu at, your Ninjutsu attack bonus and save DC.</p>"
+    },
+    "abilities": {
+      "str": {
+        "value": 20
+      },
+      "dex": {
+        "value": 10
+      },
+      "con": {
+        "value": 26
+      },
+      "int": {
+        "value": 0
+      },
+      "wis": {
+        "value": 10
+      },
+      "cha": {
+        "value": 0
+      }
+    },
+    "attributes": {
+      "ac": {
+        "calc": "flat",
+        "flat": 13,
+        "formula": ""
+      },
+      "init": {
+        "bonus": ""
+      }
+    },
+    "traits": {
+      "size": "large",
+      "dr": 8,
+      "immune": [
+        "cold",
+        "poison",
+        "psychic",
+        "bludgeoning",
+        "piercing",
+        "slashing"
+      ],
+      "vuln": [
+        "lightning"
+      ],
+      "conditionImmune": [
+        "berserk",
+        "charmed",
+        "confused",
+        "demoralized",
+        "shaken",
+        "petrified",
+        "envenomed"
+      ],
+      "stateImmune": [
+        "stunned"
+      ],
+      "speed": {
+        "walk": 0,
+        "climb": 0,
+        "swim": 0,
+        "fly": 40,
+        "burrow": 0,
+        "hover": false
+      },
+      "senses": {
+        "darkvision": 60
+      }
+    },
+    "hpMax": 80,
+    "cpMax": 0,
+    "diesAtZero": true
+  },
+  "items": [
+    {
+      "_id": "n5eNHIpagD64yTRX",
+      "_key": "!actors.items!n5eB04AbOJC1Hp4V.n5eNHIpagD64yTRX",
+      "name": "Bite",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<em>Multiattack.</em> The Stone Dragon attacks 3 times with its Bite. <em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 10 ft., one creature. <em>Hit:</em> 2d10 + 5 earth damage.",
+        "category": "npcStrikes",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5e03QCEy159vWOD",
+            "type": "attack",
+            "label": "Bite",
+            "attack": {
+              "discipline": "nin",
+              "range": "melee",
+              "count": 3,
+              "bonus": "0"
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "2d10 + 5",
+                  "type": "earth"
+                }
+              ]
+            }
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.94.0-alpha.1",
+        "coreVersion": "13"
+      }
+    },
+    {
+      "_id": "n5egjAqwe2QgkaXS",
+      "_key": "!actors.items!n5eB04AbOJC1Hp4V.n5egjAqwe2QgkaXS",
+      "name": "Dust Breath (Recharge 7–8)",
+      "type": "feat",
+      "img": "icons/svg/aura.svg",
+      "system": {
+        "description": "<p>The dragon exhales dust in a 30-foot cone. Each creature in that cone must make a Dexterity saving throw, taking 55 (10d10) earth damage and becoming Bruised on a failed save, or half as much damage on a successful one.</p>",
+        "category": "npcAbilities",
+        "featureType": "active",
+        "activities": [
+          {
+            "id": "n5eVM67ZVkdvxR0d",
+            "type": "save",
+            "label": "Dust Breath",
+            "save": {
+              "abilities": [
+                "dex"
+              ],
+              "dc": {
+                "source": "nin"
+              },
+              "onSuccess": "half",
+              "resave": false
+            },
+            "damage": {
+              "parts": [
+                {
+                  "formula": "10d10",
+                  "type": "earth"
+                }
+              ]
+            },
+            "inflicts": [
+              {
+                "key": "bruised",
+                "kind": "condition",
+                "ranks": 1,
+                "label": "Bruised"
+              }
+            ],
+            "text": "Recharge 7–8 (as written)."
+          }
+        ],
+        "activation": {
+          "type": "action",
+          "cost": 1,
+          "condition": ""
+        }
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "n5e": {
+          "generated": true
+        }
+      },
+      "_stats": {
+        "systemId": "n5e",
+        "systemVersion": "0.94.0-alpha.1",
+        "coreVersion": "13"
+      }
+    }
+  ],
+  "effects": [],
+  "folder": "n5e96DMDbGzXrHct",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "n5e": {
+      "generated": true,
+      "fromSummoner": {
+        "details.level": "@level",
+        "bonuses.saveDC.nin": "@dc.nin - 8 - @prof",
+        "bonuses.attack.nin": "@attack.nin - @prof",
+        "attributes.ac.flat": "13 + (@attack.nin - @prof)",
+        "hpMax": "80 + 20 * max(0, @rankValue - 4)"
+      }
+    }
+  },
+  "prototypeToken": {
+    "name": "Stone Dragon",
+    "actorLink": false,
+    "disposition": 1,
+    "displayName": 20,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "hp"
+    },
+    "bar2": {
+      "attribute": "cp"
+    },
+    "texture": {
+      "src": "icons/svg/mystery-man-black.svg"
+    },
+    "width": 2,
+    "height": 2
+  },
+  "_stats": {
+    "systemId": "n5e",
+    "systemVersion": "0.94.0-alpha.1",
+    "coreVersion": "13"
+  }
+}

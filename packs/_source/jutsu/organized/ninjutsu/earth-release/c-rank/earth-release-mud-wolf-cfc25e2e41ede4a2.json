@@ -86,10 +86,14 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5edKrkfNCwOobkA",
+        "type": "summon",
+        "label": "Mud Wolves (two)",
+        "summon": {
+          "uuid": "Compendium.n5e.summons.Actor.n5eBOhpmGQn8ywU0",
+          "count": 2,
+          "template": ""
+        }
       }
     ],
     "featureType": "active",
@@ -156,9 +160,53 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5edKrkfNCwOobkA",
+              "type": "summon",
+              "label": "Mud Wolves (three)",
+              "summon": {
+                "uuid": "Compendium.n5e.summons.Actor.n5eBOhpmGQn8ywU0",
+                "count": 3,
+                "template": ""
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5edKrkfNCwOobkA",
+              "type": "summon",
+              "label": "Mud Wolves (four)",
+              "summon": {
+                "uuid": "Compendium.n5e.summons.Actor.n5eBOhpmGQn8ywU0",
+                "count": 4,
+                "template": ""
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5edKrkfNCwOobkA",
+              "type": "summon",
+              "label": "Mud Wolves (five)",
+              "summon": {
+                "uuid": "Compendium.n5e.summons.Actor.n5eBOhpmGQn8ywU0",
+                "count": 5,
+                "template": ""
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Concentration. +1 wolf per rank above C. Command them all as a Bonus Action."
+        }
+      ]
     }
   },
   "folder": "bdb81013175b0aa5"

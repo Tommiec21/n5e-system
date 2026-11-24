@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eeiSnS6MZGa0t4",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Isotoma: AC −1",
         "save": {
           "abilities": [
             "str"
@@ -97,13 +96,32 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Concentration: hostile creatures you choose entering or starting a turn within 30 feet of your Earthen Artifact (+1 artifact per rank). Failure: AC −1 until it starts a turn outside (by hand). Allies there +1 AC (B-Rank: +2; S-Rank: +3).",
         "damage": {
           "parts": []
         }
+      },
+      {
+        "id": "n5eQ0oWPq8VngDFl",
+        "type": "effect",
+        "label": "Allies: +1 AC",
+        "effect": {
+          "name": "Resonating Geo Isotoma",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "1",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Creatures you choose within 30 feet of the artifact."
       }
     ],
     "featureType": "active",
@@ -170,10 +188,176 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eeiSnS6MZGa0t4",
+              "type": "save",
+              "label": "Isotoma: AC −1",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Concentration: hostile creatures you choose entering or starting a turn within 30 feet of your Earthen Artifact (+1 artifact per rank). Failure: AC −1 until it starts a turn outside (by hand). Allies there +1 AC (B-Rank: +2; S-Rank: +3).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eQ0oWPq8VngDFl",
+              "type": "effect",
+              "label": "Allies: +1 AC",
+              "effect": {
+                "name": "Resonating Geo Isotoma",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "1",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              },
+              "text": "Creatures you choose within 30 feet of the artifact."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eeiSnS6MZGa0t4",
+              "type": "save",
+              "label": "Isotoma: AC −1",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Concentration: hostile creatures you choose entering or starting a turn within 30 feet of your Earthen Artifact (+1 artifact per rank). Failure: AC −1 until it starts a turn outside (by hand). Allies there +1 AC (B-Rank: +2; S-Rank: +3).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eQ0oWPq8VngDFl",
+              "type": "effect",
+              "label": "Allies: +2 AC",
+              "effect": {
+                "name": "Resonating Geo Isotoma",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              },
+              "text": "Creatures you choose within 30 feet of the artifact."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eeiSnS6MZGa0t4",
+              "type": "save",
+              "label": "Isotoma: AC −1",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Concentration: hostile creatures you choose entering or starting a turn within 30 feet of your Earthen Artifact (+1 artifact per rank). Failure: AC −1 until it starts a turn outside (by hand). Allies there +1 AC (B-Rank: +2; S-Rank: +3).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eQ0oWPq8VngDFl",
+              "type": "effect",
+              "label": "Allies: +2 AC",
+              "effect": {
+                "name": "Resonating Geo Isotoma",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "2",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              },
+              "text": "Creatures you choose within 30 feet of the artifact."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eeiSnS6MZGa0t4",
+              "type": "save",
+              "label": "Isotoma: AC −1",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "Concentration: hostile creatures you choose entering or starting a turn within 30 feet of your Earthen Artifact (+1 artifact per rank). Failure: AC −1 until it starts a turn outside (by hand). Allies there +1 AC (B-Rank: +2; S-Rank: +3).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eQ0oWPq8VngDFl",
+              "type": "effect",
+              "label": "Allies: +3 AC",
+              "effect": {
+                "name": "Resonating Geo Isotoma",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "3",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              },
+              "text": "Creatures you choose within 30 feet of the artifact."
+            }
+          ]
+        },
         "manualCost": false
       },
-      "notAmp": "An aura around an Earthen Artifact, not on a creature (King, AMP1f batch 1)."
+      "notAmp": "An aura around an Earthen Artifact, not on a creature (King, AMP1f batch 1).",
+      "reviewed": true
     }
   },
   "folder": "59ce6e14db17de3b"

@@ -85,9 +85,19 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eRNU2YGzH01ULT",
         "type": "save",
-        "label": "Save",
+        "label": "Bedrock Coffin",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "restrained",
@@ -102,18 +112,7 @@
             "label": "Grappled"
           }
         ],
-        "save": {
-          "abilities": [
-            "dex"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Concentration: a creature within 30 feet (+1 per rank). Failure: Restrained and Grappled in the coffin (AC your Ninjutsu save DC, 25 hit points (+10 per rank), resistant to cold, vulnerable to lightning); a Strength save each turn to break out.",
         "damage": {
           "parts": []
         }
@@ -186,7 +185,8 @@
         "activitiesByRank": {},
         "manualCost": false
       },
-      "notAmp": "Restrains a target; the hit points and resistances are the coffin's (King, AMP1f batch 1)."
+      "notAmp": "Restrains a target; the hit points and resistances are the coffin's (King, AMP1f batch 1).",
+      "reviewed": true
     }
   },
   "folder": "59ce6e14db17de3b"

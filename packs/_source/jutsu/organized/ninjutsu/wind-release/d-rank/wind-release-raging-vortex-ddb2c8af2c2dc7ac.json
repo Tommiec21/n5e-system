@@ -85,10 +85,23 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5eJRZWU3dPgZIls",
+        "type": "effect",
+        "label": "Raging Vortex: +10 speed",
+        "effect": {
+          "name": "Raging Vortex",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "10",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Concentration (S-Rank: none): you and willing creatures within 15 feet; a rank of Mastery on Strength or Dexterity saves (B-Rank: both)."
       }
     ],
     "featureType": "active",
@@ -157,7 +170,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "20268cc1727cd95c"

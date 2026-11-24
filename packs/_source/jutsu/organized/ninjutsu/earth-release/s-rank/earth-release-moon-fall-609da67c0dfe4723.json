@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e0SmH4N5XuCZOq",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "40 chakra: escape (Dexterity)",
         "save": {
           "abilities": [
             "dex"
@@ -98,40 +97,151 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "half",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "none",
           "resave": false
         },
+        "inflicts": [],
+        "text": "A 30-foot sphere within 1 mile; creatures that could escape. Success: escapes; failure: the damage.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "14d6",
+              "type": "earth"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "14d6",
-        "roll": {
-          "formula": "14d6",
-          "note": "On a failed save they take 14d6 earth damage."
+        "id": "n5eajLntq3JgBwjr",
+        "type": "save",
+        "label": "40 chakra: trapped (Constitution)",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Creatures with no way out. Success: the damage; failure: double (by hand).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "14d6",
+              "type": "earth"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "7d6",
-        "roll": {
-          "formula": "7d6",
-          "note": "A creature takes 7d6 Bludgeoning & 7d6 Earth damage on a failed save or half as much damage on a successful one."
+        "id": "n5eyHPjXmVC7k1Ih",
+        "type": "save",
+        "label": "40 chakra: shockwave",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Within 30 feet of the sphere, but those that escaped. Success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "7d6",
+              "type": "bludgeoning"
+            },
+            {
+              "formula": "7d6",
+              "type": "earth"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll5",
-        "type": "roll",
-        "label": "28d6",
-        "roll": {
-          "formula": "28d6",
-          "note": "On a failed save they take 28d6 earth damage."
+        "id": "n5eFaE0xjMNoufNa",
+        "type": "save",
+        "label": "80 chakra: escape (Dexterity)",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "A 60-foot sphere. Success: escapes; failure: the damage.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "28d6",
+              "type": "earth"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eEdiF1GfVaF5ku",
+        "type": "save",
+        "label": "80 chakra: trapped (Constitution)",
+        "save": {
+          "abilities": [
+            "con"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Success: the damage; failure: double (by hand).",
+        "damage": {
+          "parts": [
+            {
+              "formula": "28d6",
+              "type": "earth"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eBxHuLYeQURZKZ",
+        "type": "save",
+        "label": "80 chakra: shockwave",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Within 60 feet of the sphere, including those that escaped. Success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "14d6",
+              "type": "bludgeoning"
+            },
+            {
+              "formula": "14d6",
+              "type": "earth"
+            }
+          ]
         }
       }
     ],
@@ -250,7 +360,14 @@
         ],
         "activitiesByRank": {},
         "manualCost": true
-      }
+      },
+      "reviewed": true,
+      "rules": [
+        {
+          "key": "note",
+          "text": "Spend 40 or 80 chakra (it can't be reduced)."
+        }
+      ]
     }
   },
   "folder": "9f7ae423e38646ef"

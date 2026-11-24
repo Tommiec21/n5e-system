@@ -85,9 +85,19 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eExjCzawcuXO9h",
         "type": "save",
-        "label": "Save",
+        "label": "Tornado Explosion",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
         "inflicts": [
           {
             "key": "prone",
@@ -102,29 +112,14 @@
             "label": "Stunned"
           }
         ],
-        "save": {
-          "abilities": [
-            "str"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "A 30-foot radius, 120-foot cylinder around you; creatures and objects you choose (flyers, objects, structures and constructs at disadvantage). Failure: thrown 120 feet, Prone with falling damage from 240 feet (by hand), Stunned until the end of its next turn; success: half, nothing else. Swirl (by hand): a creature that fails spreads 1 rank of each Elemental condition on it to hostile creatures within 5 feet of it.",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "8d12",
-        "roll": {
-          "formula": "8d12",
-          "note": "Take 8d12 wind damage."
+          "parts": [
+            {
+              "formula": "8d12",
+              "type": "wind"
+            }
+          ]
         }
       }
     ],
@@ -207,7 +202,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "efe41c5a36c311aa"

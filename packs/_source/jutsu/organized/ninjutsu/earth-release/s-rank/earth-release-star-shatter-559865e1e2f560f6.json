@@ -86,16 +86,20 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eYnr373bYfwyuK",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "dying",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Dying"
+        "label": "Star Shatter",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
           },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
           {
             "key": "stunned",
             "kind": "state",
@@ -109,18 +113,15 @@
             "label": "Prone"
           }
         ],
-        "save": {
-          "abilities": [
-            "str"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Concentration: creatures you choose within 120 feet of a point; again on starting, ending or first entering. Failure: Stunned and Prone; a Strength save at the end of its turns ends the Stunned.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5ePWzbSP7Cqe3kQ",
+        "type": "damage",
+        "label": "Stunned: start or end of its turn",
         "damage": {
           "parts": [
             {
@@ -202,7 +203,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "9f7ae423e38646ef"

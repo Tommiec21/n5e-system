@@ -86,23 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eRcGbfNQUTsstG",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "suffocating",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Suffocating"
-          },
-          {
-            "key": "unconscious",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Unconscious"
-          }
-        ],
+        "label": "Vacuum Field",
         "save": {
           "abilities": [
             "con"
@@ -111,10 +97,45 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "suffocating",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Suffocating"
+          }
+        ],
+        "text": "Combination, concentration: a 30-foot radius around you (+5 feet and +1d12 per extra caster); starting a turn inside. Failure: Suffocating (Constitution modifier rounds, then Unconscious). Fire and Lightning Release effects entering it are dispelled.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5ewwOxKnreu9A2s",
+        "type": "effect",
+        "label": "Out of air: Unconscious",
+        "effect": {
+          "name": "Out of air: Unconscious",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "unconscious",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Unconscious"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e1x3QwxdYNubu5",
+        "type": "damage",
+        "label": "Unconscious inside",
         "damage": {
           "parts": [
             {
@@ -122,16 +143,8 @@
               "type": "necrotic"
             }
           ]
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "1d12",
-        "roll": {
-          "formula": "1d12",
-          "note": "Combination: Increases the damage dealt by 1d12 and the size of the radius by 5-feet, for every additional creature aiding in casting this jutsu, beyond the first two."
-        }
+        },
+        "text": "Each turn; at 0 hit points its organs burst (no revival until restored)."
       }
     ],
     "featureType": "active",
@@ -212,7 +225,8 @@
         "activitiesByRank": {},
         "manualCost": false
       },
-      "notAmp": "A hazard zone (King, AMP1f batch 2)."
+      "notAmp": "A hazard zone (King, AMP1f batch 2).",
+      "reviewed": true
     }
   },
   "folder": "c316a04b2e905f38"

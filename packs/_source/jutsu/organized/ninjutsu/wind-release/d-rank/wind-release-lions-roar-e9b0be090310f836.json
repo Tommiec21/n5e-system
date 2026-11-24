@@ -85,10 +85,23 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5egYtOr6xcPqjx5",
+        "type": "effect",
+        "label": "Lion's Roar: +15 speed",
+        "effect": {
+          "name": "Lions Roar",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "15",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Concentration: you and creatures you choose within 15 feet; a rank of Mastery on Ninjutsu attack rolls (A-Rank: two). S-Rank: immune to Dazed and Weakened."
       }
     ],
     "featureType": "active",
@@ -162,9 +175,137 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5egYtOr6xcPqjx5",
+              "type": "effect",
+              "label": "Lion's Roar: +25 speed",
+              "effect": {
+                "name": "Lions Roar",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.speed",
+                    "value": "25",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              },
+              "text": "Concentration: you and creatures you choose within 15 feet; a rank of Mastery on Ninjutsu attack rolls (A-Rank: two). S-Rank: immune to Dazed and Weakened."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5egYtOr6xcPqjx5",
+              "type": "effect",
+              "label": "Lion's Roar: +25 speed",
+              "effect": {
+                "name": "Lions Roar",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.speed",
+                    "value": "25",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              },
+              "text": "Concentration: you and creatures you choose within 15 feet; a rank of Mastery on Ninjutsu attack rolls (A-Rank: two). S-Rank: immune to Dazed and Weakened."
+            },
+            {
+              "id": "n5eE212lHjHR2Qt6",
+              "type": "damage",
+              "label": "B-Rank: +1d8 jutsu damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d8",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "Twice per turn, on damage from their jutsu."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5egYtOr6xcPqjx5",
+              "type": "effect",
+              "label": "Lion's Roar: +25 speed",
+              "effect": {
+                "name": "Lions Roar",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.speed",
+                    "value": "25",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              },
+              "text": "Concentration: you and creatures you choose within 15 feet; a rank of Mastery on Ninjutsu attack rolls (A-Rank: two). S-Rank: immune to Dazed and Weakened."
+            },
+            {
+              "id": "n5eE212lHjHR2Qt6",
+              "type": "damage",
+              "label": "B-Rank: +1d8 jutsu damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d8",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "Twice per turn, on damage from their jutsu."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5egYtOr6xcPqjx5",
+              "type": "effect",
+              "label": "Lion's Roar: +25 speed",
+              "effect": {
+                "name": "Lions Roar",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.speed",
+                    "value": "25",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              },
+              "text": "Concentration: you and creatures you choose within 15 feet; a rank of Mastery on Ninjutsu attack rolls (A-Rank: two). S-Rank: immune to Dazed and Weakened."
+            },
+            {
+              "id": "n5eE212lHjHR2Qt6",
+              "type": "damage",
+              "label": "B-Rank: +1d8 jutsu damage",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d8",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "Twice per turn, on damage from their jutsu."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "20268cc1727cd95c"

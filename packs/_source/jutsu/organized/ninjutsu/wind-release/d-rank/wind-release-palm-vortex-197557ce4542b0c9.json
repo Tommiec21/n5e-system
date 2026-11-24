@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eJvWnxCwgP47TU",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Palm Vortex",
         "save": {
           "abilities": [
             "dex"
@@ -96,31 +95,43 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "A 10-foot cone. Failure: pulled 5 feet toward you; success: half. An Elemental condition: at disadvantage and the next button instead.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "wind"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "On a failed save creatures take 2d6 wind damage and being pulled 5 feet closer to you or half as much on a successful save and no additional affects."
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "4d6",
-        "roll": {
-          "formula": "4d6",
-          "note": "A creature with an Elemental condition who fails their saving throw instead takes 4d6 wind damage or half as much on a success."
+        "id": "n5eEsiQW7AogLWfF",
+        "type": "save",
+        "label": "Elemental condition",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "half",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "At disadvantage. Success: half.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "wind"
+            }
+          ]
         }
       }
     ],
@@ -208,9 +219,219 @@
           "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically.",
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eJvWnxCwgP47TU",
+              "type": "save",
+              "label": "Palm Vortex",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 10-foot cone. Failure: pulled 5 feet toward you; success: half. An Elemental condition: at disadvantage and the next button instead.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEsiQW7AogLWfF",
+              "type": "save",
+              "label": "Elemental condition",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "At disadvantage. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eJvWnxCwgP47TU",
+              "type": "save",
+              "label": "Palm Vortex",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 10-foot cone. Failure: pulled 5 feet toward you; success: half. An Elemental condition: at disadvantage and the next button instead.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEsiQW7AogLWfF",
+              "type": "save",
+              "label": "Elemental condition",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "At disadvantage. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eJvWnxCwgP47TU",
+              "type": "save",
+              "label": "Palm Vortex",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 10-foot cone. Failure: pulled 5 feet toward you; success: half. An Elemental condition: at disadvantage and the next button instead.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (3d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEsiQW7AogLWfF",
+              "type": "save",
+              "label": "Elemental condition",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "At disadvantage. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (3d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eJvWnxCwgP47TU",
+              "type": "save",
+              "label": "Palm Vortex",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "A 10-foot cone. Failure: pulled 5 feet toward you; success: half. An Elemental condition: at disadvantage and the next button instead.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (4d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eEsiQW7AogLWfF",
+              "type": "save",
+              "label": "Elemental condition",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "half",
+                "resave": false
+              },
+              "inflicts": [],
+              "text": "At disadvantage. Success: half.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (4d6)",
+                    "type": "wind"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "20268cc1727cd95c"

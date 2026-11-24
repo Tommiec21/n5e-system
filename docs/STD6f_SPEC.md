@@ -1,6 +1,6 @@
 # STD6f function spec: jutsu as data
 
-Status: **Approved by King 2026-11-22 (Q-J1 yes; Q-J2 fix and finish). F1 Taijutsu I (0.87.0-alpha.1) and F2 Taijutsu II (0.88.0-alpha.1) built: Taijutsu is done. F3 Bukijutsu I (0.89.0-alpha.1) F4 Bukijutsu II (0.90.0-alpha.1) and F5 Bukijutsu III (0.91.0-alpha.1) built: Bukijutsu is done. F6 Non-Elemental (0.92.0-alpha.1) and F7 Medical (0.93.0-alpha.1) built. Next: F8 Earth + Wind.**
+Status: **Approved by King 2026-11-22 (Q-J1 yes; Q-J2 fix and finish). F1 Taijutsu I (0.87.0-alpha.1) and F2 Taijutsu II (0.88.0-alpha.1) built: Taijutsu is done. F3 Bukijutsu I (0.89.0-alpha.1) F4 Bukijutsu II (0.90.0-alpha.1) and F5 Bukijutsu III (0.91.0-alpha.1) built: Bukijutsu is done. F6 Non-Elemental (0.92.0-alpha.1) F7 Medical (0.93.0-alpha.1) and F8 Earth + Wind (0.94.0-alpha.1) built. Next: F9 Fire + Water.**
 
 Plan: `docs/STD_SPEC.md` (STD6f: "Every jutsu's riders as Active Effects and elements, emitted by an upgraded importer where the pattern is regular; a review table per section for King"). Same method as the clan pass (`docs/STD6e_SPEC.md`).
 
@@ -249,6 +249,34 @@ Review table: `docs/jutsu/ninjutsu-medical-release-automation.md` (68 jutsu: 52 
 - Upcast runs into the paragraph: Ensnaring Strike, Restorative, Vampiric Touch.
 - Adept Healing "15-f00t", "30-f00t"; Necrosis "You infused"; Corrupt Missile "If this jutsu its cast"; Corruption "designed spread", "All creature who begins"; Venom Shock "un controllable"; Wither and Bloom "All creature of your choice"; Acidic Bolt "much make"; Infectious Acidic Blood "would attack to move"; Play Dead "when you case"; Poison Mist "begins to reeling"; Spore Caller "first enter your, poisonous aura"; Dead Heartbeat "can only be temporarily be"; Death Ward "talesman"; Reconstructive Hand "affect"; Venom Sphere "a ball of acidic point", "Creatures who that"; Regenerate "dull duration", "10 hit point"; Strength of 1000 "jutsu with both the Medical keyword"; Genocide "At the beginning of a creature who fails"; Wall of Bee's (apostrophe).
 
+## F8 Ninjutsu III: Earth + Wind (0.94.0-alpha.1)
+
+Review tables: `docs/jutsu/ninjutsu-earth-release-automation.md` (54 jutsu: 46 partly automated, 8 notes only) and `docs/jutsu/ninjutsu-wind-release-automation.md` (50 jutsu: 41 partly automated, 9 notes only).
+
+- **Summons built** (Summons > Ninjutsu > Earth Release), from the Summon Stat Blocks section: Mud Wolf (AC 12 + your Ninjutsu modifier, 25 + 10 hit points per rank above C; two, +1 per rank) and Stone Dragon (AC 13 + your Ninjutsu modifier, DR 8, 80 + 20 hit points at S-Rank). Earth Clone places the shared Clone (its Earth Clone adjustments are on the Clone's sheet).
+- **Kept** (Q-J2): the Jade Devotion, Sand Armor, Diamond Bone Hardening, Zephyr Strike, Wind Rider and Neverending Breath Amps (Jade Devotion's temporary hit points and Diamond Bone Hardening's S-Rank regrowth added).
+- **Fixed:** conditions the import applied wrongly: Bottomless Swamp (Dying, Suffocating on the first failure), Cherishing Breezes (Dead and Dying), Vacuum Rain and Vacuum Field (Unconscious on the first failure), Rakshasa Barrier and Whirlwind Spear (every condition at once), Geo Progeniture (Stunned and Petrified on every failure), Star Shatter (Dying), Sand Coffin Binding (its compress damage on the save).
+- **Upcasts:** Bedrock Skin, Dominus Banner, Calcite Boons (Stone's Power and Tenacity), Sand Binding (C, B and A riders), Tectonic Stone Spears (Bruised), Resonating Geo Isotoma, Geo Stone Weapon, Crystalized Ascension, Terrashield, Earth-Style Wall, Mud Wolf, Diamond Bone Hardening, Blades of the Wind, Gale Fists, Lion's Roar, Slicing Wind Bullet, Violent Whirlwind, Rakshasa Barrier, Vacuum Shield, Multilayered Gale, Vacuum Blade, Splitting Breeze.
+- **Notes only:** utility, sensing and movement jutsu (17).
+- **By hand:** Swirl (spreading Elemental conditions), Geo Breastplate's AC and DR, triple falling damage (Thumb of Destruction, Tornado Explosion), Moon Fall's doubled damage, Earth Clone's hit points.
+- **No new holds:** both stat blocks are complete.
+
+## Text issues found in F8
+
+- Built on a reading; confirm: Stone Bamboo Shoot "Make a Ninjutsu Attack" (built as ranged); Mud Wolf Bite "+X to hit" and Stone Dragon Bite with no bonus (built with your Ninjutsu attack bonus); Stone Dragon Dust Breath "Recharge 7–8" (kept as written); Mud Wolf and Stone Dragon AC "+ your Ninjutsu ability modifier" (linked as your Ninjutsu attack bonus less proficiency).
+- No success result: Partial Assimilation; Rock Tank's Prone save has no "on a failed save".
+- Dice mismatch: Sandwich Technique is 2d12 but upcasts +1d6.
+- Upcast from the wrong rank: Zephyr Strike (D-Rank) "above C-Rank".
+- Lazuli Tusk upcast "the number of Earthen Artifacts you summon" (by how many?).
+- Sandstorm upcast "the damage by 1d6 or the number of constructs" (pick one?), run into the paragraph.
+- Added/Reduced Weight treats Encumbered as a Physical condition (it isn't one); "Up 1 minute".
+- Neverending Breath: concentration up to 1 hour, text "up to 10 hours".
+- Moon Fall: the 40-chakra shockwave excludes creatures that escaped, the 80-chakra one includes them; "Upon Competition".
+- Stone Dragon block calls it "the Earth Dragon".
+- Vacuum Rain: "or half as much damage on a successful save" sits after the suffocation text.
+- Bursting Compressed Air: "can't shatters"; no upcast.
+- Typos: Calcite Boons "gain advantaged"; Geo Genesis "you chose"; Golden Gems "to enhanced", "in one the following"; Mud Wave "not additional effect"; Mausoleum Rock "affect.."; Geo Stone Weapon "one of your hands are"; Crystalized Ascension "creature's gains"; Earth Clone "weights", "When command"; Geo Progeniture "or more than 1 shard", "each share", "half as much on and"; Sand Coffin Binding "damage that would be dealt to him", "they makes"; Cradle of Jade "When a you"; Crystal Arcanum "within range 30 feet"; Gravity Break "40 wide"; Dust Wind "until the end of their next."; Gryphon's Surge "creature s"; Lion's Roar "benefits of the duration"; Palm Vortex "additional affects"; Whirlwind Spear "longline"; Wind Rider "1 feet"; Vacuum Field "who's hit points"; Splitting Breeze "Infront".
+
 ## Progress log
 
 - 2026-11-22 King: "Next batch" (after STD6e E8). Claude: spec proposed from a survey of the jutsu pack. Nothing built.
@@ -259,3 +287,4 @@ Review table: `docs/jutsu/ninjutsu-medical-release-automation.md` (68 jutsu: 52 
 - 2026-11-23 King: "Next batch." Claude: F5 Bukijutsu III built (83 jutsu: Power and Ammunition): Bukijutsu complete; F-D2 (Fury tracker from data; Binding Fury Stance's trigger on its effect); published 0.91.0-alpha.1. No new questions.
 - 2026-11-23 King: "Next batch." Claude: F6 Non-Elemental built (86 jutsu); six summons from the Summon Stat Blocks (Ink Bat/Snake, Ink Reptile, Ink Predator, Inanimate Puppet, Ink Oni, Clone); published 0.92.0-alpha.1. No new questions.
 - 2026-11-23 King: "Make sure all missing pieces are being recorded in the MD file. Then move on to the next batch." Claude: F1–F6 text issues and built-on-a-reading items added to the context text-issues files (10a, 10b); F7 Medical built (68 jutsu) with the Supreme Poison Deity; published 0.93.0-alpha.1. No new questions.
+- 2026-11-24 King: "Next Batch." Claude: F8 Earth + Wind built (104 jutsu) with the Mud Wolf and Stone Dragon; text issues logged in 10a; published 0.94.0-alpha.1. No new questions.

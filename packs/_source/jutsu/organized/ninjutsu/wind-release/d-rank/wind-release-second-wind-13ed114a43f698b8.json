@@ -85,13 +85,14 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "You recover 2d6+ Your Ninjutsu ability modifier hit points."
-        }
+        "id": "n5enkKUTJvltDQcv",
+        "type": "heal",
+        "label": "Second Wind",
+        "heal": {
+          "formula": "2d6 + @mod.nin",
+          "pool": "tempHp"
+        },
+        "text": "Bonus action."
       }
     ],
     "featureType": "active",
@@ -171,9 +172,59 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5enkKUTJvltDQcv",
+              "type": "heal",
+              "label": "Second Wind",
+              "heal": {
+                "formula": "(2d6 + @mod.nin) + (1d6)",
+                "pool": "tempHp"
+              },
+              "text": "Bonus action."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5enkKUTJvltDQcv",
+              "type": "heal",
+              "label": "Second Wind",
+              "heal": {
+                "formula": "(2d6 + @mod.nin) + (2d6)",
+                "pool": "tempHp"
+              },
+              "text": "Bonus action."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5enkKUTJvltDQcv",
+              "type": "heal",
+              "label": "Second Wind",
+              "heal": {
+                "formula": "(2d6 + @mod.nin) + (3d6)",
+                "pool": "tempHp"
+              },
+              "text": "Bonus action."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5enkKUTJvltDQcv",
+              "type": "heal",
+              "label": "Second Wind",
+              "heal": {
+                "formula": "(2d6 + @mod.nin) + (4d6)",
+                "pool": "tempHp"
+              },
+              "text": "Bonus action."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "20268cc1727cd95c"

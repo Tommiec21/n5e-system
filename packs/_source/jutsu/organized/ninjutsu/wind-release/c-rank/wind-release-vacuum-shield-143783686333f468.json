@@ -86,13 +86,14 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5etY76LOxZBjxSA",
         "type": "heal",
-        "label": "Temporary HP",
+        "label": "Vacuum Shield",
         "heal": {
           "formula": "20",
           "pool": "tempHp"
-        }
+        },
+        "text": "Reaction: you or a creature within 10 feet takes damage: every ally within 10 feet, until the end of the turn."
       }
     ],
     "featureType": "active",
@@ -159,9 +160,47 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5etY76LOxZBjxSA",
+              "type": "heal",
+              "label": "Vacuum Shield",
+              "heal": {
+                "formula": "25",
+                "pool": "tempHp"
+              },
+              "text": "Reaction: you or a creature within 10 feet takes damage: every ally within 10 feet, until the end of the turn."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5etY76LOxZBjxSA",
+              "type": "heal",
+              "label": "Vacuum Shield",
+              "heal": {
+                "formula": "30",
+                "pool": "tempHp"
+              },
+              "text": "Reaction: you or a creature within 10 feet takes damage: every ally within 10 feet, until the end of the turn."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5etY76LOxZBjxSA",
+              "type": "heal",
+              "label": "Vacuum Shield",
+              "heal": {
+                "formula": "35",
+                "pool": "tempHp"
+              },
+              "text": "Reaction: you or a creature within 10 feet takes damage: every ally within 10 feet, until the end of the turn."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c316a04b2e905f38"

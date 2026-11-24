@@ -585,3 +585,5 @@ Validation budget: one local focused pass, PR CI second, main release CI third; 
 
 Remaining additional batches: GM04d broader Part I atlas; GM05b expanded recipes/linked-NPC social setup; GM07 later eras; GM08 Campaign Board; GM09 World & Story; GM10 Writer journal. GM06b covers any user-reported visual refinements after in-game review.
 GM06 local attempt 1 passed: three focused checks and lint; publication pending.
+
+GM06 reconciliation: Claude published 03a4719b (Earth/Wind jutsu and summons) while this batch was prepared. Merged it unchanged; release target superseded by 0.94.1-alpha.1. No Journal Desk overlap.

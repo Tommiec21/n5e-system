@@ -86,9 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eH3XZGdG04bGLx",
         "type": "damage",
-        "label": "Damage",
+        "label": "Vacuum Blade",
         "damage": {
           "parts": [
             {
@@ -96,7 +96,8 @@
               "type": "wind"
             }
           ]
-        }
+        },
+        "text": "Concentration: a weapon or your unarmed strikes, twice per turn; +10 feet of range; ranged hits also strike adjacent spaces."
       }
     ],
     "featureType": "active",
@@ -176,9 +177,43 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eH3XZGdG04bGLx",
+              "type": "damage",
+              "label": "Vacuum Blade",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d8",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Concentration: a weapon or your unarmed strikes, twice per turn; +10 feet of range; ranged hits also strike adjacent spaces."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eH3XZGdG04bGLx",
+              "type": "damage",
+              "label": "Vacuum Blade",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d8",
+                    "type": "wind"
+                  }
+                ]
+              },
+              "text": "Concentration: a weapon or your unarmed strikes, twice per turn; +10 feet of range; ranged hits also strike adjacent spaces."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "df8acb8c158b687b"

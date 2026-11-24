@@ -87,35 +87,19 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eEaJFuBxAsjUaJ",
+        "type": "heal",
+        "label": "Rakshasa Barrier",
+        "heal": {
+          "formula": "2d12 + 6",
+          "pool": "tempHp"
+        },
+        "text": "Reaction to earth, fire, cold or lightning damage: a bubble of temporary hit points (resistant to lightning, vulnerable to fire)."
+      },
+      {
+        "id": "n5e1WP33yEbr4rxE",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "burned",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Burned"
-          },
-          {
-            "key": "shocked",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Shocked"
-          },
-          {
-            "key": "chilled",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Chilled"
-          },
-          {
-            "key": "bleed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Bleed"
-          }
-        ],
+        "label": "Fire: Burned",
         "save": {
           "abilities": [
             "dex"
@@ -124,21 +108,100 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "burned",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Burned"
+          }
+        ],
+        "text": "It reduced fire damage: creatures within 15 feet. Failure: Burned.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d12 + 6",
-        "roll": {
-          "formula": "2d12+6",
-          "note": "The barrier that envelops you has 2d12 + 6 hit points, resistance to Lightning damage and vulnerability to Fire damage."
+        "id": "n5e92LICIsvSjMcx",
+        "type": "save",
+        "label": "Lightning: Shocked",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "shocked",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Shocked"
+          }
+        ],
+        "text": "Lightning damage: creatures within 15 feet. Failure: Shocked.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5ea9ZQH1ZCB9vuy",
+        "type": "save",
+        "label": "Cold: Chilled",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "chilled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Chilled"
+          }
+        ],
+        "text": "Cold damage: creatures within 15 feet. Failure: Chilled.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5el9FINLf8mHpwc",
+        "type": "save",
+        "label": "Earth: Bleed",
+        "save": {
+          "abilities": [
+            "dex"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Bleed"
+          }
+        ],
+        "text": "Earth damage: creatures within 15 feet. Failure: Bleed.",
+        "damage": {
+          "parts": []
         }
       }
     ],
@@ -213,9 +276,371 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eEaJFuBxAsjUaJ",
+              "type": "heal",
+              "label": "Rakshasa Barrier",
+              "heal": {
+                "formula": "2d12 + 12",
+                "pool": "tempHp"
+              },
+              "text": "Reaction to earth, fire, cold or lightning damage: a bubble of temporary hit points (resistant to lightning, vulnerable to fire)."
+            },
+            {
+              "id": "n5e1WP33yEbr4rxE",
+              "type": "save",
+              "label": "Fire: Burned",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "It reduced fire damage: creatures within 15 feet. Failure: Burned.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e92LICIsvSjMcx",
+              "type": "save",
+              "label": "Lightning: Shocked",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "text": "Lightning damage: creatures within 15 feet. Failure: Shocked.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ea9ZQH1ZCB9vuy",
+              "type": "save",
+              "label": "Cold: Chilled",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Chilled"
+                }
+              ],
+              "text": "Cold damage: creatures within 15 feet. Failure: Chilled.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5el9FINLf8mHpwc",
+              "type": "save",
+              "label": "Earth: Bleed",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Earth damage: creatures within 15 feet. Failure: Bleed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eEaJFuBxAsjUaJ",
+              "type": "heal",
+              "label": "Rakshasa Barrier",
+              "heal": {
+                "formula": "2d12 + 18",
+                "pool": "tempHp"
+              },
+              "text": "Reaction to earth, fire, cold or lightning damage: a bubble of temporary hit points (resistant to lightning, vulnerable to fire)."
+            },
+            {
+              "id": "n5e1WP33yEbr4rxE",
+              "type": "save",
+              "label": "Fire: Burned",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "It reduced fire damage: creatures within 15 feet. Failure: Burned.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e92LICIsvSjMcx",
+              "type": "save",
+              "label": "Lightning: Shocked",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "text": "Lightning damage: creatures within 15 feet. Failure: Shocked.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ea9ZQH1ZCB9vuy",
+              "type": "save",
+              "label": "Cold: Chilled",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Chilled"
+                }
+              ],
+              "text": "Cold damage: creatures within 15 feet. Failure: Chilled.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5el9FINLf8mHpwc",
+              "type": "save",
+              "label": "Earth: Bleed",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Earth damage: creatures within 15 feet. Failure: Bleed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eEaJFuBxAsjUaJ",
+              "type": "heal",
+              "label": "Rakshasa Barrier",
+              "heal": {
+                "formula": "2d12 + 24",
+                "pool": "tempHp"
+              },
+              "text": "Reaction to earth, fire, cold or lightning damage: a bubble of temporary hit points (resistant to lightning, vulnerable to fire)."
+            },
+            {
+              "id": "n5e1WP33yEbr4rxE",
+              "type": "save",
+              "label": "Fire: Burned",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "burned",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Burned"
+                }
+              ],
+              "text": "It reduced fire damage: creatures within 15 feet. Failure: Burned.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e92LICIsvSjMcx",
+              "type": "save",
+              "label": "Lightning: Shocked",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "shocked",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Shocked"
+                }
+              ],
+              "text": "Lightning damage: creatures within 15 feet. Failure: Shocked.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ea9ZQH1ZCB9vuy",
+              "type": "save",
+              "label": "Cold: Chilled",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "chilled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Chilled"
+                }
+              ],
+              "text": "Cold damage: creatures within 15 feet. Failure: Chilled.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5el9FINLf8mHpwc",
+              "type": "save",
+              "label": "Earth: Bleed",
+              "save": {
+                "abilities": [
+                  "dex"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "bleed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Bleed"
+                }
+              ],
+              "text": "Earth damage: creatures within 15 feet. Failure: Bleed.",
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c316a04b2e905f38"

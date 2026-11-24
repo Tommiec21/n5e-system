@@ -618,8 +618,51 @@ const poisonDeity = actor("supreme-poison-deity", "Supreme Poison Deity", medica
 ], { "details.level": "@level", ...NIN, "attributes.init.bonus": "@attack.nin - 2" }, "icons/svg/mystery-man-black.svg");
 poisonDeity.prototypeToken.width = poisonDeity.prototypeToken.height = 3;
 
+
+// Earth Release summons (STD6f F8): Mud Wolf (C-Rank) and Stone Dragon (A-Rank), from the Summon Stat Blocks section.
+// AC "+ your Ninjutsu ability modifier" links as @attack.nin - @prof (your Ninjutsu modifier and attack bonuses).
+const earth = folder("Earth Release", ninjutsu._id, "ninjutsu/earth-release");
+const NINMOD = "(@attack.nin - @prof)";
+const mudWolf = actor("mud-wolf", "Mud Wolf", earth._id, {
+  details: { build: "character", level: 1, template: "summon", creatureType: "construct", blurb: "Earth Release: Mud Wolf", summonRole: "Mud Wolf",
+    biography: html("<p><em>Earth Release: Mud Wolf (C-Rank, concentration up to 1 minute).</em> Two wolves (+1 per rank above C); Earthen Artifacts. They use your Ninjutsu attack bonus and save DC; you command them all as a Bonus Action.</p>",
+      "<p><strong>Medium Construct.</strong> <strong>Armor Class</strong> 12 + your Ninjutsu ability modifier · <strong>Hit Points</strong> 25 + 10 for every rank above C-Rank · <strong>Speed</strong> 40 ft.</p>",
+      `<p><strong>Abilities</strong> ${statLine([1, 1, 1, -5, 0, -5], [3, 3, 5, -5, 0, -5])}. <strong>Damage Immunities</strong> Acid, Poison, Psychic. <strong>Condition Immunities</strong> All Mental, Stunned, Petrified, Envenomed. <strong>Senses</strong> Darkvision 60 ft., passive Perception 10.</p>`,
+      "<p><strong>Linked to you when summoned:</strong> AC from your Ninjutsu modifier, hit points by the rank you cast the jutsu at, your Ninjutsu attack bonus and save DC.</p>") },
+  abilities: mods([1, 1, 1, -5, 0, -5]),
+  attributes: { ac: { calc: "flat", flat: 12, formula: "" }, init: { bonus: "" } },
+  traits: { size: "medium", immune: ["acid", "poison", "psychic"], conditionImmune: [...MENTAL, "petrified", "envenomed"], stateImmune: ["stunned"],
+    speed: { walk: 40, climb: 0, swim: 0, fly: 0, burrow: 0, hover: false }, senses: { darkvision: 60 } },
+  hpMax: 25, cpMax: 0, diesAtZero: true
+}, id => [
+  item(id, "Pack Tactics", "npcTraits", html("While the Mud Wolf and an ally to the wolf are both within 5 feet of the same hostile creature, the wolf makes its attack at advantage.")),
+  item(id, "Bite", "npcStrikes", html("<em>Natural Weapon Attack:</em> your Ninjutsu attack bonus, reach 5 ft., one target. <em>Hit:</em> 1d8 + your Ninjutsu ability modifier earth damage."),
+    [ninAtk("mud-wolf", "Bite", "1d8", "earth", 1, "Add your Ninjutsu ability modifier to the damage.")]),
+  item(id, "Grab", "npcAbilities", html("If the target is hit by its Bite attack, it must make a Strength save. On a failed save it is knocked Prone."),
+    [ninSave("mud-wolf", "Grab", "str", { inflicts: [inf("prone", "state")], text: "A creature hit by the Bite." })])
+], { "details.level": "@level", ...NIN, "attributes.ac.flat": `12 + ${NINMOD}`, hpMax: rankUp(25, 10, 2) }, "icons/svg/mystery-man-black.svg");
+const stoneDragon = actor("stone-dragon", "Stone Dragon", earth._id, {
+  details: { build: "character", level: 1, template: "summon", creatureType: "construct", blurb: "Earth Release: Stone Dragon", summonRole: "Stone Dragon",
+    biography: html("<p><em>Earth Release: Stone Dragon (A-Rank, concentration up to 1 minute).</em> It uses your Ninjutsu attack bonus and save DC; you command it as a Bonus Action.</p>",
+      "<p><strong>Large Construct.</strong> <strong>Armor Class</strong> 13 + your Ninjutsu ability modifier, DR 8 · <strong>Hit Points</strong> 80 + 20 for every rank above A-Rank · <strong>Speed</strong> 40 ft. fly.</p>",
+      `<p><strong>Abilities</strong> ${statLine([5, 0, 8, -5, 0, -5], [9, 4, 12, -5, 0, -5])}. <strong>Damage Immunities</strong> Cold, Poison, Psychic, Bludgeoning, Piercing, Slashing. <strong>Damage Vulnerabilities</strong> Lightning. <strong>Condition Immunities</strong> All Mental, Stunned, Petrified, Envenomed. <strong>Senses</strong> Darkvision 60 ft., passive Perception 10.</p>`,
+      "<p><strong>Linked to you when summoned:</strong> AC from your Ninjutsu modifier, hit points by the rank you cast the jutsu at, your Ninjutsu attack bonus and save DC.</p>") },
+  abilities: mods([5, 0, 8, -5, 0, -5]),
+  attributes: { ac: { calc: "flat", flat: 13, formula: "" }, init: { bonus: "" } },
+  traits: { size: "large", dr: 8, immune: ["cold", "poison", "psychic", "bludgeoning", "piercing", "slashing"], vuln: ["lightning"],
+    conditionImmune: [...MENTAL, "petrified", "envenomed"], stateImmune: ["stunned"],
+    speed: { walk: 0, climb: 0, swim: 0, fly: 40, burrow: 0, hover: false }, senses: { darkvision: 60 } },
+  hpMax: 80, cpMax: 0, diesAtZero: true
+}, id => [
+  item(id, "Bite", "npcStrikes", html("<em>Multiattack.</em> The Stone Dragon attacks 3 times with its Bite. <em>Melee Weapon Attack:</em> your Ninjutsu attack bonus, reach 10 ft., one creature. <em>Hit:</em> 2d10 + 5 earth damage."),
+    [ninAtk("stone-dragon", "Bite", "2d10 + 5", "earth", 3)]),
+  item(id, "Dust Breath (Recharge 7–8)", "npcAbilities", html("The dragon exhales dust in a 30-foot cone. Each creature in that cone must make a Dexterity saving throw, taking 55 (10d10) earth damage and becoming Bruised on a failed save, or half as much damage on a successful one."),
+    [ninSave("stone-dragon", "Dust Breath", "dex", { half: true, damage: [{ formula: "10d10", type: "earth" }], inflicts: [inf("bruised")], text: "Recharge 7–8 (as written)." })])
+], { "details.level": "@level", ...NIN, "attributes.ac.flat": `13 + ${NINMOD}`, hpMax: rankUp(80, 20, 4) }, "icons/svg/mystery-man-black.svg");
+stoneDragon.prototypeToken.width = stoneDragon.prototypeToken.height = 2;
+
 /* -------------------------------------------- */
-export const SUMMONS = { bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone, poisonDeity, folders: [scout, cloning, voidHeart, genjutsu, beguiler, illusionist, bakuton, chinoike, hozuki, kashu, shoton, tsuchigumo, hoshi, ninjutsu, nonElemental, medical] };
+export const SUMMONS = { bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone, poisonDeity, mudWolf, stoneDragon, folders: [scout, cloning, voidHeart, genjutsu, beguiler, illusionist, bakuton, chinoike, hozuki, kashu, shoton, tsuchigumo, hoshi, ninjutsu, nonElemental, medical, earth] };
 
 if ( import.meta.url === `file://${process.argv[1]}` ) {
   fs.rmSync(OUT, { recursive: true, force: true });
@@ -655,7 +698,10 @@ if ( import.meta.url === `file://${process.argv[1]}` ) {
   write("ninjutsu/_folder.json", ninjutsu);
   write("ninjutsu/non-elemental/_folder.json", nonElemental);
   write("ninjutsu/medical-release/_folder.json", medical);
+  write("ninjutsu/earth-release/_folder.json", earth);
+  write(`ninjutsu/earth-release/mud-wolf-${mudWolf._id}.json`, mudWolf);
+  write(`ninjutsu/earth-release/stone-dragon-${stoneDragon._id}.json`, stoneDragon);
   write(`ninjutsu/medical-release/supreme-poison-deity-${poisonDeity._id}.json`, poisonDeity);
   for ( const d of [inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone] ) write(`ninjutsu/non-elemental/${d.name.toLowerCase().replace(/[^a-z]+/g, "-").replace(/-$/, "")}-${d._id}.json`, d);
-  console.log(`✓ summons: 25 NPCs (${[bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone, poisonDeity].map(d => `${d.name} ${d._id}`).join(", ")})`);
+  console.log(`✓ summons: 27 NPCs (${[bunshin, voidSoul, duplicity, phantasm, spider, bird, centipede, dragon, bloodDragon, steamImp, dokiBandaged, dokiClub, dokiClaw, crystalRabbit, crystalDeer, crystalDragon, broodMother, kujakuBeast, inkBat, inkReptile, inanimatePuppet, inkPredator, inkOni, clone, poisonDeity, mudWolf, stoneDragon].map(d => `${d.name} ${d._id}`).join(", ")})`);
 }

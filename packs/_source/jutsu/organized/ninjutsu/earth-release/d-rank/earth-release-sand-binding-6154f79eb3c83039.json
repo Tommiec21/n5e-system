@@ -85,17 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5exSFfemApAz4zB",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "restrained",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Restrained"
-          }
-        ],
+        "label": "Sand Binding",
         "save": {
           "abilities": [
             "str"
@@ -104,10 +96,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
+        "text": "Concentration: a 20-foot cube within 30 feet, difficult terrain (no Dash or Dodge inside); creatures you choose. Failure: Restrained until the start of your next turn.",
         "damage": {
           "parts": []
         }
@@ -196,9 +195,251 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5exSFfemApAz4zB",
+              "type": "save",
+              "label": "Sand Binding",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "Concentration: a 20-foot cube within 30 feet, difficult terrain (no Dash or Dodge inside); creatures you choose. Failure: Restrained until the start of your next turn.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e3ktZAv2tFKsW1",
+              "type": "damage",
+              "label": "C-Rank: covered (start of its turn)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d8",
+                    "type": "earth"
+                  }
+                ]
+              },
+              "text": "One creature that failed (A-Rank: every one) is Restrained for the duration; a Strength save at the end of each of its turns ends it."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5exSFfemApAz4zB",
+              "type": "save",
+              "label": "Sand Binding",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "Concentration: a 20-foot cube within 30 feet, difficult terrain (no Dash or Dodge inside); creatures you choose. Failure: Restrained until the start of your next turn.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e3ktZAv2tFKsW1",
+              "type": "damage",
+              "label": "C-Rank: covered (start of its turn)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d8",
+                    "type": "earth"
+                  }
+                ]
+              },
+              "text": "One creature that failed (A-Rank: every one) is Restrained for the duration; a Strength save at the end of each of its turns ends it."
+            },
+            {
+              "id": "n5ewUHGrG6z1WcC1",
+              "type": "damage",
+              "label": "B-Rank: collapse (Bonus action)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "6d8",
+                    "type": "earth"
+                  }
+                ]
+              },
+              "text": "One Restrained creature (S-Rank: all); then it ends on them."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5exSFfemApAz4zB",
+              "type": "save",
+              "label": "Sand Binding",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "Concentration: a 20-foot cube within 30 feet, difficult terrain (no Dash or Dodge inside); creatures you choose. Failure: Restrained until the start of your next turn.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e3ktZAv2tFKsW1",
+              "type": "damage",
+              "label": "C-Rank: covered (start of its turn)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d8",
+                    "type": "earth"
+                  }
+                ]
+              },
+              "text": "One creature that failed (A-Rank: every one) is Restrained for the duration; a Strength save at the end of each of its turns ends it."
+            },
+            {
+              "id": "n5ewUHGrG6z1WcC1",
+              "type": "damage",
+              "label": "B-Rank: collapse (Bonus action)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "6d8",
+                    "type": "earth"
+                  }
+                ]
+              },
+              "text": "One Restrained creature (S-Rank: all); then it ends on them."
+            },
+            {
+              "id": "n5esAvuAs0NMgWKT",
+              "type": "damage",
+              "label": "A-Rank: chakra drain (start of its turn)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d8",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5exSFfemApAz4zB",
+              "type": "save",
+              "label": "Sand Binding",
+              "save": {
+                "abilities": [
+                  "str"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false
+              },
+              "inflicts": [
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "text": "Concentration: a 20-foot cube within 30 feet, difficult terrain (no Dash or Dodge inside); creatures you choose. Failure: Restrained until the start of your next turn.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e3ktZAv2tFKsW1",
+              "type": "damage",
+              "label": "C-Rank: covered (start of its turn)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d8",
+                    "type": "earth"
+                  }
+                ]
+              },
+              "text": "One creature that failed (A-Rank: every one) is Restrained for the duration; a Strength save at the end of each of its turns ends it."
+            },
+            {
+              "id": "n5ewUHGrG6z1WcC1",
+              "type": "damage",
+              "label": "B-Rank: collapse (Bonus action)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "6d8",
+                    "type": "earth"
+                  }
+                ]
+              },
+              "text": "One Restrained creature (S-Rank: all); then it ends on them."
+            },
+            {
+              "id": "n5esAvuAs0NMgWKT",
+              "type": "damage",
+              "label": "A-Rank: chakra drain (start of its turn)",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d8",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "59ce6e14db17de3b"

@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eeBy02Hm0F2Nf8",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Thumb of Destruction",
         "save": {
           "abilities": [
             "str"
@@ -97,10 +96,10 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [],
+        "text": "Combination, full turn: a 120-foot tall, 30-foot wide tornado within 120 feet (+1d8 and +10 feet per extra caster); creatures it lands on. Failure: the damage.",
         "damage": {
           "parts": [
             {
@@ -111,12 +110,23 @@
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "1d8",
-        "roll": {
-          "formula": "1d8",
-          "note": "Combination: Increases the damage dealt by 1d8 and the height of tornado 10-feet, for every additional creature aiding in casting this jutsu, beyond the first two."
+        "id": "n5ezge7xYC4MZiwy",
+        "type": "save",
+        "label": "Sucked in",
+        "save": {
+          "abilities": [
+            "str"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false
+        },
+        "inflicts": [],
+        "text": "Everything in the tornado but its casters. Failure: blasted into the ground: triple falling damage from 120 feet (by hand).",
+        "damage": {
+          "parts": []
         }
       }
     ],
@@ -197,7 +207,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "df8acb8c158b687b"

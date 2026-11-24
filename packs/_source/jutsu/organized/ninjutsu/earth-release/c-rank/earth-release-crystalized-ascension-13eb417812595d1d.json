@@ -85,10 +85,37 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5e2yKfhW1GEkNq6",
+        "type": "heal",
+        "label": "Temporary hit points",
+        "heal": {
+          "formula": "16",
+          "pool": "tempHp"
+        },
+        "text": "Concentration: a willing creature other than you: +2 AC, +4 DR and these."
+      },
+      {
+        "id": "n5ei9ZXYSuorlDBt",
+        "type": "effect",
+        "label": "Crystalized Ascension: +2 AC, +4 DR",
+        "effect": {
+          "name": "Crystalized Ascension",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "2",
+              "mode": 2
+            },
+            {
+              "key": "n5e.dr",
+              "value": "4",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60
+        }
       }
     ],
     "featureType": "active",
@@ -155,9 +182,116 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5e2yKfhW1GEkNq6",
+              "type": "heal",
+              "label": "Temporary hit points",
+              "heal": {
+                "formula": "24",
+                "pool": "tempHp"
+              },
+              "text": "Concentration: a willing creature other than you: +2 AC, +4 DR and these."
+            },
+            {
+              "id": "n5ei9ZXYSuorlDBt",
+              "type": "effect",
+              "label": "Crystalized Ascension: +3 AC, +6 DR",
+              "effect": {
+                "name": "Crystalized Ascension",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "3",
+                    "mode": 2
+                  },
+                  {
+                    "key": "n5e.dr",
+                    "value": "6",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e2yKfhW1GEkNq6",
+              "type": "heal",
+              "label": "Temporary hit points",
+              "heal": {
+                "formula": "24",
+                "pool": "tempHp"
+              },
+              "text": "Concentration: a willing creature other than you: +2 AC, +4 DR and these."
+            },
+            {
+              "id": "n5ei9ZXYSuorlDBt",
+              "type": "effect",
+              "label": "Crystalized Ascension: +3 AC, +6 DR",
+              "effect": {
+                "name": "Crystalized Ascension",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "3",
+                    "mode": 2
+                  },
+                  {
+                    "key": "n5e.dr",
+                    "value": "6",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e2yKfhW1GEkNq6",
+              "type": "heal",
+              "label": "Temporary hit points",
+              "heal": {
+                "formula": "32",
+                "pool": "tempHp"
+              },
+              "text": "Concentration: a willing creature other than you: +2 AC, +4 DR and these."
+            },
+            {
+              "id": "n5ei9ZXYSuorlDBt",
+              "type": "effect",
+              "label": "Crystalized Ascension: +4 AC, +8 DR",
+              "effect": {
+                "name": "Crystalized Ascension",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.ac",
+                    "value": "4",
+                    "mode": 2
+                  },
+                  {
+                    "key": "n5e.dr",
+                    "value": "8",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "bdb81013175b0aa5"

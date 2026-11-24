@@ -85,10 +85,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eJyWW13niF9x8h",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Bursting Compressed Air",
         "save": {
           "abilities": [
             "dex"
@@ -96,23 +95,33 @@
           "dc": {
             "source": "discipline"
           },
-          "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
+          "onSuccess": "half",
           "resave": false
         },
+        "inflicts": [],
+        "text": "Concentration: a creature within 30 feet holding a weapon; again at the start of its turns while it holds it. Success: half. After 3 failures the weapon shatters (the next button). Swirl (by hand): a creature that fails spreads 1 rank of each Elemental condition on it to hostile creatures within 5 feet of it.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "slashing"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "3d6",
-        "roll": {
-          "formula": "3d6",
-          "note": "On a failed save they take 3d6 slashing damage as they are sliced for holding the weapon. If they continue to hold their weapon, they must make another save at the beginning of their next turn. On a successful save they take half damage."
-        }
+        "id": "n5ebqfpkCCHbboL1",
+        "type": "damage",
+        "label": "Shrapnel",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "slashing"
+            }
+          ]
+        },
+        "text": "Other creatures within 10 feet of the weapon."
       }
     ],
     "featureType": "active",
@@ -194,7 +203,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c316a04b2e905f38"

@@ -87,12 +87,12 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
+        "id": "n5eth7RGp6eyNCE5",
         "type": "roll",
-        "label": "3d6+12",
+        "label": "Wall hit points",
         "roll": {
-          "formula": "3d6+12",
-          "note": "It has 3d6+12 hit points, resistance to bludgeoning, piercing, slashing and cold damage and vulnerability to lightning damage."
+          "formula": "3d6 + 12",
+          "note": "Reaction: total cover for you or a creature within 60 feet; an Earthen Artifact (resistant to bludgeoning, piercing, slashing and cold; vulnerable to lightning); damage beyond it reaches the target."
         }
       }
     ],
@@ -173,9 +173,44 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eth7RGp6eyNCE5",
+              "type": "roll",
+              "label": "Wall hit points",
+              "roll": {
+                "formula": "4d6 + 16",
+                "note": "Reaction: total cover for you or a creature within 60 feet; an Earthen Artifact (resistant to bludgeoning, piercing, slashing and cold; vulnerable to lightning); damage beyond it reaches the target."
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eth7RGp6eyNCE5",
+              "type": "roll",
+              "label": "Wall hit points",
+              "roll": {
+                "formula": "5d6 + 20",
+                "note": "Reaction: total cover for you or a creature within 60 feet; an Earthen Artifact (resistant to bludgeoning, piercing, slashing and cold; vulnerable to lightning); damage beyond it reaches the target."
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eth7RGp6eyNCE5",
+              "type": "roll",
+              "label": "Wall hit points",
+              "roll": {
+                "formula": "6d6 + 24",
+                "note": "Reaction: total cover for you or a creature within 60 feet; an Earthen Artifact (resistant to bludgeoning, piercing, slashing and cold; vulnerable to lightning); damage beyond it reaches the target."
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "bdb81013175b0aa5"

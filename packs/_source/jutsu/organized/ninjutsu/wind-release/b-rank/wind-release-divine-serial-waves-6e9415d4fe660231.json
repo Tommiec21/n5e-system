@@ -85,14 +85,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ejEcgXnPUAMHGr",
         "type": "attack",
-        "label": "Attack",
+        "label": "Divine Serial Waves",
         "attack": {
-          "discipline": "nin",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "60 feet (+1 creature per rank).",
         "damage": {
           "parts": [
             {
@@ -103,17 +104,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eAWvvxSj9G9fnK",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "bleed",
-            "kind": "condition",
-            "ranks": 2,
-            "label": "Bleed"
-          }
-        ],
+        "label": "Serial Waves: Bleed",
         "save": {
           "abilities": [
             "con"
@@ -122,10 +115,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
-          "fourTier": false,
-          "tiers": {},
           "resave": false
         },
+        "inflicts": [
+          {
+            "key": "bleed",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Bleed"
+          }
+        ],
+        "text": "On a hit. Failure: 2 Bleed.",
         "damage": {
           "parts": []
         }
@@ -204,7 +204,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "df8acb8c158b687b"

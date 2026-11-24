@@ -87,13 +87,14 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d8+5",
-        "roll": {
-          "formula": "2d8+5",
-          "note": "This barrier of wind has 2d8+5 hit points, and has resistance to Lightning damage and vulnerability to Fire damage."
-        }
+        "id": "n5eiea1aEt1FEfF4",
+        "type": "heal",
+        "label": "Wind barrier",
+        "heal": {
+          "formula": "2d8 + 5",
+          "pool": "tempHp"
+        },
+        "text": "Reaction to Ninjutsu or Taijutsu damage: temporary hit points until the start of your next turn (resistant to lightning, vulnerable to fire)."
       }
     ],
     "featureType": "active",
@@ -173,9 +174,59 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eiea1aEt1FEfF4",
+              "type": "heal",
+              "label": "Wind barrier",
+              "heal": {
+                "formula": "(2d8 + 5) + (1d8)",
+                "pool": "tempHp"
+              },
+              "text": "Reaction to Ninjutsu or Taijutsu damage: temporary hit points until the start of your next turn (resistant to lightning, vulnerable to fire)."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eiea1aEt1FEfF4",
+              "type": "heal",
+              "label": "Wind barrier",
+              "heal": {
+                "formula": "(2d8 + 5) + (2d8)",
+                "pool": "tempHp"
+              },
+              "text": "Reaction to Ninjutsu or Taijutsu damage: temporary hit points until the start of your next turn (resistant to lightning, vulnerable to fire)."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eiea1aEt1FEfF4",
+              "type": "heal",
+              "label": "Wind barrier",
+              "heal": {
+                "formula": "(2d8 + 5) + (3d8)",
+                "pool": "tempHp"
+              },
+              "text": "Reaction to Ninjutsu or Taijutsu damage: temporary hit points until the start of your next turn (resistant to lightning, vulnerable to fire)."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eiea1aEt1FEfF4",
+              "type": "heal",
+              "label": "Wind barrier",
+              "heal": {
+                "formula": "(2d8 + 5) + (4d8)",
+                "pool": "tempHp"
+              },
+              "text": "Reaction to Ninjutsu or Taijutsu damage: temporary hit points until the start of your next turn (resistant to lightning, vulnerable to fire)."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "20268cc1727cd95c"

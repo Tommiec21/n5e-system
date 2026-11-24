@@ -85,21 +85,18 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eyT2Qsq7oImloE",
         "type": "damage",
-        "label": "Damage",
+        "label": "Stone arm: +1d6",
         "damage": {
-          "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "1d6",
-        "roll": {
-          "formula": "1d6",
-          "note": "For the duration of this jutsu, you add +1d6 to your [Unarmed damage] rolls up to twice per turn."
-        }
+          "parts": [
+            {
+              "formula": "1d6",
+              "type": ""
+            }
+          ]
+        },
+        "text": "Concentration: +1d6 to your unarmed damage twice per turn (one hand can't make hand seals or chakra seals). Or a stone weapon: its die becomes 1d6 of its type + 1d6 earth (Light: just 1d6 earth). B-Rank: +1d6 earth; S-Rank: +1d6 more."
       }
     ],
     "featureType": "active",
@@ -210,9 +207,75 @@
           "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically.",
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eyT2Qsq7oImloE",
+              "type": "damage",
+              "label": "Stone arm: +1d6",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d6",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "Concentration: +1d6 to your unarmed damage twice per turn (one hand can't make hand seals or chakra seals). Or a stone weapon: its die becomes 1d6 of its type + 1d6 earth (Light: just 1d6 earth). B-Rank: +1d6 earth; S-Rank: +1d6 more."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eyT2Qsq7oImloE",
+              "type": "damage",
+              "label": "Stone arm: +1d6",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d6 + 1d6",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "Concentration: +1d6 to your unarmed damage twice per turn (one hand can't make hand seals or chakra seals). Or a stone weapon: its die becomes 1d6 of its type + 1d6 earth (Light: just 1d6 earth). B-Rank: +1d6 earth; S-Rank: +1d6 more."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eyT2Qsq7oImloE",
+              "type": "damage",
+              "label": "Stone arm: +1d6",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d6 + 1d6",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "Concentration: +1d6 to your unarmed damage twice per turn (one hand can't make hand seals or chakra seals). Or a stone weapon: its die becomes 1d6 of its type + 1d6 earth (Light: just 1d6 earth). B-Rank: +1d6 earth; S-Rank: +1d6 more."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eyT2Qsq7oImloE",
+              "type": "damage",
+              "label": "Stone arm: +1d6",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d6 + 2d6",
+                    "type": ""
+                  }
+                ]
+              },
+              "text": "Concentration: +1d6 to your unarmed damage twice per turn (one hand can't make hand seals or chakra seals). Or a stone weapon: its die becomes 1d6 of its type + 1d6 earth (Light: just 1d6 earth). B-Rank: +1d6 earth; S-Rank: +1d6 more."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "59ce6e14db17de3b"
