@@ -199,6 +199,12 @@ export const rules = {
   rationPool: { group: "rations", type: "number", default: 20, min: 0, max: 200, label: "Rations in the pool now" },
 
   // Character
+  // LVL1 L6 (King 2026-11-24): leveling. XP by default; the GM can switch to milestones or use both.
+  leveling: { group: "character", type: "choice", default: "xp", label: "Leveling",
+    choices: { xp: "XP (the book's table)", milestone: "Milestone (the GM grants levels)", both: "Both (XP, or a level the GM grants)" },
+    hint: "How characters earn levels. Award XP and Grant level are in the Party Overview." },
+  levelUpGate: { group: "character", type: "boolean", default: true, label: "Level Up needs XP or a granted level",
+    hint: "On (standard): Level Up works once the character has the required XP (or a level the GM granted); applying the level spends that XP, and the leftover carries. Off: players can level up at any time. GMs can always level a character." },
   multiclassing: { group: "character", type: "boolean", default: false, label: "Legacy multiclassing",
     hint: "Allow more than one class (removed from balance)." },
   hijutsuFlexibilityPick: { group: "character", type: "boolean", default: true, label: "Players pick their Hijutsu Flexibility ability",

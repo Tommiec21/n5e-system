@@ -17,7 +17,7 @@ export default class PartyOverview extends HandlebarsApplicationMixin(Applicatio
     classes: ["n5e", "n5e-v2", "n5e-party"],
     window: { title: "N5e Party Overview", icon: "fa-solid fa-users", resizable: true },
     position: { width: 760, height: 560 },
-    actions: { openSheet: PartyOverview.#onOpen, quick: PartyOverview.#onQuick }
+    actions: { openSheet: PartyOverview.#onOpen, quick: PartyOverview.#onQuick, awardAll: PartyOverview.#onAwardAll }
   };
 
   static PARTS = { body: { template: "systems/n5e/templates/apps/party-overview.hbs", scrollable: [".rows"] } };
@@ -62,6 +62,21 @@ export default class PartyOverview extends HandlebarsApplicationMixin(Applicatio
     };
   }
 
+  /** LVL1 L6: add XP to characters (a negative amount takes it away, never below 0). */
+  static async award(actors, amount) {
+    const chars = actors.filter(a => a?.type === "character");
+    for ( const a of chars ) await a.update({ "system.details.xp": Math.max(0, (a.system.details?.xp ?? 0) + amount) });
+    if ( chars.length ) ui.notifications.info(`${amount >= 0 ? "Awarded" : "Removed"} ${Math.abs(amount)} XP: ${chars.map(a => a.name).join(", ")}.`);
+  }
+
+  /** LVL1 L6: Award XP to every character listed. */
+  static async #onAwardAll(event, target) {
+    if ( !game.user.isGM ) return;
+    const amount = Number(this.element.querySelector("input[name=awardXp]")?.value) || 0;
+    if ( !amount ) return ui.notifications.info("Enter an amount first.");
+    return PartyOverview.award(this.actors(), amount);
+  }
+
   /** Click a name: open that actor's sheet. */
   static async #onOpen(event, target) {
     (await fromUuid(target.closest("[data-uuid]").dataset.uuid))?.sheet.render(true);
@@ -77,6 +92,16 @@ export default class PartyOverview extends HandlebarsApplicationMixin(Applicatio
     const actor = await fromUuid(row.dataset.uuid);
     if ( !actor ) return;
     const kind = target.dataset.kind;
+    // LVL1 L6: Grant level (milestone) and Award XP for one character.
+    if ( kind === "grant" ) {
+      await actor.setFlag("n5e", "levelsGranted", (actor.flags?.n5e?.levelsGranted ?? 0) + 1);
+      return ui.notifications.info(`${actor.name} can level up (granted by the GM).`);
+    }
+    if ( kind === "xp" ) {
+      const xp = Number(row.querySelector("input[name=amount]")?.value) || 0;
+      if ( !xp ) return ui.notifications.info("Enter an amount first.");
+      return PartyOverview.award([actor], xp);
+    }
     if ( kind === "condition" ) {
       const key = row.querySelector("select[name=condition]")?.value;
       if ( key ) await actor.addCondition(key, 1, { manual: true });

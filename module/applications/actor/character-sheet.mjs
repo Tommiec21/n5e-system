@@ -864,6 +864,11 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     if ( !cls ) return ui.notifications.warn("Drop a class on the sheet first.");
     const next = (cls.system.levels ?? 0) + 1;
     if ( next > 20 ) return ui.notifications.info(`${cls.name} is already level 20.`);
+    // LVL1 L6: the GM's leveling rules (XP, granted levels, the gate).
+    const { actorLevelState } = await import("../../rules/leveling.mjs");
+    const { rule } = await import("../../rules-settings.mjs");
+    const state = actorLevelState(this.actor, { rule, isGM: game.user.isGM });
+    if ( !state.allowed ) return ui.notifications.warn(state.reason);
     return LevelUpDialog.open(this.actor, cls, next);
   }
 

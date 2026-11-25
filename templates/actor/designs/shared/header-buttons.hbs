@@ -1,7 +1,7 @@
 {{!-- SHEETS1 shared: level up/down, Level History (LVL1 L5), rests and the edit toggle. h = headerVM. Each button has an icon and a label; a design shows either. --}}
 <div class="d-head-buttons">
   {{#if @root.editable}}{{#if h.canLevelUp}}
-    <button type="button" class="d-btn level-up" data-action="levelUp" data-class-id="{{h.classId}}" data-tooltip="Gain level {{h.nextLevel}}"><i class="fa-solid fa-arrow-up"></i><span class="txt">Level Up</span></button>
+    <button type="button" class="d-btn level-up {{#if h.levelUp.ready}}ready{{/if}}" data-action="levelUp" data-class-id="{{h.classId}}" data-tooltip="Gain level {{h.nextLevel}}: {{h.levelUp.reason}}" {{#unless h.levelUp.allowed}}disabled{{/unless}}><i class="fa-solid fa-arrow-up"></i><span class="txt">Level Up</span></button>
   {{/if}}{{#if h.classId}}
     <button type="button" class="d-btn level-history" data-action="levelHistory" data-class-id="{{h.classId}}" data-tooltip="Level History: what each level gave; change a past level's choices" aria-label="Level History"><i class="fa-solid fa-clock-rotate-left"></i><span class="txt">History</span></button>
   {{/if}}{{#if @root.editMode}}{{#if h.classId}}

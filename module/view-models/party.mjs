@@ -22,6 +22,10 @@ export function partyRowVM(actor) {
     hp: { value: s.hp?.value ?? 0, max: s.hp?.max ?? 0, temp: s.hp?.temp ?? 0, pct: pct(s.hp?.value ?? 0, s.hp?.max ?? 0) },
     cp: { value: s.cp?.value ?? 0, max: s.cp?.max ?? 0, temp: s.cp?.temp ?? 0, pct: pct(s.cp?.value ?? 0, s.cp?.max ?? 0) },
     conditions, states, concentration: conc,
+    // LVL1 L6: XP toward the next level and levels the GM granted (characters only).
+    isCharacter: actor.type === "character",
+    xp: actor.type === "character" ? { value: s.details?.xp ?? 0, next: s.details?.xpNext ?? null, granted: actor.flags?.n5e?.levelsGranted ?? 0,
+      ready: (s.details?.xpNext != null && (s.details?.xp ?? 0) >= s.details.xpNext) || (actor.flags?.n5e?.levelsGranted ?? 0) > 0 } : null,
     badges: [
       s.combat?.fury ? `Fury ${s.combat.fury}` : "",
       gate ? `Gate ${gate}` : "",

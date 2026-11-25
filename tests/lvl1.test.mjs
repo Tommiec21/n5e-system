@@ -151,3 +151,43 @@ test("LVL1 L5: Level History rows, the editable steps and a past level's selecti
   assert.deepEqual(flags["asi.4"], { ability: "wis", feat: "", mastery: "" });
   assert.deepEqual(cls.system.advancement[0].chosen, ["rogue"]);
 });
+
+test("LVL1 L6: XP by default, milestones or both; the GM's gate; applying spends the XP (leftover carries) or a granted level", async () => {
+  const { levelUpState, levelUpCost } = await import("../module/rules/leveling.mjs");
+  const { RULES } = await import("../module/config/rules.mjs").catch(() => ({}));
+  const rules = RULES ?? (await import("../module/config/rules.mjs")).default ?? {};
+  // XP mode (default): ready once the XP is there; spends it, the rest carries.
+  let st = levelUpState({ level: 3, xp: 350, need: 300 });
+  assert.deepEqual([st.allowed, st.ready, st.via], [true, true, "xp"]);
+  assert.deepEqual(levelUpCost(st, { xp: 350, need: 300 }), { "system.details.xp": 50 });
+  st = levelUpState({ level: 3, xp: 120, need: 300 });
+  assert.deepEqual([st.allowed, st.ready], [false, false]);
+  assert.match(st.reason, /Needs 300 XP \(has 120\)/);
+  // The GM can always level; the gate off lets players level freely (nothing spent).
+  assert.deepEqual([levelUpState({ level: 3, xp: 0, need: 300, isGM: true }).allowed, levelUpState({ level: 3, xp: 0, need: 300, isGM: true }).via], [true, "gm"]);
+  st = levelUpState({ level: 3, xp: 0, need: 300, gate: false });
+  assert.deepEqual([st.allowed, st.ready, st.via], [true, false, "free"]);
+  assert.deepEqual(levelUpCost(st, { xp: 0, need: 300 }), {});
+  // Milestone: a granted level; XP doesn't count.
+  st = levelUpState({ level: 3, xp: 999, need: 300, granted: 0, mode: "milestone" });
+  assert.equal(st.allowed, false);
+  st = levelUpState({ level: 3, xp: 0, need: 300, granted: 2, mode: "milestone" });
+  assert.deepEqual([st.allowed, st.via], [true, "grant"]);
+  assert.deepEqual(levelUpCost(st, { granted: 2 }), { "flags.n5e.levelsGranted": 1 });
+  // Both: a granted level first, else XP.
+  assert.equal(levelUpState({ level: 3, xp: 300, need: 300, granted: 1, mode: "both" }).via, "grant");
+  assert.equal(levelUpState({ level: 3, xp: 300, need: 300, granted: 0, mode: "both" }).via, "xp");
+  assert.equal(levelUpState({ level: 20, xp: 9999, need: null, isGM: true }).allowed, false);
+  // The two rules, with their defaults.
+  const src = fs.readFileSync(path.join(ROOT, "module/config/rules.mjs"), "utf8");
+  assert.match(src, /leveling: \{ group: "character", type: "choice", default: "xp"/);
+  assert.match(src, /levelUpGate: \{ group: "character", type: "boolean", default: true/);
+  // Party Overview: Award XP to all, per-row XP and Grant level.
+  const po = fs.readFileSync(path.join(ROOT, "templates/apps/party-overview.hbs"), "utf8");
+  assert.match(po, /data-action="awardAll"/);
+  assert.match(po, /data-kind="grant"/);
+  const { partyRowVM } = await import("../module/view-models/party.mjs");
+  const row = partyRowVM({ type: "character", uuid: "A", name: "K", effects: [], items: [], flags: { n5e: { levelsGranted: 1 } }, system: { details: { xp: 10, xpNext: 300 }, hp: {}, cp: {}, combat: {} } });
+  assert.deepEqual(row.xp, { value: 10, next: 300, granted: 1, ready: true });
+  void rules;
+});

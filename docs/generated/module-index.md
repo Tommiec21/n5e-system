@@ -31,7 +31,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `character-designs.mjs` | 59 | Optional character sheet designs (SHEETS1; docs/SHEETS1_SPEC.md). | `designSheet`, `SHEET_DESIGNS`, `DESIGN_PARTS`, `DESIGN_TEMPLATE_PATHS` |
-| `character-sheet.mjs` | 893 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
+| `character-sheet.mjs` | 898 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
 | `hazard-sheet.mjs` | 103 | Hazard and vehicle sheets (PRESTD1 Part D-ii): the NPC sheet with one more tab. | `HazardSheet`, `VehicleSheet` |
 | `loot-sheet.mjs` | 86 | Loot actor sheet (PRESTD1 Part C): a pile, a merchant or the party stash. | `LootSheet` |
 | `npc-sheet.mjs` | 345 | NPC sheet (NPCUI1; King 2026-11-15, design canvas "N5e NPC Sheet Redesign"). | `NPC_TEMPLATE_PATHS`, `NPCSheet` |
@@ -56,7 +56,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `enrichers.mjs` | 180 | Shortcuts in text (Foundry side): turns [[/save ...]], [[/check ...]], [[/damage ...]], [[/heal ...]], @Condition[...] and @State[...] into clickable links w... | `registerEnrichers`, `onLinkClick` |
 | `helpers.mjs` | 17 | Handlebars helpers used by N5e templates (registered by the system so templates don't depend on which helpers core happens to ship). | `HELPERS`, `registerHelpers` |
 | `level-history.mjs` | 68 | LVL1 L5 (King 2026-11-24): Level History. | `levelHistory`, `LevelHistory` |
-| `level-up.mjs` | 503 | Level-up dialog: one page listing what the new level grants, with a card for every choice (dnd5e's advancement flow, flattened). | `LevelUpDialog` |
+| `level-up.mjs` | 511 | Level-up dialog: one page listing what the new level grants, with a card for every choice (dnd5e's advancement flow, flattened). | `LevelUpDialog` |
 | `schema-form.mjs` | 76 | Builds simple form rows from a data model schema, so the Phase 1 placeholder sheets show and edit every stored field without hand-written templates. | `buildRows`, `collapseDuplicates`, `coerceListInputs` |
 | `sheets.mjs` | 207 | Phase 1 placeholder sheets (ApplicationV2). | `TEMPLATE_PATHS`, `N5eActorSheet`, `N5eItemSheet` |
 
@@ -70,7 +70,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `journal-desk.mjs` | 331 | Journal Desk owns its window, not Foundry's journal sheets or navigation hooks. | `JournalDesk` |
 | `mission-planner.mjs` | 166 | Mission planner (PRESTD1 Part E, MISSION1; GM only). | `blankMission`, `MissionPlanner` |
 | `npc-reset.mjs` | 63 | "Reset NPCs" (NPC1c C2): a GM button on the Actors sidebar. | `npcsFor`, `resetNPCsDialog`, `resetNPC`, `addResetButton` |
-| `party-overview.mjs` | 106 | GM Party Overview: every player character (and, in a combat, every combatant) with HP, CP, conditions, concentration, Fury, open Gate and Amps; quick damage,... | `PartyOverview`, `registerPartyOverview` |
+| `party-overview.mjs` | 131 | GM Party Overview: every player character (and, in a combat, every combatant) with HP, CP, conditions, concentration, Fury, open Gate and Amps; quick damage,... | `PartyOverview`, `registerPartyOverview` |
 | `workspace-ideas.mjs` | 23 | Original adventure prompts, not canon events or automatically balanced encounters. | `MISSION_IDEAS`, `filterIdeas`, `ideaText` |
 | `workspace-navigation.mjs` | 30 | Retain unique tab references; drafts are never saved in user preferences. | `cleanSession`, `visit`, `starterText`, `relationshipUpdate` |
 | `workspace-starter.mjs` | 74 | Convert reviewed source text into an ordinary editable private journal entry. | `starterEntry`, `starterLinks`, `mergeStarterLinks`, `importStarter` |
@@ -144,7 +144,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `jutsu-colors.mjs` | 19 | Jutsu keyword colors (NPCUI1; King 2026-11-15). | `jutsuColors`, `jutsuPillPaper` |
 | `jutsu.mjs` | 151 | Jutsu registries: keywords, stimuli, components, nature releases, sections, upcast presets. | `keywords`, `featureTags`, `stimuli`, `components`, `natureReleases`, `affinities`, `jutsuSections`, `upcastPresets`, `costModes`, `reactionTriggers`, `riderTriggers`, `cloneTemplate`, `summonRanks` |
 | `missions.mjs` | 53 | Mission tables (PRESTD1 Part E, MISSION1). | `missionRewards`, `missionTiers`, `missionRankMultiplier`, `missionEncounters`, `missionRuleText` |
-| `rules.mjs` | 226 | Every optional or table rule the system automates, in one registry (King 2026-11-07: GMs control which rules apply). | `ruleGroups`, `rules` |
+| `rules.mjs` | 232 | Every optional or table rule the system automates, in one registry (King 2026-11-07: GMs control which rules apply). | `ruleGroups`, `rules` |
 | `social.mjs` | 74 | Social encounter tables (PRESTD1 Part F, SOCIAL1). | `socialAttitudes`, `socialTypes`, `socialMotivations`, `socialPitfalls`, `socialActions`, `socialNpcActions`, `socialOutcomeLabels` |
 
 ## module/data
@@ -279,6 +279,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `jutsu-facts.mjs` | 42 | Jutsu roll facts (STD6d; docs/STD6d_SPEC.md). | `jutsuFacts`, `resolveRankValues` |
 | `jutsu-slots.mjs` | 221 | NT1 (King 2026-11-24): jutsu slots, pure. | `RANKS`, `learnedMode`, `sourceMatches`, `filterText`, `sourceKey`, `bonusSources`, `replacementFor`, `learnBlock`, `jutsuSlots`, `jutsuDiscipline`, `matchesFilter`, `learnProblems`, `assignSlot`, `browserFilters`, `conditionHolds` |
 | `keywords.mjs` | 95 | Keywords (pure; DATA1, King 2026-11-13). | `SPLIT_KEYWORDS`, `REMOVED_KEYWORDS`, `normalizeKeyword`, `canonicalKeywords`, `canonicalKeywordList`, `keywordKey`, `keywordValue`, `hasKeyword`, `isBukijutsu`, `jutsuGroup`, `FEAT_KEYWORDS`, `featKeywords`, `FEATURE_KINDS`, `featureKind`, `isFeatItem`, `featGroups` |
+| `leveling.mjs` | 50 | LVL1 L6 (King 2026-11-24): when a character can level up, and what a level spends. | `LEVELING_MODES`, `levelUpState`, `levelUpCost`, `actorLevelState` |
 | `loot.mjs` | 21 | PRESTD1 Part C: loot piles, merchants and the party stash (pure; King Q-F2, Q-P5). | `LOOT_MODES`, `priceOf`, `canTake`, `purchase`, `saleValue` |
 | `missions.mjs` | 46 | Mission budgets and payouts (PRESTD1 Part E; King Q-P9: the Bingo Book's Mission XP rules, verbatim, no per-player XP logic of our own). | `missionNumbers`, `encounterCost`, `spentOf`, `missionPayout` |
 | `npc-reset.mjs` | 34 | Batch reset for NPCs (pure; NPC1c C2). | `RESET_OPTIONS`, `resetPlan` |
@@ -329,7 +330,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `adversary-builder.mjs` | 75 | The Adversary Builder's view model (pure; NPC2). | `STEPS`, `builderVM` |
-| `character.mjs` | 592 | Character sheet view models: actor in, plain data out. | `headerVM`, `resourcesVM`, `railVM`, `mainVM`, `jutsuVM`, `inventoryVM`, `OPTION_GROUPS`, `featuresVM`, `effectsVM`, `biographyVM`, `xpTable` |
+| `character.mjs` | 595 | Character sheet view models: actor in, plain data out. | `headerVM`, `resourcesVM`, `railVM`, `mainVM`, `jutsuVM`, `inventoryVM`, `OPTION_GROUPS`, `featuresVM`, `effectsVM`, `biographyVM`, `xpTable` |
 | `combat.mjs` | 437 | Combat tab view model: every option the character has in a fight, plus the trackers (Chain, concentration and upkeep, stance, Combo/Finisher). | `jutsuPill`, `ampsVM`, `combatVM` |
 | `common.mjs` | 152 | Shared view-model helpers: signed numbers, breakdown tooltips, action glyphs, rule chips. | `esc`, `breakdownTooltip`, `glyph`, `keywordChip`, `componentChips`, `propertyChips`, `conditionSummary`, `pips`, `signed` |
 | `damage-trace.mjs` | 24 | Minimal fallback for legacy roll data; normal cards use Foundry's Roll renderer. | `damageRollHTML`, `renderDamageRolls` |
@@ -338,7 +339,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `item.mjs` | 585 | Item sheet view model (pure). | `advancementVM`, `itemVM`, `DETAILS`, `HTML_FIELDS` |
 | `npc-statblock.mjs` | 120 | NPC sheet view models (NPCUI1; King 2026-11-15, design canvas "N5e NPC Sheet Redesign"): npcSheetHeaderVM  identity line, HP and CP trackers, conditions npcS... | `npcSheetHeaderVM`, `npcJutsuGroups`, `jutsuLegendVM`, `npcStatBlockVM`, `npcPlayerVM` |
 | `npc.mjs` | 282 | NPC view models (NPC1b): the stat block in the Bingo Book's layout, and the Build tab. | `statBlockVM`, `npcHeaderVM`, `npcBuildVM`, `npcSimpleVM`, `npcDefensesVM`, `KNOWABLE_STATS`, `knowledgeEntryView`, `npcKnowledgeVM`, `learnedVM`, `attackLine` |
-| `party.mjs` | 33 | GM Party Overview rows (pure): HP, CP, conditions, concentration, Fury, open Gate, Amps. | `partyRowVM` |
+| `party.mjs` | 37 | GM Party Overview rows (pure): HP, CP, conditions, concentration, Fury, open Gate, Amps. | `partyRowVM` |
 
 ## module/workflow
 

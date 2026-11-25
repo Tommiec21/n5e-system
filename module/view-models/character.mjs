@@ -30,6 +30,7 @@ import {
 } from "./common.mjs";
 import { AC_FORMULAS } from "../rules/ac.mjs";
 import { jutsuSlots } from "../rules/jutsu-slots.mjs";
+import { actorLevelState } from "../rules/leveling.mjs";
 
 // Small helpers shared by every part. `list` accepts arrays, Sets and Foundry Collections alike
 // (tests pass arrays; Foundry passes Collections).
@@ -67,6 +68,8 @@ export function headerVM(actor) {
     xp: { value: xp, next, pct: next ? pct(xp, next) : 100 },
     classId: cls?.id ?? "",
     canLevelUp: !!cls && (cls.system.levels ?? 0) < 20,
+    // LVL1 L6: whether Level Up works now (XP / granted level / the GM's gate) and why.
+    levelUp: cls ? actorLevelState(actor, { rule, isGM: !!globalThis.game?.user?.isGM }) : null,
     nextLevel: cls ? (cls.system.levels ?? 0) + 1 : 1,
     // Compact ability strip (SW5e-style): abbr, modifier, score.
     abilities: Object.entries(abilities).map(([key, cfg]) => ({

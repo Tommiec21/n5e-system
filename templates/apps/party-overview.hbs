@@ -1,5 +1,9 @@
 {{!-- GM Party Overview (applications/gm/party-overview.mjs). Rows: view-models/party.mjs partyRowVM. --}}
 <div class="party">
+  {{#if isGM}}<div class="award">
+    <input type="number" name="awardXp" placeholder="XP" aria-label="XP to award">
+    <button type="button" data-action="awardAll" data-tooltip="Add this XP to every character listed (negative takes it away)"><i class="fa-solid fa-star"></i> Award XP to all</button>
+  </div>{{/if}}
   <div class="rows">
     {{#each rows}}
       <div class="p-row" data-uuid="{{uuid}}">
@@ -15,6 +19,7 @@
             {{#each states}}<span class="tag state">{{this}}</span>{{/each}}
             {{#each concentration}}<span class="tag conc" data-tooltip="Concentrating">◯ {{this}}</span>{{/each}}
             {{#each badges}}<span class="tag badge">{{this}}</span>{{/each}}
+            {{#if xp}}<span class="tag xp {{#if xp.ready}}ready{{/if}}" data-tooltip="XP toward the next level{{#if xp.granted}}; levels granted by the GM{{/if}}">XP {{xp.value}}{{#if xp.next}} / {{xp.next}}{{/if}}{{#if xp.granted}} · +{{xp.granted}} level{{/if}}{{#if xp.ready}} · ready{{/if}}</span>{{/if}}
           </div>
         </div>
         {{#if ../isGM}}<div class="quick">
@@ -26,6 +31,8 @@
           <select name="condition" aria-label="Condition"><option value="">Condition…</option>
             {{#each @root.conditions}}<option value="{{key}}">{{label}}</option>{{/each}}</select>
           <button type="button" data-action="quick" data-kind="condition">Add</button>
+          {{#if isCharacter}}<button type="button" data-action="quick" data-kind="xp" data-tooltip="Add the amount as XP">XP</button>
+          <button type="button" data-action="quick" data-kind="grant" data-tooltip="Grant a level (milestone): this character can level up once">Grant level</button>{{/if}}
         </div>{{/if}}
       </div>
     {{else}}

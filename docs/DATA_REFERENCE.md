@@ -1083,3 +1083,7 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 ### LVL1 L5
 
 - `advancement/manager.mjs` `EDITABLE_STEPS`, `levelSelections(actor, cls, level, steps)`, `editLevel(actor, cls, level, steps, sel)`; `LevelUpDialog.openEdit(actor, cls, level)`; `applications/level-history.mjs` `levelHistory(actor, cls)` (rows from stamped items, `flags.n5e.asi.<level>`, `flags.n5e.levelSwaps.<level>`).
+
+### LVL1 L6
+
+- Rules `leveling` (`xp` | `milestone` | `both`) and `levelUpGate` (bool, default true). Character `flags.n5e.levelsGranted` (GM-granted levels waiting). `rules/leveling.mjs` `levelUpState`, `levelUpCost`, `actorLevelState`; header VM `levelUp {allowed, ready, via, reason}`.

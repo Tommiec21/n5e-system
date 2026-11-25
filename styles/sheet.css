@@ -1073,3 +1073,10 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
 .n5e-limits-config .limits-sub { margin: 8px 0 2px; font-size: 13px; font-weight: 700; opacity: .85; }
 .n5e-limits-config .rule-label .hint { font-weight: normal; opacity: .7; }
 .n5e-limits-config select { max-width: 300px; }
+
+/* LVL1 L6: Level Up lights up when the character has the XP (or a granted level); dims when it can't be used. */
+.n5e .level-up.ready { box-shadow: 0 0 0 2px var(--n5e-accent, #b5642b), 0 0 8px var(--n5e-accent, #b5642b); }
+.n5e .level-up:disabled { opacity: 0.45; cursor: not-allowed; }
+ .n5e-party .award { display: flex; gap: 6px; align-items: center; margin-bottom: 6px; }
+.n5e-party .award input { width: 90px; }
+.n5e-party .tag.xp.ready { border-color: var(--n5e-accent, #b5642b); font-weight: 600; }

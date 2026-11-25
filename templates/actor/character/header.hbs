@@ -34,7 +34,7 @@
   <div class="head-right">
     <div class="buttons">
       {{#if editable}}{{#if vm.canLevelUp}}
-        <button type="button" class="level-up" data-action="levelUp" data-class-id="{{vm.classId}}" data-tooltip="Gain level {{vm.nextLevel}}"><i class="fa-solid fa-arrow-up"></i> Level Up</button>
+        <button type="button" class="level-up {{#if vm.levelUp.ready}}ready{{/if}}" data-action="levelUp" data-class-id="{{vm.classId}}" data-tooltip="Gain level {{vm.nextLevel}}: {{vm.levelUp.reason}}" {{#unless vm.levelUp.allowed}}disabled{{/unless}}><i class="fa-solid fa-arrow-up"></i> Level Up</button>
       {{/if}}{{#if vm.classId}}
         <button type="button" class="level-history" data-action="levelHistory" data-class-id="{{vm.classId}}" data-tooltip="Level History: what each level gave; change a past level's choices" aria-label="Level History"><i class="fa-solid fa-clock-rotate-left"></i></button>
       {{/if}}{{#if editMode}}{{#if vm.classId}}

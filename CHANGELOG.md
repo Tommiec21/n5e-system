@@ -1,3 +1,12 @@
+## 0.104.0-alpha.1 — LVL1 L6: XP, milestones and GM control
+
+King 2026-11-24 (docs/LVL1_SPEC.md, L6).
+
+- **Leveling rule (GM):** XP (default), Milestone (the GM grants levels) or Both. **Level Up needs XP or a granted level** (on by default): off lets players level at any time; GMs can always level a character.
+- **Level Up button** lights up when the character has the required XP or a granted level, and is dimmed with the reason otherwise.
+- **Applying a level** spends the XP (the leftover carries, as the book says) or one granted level.
+- **Party Overview (GM):** Award XP to every character listed, per-character XP and Grant level; each row shows XP toward the next level, granted levels and when the character is ready.
+
 ## 0.103.0-alpha.1 — LVL1 L5: review, Level History, change a past level's choices
 
 King 2026-11-24 (docs/LVL1_SPEC.md, L5).
