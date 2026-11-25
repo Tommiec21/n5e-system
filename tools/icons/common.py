@@ -34,6 +34,32 @@ def die(cx, cy, r, label="", extra=""):
 def swap(cx, cy, w, extra=""):
     return (f'<g {extra}><path d="M{cx-w} {cy-40} H{cx+w}"/><path d="M{cx+w-40} {cy-80} L{cx+w} {cy-40} L{cx+w-40} {cy}"/>'
             f'<path d="M{cx+w} {cy+50} H{cx-w}"/><path d="M{cx-w+40} {cy+10} L{cx-w} {cy+50} L{cx-w+40} {cy+90}"/></g>')
+def headband(cx, cy, w=300, s=1.0, extra="", plate_fill="#0B1218"):
+    """A generic shinobi headband, front view: a cloth band, a metal plate (filled dark so the band
+    doesn't show through) with four rivets and one plain groove (no village mark), two tails on the right."""
+    h = 56 * s
+    pw, ph = w * .46, h * 1.7
+    return (f'<g {extra}><rect x="{cx-w/2:.0f}" y="{cy-h/2:.0f}" width="{w:.0f}" height="{h:.0f}" rx="{h*.3:.0f}"/>'
+            f'<path d="M{cx+w/2-6:.0f} {cy-h*.2:.0f} q{50*s:.0f} {6*s:.0f} {80*s:.0f} {70*s:.0f} M{cx+w/2-6:.0f} {cy+h*.25:.0f} q{30*s:.0f} {30*s:.0f} {36*s:.0f} {96*s:.0f}" stroke-width="{max(8, 14*s):.0f}"/>'
+            f'<rect x="{cx-pw/2:.0f}" y="{cy-ph/2:.0f}" width="{pw:.0f}" height="{ph:.0f}" rx="{14*s:.0f}" fill="{plate_fill}"/>'
+            f'<line x1="{cx-pw*.24:.0f}" y1="{cy:.0f}" x2="{cx+pw*.24:.0f}" y2="{cy:.0f}" stroke-width="{max(6, 10*s):.0f}"/>'
+            + "".join(f'<circle cx="{cx + dx*pw/2*.74:.0f}" cy="{cy + dy*ph/2*.6:.0f}" r="{max(3, 6*s):.1f}" fill="{INK}" stroke="none"/>' for dx in (-1, 1) for dy in (-1, 1))
+            + '</g>')
+def kunai_at_ring(rx, ry, angle, s=1.0, extra=""):
+    """A kunai placed by its ring (for fans that spread from one hand)."""
+    a = math.radians(angle)
+    return kunai(rx + 86*s*math.sin(a), ry - 86*s*math.cos(a), angle, s, extra)
+def energy(cx, cy, r, extra=""):
+    """Chakra energy: an open spiral with three sparks."""
+    pts = []
+    for i in range(60):
+        a = math.radians(i * 12)
+        rr = r * (0.12 + i / 60 * .88)
+        pts.append(f"{cx + rr*math.cos(a):.1f},{cy + rr*math.sin(a):.1f}")
+    sparks = "".join(f'<path d="M{cx + r*1.15*math.cos(math.radians(a)):.0f} {cy + r*1.15*math.sin(math.radians(a)):.0f} l{14*math.cos(math.radians(a)):.0f} {14*math.sin(math.radians(a)):.0f}"/>' for a in (-60, 60, 180))
+    return f'<g {extra}><polyline points="{" ".join(pts)}"/>{sparks}</g>'
+def chevrons(x, cy, n=3, size=80, gap=70, last_extra=""):
+    return "".join(f'<path d="M{x+i*gap} {cy-size} L{x+i*gap+size} {cy} L{x+i*gap} {cy+size}" {last_extra if i == n-1 else ""}/>' for i in range(n))
 def write(outdir, icons, pal):
     os.makedirs(outdir, exist_ok=True)
     for k, body in icons.items():
