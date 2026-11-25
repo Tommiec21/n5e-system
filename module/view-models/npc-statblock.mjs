@@ -14,7 +14,7 @@ import { jutsuColors } from "../config/jutsu-colors.mjs";
 import { colorKeys, pillGradient, sheetGroup } from "../rules/jutsu-colors.mjs";
 import { statBlockVM, attackLine, learnedVM } from "./npc.mjs";
 import { railVM } from "./character.mjs";
-import { jutsuPill } from "./combat.mjs";
+import { jutsuPill, jutsuLegend } from "./combat.mjs";
 import { glyph } from "./common.mjs";
 
 const list = items => (Array.isArray(items) ? items : [...(items ?? [])]);
@@ -68,13 +68,8 @@ export function npcJutsuGroups(actor, { hidden = [] } = {}) {
 
 /** The color key: action symbols first, then the keyword colors. */
 export function jutsuLegendVM() {
-  return {
-    actions: [["action", "Action"], ["bonus", "Bonus Action"], ["reaction", "Reaction"], ["fullTurn", "Full Turn"], ["minute", "Minutes or longer"]]
-      .map(([type, label]) => ({ label, svg: glyph({ type })?.svg ?? "" })),
-    colors: Object.values(jutsuColors).map(c => ({ label: c.label, color: c.color }))
-  };
+  return jutsuLegend();
 }
-
 /** The Stat Block tab. view = the user's toggles {legend, hidden}. */
 export function npcStatBlockVM(actor, view = {}) {
   const block = statBlockVM(actor);

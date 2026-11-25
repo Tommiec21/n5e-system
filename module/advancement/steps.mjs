@@ -14,6 +14,48 @@ import { asiParts } from "../rules/progression.mjs";
 import { rule } from "../rules/settings.mjs";
 import { learnedMode } from "../rules/jutsu-slots.mjs";
 
+import { affinities, keywords as jutsuKeywords } from "../config/jutsu.mjs";
+
+/** LEFT1 P5: the choices a trait pick offers (its listed values, or every value of that kind) with labels. */
+export function traitOptions(key, values = []) {
+  const pool = { skills, tools: toolkits, saves: abilities, affinity: affinities, keywords: jutsuKeywords }[key] ?? {};
+  const keys = list(values).length ? list(values) : Object.keys(pool);
+  const label = v => { const d = pool[v]; return (typeof d === "object" ? d?.label : d) ?? v; };
+  return keys.map(v => ({ value: v, label: label(v) }));
+}
+
+/** LEFT1 P5: a Mastery target ("skill.dec", "save.con") in words. */
+export function masteryLabel(target) {
+  const [kind, key] = String(target).split(".");
+  const pool = { skill: skills, tool: toolkits, save: abilities }[kind] ?? {};
+  const name = pool[key]?.label ?? key;
+  return kind === "save" ? `${name} saving throw` : name;
+}
+
+/**
+ * LEFT1 P5 (King Q-L6: auto gained): a feature's own picks ("two toolkits of your choice", "Mastery in
+ * two of these saves"): advancement entries on the feature (trait with a count, mastery with no fixed
+ * target). Offered when the feature is gained (entries up to `level`) or when a later level reaches one.
+ * The pick is stored as the entry's `chosen` on the feature; the actor pipeline reads it.
+ * @param {object} item       the feature (owned, or a compendium doc being gained)
+ * @param {number} level      the character level being reached
+ * @param {object} o
+ * @param {string} o.key      the item id (owned) or uuid (gained)
+ * @param {boolean} o.gained  gained now: every entry up to `level`; owned: entries at exactly `level`
+ */
+export function featureChoiceSteps(item, level, { key, gained = false } = {}) {
+  const out = [];
+  for ( const adv of list(item?.system?.advancement) ) {
+    if ( gained ? adv.level > level : adv.level !== level ) continue;
+    if ( list(adv.chosen).length ) continue;
+    const base = { id: `feat:${key}:${adv.id}`, advId: adv.id, origin: `feat:${key}`, ownerName: item.name, advLevel: adv.level,
+      title: `${item.name}: ${adv.title || "choose"}`, requires: [] };
+    if ( adv.type === "trait" && adv.count > 0 ) out.push({ ...base, type: "trait", key: adv.key, count: adv.count, options: traitOptions(adv.key, adv.uuids) });
+    else if ( adv.type === "mastery" && !adv.key ) out.push({ ...base, type: "masteryChoice", count: adv.count || 1, targets: list(adv.uuids) });
+  }
+  return out;
+}
+
 const dieMax = die => Number(String(die ?? "").replace(/^\D*/, "")) || 0;
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
 
@@ -42,7 +84,7 @@ export function advancementSteps(item, level, origin) {
         break;
       case "trait":
         if ( adv.count > 0 ) {
-          out.push({ ...base, type: "trait", key: adv.key, count: adv.count, options: list(adv.uuids).map(v => ({ value: v, label: v })) });
+          out.push({ ...base, type: "trait", key: adv.key, count: adv.count, options: traitOptions(adv.key, adv.uuids) });
         } else {
           out.push({ ...base, type: "grant", key: adv.key, values: list(adv.uuids) });
         }
@@ -51,7 +93,7 @@ export function advancementSteps(item, level, origin) {
         // A fixed target ("skill.nin": Scholar) is a grant; no key means the player picks one of their
         // proficient skills or toolkits (Hunter-Nin's 5th-level Mastery).
         if ( adv.key ) out.push({ ...base, type: "grant", key: "mastery", values: [adv.key] });
-        else out.push({ ...base, type: "masteryChoice", count: adv.count || 1 });
+        else out.push({ ...base, type: "masteryChoice", count: adv.count || 1, targets: list(adv.uuids) });
         break;
       default:
         break;

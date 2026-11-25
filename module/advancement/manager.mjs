@@ -126,7 +126,12 @@ export async function applyLevel(actor, cls, level, steps, sel) {
     if ( data ) [subclass] = await actor.createEmbeddedDocuments("Item", [data]);
   }
   const originId = st => st.origin === "clan" ? clan?.id : st.origin === "subclass" ? subclass?.id : cls.id;
-  const record = (st, value) => { (st.origin === "clan" ? clanChoices : st.origin === "subclass" ? subChoices : classChoices)[st.advId] = value; };
+  // LEFT1 P5: a feature's own picks ("feat:<item id or uuid>") are written onto that feature after creation.
+  const featChoices = {};
+  const record = (st, value) => {
+    if ( String(st.origin).startsWith("feat:") ) { (featChoices[st.origin.slice(5)] ??= {})[st.advId] = value; return; }
+    (st.origin === "clan" ? clanChoices : st.origin === "subclass" ? subChoices : classChoices)[st.advId] = value;
+  };
 
   const updates = {};
   const learnAlerts = [];
@@ -224,6 +229,13 @@ export async function applyLevel(actor, cls, level, steps, sel) {
   const had = actor.items.filter(i => i.type === "feat" && !created.some(c => c.id === i.id) && (i.system.grants?.jutsuByLevel ?? []).some(g => g.level === level));
   if ( had.length ) await grantFeatureJutsu(actor, had, { level, onlyLevel: level });
   for ( const [name, problems] of learnAlerts ) await alertLearning(actor, name, problems);
+  for ( const [key, byAdv] of Object.entries(featChoices) ) {
+    const item = actor.items.get(key) ?? actor.items.find(i => (i._stats?.compendiumSource ?? i.flags?.core?.sourceId) === key);
+    if ( !item ) continue;
+    const picked = { ...(item.flags?.n5e?.featPickLevels ?? {}), ...Object.fromEntries(Object.keys(byAdv).map(id => [id, level])) };
+    await item.update({ "system.advancement": item.system.toObject().advancement.map(a => (a.id in byAdv ? { ...a, chosen: byAdv[a.id] } : a)),
+      "flags.n5e.featPickLevels": picked });
+  }
   await recordChoices(cls, level, classChoices);
   await recordChoices(subclass, level, subChoices);
   await recordChoices(clan, steps.find(s => s.origin === "clan")?.advLevel ?? level, clanChoices);
@@ -263,6 +275,12 @@ export async function revertLevel(actor, cls) {
   const clear = item => item?.update({ "system.advancement": item.system.toObject().advancement
     .map(a => (a.level === level ? { ...a, chosen: [] } : a)) });
   if ( ids.length ) await actor.deleteEmbeddedDocuments("Item", ids);
+  // LEFT1 P5: a kept feature's picks made at this level up are cleared (offered again next time).
+  for ( const f of actor.items.filter(i => i.type === "feat" && Object.values(i.flags?.n5e?.featPickLevels ?? {}).includes(level)) ) {
+    const at = f.flags.n5e.featPickLevels;
+    await f.update({ "system.advancement": f.system.toObject().advancement.map(a => (at[a.id] === level ? { ...a, chosen: [] } : a)),
+      "flags.n5e.featPickLevels": Object.fromEntries(Object.entries(at).filter(([, l]) => l !== level)) });
+  }
   await restoreSwaps(actor, cls, level);
   const sub = actor.items.get(subclass?.id);
   if ( sub ) await clear(sub);

@@ -2,6 +2,7 @@
 import { effectFieldCatalog, validateEffectChanges, editorFlags, EFFECT_PRESETS, effectPreview, portableEffect, importEffect } from "../../rules/effect-authoring.mjs";
 import { pickerGroups, changeCards, ruleRows, normalizeModes } from "../../view-models/effect-editor.mjs";
 import { rowToRule, NEW_RULE } from "../../rules/plain-language.mjs";
+import { predicateToClauses, clausesToPredicate } from "../../rules/predicate-builder.mjs";
 
 const Base = foundry.applications.sheets.ActiveEffectConfig;
 export default class EffectConfig extends Base {
@@ -14,7 +15,9 @@ export default class EffectConfig extends Base {
       exportEffect: function() { this.exportDraft(); }, importEffect: function() { this.importDraft(); },
       duplicateEffect: function() { this.duplicateDraft(); },
       addRule: function() { this.editRules("add"); },
-      deleteRule: function(event, target) { this.editRules("delete", Number(target.closest("[data-rule-index]").dataset.ruleIndex)); }
+      deleteRule: function(event, target) { this.editRules("delete", Number(target.closest("[data-rule-index]").dataset.ruleIndex)); },
+      // LEFT1 P2: remove one condition line from a rule.
+      deleteCond: function(event, target) { this.editRules("deleteCond", Number(target.dataset.rule), Number(target.dataset.cond)); }
     }
   };
   static PARTS = { ...Base.PARTS, changes: { template: "systems/n5e/templates/effect/changes.hbs", scrollable: [""] } };
@@ -75,13 +78,20 @@ export default class EffectConfig extends Base {
   }
   capture({ lenient = false } = {}) { this.#draft = this.readDraft(new foundry.applications.ux.FormDataExtended(this.form), { lenient }); return this.#draft; }
   /** UX1: add or remove a roll rule, or re-render after a dropdown that changes the row's inputs. */
-  editRules(action, index) {
+  editRules(action, index, cond = null) {
     try {
       if ( !this.isEditable ) return;
       this.capture({ lenient: true });
       const rules = [...(this.#draft.flags?.n5e?.rules ?? [])];
       if ( action === "add" ) rules.push(structuredClone(NEW_RULE));
       else if ( action === "delete" ) rules.splice(index, 1);
+      else if ( action === "deleteCond" && rules[index] ) {
+        const clauses = predicateToClauses(rules[index].predicate).clauses;
+        clauses.splice(cond, 1);
+        const p = clausesToPredicate(clauses);
+        rules[index] = { ...rules[index] };
+        if ( p === undefined ) delete rules[index].predicate; else rules[index].predicate = p;
+      }
       this.#draft.flags ??= {}; this.#draft.flags.n5e = { ...this.#draft.flags.n5e, rules };
       this.render();
     } catch (error) { this.notice(error.message); }

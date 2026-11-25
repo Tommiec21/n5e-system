@@ -811,9 +811,14 @@ def build_class(oro, spec, stance_uuids, stance_by_name):
             if lv <= MAX_LEVEL:
                 advs.append(adv(lv, "itemChoice", o["label"], [U(i) for i in items], count=n, key=o["key"]))
 
-    for lv, typ, title, values, count, key in spec.get("extra", []):
+    for e in spec.get("extra", []):
+        lv, typ, title, values, count, key = e[:6]
         if lv <= MAX_LEVEL:
-            advs.append(adv(lv, typ, title, values, count=count, key=key))
+            a = adv(lv, typ, title, values, count=count, key=key)
+            # LEFT1 P5: what each picked option also grants (proficiency strings, as a feat's grants.proficiencies).
+            if len(e) > 6 and e[6]:
+                a["grants"] = e[6]
+            advs.append(a)
 
     # Subclasses: each "### " under the group heading; features up to MAX_LEVEL by the level in their text.
     sc = spec["subclass"]

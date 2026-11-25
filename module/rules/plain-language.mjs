@@ -8,6 +8,8 @@
  * several facts) stays a "custom rule": shown as a sentence, kept intact, edited as JSON.
  */
 
+import { predicateToClauses, clausesToPredicate, readClauses } from "./predicate-builder.mjs";
+
 const list = v => (Array.isArray(v) ? v : v == null || v === "" ? [] : [v]);
 const signed = n => (Number(n) >= 0 ? `+${Number(n)}` : `−${Math.abs(Number(n))}`);
 const cap = s => (s ? s[0].toUpperCase() + s.slice(1) : s);
@@ -105,25 +107,38 @@ export const RULE_TRIGGERS = { "": "Whenever it applies", initiative: "When you 
 /*  Describe                                    */
 /* -------------------------------------------- */
 
-const whenText = (predicate, N5E) => {
-  const one = typeof predicate === "string" ? predicate : null;
-  const not = predicate && !Array.isArray(predicate) && typeof predicate === "object" && Object.keys(predicate).length === 1
-    && Array.isArray(predicate.not) && predicate.not.length === 1 && typeof predicate.not[0] === "string" ? predicate.not[0] : null;
-  const fact = one ?? not;
-  if ( !predicate ) return "";
-  if ( !fact ) return " in some situations (see the rule's JSON)";
-  const [who, kind, ...rest] = fact.split(":");
+/** One fact in words ("you're in a stance", "the target is Prone"). */
+const factText = (fact, N5E) => {
+  const [who, kind, ...rest] = String(fact).split(":");
   const param = rest.join(":");
   const cond = key => N5E.conditions?.[key]?.label ?? N5E.clanConditions?.[key]?.label ?? key;
-  let text;
-  if ( `${who}:${kind}` === "self:stance" ) text = param ? `you're in the ${param} stance` : "you're in a stance";
-  else if ( `${who}:${kind}` === "self:state" ) text = `you're ${param || "in a state"}`;
-  else if ( `${who}:${kind}` === "self:status" ) text = `you're ${cond(param)}`;
-  else if ( `${who}:${kind}` === "target:status" ) text = `the target is ${cond(param)}`;
-  else if ( fact === "self:bloodied" ) text = "you're at half HP or less";
-  else if ( fact === "attack:ranged" ) text = "the attack is ranged";
-  else text = fact;
-  return not ? ` unless ${text}` : ` while ${text}`;
+  const abil = { str: "Strength", dex: "Dexterity", con: "Constitution", int: "Intelligence", wis: "Wisdom", cha: "Charisma" };
+  if ( `${who}:${kind}` === "self:stance" ) return param ? `you're in the ${param} stance` : "you're in a stance";
+  if ( `${who}:${kind}` === "self:state" ) return `you're ${param || "in a state"}`;
+  if ( `${who}:${kind}` === "self:status" ) return `you're ${cond(param)}`;
+  if ( `${who}:${kind}` === "target:status" ) return `the target is ${cond(param)}`;
+  if ( `${who}:${kind}` === "self:sense" ) return `you have ${param}`;
+  if ( `${who}:${kind}` === "target:sense" ) return `the target has ${param}`;
+  if ( who === "ability" ) return `it's a ${abil[kind] ?? kind} roll`;
+  if ( who === "option" ) return `you chose ${[kind, param].filter(Boolean).join(": ")}`;
+  if ( fact === "self:bloodied" ) return "you're at half HP or less";
+  if ( fact === "attack:ranged" || fact === "range:ranged" ) return "the attack is ranged";
+  if ( fact === "range:melee" ) return "the attack is melee";
+  return fact;
+};
+
+// LEFT1 P2: any predicate the builder can show is described in words: "while A and B, when C or D, unless E".
+const whenText = (predicate, N5E) => {
+  if ( !predicate ) return "";
+  const { clauses, keep } = predicateToClauses(predicate);
+  if ( keep ) return " in some situations (see the rule's JSON)";
+  const facts = g => clauses.filter(c => c.group === g).map(c => factText(c.fact === "custom" ? c.detail : (c.detail ? `${c.fact}:${c.detail}` : c.fact), N5E));
+  const all = facts("all"), any = facts("any"), not = facts("not");
+  const parts = [];
+  if ( all.length ) parts.push(`while ${all.join(" and ")}`);
+  if ( any.length ) parts.push(`${all.length ? "and" : "when"} ${any.join(" or ")}`);
+  if ( not.length ) parts.push(`unless ${not.join(" or ")}`);
+  return parts.length ? ` ${parts.join(", ")}` : "";
 };
 
 const appliesText = (selector, N5E) => {
@@ -216,7 +231,10 @@ export function ruleToRow(rule, N5E = {}) {
   const bases = [...new Set(sels.map(s => String(s).split(":")[0]))];
   const known = RULE_KINDS[rule?.key] && bases.length <= 1 && (!bases[0] || selectorBases(N5E)[bases[0]]);
   const when = whenOf(rule?.predicate);
+  // LEFT1 P2: the click-to-build conditions (several facts: only when / any of / unless).
+  const pc = predicateToClauses(rule?.predicate);
   const row = {
+    conds: pc.clauses, condsKeep: pc.keep,
     kind: known ? rule.key : "custom", base: bases[0] ?? "", details: sels.map(s => String(s).split(":").slice(1).join(":")).filter(Boolean),
     value: rule?.value ?? "", formula: rule?.formula ?? "", damageType: rule?.damageType ?? "", mode: rule?.mode ?? "higher",
     pool: rule?.pool ?? "", amount: rule?.amount ?? "", condition: rule?.condition ?? "", ranks: rule?.ranks ?? "", who: rule?.who ?? "target",
@@ -239,7 +257,11 @@ export function rowToRule(row) {
   const parse = text => { try { return JSON.parse(text || "{}"); } catch { throw new Error("A rule's JSON isn't valid. Check it under Advanced."); } };
   if ( row.kind === "custom" || (row.raw != null && row.orig != null && row.raw !== row.orig) ) return parse(row.raw);
   const base = row.orig ? parse(row.orig) : {};
-  const out = Object.fromEntries(Object.entries(base).filter(([k]) => !BUILDER_KEYS.includes(k) && (k !== "predicate" || row.when === "keep")));
+  // LEFT1 P2: rows from the click-to-build editor carry `conds`; a nested predicate it can't show is kept.
+  // Form rows send conds keyed by index ({0: {...}}); a row object from ruleToRow (an array) uses `when`.
+  const byConds = (row.conds && typeof row.conds === "object" && !Array.isArray(row.conds)) || (Array.isArray(row.conds) && row.when === undefined);
+  const keepPredicate = byConds ? (row.condsKeep === true || row.condsKeep === "true") : row.when === "keep";
+  const out = Object.fromEntries(Object.entries(base).filter(([k]) => !BUILDER_KEYS.includes(k) && (k !== "predicate" || keepPredicate)));
   out.key = row.kind;
   const details = list(row.details).filter(Boolean);
   const selector = !row.base ? undefined : details.length ? details.map(d => `${row.base}:${d}`) : row.base;
@@ -256,7 +278,14 @@ export function rowToRule(row) {
   if ( needs.includes("ranks") && row.ranks !== "" && row.ranks != null ) out.ranks = numeric(row.ranks);
   if ( needs.includes("who") ) out.who = row.who === "self" ? "self" : "target";
   if ( needs.includes("text") ) out.text = String(row.text ?? "");
-  if ( row.when !== "keep" ) {
+  if ( byConds ) {
+    if ( !keepPredicate ) {
+      const p = clausesToPredicate(Array.isArray(row.conds) ? row.conds : readClauses(row.conds));
+      // Unchanged: keep the original's own form (an array stays an array).
+      const same = base.predicate !== undefined && JSON.stringify(clausesToPredicate(predicateToClauses(base.predicate).clauses)) === JSON.stringify(p);
+      if ( p !== undefined ) out.predicate = same ? base.predicate : p;
+    }
+  } else if ( row.when !== "keep" ) {
     const p = predicateOf(row);
     if ( p !== undefined ) out.predicate = p;
   }

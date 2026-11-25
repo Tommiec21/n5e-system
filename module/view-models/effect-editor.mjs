@@ -10,6 +10,7 @@
 import { FIELD_CATEGORIES, MODE_LABELS } from "../config/effect-fields.mjs";
 import { CONDITION_GROUPS, RESISTIBLE_STATES } from "../rules/condition-lifecycle.mjs";
 import { describeRule, ruleToRow, RULE_KINDS, selectorBases, WHEN_FACTS, RULE_WHO, RULE_TRIGGERS } from "../rules/plain-language.mjs";
+import { clauseRows } from "../rules/predicate-builder.mjs";
 
 const opts = (choices, selected) => Object.entries(choices).map(([value, label]) => ({ value, label, selected: String(selected ?? "") === value }));
 
@@ -92,6 +93,8 @@ export function ruleRows(rules, N5E = {}) {
       whens: opts({ ...Object.fromEntries(Object.entries(WHEN_FACTS).map(([k, v]) => [k, v.label])), ...(row.when === "keep" ? { keep: "Several facts (see JSON)" } : {}) }, row.when),
       whenParam, whenIsCondition: row.when === "self:status" || row.when === "target:status",
       whenConditionOptions: opts({ "": "—", ...conds }, row.whenDetail),
+      // LEFT1 P2: the click-to-build conditions.
+      condRows: row.condsKeep ? [] : clauseRows(row.conds, { conditions: conds }), condsKeep: row.condsKeep,
       directions: opts(RULE_WHO, row.direction), triggers: opts(RULE_TRIGGERS, row.on)
     };
   });

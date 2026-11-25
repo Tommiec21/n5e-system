@@ -28,6 +28,19 @@ export function registerSettings() {
     hint: "Rolls happen at once with the numbers the system worked out. Off: every roll shows its math first, where you can untick parts, add modifiers and pick advantage."
   });
   // NPCUI1: each user's NPC sheet toggles (the jutsu color key, hidden disciplines).
+  // LEFT1 P3 (SHEETS1 leftovers): the Glass design's accent color and blur, per user.
+  game.settings.register("n5e", "glassAccent", {
+    name: "Glass sheet: accent color", hint: "The highlight color of the Glass character sheet design (buttons, bars, the glow).",
+    scope: "client", config: true, type: new foundry.data.fields.ColorField({ initial: "#E07A3A" }), default: "#E07A3A",
+    onChange: () => Object.values(ui.windows ?? {}).forEach(w => w.options?.classes?.includes?.("n5e-design-glass") && w.render?.())
+  });
+  game.settings.register("n5e", "glassBlur", {
+    name: "Glass sheet: frosted blur", hint: "Off: plain translucent panels with no blur or glow (lighter on older computers).",
+    scope: "client", config: true, type: Boolean, default: true,
+    onChange: () => Object.values(ui.windows ?? {}).forEach(w => w.options?.classes?.includes?.("n5e-design-glass") && w.render?.())
+  });
+  // LEFT1 P1: each user's Combat tab color key (shown by default).
+  game.settings.register("n5e", "combatColorKey", { scope: "client", config: false, type: Boolean, default: true });
   game.settings.register("n5e", "npcSheetView", { scope: "client", config: false, type: Object, default: { legend: true, hidden: [] } });
   game.settings.register("n5e", "effectMacroApprovals", { scope: "world", config: false, type: Object, default: {} });
   // AMP1b: the Amp audit's "not an Amp" list (item uuids the GM dismissed).

@@ -102,6 +102,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
       levelDown: CharacterSheet.#onLevelDown,
       levelHistory: CharacterSheet.#onLevelHistory,
       toggleConcentration: CharacterSheet.#onToggleConcentration,
+      toggleColorKey: CharacterSheet.#onToggleColorKey,
       toggleCombo: CharacterSheet.#onToggleCombo,
       resetChain: CharacterSheet.#onResetChain,
       toggleEconomy: CharacterSheet.#onToggleEconomy,
@@ -220,7 +221,10 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
           .map(([key, c]) => ({ key, label: c.label })).sort((a, b) => a.label.localeCompare(b.label));
         break;
       case "main": context.vm = mainVM(actor); break;
-      case "combat": context.vm = combatVM(actor); break;
+      case "combat":
+        context.vm = combatVM(actor);
+        try { context.colorKeyOn = game.settings.get("n5e", "combatColorKey") !== false; } catch { context.colorKeyOn = true; }
+        break;
       case "jutsu": context.vm = jutsuVM(actor, this.#jutsu); break;
       case "inventory": context.vm = inventoryVM(actor); break;
       case "features":
@@ -833,6 +837,14 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
    * Mark or clear concentration on a jutsu. Upkeep uses the cost paid at casting; until casting
    * records it (Phase 3), the jutsu's current cost is stored when you mark it.
    */
+  /** LEFT1 P1: show or hide the jutsu color key on the Combat tab (each user's own choice). */
+  static async #onToggleColorKey() {
+    let on = true;
+    try { on = game.settings.get("n5e", "combatColorKey") !== false; } catch { /* not registered: shown */ }
+    await game.settings.set("n5e", "combatColorKey", !on);
+    return this.render();
+  }
+
   static async #onToggleConcentration(event, target) {
     const id = target.closest("[data-item-id]")?.dataset.itemId;
     const item = this.actor.items.get(id);
