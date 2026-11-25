@@ -88,11 +88,25 @@
           {{#if r.needs.ranks}}<label>Ranks<input name="n5eRules.{{r.i}}.ranks" value="{{r.ranks}}" placeholder="1"></label>{{/if}}
           {{#if r.needs.who}}<label>On<select name="n5eRules.{{r.i}}.who">{{#each r.whoOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>{{/if}}
           {{#if r.needs.text}}<label class="wide">Note<input name="n5eRules.{{r.i}}.text" value="{{r.text}}"></label>{{/if}}
-          <label>Only when<select name="n5eRules.{{r.i}}.when" data-rerender>{{#each r.whens}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
-          {{#if r.whenIsCondition}}<label>Which condition<select name="n5eRules.{{r.i}}.whenDetail">{{#each r.whenConditionOptions}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></label>
-          {{else if r.whenParam}}<label>Which<input name="n5eRules.{{r.i}}.whenDetail" value="{{r.whenDetail}}" placeholder="{{r.whenParam}}"></label>{{/if}}
-          {{#if r.when}}<label class="check"><input type="checkbox" name="n5eRules.{{r.i}}.whenNot" {{#if r.whenNot}}checked{{/if}}> Unless instead</label>{{/if}}
         </div>
+        {{!-- LEFT1 P2: click-to-build conditions: each line is a fact; "Only when" all must hold, "Or when" any one, "Unless" none. --}}
+        <input type="hidden" name="n5eRules.{{r.i}}.condsKeep" value="{{#if r.condsKeep}}true{{else}}false{{/if}}">
+        {{#if r.condsKeep}}<p class="sub">Its conditions are nested: edit them as JSON under Advanced.</p>
+        {{else}}
+        <div class="n5e-conds">
+          {{#each r.condRows as |c|}}
+            <div class="n5e-cond {{#if c.blank}}blank{{/if}}">
+              {{#unless c.blank}}<select name="n5eRules.{{r.i}}.conds.{{c.j}}.group" aria-label="How this condition counts">{{#each c.groups}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select>
+              {{else}}<input type="hidden" name="n5eRules.{{r.i}}.conds.{{c.j}}.group" value="all">{{/unless}}
+              <select name="n5eRules.{{r.i}}.conds.{{c.j}}.fact" data-rerender aria-label="Condition">{{#each c.facts}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select>
+              {{#if c.choices}}<select name="n5eRules.{{r.i}}.conds.{{c.j}}.detail" aria-label="Which">{{#each c.choices}}<option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select>
+              {{else if c.param}}<input name="n5eRules.{{r.i}}.conds.{{c.j}}.detail" value="{{c.detail}}" placeholder="{{c.param}}" aria-label="Which">
+              {{else}}<input type="hidden" name="n5eRules.{{r.i}}.conds.{{c.j}}.detail" value="">{{/if}}
+              {{#unless c.blank}}{{#if @root.editable}}<button type="button" class="icon-btn" data-action="deleteCond" data-rule="{{r.i}}" data-cond="{{c.j}}" aria-label="Remove this condition"><i class="fa-solid fa-xmark"></i></button>{{/if}}{{/unless}}
+            </div>
+          {{/each}}
+        </div>
+        {{/if}}
         {{#if r.detailOptions}}
           <fieldset class="n5e-rule-details"><legend>Only these (none ticked: all)</legend>
             {{#each r.detailOptions}}<label class="check"><input type="checkbox" name="n5eRules.{{r.i}}.details.{{value}}" {{#if checked}}checked{{/if}}> {{label}}</label>{{/each}}

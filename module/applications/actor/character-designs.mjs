@@ -9,7 +9,7 @@
  * tests/sheet-designs.test.mjs checks every design keeps every button and field of the default sheet.
  */
 import CharacterSheet from "./character-sheet.mjs";
-import { headerVM, railVM, mainVM } from "../../view-models/character.mjs";
+import { headerVM, railVM, mainVM, defenseRowsVM } from "../../view-models/character.mjs";
 import { SHEET_DESIGNS, DESIGN_PARTS, DESIGN_TEMPLATE_PATHS } from "./sheet-designs.mjs";
 import { visibleRegistry } from "../../rules/condition-cards.mjs";
 import { rule } from "../../rules-settings.mjs";
@@ -38,6 +38,21 @@ export function designSheet(id) {
 
     static DESIGN = id;
 
+    /** @override  LEFT1 P3: the Glass design's accent color and blur (each user's own settings). */
+    async _onRender(context, options) {
+      await super._onRender(context, options);
+      if ( id !== "glass" ) return;
+      let accent = "#E07A3A", blur = true;
+      try { accent = String(game.settings.get("n5e", "glassAccent") || accent); blur = game.settings.get("n5e", "glassBlur") !== false; } catch { /* settings not ready: defaults */ }
+      const el = this.element;
+      if ( !/^#[0-9a-f]{6}$/i.test(accent) ) accent = "#E07A3A";
+      const [r, g, b] = [1, 3, 5].map(i => parseInt(accent.slice(i, i + 2), 16));
+      el.style.setProperty("--n5e-accent", accent);
+      el.style.setProperty("--n5e-accent-soft", `rgba(${r}, ${g}, ${b}, .20)`);
+      el.style.setProperty("--g-glow", accent);
+      el.classList.toggle("no-blur", !blur);
+    }
+
     /** @override  The chrome parts also see the other chrome view models (a design may move a block). */
     async _preparePartContext(partId, context, options) {
       context = await super._preparePartContext(partId, context, options);
@@ -52,6 +67,7 @@ export function designSheet(id) {
       };
       context.conditionChoices ??= Object.entries(conditions).map(([key, c]) => ({ key, label: c.label })).sort((a, b) => a.label.localeCompare(b.label));
       context.design = id;
+      if ( id === "scroll" && partId === "rail" ) context.d.defenses = defenseRowsVM(actor);
       return context;
     }
   } }[name];

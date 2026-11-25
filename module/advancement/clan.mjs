@@ -2,6 +2,7 @@ import { isFeatItem } from "../rules/keywords.mjs";
 /** Pure clan setup choices and grant planning. No document writes. */
 import { abilities, skills } from "../config/core.mjs";
 import { affinities } from "../config/jutsu.mjs";
+import { featureChoiceSteps, masteryLabel, masteryTargets } from "./steps.mjs";
 
 const list = value => Array.from(value ?? []);
 export function clanSetupFields(actor, clan, documents) {
@@ -27,6 +28,20 @@ export function clanSetupFields(actor, clan, documents) {
     fields.push({ id: adv.id, label: `${adv.title} (level ${adv.level})`, kind: "itemChoice", count: adv.count, level: adv.level, branch: adv.branch,
       options: pool.map(d => ({ value: d.uuid, label: d.name })) });
   }
+  // LEFT1 P5 (King Q-L6): the starting features' own picks (Master of the Mundane's two toolkits...).
+  for ( const adv of clan.system.advancement ) {
+    if ( adv.level > level || adv.type !== "feature" ) continue;
+    for ( const uuid of list(adv.uuids) ) {
+      const doc = documents.find(d => d.uuid === uuid);
+      if ( doc?.type !== "feat" ) continue;
+      for ( const st of featureChoiceSteps(doc, level, { key: uuid, gained: true }) ) {
+        const options = st.type === "trait" ? st.options
+          : (st.targets?.length ? st.targets.map(t => ({ value: t, label: masteryLabel(t) })) : masteryTargets(actor));
+        fields.push({ id: `featpick:${uuid}:${st.advId}`, label: st.title, kind: "featPick", count: st.count, branch: adv.branch,
+          docUuid: uuid, advId: st.advId, options: options.map(o => ({ value: o.value, label: o.label })) });
+      }
+    }
+  }
   if ( clan.system.identifier === "non-clan" ) {
     fields.push({ id: "self-taught", label: "Self-Taught Skills: proficient skills only", kind: "mastery", count: 2, options: Object.entries(skills).map(([value, d]) => ({ value, label: d.label })) });
   }
@@ -34,7 +49,7 @@ export function clanSetupFields(actor, clan, documents) {
 }
 
 export function clanSetupPlan(actor, clan, fields, selection, documents) {
-  const errors = [], selectedSkills = [], selectedAffinities = [], grants = [], mastery = [];
+  const errors = [], selectedSkills = [], selectedAffinities = [], grants = [], mastery = [], featPicks = {};
   const branch = selection.choices.branch?.[0] ?? "";
   const seen = new Set();
   for ( const field of fields ) {
@@ -46,6 +61,7 @@ export function clanSetupPlan(actor, clan, fields, selection, documents) {
     if ( field.kind === "skill" ) selectedSkills.push(...values);
     if ( field.kind === "affinity" ) selectedAffinities.push(...values);
     if ( field.kind === "mastery" ) mastery.push(...values.map(v => `skill.${v}`));
+    if ( field.kind === "featPick" ) (featPicks[field.docUuid] ??= {})[field.advId] = values;
     if ( field.kind === "itemChoice" ) for ( const uuid of values ) {
       const doc = documents.find(d => d.uuid === uuid);
       if ( seen.has(uuid) && !doc?.flags?.n5e?.repeatable ) errors.push(`${doc?.name}: cannot select the same option again.`);
@@ -74,5 +90,5 @@ export function clanSetupPlan(actor, clan, fields, selection, documents) {
     if ( !doc ) errors.push(`Missing linked clan grant: ${uuid}`);
     else if ( !grants.some(g => g.doc.uuid === uuid) ) grants.push({ doc, level: grant.level });
   }
-  return { errors, selectedSkills, selectedAffinities, branch, increments, grants, mastery };
+  return { errors, selectedSkills, selectedAffinities, branch, increments, grants, mastery, featPicks };
 }

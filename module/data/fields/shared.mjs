@@ -311,7 +311,9 @@ export function advancementFields() {
     /** What the player picked (uuids or keys); filled during level-up. */
     chosen: arr(str()),
     /** LVL1 L2: when you gain this choice you may switch any earlier picks with the same key (Malleable Mirages). */
-    swap: bool()
+    swap: bool(),
+    /** LEFT1 P5: what each picked option also grants: {value: ["weapon.exotic:blade", "skill.ath", ...]}. */
+    grants: new (F().ObjectField)()
   };
 }
 export const advancement = () => arr(obj(advancementFields()));

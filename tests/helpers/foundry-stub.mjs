@@ -62,8 +62,11 @@ class TypeDataModel {
   static migrateData(source) { return source; }
 }
 
+// LEFT1 P3: a color setting (Glass accent) uses Foundry's ColorField, a string field.
+class ColorField extends StringField {}
+
 globalThis.foundry = {
   data: { fields: { DataField, StringField, NumberField, BooleanField, HTMLField, SchemaField, ArrayField, SetField,
-    TypedObjectField, ObjectField } },
+    TypedObjectField, ObjectField, ColorField } },
   abstract: { TypeDataModel }
 };

@@ -8,7 +8,21 @@
  * Classic follows the layout of the dnd5e system's character sheet (MIT, see LICENSES/THIRD-PARTY.md);
  * its shapes are drawn here in CSS, no artwork is copied.
  */
-@import url("https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@700;800&family=Roboto+Condensed:wght@400;600;700&family=Roboto:wght@400;500;700&family=Roboto+Slab:wght@500;700&family=Space+Grotesk:wght@500;700&family=Shippori+Mincho+B1:wght@600;800&display=swap");
+/* SHEETS1 / LEFT1 P3: the design fonts, bundled (latin subset) so the designs work offline. From @fontsource 5.3.0 (OFL / Apache 2.0; LICENSES/fonts). */
+@font-face { font-family: "Alegreya SC"; font-style: normal; font-weight: 700; font-display: swap; src: url("../assets/fonts/alegreya-sc-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Alegreya SC"; font-style: normal; font-weight: 800; font-display: swap; src: url("../assets/fonts/alegreya-sc-latin-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Roboto Condensed"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/roboto-condensed-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Roboto Condensed"; font-style: normal; font-weight: 600; font-display: swap; src: url("../assets/fonts/roboto-condensed-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Roboto Condensed"; font-style: normal; font-weight: 700; font-display: swap; src: url("../assets/fonts/roboto-condensed-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Roboto"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/roboto-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Roboto"; font-style: normal; font-weight: 500; font-display: swap; src: url("../assets/fonts/roboto-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Roboto"; font-style: normal; font-weight: 700; font-display: swap; src: url("../assets/fonts/roboto-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Roboto Slab"; font-style: normal; font-weight: 500; font-display: swap; src: url("../assets/fonts/roboto-slab-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Roboto Slab"; font-style: normal; font-weight: 700; font-display: swap; src: url("../assets/fonts/roboto-slab-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 500; font-display: swap; src: url("../assets/fonts/space-grotesk-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 700; font-display: swap; src: url("../assets/fonts/space-grotesk-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Shippori Mincho B1"; font-style: normal; font-weight: 600; font-display: swap; src: url("../assets/fonts/shippori-mincho-b1-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Shippori Mincho B1"; font-style: normal; font-weight: 800; font-display: swap; src: url("../assets/fonts/shippori-mincho-b1-latin-800-normal.woff2") format("woff2"); }
 
 /* -------------------------------------------- */
 /*  Shared pieces                               */
@@ -606,3 +620,67 @@
 .n5e-design-oneui .window-content button { border-radius: 16px; }
 .n5e-design-oneui .panel, .n5e-design-oneui .discipline { border: none; border-radius: 20px; }
 .n5e-design-oneui .section-head { border-bottom: 1px solid var(--n5e-line); }
+
+/* LEFT1 P3: Glass with the blur turned off (per user): plain translucent panels, no glow. */
+.n5e-design-glass.no-blur, .n5e-design-glass.no-blur * { backdrop-filter: none !important; }
+.n5e-design-glass.no-blur .window-content::before, .n5e-design-glass.no-blur .window-content::after { display: none; }
+.n5e-design-glass.no-blur :is(.d-glass, .d-tabs, .d-ab, .n5e-tab:not(.d-main)) { background: rgba(255, 255, 255, .06); }
+
+/* LEFT1 P3 (King Q-L3): the Scroll's immunities, weaknesses and resistances. */
+.n5e-design-scroll .d-defenses { display: flex; flex-direction: column; gap: 3px; margin: 6px 0 4px; }
+.n5e-design-scroll .d-def-row { display: grid; grid-template-columns: 92px 1fr; gap: 6px; font-size: 12px; line-height: 1.3; }
+.n5e-design-scroll .d-def-row .lbl { font: 800 12px var(--n5e-head); }
+.n5e-design-scroll .d-def-row.none .val { color: var(--n5e-muted); }
+
+/* ==========================================================================================
+ * LEFT1 P3 (King Q-L4: all 5): each design's own layout for the other tabs (Combat, Jutsu,
+ * Inventory, Features, Effects, Biography). Same templates and controls (tests/sheet-designs.test.mjs),
+ * laid out per design here.
+ * ========================================================================================== */
+.n5e-design :is(.n5e-tab.combat, .n5e-tab.jutsu, .n5e-tab.inventory, .n5e-tab.features, .n5e-tab.effects, .n5e-tab.biography) .section-head h2 { margin: 0; }
+
+/* 1 Classic (dnd5e): dark title bars, table-like striped rows. */
+.n5e-design-classic :is(.combat, .jutsu, .inventory, .features, .effects, .biography) .section-head {
+  background: var(--c-dark); color: var(--c-bone); padding: 4px 10px; border-radius: 3px; margin: 10px 0 4px; border-bottom: 2px solid var(--c-frame); }
+.n5e-design-classic :is(.combat, .jutsu, .inventory, .features, .effects, .biography) .section-head :is(h2, .sub) { color: var(--c-bone); font-family: var(--c-cond); text-transform: uppercase; letter-spacing: .05em; font-size: 13px; }
+.n5e-design-classic :is(.gear-row, .jutsu-row, .feature-row, .stance-row, .effect-row) { border-radius: 0; border: none; border-bottom: 1px solid var(--n5e-line); background: transparent; }
+.n5e-design-classic :is(.rows, .feature-group, .effect-group, .inv-section) > :is(.gear-row, .jutsu-row, .feature-row, .effect-row):nth-child(even) { background: #E3DCD1; }
+.n5e-design-classic .act-row { grid-template-columns: 110px minmax(0, 1fr); }
+.n5e-design-classic .act-row .row-lbl { font-family: var(--c-cond); text-transform: uppercase; font-size: 11px; color: var(--n5e-muted); }
+.n5e-design-classic .rank-head { font-family: var(--c-cond); color: var(--n5e-accent); border-bottom: 1px solid var(--c-frame); }
+.n5e-design-classic .bio-field .lbl { font-family: var(--c-cond); text-transform: uppercase; }
+
+/* 2 Glass: every section a frosted card. */
+.n5e-design-glass :is(.act-group, .inv-section, .feature-group, .effect-group, .trackers, .bio-field, .stances, .origins) {
+  background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .16); border-radius: 18px; padding: 10px 12px; margin-bottom: 10px; }
+.n5e-design-glass :is(.gear-row, .jutsu-row, .feature-row, .stance-row, .effect-row) { background: transparent; border: none; border-bottom: 1px solid rgba(255, 255, 255, .10); border-radius: 0; }
+.n5e-design-glass .act-row { border-bottom-color: rgba(255, 255, 255, .10); }
+.n5e-design-glass .section-head h2 { font-family: var(--n5e-head); font-size: 16px; letter-spacing: .02em; }
+.n5e-design-glass .rank-head { color: var(--n5e-accent-ink); }
+
+/* 3 Ink & Paper: ruled paper, slab headings with an ink underline, dotted dividers. */
+.n5e-design-ink :is(.combat, .jutsu, .inventory, .features, .effects, .biography) .section-head { border-bottom: 3px solid var(--i-band); padding-bottom: 2px; margin-top: 12px; }
+.n5e-design-ink :is(.combat, .jutsu, .inventory, .features, .effects, .biography) .section-head h2 { font-family: var(--n5e-head); font-size: 17px; }
+.n5e-design-ink :is(.gear-row, .jutsu-row, .feature-row, .stance-row, .effect-row) { background: transparent; border: none; border-bottom: 1px dotted var(--n5e-line); border-radius: 0; }
+.n5e-design-ink .act-row { border-bottom: 1px dotted var(--n5e-line); }
+.n5e-design-ink .act-row .row-lbl, .n5e-design-ink .rank-head { font-family: var(--i-cond); text-transform: uppercase; letter-spacing: .06em; }
+.n5e-design-ink .n5e-tab.biography .bio-text { background: repeating-linear-gradient(var(--n5e-card) 0 23px, var(--n5e-line-soft) 23px 24px); padding: 4px 8px; }
+
+/* 4 Shinobi Scroll: crimson section bars with gold rules, navy rank tags. */
+.n5e-design-scroll :is(.combat, .jutsu, .inventory, .features, .effects, .biography) .section-head {
+  background: var(--s-crimson); color: #F6E7C8; padding: 5px 12px; margin: 12px 0 6px; border-top: 2px solid var(--n5e-gold); border-bottom: 2px solid var(--n5e-gold); }
+.n5e-design-scroll :is(.combat, .jutsu, .inventory, .features, .effects, .biography) .section-head :is(h2, .sub) { color: #F6E7C8; font-family: var(--n5e-head); }
+.n5e-design-scroll .rank-head { display: inline-block; background: var(--s-navy); color: #F6E7C8; padding: 2px 10px; border-radius: 0 10px 10px 0; margin: 8px 0 3px; font-family: var(--s-cond); }
+.n5e-design-scroll :is(.gear-row, .jutsu-row, .feature-row, .stance-row, .effect-row) { background: var(--n5e-card); border: 1px solid var(--n5e-line); border-left: 4px solid var(--s-crimson); border-radius: 2px; margin-bottom: 3px; }
+.n5e-design-scroll .act-row .row-lbl { font-family: var(--s-cond); color: var(--s-crimson); text-transform: uppercase; font-size: 11px; }
+
+/* 5 One UI: large calm titles, rounded 26px cards on the grey ground, roomy rows. */
+.n5e-design-oneui :is(.act-group, .inv-section, .feature-group, .effect-group, .trackers, .bio-field, .stances, .origins) {
+  background: var(--n5e-card); border-radius: 26px; padding: 12px 16px; margin-bottom: 12px; box-shadow: 0 1px 2px rgba(0, 0, 0, .06); }
+.n5e-design-oneui :is(.combat, .jutsu, .inventory, .features, .effects, .biography) .section-head h2 { font-size: 20px; font-weight: 700; }
+.n5e-design-oneui :is(.gear-row, .jutsu-row, .feature-row, .stance-row, .effect-row) { background: transparent; border: none; border-bottom: 1px solid var(--n5e-line-soft); border-radius: 0; padding-top: 9px; padding-bottom: 9px; }
+.n5e-design-oneui .act-row { border-bottom: none; padding: 7px 0; }
+.n5e-design-oneui .act-pill { border-radius: 20px; }
+.n5e-design-oneui .rank-head { color: var(--n5e-accent); font-size: 12px; }
+.n5e-design-scroll :is(.combat, .jutsu, .inventory, .features, .effects, .biography) .section-head :is(span, label, .muted, small) { color: #E9D6B0; }
+.n5e-design-classic :is(.combat, .jutsu, .inventory, .features, .effects, .biography) .section-head :is(span, label, .muted, small) { color: #D8C9B0; }

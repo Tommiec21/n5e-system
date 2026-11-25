@@ -12,7 +12,7 @@
  * templates/apps/level-up.hbs (classes are prefixed "lu-"), and its application in manager.mjs.
  */
 import {
-  stepsForLevel, subclassSteps, eligibleFeats, masteryTargets, validate
+  stepsForLevel, subclassSteps, eligibleFeats, masteryTargets, validate, featureChoiceSteps, masteryLabel
 } from "../advancement/steps.mjs";
 import { editLevel, levelSelections, EDITABLE_STEPS, applyLevel } from "../advancement/manager.mjs";
 import { itemChoiceAllowed, validateItemChoices } from "../advancement/eligibility.mjs";
@@ -183,6 +183,18 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
             filter: { maxRank: r.maxRank, discipline: r.discipline, section: r.section, keyword: "" } });
         }
       }
+    }
+    // LEFT1 P5 (King Q-L6): a feature's own picks (toolkits, skills, Mastery targets) when it is gained, or
+    // when a later level reaches one of them.
+    for ( const uuid of new Set(gained) ) {
+      const doc = await this.#doc(uuid);
+      if ( doc?.type === "feat" ) steps.push(...featureChoiceSteps(doc, this.level, { key: uuid, gained: true }));
+    }
+    for ( const item of this.actor.items.filter(i => i.type === "feat") ) {
+      const src = item._stats?.compendiumSource ?? item.flags?.core?.sourceId;
+      if ( src && gained.includes(src) ) continue;
+      // Owned features: any pick still open up to this level (one gained before, at clan setup, is offered now).
+      steps.push(...featureChoiceSteps(item, this.level, { key: item.id, gained: true }));
     }
     // Feature sweep: features already had that grant jutsu at this level, or whose Bonus Jutsu slots grow
     // (one per listed level, or with the proficiency bonus).
@@ -386,7 +398,10 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
           break;
         case "masteryChoice":
           // Any proficient skill or toolkit; ◆n shows Mastery ranks it already has.
-          view.options = masteryTargets(actor).map(m => ({ value: m.value, label: `${m.label}${m.rank ? ` ◆${m.rank}` : ""}`, selected: chosen.has(m.value) }));
+          // LEFT1 P5: a feature that names its targets ("two of Str, Dex or Con saves") offers only those.
+          view.options = st.targets?.length
+            ? st.targets.map(t => { const rank = actor.system.masteryMap?.[t]?.rank ?? 0; return { value: t, label: `${masteryLabel(t)}${rank ? ` ◆${rank}` : ""}`, selected: chosen.has(t) }; })
+            : masteryTargets(actor).map(m => ({ value: m.value, label: `${m.label}${m.rank ? ` ◆${m.rank}` : ""}`, selected: chosen.has(m.value) }));
           poolSizes[st.id] = view.options.length;
           break;
         case "grant":

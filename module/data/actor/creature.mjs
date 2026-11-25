@@ -530,9 +530,16 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
             if ( target ) g.mastery.push({ target, source: `${item.name} ${adv.level}` });
           }
         } else if ( adv.type === "trait" ) {
-          const set = { affinity: g.affinities, skills: g.skills, tools: g.tools, saves: g.saves }[adv.key];
+          // LEFT1 P5: "keywords" picks give keyword access (a Nature Release's jutsu on the list).
+          const set = { affinity: g.affinities, skills: g.skills, tools: g.tools, saves: g.saves, keywords: g.keywordAccess }[adv.key];
           const values = adv.count > 0 ? adv.chosen : adv.uuids;
           for ( const v of values ?? [] ) set?.add(v);
+        } else if ( adv.type === "option" && adv.grants ) {
+          // LEFT1 P5: a picked option's own grants (Weapon Focus: Exotic weapons of the chosen group).
+          for ( const v of adv.chosen ?? [] ) for ( const p of adv.grants[v] ?? [] ) {
+            if ( String(p).startsWith("weapon.") ) { for ( const w of expandGrants([String(p).slice(7)]) ) g.weaponProf.add(w); }
+            else g.profGrants.push({ target: p, source: item.name });
+          }
         }
       }
       // Resource pools defined by items (Focus, Superiority Dice, Pyroclasm...).

@@ -1133,3 +1133,20 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
 .n5e-browser .b-row { grid-template-columns: 32px minmax(0, 1fr) max-content; }
 .n5e-browser .b-row .b-select { width: auto !important; min-width: 86px; height: 28px; padding: 0 12px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; }
 .n5e-level-up .lu-chips .chip.static { cursor: default; display: inline-flex; align-items: center; }
+/* LEFT1 P1: the jutsu color key and keyword-colored jutsu pills on the players' Combat tab. */
+.n5e-v2 .jutsu-key-bar { display: flex; justify-content: flex-end; margin: 6px 0 2px; }
+.n5e-v2:not(.npc-v3) .jutsu-key { display: flex; flex-direction: column; gap: 5px; background: #FFFAF1; border: 1px solid var(--n5e-line); border-radius: 8px; padding: 6px 10px; margin-bottom: 8px; font-size: 11px; color: #3a332c; }
+.n5e-v2:not(.npc-v3) .jutsu-key .row { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; }
+.n5e-v2:not(.npc-v3) .jutsu-key .row span { display: inline-flex; align-items: center; gap: 4px; }
+.n5e-v2:not(.npc-v3) .jutsu-key .sw { width: 12px; height: 12px; border-radius: 3px; border: 1px solid #0002; display: inline-block; }
+.n5e-v2:not(.npc-v3) .jutsu-key .n5e-glyph { width: 13px; height: 13px; }
+/* The tints are light: keep dark text on colored pills in every design. */
+.n5e .act-pill[style] { color: #1e1b18; }
+.n5e .act-pill[style] .nm, .n5e .act-pill[style] .sub { color: #1e1b18; }
+
+/* LEFT1 P2: click-to-build conditions in the effect editor. */
+.n5e-conds { display: flex; flex-direction: column; gap: 4px; margin: 6px 0; }
+.n5e-cond { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.n5e-cond select, .n5e-cond input { flex: 1 1 140px; min-width: 0; }
+.n5e-cond .icon-btn { flex: 0 0 auto; }
+.n5e-cond.blank select { opacity: .8; }

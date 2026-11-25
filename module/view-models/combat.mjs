@@ -28,6 +28,17 @@ import { innerGates } from "../config/combat.mjs";
 import { ampCardsFor, ampTypeLabel, ampEffectView, ampDefFor } from "../rules/amp-cards.mjs";
 import { n5eConfig } from "../rules/host.mjs";
 import { resolveFormula } from "../rules/unarmed.mjs";
+import { colorKeys, pillGradient } from "../rules/jutsu-colors.mjs";
+import { jutsuColors } from "../config/jutsu-colors.mjs";
+
+/** The jutsu color key (NPCUI1; LEFT1 P1 on the players' Combat tab too): action symbols, then keyword colors. */
+export function jutsuLegend() {
+  return {
+    actions: [["action", "Action"], ["bonus", "Bonus Action"], ["reaction", "Reaction"], ["fullTurn", "Full Turn"], ["minute", "Minutes or longer"]]
+      .map(([type, label]) => ({ label, svg: glyph({ type })?.svg ?? "" })),
+    colors: Object.values(jutsuColors).map(c => ({ label: c.label, color: c.color }))
+  };
+}
 
 // list(): schema set()/arr() fields are Sets after Foundry prepares them but arrays in JSON and tests;
 // list() accepts both. flag(): reads flags.n5e.<key> from a real document or a plain test object.
@@ -226,8 +237,11 @@ export function jutsuPill(actor, i, { comboReady } = {}) {
   const hit = live.attack != null ? `${signed(live.attack)} hit · DC ${live.dc}` : "";
   const rider = (label, html) => (html ? `<p><b>${esc(label)}.</b></p>${html}` : "");
   const chainHTML = [1, 2, 3].map(n => rider(`Chain ${n}`, s.chainEffects?.[n])).join("");
+  // LEFT1 P1 (King Q-L1): the NPC sheet's keyword gradient on every jutsu pill.
+  const keys = colorKeys(s);
   return pill({
     kind: "item", id: i.id, name: i.name, activation: s.activation?.type ?? "action",
+    colorKeys: keys, gradient: pillGradient(keys), style: `background: ${pillGradient(keys)}`,
     rank: s.rank, cost: s.cost?.mode === "chakra" ? `${cost} CP` : (s.cost?.text || ""),
     badges, dim: !affordable || live.castable === false,
     warn: !affordable ? "Not enough chakra" : (live.castable === false ? "Missing affinity" : ""),
@@ -430,6 +444,7 @@ export function combatVM(actor) {
     basic,
     // Only disciplines the character has jutsu in.
     jutsu: jutsuGroups(actor, { comboReady }).filter(g => !g.empty),
+    legend: jutsuLegend(),
     skills: { key: "skills", label: "Skill Actions", rows: skillRows },
     abilities: Object.keys(abilities)
   };

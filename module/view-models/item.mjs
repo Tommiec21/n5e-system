@@ -9,7 +9,7 @@
  * (what's stored), not the prepared data, so derived numbers never get saved back by accident.
  */
 import { abilities, ranks, rankOrder, disciplines, skills, toolkits } from "../config/core.mjs";
-import { keywords, jutsuSections, upcastPresets, stimuli } from "../config/jutsu.mjs";
+import { keywords, jutsuSections, upcastPresets, stimuli, affinities } from "../config/jutsu.mjs";
 import { activationTypes, rangeTypes, areaShapes, durationUnits, recoveryPeriods, damageTypes } from "../config/combat.mjs";
 import {
   weaponCategories, weaponGroups, weaponProperties, armorCategories, armorProperties, consumableTypes, containerTypes
@@ -271,7 +271,15 @@ const DETAILS = {
       F.text(src, "bonusJutsu.atLevels", "One more at levels", { placeholder: "e.g. 3, 9, 14", hint: "Instead of Slots: one slot at each of these character levels." }),
       F.select(src, "bonusJutsu.countBy", "Slots equal", { "": "the Slots number", prof: "the proficiency bonus" }),
       F.uuids(src, "bonusJutsu.uuids", "Only these jutsu", nameOf ?? (u => u), { accept: "jutsu", hint: "Drag jutsu here to limit the slots to them." }),
-      F.text(src, "bonusJutsu.condition", "Only if already", { placeholder: "e.g. affinity:fire", hint: "affinity:<key>, skill:<key>, tool:<key> or save:<key>: the slots count only if the character already had it when this was gained." }),
+      // LEFT1 P2: picked from a list (affinity, skill, toolkit or saving throw) instead of typed.
+      F.select(src, "bonusJutsu.condition", "Only if already", {
+        "": "Always",
+        ...Object.fromEntries(Object.entries(affinities).map(([k, v]) => [`affinity:${k}`, `Affinity: ${labelOf(v) || k}`])),
+        ...Object.fromEntries(Object.entries(skills).map(([k, v]) => [`skill:${k}`, `Skill: ${labelOf(v) || k}`])),
+        ...Object.fromEntries(Object.entries(toolkits).map(([k, v]) => [`tool:${k}`, `Toolkit: ${labelOf(v) || k}`])),
+        ...Object.fromEntries(Object.entries(abilities).map(([k, v]) => [`save:${k}`, `Saving throw: ${labelOf(v) || k}`])),
+        ...(get(src, "bonusJutsu.condition") && !/^(affinity|skill|tool|save):/.test(get(src, "bonusJutsu.condition")) ? { [get(src, "bonusJutsu.condition")]: get(src, "bonusJutsu.condition") } : {})
+      }, { hint: "The slots count only if the character already had it when this was gained." }),
       F.num(src, "bonusJutsu.aboveMax.count", "Above highest rank", { small: true, hint: "How many of the slots may be above the character's highest rank, up to:" }),
       F.select(src, "bonusJutsu.aboveMax.maxRank", "Up to (above)", { "": "—", ...Object.fromEntries(rankOrder.map(r => [r, `${r}-Rank`])) }),
       F.select(src, "bonusJutsu.keyword", "Keyword", { "": "Any", ...Object.fromEntries(Object.entries(keywords).map(([k, v]) => [k, labelOf(v) || k]).sort((a, b) => a[1].localeCompare(b[1]))) }),

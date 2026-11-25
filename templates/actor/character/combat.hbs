@@ -145,6 +145,17 @@
     {{/each}}
   </div>
 
+  {{#if vm.jutsu.length}}
+    <div class="jutsu-key-bar">
+      <button type="button" class="link muted" data-action="toggleColorKey" aria-pressed="{{colorKeyOn}}">{{#if colorKeyOn}}Hide color key{{else}}Show color key{{/if}}</button>
+    </div>
+    {{#if colorKeyOn}}
+      <div class="jutsu-key">
+        <div class="row">{{#each vm.legend.actions}}<span>{{{svg}}} {{label}}</span>{{/each}}</div>
+        <div class="row">{{#each vm.legend.colors}}<span><i class="sw" style="background: {{color}}"></i>{{label}}</span>{{/each}}</div>
+      </div>
+    {{/if}}
+  {{/if}}
   {{#each vm.jutsu}}
     <div class="act-group {{key}}">
       <div class="section-head"><h2>{{label}}</h2><span class="sub">{{sub}}</span></div>

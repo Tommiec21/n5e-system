@@ -215,6 +215,8 @@ Hooks.once("ready", async () => {
   registerEffectServices();
   // CREATE1 C1: starting ability scores asked when a character is made (and on a player's first look).
   void import("./module/workflow/ability-scores.mjs").then(m => m.registerStartingScorePrompts());
+  // LEFT1 P4: the Bloodied token marker.
+  void import("./module/workflow/bloodied-marker.mjs").then(m => m.registerBloodiedMarker());
   // CCOND1: class and clan condition cards (drops, the GM's apply intent, endings) and their registry.
   await import("./module/workflow/condition-cards.mjs").then(async m => { m.registerConditionCards(); await m.loadConditionCards(); })
     .catch(error => console.error("N5e | condition cards", error));

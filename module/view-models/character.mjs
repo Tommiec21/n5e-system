@@ -19,7 +19,8 @@ import {
   abilities, skills, toolkits, castingDisciplines, disciplines, rankOrder, ranks as rankDefs, progression
 } from "../config/core.mjs";
 import { conditions as coreConditions, states } from "../config/conditions.mjs";
-import { removalOptions } from "../rules/condition-lifecycle.mjs";
+import { removalOptions, CONDITION_GROUPS } from "../rules/condition-lifecycle.mjs";
+import { damageTypes } from "../config/combat.mjs";
 import { usesStamina } from "../rules/trackers.mjs";
 import { jutsuSections } from "../config/jutsu.mjs";
 import { containerTypes, consumableTypes } from "../config/equipment.mjs";
@@ -594,3 +595,20 @@ export function biographyVM(actor) {
 
 /** XP needed for the next level (re-exported for the header). */
 export const xpTable = progression.xpToLevel;
+
+/**
+ * LEFT1 P3 (King Q-L3): the Shinobi Scroll's Immunities, Weaknesses and Resistances rows, from the
+ * character's own traits and its effects (damage types, conditions and states). Empty rows say "None".
+ */
+export function defenseRowsVM(actor) {
+  const t = actor.system?.traits ?? {};
+  const cond = { ...Object.fromEntries(Object.entries(CONDITION_GROUPS).map(([k, v]) => [`group:${k}`, `All ${v} conditions`])), ...coreConditions, ...states };
+  const name = (labels, k) => { const d = labels[k]; return (typeof d === "object" ? d?.label : d) ?? k; };
+  const of = (set, labels) => [...(set ?? [])].map(k => name(labels, k));
+  const row = (label, items) => ({ label, value: items.length ? items.join(", ") : "None", none: !items.length });
+  return [
+    row("Immunities", [...of(t.immune, damageTypes), ...of(t.conditionImmune, cond), ...of(t.stateImmune, cond)]),
+    row("Weaknesses", of(t.vuln, damageTypes)),
+    row("Resistances", [...of(t.resist, damageTypes), ...of(t.conditionResist, cond), ...of(t.stateResist, cond)])
+  ];
+}

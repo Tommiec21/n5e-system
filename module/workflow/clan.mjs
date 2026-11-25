@@ -56,6 +56,9 @@ export async function addClan(actor, item, { ask = null } = {}) {
       const grantData = plan.grants.map(({ doc, level }) => {
         const d = doc.toObject(); delete d._id; delete d._key; d.folder = null;
         d.flags ??= {}; d.flags.n5e = { ...d.flags.n5e, clanOrigin: clan.id, clanLevel: level };
+        // LEFT1 P5: the feature's own picks from the setup window.
+        const picks = plan.featPicks?.[doc.uuid];
+        if ( picks ) d.system.advancement = (d.system.advancement ?? []).map(a => (a.id in picks ? { ...a, chosen: picks[a.id] } : a));
         return d;
       });
       // FIN1: never grant a second copy of something the actor already has (the old clan's items are leaving).

@@ -174,6 +174,7 @@ CLASSES = [
             {"key": "weapon-kata", "label": "Katas", "region": "## Kata", "prefix": "#### ", "column": (4, 2)},
             {"key": "weapon-augmentation", "label": "Augmentations", "region": "### Augmentation", "prefix": "#### ", "counts": {2: 1}},
         ],
-        "extra": [(1, "option", "Weapon Focus: weapon group", ["Blade", "Flail", "Polearm", "Power", "Thrown/Ammunition"], 1, "weaponFocus")],
+        "extra": [(1, "option", "Weapon Focus: weapon group", ["Blade", "Flail", "Polearm", "Power", "Thrown/Ammunition"], 1, "weaponFocus",
+                   {"Blade": ["weapon.exotic:blade"], "Flail": ["weapon.exotic:flail"], "Polearm": ["weapon.exotic:polearm"], "Power": ["weapon.exotic:power"], "Thrown/Ammunition": ["weapon.exotic:thrown", "weapon.exotic:ammunition"]})],
     },
 ]

@@ -25,3 +25,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ## Apache License 2.0 (PF2e)
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use files derived from PF2e except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+## Design fonts (LEFT1 P3, 2026-11-25)
+
+The sheet designs' fonts are bundled in `assets/fonts/` (latin subset, woff2) from the @fontsource 5.3.0 packages: Alegreya SC, Roboto Condensed, Roboto, Roboto Slab, Space Grotesk (SIL Open Font License 1.1) and Shippori Mincho B1 (SIL Open Font License 1.1). Roboto, Roboto Condensed and Roboto Slab are also published under the Apache License 2.0. The license texts are in `LICENSES/fonts/`.

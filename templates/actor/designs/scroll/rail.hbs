@@ -26,6 +26,10 @@
       </div>
     </div>
     <div class="d-init"><span class="title">Initiative</span><a class="rollable" data-action="rollInit" data-tooltip-html="{{d.rail.initiative.tip}}">{{d.rail.initiative.value}}</a></div>
+    {{!-- LEFT1 P3 (King Q-L3): immunities, weaknesses and resistances from the character's traits and effects. --}}
+    <div class="d-defenses">
+      {{#each d.defenses}}<div class="d-def-row {{#if none}}none{{/if}}"><span class="lbl">{{label}}</span><span class="val">{{value}}</span></div>{{/each}}
+    </div>
     <h2 class="d-rule">Saves</h2>
     {{> "systems/n5e/templates/actor/designs/shared/saves.hbs" m=d.main}}
     {{#if d.rail.resources.length}}<h2 class="d-rule">Resources</h2>{{/if}}
