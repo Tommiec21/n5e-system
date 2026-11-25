@@ -1,3 +1,7 @@
+## 0.106.2-alpha.1 — Journal Desk Design A correction
+
+Grouped library, compact document layout, parchment artwork, brush headings, integrated editor styling and structured related entries. Preserves gameplay and journal data. Static preview inspected; live Foundry acceptance remains with the user.
+
 ## 0.106.1-alpha.1 — Remove level refunds XP
 
 King 2026-11-25 (docs/LVL1_SPEC.md, L6).
