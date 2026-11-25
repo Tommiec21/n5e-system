@@ -253,6 +253,9 @@ const DETAILS = {
       F.select(src, "bonusJutsu.maxRank", "Up to", { "": "Any rank", ...Object.fromEntries(rankOrder.map(r => [r, `${r}-Rank`])) }),
       F.select(src, "bonusJutsu.discipline", "Discipline", { "": "Any", ...Object.fromEntries(Object.entries(disciplines).map(([k, v]) => [k, v.label])) }),
       F.select(src, "bonusJutsu.section", "Section", { "": "Any", ...Object.fromEntries(Object.entries(jutsuSections).map(([k, v]) => [k, labelOf(v) || k])) }),
+      F.text(src, "bonusJutsu.condition", "Only if already", { placeholder: "e.g. affinity:fire", hint: "affinity:<key>, skill:<key>, tool:<key> or save:<key>: the slots count only if the character already had it when this was gained." }),
+      F.num(src, "bonusJutsu.aboveMax.count", "Above highest rank", { small: true, hint: "How many of the slots may be above the character's highest rank, up to:" }),
+      F.select(src, "bonusJutsu.aboveMax.maxRank", "Up to (above)", { "": "—", ...Object.fromEntries(rankOrder.map(r => [r, `${r}-Rank`])) }),
       F.select(src, "bonusJutsu.keyword", "Keyword", { "": "Any", ...Object.fromEntries(Object.entries(keywords).map(([k, v]) => [k, labelOf(v) || k]).sort((a, b) => a[1].localeCompare(b[1]))) }),
       F.uuids(src, "grants.jutsu", "Granted jutsu", nameOf ?? (u => u), { accept: "jutsu", hint: "Drag jutsu here: they are granted outright as Bonus Jutsu when this is gained." })
     ]),

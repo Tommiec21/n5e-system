@@ -16,7 +16,7 @@ import {
 } from "../advancement/steps.mjs";
 import { applyLevel } from "../advancement/manager.mjs";
 import { itemChoiceAllowed, validateItemChoices } from "../advancement/eligibility.mjs";
-import { learnProblems, learnBlock, browserFilters, filterText, matchesFilter, replacementFor, learnedMode, jutsuDiscipline } from "../rules/jutsu-slots.mjs";
+import { learnProblems, learnBlock, browserFilters, filterText, matchesFilter, replacementFor, learnedMode, jutsuDiscipline, conditionHolds, RANKS } from "../rules/jutsu-slots.mjs";
 import { grantedBy } from "../workflow/learn-jutsu.mjs";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
@@ -127,9 +127,14 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
       const doc = await this.#doc(uuid);
       if ( doc?.type !== "feat" ) continue;
       const b = doc.system.bonusJutsu ?? {};
-      if ( (b.count ?? 0) > 0 ) steps.push({ id: `bonus:${uuid}`, type: "bonusJutsu", title: `Bonus jutsu: ${doc.name}`, count: b.count,
-        sourceUuid: uuid, sourceName: doc.name, maxRank: b.maxRank || "",
-        filter: { maxRank: b.maxRank ?? "", discipline: b.discipline ?? "", section: b.section ?? "", keyword: b.keyword ?? "" } });
+      // LVL1 L3: a conditional grant ("if you already have the Fire Release affinity") counts only when the
+      // character had it before this level.
+      const met = conditionHolds(this.actor, b.condition);
+      const levelMax = this.cls.system.maxRank?.[this.level - 1] || "";
+      if ( (b.count ?? 0) > 0 && met ) steps.push({ id: `bonus:${uuid}`, type: "bonusJutsu", title: `Bonus jutsu: ${doc.name}`, count: b.count,
+        sourceUuid: uuid, sourceName: doc.name, maxRank: b.maxRank || levelMax, condition: b.condition ?? "",
+        filter: { maxRank: b.maxRank ?? "", discipline: b.discipline ?? "", section: b.section ?? "", keyword: b.keyword ?? "",
+          aboveMax: (b.aboveMax?.count ?? 0) > 0 ? { count: b.aboveMax.count, maxRank: b.aboveMax.maxRank ?? "" } : null } });
       for ( const j of doc.system.grants?.jutsu ?? [] ) {
         // LVL1 L1: already known: a replacement Bonus Jutsu slot (same discipline and section, up to its rank).
         const jd = await this.#doc(j);
@@ -327,17 +332,21 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
           // NT1: no list here: the counts, where they come from, and the jutsu dropped in so far.
           const N = CONFIG.N5E;
           const labels = { discipline: k => N.disciplines[k]?.label ?? k, section: k => N.jutsuSections?.[k]?.label ?? k, keyword: k => N.keywords?.[k]?.label ?? k };
-          view.limits = st.type === "jutsu" ? (st.maxRank ? `up to ${st.maxRank}-Rank` : "") : filterText(st.filter, labels);
+          view.limits = st.type === "jutsu" ? (st.maxRank ? `up to ${st.maxRank}-Rank` : "") : [filterText(st.filter, labels) || (st.maxRank ? `up to ${st.maxRank}-Rank` : ""),
+            st.filter?.aboveMax ? `${st.filter.aboveMax.count} may be up to ${st.filter.aboveMax.maxRank}-Rank` : "", st.condition ? "you already had it" : ""].filter(Boolean).join(" · ");
           view.from = st.type === "jutsu"
             ? `Level up (${st.sourceName}): ${st.gain ?? st.count} new${st.carried ? `, ${st.carried} still open from earlier levels` : ""}`
             : st.type === "swapJutsu" ? `Forget ${st.forgetName}; learn a ${st.discLabel} jutsu instead (if none is dropped, ${st.forgetName} stays)`
             : `${st.sourceName}: ${st.count} bonus jutsu`;
           const probe = { name: actor.name, items: actor.items, system: { grants: { ...actor.system.grants, affinities } } };
           view.picks = [];
+          let aboveUsed = 0;
           for ( const [n, u] of [...chosen].entries() ) {
             const d = await this.#doc(u);
             if ( !d ) continue;
-            const problems = learnProblems(probe, d, { maxRank: st.maxRank ?? "", filter: st.type === "jutsu" ? null : st.filter, keywords: N.keywords });
+            const filter = st.type === "jutsu" ? null : st.filter?.aboveMax ? { ...st.filter, aboveMaxOpen: st.filter.aboveMax.count - aboveUsed } : st.filter;
+            const problems = learnProblems(probe, d, { maxRank: st.maxRank ?? "", filter, keywords: N.keywords });
+            if ( st.maxRank && RANKS.indexOf(d.system.rank) > RANKS.indexOf(st.maxRank) ) aboveUsed++;
             if ( n >= st.count ) problems.push("Over this slot's count.");
             const block = learnBlock(this.#probe(), d);
             if ( block ) problems.unshift(`Blocked: ${block}`);

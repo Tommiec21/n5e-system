@@ -1,3 +1,11 @@
+## 0.102.0-alpha.1 — LVL1 L3: conditional grants
+
+King 2026-11-24 (docs/LVL1_SPEC.md, L3).
+
+- **The five ultimate Moldings** (Blaze Walker, Tsunami, Storm Terror, Lightning Breaker, Stone Crusher): if you already had that release's affinity, 2 Bonus Jutsu slots for its Ninjutsu, one of which may be up to C-Rank even while your highest rank is D. The level-up window shows them as a Bonus jutsu card.
+- **GM-authored conditions:** a feature's Bonus Jutsu can count only if the character already had something when it was gained ("affinity:fire", "skill:<key>", "tool:<key>", "save:<key>"), and can let some picks go above the highest rank.
+- **Duplicate class proficiencies:** a fixed class skill or toolkit you already have from your clan, background or a feat becomes a pick of another at 1st level.
+
 ## 0.101.0-alpha.1 — LVL1 L2: jutsu swaps and option swaps at level up
 
 King 2026-11-24 (docs/LVL1_SPEC.md, L2).

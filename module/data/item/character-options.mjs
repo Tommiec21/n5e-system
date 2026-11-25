@@ -157,7 +157,11 @@ export class FeatData extends TDM() {
         keywords: S.set()
       }),
       // NT1: Bonus Jutsu slots this feature/feat/trait gives (filled through the Jutsu Browser); limits optional.
-      bonusJutsu: S.obj({ count: S.int(0, { min: 0 }), maxRank: S.str(), discipline: S.str(), section: S.str(), keyword: S.str() }),
+      // LVL1 L3: `condition` ("affinity:fire", "skill:ath", "tool:alchemist", "save:con") turns the slots on only
+      // when the character already had it when this was gained; `aboveMax` lets that many of them be up to a
+      // rank above the character's highest (the Moldings: one may be C-Rank while the highest is D).
+      bonusJutsu: S.obj({ count: S.int(0, { min: 0 }), maxRank: S.str(), discipline: S.str(), section: S.str(), keyword: S.str(),
+        condition: S.str(), aboveMax: S.obj({ count: S.int(0, { min: 0 }), maxRank: S.str() }) }),
       resourcePools: poolDefinitions(),
       advancement: S.advancement()
     };

@@ -1075,3 +1075,7 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 ### LVL1 L2
 
 - Advancement entry `swap` (bool): when the choice is gained, earlier picks with the same `key` can be switched out (each adds a pick). Class `flags.n5e.levelSwaps.<level>`: `{removed: [item data], chosen: {ownerId: {advId: chosen}}}`, restored by Remove level.
+
+### LVL1 L3
+
+- Feat-type `system.bonusJutsu.condition` ("affinity:<key>" | "skill:<key>" | "tool:<key>" | "save:<key>"; slots count only when `flags.n5e.conditionMet` is true, set when the item is gained) and `system.bonusJutsu.aboveMax` `{count, maxRank}`. Level-up steps `class:skills:dup` / `class:tools:dup` (replacement picks merged into the class's chosen proficiencies). `rules/jutsu-slots.mjs conditionHolds`, `advancement/steps.mjs otherProficiencies`.
