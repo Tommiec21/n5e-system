@@ -15,7 +15,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `clan.mjs` | 79 | Pure clan setup choices and grant planning. | `clanSetupFields`, `clanSetupPlan` |
 | `eligibility.mjs` | 54 | Structured class-option requirements. | `itemChoiceAllowed`, `advancementAvailable`, `validateItemChoices` |
-| `manager.mjs` | 393 | Applies and reverts one class level (Foundry side). | `applyLevel`, `revertLevel`, `removeClass`, `freshClassData`, `EDITABLE_STEPS`, `levelSelections`, `editLevel` |
+| `manager.mjs` | 401 | Applies and reverts one class level (Foundry side). | `applyLevel`, `revertLevel`, `removeClass`, `freshClassData`, `EDITABLE_STEPS`, `levelSelections`, `editLevel` |
 | `steps.mjs` | 257 | Level-up steps (pure). | `advancementSteps`, `stepsForLevel`, `otherProficiencies`, `subclassSteps`, `learnableJutsu`, `eligibleFeats`, `masteryTargets`, `validate`, `castingDisciplines` |
 
 ## module
@@ -56,7 +56,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `enrichers.mjs` | 180 | Shortcuts in text (Foundry side): turns [[/save ...]], [[/check ...]], [[/damage ...]], [[/heal ...]], @Condition[...] and @State[...] into clickable links w... | `registerEnrichers`, `onLinkClick` |
 | `helpers.mjs` | 17 | Handlebars helpers used by N5e templates (registered by the system so templates don't depend on which helpers core happens to ship). | `HELPERS`, `registerHelpers` |
 | `level-history.mjs` | 68 | LVL1 L5 (King 2026-11-24): Level History. | `levelHistory`, `LevelHistory` |
-| `level-up.mjs` | 572 | Level-up dialog: one page listing what the new level grants, with a card for every choice (dnd5e's advancement flow, flattened). | `LevelUpDialog` |
+| `level-up.mjs` | 574 | Level-up dialog: one page listing what the new level grants, with a card for every choice (dnd5e's advancement flow, flattened). | `LevelUpDialog` |
 | `schema-form.mjs` | 76 | Builds simple form rows from a data model schema, so the Phase 1 placeholder sheets show and edit every stored field without hand-written templates. | `buildRows`, `collapseDuplicates`, `coerceListInputs` |
 | `sheets.mjs` | 207 | Phase 1 placeholder sheets (ApplicationV2). | `TEMPLATE_PATHS`, `N5eActorSheet`, `N5eItemSheet` |
 
@@ -280,7 +280,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `jutsu-facts.mjs` | 42 | Jutsu roll facts (STD6d; docs/STD6d_SPEC.md). | `jutsuFacts`, `resolveRankValues` |
 | `jutsu-slots.mjs` | 243 | NT1 (King 2026-11-24): jutsu slots, pure. | `RANKS`, `learnedMode`, `sourceMatches`, `filterText`, `NATURE_KEYWORDS`, `bonusCount`, `sourceKey`, `bonusSources`, `replacementFor`, `learnBlock`, `jutsuSlots`, `jutsuDiscipline`, `matchesFilter`, `learnProblems`, `assignSlot`, `browserFilters`, `conditionHolds` |
 | `keywords.mjs` | 95 | Keywords (pure; DATA1, King 2026-11-13). | `SPLIT_KEYWORDS`, `REMOVED_KEYWORDS`, `normalizeKeyword`, `canonicalKeywords`, `canonicalKeywordList`, `keywordKey`, `keywordValue`, `hasKeyword`, `isBukijutsu`, `jutsuGroup`, `FEAT_KEYWORDS`, `featKeywords`, `FEATURE_KINDS`, `featureKind`, `isFeatItem`, `featGroups` |
-| `leveling.mjs` | 50 | LVL1 L6 (King 2026-11-24): when a character can level up, and what a level spends. | `LEVELING_MODES`, `levelUpState`, `levelUpCost`, `actorLevelState` |
+| `leveling.mjs` | 65 | LVL1 L6 (King 2026-11-24): when a character can level up, and what a level spends. | `LEVELING_MODES`, `levelUpState`, `levelUpCost`, `levelSpent`, `levelRefund`, `actorLevelState` |
 | `loot.mjs` | 21 | PRESTD1 Part C: loot piles, merchants and the party stash (pure; King Q-F2, Q-P5). | `LOOT_MODES`, `priceOf`, `canTake`, `purchase`, `saleValue` |
 | `missions.mjs` | 46 | Mission budgets and payouts (PRESTD1 Part E; King Q-P9: the Bingo Book's Mission XP rules, verbatim, no per-player XP logic of our own). | `missionNumbers`, `encounterCost`, `spentOf`, `missionPayout` |
 | `npc-reset.mjs` | 34 | Batch reset for NPCs (pure; NPC1c C2). | `RESET_OPTIONS`, `resetPlan` |

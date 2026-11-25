@@ -7,6 +7,7 @@
 import { validateItemChoices } from "./eligibility.mjs";
 import { learningData, alertLearning, grantFeatureJutsu } from "../workflow/learn-jutsu.mjs";
 import { jutsuSlots, learnBlock, learnedMode, conditionHolds } from "../rules/jutsu-slots.mjs";
+import { levelRefund } from "../rules/leveling.mjs";
 
 /**
  * LVL1 L2: remove items switched out at this level (jutsu swaps, option swaps), recording them on the
@@ -269,6 +270,13 @@ export async function revertLevel(actor, cls) {
     const characterLevel = actor.system.level ?? level;
     await clan.update({ "system.advancement": clan.system.toObject().advancement.map(a => a.level === characterLevel ? { ...a, chosen: [] } : a) });
     await clan.setFlag("n5e", "clanAppliedLevels", (clan.flags?.n5e?.clanAppliedLevels ?? []).filter(l => l !== characterLevel));
+  }
+  // King 2026-11-25: Remove level refunds what the level spent (its XP, or its granted level).
+  const spent = cls.getFlag("n5e", `levelSpent.${level}`);
+  if ( spent ) {
+    const refund = levelRefund(spent, { xp: actor._source?.system?.details?.xp ?? actor.system?.details?.xp ?? 0, granted: actor.flags?.n5e?.levelsGranted ?? 0 });
+    if ( Object.keys(refund).length ) await actor.update(refund);
+    if ( level > 1 ) await cls.unsetFlag("n5e", `levelSpent.${level}`);
   }
   if ( level <= 1 ) return cls.delete();
   await clear(cls);

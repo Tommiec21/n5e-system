@@ -896,7 +896,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     const ok = await foundry.applications.api.DialogV2.confirm({
       window: { title: `Remove ${cls.name} level ${level}?` },
       content: `<p>This removes the features, choices, jutsu, feat and ability increase gained at ${cls.name} level ${level}`
-        + `${level === 1 ? ", and the class itself" : ""}.</p>`,
+        + `${level === 1 ? ", and the class itself" : ""}, and gives back the XP or granted level it spent.</p>`,
       rejectClose: false
     });
     if ( ok ) await revertLevel(this.actor, cls);

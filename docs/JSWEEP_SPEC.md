@@ -45,3 +45,4 @@ King 2026-11-25: "Let's make sure that features that grant Jutsu, work with this
 
 ## Progress log
 - 2026-11-25 King: full class and clan feature sweep. Claude: built and published 0.106.0-alpha.1.
+- 2026-11-25 King: feature grants below the ability requirement are given (specific beats general); Remove level refunds; bonus jutsu stay non-swappable. Claude: refund published 0.106.1-alpha.1.

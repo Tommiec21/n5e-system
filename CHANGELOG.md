@@ -1,3 +1,11 @@
+## 0.106.1-alpha.1 — Remove level refunds XP
+
+King 2026-11-25 (docs/LVL1_SPEC.md, L6).
+
+- **Remove level gives back what the level spent:** the XP it took, or the GM-granted level it used. Levels taken freely (gate off, or a GM leveling) give nothing back.
+- Levels applied before this version have no record of what they spent and refund nothing.
+- **Confirmed, no change:** a feature's jutsu grant is still given below the ability requirement (specific beats general); bonus jutsu in feature slots stay non-swappable.
+
 ## 0.106.0-alpha.1 — Jutsu-granting feature sweep
 
 King 2026-11-25 (docs/JSWEEP_SPEC.md).

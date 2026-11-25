@@ -41,6 +41,21 @@ export function levelUpCost(state, { xp = 0, need = 0, granted = 0 } = {}) {
   return {};
 }
 
+/** King 2026-11-25: what a level spent, kept on the class (flags.n5e.levelSpent.<level>) so Remove level refunds it. */
+export function levelSpent(state, { need = 0 } = {}) {
+  if ( state.via === "xp" ) return { xp: need ?? 0 };
+  if ( state.via === "grant" ) return { granted: 1 };
+  return null;
+}
+
+/** The update that refunds a level's spend: its XP back, or its granted level back. */
+export function levelRefund(spent, { xp = 0, granted = 0 } = {}) {
+  const out = {};
+  if ( spent?.xp ) out["system.details.xp"] = xp + spent.xp;
+  if ( spent?.granted ) out["flags.n5e.levelsGranted"] = granted + spent.granted;
+  return out;
+}
+
 /** The level-up state for an actor, reading the rules (Foundry side). */
 export function actorLevelState(actor, { rule, isGM = false } = {}) {
   const sys = actor.system ?? {};

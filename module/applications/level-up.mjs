@@ -544,7 +544,7 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
       return this.close();
     }
     // LVL1 L6: read the leveling state before the level (XP or a granted level is spent after).
-    const { actorLevelState, levelUpCost } = await import("../rules/leveling.mjs");
+    const { actorLevelState, levelUpCost, levelSpent } = await import("../rules/leveling.mjs");
     const { rule } = await import("../rules-settings.mjs");
     const sys = this.actor.system;
     const state = actorLevelState(this.actor, { rule, isGM: game.user.isGM });
@@ -552,6 +552,8 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
     await applyLevel(this.actor, this.cls, this.level, this._steps, this.#sel);
     const cost = levelUpCost(state, before);
     if ( Object.keys(cost).length ) await this.actor.update(cost);
+    const spent = levelSpent(state, before);
+    if ( spent ) await this.actor.items.get(this.cls.id)?.setFlag("n5e", `levelSpent.${this.level}`, spent);
     ui.notifications.info(`${this.actor.name} is now a level ${this.level} ${this.cls.name}.`);
     this.#resolve(true);
     this.#resolve = null;

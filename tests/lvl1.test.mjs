@@ -214,3 +214,16 @@ test("LVL1 L4: structured feat prerequisites; unmet feats listed (grayed), not h
   assert.match(lu, /took the feat/);
   assert.match(fs.readFileSync(path.join(ROOT, "templates/apps/level-up.hbs"), "utf8"), /unmet/);
 });
+
+test("LVL1 L6: Remove level refunds what the level spent (King 2026-11-25)", async () => {
+  const { levelSpent, levelRefund } = await import("../module/rules/leveling.mjs");
+  assert.deepEqual(levelSpent({ via: "xp" }, { need: 900 }), { xp: 900 });
+  assert.deepEqual(levelSpent({ via: "grant" }, {}), { granted: 1 });
+  assert.equal(levelSpent({ via: "free" }, {}), null);
+  assert.deepEqual(levelRefund({ xp: 900 }, { xp: 150 }), { "system.details.xp": 1050 });
+  assert.deepEqual(levelRefund({ granted: 1 }, { granted: 0 }), { "flags.n5e.levelsGranted": 1 });
+  assert.deepEqual(levelRefund(null, {}), {});
+  const m = fs.readFileSync(path.join(ROOT, "module/advancement/manager.mjs"), "utf8");
+  assert.match(m, /levelSpent\.\$\{level\}/);
+  assert.match(fs.readFileSync(path.join(ROOT, "module/applications/level-up.mjs"), "utf8"), /levelSpent\.\$\{this\.level\}/);
+});
