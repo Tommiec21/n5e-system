@@ -8,39 +8,6 @@ PAL = {"bg1": "#24465A", "bg2": "#0A1820", "acc": "#7FC4D8"}
 A = PAL["acc"]
 HERE = os.path.dirname(os.path.abspath(__file__))
 
-def person(cx, cy, s=1.0, extra=""):
-    """A simple figure: head and shoulders."""
-    return (f'<g {extra}><circle cx="{cx}" cy="{cy - 46*s:.0f}" r="{26*s:.0f}"/>'
-            f'<path d="M{cx - 56*s:.0f} {cy + 54*s:.0f} Q{cx - 56*s:.0f} {cy - 4*s:.0f} {cx} {cy - 4*s:.0f} Q{cx + 56*s:.0f} {cy - 4*s:.0f} {cx + 56*s:.0f} {cy + 54*s:.0f}"/></g>')
-def warfan(cx, cy, s=1.0, extra=""):
-    """A commander's war fan (gunbai): a rounded paddle on a short handle."""
-    return (f'<g {extra} transform="translate({cx} {cy}) scale({s})"><path d="M0 -150 C90 -150 120 -60 70 20 L20 60 H-20 L-70 20 C-120 -60 -90 -150 0 -150 Z"/>'
-            '<line x1="0" y1="60" x2="0" y2="150"/><line x1="-20" y1="150" x2="20" y2="150"/>'
-            '<circle cx="0" cy="-60" r="34"/></g>')
-def nobori(x, y, h=330, w=120, extra="", emblem=True):
-    """A commander's tall war banner (nobori): a pole with a top bar and a long vertical flag."""
-    top = y - h
-    return (f'<g {extra}><line x1="{x}" y1="{y}" x2="{x}" y2="{top}"/><line x1="{x}" y1="{top + 14}" x2="{x + w + 10}" y2="{top + 14}"/>'
-            f'<path d="M{x + 14} {top + 14} V{top + h*.78:.0f} L{x + w/2 + 7:.0f} {top + h*.68:.0f} L{x + w} {top + h*.78:.0f} V{top + 14}"/>'
-            + (star(x + 7 + w/2, top + h*.36, w*.28, 5, .45) if emblem else "") + '</g>')
-def rank(cx, cy, n=3, w=110, gap=46, extra=""):
-    """Rank insignia: chevrons stacked upward."""
-    return "".join(f'<path d="M{cx - w} {cy - i*gap + 40} L{cx} {cy - i*gap - 20} L{cx + w} {cy - i*gap + 40}" {extra}/>' for i in range(n))
-def blade(x, y, angle, s=1.0, extra=""):
-    """A straight sword pointing up before rotation: blade, guard, hilt."""
-    return (f'<g transform="translate({x} {y}) rotate({angle}) scale({s})" {extra}>'
-            '<path d="M-14 0 V-170 L0 -196 L14 -170 V0"/><line x1="-44" y1="0" x2="44" y2="0"/><line x1="0" y1="0" x2="0" y2="70"/></g>')
-def fist(cx, cy, s=1.0, extra=""):
-    """A clenched fist seen from the front: four knuckles, a thumb, the wrist."""
-    return (f'<g {extra} transform="translate({cx} {cy}) scale({s})">'
-            + "".join(f'<rect x="{-104 + i*52}" y="-90" width="52" height="64" rx="24"/>' for i in range(4))
-            + '<path d="M-104 -40 V40 Q-104 80 -60 80 H60 Q104 80 104 40 V-40"/><path d="M-104 0 Q-40 -10 0 20"/>'
-            '<path d="M-60 80 V130 M60 80 V130"/></g>')
-def burst(cx, cy, r, extra=""):
-    return star(cx, cy, r, 8, .5, extra)
-def squad_arc(cx, cy, r, s=.6, extra=""):
-    return "".join(person(cx + r*math.cos(math.radians(a)), cy + r*math.sin(math.radians(a)), s, extra) for a in (200, 270, 340))
-
 AR = {}
 AR["arbiter-scout"] = nobori(180, 450, 380, 150, f'stroke="{A}"')
 AR["superior-arbitration"] = rank(256, 290, 3, 120, 70) + star(256, 120, 40, 5, .45, f'stroke="{A}" fill="{A}" fill-opacity=".3"')
