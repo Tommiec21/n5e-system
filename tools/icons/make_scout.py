@@ -26,9 +26,10 @@ I["switch-hitter"] = (swap(256, 300, 150) + kunai(160, 170, 45, .6) + shuriken(3
 pts = [(256 + 160*math.cos(math.radians(a)), 256 + 160*math.sin(math.radians(a))) for a in (-90, 30, 150)]
 I["jack-of-all"] = (f'<circle cx="256" cy="256" r="160" stroke="{A}"/>' + "".join(f'<line x1="256" y1="256" x2="{x:.0f}" y2="{y:.0f}" stroke="{A}" stroke-width="10"/>' for x, y in pts)
     + kunai(256, 200, 0, .34) + shuriken(186, 316, 40, 'stroke-width="12"') + headband(318, 318, 96, .42, 'stroke-width="10"', "#173040"))
-# Scouting Technique (headband, path): a headband over a winding road
-I["scouting-technique"] = (f'<path d="M190 440 C200 380 330 370 300 320 C280 290 230 300 250 260" stroke="{A}" stroke-dasharray="1 30" stroke-width="20"/>'
-    + headband(256, 170, 320, 1.0, "", "#173040"))
+# Scouting Technique (kept from the first draft; King: "fine"): a spyglass
+I["scouting-technique"] = ('<g transform="rotate(-35 256 256)"><rect x="100" y="226" width="110" height="60" rx="10"/><rect x="210" y="216" width="110" height="80" rx="10"/>'
+    f'<rect x="320" y="204" width="70" height="104" rx="12" stroke="{A}"/></g>'
+    f'<path d="M402 120 l22 -22 M420 160 h30 M366 92 v-30" stroke="{A}" stroke-width="12"/>')
 # Extra Attack (kunai): two kunai side by side
 I["extra-attack"] = kunai(200, 270, -12, .95) + kunai(312, 270, 12, .95, f'stroke="{A}"')
 # Superior Momentum (momentum, shuriken): chevrons driving a shuriken
@@ -36,9 +37,9 @@ I["superior-momentum"] = chevrons(90, 256, 3, 80, 66, f'stroke="{A}"') + shurike
 # Signature Jutsu (energy, kunai): a kunai wrapped in chakra
 I["signature-jutsu"] = ("".join(f'<path d="M{256 + 150*math.cos(math.radians(a)):.0f} {256 + 150*math.sin(math.radians(a)):.0f} Q{256 + 120*math.cos(math.radians(a+22)):.0f} {256 + 120*math.sin(math.radians(a+22)):.0f} {256 + 96*math.cos(math.radians(a+8)):.0f} {256 + 96*math.sin(math.radians(a+8)):.0f}" stroke="{A}"/>' for a in range(0, 360, 45))
     + kunai(256, 270, 35, .82))
-# Signature Path (path, headband): a dotted road leading to a headband
-I["signature-path"] = ('<path d="M130 440 C160 350 300 370 280 300 C268 256 210 260 236 220" stroke-dasharray="1 34" stroke-width="22"/>'
-    + headband(270, 140, 230, .75, f'stroke="{A}"', "#173040"))
+# Signature Path (kept from the first draft; King: "fine"): a path leading to a star
+I["signature-path"] = ('<path d="M130 430 C160 340 300 360 280 280 C266 226 200 230 230 180" stroke-dasharray="1 34" stroke-width="22"/>'
+    + star(280, 130, 66, 5, .45, f'stroke="{A}" fill="{A}" fill-opacity=".25"'))
 # Multifaceted (kunai, shuriken): a fan of kunai and shuriken thrown at once
 I["multifaceted"] = (kunai_at_ring(256, 420, -38, .72) + kunai_at_ring(256, 420, 0, .78, f'stroke="{A}"') + kunai_at_ring(256, 420, 38, .72)
     + shuriken(120, 150, 34, 'stroke-width="12"') + shuriken(392, 150, 34, 'stroke-width="12"'))
