@@ -100,6 +100,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
       placeMark: CharacterSheet.#onPlaceMark,
       levelUp: CharacterSheet.#onLevelUp,
       levelDown: CharacterSheet.#onLevelDown,
+      levelHistory: CharacterSheet.#onLevelHistory,
       toggleConcentration: CharacterSheet.#onToggleConcentration,
       toggleCombo: CharacterSheet.#onToggleCombo,
       resetChain: CharacterSheet.#onResetChain,
@@ -864,6 +865,14 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     const next = (cls.system.levels ?? 0) + 1;
     if ( next > 20 ) return ui.notifications.info(`${cls.name} is already level 20.`);
     return LevelUpDialog.open(this.actor, cls, next);
+  }
+
+  /** LVL1 L5: open the Level History (what each level gave; change a past level's choices). */
+  static async #onLevelHistory(event, target) {
+    const cls = this.actor.items.get(target.dataset.classId) ?? this.actor.items.find(i => i.type === "class");
+    if ( !cls ) return ui.notifications.warn("Drop a class on the sheet first.");
+    const { default: LevelHistory } = await import("../level-history.mjs");
+    return new LevelHistory(this.actor, cls).render(true);
   }
 
   /** Remove the highest class level and everything it granted. */

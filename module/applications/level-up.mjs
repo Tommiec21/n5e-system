@@ -14,7 +14,7 @@
 import {
   stepsForLevel, subclassSteps, eligibleFeats, masteryTargets, validate
 } from "../advancement/steps.mjs";
-import { applyLevel } from "../advancement/manager.mjs";
+import { editLevel, levelSelections, EDITABLE_STEPS, applyLevel } from "../advancement/manager.mjs";
 import { itemChoiceAllowed, validateItemChoices } from "../advancement/eligibility.mjs";
 import { learnProblems, learnBlock, browserFilters, filterText, matchesFilter, replacementFor, learnedMode, jutsuDiscipline, conditionHolds, RANKS } from "../rules/jutsu-slots.mjs";
 import { grantedBy } from "../workflow/learn-jutsu.mjs";
@@ -36,7 +36,9 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
     this.actor = actor;
     this.cls = cls;
     this.level = level;
-    this.#sel = {};
+    /** LVL1 L5: changing a past level's choices instead of gaining a level. */
+    this.edit = !!options.edit;
+    this.#sel = options.sel ?? {};
     this.#resolve = null;
     this.done = new Promise(r => { this.#resolve = r; });
   }
@@ -75,8 +77,31 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
     return app.done;
   }
 
+  /** LVL1 L5 (King Q10): change the choices of a level already taken, prefilled with what it chose. */
+  static async openEdit(actor, cls, level) {
+    const subclass = actor.items.find(i => i.type === "subclass" && i.system.classIdentifier === cls.system.identifier);
+    const steps = LevelUpDialog.editSteps(stepsForLevel({ actor, cls, subclass, level }));
+    if ( !steps.length ) { ui.notifications.info(`Level ${level} has no choices to change.`); return false; }
+    const app = new LevelUpDialog(actor, cls, level, { edit: true, sel: levelSelections(actor, cls, level, steps) });
+    await app.render(true);
+    return app.done;
+  }
+
+  /** The steps of a past level that can be changed (no subclass, features, HP/CP, jutsu or swaps). */
+  static editSteps(steps) {
+    return steps.filter(s => EDITABLE_STEPS.has(s.type) && !s.id.endsWith(":dup")).map(s => ({ ...s, swap: false }));
+  }
+
   get title() {
-    return `${this.actor.name}: ${this.cls.name} level ${this.level}`;
+    return this.edit ? `${this.actor.name}: change level ${this.level} choices` : `${this.actor.name}: ${this.cls.name} level ${this.level}`;
+  }
+
+  /** In edit mode, the actor without what this level's own picks created (so they don't count as owned). */
+  #ownedView() {
+    if ( !this.edit ) return this.actor;
+    const ids = new Set((this._steps ?? []).map(st => st.id));
+    const items = this.actor.items.filter(i => i.flags?.n5e?.advancement?.level !== this.level || !ids.has(i.flags.n5e.advancement.step));
+    return { name: this.actor.name, system: this.actor.system, items, testUserPermission: (...a) => this.actor.testUserPermission(...a) };
   }
 
   /** Load a document by uuid once per dialog (steps point at compendium items by uuid). */
@@ -107,6 +132,7 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
   /** Steps for this level, with the subclass's steps once one is chosen. */
   async #steps() {
     const subclass = this.actor.items.find(i => i.type === "subclass" && i.system.classIdentifier === this.cls.system.identifier);
+    if ( this.edit ) return LevelUpDialog.editSteps(stepsForLevel({ actor: this.actor, cls: this.cls, subclass, level: this.level }));
     const steps = stepsForLevel({ actor: this.actor, cls: this.cls, subclass, level: this.level });
     const subStep = steps.find(s => s.type === "subclass");
     const picked = subStep && this.#sel[subStep.id]?.[0];
@@ -254,7 +280,7 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
     const steps = await this.#steps();
     this._steps = steps;
     const actor = this.actor;
-    const ownedNames = new Set(actor.items.map(i => i.name.toLowerCase()));
+    const ownedNames = new Set([...this.#ownedView().items].map(i => i.name.toLowerCase()));
     const poolSizes = {};
     // Affinities after this level (grant steps add theirs).
     const affinities = new Set(actor.system.grants?.affinities ?? []);
@@ -375,9 +401,9 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
     this._steps = steps;
     this._poolSizes = poolSizes;
     const problems = validate(steps, this.#sel, poolSizes);
-    problems.push(...await validateItemChoices(actor, this.level, steps, this.#sel, uuid => this.#doc(uuid)));
+    problems.push(...await validateItemChoices(this.#ownedView(), this.level, steps, this.#sel, uuid => this.#doc(uuid)));
     return { steps: views, problems, ready: problems.length === 0, level: this.level, cls: this.cls.name,
-      rankOrder: RANK_ORDER };
+      rankOrder: RANK_ORDER, edit: this.edit, review: this.#review(views) };
   }
 
   /** Toggle a choice. data-step, data-value, data-field (asi sub-field) on the clicked element. */
@@ -407,10 +433,55 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
    * advancement/manager.mjs applyLevel() writes the level (class levels, HP/CP, granted items with
    * flags.n5e.advancement so Remove level can undo exactly them, ASI, Mastery, jutsu).
    */
+  /**
+   * LVL1 L5: one line per step of what this level gives and what was chosen (the Review section).
+   * @returns {{title: string, text: string, missing: boolean}[]}
+   */
+  #review(views) {
+    const names = arr => arr.filter(Boolean).join(", ");
+    const out = [];
+    for ( const v of views ) {
+      let text = "";
+      switch ( v.type ) {
+        case "pools": text = `+${v.hp} Hit Points, +${v.cp} Chakra Points`; break;
+        case "feature": text = names((v.items ?? []).map(i => i.name)); break;
+        case "grant": text = v.text ?? ""; break;
+        case "asi": {
+          const a = v.abilityOptions?.find(o => o.selected)?.label;
+          const f = v.feats?.find(o => o.selected)?.name;
+          const m = v.mastery?.find(o => o.selected)?.label;
+          text = names([a && `+1 ${a}`, f && `Feat: ${f}`, m && `Mastery: ${m}`]);
+          break;
+        }
+        case "jutsu": case "bonusJutsu": case "swapJutsu":
+          text = names([...(v.picks ?? []).map(p => p.name), v.open ? `${v.open} open (stays on the sheet)` : ""]);
+          if ( v.type === "swapJutsu" ) text = `${v.forgetName} → ${text || "unchanged"}`;
+          break;
+        case "swapPick": text = names((v.options ?? []).filter(o => o.selected).map(o => `forget ${o.name}`)); break;
+        case "grantedJutsu": text = names((v.granted ?? []).map(g => g.name)); break;
+        default: {
+          const picked = (v.options ?? []).filter(o => o.selected).map(o => o.name ?? o.label);
+          const out2 = (v.swapKnown ?? []).filter(k => k.replaced).map(k => `switch out ${k.name}`);
+          text = names([...out2, ...picked]);
+        }
+      }
+      if ( v.type === "swapPick" && !text ) continue;
+      out.push({ title: v.title, text: text || "—", missing: !v.full && !!v.need });
+    }
+    return out;
+  }
+
   static async #onApply() {
     const problems = validate(this._steps, this.#sel, this._poolSizes);
-    problems.push(...await validateItemChoices(this.actor, this.level, this._steps, this.#sel));
+    problems.push(...await validateItemChoices(this.#ownedView(), this.level, this._steps, this.#sel));
     if ( problems.length ) return ui.notifications.warn(problems[0]);
+    if ( this.edit ) {
+      const changes = await editLevel(this.actor, this.cls, this.level, this._steps, this.#sel);
+      ui.notifications.info(changes.length ? `${this.actor.name}: level ${this.level} choices changed.` : "Nothing changed.");
+      this.#resolve(true);
+      this.#resolve = null;
+      return this.close();
+    }
     await applyLevel(this.actor, this.cls, this.level, this._steps, this.#sel);
     ui.notifications.info(`${this.actor.name} is now a level ${this.level} ${this.cls.name}.`);
     this.#resolve(true);

@@ -1079,3 +1079,7 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 ### LVL1 L3
 
 - Feat-type `system.bonusJutsu.condition` ("affinity:<key>" | "skill:<key>" | "tool:<key>" | "save:<key>"; slots count only when `flags.n5e.conditionMet` is true, set when the item is gained) and `system.bonusJutsu.aboveMax` `{count, maxRank}`. Level-up steps `class:skills:dup` / `class:tools:dup` (replacement picks merged into the class's chosen proficiencies). `rules/jutsu-slots.mjs conditionHolds`, `advancement/steps.mjs otherProficiencies`.
+
+### LVL1 L5
+
+- `advancement/manager.mjs` `EDITABLE_STEPS`, `levelSelections(actor, cls, level, steps)`, `editLevel(actor, cls, level, steps, sel)`; `LevelUpDialog.openEdit(actor, cls, level)`; `applications/level-history.mjs` `levelHistory(actor, cls)` (rows from stamped items, `flags.n5e.asi.<level>`, `flags.n5e.levelSwaps.<level>`).

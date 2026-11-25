@@ -120,9 +120,15 @@
       </section>
     {{/each}}
   </div>
+  {{#if review.length}}
+  <section class="lu-review">
+    <h3><i class="fa-solid fa-list-check"></i> Review</h3>
+    <ul>{{#each review}}<li class="{{#if missing}}warn{{/if}}"><b>{{title}}:</b> {{text}}</li>{{/each}}</ul>
+  </section>
+  {{/if}}
   <footer class="lu-foot">
     {{#if problems.length}}<span class="warn small">{{problems.[0]}}{{#if (n5eGt problems.length 1)}} (+{{problems.length}} more){{/if}}</span>{{else}}<span class="ok small">Ready.</span>{{/if}}
     <button type="button" data-action="cancel">Cancel</button>
-    <button type="button" class="primary" data-action="apply" {{#unless ready}}disabled{{/unless}}>Apply level {{level}}</button>
+    <button type="button" class="primary" data-action="apply" {{#unless ready}}disabled{{/unless}}>{{#if edit}}Apply changes to level {{level}}{{else}}Apply level {{level}}{{/if}}</button>
   </footer>
 </div>

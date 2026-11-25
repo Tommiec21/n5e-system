@@ -1,3 +1,11 @@
+## 0.103.0-alpha.1 — LVL1 L5: review, Level History, change a past level's choices
+
+King 2026-11-24 (docs/LVL1_SPEC.md, L5).
+
+- **Review:** the level-up window ends with a summary of everything the level gives and every choice made (missing picks in red).
+- **Level History:** a header button (every sheet design, also at level 20) lists each level, newest first, with what it gave: features and feats, jutsu, stances, the ASI, 1st-level proficiencies, and what it switched out.
+- **Change choices:** the character's owner can reopen a past level's options, feats, ASI (ability, feat, Mastery) and proficiencies, already filled in; applying swaps the items, moves the ASI and alerts the GM and owners with what changed. Remove level still takes back only the most recent level.
+
 ## 0.102.0-alpha.1 — LVL1 L3: conditional grants
 
 King 2026-11-24 (docs/LVL1_SPEC.md, L3).

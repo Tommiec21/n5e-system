@@ -1,0 +1,13 @@
+{{!-- LVL1 L5: Level History. Context: levels [{level, lines [{label, text}], current}], editable. --}}
+<div class="lh-body">
+  <p class="sub">What each level gave. Change choices reopens that level's picks (options, feats, ASI, Mastery, proficiencies); the GM is alerted. Remove level (on the sheet) takes back only the most recent level.</p>
+  {{#each levels}}
+    <section class="lh-level">
+      <div class="lh-head">
+        <h3>Level {{level}}{{#if current}} <span class="sub">(current)</span>{{/if}}</h3>
+        {{#if ../editable}}<button type="button" data-action="editLevel" data-level="{{level}}"><i class="fa-solid fa-pen"></i> Change choices</button>{{/if}}
+      </div>
+      {{#if lines.length}}<ul>{{#each lines}}<li><b>{{label}}:</b> {{text}}</li>{{/each}}</ul>{{else}}<p class="sub">Nothing recorded (levels taken before 0.103 show only what they stamped).</p>{{/if}}
+    </section>
+  {{/each}}
+</div>

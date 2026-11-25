@@ -293,3 +293,97 @@ export function freshClassData(item) {
   if ( data.flags?.n5e?.asi ) delete data.flags.n5e.asi;
   return data;
 }
+
+/** LVL1 L5: the choice steps a past level can change (not subclass, features, HP/CP or jutsu). */
+export const EDITABLE_STEPS = new Set(["itemChoice", "featChoice", "option", "trait", "masteryChoice", "asi"]);
+
+/**
+ * LVL1 L5 (King Q10): what a past level chose, as level-up selections (to prefill the window).
+ * @returns {object} selections keyed by step id
+ */
+export function levelSelections(actor, cls, level, steps) {
+  const clan = actor.items.find(i => i.type === "clan");
+  const subclass = actor.items.find(i => i.type === "subclass" && i.system.classIdentifier === cls.system.identifier);
+  const owner = st => (st.origin === "clan" ? clan : st.origin === "subclass" ? subclass : cls);
+  const sel = {};
+  for ( const st of steps ) {
+    if ( st.id === "class:skills" ) sel[st.id] = [...(cls.system.skills?.chosen ?? [])];
+    else if ( st.id === "class:tools" ) sel[st.id] = [...(cls.system.tools?.chosen ?? [])];
+    else if ( st.type === "asi" ) sel[st.id] = { ...(cls.getFlag?.("n5e", `asi.${level}`) ?? {}) };
+    else if ( st.advId ) sel[st.id] = [...(owner(st)?.system.advancement.find(a => a.id === st.advId)?.chosen ?? [])];
+  }
+  return sel;
+}
+
+/**
+ * LVL1 L5 (King Q10): change a past level's choices. Items the old picks created (stamped with that level
+ * and step) leave, the new picks arrive with the same stamp, recorded choices are rewritten, and an ASI's
+ * ability, feat and Mastery move. The GM and the owners are alerted with what changed.
+ * @returns {string[]} lines describing the changes
+ */
+export async function editLevel(actor, cls, level, steps, sel) {
+  const old = levelSelections(actor, cls, level, steps);
+  const clan = actor.items.find(i => i.type === "clan");
+  const subclass = actor.items.find(i => i.type === "subclass" && i.system.classIdentifier === cls.system.identifier);
+  const ownerOf = st => (st.origin === "clan" ? clan : st.origin === "subclass" ? subclass : cls);
+  const stampedAt = st => actor.items.filter(i => i.flags?.n5e?.advancement?.level === level && i.flags.n5e.advancement.step === st.id);
+  const src = i => i._stats?.compendiumSource ?? i.flags?.core?.sourceId;
+  const names = async uuids => (await Promise.all(uuids.map(u => fromUuid(u)))).map((d, n) => d?.name ?? uuids[n]);
+  const create = [];
+  const remove = [];
+  const updates = {};
+  const changes = [];
+  const byOwner = new Map();
+  for ( const st of steps ) {
+    const now = sel[st.id];
+    const was = old[st.id];
+    if ( st.type === "asi" ) {
+      const a = was ?? {};
+      const b = now ?? {};
+      if ( a.ability !== b.ability ) {
+        if ( a.ability ) updates[`system.abilities.${a.ability}.value`] = (updates[`system.abilities.${a.ability}.value`] ?? actor._source.system.abilities[a.ability].value) - 1;
+        if ( b.ability ) updates[`system.abilities.${b.ability}.value`] = (updates[`system.abilities.${b.ability}.value`] ?? actor._source.system.abilities[b.ability].value) + 1;
+        changes.push(`ASI ability: ${a.ability || "none"} → ${b.ability || "none"}`);
+      }
+      if ( a.mastery !== b.mastery ) {
+        const sources = actor._source.system.mastery.sources.filter(m => m.source !== `ASI ${level}`);
+        if ( b.mastery ) sources.push({ target: b.mastery, source: `ASI ${level}` });
+        updates["system.mastery.sources"] = sources;
+        changes.push(`ASI Mastery: ${a.mastery || "none"} → ${b.mastery || "none"}`);
+      }
+      if ( a.feat !== b.feat ) {
+        remove.push(...stampedAt(st).filter(i => !a.feat || src(i) === a.feat).map(i => i.id));
+        if ( b.feat ) create.push(...await itemData([b.feat], { origin: cls.id, level, step: st.id }));
+        changes.push(`ASI feat: ${(a.feat ? (await names([a.feat]))[0] : "none")} → ${(b.feat ? (await names([b.feat]))[0] : "none")}`);
+      }
+      await cls.setFlag("n5e", `asi.${level}`, { ability: b.ability ?? "", feat: b.feat ?? "", mastery: b.mastery ?? "" });
+      continue;
+    }
+    const A = [...(was ?? [])];
+    const B = [...(now ?? [])];
+    if ( A.length === B.length && A.every(v => B.includes(v)) ) continue;
+    if ( st.type === "itemChoice" || st.type === "featChoice" ) {
+      const gone = A.filter(u => !B.includes(u));
+      const added = B.filter(u => !A.includes(u));
+      remove.push(...stampedAt(st).filter(i => gone.includes(src(i))).map(i => i.id));
+      create.push(...await itemData(added, { origin: ownerOf(st)?.id ?? cls.id, level, step: st.id }));
+      changes.push(`${st.title}: ${(await names(gone)).join(", ") || "none"} → ${(await names(added)).join(", ") || "none"}`);
+    } else changes.push(`${st.title}: ${A.join(", ") || "none"} → ${B.join(", ") || "none"}`);
+    if ( st.id === "class:skills" ) updates.__clsSkills = B;
+    else if ( st.id === "class:tools" ) updates.__clsTools = B;
+    else if ( st.advId ) {
+      const o = ownerOf(st);
+      if ( o ) byOwner.set(o, { ...(byOwner.get(o) ?? {}), [st.advId]: B });
+    }
+  }
+  if ( updates.__clsSkills ) await cls.update({ "system.skills.chosen": updates.__clsSkills });
+  if ( updates.__clsTools ) await cls.update({ "system.tools.chosen": updates.__clsTools });
+  delete updates.__clsSkills; delete updates.__clsTools;
+  for ( const [o, byAdv] of byOwner ) await o.update({ "system.advancement": o.system.toObject().advancement.map(a => (a.id in byAdv ? { ...a, chosen: byAdv[a.id] } : a)) });
+  if ( remove.length ) await actor.deleteEmbeddedDocuments("Item", [...new Set(remove)]);
+  const created = create.length ? await actor.createEmbeddedDocuments("Item", create) : [];
+  await grantFeatureJutsu(actor, created);
+  if ( Object.keys(updates).length ) await actor.update(updates);
+  if ( changes.length ) await alertLearning(actor, `level ${level}`, [changes.join("; ") + "."], "changed the choices of");
+  return changes;
+}
