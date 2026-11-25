@@ -462,6 +462,12 @@
 .n5e-level-up .lu-card img { border: none; border-radius: 6px; flex-shrink: 0; }
 .n5e-level-up .lu-card.on { border: 2px solid var(--n5e-accent); background: #FBEDE9; }
 .n5e-level-up .lu-card.static { cursor: help; }
+/* King 2026-11-25: long names and requirement lines stayed in a button-height box and spilled over the
+   neighbours. The card grows with its text; the requirement line is cut at 3 lines (full text in the tooltip). */
+.n5e-level-up .lu-cards { grid-auto-rows: auto; align-items: stretch; }
+.n5e-level-up .lu-card { height: auto !important; max-height: none !important; white-space: normal; overflow: hidden; }
+.n5e-level-up .lu-card > span { flex: 1 1 auto; overflow-wrap: anywhere; }
+.n5e-level-up .lu-card span.sub { display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; font-size: 11px; line-height: 1.25; }
 .n5e-level-up .lu-card .rank { flex-shrink: 0; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--n5e-ink); color: #FFF; font-weight: 800; font-size: 11px; }
 .n5e-level-up .lu-chips { display: flex; flex-wrap: wrap; gap: 5px; }
 .n5e-level-up .lu-chips .chip { height: 28px; border-radius: 14px; }

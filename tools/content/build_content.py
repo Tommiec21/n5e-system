@@ -901,7 +901,8 @@ def folder_paths(pack, docs):
     for d in docs:
         s = d["system"]
         if pack == "classes":
-            out[d["_id"]] = [d["name"] if d["type"] == "class" else classes.get(s.get("classIdentifier"), "Other")]
+            # King 2026-11-25: the class sits at the top of its folder; its subclasses in a Subclasses folder.
+            out[d["_id"]] = [d["name"]] if d["type"] == "class" else [classes.get(s.get("classIdentifier"), "Other"), "Subclasses"]
         elif pack == "features":
             cls = classes.get((s.get("requirement") or {}).get("class"), "")
             if d["_id"] in sub_of and s.get("category") == "classOption":

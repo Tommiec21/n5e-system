@@ -1,3 +1,11 @@
+## 0.106.3-alpha.1 — Level-up cards and Classes compendium folders
+
+King 2026-11-25 (docs/LEFT1_SPEC.md).
+
+- **Level-up cards:** long names and requirement lines no longer spill over the next card. The card grows with its text; a long requirement line is cut at 3 lines, with the full text in the tooltip.
+- **Classes compendium:** each class folder shows the class itself and a **Subclasses** folder holding its subclasses (all 7 classes).
+- **Plan:** small leftovers (LEFT1, P1–P6) written for review.
+
 ## 0.106.2-alpha.1 — Journal Desk Design A correction
 
 Grouped library, compact document layout, parchment artwork, brush headings, integrated editor styling and structured related entries. Preserves gameplay and journal data. Static preview inspected; live Foundry acceptance remains with the user.

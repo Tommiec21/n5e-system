@@ -67,11 +67,12 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `automation-audit.mjs` | 144 | GM Automation Audit (STD5; docs/STD_SPEC.md "Reviewable in game"). | `AutomationAudit`, `auditLabel` |
 | `automation-recovery.mjs` | 46 | GM-only receipt inspection and deliberate archive; never automatically repairs partial writes. | `AutomationRecovery` |
 | `item-integrity.mjs` | 79 | GM Item Integrity (FIN1): duplicates and missing items on every world actor and unlinked token, from rules/item-audit.mjs. | `auditedActors`, `ItemIntegrity`, `registerItemIntegrity` |
-| `journal-desk.mjs` | 331 | Journal Desk owns its window, not Foundry's journal sheets or navigation hooks. | `JournalDesk` |
+| `journal-desk.mjs` | 333 | Journal Desk owns its window, not Foundry's journal sheets or navigation hooks. | `JournalDesk` |
 | `mission-planner.mjs` | 166 | Mission planner (PRESTD1 Part E, MISSION1; GM only). | `blankMission`, `MissionPlanner` |
 | `npc-reset.mjs` | 63 | "Reset NPCs" (NPC1c C2): a GM button on the Actors sidebar. | `npcsFor`, `resetNPCsDialog`, `resetNPC`, `addResetButton` |
 | `party-overview.mjs` | 131 | GM Party Overview: every player character (and, in a combat, every combatant) with HP, CP, conditions, concentration, Fury, open Gate and Amps; quick damage,... | `PartyOverview`, `registerPartyOverview` |
 | `workspace-ideas.mjs` | 23 | Original adventure prompts, not canon events or automatically balanced encounters. | `MISSION_IDEAS`, `filterIdeas`, `ideaText` |
+| `workspace-library.mjs` | 13 | Group filtered references for display without changing records or campaign relationships. | `libraryGroups` |
 | `workspace-navigation.mjs` | 30 | Retain unique tab references; drafts are never saved in user preferences. | `cleanSession`, `visit`, `starterText`, `relationshipUpdate` |
 | `workspace-starter.mjs` | 74 | Convert reviewed source text into an ordinary editable private journal entry. | `starterEntry`, `starterLinks`, `mergeStarterLinks`, `importStarter` |
 | `workspace-store.mjs` | 44 | Only workspace text pages are editable here; other journal types retain their own editors. | `ENTRY_KINDS`, `isWorkspacePage`, `pageSnapshot`, `entryUpdate`, `entryData`, `createEntry`, `saveEntry` |

@@ -156,7 +156,7 @@ for ( const [name, config] of Object.entries(classes) ) {
     const r = block(at, 3);
     if ( !sc ) {
       const key = id(`subclass:${cls.system.identifier}:${subName}`);
-      sc = { _id: key, _key: `!items!${key}`, name: subName, type: "subclass", img: "icons/svg/upgrade.svg", folder: folder("classes", [cls.name]),
+      sc = { _id: key, _key: `!items!${key}`, name: subName, type: "subclass", img: "icons/svg/upgrade.svg", folder: folder("classes", [cls.name, "Subclasses"]),
         system: { identifier: slug(subName), description: html(r.lines.slice(0, r.lines.findIndex(s => s.startsWith("#### ")))),
           source: { book: "Orochimaru's Observation Compendium", page: "", version: "4.0", custom: "" }, classIdentifier: cls.system.identifier, resourcePools: [], advancement: [] },
         effects: [], flags: { n5e: { generated: true, classExpansion: true } }, ownership: { default: 0 } };
