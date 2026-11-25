@@ -16,7 +16,9 @@ import {
 } from "../advancement/steps.mjs";
 import { editLevel, levelSelections, EDITABLE_STEPS, applyLevel } from "../advancement/manager.mjs";
 import { itemChoiceAllowed, validateItemChoices } from "../advancement/eligibility.mjs";
-import { learnProblems, learnBlock, browserFilters, filterText, matchesFilter, replacementFor, learnedMode, jutsuDiscipline, conditionHolds, RANKS } from "../rules/jutsu-slots.mjs";
+import { learnProblems, learnBlock, browserFilters, filterText, matchesFilter, replacementFor, learnedMode, jutsuDiscipline, conditionHolds, RANKS, bonusCount, jutsuSlots } from "../rules/jutsu-slots.mjs";
+import { proficiencyFor } from "../rules/progression.mjs";
+import { rule } from "../rules-settings.mjs";
 import { grantedBy, alertLearning } from "../workflow/learn-jutsu.mjs";
 import { featPrereqProblems, prereqText } from "../rules/feat-prereqs.mjs";
 
@@ -153,6 +155,7 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
       else if ( st.type === "asi" && this.#sel[st.id]?.feat ) gained.push(this.#sel[st.id].feat);
     }
     const granted = [];
+    const newProf = proficiencyFor(this.level, rule("flatProficiency"), rule("flatProficiencyValue"));
     for ( const uuid of new Set(gained) ) {
       const doc = await this.#doc(uuid);
       if ( doc?.type !== "feat" ) continue;
@@ -161,11 +164,14 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
       // character had it before this level.
       const met = conditionHolds(this.actor, b.condition);
       const levelMax = this.cls.system.maxRank?.[this.level - 1] || "";
-      if ( (b.count ?? 0) > 0 && met ) steps.push({ id: `bonus:${uuid}`, type: "bonusJutsu", title: `Bonus jutsu: ${doc.name}`, count: b.count,
+      const n = bonusCount(b, this.level, newProf);
+      if ( n > 0 && met ) steps.push({ id: `bonus:${uuid}`, type: "bonusJutsu", title: `Bonus jutsu: ${doc.name}`, count: n,
         sourceUuid: uuid, sourceName: doc.name, maxRank: b.maxRank || levelMax, condition: b.condition ?? "",
         filter: { maxRank: b.maxRank ?? "", discipline: b.discipline ?? "", section: b.section ?? "", keyword: b.keyword ?? "",
+          minRank: b.minRank ?? "", nature: !!b.nature, uuids: [...(b.uuids ?? [])],
           aboveMax: (b.aboveMax?.count ?? 0) > 0 ? { count: b.aboveMax.count, maxRank: b.aboveMax.maxRank ?? "" } : null } });
-      for ( const j of doc.system.grants?.jutsu ?? [] ) {
+      const atLevel = [...(doc.system.grants?.jutsuByLevel ?? [])].filter(g => g.level <= this.level).map(g => g.uuid);
+      for ( const j of [...(doc.system.grants?.jutsu ?? []), ...atLevel] ) {
         // LVL1 L1: already known: a replacement Bonus Jutsu slot (same discipline and section, up to its rank).
         const jd = await this.#doc(j);
         const known = jd && this.actor.items.some(i => i.type === "jutsu" && ((i.system.identifier || i.name) === (jd.system.identifier || jd.name) || (i._stats?.compendiumSource ?? i.flags?.core?.sourceId) === j));
@@ -177,6 +183,22 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
             filter: { maxRank: r.maxRank, discipline: r.discipline, section: r.section, keyword: "" } });
         }
       }
+    }
+    // Feature sweep: features already had that grant jutsu at this level, or whose Bonus Jutsu slots grow
+    // (one per listed level, or with the proficiency bonus).
+    const gainedSet = new Set(gained);
+    for ( const item of this.actor.items.filter(i => i.type === "feat") ) {
+      for ( const g of item.system.grants?.jutsuByLevel ?? [] ) if ( g.level === this.level ) {
+        const jd = await this.#doc(g.uuid);
+        granted.push({ jutsu: g.uuid, from: item.name, known: !!jd && this.actor.items.some(i => i.type === "jutsu" && (i.system.identifier || i.name) === (jd.system.identifier || jd.name)) });
+      }
+    }
+    const probe = { name: this.actor.name, items: this.actor.items, system: { ...this.actor.system, level: this.level, prof: newProf } };
+    for ( const src of jutsuSlots(probe).bonus.sources ) {
+      const item = this.actor.items.get(src.id);
+      if ( !item || src.open <= 0 || gainedSet.has(src.uuid) || steps.some(x => x.sourceUuid === src.uuid) ) continue;
+      steps.push({ id: `bonus:${src.uuid}`, type: "bonusJutsu", title: `Bonus jutsu: ${src.name}`, count: src.open, sourceUuid: src.uuid, sourceName: src.name,
+        maxRank: src.filter.maxRank || this.cls.system.maxRank?.[this.level - 1] || "", filter: src.filter });
     }
     if ( granted.length ) steps.push({ id: "granted:jutsu", type: "grantedJutsu", title: "Jutsu granted", granted });
 

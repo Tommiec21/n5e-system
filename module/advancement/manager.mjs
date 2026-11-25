@@ -217,8 +217,11 @@ export async function applyLevel(actor, cls, level, steps, sel) {
   }
   const created = add.length ? await actor.createEmbeddedDocuments("Item", add) : [];
   if ( swapOut.length ) await swapOutItems(actor, cls, level, swapOut);
-  // NT1: features gained this level that name specific jutsu grant them now (Bonus Jutsu).
-  await grantFeatureJutsu(actor, created);
+  // NT1: features gained this level that name specific jutsu grant them now (Bonus Jutsu); feature sweep:
+  // features already had that grant jutsu at this level (Reaper's Expanded jutsu) grant those too.
+  await grantFeatureJutsu(actor, created, { level });
+  const had = actor.items.filter(i => i.type === "feat" && !created.some(c => c.id === i.id) && (i.system.grants?.jutsuByLevel ?? []).some(g => g.level === level));
+  if ( had.length ) await grantFeatureJutsu(actor, had, { level, onlyLevel: level });
   for ( const [name, problems] of learnAlerts ) await alertLearning(actor, name, problems);
   await recordChoices(cls, level, classChoices);
   await recordChoices(subclass, level, subChoices);

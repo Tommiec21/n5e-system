@@ -37,8 +37,23 @@ export function sourceMatches(item, source) {
 
 /** The slot limits a bonus-jutsu entry sets, as one line ("C-Rank or lower · Fire Release · Medical"). */
 export function filterText(f = {}, labels = {}) {
-  return [f.maxRank ? `${f.maxRank}-Rank or lower` : "", f.discipline ? labels.discipline?.(f.discipline) ?? f.discipline : "",
+  return [f.minRank && f.maxRank === f.minRank ? `${f.maxRank}-Rank` : f.maxRank ? `${f.maxRank}-Rank or lower` : "",
+    f.minRank && f.minRank !== f.maxRank ? `${f.minRank}-Rank or higher` : "", f.nature ? "a Nature Release" : "",
+    list(f.uuids).length ? `one of ${list(f.uuids).length} listed jutsu` : "", f.discipline ? labels.discipline?.(f.discipline) ?? f.discipline : "",
     f.section ? labels.section?.(f.section) ?? f.section : "", f.keyword ? labels.keyword?.(f.keyword) ?? f.keyword : ""].filter(Boolean).join(" · ");
+}
+
+/** Nature release keywords (a slot with `nature` needs one of them). */
+export const NATURE_KEYWORDS = ["earthRelease", "windRelease", "fireRelease", "waterRelease", "lightningRelease"];
+
+/**
+ * How many Bonus Jutsu slots a feature gives at a level: one per level reached in `atLevels` ("3,9,14"),
+ * the proficiency bonus (`countBy: "prof"`), else `count`.
+ */
+export function bonusCount(b = {}, level = 20, prof = 0) {
+  if ( b?.atLevels ) return String(b.atLevels).split(/[,\s]+/).map(Number).filter(n => n && n <= level).length;
+  if ( b?.countBy === "prof" ) return prof;
+  return b?.count ?? 0;
 }
 
 /** The source key a feature's Bonus Jutsu carry (its compendium source, else its own uuid). */
@@ -48,17 +63,20 @@ export const sourceKey = i => i._stats?.compendiumSource ?? i.flags?.core?.sourc
  * Bonus Jutsu slot entries on the actor: one per feature with slots or outright grants, and one per
  * replacement slot. [{id, uuid (source key), keys, name, count, filter, fixed: [uuids], replaces}]
  */
-export function bonusSources(actor) {
+export function bonusSources(actor, { level = null, prof = null } = {}) {
   const out = [];
+  level ??= actor?.system?.level ?? 20;
+  prof ??= actor?.system?.prof ?? 0;
   for ( const i of items(actor).filter(x => x.type === "feat") ) {
     const key = sourceKey(i);
     // LVL1 L3: conditional slots count only when the condition held when the item was gained.
     const cond = i.system.bonusJutsu?.condition;
-    const count = cond && i.flags?.n5e?.conditionMet !== true ? 0 : (i.system.bonusJutsu?.count ?? 0);
-    const fixed = list(i.system.grants?.jutsu);
+    const count = cond && i.flags?.n5e?.conditionMet !== true ? 0 : bonusCount(i.system.bonusJutsu, level, prof);
+    const fixed = [...list(i.system.grants?.jutsu), ...list(i.system.grants?.jutsuByLevel).filter(g => (g.level ?? 1) <= level).map(g => g.uuid)];
     if ( count > 0 || fixed.length ) out.push({ id: i.id, uuid: key, keys: [i.id, i.uuid, key].filter(Boolean), name: i.name, count, fixed,
       filter: { maxRank: i.system.bonusJutsu?.maxRank ?? "", discipline: i.system.bonusJutsu?.discipline ?? "",
         section: i.system.bonusJutsu?.section ?? "", keyword: i.system.bonusJutsu?.keyword ?? "",
+        minRank: i.system.bonusJutsu?.minRank ?? "", nature: !!i.system.bonusJutsu?.nature, uuids: list(i.system.bonusJutsu?.uuids),
         aboveMax: (i.system.bonusJutsu?.aboveMax?.count ?? 0) > 0 ? { count: i.system.bonusJutsu.aboveMax.count, maxRank: i.system.bonusJutsu.aboveMax.maxRank ?? "" } : null } });
     for ( const r of list(i.flags?.n5e?.replacementSlots) ) {
       const k = `${key}#${r.jutsu}`;
@@ -140,6 +158,9 @@ export function matchesFilter(jutsu, f = {}) {
   const s = jutsu.system ?? {};
   const cap = f.aboveMax?.maxRank && f.maxRank && RANKS.indexOf(f.aboveMax.maxRank) > RANKS.indexOf(f.maxRank) ? f.aboveMax.maxRank : f.maxRank;
   if ( cap && RANKS.indexOf(s.rank) > RANKS.indexOf(cap) ) return false;
+  if ( f.minRank && RANKS.indexOf(s.rank) < RANKS.indexOf(f.minRank) ) return false;
+  if ( f.nature && !list(s.keywords).some(k => NATURE_KEYWORDS.includes(k)) ) return false;
+  if ( list(f.uuids).length && !list(f.uuids).some(u => [jutsu.uuid, jutsu._stats?.compendiumSource, jutsu.flags?.core?.sourceId].includes(u)) ) return false;
   const discs = new Set([s.discipline, ...list(s.disciplines)]);
   if ( s.discipline === "tai" && list(s.keywords).includes("bukijutsu") ) discs.add("buki");
   if ( f.discipline && !discs.has(f.discipline) ) return false;
@@ -197,7 +218,8 @@ export function browserFilters({ maxRank = "", filter = {} } = {}) {
   let top = filter.maxRank || maxRank;
   if ( filter.aboveMax?.maxRank && RANKS.indexOf(filter.aboveMax.maxRank) > RANKS.indexOf(top || "E") ) top = filter.aboveMax.maxRank;
   const out = {};
-  if ( top ) out.rank = RANKS.slice(0, RANKS.indexOf(top) + 1);
+  if ( top ) out.rank = RANKS.slice(filter.minRank ? RANKS.indexOf(filter.minRank) : 0, RANKS.indexOf(top) + 1);
+  else if ( filter.minRank ) out.rank = RANKS.slice(RANKS.indexOf(filter.minRank));
   if ( filter.discipline ) out.discipline = [filter.discipline];
   if ( filter.section ) out.section = [filter.section];
   if ( filter.keyword ) out.keywords = [filter.keyword];

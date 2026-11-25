@@ -1,3 +1,18 @@
+## 0.106.0-alpha.1 — Jutsu-granting feature sweep
+
+King 2026-11-25 (docs/JSWEEP_SPEC.md).
+
+- **Level grants:** a feature can grant jutsu at a set level; they arrive at that level up (or at once if the character is already past it), and Remove level takes them back.
+- **New Bonus Jutsu slot settings:** slots at listed levels, slots equal to the proficiency bonus, a minimum rank, Nature Release only, and only named jutsu.
+- **Level-up window:** shows level grants and new slots from features you already have.
+- **Wired:**
+  - Reaper's Techniques (Grim jutsu at 2nd, 6th, 10th and 14th).
+  - Mobile Savant, Superior Clones and Void Heart Mask.
+  - Hoshigaki Commander of the Deep (clan and latent).
+  - Jugo Full Sage.
+  - Sarutobi latent Advanced Nature Proficiency I–IIII.
+- **Missing:** Chakra Movement (Mobile Savant) isn't in the jutsu compendium yet.
+
 ## 0.105.0-alpha.1 — LVL1 L4: feat prerequisites (LVL1 complete)
 
 King 2026-11-24 (docs/LVL1_SPEC.md, L4).

@@ -157,6 +157,8 @@ export class FeatData extends TDM() {
         mastery: S.set(),                               // mastery targets
         proficiencies: S.set(),
         jutsu: S.arr(S.str()),                          // uuids: granted outright as Bonus Jutsu (NT1)
+        // Feature sweep: jutsu granted when the character reaches a level (Reaper's Expanded jutsu).
+        jutsuByLevel: S.arr(S.obj({ uuid: S.str(), level: S.int(1, { min: 1, max: 20 }) })),
         keywords: S.set()
       }),
       // NT1: Bonus Jutsu slots this feature/feat/trait gives (filled through the Jutsu Browser); limits optional.
@@ -164,7 +166,10 @@ export class FeatData extends TDM() {
       // when the character already had it when this was gained; `aboveMax` lets that many of them be up to a
       // rank above the character's highest (the Moldings: one may be C-Rank while the highest is D).
       bonusJutsu: S.obj({ count: S.int(0, { min: 0 }), maxRank: S.str(), discipline: S.str(), section: S.str(), keyword: S.str(),
-        condition: S.str(), aboveMax: S.obj({ count: S.int(0, { min: 0 }), maxRank: S.str() }) }),
+        condition: S.str(), aboveMax: S.obj({ count: S.int(0, { min: 0 }), maxRank: S.str() }),
+        // Feature sweep: lowest rank, a nature release keyword required, only these jutsu (uuids), the count
+        // growing at levels ("3,9,14": one slot at each level reached) or equal to the proficiency bonus.
+        minRank: S.str(), nature: S.bool(), uuids: S.arr(S.str()), atLevels: S.str(), countBy: S.str() }),
       resourcePools: poolDefinitions(),
       advancement: S.advancement()
     };

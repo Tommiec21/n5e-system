@@ -67,13 +67,26 @@ export async function learnJutsu(actor, doc, options = {}) {
  * @param {Actor} actor
  * @param {Item[]} granted   items just created on the actor
  */
-export async function grantFeatureJutsu(actor, granted) {
+export async function grantFeatureJutsu(actor, granted, { level = null, onlyLevel = null } = {}) {
   const create = [];
-  const known = new Set(actor.items.filter(i => i.type === "jutsu").flatMap(i => [i.system.identifier || i.name, i._stats?.compendiumSource ?? i.flags?.core?.sourceId]).filter(Boolean));
+  const jutsu = actor.items.filter(i => i.type === "jutsu");
+  const known = new Set(jutsu.flatMap(i => [i.system.identifier || i.name, i._stats?.compendiumSource ?? i.flags?.core?.sourceId]).filter(Boolean));
+  const lv = level ?? actor.system?.level ?? 20;
+  const cls = actor.items.find(i => i.type === "class");
   for ( const item of granted ?? [] ) {
-    const uuids = item?.type === "feat" ? [...(item.system.grants?.jutsu ?? [])] : [];
+    if ( item?.type !== "feat" ) continue;
+    const source = item._stats?.compendiumSource ?? item.flags?.core?.sourceId ?? item.uuid;
+    // Feature sweep: jutsu granted at a level (Reaper's Expanded jutsu) come at that level, stamped with it
+    // so Remove level takes them back. `onlyLevel`: a level-up hands out just that level's.
+    const entries = [
+      ...(onlyLevel ? [] : [...(item.system.grants?.jutsu ?? [])].map(uuid => ({ uuid, stamp: item.flags?.n5e?.advancement ?? false }))),
+      ...[...(item.system.grants?.jutsuByLevel ?? [])].filter(g => g.uuid && (onlyLevel ? g.level === onlyLevel : g.level <= lv))
+        .map(g => ({ uuid: g.uuid, stamp: cls ? { origin: cls.id, level: Math.max(g.level, item.flags?.n5e?.advancement?.level ?? 1), step: "granted" } : false }))
+    ];
     const replacements = [];
-    for ( const uuid of uuids ) {
+    for ( const { uuid, stamp } of entries ) {
+      // Already granted by this same feature: nothing to do.
+      if ( jutsu.some(j => (j._stats?.compendiumSource ?? j.flags?.core?.sourceId) === uuid && j.system.learned?.source === source) ) continue;
       const doc = await fromUuid(uuid);
       if ( !doc || doc.type !== "jutsu" ) {
         ui.notifications?.warn(`N5e | ${item.name}: missing granted jutsu ${uuid}`);
@@ -86,8 +99,7 @@ export async function grantFeatureJutsu(actor, granted) {
         continue;
       }
       known.add(uuid); known.add(doc.system.identifier || doc.name);
-      const source = item._stats?.compendiumSource ?? item.flags?.core?.sourceId ?? item.uuid;
-      const { data, block } = learningData(actor, doc, { slot: { mode: "bonus", source, grantedBy: item.name, filter: null }, stamp: item.flags?.n5e?.advancement ?? false });
+      const { data, block } = learningData(actor, doc, { slot: { mode: "bonus", source, grantedBy: item.name, filter: null }, stamp });
       // A feature's grant is given even below the ability requirement (it can't be cast until then).
       if ( block ) await alertLearning(actor, doc.name, [`${block} Granted by ${item.name}; it can't be cast until then.`]);
       for ( const k of ["clanOrigin", "clanLevel"] ) if ( item.flags?.n5e?.[k] != null ) foundry.utils.setProperty(data, `flags.n5e.${k}`, item.flags.n5e[k]);
