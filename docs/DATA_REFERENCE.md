@@ -1067,3 +1067,7 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 - Feat-type items (features, feats, traits) `system.bonusJutsu` `{count, maxRank, discipline, section, keyword}`: Bonus Jutsu slots with optional limits; `system.grants.jutsu` (uuids): jutsu granted outright as Bonus Jutsu when the item is gained (level-up, clan, a sheet drop; workflow/learn-jutsu.mjs grantFeatureJutsu).
 - Slots are derived (rules/jutsu-slots.mjs `jutsuSlots`): class open = Jutsu Known − class jutsu; bonus open per source = count − picked. Learned jutsu carry `flags.n5e.advancement` (class and level) so Remove level takes them back.
 - `game.n5e.browser("jutsu", {filters, learning: actor})`: preset filters and the Learning banner.
+
+### LVL1 L1
+
+- Feat-type item `flags.n5e.replacementSlots`: `[{jutsu, name, discipline, section, maxRank}]`, one Bonus Jutsu slot per granted jutsu already known; jutsu learned into it carry `learned.source` "<feature source>#<granted jutsu uuid>". `rules/jutsu-slots.mjs learnBlock` (ability requirement), `replacementFor`.

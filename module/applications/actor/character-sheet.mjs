@@ -605,7 +605,13 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
 
   /** Delete an owned item (asks first). */
   static async #onDeleteItem(event, target) {
-    await CharacterSheet.#itemFrom.call(this, target)?.deleteDialog();
+    const item = CharacterSheet.#itemFrom.call(this, target);
+    if ( !item ) return;
+    // LVL1 L1: granted jutsu can't be voluntarily unlearned: deleting one alerts the player and the GM.
+    const { grantedBy, alertLearning } = await import("../../workflow/learn-jutsu.mjs");
+    const from = grantedBy(this.actor, item);
+    const deleted = await item.deleteDialog();
+    if ( deleted && from ) await alertLearning(this.actor, item.name, [`a jutsu granted by ${from}; granted jutsu can't be voluntarily unlearned.`], "unlearned");
   }
 
   /** "Use" on an item row: jutsu cast, weapons attack, features pay their cost, others post a card. */

@@ -1,3 +1,11 @@
+## 0.100.0-alpha.1 — LVL1 L1: jutsu learning rules (ability requirement, granted jutsu)
+
+King 2026-11-24: the level-up update's remaining gaps (spec docs/LVL1_SPEC.md, Q1–Q13 answered); L1 first.
+
+- **Ability score requirement blocks learning:** B-Rank 16, A-Rank 18, S-Rank 20 in the jutsu's ability (not Hijutsu), on a sheet drop, the browser's +, and the level-up window (this level's ASI counts). A feature's outright grant is still given, with an alert that it can't be cast until then.
+- **Granted jutsu already known:** the feature gives a replacement Bonus Jutsu slot instead (same discipline and section, up to that jutsu's rank); the level-up window shows it as its own card.
+- **Deleting a granted jutsu** from the sheet alerts the player and the GM (granted jutsu can't be voluntarily unlearned).
+
 ## 0.99.0-alpha.1 — NT1: learn jutsu through the Jutsu Browser; Class and Bonus Jutsu
 
 King 2026-11-24 (NT1, Q1–Q6 answered). Spec docs/NT1_SPEC.md.

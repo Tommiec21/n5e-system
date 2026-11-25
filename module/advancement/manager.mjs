@@ -6,7 +6,16 @@
  */
 import { validateItemChoices } from "./eligibility.mjs";
 import { learningData, alertLearning, grantFeatureJutsu } from "../workflow/learn-jutsu.mjs";
-import { jutsuSlots } from "../rules/jutsu-slots.mjs";
+import { jutsuSlots, learnBlock } from "../rules/jutsu-slots.mjs";
+
+/** The actor's abilities after this level's ASI (+1), for the jutsu ability requirement (LVL1 L1). */
+function probeAfterAsi(actor, steps, sel) {
+  const asi = steps.find(s => s.type === "asi");
+  const up = asi ? sel[asi.id]?.ability : "";
+  if ( !up ) return actor;
+  const sys = actor.system;
+  return { name: actor.name, items: actor.items, system: { ...sys, abilities: { ...sys.abilities, [up]: { ...sys.abilities[up], value: (sys.abilities[up]?.value ?? 10) + 1 } } } };
+}
 
 const FLAG = "advancement";
 
@@ -105,6 +114,9 @@ export async function applyLevel(actor, cls, level, steps, sel) {
             ? { mode: "bonus", source: st.sourceUuid, grantedBy: st.sourceName, filter: st.filter }
             : { mode: "class", source: "", grantedBy: "", filter: null, overLimit: n >= (st.count ?? 0) };
           const { data, problems } = learningData(actor, doc, { slot, stamp: { ...stamp, step: st.id }, slots, maxRank: st.maxRank ?? "" });
+          const block = learnBlock(probeAfterAsi(actor, steps, sel), doc);
+          // LVL1 L1: below the ability requirement it isn't learned (the window already refused it).
+          if ( block ) { ui.notifications?.error(block); continue; }
           create.push(data);
           if ( problems.length ) learnAlerts.push([doc.name, problems]);
         }

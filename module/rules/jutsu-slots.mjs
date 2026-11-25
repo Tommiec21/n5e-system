@@ -10,8 +10,14 @@
  * specific jutsu granted outright (each is a Bonus Jutsu too). Slots are derived, never stored: open =
  * limit - used, so Remove level and lost features fix themselves.
  *
- * Nothing here blocks (King: an alert for player and GM, never a block): learnProblems returns reasons.
+ * Only the ability score requirement blocks (LVL1 L1, King: B-Rank 16, A-Rank 18, S-Rank 20 in the jutsu's
+ * ability; not Hijutsu): learnBlock. Everything else is an alert for player and GM: learnProblems.
+ * LVL1 L1: a jutsu a feature grants that the character already knows becomes a replacement Bonus Jutsu
+ * slot on that feature (flags.n5e.replacementSlots: [{jutsu, name, discipline, section, maxRank}]: same
+ * discipline and section, up to the granted jutsu's rank); jutsu learned into it carry the source
+ * "<feature source>#<granted jutsu uuid>".
  */
+import { abilityRequirement } from "./progression.mjs";
 
 export const RANKS = ["E", "D", "C", "B", "A", "S"];
 const list = v => (Array.isArray(v) ? v : v instanceof Set ? [...v] : v ? [...v] : []);
@@ -35,13 +41,56 @@ export function filterText(f = {}, labels = {}) {
     f.section ? labels.section?.(f.section) ?? f.section : "", f.keyword ? labels.keyword?.(f.keyword) ?? f.keyword : ""].filter(Boolean).join(" · ");
 }
 
-/** Items on the actor that give Bonus Jutsu: [{id, uuid, name, count, filter, fixed: [uuids]}]. */
+/** The source key a feature's Bonus Jutsu carry (its compendium source, else its own uuid). */
+export const sourceKey = i => i._stats?.compendiumSource ?? i.flags?.core?.sourceId ?? i.uuid;
+
+/**
+ * Bonus Jutsu slot entries on the actor: one per feature with slots or outright grants, and one per
+ * replacement slot. [{id, uuid (source key), keys, name, count, filter, fixed: [uuids], replaces}]
+ */
 export function bonusSources(actor) {
-  return items(actor).filter(i => i.type === "feat" && ((i.system.bonusJutsu?.count ?? 0) > 0 || list(i.system.grants?.jutsu).length))
-    .map(i => ({ id: i.id, uuid: i._stats?.compendiumSource ?? i.flags?.core?.sourceId ?? i.uuid, name: i.name,
-      count: i.system.bonusJutsu?.count ?? 0, fixed: list(i.system.grants?.jutsu),
+  const out = [];
+  for ( const i of items(actor).filter(x => x.type === "feat") ) {
+    const key = sourceKey(i);
+    const count = i.system.bonusJutsu?.count ?? 0;
+    const fixed = list(i.system.grants?.jutsu);
+    if ( count > 0 || fixed.length ) out.push({ id: i.id, uuid: key, keys: [i.id, i.uuid, key].filter(Boolean), name: i.name, count, fixed,
       filter: { maxRank: i.system.bonusJutsu?.maxRank ?? "", discipline: i.system.bonusJutsu?.discipline ?? "",
-        section: i.system.bonusJutsu?.section ?? "", keyword: i.system.bonusJutsu?.keyword ?? "" } }));
+        section: i.system.bonusJutsu?.section ?? "", keyword: i.system.bonusJutsu?.keyword ?? "" } });
+    for ( const r of list(i.flags?.n5e?.replacementSlots) ) {
+      const k = `${key}#${r.jutsu}`;
+      out.push({ id: i.id, uuid: k, keys: [k, `${i.id}#${r.jutsu}`], name: `${i.name} (instead of ${r.name})`, count: 1, fixed: [], replaces: r.jutsu,
+        filter: { maxRank: r.maxRank ?? "", discipline: r.discipline ?? "", section: r.section ?? "", keyword: "" } });
+    }
+  }
+  return out;
+}
+
+/** The replacement slot's limits for a granted jutsu already known: same discipline and section, up to its rank. */
+export function replacementFor(jutsu) {
+  const s = jutsu.system ?? {};
+  const buki = s.discipline === "tai" && list(s.keywords).includes("bukijutsu");
+  return { jutsu: jutsu.uuid ?? "", name: jutsu.name, discipline: buki ? "buki" : s.discipline ?? "", section: s.section ?? "", maxRank: s.rank ?? "" };
+}
+
+/**
+ * LVL1 L1 (King: block): the ability score requirement to learn a ranked jutsu (B 16, A 18, S 20) in its
+ * ability (an override, else any of its disciplines' abilities or a keyword alternative). Hijutsu are
+ * exempt. Returns the reason it is blocked, or "".
+ */
+export function learnBlock(actor, jutsu) {
+  const s = jutsu.system ?? {};
+  if ( s.hijutsu?.clan || list(s.keywords).includes("hijutsu") ) return "";
+  const need = abilityRequirement(s.rank);
+  if ( need == null ) return "";
+  const sys = actor?.system ?? {};
+  const discs = [...new Set([s.discipline, ...list(s.disciplines)].filter(Boolean).map(d => (d === "buki" ? "tai" : d)))];
+  const candidates = new Set(s.ability ? [s.ability] : discs.map(d => sys.disciplines?.[d]?.ability).filter(Boolean));
+  if ( !s.ability ) for ( const kw of [...list(s.keywords), ...discs.map(d => `discipline:${d}`)] ) for ( const alt of list(sys.modifiers?.keywordAbility?.[kw]) ) candidates.add(alt);
+  if ( !candidates.size ) return "";
+  const best = [...candidates].sort((a, b) => (sys.abilities?.[b]?.value ?? 0) - (sys.abilities?.[a]?.value ?? 0))[0];
+  const have = sys.abilities?.[best]?.value ?? 0;
+  return have >= need ? "" : `${jutsu.name} needs ${String(best).toUpperCase()} ${need} to learn (${s.rank}-Rank); ${actor?.name ?? "the character"} has ${have}.`;
 }
 
 /**
@@ -55,8 +104,7 @@ export function jutsuSlots(actor) {
   const classUsed = jutsu.filter(j => learnedMode(j) === "class").length;
   const bonus = jutsu.filter(j => learnedMode(j) === "bonus");
   const sources = bonusSources(actor).map(s => {
-    const item = items(actor).find(i => i.id === s.id);
-    const mine = bonus.filter(j => sourceMatches(item, j.system.learned?.source));
+    const mine = bonus.filter(j => s.keys.includes(j.system.learned?.source));
     const fixedNames = new Set(s.fixed);
     const fixedHad = mine.filter(j => fixedNames.has(j._stats?.compendiumSource ?? j.flags?.core?.sourceId)).length;
     const picked = mine.length - fixedHad;

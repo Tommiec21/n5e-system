@@ -16,7 +16,7 @@ import {
 } from "../advancement/steps.mjs";
 import { applyLevel } from "../advancement/manager.mjs";
 import { itemChoiceAllowed, validateItemChoices } from "../advancement/eligibility.mjs";
-import { learnProblems, browserFilters, filterText, matchesFilter } from "../rules/jutsu-slots.mjs";
+import { learnProblems, learnBlock, browserFilters, filterText, matchesFilter, replacementFor } from "../rules/jutsu-slots.mjs";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 const esc = s => foundry.utils.escapeHTML?.(String(s ?? "")) ?? String(s ?? "");
@@ -128,7 +128,18 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
       if ( (b.count ?? 0) > 0 ) steps.push({ id: `bonus:${uuid}`, type: "bonusJutsu", title: `Bonus jutsu: ${doc.name}`, count: b.count,
         sourceUuid: uuid, sourceName: doc.name, maxRank: b.maxRank || "",
         filter: { maxRank: b.maxRank ?? "", discipline: b.discipline ?? "", section: b.section ?? "", keyword: b.keyword ?? "" } });
-      for ( const j of doc.system.grants?.jutsu ?? [] ) granted.push({ jutsu: j, from: doc.name });
+      for ( const j of doc.system.grants?.jutsu ?? [] ) {
+        // LVL1 L1: already known: a replacement Bonus Jutsu slot (same discipline and section, up to its rank).
+        const jd = await this.#doc(j);
+        const known = jd && this.actor.items.some(i => i.type === "jutsu" && ((i.system.identifier || i.name) === (jd.system.identifier || jd.name) || (i._stats?.compendiumSource ?? i.flags?.core?.sourceId) === j));
+        granted.push({ jutsu: j, from: doc.name, known: !!known });
+        if ( known ) {
+          const r = replacementFor(jd);
+          steps.push({ id: `bonus:${uuid}#${j}`, type: "bonusJutsu", title: `Bonus jutsu: ${doc.name} (instead of ${jd.name})`, count: 1,
+            sourceUuid: `${uuid}#${j}`, sourceName: doc.name, maxRank: r.maxRank,
+            filter: { maxRank: r.maxRank, discipline: r.discipline, section: r.section, keyword: "" } });
+        }
+      }
     }
     if ( granted.length ) steps.push({ id: "granted:jutsu", type: "grantedJutsu", title: "Jutsu granted", granted });
     return steps;
@@ -143,6 +154,9 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
     if ( doc?.type !== "jutsu" ) return;
     const known = this.actor.items.some(i => i.type === "jutsu" && (i.system.identifier || i.name) === (doc.system.identifier || doc.name));
     if ( known ) return ui.notifications.warn(`${this.actor.name} already knows ${doc.name}.`);
+    // LVL1 L1 (King): below the ability requirement it can't be learned (this level's ASI counts).
+    const block = learnBlock(this.#probe(), doc);
+    if ( block ) return ui.notifications.error(block);
     const slotSteps = (this._steps ?? []).filter(s => s.type === "jutsu" || s.type === "bonusJutsu");
     if ( slotSteps.some(s => (this.#sel[s.id] ?? []).includes(doc.uuid)) ) return;
     const target = event.target.closest?.("[data-jutsu-step]")?.dataset.jutsuStep;
@@ -156,6 +170,16 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
     this.#sel[st.id] = [...(this.#sel[st.id] ?? []), doc.uuid];
     this.#docs.set(doc.uuid, doc);
     this.render();
+  }
+
+  /** The actor as it will be after this level's ASI (ability score checks). */
+  #probe() {
+    const asi = (this._steps ?? []).find(s => s.type === "asi");
+    const up = asi ? this.#sel[asi.id]?.ability : "";
+    if ( !up ) return this.actor;
+    const sys = this.actor.system;
+    const abilities = { ...sys.abilities, [up]: { ...sys.abilities[up], value: (sys.abilities[up]?.value ?? 10) + 1 } };
+    return { name: this.actor.name, items: this.actor.items, system: { ...sys, abilities } };
   }
 
   /** NT1: open the Jutsu Browser with this slot's filters (all removable), learning for this character. */
@@ -177,6 +201,7 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
   /** @override */
   async _prepareContext(options) {
     const steps = await this.#steps();
+    this._steps = steps;
     const actor = this.actor;
     const ownedNames = new Set(actor.items.map(i => i.name.toLowerCase()));
     const poolSizes = {};
@@ -261,6 +286,8 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
             if ( !d ) continue;
             const problems = learnProblems(probe, d, { maxRank: st.maxRank ?? "", filter: st.type === "bonusJutsu" ? st.filter : null, keywords: N.keywords });
             if ( n >= st.count ) problems.push("Over this slot's count.");
+            const block = learnBlock(this.#probe(), d);
+            if ( block ) problems.unshift(`Blocked: ${block}`);
             view.picks.push({ value: u, name: d.name, img: d.img, rank: d.system.rank, warn: problems.join(" "),
               tip: this.#tip(d, `${d.system.rank}-Rank ${N.disciplines[d.system.group ?? d.system.discipline]?.label ?? ""}`) });
           }
@@ -271,7 +298,7 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
           view.granted = [];
           for ( const g of st.granted ) {
             const d = await this.#doc(g.jutsu);
-            view.granted.push({ name: d?.name ?? g.jutsu, img: d?.img, from: g.from, tip: d ? this.#tip(d) : "" });
+            view.granted.push({ name: d?.name ?? g.jutsu, img: d?.img, from: g.from, known: g.known, tip: d ? this.#tip(d) : "" });
           }
           break;
         }
