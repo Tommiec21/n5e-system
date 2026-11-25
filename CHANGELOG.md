@@ -1,3 +1,7 @@
+## 0.106.4-alpha.1 — Journal Desk access and Leaf emblem
+
+Adds the Hidden Leaf emblem to the desk header and a GM-only Journal Desk shortcut in the native Journal sidebar. Existing journals, sidebar controls and gameplay remain unchanged.
+
 ## 0.106.3-alpha.1 — Level-up cards and Classes compendium folders
 
 King 2026-11-25 (docs/LEFT1_SPEC.md).
