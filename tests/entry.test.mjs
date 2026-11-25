@@ -5,6 +5,7 @@
 import "./helpers/foundry-stub.mjs";
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { SHEET_DESIGNS } from "../module/applications/actor/sheet-designs.mjs";
 
 const hooks = {};
 const registered = { sheets: [], settings: [], templates: [] };
@@ -48,7 +49,8 @@ test("init hook registers models, documents, sheets, settings, statuses", async 
   assert.ok(CONFIG.statusEffects.find(s => s.id === "sealed"));
   assert.ok(CONFIG.statusEffects.find(s => s.id === "prone"), "states on the HUD");
   assert.equal(CONFIG.Combat.initiative.formula, "1d20 + @init");
-  assert.equal(registered.sheets.length, 13, "character, five character designs (SHEETS1), NPC, loot, hazard, vehicle, raw-data placeholder, item, effect");
+  assert.equal(registered.sheets.length, 8 + Object.keys(SHEET_DESIGNS).length, "base sheets plus registered optional character designs");
+  assert.ok(registered.actorSheetNames.includes("CharacterSheetDossier"), "Dossier is registered");
   // Foundry saves a chosen sheet as "n5e.<class name>": every design needs its own, stable name.
   for ( const n of ["Classic", "Glass", "Ink", "Scroll", "Oneui"] ) assert.ok(registered.actorSheetNames.includes(`CharacterSheet${n}`), n);
   assert.equal(new Set(registered.actorSheetNames).size, registered.actorSheetNames.length, "unique sheet ids");

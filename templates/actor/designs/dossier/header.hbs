@@ -1,0 +1,10 @@
+{{!-- Dossier uses the current identity and leveling controls without owning their behavior. --}}
+<header class="n5e-head d-head">
+  <div class="ds-brand"><img src="systems/n5e/assets/journal/leaf.svg" alt="Hidden Leaf emblem"><span>Shinobi Dossier</span><b>Level {{d.header.level}}</b></div>
+  <div class="ds-identity-row">
+    {{> "systems/n5e/templates/actor/designs/shared/identity.hbs" h=d.header}}
+    {{> "systems/n5e/templates/actor/designs/shared/header-buttons.hbs" h=d.header}}
+  </div>
+  {{> "systems/n5e/templates/actor/designs/shared/xp.hbs" h=d.header}}
+  {{> "systems/n5e/templates/actor/designs/shared/abilities.hbs" h=d.header}}
+</header>
