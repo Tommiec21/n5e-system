@@ -43,7 +43,7 @@ const refreshActor = actor => {
 export function registerBloodiedMarker() {
   Hooks.on("refreshToken", token => draw(token));
   Hooks.on("updateActor", actor => refreshActor(actor));
-  const all = () => { for ( const t of canvas?.tokens?.placeables ?? [] ) draw(t); };
+  const all = () => { for ( const t of globalThis.canvas?.tokens?.placeables ?? [] ) draw(t); };
   Hooks.on("updateSetting", setting => { if ( String(setting?.key ?? "").startsWith("n5e.") ) all(); });
   Hooks.on("canvasReady", all);
   all();
