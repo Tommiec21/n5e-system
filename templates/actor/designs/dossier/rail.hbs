@@ -1,7 +1,14 @@
 {{!-- The persistent rail retains the original portrait action, resources and conditional death saves. --}}
 <aside class="n5e-rail d-rail">
   <div class="d-portrait-wrap"><img class="d-portrait" src="{{d.rail.img}}" alt="{{d.rail.name}}" {{#if editable}}data-action="editImage" data-tooltip="Change portrait"{{/if}}></div>
-  {{> "systems/n5e/templates/actor/designs/shared/stats.hbs" r=d.rail}}
+  {{!-- Compact labels apply only to Dossier; the existing values, roll action and tooltips remain intact. --}}
+<div class="d-stats">
+  <div class="d-stat ac" data-tooltip-html="{{d.rail.ac.tip}}"><b>{{d.rail.ac.value}}</b><span class="lbl">Armor Class</span></div>
+  <div class="d-stat dr" data-tooltip-html="{{d.rail.dr.tip}}"><b>{{d.rail.dr.value}}</b><span class="lbl">DR</span></div>
+  <div class="d-stat init rollable" data-action="rollInit" data-tooltip-html="{{d.rail.initiative.tip}}"><b>{{d.rail.initiative.value}}</b><span class="lbl">Init</span></div>
+  <div class="d-stat speed" data-tooltip-html="{{d.rail.speed.tip}}"><b class="{{#if d.rail.speed.halved}}warn{{/if}}">{{d.rail.speed.value}}</b><span class="lbl">SPD</span></div>
+  <div class="d-stat prof" data-tooltip-html="{{d.rail.profTip}}"><b>{{d.rail.prof}}</b><span class="lbl">Prof</span></div>
+</div>
   {{> "systems/n5e/templates/actor/designs/shared/meters.hbs" r=d.rail}}
   {{> "systems/n5e/templates/actor/designs/shared/dice.hbs" r=d.rail}}
   {{> "systems/n5e/templates/actor/designs/shared/resources.hbs" r=d.rail}}

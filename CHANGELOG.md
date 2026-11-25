@@ -1,3 +1,7 @@
+## 0.109.2-alpha.1 — Dossier readability
+
+Shortens Dossier rail labels to Init, SPD and Prof. Ninja Naruto is limited to section headings and the Dossier title; stat, feature and jutsu names return to ordinary readable fonts. No gameplay or other-design changes.
+
 ## 0.109.1-alpha.1 — Shinobi Dossier Main sheet
 
 Adds optional Shinobi Dossier: parchment, Leaf imagery, forest-green headers, resource rail and compact Main layout using existing sheet actions and data. Other tabs remain shared; their detailed styling is scheduled in SD03–SD05. No gameplay changes or live verification.
