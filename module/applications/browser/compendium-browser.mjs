@@ -22,7 +22,7 @@ export default class CompendiumBrowser extends HandlebarsApplicationMixin(Applic
     window: { title: "N5e Compendium Browser", icon: "fa-solid fa-book-open", resizable: true },
     position: { width: 900, height: 680 },
     actions: {
-      tab: CompendiumBrowser.#onTab, open: CompendiumBrowser.#onOpen, add: CompendiumBrowser.#onAdd,
+      tab: CompendiumBrowser.#onTab, open: CompendiumBrowser.#onOpen, add: CompendiumBrowser.#onAdd, select: CompendiumBrowser.#onSelect,
       more: CompendiumBrowser.#onMore, reset: CompendiumBrowser.#onReset
     }
   };
@@ -82,6 +82,28 @@ export default class CompendiumBrowser extends HandlebarsApplicationMixin(Applic
   /** NT1: the actor whose jutsu slots the banner shows (an Actor), or null. */
   learning = null;
 
+  /**
+   * CREATE1 C2 (King Q-C3): pick one item of a type (the sheet's Add Class / Clan / Background), as
+   * dnd5e's select mode: its own window, only that type (classes without subclasses), a Select button
+   * on each row. Resolves the picked uuid, or null when closed.
+   * @param {object} o
+   * @param {"class"|"clan"|"background"} o.type
+   * @param {Actor} [o.actor]
+   */
+  static pick({ type, actor = null } = {}) {
+    return new Promise(resolve => {
+      const label = game.i18n.localize(CONFIG.Item.typeLabels?.[type] ?? "") || type;
+      const win = new CompendiumBrowser({ id: `n5e-compendium-pick-${type}`, window: { title: `Choose a ${label}${actor ? ` for ${actor.name}` : ""}` } });
+      win.picking = { type, label, actor, resolve };
+      win.state.tab = "character";
+      win.state.sort = "name";
+      win.render({ force: true });
+    });
+  }
+
+  /** CREATE1 C2: the pick in progress ({type, label, actor, resolve}), or null. */
+  picking = null;
+
   /** NT1: banner text for the learning actor: open slots and where they come from. */
   async learningBanner() {
     const actor = this.learning;
@@ -128,7 +150,7 @@ export default class CompendiumBrowser extends HandlebarsApplicationMixin(Applic
     // King 2026-11-25: for a character, only its own clan's Hijutsu (rules/browser.mjs hijutsuVisible).
     const viewer = this.learning ?? (game.user.isGM ? null : game.user.character) ?? null;
     const viewerClan = viewer ? (viewer.items.find(i => i.type === "clan")?.system.identifier ?? "") : null;
-    const inTab = all.filter(e => e.tab === s.tab && hijutsuVisible(e, viewerClan));
+    const inTab = all.filter(e => e.tab === s.tab && hijutsuVisible(e, viewerClan) && (!this.picking || e.type === this.picking.type));
     const classNames = new Map(all.filter(e => e.type === "class").map(e => [e.identifier ?? "", e.name]));
     this.clanNames = new Map(all.filter(e => e.type === "clan").map(e => [e.identifier ?? "", e.name]));
     this.hijutsuNote = viewer && s.tab === "jutsu" ? `Hijutsu: ${viewerClan ? `only ${this.clanNames.get(viewerClan) ?? viewerClan}'s` : "none (no clan)"} (${viewer.name})` : "";
@@ -145,7 +167,9 @@ export default class CompendiumBrowser extends HandlebarsApplicationMixin(Applic
     }).filter(f => !f.isMulti || f.options.length);
     const rows = sortEntries(filterEntries(inTab, current, { search: s.search, inText: s.inText, tab: s.tab }), s.sort);
     return {
-      tabs: Object.entries(TABS).map(([key, t]) => ({ key, label: t.label, active: key === s.tab, count: all.filter(e => e.tab === key).length })),
+      tabs: Object.entries(TABS).filter(([key]) => !this.picking || key === s.tab)
+        .map(([key, t]) => ({ key, label: this.picking ? `${this.picking.label} choices` : t.label, active: key === s.tab, count: this.picking ? inTab.length : all.filter(e => e.tab === key).length })),
+      picking: this.picking ? { label: this.picking.label, actor: this.picking.actor?.name ?? "" } : null,
       filters, search: s.search, inText: s.inText,
       sorts: tabDef.sorts.map(k => ({ key: k, label: titleCase(k), selected: k === s.sort })),
       total: rows.length,
@@ -243,6 +267,23 @@ export default class CompendiumBrowser extends HandlebarsApplicationMixin(Applic
   static async #onOpen(event, target) {
     const doc = await fromUuid(target.closest("[data-uuid]").dataset.uuid);
     doc?.sheet?.render(true);
+  }
+
+  /** CREATE1 C2: the row picked; the picker closes and hands it back. */
+  static #onSelect(event, target) {
+    const uuid = target.closest("[data-uuid]")?.dataset.uuid;
+    const p = this.picking;
+    this.picking = null;
+    p?.resolve(uuid ?? null);
+    return this.close();
+  }
+
+  /** @override  Closing a picker without a pick resolves nothing. */
+  _onClose(options) {
+    super._onClose?.(options);
+    const p = this.picking;
+    this.picking = null;
+    p?.resolve(null);
   }
 
   static async #onAdd(event, target) {

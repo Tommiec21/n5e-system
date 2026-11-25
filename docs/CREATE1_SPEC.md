@@ -2,7 +2,7 @@
 
 King 2026-11-25: "Lets look into how dnd 5e handles the system." 1. A new character is prompted for its starting ability scores as the GM set the world up; default a mix of Point Buy and Standard Array the player toggles; Roll only when the GM turns it on. 2. The Class, Clan and Background buttons on the sheet open the compendium to pick one.
 
-Status: **spec; waiting on King's answers.**
+Status: **approved (King 2026-11-25, Q-C1–Q-C4); built 0.108.0-alpha.1.**
 
 ## How dnd5e does it (5.x)
 
@@ -48,4 +48,18 @@ Status: **spec; waiting on King's answers.**
 - **Q-C4:** the clan setup as one window (as now, with the new grid), or dnd5e-style steps (Ability increases → Skills and affinity → Starting options), one at a time?
 - **Q-C5 (answered):** King: "the current N5e Browser only has Jutsu." The other tabs were hidden by a bug (Foundry hides inactive ".tab" elements); fixed in 0.107.2-alpha.1, so Classes & Origins shows again.
 
+## King's answers (2026-11-25)
+
+- **Q-C1:** the methods are toggles (GM): Point Buy (with the number of points) and Standard Array (its values listed) on by default; Roll off, turned on by the GM (players roll and assign). GMs can add Standard Arrays for higher or lower power games; turning one on turns the others off.
+- **Q-C2:** both: the user who created the character, and a player the first time they open a character made for them.
+- **Q-C3:** each row has its own Select button.
+- **Q-C4:** one window.
+
+## Built (0.108.0-alpha.1)
+
+- **C1:** GM menu "N5e Starting Ability Scores" (Configure Settings): Point Buy toggle and points; Standard Arrays (on/off, values, Add array, remove); Roll toggle. Setting abilityGenerationConfig; the 0.107.1 world rule is replaced. The player's window: a toggle between the methods on, Point Buy's live points, the Standard Array's selects, Roll's "Roll the six scores" button (posted to chat, kept, no rerolls); "Already set by hand"; Cancel. Asked when a character is created (its creator) and the first time an owning player opens a character with no class (once per user); still asked before the first class, clan or background.
+- **C2:** Add Class / Add Clan / Add Background buttons (header bubbles, every design's header, the Features tab); a replace button beside each filled origin in edit mode. Each opens a separate browser window locked to that type (classes without subclasses) with a Select button per row; selecting runs what dropping does.
+- **C3:** clan setup's ability part is a table: each ability, its score now (without an old clan's increases), the clan increase (—, +1, +2) and the result, updating as picks change.
+
 ## Progress log
+- 2026-11-25 King: Q-C1 toggles (Point Buy with points, Standard Array, Roll by GM; GM arrays, one on), Q-C2 both, Q-C3 Select per row, Q-C4 one window. Claude: C1–C3 built and published 0.108.0-alpha.1.

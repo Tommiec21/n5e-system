@@ -200,9 +200,6 @@ export const rules = {
 
   // Character
   // LVL1 L6 (King 2026-11-24): leveling. XP by default; the GM can switch to milestones or use both.
-  abilityGeneration: { group: "character", type: "choice", default: "any", label: "Starting ability scores",
-    choices: { any: "The player picks the method", standard: "Standard Array (15, 14, 13, 12, 11, 10)", pointBuy: "Point Buy (30 points, 8–15)", roll: "Roll (4d6, drop the lowest, six times)" },
-    hint: "How new characters get their six starting scores (the book: the table picks one method for everyone). Clan, background and class increases go on top." },
   leveling: { group: "character", type: "choice", default: "xp", label: "Leveling",
     choices: { xp: "XP (the book's table)", milestone: "Milestone (the GM grants levels)", both: "Both (XP, or a level the GM grants)" },
     hint: "How characters earn levels. Award XP and Grant level are in the Party Overview." },

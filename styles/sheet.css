@@ -1103,3 +1103,22 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
 
 /* The window title is an h1: our heading colour (dark ink) made it unreadable on Foundry's dark header. */
 .n5e-v2 .window-header h1.window-title { color: inherit; font-family: inherit; font-size: inherit; font-weight: inherit; }
+
+/* CREATE1: the starting scores window (method toggle) and the clan setup's ability table. */
+.n5e-ability-setup .ab-methods { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 6px 0; }
+.n5e-ability-setup .ab-method { display: inline-flex; align-items: center; gap: 4px; font-weight: 600; }
+.n5e-ability-setup .ab-section[hidden] { display: none; }
+.n5e-clan-asi { width: 100%; border-collapse: collapse; margin: 6px 0; }
+.n5e-clan-asi th, .n5e-clan-asi td { padding: 3px 6px; text-align: center; border-bottom: 1px solid #0002; }
+.n5e-clan-asi th:first-child, .n5e-clan-asi td:first-child { text-align: left; }
+.n5e-clan-asi .res { font-weight: 700; }
+.n5e-clan-asi tr.up .res { color: #2e7d32; }
+.n5e-abgen fieldset { margin-bottom: 8px; }
+.n5e-abgen .row { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+.n5e-abgen .row.arr input[type="text"], .n5e-abgen .row.add input { flex: 1; }
+.n5e-abgen .hint { font-size: 11px; opacity: .75; }
+/* CREATE1 C2: Add Class / Clan / Background buttons and the replace buttons. */
+.n5e-v2 .bubble.empty.pick, .n5e-v2 .origin.empty.pick, .n5e-v2 .d-origin.empty.pick { cursor: pointer; border-style: dashed; font: inherit; height: auto; }
+.n5e-v2 .bubble.empty.pick:hover, .n5e-v2 .origin.empty.pick:hover, .n5e-v2 .d-origin.empty.pick:hover { border-color: var(--n5e-accent); }
+.n5e-v2 :is(.bubble-swap, .d-origin-swap) { width: 24px !important; height: 24px !important; padding: 0 !important; align-self: center; }
+.n5e-browser .b-select { white-space: nowrap; }

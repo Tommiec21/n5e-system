@@ -8,11 +8,13 @@
   <div class="d-origins">
     {{#each h.origins}}
       {{#if empty}}
-        <span class="d-origin empty" data-origin="{{kind}}" data-tooltip="{{label}}: drop one on the sheet">{{label}}: <b>{{name}}</b></span>
+        {{#if @root.editable}}<button type="button" class="d-origin empty pick" data-origin="{{kind}}" data-action="pickOrigin" data-kind="{{kind}}" data-tooltip="Choose a {{label}} from the compendium"><i class="fa-solid fa-plus"></i> Add {{label}}</button>
+        {{else}}<span class="d-origin empty" data-origin="{{kind}}" data-tooltip="{{label}}: drop one on the sheet">{{label}}: <b>{{name}}</b></span>{{/if}}
       {{else}}
         <span class="d-origin n5e-row {{kind}}" data-item-id="{{id}}" data-action="editItem" data-tooltip="Open {{label}}{{#if sub}} ({{sub}}){{/if}}">
           <img src="{{img}}" alt="" width="20" height="20"><b>{{name}}</b>{{#if sub}}<span class="sub">{{sub}}</span>{{/if}}
         </span>
+        {{#if @root.editMode}}<button type="button" class="d-origin-swap" data-action="pickOrigin" data-kind="{{kind}}" data-tooltip="Replace the {{label}} (choose another)" aria-label="Replace {{label}}"><i class="fa-solid fa-right-left"></i></button>{{/if}}
       {{/if}}
     {{/each}}
   </div>

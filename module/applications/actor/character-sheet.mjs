@@ -100,6 +100,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
       placeMark: CharacterSheet.#onPlaceMark,
       levelUp: CharacterSheet.#onLevelUp,
       startingScores: CharacterSheet.#onStartingScores,
+      pickOrigin: CharacterSheet.#onPickOrigin,
       levelDown: CharacterSheet.#onLevelDown,
       levelHistory: CharacterSheet.#onLevelHistory,
       toggleConcentration: CharacterSheet.#onToggleConcentration,
@@ -434,6 +435,16 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
       await grantFeatureJutsu(actor, made);
     }
     return created;
+  }
+
+  /** CREATE1 C2 (King): choose a class, clan or background from the compendium; then the same as dropping it. */
+  static async #onPickOrigin(event, target) {
+    const kind = target.dataset.kind;
+    const { default: CompendiumBrowser } = await import("../browser/compendium-browser.mjs");
+    const uuid = await CompendiumBrowser.pick({ type: kind, actor: this.actor });
+    if ( !uuid ) return null;
+    const doc = await fromUuid(uuid);
+    return doc ? this._onDropItem(null, doc) : null;
   }
 
   /** King 2026-11-25: set or change the starting ability scores. */

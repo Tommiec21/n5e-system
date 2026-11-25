@@ -1,3 +1,12 @@
+## 0.108.0-alpha.1 — CREATE1: character creation like dnd5e
+
+King 2026-11-25 (docs/CREATE1_SPEC.md).
+
+- **Starting ability scores, as the GM sets the world up:** a new GM menu, N5e Starting Ability Scores, toggles Point Buy (with its points), Standard Array (with its values; add more arrays for higher or lower power games, one on at a time) and Roll (off unless the GM turns it on). Default: Point Buy (30) and Standard Array (15, 14, 13, 12, 11, 10).
+- **Asked when a character is made:** to the user who created it, and the first time a player opens a character made for them. One window: toggle between the methods on, assign the six scores, Apply.
+- **Add Class / Add Clan / Add Background:** the empty origins on the sheet (header, every design, Features tab) are buttons. Each opens the compendium for that type with a Select button on every row; selecting does what dropping does. In edit mode, a button beside each origin replaces it.
+- **Clan ability increases:** the clan setup shows every ability's score now, the clan's +2 / +1 and the result.
+
 ## 0.107.2-alpha.1 — Compendium Browser: every tab shows; readable title
 
 King 2026-11-25.

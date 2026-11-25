@@ -1,0 +1,28 @@
+{{!-- CREATE1 C1 (King Q-C1): the GM's starting ability score methods. Context: c = cleanConfig(setting). --}}
+<div class="n5e-abgen">
+  <p class="hint">The methods players can pick from when they make a character. Clan, background and class increases go on top.</p>
+  <fieldset>
+    <legend><label><input type="checkbox" name="pointBuy.on" {{#if c.pointBuy.on}}checked{{/if}}> Point Buy</label></legend>
+    <label class="row">Points <input type="number" name="pointBuy.points" min="1" max="99" value="{{c.pointBuy.points}}"></label>
+    <p class="hint">Each score 8 to 15 before clan and background; costs 8=0, 9=1, 10=2, 11=3, 12=4, 13=5, 14=7, 15=9.</p>
+  </fieldset>
+  <fieldset>
+    <legend>Standard Array <span class="hint">(one at a time; turning one on turns the others off)</span></legend>
+    {{#each c.arrays}}
+      <div class="row arr">
+        <label><input type="checkbox" name="arrays.{{@index}}.on" data-array-toggle {{#if on}}checked{{/if}}> On</label>
+        <input type="text" name="arrays.{{@index}}.values" value="{{text}}" aria-label="Array {{@index}}">
+        {{#if ../canDelete}}<button type="button" data-action="deleteArray" data-index="{{@index}}" aria-label="Remove this array"><i class="fa-solid fa-trash"></i></button>{{/if}}
+      </div>
+    {{/each}}
+    <div class="row add">
+      <input type="text" name="newArray" placeholder="e.g. 17, 16, 14, 13, 12, 10" aria-label="New array">
+      <button type="button" data-action="addArray"><i class="fa-solid fa-plus"></i> Add array</button>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend><label><input type="checkbox" name="roll.on" {{#if c.roll.on}}checked{{/if}}> Roll (4d6, drop the lowest, six times)</label></legend>
+    <p class="hint">Players roll in the window (posted to chat, no rerolls) and assign the six results.</p>
+  </fieldset>
+  <footer class="row"><button type="submit"><i class="fa-solid fa-floppy-disk"></i> Save</button></footer>
+</div>

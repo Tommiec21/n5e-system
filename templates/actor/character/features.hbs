@@ -9,7 +9,8 @@
         {{#if @root.editMode}}<input type="number" min="1" max="20" value="{{levels}}" data-item-field="system.levels" aria-label="Class level">{{/if}}
       </div>
     {{else}}
-      <div class="origin empty">Drop a class</div>
+      {{#if @root.editable}}<button type="button" class="origin empty pick" data-action="pickOrigin" data-kind="class" data-tooltip="Choose a class from the compendium (or drop one on the sheet)"><i class="fa-solid fa-plus"></i> Add Class</button>
+      {{else}}<div class="origin empty">No class</div>{{/if}}
     {{/with}}
     {{#with vm.clanCard}}
       <div class="origin n5e-row" data-item-id="{{id}}">
@@ -17,12 +18,14 @@
         {{#if affinities}}<span class="sub">{{affinities}}</span>{{/if}}
       </div>
     {{else}}
-      <div class="origin empty">Drop a clan</div>
+      {{#if @root.editable}}<button type="button" class="origin empty pick" data-action="pickOrigin" data-kind="clan" data-tooltip="Choose a clan from the compendium (or drop one on the sheet)"><i class="fa-solid fa-plus"></i> Add Clan</button>
+      {{else}}<div class="origin empty">No clan</div>{{/if}}
     {{/with}}
     {{#with vm.backgroundCard}}
       <div class="origin n5e-row" data-item-id="{{id}}"><span class="lbl">Background</span><a class="title" data-action="editItem">{{name}}</a></div>
     {{else}}
-      <div class="origin empty">Drop a background</div>
+      {{#if @root.editable}}<button type="button" class="origin empty pick" data-action="pickOrigin" data-kind="background" data-tooltip="Choose a background from the compendium (or drop one on the sheet)"><i class="fa-solid fa-plus"></i> Add Background</button>
+      {{else}}<div class="origin empty">No background</div>{{/if}}
     {{/with}}
   </div>
   {{/unless}}

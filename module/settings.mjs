@@ -14,6 +14,8 @@ import ChatAppearanceConfig from "./applications/settings/chat-appearance.mjs";
 import JournalDesk from "./applications/gm/journal-desk.mjs";
 import { applyChatAppearance } from "./workflow/chat-appearance.mjs";
 import LimitsConfig from "./applications/settings/limits-config.mjs";
+import AbilityGenerationConfig from "./applications/settings/ability-generation.mjs";
+import { DEFAULT_CONFIG as ABILITY_GENERATION_DEFAULT } from "./rules/ability-generation.mjs";
 
 /**
  * Called at init: one hidden world setting per rule in config/rules.mjs (edited through the N5e Rules
@@ -80,6 +82,16 @@ export function registerSettings() {
   // default; each user may turn on their own copy (King Q-F1: both).
   game.settings.register("n5e", "chatAppearance", { scope: "world", config: false, type: Object, default: {}, onChange: () => applyChatAppearance() });
   game.settings.register("n5e", "chatAppearanceMine", { scope: "client", config: false, type: Object, default: {}, onChange: () => applyChatAppearance() });
+  // CREATE1 C1 (King Q-C1): the starting ability score methods players can pick from.
+  game.settings.register("n5e", "abilityGenerationConfig", { scope: "world", config: false, type: Object, default: structuredClone(ABILITY_GENERATION_DEFAULT) });
+  game.settings.registerMenu("n5e", "abilityGenerationMenu", {
+    name: "N5e Starting Ability Scores",
+    label: "Starting Ability Scores",
+    hint: "Which methods players get when they make a character: Point Buy (and its points), Standard Arrays, Roll.",
+    icon: "fa-solid fa-dice-d20",
+    type: AbilityGenerationConfig,
+    restricted: true
+  });
   game.settings.registerMenu("n5e", "chatAppearanceConfig", {
     name: "N5e Chat Card Appearance",
     label: "Open Chat Card Appearance",

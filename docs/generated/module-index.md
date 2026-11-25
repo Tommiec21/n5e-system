@@ -24,14 +24,14 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `api.mjs` | 176 | Optional integration check, loaded lazily so normal system startup does not load test UI. | `runSmokeTests`, `registerCondition`, `registerKeyword`, `registerSkillAction`, `registerDamageType`, `registerWeaponProperty`, `registerClanData`, `fall`, `automationAudit`, `socialEncounter`, `missionPlanner`, `indirectExposure`, `makeScroll`, `applyConditionCard`, `applyAmp`, `endAmp`, `journalDesk` |
 | `rules-settings.mjs` | 15 | System adapter for optional rules (SHARED1). | `rule` |
-| `settings.mjs` | 93 | World settings. | `registerSettings` |
+| `settings.mjs` | 105 | World settings. | `registerSettings` |
 
 ## module/applications/actor
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `character-designs.mjs` | 59 | Optional character sheet designs (SHEETS1; docs/SHEETS1_SPEC.md). | `designSheet`, `SHEET_DESIGNS`, `DESIGN_PARTS`, `DESIGN_TEMPLATE_PATHS` |
-| `character-sheet.mjs` | 924 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
+| `character-sheet.mjs` | 935 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
 | `hazard-sheet.mjs` | 103 | Hazard and vehicle sheets (PRESTD1 Part D-ii): the NPC sheet with one more tab. | `HazardSheet`, `VehicleSheet` |
 | `loot-sheet.mjs` | 86 | Loot actor sheet (PRESTD1 Part C): a pile, a merchant or the party stash. | `LootSheet` |
 | `npc-sheet.mjs` | 345 | NPC sheet (NPCUI1; King 2026-11-15, design canvas "N5e NPC Sheet Redesign"). | `NPC_TEMPLATE_PATHS`, `NPCSheet` |
@@ -41,7 +41,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `compendium-browser.mjs` | 312 | N5e Compendium Browser: every Item compendium (plus world items) in one filterable window, with a tab per kind of item. | `CompendiumBrowser`, `registerCompendiumBrowser` |
+| `compendium-browser.mjs` | 353 | N5e Compendium Browser: every Item compendium (plus world items) in one filterable window, with a tab per kind of item. | `CompendiumBrowser`, `registerCompendiumBrowser` |
 
 ## module/applications/effect
 
@@ -98,6 +98,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
+| `ability-generation.mjs` | 79 | CREATE1 C1 (King 2026-11-25, Q-C1): the GM's Starting Ability Scores setup. | `AbilityGenerationConfig` |
 | `chat-appearance.mjs` | 108 | CHATUI1 (King 2026-11-16): the Chat Card Appearance window. | `ChatAppearanceConfig` |
 | `limits-config.mjs` | 112 | Class & Clan limits (King 2026-11-21): every class, subclass and clan feature limit that comes back on a rest (resource pools and Amp uses), with a choice of... | `LimitsConfig`, `gatherLimits` |
 | `rules-config.mjs` | 63 | N5e Rules panel: every optional rule grouped, as toggles, numbers and choices. | `RulesConfig` |
@@ -146,7 +147,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `jutsu-colors.mjs` | 19 | Jutsu keyword colors (NPCUI1; King 2026-11-15). | `jutsuColors`, `jutsuPillPaper` |
 | `jutsu.mjs` | 151 | Jutsu registries: keywords, stimuli, components, nature releases, sections, upcast presets. | `keywords`, `featureTags`, `stimuli`, `components`, `natureReleases`, `affinities`, `jutsuSections`, `upcastPresets`, `costModes`, `reactionTriggers`, `riderTriggers`, `cloneTemplate`, `summonRanks` |
 | `missions.mjs` | 53 | Mission tables (PRESTD1 Part E, MISSION1). | `missionRewards`, `missionTiers`, `missionRankMultiplier`, `missionEncounters`, `missionRuleText` |
-| `rules.mjs` | 235 | Every optional or table rule the system automates, in one registry (King 2026-11-07: GMs control which rules apply). | `ruleGroups`, `rules` |
+| `rules.mjs` | 232 | Every optional or table rule the system automates, in one registry (King 2026-11-07: GMs control which rules apply). | `ruleGroups`, `rules` |
 | `social.mjs` | 74 | Social encounter tables (PRESTD1 Part F, SOCIAL1). | `socialAttitudes`, `socialTypes`, `socialMotivations`, `socialPitfalls`, `socialActions`, `socialNpcActions`, `socialOutcomeLabels` |
 
 ## module/data
@@ -228,7 +229,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `ability-generation.mjs` | 87 | Starting ability scores (King 2026-11-25; KB 01): Standard Array 15/14/13/12/11/10, Point Buy (30 points, 8–15 before clan and background; 8=0 9=1 10=2 11=3 ... | `ABILITY_KEYS`, `METHODS`, `pointBuyCost`, `scoreProblems`, `allowedMethods`, `newAbilityValues`, `recordedIncreases` |
+| `ability-generation.mjs` | 133 | Starting ability scores (King 2026-11-25; KB 01). | `ABILITY_KEYS`, `BOOK_ARRAY`, `DEFAULT_CONFIG`, `parseArray`, `cleanConfig`, `addArray`, `toggleArray`, `methodsFrom`, `pointBuyCost`, `scoreProblems`, `newAbilityValues`, `recordedIncreases`, `clanIncreasePreview` |
 | `ac.mjs` | 105 | Armor Class (KB 01, 08, 12). | `AC_FORMULAS`, `computeAC`, `overlayAC` |
 | `action-card.mjs` | 394 | Single action card (pure; CARD1, King 2026-11-14). | `CARD_KINDS`, `SECTION_ORDER`, `normalizeResults`, `encodeResults`, `savesOf`, `damagesOf`, `appliedOf`, `allApplied`, `allSaves`, `savesForDamage`, `cardSections`, `resultsFromLinked`, `mergeTargets`, `addCardResult`, `mergedResults`, `cardTargetRows`, `cardReactionWindows`, `sectionStates` |
 | `action-effects.mjs` | 110 | Action effects (STD2; docs/STD_SPEC.md). | `actionEffectsOf`, `cardElements`, `spentBy`, `describeElement`, `summarizeElement` |
@@ -349,7 +350,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `ability-scores.mjs` | 116 | Starting ability scores (King 2026-11-25): the first step of making a character. | `hasStartingScores`, `setStartingScores`, `ensureStartingScores` |
+| `ability-scores.mjs` | 169 | Starting ability scores (King 2026-11-25; CREATE1 C1). | `hasStartingScores`, `generationConfig`, `setStartingScores`, `ensureStartingScores`, `registerStartingScorePrompts`, `maybePromptOwner` |
 | `action-card.mjs` | 616 | Single action card (Foundry side; CARD1, King 2026-11-14). | `actionCardOn`, `addAreaTargets`, `cardFlag`, `cardOfLinked`, `recordLinked`, `receiveCardResult`, `syncCards`, `immuneTargets`, `renderActionCard`, `pendingSaveActors`, `postEffectSummary`, `onActionCardClick`, `registerActionCardHooks` |
 | `action-effects.mjs` | 25 | Action effects on cards (STD2; rules/action-effects.mjs). | `consumedOn`, `cardActionContext` |
 | `activity-buttons.mjs` | 591 | Chat card buttons for activities, and what happens when they're clicked. | `damageButtons`, `applyButtons`, `activityButtons`, `onActivityClick`, `highestDiscipline`, `payPoolCost` |
@@ -367,7 +368,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `cast-plan.mjs` | 177 | Cast plan (pure): everything casting a jutsu will change, worked out before anything is spent, so the cast dialog can preview it and refuse what isn't allowed. | `castPlan` |
 | `cast.mjs` | 260 | Casting a jutsu (Foundry side): the cast dialog, spending, and the cast card. | `castJutsu`, `executeCast`, `postCastCard`, `spendsChakra`, `RANKS` |
 | `chat-appearance.mjs` | 41 | CHATUI1 (King 2026-11-16): chat font sizes and fonts, set globally (rules/chat-appearance.mjs). | `currentAppearance`, `applyChatAppearance`, `isN5eMessage`, `tagN5eMessage`, `availableFonts` |
-| `clan.mjs` | 93 | Explicit clan setup; source dependencies resolve before replacing any old origin. | `addClan` |
+| `clan.mjs` | 118 | Explicit clan setup; source dependencies resolve before replacing any old origin. | `addClan` |
 | `clash.mjs` | 222 | Jutsu Clash workflow (CLASH1). | `clashButton`, `clashRank`, `startClash`, `renderClash`, `rollClash`, `decideClash`, `dispelSide`, `endEffectsOf`, `applyClashLoss`, `registerClashHooks` |
 | `commands.mjs` | 31 | Shared execution boundary for actor mutations. | `withActorLock`, `withActorLocks`, `activityTurnStamp`, `resourceChange` |
 | `concentration.mjs` | 109 | Concentration lifecycle (CONC1; rules/concentration.mjs). | `breakConcentration`, `dropLostReadied`, `checkConcentration`, `expireReadied`, `releaseReadied`, `postReadyCard`, `onRenderReadyCard`, `registerConcentrationHooks` |

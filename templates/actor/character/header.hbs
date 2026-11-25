@@ -12,12 +12,15 @@
     <div class="bubbles">
       {{#each vm.origins}}
         {{#if empty}}
-          <div class="bubble empty" data-origin="{{kind}}"><span class="lbl">{{label}}</span><b>{{name}}</b></div>
+          {{!-- CREATE1 C2: an empty origin opens the compendium to choose one (or drop one on the sheet). --}}
+          {{#if @root.editable}}<button type="button" class="bubble empty pick" data-origin="{{kind}}" data-action="pickOrigin" data-kind="{{kind}}" data-tooltip="Choose a {{label}} from the compendium"><span class="lbl">{{label}}</span><b><i class="fa-solid fa-plus"></i> Add {{label}}</b></button>
+          {{else}}<div class="bubble empty" data-origin="{{kind}}"><span class="lbl">{{label}}</span><b>{{name}}</b></div>{{/if}}
         {{else}}
           <div class="bubble n5e-row {{kind}}" data-item-id="{{id}}" data-action="editItem" data-tooltip="Open {{label}}">
             <img src="{{img}}" alt="" width="34" height="34">
             <span class="txt"><b>{{name}}</b><span class="sub">{{sub}}</span></span>
           </div>
+          {{#if @root.editMode}}<button type="button" class="bubble-swap" data-action="pickOrigin" data-kind="{{kind}}" data-tooltip="Replace the {{label}} (choose another)" aria-label="Replace {{label}}"><i class="fa-solid fa-right-left"></i></button>{{/if}}
         {{/if}}
       {{/each}}
     </div>
