@@ -1093,3 +1093,9 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
 .n5e .level-uuids li { display: flex; align-items: center; gap: 6px; }
 .n5e .level-uuids .lvl { display: inline-flex; align-items: center; gap: 4px; margin-left: auto; font-size: 11px; }
 .n5e .level-uuids .lvl input { width: 3.2em; height: 22px; text-align: center; }
+
+/* King 2026-11-25: starting ability scores (character creation). */
+.n5e-ability-setup .ab-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 14px; margin-top: 6px; }
+.n5e-ability-setup .ab-pick { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-weight: 600; }
+.n5e-ability-setup .ab-pick :is(input, select) { width: 5.5em; }
+.n5e .ability-scores.ready { box-shadow: 0 0 0 2px var(--n5e-accent, #b5642b), 0 0 8px var(--n5e-accent, #b5642b); }

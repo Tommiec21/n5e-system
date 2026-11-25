@@ -27,6 +27,8 @@ export const TABS = {
       { field: "rank", label: "Rank", kind: "multi" },
       { field: "discipline", label: "Discipline", kind: "multi" },
       { field: "section", label: "Section", kind: "multi" },
+      // King 2026-11-25: a Hijutsu's clan (a character only ever sees its own clan's; see hijutsuVisible).
+      { field: "hijutsuClan", label: "Clan (Hijutsu)", kind: "multi" },
       { field: "keywords", label: "Keywords (all)", kind: "all" },
       { field: "activation", label: "Activation", kind: "multi" },
       { field: "cost", label: "Chakra cost", kind: "range" },
@@ -101,6 +103,7 @@ export function entryFrom(e, { pack = "" } = {}) {
     // Bukijutsu: a Taijutsu jutsu with the bukijutsu keyword (DATA1).
     discipline: s.discipline === "tai" && arr(s.keywords).includes("bukijutsu") ? "buki" : s.discipline || "",
     section: s.section || "",
+    hijutsuClan: s.hijutsu?.clan || "",
     keywords: arr(s.keywords),
     activation: s.activation?.type || "",
     cost: s.cost?.mode === "chakra" ? Number(s.cost.value) || 0 : null,
@@ -199,6 +202,18 @@ export function sortEntries(entries, by = "name") {
 }
 
 /** The index fields the window asks each compendium for (everything entryFrom reads). */
-export const INDEX_FIELDS = ["system.identifier", "system.rank", "system.discipline", "system.section", "system.keywords", "system.activation.type",
+export const INDEX_FIELDS = ["system.identifier", "system.rank", "system.discipline", "system.section", "system.hijutsu", "system.keywords", "system.activation.type",
   "system.cost", "system.duration.concentration", "system.target", "system.category", "system.weaponType", "system.requirement",
   "system.tags", "system.categories", "system.groups", "system.price", "system.source.book", "system.description"];
+
+/**
+ * King 2026-11-25: Hijutsu belong to their clan. Browsing for a character (the actor being learned for,
+ * or a player's own character) shows only that character's clan's Hijutsu; no clan, no Hijutsu.
+ * Browsing with no character (the GM) shows every clan's, with the Clan (Hijutsu) filter.
+ * @param {object} entry        a row (entryFrom)
+ * @param {string|null} clan    the character's clan identifier ("" none); null: no character
+ */
+export function hijutsuVisible(entry, clan) {
+  if ( clan === null || clan === undefined || !entry.hijutsuClan ) return true;
+  return entry.hijutsuClan === clan;
+}

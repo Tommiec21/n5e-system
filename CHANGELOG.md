@@ -1,3 +1,11 @@
+## 0.107.1-alpha.1 — Playtest fixes: Hijutsu by clan, starting ability scores
+
+King 2026-11-25 (docs/PLAY1_SPEC.md).
+
+- **Hijutsu by clan:** browsing jutsu for a character shows only its own clan's Hijutsu (none without a clan). The GM, browsing without a character, sees every clan's, with a new Clan (Hijutsu) filter. Hijutsu rows name their clan.
+- **Starting ability scores:** a new character sets its six starting scores before its first clan, background or class: Standard Array, Point Buy (30 points, 8–15) or Roll (4d6, drop the lowest). A world rule picks the method, or lets the player pick.
+- An **Ability Scores** button on the sheet until they're set; in edit mode, a button to change them later (increases gained so far are kept).
+
 ## 0.107.0-alpha.1 — LEFT1 P6: jutsu granted at a level, on the item sheet
 
 King 2026-11-25 (docs/LEFT1_SPEC.md, P6; Q-L1–Q-L6 answered).

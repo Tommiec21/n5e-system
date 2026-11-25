@@ -2,7 +2,7 @@
       Context: rows [{uuid, name, img, detail}], total, more, canAdd, learning {name, open, text} (NT1). Rows are draggable onto sheets. --}}
 <div class="browser-main">
   {{#if learning}}<div class="learning-banner" data-tooltip="Drag a jutsu onto {{learning.name}}'s sheet or level-up window, or press +"><i class="fa-solid fa-graduation-cap"></i> <b>Learning for {{learning.name}}:</b> {{learning.open}} open · {{learning.text}}</div>{{/if}}
-  <div class="summary">{{total}} found{{#if more}} · showing the first {{rows.length}}{{/if}} · drag a row onto a sheet</div>
+  <div class="summary">{{total}} found{{#if more}} · showing the first {{rows.length}}{{/if}} · drag a row onto a sheet{{#if hijutsuNote}} · <span class="hijutsu-note"><i class="fa-solid fa-lock"></i> {{hijutsuNote}}</span>{{/if}}</div>
   <ol class="results">
     {{#each rows}}
       <li class="b-row" data-uuid="{{uuid}}" draggable="true">

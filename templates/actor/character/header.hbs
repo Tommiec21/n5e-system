@@ -37,6 +37,10 @@
         <button type="button" class="level-up {{#if vm.levelUp.ready}}ready{{/if}}" data-action="levelUp" data-class-id="{{vm.classId}}" data-tooltip="Gain level {{vm.nextLevel}}: {{vm.levelUp.reason}}" {{#unless vm.levelUp.allowed}}disabled{{/unless}}><i class="fa-solid fa-arrow-up"></i> Level Up</button>
       {{/if}}{{#if vm.classId}}
         <button type="button" class="level-history" data-action="levelHistory" data-class-id="{{vm.classId}}" data-tooltip="Level History: what each level gave; change a past level's choices" aria-label="Level History"><i class="fa-solid fa-clock-rotate-left"></i></button>
+      {{/if}}{{#if vm.needsScores}}
+        <button type="button" class="ability-scores ready" data-action="startingScores" data-tooltip="Set the starting ability scores (Standard Array, Point Buy or Roll) before the clan, background and class"><i class="fa-solid fa-dice-d20"></i> Ability Scores</button>
+      {{else if editMode}}
+        <button type="button" class="ability-scores" data-action="startingScores" data-tooltip="Change the starting ability scores (increases gained so far are kept)" aria-label="Starting ability scores"><i class="fa-solid fa-dice-d20"></i></button>
       {{/if}}{{#if editMode}}{{#if vm.classId}}
         <button type="button" data-action="levelDown" data-class-id="{{vm.classId}}" data-tooltip="Remove the highest level and what it granted"><i class="fa-solid fa-arrow-down"></i></button>
       {{/if}}{{/if}}{{/if}}

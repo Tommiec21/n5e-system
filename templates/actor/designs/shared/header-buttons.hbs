@@ -4,6 +4,10 @@
     <button type="button" class="d-btn level-up {{#if h.levelUp.ready}}ready{{/if}}" data-action="levelUp" data-class-id="{{h.classId}}" data-tooltip="Gain level {{h.nextLevel}}: {{h.levelUp.reason}}" {{#unless h.levelUp.allowed}}disabled{{/unless}}><i class="fa-solid fa-arrow-up"></i><span class="txt">Level Up</span></button>
   {{/if}}{{#if h.classId}}
     <button type="button" class="d-btn level-history" data-action="levelHistory" data-class-id="{{h.classId}}" data-tooltip="Level History: what each level gave; change a past level's choices" aria-label="Level History"><i class="fa-solid fa-clock-rotate-left"></i><span class="txt">History</span></button>
+  {{/if}}{{#if h.needsScores}}
+    <button type="button" class="d-btn ability-scores ready" data-action="startingScores" data-tooltip="Set the starting ability scores (Standard Array, Point Buy or Roll) before the clan, background and class" aria-label="Ability Scores"><i class="fa-solid fa-dice-d20"></i><span class="txt">Ability Scores</span></button>
+  {{else if @root.editMode}}
+    <button type="button" class="d-btn ability-scores" data-action="startingScores" data-tooltip="Change the starting ability scores (increases gained so far are kept)" aria-label="Starting ability scores"><i class="fa-solid fa-dice-d20"></i><span class="txt">Scores</span></button>
   {{/if}}{{#if @root.editMode}}{{#if h.classId}}
     <button type="button" class="d-btn" data-action="levelDown" data-class-id="{{h.classId}}" data-tooltip="Remove the highest level and what it granted" aria-label="Level down"><i class="fa-solid fa-arrow-down"></i></button>
   {{/if}}{{/if}}{{/if}}

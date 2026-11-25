@@ -99,6 +99,7 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
       closeGates: CharacterSheet.#onCloseGates,
       placeMark: CharacterSheet.#onPlaceMark,
       levelUp: CharacterSheet.#onLevelUp,
+      startingScores: CharacterSheet.#onStartingScores,
       levelDown: CharacterSheet.#onLevelDown,
       levelHistory: CharacterSheet.#onLevelHistory,
       toggleConcentration: CharacterSheet.#onToggleConcentration,
@@ -377,8 +378,8 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
 
     // A class runs character creation (level 1 choices); replacing one removes everything it granted.
     if ( item.type === "class" ) return this.#dropClass(item);
-    if ( item.type === "background" && item.flags?.n5e?.background ) return addBackground(actor, item);
-    if ( item.type === "clan" && item.flags?.n5e?.clanPackage ) return addClan(actor, item);
+    if ( item.type === "background" && item.flags?.n5e?.background ) return (await this.#startingScoresFirst()) ? addBackground(actor, item) : null;
+    if ( item.type === "clan" && item.flags?.n5e?.clanPackage ) return (await this.#startingScoresFirst()) ? addClan(actor, item) : null;
 
     // One clan, background: replacing asks first.
     if ( ["clan", "background"].includes(item.type) ) {
@@ -435,9 +436,26 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     return created;
   }
 
+  /** King 2026-11-25: set or change the starting ability scores. */
+  static async #onStartingScores() {
+    const { setStartingScores } = await import("../../workflow/ability-scores.mjs");
+    return setStartingScores(this.actor);
+  }
+
+  /** King 2026-11-25: a new character (no class yet) sets its starting scores before a class, clan or background. */
+  async #startingScoresFirst() {
+    const actor = this.actor;
+    if ( actor.items.some(i => i.type === "class") ) return true;
+    const { ensureStartingScores } = await import("../../workflow/ability-scores.mjs");
+    if ( await ensureStartingScores(actor) ) return true;
+    ui.notifications.warn(`Set ${actor.name}'s starting ability scores first (or choose "Already set by hand").`);
+    return false;
+  }
+
   /** Drop a class: confirm replacement, add it at level 1, run the level 1 choices (cancel removes it). */
   async #dropClass(item) {
     const actor = this.actor;
+    if ( !await this.#startingScoresFirst() ) return null;
     const existing = actor.items.find(i => i.type === "class");
     if ( existing && !game.settings.get("n5e", "multiclassing") ) {
       const ok = await foundry.applications.api.DialogV2.confirm({

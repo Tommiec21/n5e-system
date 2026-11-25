@@ -31,7 +31,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `character-designs.mjs` | 59 | Optional character sheet designs (SHEETS1; docs/SHEETS1_SPEC.md). | `designSheet`, `SHEET_DESIGNS`, `DESIGN_PARTS`, `DESIGN_TEMPLATE_PATHS` |
-| `character-sheet.mjs` | 906 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
+| `character-sheet.mjs` | 924 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
 | `hazard-sheet.mjs` | 103 | Hazard and vehicle sheets (PRESTD1 Part D-ii): the NPC sheet with one more tab. | `HazardSheet`, `VehicleSheet` |
 | `loot-sheet.mjs` | 86 | Loot actor sheet (PRESTD1 Part C): a pile, a merchant or the party stash. | `LootSheet` |
 | `npc-sheet.mjs` | 345 | NPC sheet (NPCUI1; King 2026-11-15, design canvas "N5e NPC Sheet Redesign"). | `NPC_TEMPLATE_PATHS`, `NPCSheet` |
@@ -41,7 +41,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `compendium-browser.mjs` | 304 | N5e Compendium Browser: every Item compendium (plus world items) in one filterable window, with a tab per kind of item. | `CompendiumBrowser`, `registerCompendiumBrowser` |
+| `compendium-browser.mjs` | 312 | N5e Compendium Browser: every Item compendium (plus world items) in one filterable window, with a tab per kind of item. | `CompendiumBrowser`, `registerCompendiumBrowser` |
 
 ## module/applications/effect
 
@@ -67,6 +67,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `automation-audit.mjs` | 144 | GM Automation Audit (STD5; docs/STD_SPEC.md "Reviewable in game"). | `AutomationAudit`, `auditLabel` |
 | `automation-recovery.mjs` | 46 | GM-only receipt inspection and deliberate archive; never automatically repairs partial writes. | `AutomationRecovery` |
 | `item-integrity.mjs` | 79 | GM Item Integrity (FIN1): duplicates and missing items on every world actor and unlinked token, from rules/item-audit.mjs. | `auditedActors`, `ItemIntegrity`, `registerItemIntegrity` |
+| `journal-desk-entry.mjs` | 14 | Add one GM-only shortcut to the native journal directory without replacing its controls. | `addJournalDeskButton` |
 | `journal-desk.mjs` | 333 | Journal Desk owns its window, not Foundry's journal sheets or navigation hooks. | `JournalDesk` |
 | `mission-planner.mjs` | 166 | Mission planner (PRESTD1 Part E, MISSION1; GM only). | `blankMission`, `MissionPlanner` |
 | `npc-reset.mjs` | 63 | "Reset NPCs" (NPC1c C2): a GM button on the Actors sidebar. | `npcsFor`, `resetNPCsDialog`, `resetNPC`, `addResetButton` |
@@ -145,7 +146,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `jutsu-colors.mjs` | 19 | Jutsu keyword colors (NPCUI1; King 2026-11-15). | `jutsuColors`, `jutsuPillPaper` |
 | `jutsu.mjs` | 151 | Jutsu registries: keywords, stimuli, components, nature releases, sections, upcast presets. | `keywords`, `featureTags`, `stimuli`, `components`, `natureReleases`, `affinities`, `jutsuSections`, `upcastPresets`, `costModes`, `reactionTriggers`, `riderTriggers`, `cloneTemplate`, `summonRanks` |
 | `missions.mjs` | 53 | Mission tables (PRESTD1 Part E, MISSION1). | `missionRewards`, `missionTiers`, `missionRankMultiplier`, `missionEncounters`, `missionRuleText` |
-| `rules.mjs` | 232 | Every optional or table rule the system automates, in one registry (King 2026-11-07: GMs control which rules apply). | `ruleGroups`, `rules` |
+| `rules.mjs` | 235 | Every optional or table rule the system automates, in one registry (King 2026-11-07: GMs control which rules apply). | `ruleGroups`, `rules` |
 | `social.mjs` | 74 | Social encounter tables (PRESTD1 Part F, SOCIAL1). | `socialAttitudes`, `socialTypes`, `socialMotivations`, `socialPitfalls`, `socialActions`, `socialNpcActions`, `socialOutcomeLabels` |
 
 ## module/data
@@ -227,6 +228,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
+| `ability-generation.mjs` | 87 | Starting ability scores (King 2026-11-25; KB 01): Standard Array 15/14/13/12/11/10, Point Buy (30 points, 8–15 before clan and background; 8=0 9=1 10=2 11=3 ... | `ABILITY_KEYS`, `METHODS`, `pointBuyCost`, `scoreProblems`, `allowedMethods`, `newAbilityValues`, `recordedIncreases` |
 | `ac.mjs` | 105 | Armor Class (KB 01, 08, 12). | `AC_FORMULAS`, `computeAC`, `overlayAC` |
 | `action-card.mjs` | 394 | Single action card (pure; CARD1, King 2026-11-14). | `CARD_KINDS`, `SECTION_ORDER`, `normalizeResults`, `encodeResults`, `savesOf`, `damagesOf`, `appliedOf`, `allApplied`, `allSaves`, `savesForDamage`, `cardSections`, `resultsFromLinked`, `mergeTargets`, `addCardResult`, `mergedResults`, `cardTargetRows`, `cardReactionWindows`, `sectionStates` |
 | `action-effects.mjs` | 110 | Action effects (STD2; docs/STD_SPEC.md). | `actionEffectsOf`, `cardElements`, `spentBy`, `describeElement`, `summarizeElement` |
@@ -243,7 +245,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `automation-summary.mjs` | 68 | What an item does, read from its data (STD5; docs/STD_SPEC.md "Reviewable in game"): every channel (activities, Active Effects and their changes, rule elemen... | `automationOf`, `STATUS_LABELS` |
 | `backgrounds.mjs` | 41 | Background selection rules, independent of Foundry dialogs and document writes. | `backgroundPacks`, `backgroundSkillSlots`, `validateBackgroundSelection` |
 | `breakdown.mjs` | 58 | Statistic breakdowns (the PF2e idea: every derived number knows the parts it was built from). | `Breakdown`, `signed` |
-| `browser.mjs` | 205 | Compendium browser (pure part): which tabs exist, what each row holds, the filter options, and the filtering and sorting. | `RANK_ORDER`, `TABS`, `tabFor`, `entryFrom`, `facetOptions`, `filterEntries`, `sortEntries`, `INDEX_FIELDS` |
+| `browser.mjs` | 220 | Compendium browser (pure part): which tabs exist, what each row holds, the filter options, and the filtering and sorting. | `RANK_ORDER`, `TABS`, `tabFor`, `entryFrom`, `facetOptions`, `filterEntries`, `sortEntries`, `INDEX_FIELDS`, `hijutsuVisible` |
 | `card-layout.mjs` | 69 | CARD2 (docs/CARD2_SPEC.md; King 2026-11-16: combat cards laid out like his SW5e card), pure parts. | `MULTIPLIERS`, `defaultMultiplier`, `multiplied`, `diceSummary`, `saveTile`, `chunk`, `shortSaveLabel` |
 | `cast-checks.mjs` | 63 | Pre-cast checks (pure; CAST1). | `jutsuComponents`, `castBlockers` |
 | `cast-discipline.mjs` | 99 | Multi-discipline jutsu (pure; MDISC1, King 2026-11-13, N5e-Context.md decisions 11, 14 and 15). | `castableDisciplines`, `defaultCastDiscipline`, `castDisciplineOf`, `resolveCastDiscipline`, `countsAsDiscipline`, `knowsJutsuOf`, `sameTypeForSwap`, `disciplineAllowed`, `defenseSkillFor`, `genjutsuRidersApply`, `caughtBy` |
@@ -332,7 +334,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `adversary-builder.mjs` | 75 | The Adversary Builder's view model (pure; NPC2). | `STEPS`, `builderVM` |
-| `character.mjs` | 595 | Character sheet view models: actor in, plain data out. | `headerVM`, `resourcesVM`, `railVM`, `mainVM`, `jutsuVM`, `inventoryVM`, `OPTION_GROUPS`, `featuresVM`, `effectsVM`, `biographyVM`, `xpTable` |
+| `character.mjs` | 597 | Character sheet view models: actor in, plain data out. | `headerVM`, `resourcesVM`, `railVM`, `mainVM`, `jutsuVM`, `inventoryVM`, `OPTION_GROUPS`, `featuresVM`, `effectsVM`, `biographyVM`, `xpTable` |
 | `combat.mjs` | 437 | Combat tab view model: every option the character has in a fight, plus the trackers (Chain, concentration and upkeep, stance, Combo/Finisher). | `jutsuPill`, `ampsVM`, `combatVM` |
 | `common.mjs` | 152 | Shared view-model helpers: signed numbers, breakdown tooltips, action glyphs, rule chips. | `esc`, `breakdownTooltip`, `glyph`, `keywordChip`, `componentChips`, `propertyChips`, `conditionSummary`, `pips`, `signed` |
 | `damage-trace.mjs` | 24 | Minimal fallback for legacy roll data; normal cards use Foundry's Roll renderer. | `damageRollHTML`, `renderDamageRolls` |
@@ -347,6 +349,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
+| `ability-scores.mjs` | 116 | Starting ability scores (King 2026-11-25): the first step of making a character. | `hasStartingScores`, `setStartingScores`, `ensureStartingScores` |
 | `action-card.mjs` | 616 | Single action card (Foundry side; CARD1, King 2026-11-14). | `actionCardOn`, `addAreaTargets`, `cardFlag`, `cardOfLinked`, `recordLinked`, `receiveCardResult`, `syncCards`, `immuneTargets`, `renderActionCard`, `pendingSaveActors`, `postEffectSummary`, `onActionCardClick`, `registerActionCardHooks` |
 | `action-effects.mjs` | 25 | Action effects on cards (STD2; rules/action-effects.mjs). | `consumedOn`, `cardActionContext` |
 | `activity-buttons.mjs` | 591 | Chat card buttons for activities, and what happens when they're clicked. | `damageButtons`, `applyButtons`, `activityButtons`, `onActivityClick`, `highestDiscipline`, `payPoolCost` |

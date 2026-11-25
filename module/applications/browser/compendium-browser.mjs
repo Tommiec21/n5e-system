@@ -9,7 +9,7 @@
  * templates/apps/compendium-browser.hbs in two parts (filters, results) so typing in the search box
  * only redraws the results.
  */
-import { TABS, INDEX_FIELDS, entryFrom, facetOptions, filterEntries, sortEntries } from "../../rules/browser.mjs";
+import { TABS, INDEX_FIELDS, entryFrom, facetOptions, filterEntries, sortEntries, hijutsuVisible } from "../../rules/browser.mjs";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 const PAGE = 150;
@@ -111,6 +111,7 @@ export default class CompendiumBrowser extends HandlebarsApplicationMixin(Applic
       case "keywords": return N.keywords?.[value]?.label ?? titleCase(value);
       case "activation": return N.activationTypes?.[value] ?? titleCase(value);
       case "cls": return classNames.get(value) ?? titleCase(value);
+      case "hijutsuClan": return this.clanNames?.get(value) ?? titleCase(value);
       case "categories": return N.stanceCategories?.[value] ?? titleCase(value);
       case "groups": return N.weaponGroups?.[value] ?? titleCase(value);
       case "category": return N.featureKinds?.[value] ?? N.featCategories?.[value] ?? N.weaponCategories?.[value] ?? titleCase(value);
@@ -124,8 +125,13 @@ export default class CompendiumBrowser extends HandlebarsApplicationMixin(Applic
     const all = await CompendiumBrowser.entries();
     const s = this.state;
     const tabDef = TABS[s.tab];
-    const inTab = all.filter(e => e.tab === s.tab);
+    // King 2026-11-25: for a character, only its own clan's Hijutsu (rules/browser.mjs hijutsuVisible).
+    const viewer = this.learning ?? (game.user.isGM ? null : game.user.character) ?? null;
+    const viewerClan = viewer ? (viewer.items.find(i => i.type === "clan")?.system.identifier ?? "") : null;
+    const inTab = all.filter(e => e.tab === s.tab && hijutsuVisible(e, viewerClan));
     const classNames = new Map(all.filter(e => e.type === "class").map(e => [e.identifier ?? "", e.name]));
+    this.clanNames = new Map(all.filter(e => e.type === "clan").map(e => [e.identifier ?? "", e.name]));
+    this.hijutsuNote = viewer && s.tab === "jutsu" ? `Hijutsu: ${viewerClan ? `only ${this.clanNames.get(viewerClan) ?? viewerClan}'s` : "none (no clan)"} (${viewer.name})` : "";
     const facets = facetOptions(inTab, s.tab);
     const current = s.filters[s.tab];
     const filters = tabDef.filters.map(f => {
@@ -146,7 +152,8 @@ export default class CompendiumBrowser extends HandlebarsApplicationMixin(Applic
       rows: rows.slice(0, s.limit).map(r => ({ ...r, detail: this.detail(r, classNames) })),
       more: rows.length > s.limit,
       canAdd: !!this.addTarget(),
-      learning: await this.learningBanner()
+      learning: await this.learningBanner(),
+      hijutsuNote: this.hijutsuNote
     };
   }
 
@@ -160,6 +167,7 @@ export default class CompendiumBrowser extends HandlebarsApplicationMixin(Applic
       if ( r.activation ) bits.push(N.activationTypes?.[r.activation] ?? r.activation);
       if ( r.concentration ) bits.push("Concentration");
       if ( r.hasArea ) bits.push("Area");
+      if ( r.hijutsuClan ) bits.push(`Hijutsu: ${this.clanNames?.get(r.hijutsuClan) ?? titleCase(r.hijutsuClan)}`);
     } else if ( r.tab === "features" ) {
       if ( r.cls ) bits.push(classNames.get(r.cls) ?? titleCase(r.cls));
       if ( r.level ) bits.push(`Level ${r.level}`);

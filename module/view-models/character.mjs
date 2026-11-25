@@ -71,6 +71,8 @@ export function headerVM(actor) {
     // LVL1 L6: whether Level Up works now (XP / granted level / the GM's gate) and why.
     levelUp: cls ? actorLevelState(actor, { rule, isGM: !!globalThis.game?.user?.isGM }) : null,
     nextLevel: cls ? (cls.system.levels ?? 0) + 1 : 1,
+    // King 2026-11-25: starting ability scores not set yet (character creation).
+    needsScores: !actor.flags?.n5e?.abilityBase,
     // Compact ability strip (SW5e-style): abbr, modifier, score.
     abilities: Object.entries(abilities).map(([key, cfg]) => ({
       key, abbr: cfg.abbr.toUpperCase(), label: cfg.label,
