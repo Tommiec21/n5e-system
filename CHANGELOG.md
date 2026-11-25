@@ -1,3 +1,12 @@
+## 0.105.0-alpha.1 — LVL1 L4: feat prerequisites (LVL1 complete)
+
+King 2026-11-24 (docs/LVL1_SPEC.md, L4).
+
+- **Structured prerequisites on feats:** minimum ability scores, skill and toolkit proficiencies, an affinity, knowing a jutsu with a keyword, and other feats or features (drag them in), beside level, class and clan; free-text prerequisites stay, judged by hand.
+- **Level-up feat lists** show every feat you don't have; ones whose prerequisites aren't met are grayed out with what's missing, listed last, and can still be taken.
+- **Taking one anyway** (level up, a past level's Change choices, or dropping it on the sheet) alerts the GM and the player.
+- The prerequisite data itself comes with the final feat list.
+
 ## 0.104.0-alpha.1 — LVL1 L6: XP, milestones and GM control
 
 King 2026-11-24 (docs/LVL1_SPEC.md, L6).

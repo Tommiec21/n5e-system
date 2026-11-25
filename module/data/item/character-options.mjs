@@ -147,7 +147,10 @@ export class FeatData extends TDM() {
       category: S.str({ initial: "feat" }),            // feature kind (CONFIG.N5E.featureKinds) or "feat"
       keywords: S.set(),                                // feats: group keywords (general, skill...); DATA1
       prerequisites: S.arr(S.str()),
-      requirement: S.obj({ level: S.int(0, { min: 0 }), class: S.str(), clan: S.str() }),
+      // LVL1 L4: structured prerequisites (rules/feat-prereqs.mjs); free text stays in `prerequisites`.
+      requirement: S.obj({ level: S.int(0, { min: 0 }), class: S.str(), clan: S.str(),
+        abilities: S.obj(Object.fromEntries(["str", "dex", "con", "int", "wis", "cha"].map(k => [k, S.int(0, { min: 0 })]))),
+        skills: S.set(), tools: S.set(), affinity: S.str(), keyword: S.str(), feats: S.arr(S.str()) }),
       tags: S.set(),                                    // e.g. dojutsu
       asi: S.obj({ options: S.set(), amount: S.int(0, { min: 0 }) }),
       grants: S.obj({

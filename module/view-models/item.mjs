@@ -243,7 +243,17 @@ const DETAILS = {
       F.text(src, "requirement.class", "Class", { placeholder: "identifier" }),
       F.text(src, "requirement.clan", "Clan", { placeholder: "identifier" })
     ]),
-    section("Prerequisites and tags", [F.list(src, "prerequisites", "Prerequisites"), F.list(src, "tags", "Tags")]),
+    // LVL1 L4: structured prerequisites (unmet: grayed out in level-up, alert if taken anyway).
+    section("Prerequisites", [
+      ...Object.entries(abilities).map(([k, v]) => F.num(src, `requirement.abilities.${k}`, `${v.abbr?.toUpperCase?.() ?? k.toUpperCase()} at least`, { small: true })),
+      F.tags(src, "requirement.skills", "Proficient in skills", Object.fromEntries(Object.entries(skills).map(([k, v]) => [k, v.label]))),
+      F.tags(src, "requirement.tools", "Proficient in toolkits", Object.fromEntries(Object.entries(toolkits).map(([k, v]) => [k, v.label]))),
+      F.select(src, "requirement.affinity", "Affinity", { "": "—", fire: "Fire Release", water: "Water Release", wind: "Wind Release", earth: "Earth Release", lightning: "Lightning Release" }),
+      F.select(src, "requirement.keyword", "Knows a jutsu with", { "": "—", ...Object.fromEntries(Object.entries(keywords).map(([k, v]) => [k, labelOf(v) || k]).sort((a, b) => a[1].localeCompare(b[1]))) }),
+      F.uuids(src, "requirement.feats", "Has (feats or features)", nameOf ?? (u => u), { accept: "feat", hint: "Drag feats or features here." }),
+      F.list(src, "prerequisites", "Other (judged by hand)")
+    ]),
+    section("Tags", [F.list(src, "tags", "Tags")]),
     section("Ability Score Increase", [
       F.tags(src, "asi.options", "Choose from", abilityChoices), F.num(src, "asi.amount", "Amount", { small: true })
     ]),

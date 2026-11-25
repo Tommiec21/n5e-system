@@ -48,9 +48,9 @@
             {{/each}}</div>
           {{/if}}
           <div class="lu-cards">{{#each options}}
-            <button type="button" class="lu-card {{#if selected}}on{{/if}}" data-action="pick" data-step="{{../id}}" data-value="{{value}}"
+            <button type="button" class="lu-card {{#if selected}}on{{/if}} {{#if unmet}}unmet{{/if}}" data-action="pick" data-step="{{../id}}" data-value="{{value}}"
               data-tooltip-html="{{tip}}" {{#if owned}}disabled{{/if}}>
-              <img src="{{img}}" alt="" width="32" height="32"><span><b>{{name}}</b>{{#if owned}}<span class="sub">Already known</span>{{else if sub}}<span class="sub">{{sub}}</span>{{/if}}</span>
+              <img src="{{img}}" alt="" width="32" height="32"><span><b>{{name}}</b>{{#if owned}}<span class="sub">Already known</span>{{else if sub}}<span class="sub">{{sub}}</span>{{/if}}{{#if unmet}}<span class="sub warn"><i class="fa-solid fa-lock"></i> Missing: {{unmet}}</span>{{/if}}</span>
             </button>
           {{/each}}</div>
         {{/if}}
@@ -89,8 +89,8 @@
           {{#if parts.feat}}
           <h4>Feat</h4>
           <div class="lu-cards">{{#each feats}}
-            <button type="button" class="lu-card {{#if selected}}on{{/if}}" data-action="pick" data-step="{{../id}}" data-field="feat" data-value="{{value}}" data-tooltip-html="{{tip}}">
-              <img src="{{img}}" alt="" width="32" height="32"><span><b>{{name}}</b>{{#if sub}}<span class="sub">{{sub}}</span>{{/if}}</span>
+            <button type="button" class="lu-card {{#if selected}}on{{/if}} {{#if unmet}}unmet{{/if}}" data-action="pick" data-step="{{../id}}" data-field="feat" data-value="{{value}}" data-tooltip-html="{{tip}}">
+              <img src="{{img}}" alt="" width="32" height="32"><span><b>{{name}}</b>{{#if sub}}<span class="sub">{{sub}}</span>{{/if}}{{#if unmet}}<span class="sub warn"><i class="fa-solid fa-lock"></i> Missing: {{unmet}}</span>{{/if}}</span>
             </button>
           {{else}}<p class="muted small">No feats available yet.</p>{{/each}}</div>
           {{/if}}

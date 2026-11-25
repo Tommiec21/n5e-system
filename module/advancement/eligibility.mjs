@@ -41,7 +41,8 @@ export async function validateItemChoices(actor, level, steps, selections, resol
       if ( step.type === "featChoice" && (doc?.type !== "feat" || !isFeatItem(doc)) ) {
         errors.push(`${step.title}: choose a feat, not a feature.`); continue;
       }
-      if ( !doc || !itemChoiceAllowed(doc, { actor, level, owned, key: step.key }) ) { errors.push(`${step.title}: requirements are not met.`); continue; }
+      // LVL1 L4: a feat with unmet prerequisites can still be taken (the GM and player are alerted).
+      if ( !doc || (step.type !== "featChoice" && !itemChoiceAllowed(doc, { actor, level, owned, key: step.key })) ) { errors.push(`${step.title}: requirements are not met.`); continue; }
       if ( !doc.flags?.n5e?.repeatable && (seen.has(uuid) || actor.items.some(i => i.name.toLowerCase() === doc.name.toLowerCase())) ) {
         errors.push(`${step.title}: the item is already selected or owned.`);
       }

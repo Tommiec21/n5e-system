@@ -17,7 +17,8 @@ import {
 import { editLevel, levelSelections, EDITABLE_STEPS, applyLevel } from "../advancement/manager.mjs";
 import { itemChoiceAllowed, validateItemChoices } from "../advancement/eligibility.mjs";
 import { learnProblems, learnBlock, browserFilters, filterText, matchesFilter, replacementFor, learnedMode, jutsuDiscipline, conditionHolds, RANKS } from "../rules/jutsu-slots.mjs";
-import { grantedBy } from "../workflow/learn-jutsu.mjs";
+import { grantedBy, alertLearning } from "../workflow/learn-jutsu.mjs";
+import { featPrereqProblems, prereqText } from "../rules/feat-prereqs.mjs";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 const esc = s => foundry.utils.escapeHTML?.(String(s ?? "")) ?? String(s ?? "");
@@ -39,6 +40,8 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
     /** LVL1 L5: changing a past level's choices instead of gaining a level. */
     this.edit = !!options.edit;
     this.#sel = options.sel ?? {};
+    /** LVL1 L4: what a past level had chosen (edit mode), so only newly taken feats alert. */
+    this.#orig = JSON.stringify(options.sel ?? {});
     this.#resolve = null;
     this.done = new Promise(r => { this.#resolve = r; });
   }
@@ -64,6 +67,7 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
 
   /** Selections keyed by step id. */
   #sel;
+  #orig = "{}";
 
   #resolve;
 
@@ -248,6 +252,35 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
     this.render();
   }
 
+  /** LVL1 L4: display names for prerequisite lines. */
+  #labels() {
+    const N = CONFIG.N5E;
+    return { skill: k => N.skills?.[k]?.label ?? k, tool: k => N.toolkits?.[k]?.label ?? k, keyword: k => N.keywords?.[k]?.label ?? k,
+      affinity: k => N.natureReleases?.[k]?.label ?? `${k[0]?.toUpperCase() ?? ""}${k.slice(1)} Release`, feat: u => this.#docs.get(u)?.name ?? u.split(".").at(-1) };
+  }
+
+  /** LVL1 L4: what the character (after this level's ASI) is missing for a feat. */
+  #featProblems(feat) {
+    return featPrereqProblems(this.#probe(), feat, { level: this.level, labels: this.#labels() });
+  }
+
+  /** LVL1 L4: alert the GM and player for each feat taken with unmet prerequisites. */
+  async #alertUnmetFeats() {
+    const uuids = [];
+    for ( const st of this._steps ?? [] ) {
+      if ( st.type === "featChoice" ) uuids.push(...(this.#sel[st.id] ?? []));
+      if ( st.type === "asi" && this.#sel[st.id]?.feat ) uuids.push(this.#sel[st.id].feat);
+    }
+    const before = JSON.parse(this.#orig);
+    const had = new Set(Object.values(before).flatMap(v => (Array.isArray(v) ? v : v?.feat ? [v.feat] : [])));
+    for ( const u of uuids ) {
+      if ( had.has(u) ) continue;
+      const d = await this.#doc(u);
+      const missing = d ? this.#featProblems(d) : [];
+      if ( missing.length ) await alertLearning(this.actor, d.name, [`prerequisites not met: ${missing.join("; ")}.`], "took the feat");
+    }
+  }
+
   /** The actor as it will be after this level's ASI (ability score checks). */
   #probe() {
     const asi = (this._steps ?? []).find(s => s.type === "asi");
@@ -304,18 +337,22 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
         case "subclass": {
           view.options = [];
           const clanKey = actor.items.find(i => i.type === "clan")?.system.identifier ?? "";
-          const choices = st.type === "featChoice" ? eligibleFeats(await this.#packDocs("feats", "feat"), { level: Math.max(actor.system.level, this.level), owned: ownedNames, clan: clanKey }).map(d => d.uuid) : st.uuids;
-          if ( st.type === "featChoice" ) view.type = "itemChoice";
+          const choices = st.type === "featChoice" ? eligibleFeats(await this.#packDocs("feats", "feat"), { level: Math.max(actor.system.level, this.level), owned: ownedNames, clan: clanKey, all: true }).map(d => d.uuid) : st.uuids;
+          const isFeat = st.type === "featChoice";
+          if ( isFeat ) view.type = "itemChoice";
           for ( const u of choices ) {
             const d = await this.#doc(u);
             if ( !d ) continue;
-            if ( !itemChoiceAllowed(d, { actor, level: this.level, key: st.key }) ) continue;
+            if ( !isFeat && !itemChoiceAllowed(d, { actor, level: this.level, key: st.key }) ) continue;
             const owned = ownedNames.has(d.name.toLowerCase());
             const req = d.system.requirement;
-            view.options.push({ value: u, name: d.name, img: d.img, owned, selected: chosen.has(u),
-              sub: [typeof req === "string" ? req : req?.level > 1 ? `Level ${req.level}` : "", ...(d.system.prerequisites ?? [])].filter(Boolean).join("; "),
+            // LVL1 L4: a feat whose prerequisites aren't met is grayed out (still selectable; Apply alerts).
+            const unmet = isFeat ? this.#featProblems(d) : [];
+            view.options.push({ value: u, name: d.name, img: d.img, owned, selected: chosen.has(u), unmet: unmet.join("; "),
+              sub: isFeat ? prereqText(d, this.#labels()) : [typeof req === "string" ? req : req?.level > 1 ? `Level ${req.level}` : "", ...(d.system.prerequisites ?? [])].filter(Boolean).join("; "),
               tip: this.#tip(d, (d.system.prerequisites ?? []).join("; ")) });
           }
+          if ( isFeat ) view.options.sort((a, b) => (!!a.unmet - !!b.unmet) || a.name.localeCompare(b.name));
           poolSizes[st.id] = view.options.filter(o => !o.owned).length + (st.replace?.length ?? 0);
           if ( st.swap ) view.swapKnown = (st.known ?? []).map(k => ({ ...k, replaced: st.replace.includes(k.id) }));
           break;
@@ -339,10 +376,11 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
         case "asi": {
           const a = this.#sel[st.id] ?? {};
           view.abilityOptions = st.abilities.map(o => ({ ...o, selected: a.ability === o.value }));
-          const feats = eligibleFeats(await this.#packDocs("feats", "feat"), { level: Math.max(actor.system.level, this.level), owned: ownedNames, clan: actor.items.find(i => i.type === "clan")?.system.identifier ?? "" })
-            .filter(f => !f.system.requirement?.clan || f.system.requirement.clan === actor.items.find(i => i.type === "clan")?.system.identifier);
-          view.feats = feats.map(f => ({ value: f.uuid, name: f.name, img: f.img, selected: a.feat === f.uuid,
-            sub: f.system.prerequisites?.join("; ") ?? "", tip: this.#tip(f, f.system.prerequisites?.length ? `Prerequisite: ${f.system.prerequisites.join("; ")}` : "") }));
+          // LVL1 L4: every feat not owned; unmet prerequisites grayed out (listed last), still selectable.
+          const feats = eligibleFeats(await this.#packDocs("feats", "feat"), { level: Math.max(actor.system.level, this.level), owned: ownedNames, all: true });
+          view.feats = feats.map(f => ({ value: f.uuid, name: f.name, img: f.img, selected: a.feat === f.uuid, unmet: this.#featProblems(f).join("; "),
+            sub: prereqText(f, this.#labels()), tip: this.#tip(f, f.system.prerequisites?.length ? `Prerequisite: ${f.system.prerequisites.join("; ")}` : "") }))
+            .sort((x, y) => (!!x.unmet - !!y.unmet) || x.name.localeCompare(y.name));
           view.mastery = masteryTargets(actor).map(m => ({ ...m, selected: a.mastery === m.value }));
           poolSizes[`${st.id}:feat`] = view.feats.length;
           poolSizes[`${st.id}:mastery`] = view.mastery.length;
@@ -475,6 +513,7 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
     const problems = validate(this._steps, this.#sel, this._poolSizes);
     problems.push(...await validateItemChoices(this.#ownedView(), this.level, this._steps, this.#sel));
     if ( problems.length ) return ui.notifications.warn(problems[0]);
+    await this.#alertUnmetFeats();
     if ( this.edit ) {
       const changes = await editLevel(this.actor, this.cls, this.level, this._steps, this.#sel);
       ui.notifications.info(changes.length ? `${this.actor.name}: level ${this.level} choices changed.` : "Nothing changed.");

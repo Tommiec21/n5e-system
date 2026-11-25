@@ -207,10 +207,10 @@ export function learnableJutsu(jutsu, { maxRank, affinities, known, keywords, cl
 }
 
 /** Feats a character may take at this level (level requirement only; prerequisites are shown to the player). */
-export function eligibleFeats(feats, { level, owned, clan = "" }) {
-  return feats.filter(f => (f.system.requirement?.level ?? 0) <= level && !owned.has(f.name.toLowerCase())
-    && (!f.system.requirement?.clan || f.system.requirement.clan === clan)
-    && isFeatItem(f))
+export function eligibleFeats(feats, { level, owned, clan = "", all = false }) {
+  // LVL1 L4 (King): with `all`, every feat not already owned (unmet prerequisites are grayed out, not hidden).
+  return feats.filter(f => !owned.has(f.name.toLowerCase()) && isFeatItem(f)
+    && (all || ((f.system.requirement?.level ?? 0) <= level && (!f.system.requirement?.clan || f.system.requirement.clan === clan))))
     .sort((a, b) => a.name.localeCompare(b.name));
 }
 

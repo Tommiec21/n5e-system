@@ -191,3 +191,26 @@ test("LVL1 L6: XP by default, milestones or both; the GM's gate; applying spends
   assert.deepEqual(row.xp, { value: 10, next: 300, granted: 1, ready: true });
   void rules;
 });
+
+test("LVL1 L4: structured feat prerequisites; unmet feats listed (grayed), not hidden, and not blocked at Apply", async () => {
+  const { featPrereqProblems, prereqText } = await import("../module/rules/feat-prereqs.mjs");
+  const { eligibleFeats } = await import("../module/advancement/steps.mjs");
+  const feat = (name, requirement = {}, prerequisites = []) => ({ type: "feat", name, uuid: `Compendium.n5e.feats.Item.${name}`, system: { category: "general", requirement, prerequisites } });
+  const actor = { name: "K", system: { level: 4, abilities: { dex: { value: 13 }, wis: { value: 16 } }, skills: { ste: { isProficient: true } }, tools: {}, grants: { affinities: ["fire"] } },
+    items: [{ type: "class", system: { identifier: "scout-nin" } }, { type: "clan", system: { identifier: "uchiha" } },
+      { type: "jutsu", system: { keywords: ["medical"] } }, { type: "feat", name: "Light Step", _stats: { compendiumSource: "Compendium.n5e.feats.Item.light" }, system: {} }] };
+  const ok = feat("Ok", { level: 4, class: "scout-nin", clan: "uchiha", abilities: { dex: 13 }, skills: ["ste"], affinity: "fire", keyword: "medical", feats: ["Compendium.n5e.feats.Item.light"] });
+  assert.deepEqual(featPrereqProblems(actor, ok), []);
+  const hard = feat("Hard", { level: 8, class: "medical-nin", abilities: { dex: 15, int: 0 }, skills: ["med"], tools: ["alchemist"], affinity: "water", keyword: "fire-release", feats: ["Compendium.n5e.feats.Item.other"] });
+  assert.deepEqual(featPrereqProblems(actor, hard), ["Level 8 (is 4)", "Class: medical-nin", "DEX 15 (has 13)", "Proficiency: med", "Proficiency: alchemist", "Affinity: water", "Knows a fire-release jutsu", "Has Compendium.n5e.feats.Item.other"]);
+  assert.deepEqual(featPrereqProblems(actor, feat("Free text", {}, ["A wizard did it"])), [], "free text never grays a feat out");
+  assert.equal(prereqText(feat("T", { level: 5, abilities: { wis: 15 } }, ["Ninja"])), "Level 5; WIS 15; Ninja");
+  const feats = [hard, ok, feat("Owned")];
+  assert.deepEqual(eligibleFeats(feats, { level: 4, owned: new Set(["owned"]), all: true }).map(f => f.name), ["Hard", "Ok"], "unmet feats stay listed");
+  assert.deepEqual(eligibleFeats(feats, { level: 4, owned: new Set(["owned"]), clan: "uchiha" }).map(f => f.name), ["Ok"], "without all, level filtering stays (other callers)");
+  const elig = fs.readFileSync(path.join(ROOT, "module/advancement/eligibility.mjs"), "utf8");
+  assert.match(elig, /step\.type !== "featChoice" && !itemChoiceAllowed/);
+  const lu = fs.readFileSync(path.join(ROOT, "module/applications/level-up.mjs"), "utf8");
+  assert.match(lu, /took the feat/);
+  assert.match(fs.readFileSync(path.join(ROOT, "templates/apps/level-up.hbs"), "utf8"), /unmet/);
+});

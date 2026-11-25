@@ -1087,3 +1087,7 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 ### LVL1 L6
 
 - Rules `leveling` (`xp` | `milestone` | `both`) and `levelUpGate` (bool, default true). Character `flags.n5e.levelsGranted` (GM-granted levels waiting). `rules/leveling.mjs` `levelUpState`, `levelUpCost`, `actorLevelState`; header VM `levelUp {allowed, ready, via, reason}`.
+
+### LVL1 L4
+
+- Feat-type `system.requirement`: `{level, class, clan, abilities: {str..cha: min}, skills: Set, tools: Set, affinity, keyword, feats: [uuids]}`. `rules/feat-prereqs.mjs` `featPrereqProblems(actor, feat, {level, labels, extra})`, `prereqText`. `eligibleFeats(..., {all: true})` keeps unmet feats.

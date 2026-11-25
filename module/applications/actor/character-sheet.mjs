@@ -415,7 +415,15 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
     // LVL1 L3: a conditional Bonus Jutsu grant is read against what the character had before this item.
     const cond = item.type === "feat" ? item.system.bonusJutsu?.condition : "";
     const had = cond ? (await import("../../rules/jutsu-slots.mjs")).conditionHolds(actor, cond) : null;
+    // LVL1 L4: a feat dropped with unmet prerequisites is added, and the GM and player are alerted.
+    const { featPrereqProblems } = await import("../../rules/feat-prereqs.mjs");
+    const { isFeatItem } = await import("../../rules/keywords.mjs");
+    const missing = item.type === "feat" && isFeatItem(item) ? featPrereqProblems(actor, item) : [];
     const created = await super._onDropItem(event, item);
+    if ( created && missing.length ) {
+      const { alertLearning } = await import("../../workflow/learn-jutsu.mjs");
+      await alertLearning(actor, item.name, [`prerequisites not met: ${missing.join("; ")}.`], "took the feat");
+    }
     if ( cond ) for ( const c of [created].flat().filter(Boolean) ) await c.setFlag("n5e", "conditionMet", had);
     if ( created && event.target.closest?.("[data-pin-zone]") ) await this.#pin(created.id, true);
     // NT1: a feature, feat or trait that names jutsu grants them outright (Bonus Jutsu).
