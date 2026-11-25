@@ -46,6 +46,6 @@ Status: **spec; waiting on King's answers.**
 - **Q-C2:** the prompt on a new character: only for the user who created it, or also the first time an owning player opens a character the GM made for them?
 - **Q-C3:** select mode: a Select button per row, or dnd5e's checkbox per row and one Select button at the bottom?
 - **Q-C4:** the clan setup as one window (as now, with the new grid), or dnd5e-style steps (Ability increases → Skills and affinity → Starting options), one at a time?
-- **Q-C5:** "Classes and Clans needs to be added to the compendium": they are already in the compendiums (7 classes, 44 clans). Is something missing there, or is the ask the picker above?
+- **Q-C5 (answered):** King: "the current N5e Browser only has Jutsu." The other tabs were hidden by a bug (Foundry hides inactive ".tab" elements); fixed in 0.107.2-alpha.1, so Classes & Origins shows again.
 
 ## Progress log
