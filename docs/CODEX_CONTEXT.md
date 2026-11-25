@@ -587,3 +587,11 @@ Remaining additional batches: GM04d broader Part I atlas; GM05b expanded recipes
 GM06 local attempt 1 passed: three focused checks and lint; publication pending.
 
 GM06 reconciliation: Claude published 03a4719b (Earth/Wind jutsu and summons) while this batch was prepared. Merged it unchanged; release target superseded by 0.94.1-alpha.1. No Journal Desk overlap.
+
+## GM06 corrective visual batch — Codex, 2026-11-25
+
+Approved image A is the visual target; the previous GM06 basic styling pass did not meet it. Based on 589179f3 (0.106.1-alpha.1), preserving Claude leveling/jutsu work. Scope: Journal Desk only. Grouped library references with favorites, compact title/campaign controls, header search/save, document tabs, structured relationship rows, collapsed secondary tools, parchment/branch/mountain/brush SVG assets and scoped native ProseMirror toolbar styling. No data migrations, inferred eras/ranks, automatic sharing or gameplay changes. Favorites are references, not duplicated records.
+
+Static preview uses the shipped Handlebars template/CSS with sample records and a stand-in editor toolbar; it does not verify live Foundry editor behavior. Compared wide preview against approved A; user acceptance remains required. First headless launch did not create a capture; second permitted launch succeeded. No live Foundry instance or local installation. Local focused checks are attempt 1, PR CI reserved as 2, main release CI as 3; no full local repeat. Release target 0.106.2-alpha.1.
+
+Saved preview: N5e System/Reports/GM Workspace Layouts/GM06-correction-preview.html and GM06-correction-wide.png in Codex reports. Further acceptance corrections remain GM06b; GM04d, GM05b and GM07–GM10 remain separate batches.

@@ -2,6 +2,7 @@ import { ENTRY_KINDS, isWorkspacePage, pageSnapshot, createEntry, saveEntry } fr
 import { cleanSession, visit, starterText } from "./workspace-navigation.mjs";
 import { importStarter } from "./workspace-starter.mjs";
 import { MISSION_IDEAS, filterIdeas, ideaText } from "./workspace-ideas.mjs";
+import { libraryGroups } from "./workspace-library.mjs";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -117,8 +118,9 @@ export default class JournalDesk extends HandlebarsApplicationMixin(ApplicationV
       try { const doc = await fromUuid(l.uuid); return { ...l, name: doc?.name ?? "Missing record", missing: !doc }; }
       catch { return { ...l, name: "Missing record", missing: true }; }
     }));
-    return { entries: entries.filter(e => (!this.campaign || e.uuid === this.campaign || e.campaignUuid === this.campaign)
-        && `${e.name} ${e.kind}`.toLowerCase().includes(this.query.toLowerCase())),
+    const visible = entries.filter(e => (!this.campaign || e.uuid === this.campaign || e.campaignUuid === this.campaign)
+      && `${e.name} ${e.kind}`.toLowerCase().includes(this.query.toLowerCase()));
+    return { entries: visible, libraryGroups: libraryGroups(visible),
       suggestions: filterIdeas(this.ideaFilters),
       ideaOptions: Object.fromEntries(["theme", "region", "rank"].map(key => [key, [...new Set(MISSION_IDEAS.map(i => i[key]))].map(value => ({ value, selected: this.ideaFilters[key] === value }))])),
       records, campaigns: campaigns.filter(e => e.uuid !== this.active).map(e => ({ ...e, selected: e.uuid === draft?.campaignUuid })),
