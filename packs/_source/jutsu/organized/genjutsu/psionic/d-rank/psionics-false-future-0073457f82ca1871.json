@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eBE2IUlBugUA9W",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Psionics: False Future",
         "save": {
           "abilities": [
             "int"
@@ -98,16 +97,38 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature has its speed reduced by 10.",
-            "failure": "failure, but its movement speed it reduced by half after its movement ends, until the end of its next turn.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: −10 feet speed (the effect).",
+            "failure": "Failure: it spends its reaction to move at least 30 feet where it would move if it were its turn.",
+            "critFailure": "Critical Failure: as a failure, then half speed until the end of its next turn."
+          }
         },
+        "inflicts": [],
+        "text": "A hostile creature you can see within 60 feet (+1 per rank).",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5eb9DNX2sKdCCAz",
+        "type": "effect",
+        "label": "Success: −10 feet speed",
+        "effect": {
+          "name": "False Future",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "-10",
+              "mode": 2
+            }
+          ],
+          "expires": "nextTurnEnd",
+          "seconds": 0,
+          "inflicts": []
         }
       }
     ],
@@ -177,7 +198,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "550eef5129fc0d02"

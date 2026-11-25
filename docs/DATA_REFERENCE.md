@@ -1060,3 +1060,5 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 ### Genjutsu summons (STD6f F11)
 
 - Summons compendium: Genjutsu (Dark Phantasm). Linked to your Genjutsu attack bonus and save DC (`GEN` links, `genSave` four-tier save helper).
+
+

@@ -87,9 +87,26 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eLgp4QBLsn6Dyv",
         "type": "save",
-        "label": "Save",
+        "label": "Maze",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists.",
+            "failure": "Failure: its mind is trapped: Prone and Stunned, mentally active.",
+            "critFailure": "Critical Failure: as a failure."
+          }
+        },
         "inflicts": [
           {
             "key": "prone",
@@ -104,18 +121,7 @@
             "label": "Stunned"
           }
         ],
-        "save": {
-          "abilities": [
-            "wis"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": true,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "Concentration, 10 minutes: up to 4 creatures you can see within 60 feet. Escaping, each turn one check it's proficient in (else a flat Intelligence check), no Mastery, against your Genjutsu save DC: Investigation finds the exit; Insight resaves at advantage at the start of its next turn.",
         "damage": {
           "parts": []
         }
@@ -185,7 +191,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b43e363ae1f523df"

@@ -87,14 +87,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eyLHZzFx043pMP",
         "type": "attack",
-        "label": "Attack",
+        "label": "Shadow Bite",
         "attack": {
-          "discipline": "gen",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "60 feet (+1 target per rank). On a hit: the save.",
         "damage": {
           "parts": [
             {
@@ -105,10 +106,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5erny864duGuBrk",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Shadow Bite: Wisdom",
         "save": {
           "abilities": [
             "wis"
@@ -117,16 +117,71 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature is able to resist most of this jutsu’s effects.",
-            "failure": "failure. But affected creature gains 2 ranks of Demoralized and reduces their speed by 15.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists most of it.",
+            "failure": "Failure: 1 Demoralized and −10 feet speed.",
+            "critFailure": "Critical Failure: 2 Demoralized and −15 feet speed."
+          }
         },
+        "inflicts": [
+          {
+            "key": "demoralized",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Demoralized"
+          }
+        ],
+        "text": "Resave at the end of each of its turns to end the speed penalty.",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5ebOVvgJWdxsh2y",
+        "type": "effect",
+        "label": "Failure: −10 feet speed",
+        "effect": {
+          "name": "Shadow Bite",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "-10",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60,
+          "inflicts": []
+        }
+      },
+      {
+        "id": "n5exM1VLZMkXRj8V",
+        "type": "effect",
+        "label": "Critical failure: −15 feet speed, +1 Demoralized",
+        "effect": {
+          "name": "Shadow Bite",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "-15",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60,
+          "inflicts": [
+            {
+              "key": "demoralized",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Demoralized"
+            }
+          ]
         }
       }
     ],
@@ -210,14 +265,15 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5eyLHZzFx043pMP",
               "type": "attack",
-              "label": "Attack",
+              "label": "Shadow Bite",
               "attack": {
-                "discipline": "gen",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "60 feet (+1 target per rank). On a hit: the save.",
               "damage": {
                 "parts": [
                   {
@@ -228,10 +284,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5erny864duGuBrk",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Shadow Bite: Wisdom",
               "save": {
                 "abilities": [
                   "wis"
@@ -240,29 +295,85 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
+                "resave": false,
                 "fourTier": true,
                 "tiers": {
-                  "success": "Success: Affected creature is able to resist most of this jutsu’s effects.",
-                  "failure": "failure. But affected creature gains 2 ranks of Demoralized and reduces their speed by 15.",
-                  "critFailure": "Critical Failure: Same as"
-                },
-                "resave": false
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: resists most of it.",
+                  "failure": "Failure: 1 Demoralized and −10 feet speed.",
+                  "critFailure": "Critical Failure: 2 Demoralized and −15 feet speed."
+                }
               },
+              "inflicts": [
+                {
+                  "key": "demoralized",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Demoralized"
+                }
+              ],
+              "text": "Resave at the end of each of its turns to end the speed penalty.",
               "damage": {
                 "parts": []
+              }
+            },
+            {
+              "id": "n5ebOVvgJWdxsh2y",
+              "type": "effect",
+              "label": "Failure: −10 feet speed",
+              "effect": {
+                "name": "Shadow Bite",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.speed",
+                    "value": "-10",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60,
+                "inflicts": []
+              }
+            },
+            {
+              "id": "n5exM1VLZMkXRj8V",
+              "type": "effect",
+              "label": "Critical failure: −15 feet speed, +1 Demoralized",
+              "effect": {
+                "name": "Shadow Bite",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.speed",
+                    "value": "-15",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60,
+                "inflicts": [
+                  {
+                    "key": "demoralized",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Demoralized"
+                  }
+                ]
               }
             }
           ],
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5eyLHZzFx043pMP",
               "type": "attack",
-              "label": "Attack",
+              "label": "Shadow Bite",
               "attack": {
-                "discipline": "gen",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "60 feet (+1 target per rank). On a hit: the save.",
               "damage": {
                 "parts": [
                   {
@@ -273,10 +384,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5erny864duGuBrk",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Shadow Bite: Wisdom",
               "save": {
                 "abilities": [
                   "wis"
@@ -285,29 +395,85 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
+                "resave": false,
                 "fourTier": true,
                 "tiers": {
-                  "success": "Success: Affected creature is able to resist most of this jutsu’s effects.",
-                  "failure": "failure. But affected creature gains 2 ranks of Demoralized and reduces their speed by 15.",
-                  "critFailure": "Critical Failure: Same as"
-                },
-                "resave": false
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: resists most of it.",
+                  "failure": "Failure: 1 Demoralized and −10 feet speed.",
+                  "critFailure": "Critical Failure: 2 Demoralized and −15 feet speed."
+                }
               },
+              "inflicts": [
+                {
+                  "key": "demoralized",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Demoralized"
+                }
+              ],
+              "text": "Resave at the end of each of its turns to end the speed penalty.",
               "damage": {
                 "parts": []
+              }
+            },
+            {
+              "id": "n5ebOVvgJWdxsh2y",
+              "type": "effect",
+              "label": "Failure: −10 feet speed",
+              "effect": {
+                "name": "Shadow Bite",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.speed",
+                    "value": "-10",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60,
+                "inflicts": []
+              }
+            },
+            {
+              "id": "n5exM1VLZMkXRj8V",
+              "type": "effect",
+              "label": "Critical failure: −15 feet speed, +1 Demoralized",
+              "effect": {
+                "name": "Shadow Bite",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.speed",
+                    "value": "-15",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60,
+                "inflicts": [
+                  {
+                    "key": "demoralized",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Demoralized"
+                  }
+                ]
               }
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eyLHZzFx043pMP",
               "type": "attack",
-              "label": "Attack",
+              "label": "Shadow Bite",
               "attack": {
-                "discipline": "gen",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "60 feet (+1 target per rank). On a hit: the save.",
               "damage": {
                 "parts": [
                   {
@@ -318,10 +484,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5erny864duGuBrk",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Shadow Bite: Wisdom",
               "save": {
                 "abilities": [
                   "wis"
@@ -330,29 +495,85 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
+                "resave": false,
                 "fourTier": true,
                 "tiers": {
-                  "success": "Success: Affected creature is able to resist most of this jutsu’s effects.",
-                  "failure": "failure. But affected creature gains 2 ranks of Demoralized and reduces their speed by 15.",
-                  "critFailure": "Critical Failure: Same as"
-                },
-                "resave": false
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: resists most of it.",
+                  "failure": "Failure: 1 Demoralized and −10 feet speed.",
+                  "critFailure": "Critical Failure: 2 Demoralized and −15 feet speed."
+                }
               },
+              "inflicts": [
+                {
+                  "key": "demoralized",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Demoralized"
+                }
+              ],
+              "text": "Resave at the end of each of its turns to end the speed penalty.",
               "damage": {
                 "parts": []
+              }
+            },
+            {
+              "id": "n5ebOVvgJWdxsh2y",
+              "type": "effect",
+              "label": "Failure: −10 feet speed",
+              "effect": {
+                "name": "Shadow Bite",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.speed",
+                    "value": "-10",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60,
+                "inflicts": []
+              }
+            },
+            {
+              "id": "n5exM1VLZMkXRj8V",
+              "type": "effect",
+              "label": "Critical failure: −15 feet speed, +1 Demoralized",
+              "effect": {
+                "name": "Shadow Bite",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.speed",
+                    "value": "-15",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60,
+                "inflicts": [
+                  {
+                    "key": "demoralized",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Demoralized"
+                  }
+                ]
               }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eyLHZzFx043pMP",
               "type": "attack",
-              "label": "Attack",
+              "label": "Shadow Bite",
               "attack": {
-                "discipline": "gen",
+                "discipline": "discipline",
                 "range": "ranged",
                 "count": 1
               },
+              "text": "60 feet (+1 target per rank). On a hit: the save.",
               "damage": {
                 "parts": [
                   {
@@ -363,10 +584,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5erny864duGuBrk",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Shadow Bite: Wisdom",
               "save": {
                 "abilities": [
                   "wis"
@@ -375,22 +595,78 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
+                "resave": false,
                 "fourTier": true,
                 "tiers": {
-                  "success": "Success: Affected creature is able to resist most of this jutsu’s effects.",
-                  "failure": "failure. But affected creature gains 2 ranks of Demoralized and reduces their speed by 15.",
-                  "critFailure": "Critical Failure: Same as"
-                },
-                "resave": false
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: resists most of it.",
+                  "failure": "Failure: 1 Demoralized and −10 feet speed.",
+                  "critFailure": "Critical Failure: 2 Demoralized and −15 feet speed."
+                }
               },
+              "inflicts": [
+                {
+                  "key": "demoralized",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Demoralized"
+                }
+              ],
+              "text": "Resave at the end of each of its turns to end the speed penalty.",
               "damage": {
                 "parts": []
+              }
+            },
+            {
+              "id": "n5ebOVvgJWdxsh2y",
+              "type": "effect",
+              "label": "Failure: −10 feet speed",
+              "effect": {
+                "name": "Shadow Bite",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.speed",
+                    "value": "-10",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60,
+                "inflicts": []
+              }
+            },
+            {
+              "id": "n5exM1VLZMkXRj8V",
+              "type": "effect",
+              "label": "Critical failure: −15 feet speed, +1 Demoralized",
+              "effect": {
+                "name": "Shadow Bite",
+                "target": "targets",
+                "changes": [
+                  {
+                    "key": "system.bonuses.speed",
+                    "value": "-15",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60,
+                "inflicts": [
+                  {
+                    "key": "demoralized",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Demoralized"
+                  }
+                ]
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "550eef5129fc0d02"

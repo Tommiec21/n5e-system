@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ekzjw7GT4ri1TM",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Psionics: Brain Lock",
         "save": {
           "abilities": [
             "int"
@@ -99,17 +98,59 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature is Confused until the end of their next turn.",
-            "critSuccess": "Critical Success: Affected creature is able to resist this Jutsu's effect.",
-            "failure": "failure, but also the creature also gains 2 ranks of Sealed.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: Confused until the end of its next turn (the effect).",
+            "failure": "Failure: on each of its turns it spends its Action recasting the jutsu it cast last turn (your choice), at +4 chakra; none: this ends.",
+            "critFailure": "Critical Failure: as a failure, and 2 Sealed (the effect)."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: a hostile creature you can see within 30 feet (+1 per rank); resave at the end of each of its turns.",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5e7RmReCHPnh7U8",
+        "type": "effect",
+        "label": "Success: Confused",
+        "effect": {
+          "name": "Success: Confused",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e4I4G1oMnQ0jAd",
+        "type": "effect",
+        "label": "Critical failure: 2 Sealed",
+        "effect": {
+          "name": "Critical failure: 2 Sealed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "sealed",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Sealed"
+            }
+          ]
         }
       }
     ],
@@ -179,7 +220,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "550eef5129fc0d02"

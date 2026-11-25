@@ -88,14 +88,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5efjJFdfcNO7LlW",
         "type": "attack",
-        "label": "Attack",
+        "label": "Devil's Assault",
         "attack": {
-          "discipline": "gen",
+          "discipline": "discipline",
           "range": "ranged",
-          "count": 1
+          "count": 3
         },
+        "text": "A creature that can hear you within 120 feet (+1 attack per rank). 2+ hits: your next Genjutsu attack on it has advantage and rerolls 1s and 2s on damage. 3+ hits: the save.",
         "damage": {
           "parts": [
             {
@@ -106,17 +107,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eSSksiKvZBX54l",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "concussed",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Concussed"
-          }
-        ],
+        "label": "Hit 3 or more times: Concussed",
         "save": {
           "abilities": [
             "cha"
@@ -125,10 +118,23 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
-          "tiers": {},
-          "resave": false
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists.",
+            "failure": "Failure: 1 Concussed.",
+            "critFailure": "Critical Failure: as a failure."
+          }
         },
+        "inflicts": [
+          {
+            "key": "concussed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Concussed"
+          }
+        ],
         "damage": {
           "parts": []
         }
@@ -205,9 +211,65 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "S": [
+            {
+              "id": "n5efjJFdfcNO7LlW",
+              "type": "attack",
+              "label": "Devil's Assault",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 4
+              },
+              "text": "A creature that can hear you within 120 feet (+1 attack per rank). 2+ hits: your next Genjutsu attack on it has advantage and rerolls 1s and 2s on damage. 3+ hits: the save.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d12",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eSSksiKvZBX54l",
+              "type": "save",
+              "label": "Hit 3 or more times: Concussed",
+              "save": {
+                "abilities": [
+                  "cha"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: 1 Concussed.",
+                  "critFailure": "Critical Failure: as a failure."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Concussed"
+                }
+              ],
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "c4beec273202cad2"

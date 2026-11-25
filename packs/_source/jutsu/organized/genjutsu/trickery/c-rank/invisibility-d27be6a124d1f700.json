@@ -86,10 +86,25 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5e3RuWtmg58vnen",
+        "type": "effect",
+        "label": "Invisibility: Invisible",
+        "effect": {
+          "name": "Invisibility: Invisible",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "invisible",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Invisible"
+            }
+          ]
+        },
+        "text": "Concentration, up to 1 hour: a creature you touch. Ends when it attacks, deals damage or casts a jutsu (A-Rank: it doesn't, up to 1 minute)."
       }
     ],
     "featureType": "active",
@@ -158,7 +173,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "293cc8e640ba6c9d"

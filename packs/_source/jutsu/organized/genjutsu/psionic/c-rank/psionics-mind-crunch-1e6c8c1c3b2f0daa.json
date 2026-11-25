@@ -87,14 +87,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5erBFkN10QfQi4l",
         "type": "attack",
-        "label": "Attack",
+        "label": "Psionics: Mind Crunch!",
         "attack": {
-          "discipline": "gen",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "60 feet (+1 target per rank). On a hit: the save.",
         "damage": {
           "parts": [
             {
@@ -105,10 +106,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5e0dKR4Hy0gEe5O",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Mind Crunch: Intelligence",
         "save": {
           "abilities": [
             "int"
@@ -117,17 +117,82 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
-            "success": "Success: Affected creatures AC is reduced by 1, until the end of their next turn.",
-            "failure": "Failure: Affected creatures AC is reduced by 2, until the end of their next turn.",
-            "critFailure": "Critical Failure: Affected creatures AC is reduced by 2, two ranks of concussion and they cannot take reactions until the end of their next turn."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: −1 AC until the end of its next turn.",
+            "failure": "Failure: −2 AC until the end of its next turn.",
+            "critFailure": "Critical Failure: −2 AC, 2 Concussed and no reactions until the end of its next turn."
+          }
         },
+        "inflicts": [],
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5euWaLucmHarnC3",
+        "type": "effect",
+        "label": "Success: −1 AC",
+        "effect": {
+          "name": "Mind Crunch",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "-1",
+              "mode": 2
+            }
+          ],
+          "expires": "nextTurnEnd",
+          "seconds": 0,
+          "inflicts": []
+        }
+      },
+      {
+        "id": "n5eBZgARl8UkX1ts",
+        "type": "effect",
+        "label": "Failure: −2 AC",
+        "effect": {
+          "name": "Mind Crunch",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "-2",
+              "mode": 2
+            }
+          ],
+          "expires": "nextTurnEnd",
+          "seconds": 0,
+          "inflicts": []
+        }
+      },
+      {
+        "id": "n5eRJzGDfBdBh1WW",
+        "type": "effect",
+        "label": "Critical failure: −2 AC, 2 Concussed",
+        "effect": {
+          "name": "Mind Crunch",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.ac",
+              "value": "-2",
+              "mode": 2
+            }
+          ],
+          "expires": "nextTurnEnd",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "concussed",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Concussed"
+            }
+          ]
         }
       }
     ],
@@ -204,7 +269,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "6a663b31d79aed95"

@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e1b4vy2fkumpKk",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Night: Frigid Thoughts",
         "save": {
           "abilities": [
             "int"
@@ -98,17 +97,46 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
-            "success": "Success: Affected creature is able to resist this jutsu’s effects.",
-            "failure": "failure, but they also gain 1 rank of Dazzled.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: resists.",
+            "failure": "Failure: Slowed for the duration.",
+            "critFailure": "Critical Failure: as a failure, and 1 Dazzled (the effect)."
+          }
         },
+        "inflicts": [
+          {
+            "key": "slowed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Slowed"
+          }
+        ],
+        "text": "Concentration: creatures you choose in a 25-foot cube from you (+5 feet per rank).",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5eRSm6foi26zQNf",
+        "type": "effect",
+        "label": "Critical failure: Dazzled",
+        "effect": {
+          "name": "Critical failure: Dazzled",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            }
+          ]
         }
       }
     ],
@@ -178,7 +206,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5ecbQOCtW8LIE7D"

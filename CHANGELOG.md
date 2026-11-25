@@ -1,3 +1,11 @@
+## 0.98.0-alpha.1 — STD6f F12 Psionic and Trickery Genjutsu; every jutsu section reviewed
+
+King 2026-11-24: "Next batch." Psionic (36) and Trickery (56) Genjutsu reviewed at every rank (68 partly automated, 24 notes only). Review tables docs/jutsu/genjutsu-psionic-automation.md and genjutsu-trickery-automation.md; spec docs/STD6f_SPEC.md (F12). All 18 jutsu sections (968 jutsu) are now reviewed.
+
+- **Four-tier saves:** each save shows its four results; Success and Critical Failure conditions and per-tier damage are their own buttons.
+- **Fixed buttons:** loose rolls are per-tier damage and penalty buttons; Mind Sliver, Shadow Bite, Crush!, Devil's Assault and other attack-then-save jutsu are attacks first; Night: Painful Light gets its save; five Amps kept.
+- **Effects:** True Strike, Mental Shield and Fortress DR, speed and AC penalties.
+
 ## 0.97.0-alpha.1 — STD6f F11 Phantasm and Hallucinogenic Genjutsu; Dark Phantasm
 
 King 2026-11-24: "Next batch." Phantasm (53) and Hallucinogenic (22) Genjutsu reviewed at every rank (70 partly automated, 5 notes only). Review tables docs/jutsu/genjutsu-phantasm-automation.md and genjutsu-hallucinogenic-automation.md; spec docs/STD6f_SPEC.md (F11).

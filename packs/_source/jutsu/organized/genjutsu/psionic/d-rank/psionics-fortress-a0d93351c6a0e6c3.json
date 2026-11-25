@@ -98,10 +98,9 @@
         "text": "Starts the jutsu's Amp at the rank it was cast at."
       },
       {
-        "id": "parsed1",
+        "id": "n5eYm5qkMK8PI0BQ",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Feedback: hit by a melee weapon or Taijutsu attack",
         "save": {
           "abilities": [
             "int"
@@ -110,14 +109,23 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature is able to resist this jutsu’s effects.",
-            "failure": "failure, but their movement speed is also reduced to 0, until the end of their next turn.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists.",
+            "failure": "Failure: it falls Prone and drops its weapon (after the attack).",
+            "critFailure": "Critical Failure: as a failure, and speed 0 until the end of its next turn."
+          }
         },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
         "damage": {
           "parts": []
         }
@@ -212,9 +220,330 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "ampf3be661967e00",
+              "type": "effect",
+              "label": "Psionics: Fortress",
+              "effect": {
+                "name": "Psionics: Fortress",
+                "target": "self",
+                "amp": "jutsu-psionics-fortress"
+              },
+              "text": "Starts the jutsu's Amp at the rank it was cast at."
+            },
+            {
+              "id": "n5eYm5qkMK8PI0BQ",
+              "type": "save",
+              "label": "Feedback: hit by a melee weapon or Taijutsu attack",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: it falls Prone and drops its weapon (after the attack).",
+                  "critFailure": "Critical Failure: as a failure, and speed 0 until the end of its next turn."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "ampf3be661967e00",
+              "type": "effect",
+              "label": "Psionics: Fortress",
+              "effect": {
+                "name": "Psionics: Fortress",
+                "target": "self",
+                "amp": "jutsu-psionics-fortress"
+              },
+              "text": "Starts the jutsu's Amp at the rank it was cast at."
+            },
+            {
+              "id": "n5eYm5qkMK8PI0BQ",
+              "type": "save",
+              "label": "Feedback: hit by a melee weapon or Taijutsu attack",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: it falls Prone and drops its weapon (after the attack).",
+                  "critFailure": "Critical Failure: as a failure, and speed 0 until the end of its next turn."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eDCOmpyqekx82Q",
+              "type": "effect",
+              "label": "B-Rank: psychic DR",
+              "effect": {
+                "name": "Fortress: psychic DR",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.dr",
+                    "value": "5",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              },
+              "text": "Against psychic damage only."
+            },
+            {
+              "id": "n5eN0oRoXzM6RJ7L",
+              "type": "damage",
+              "label": "Failure: psychic",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e1MlHUIDl5zKYG",
+              "type": "damage",
+              "label": "Critical failure: psychic",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d6",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "ampf3be661967e00",
+              "type": "effect",
+              "label": "Psionics: Fortress",
+              "effect": {
+                "name": "Psionics: Fortress",
+                "target": "self",
+                "amp": "jutsu-psionics-fortress"
+              },
+              "text": "Starts the jutsu's Amp at the rank it was cast at."
+            },
+            {
+              "id": "n5eYm5qkMK8PI0BQ",
+              "type": "save",
+              "label": "Feedback: hit by a melee weapon or Taijutsu attack",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: it falls Prone and drops its weapon (after the attack).",
+                  "critFailure": "Critical Failure: as a failure, and speed 0 until the end of its next turn."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eDCOmpyqekx82Q",
+              "type": "effect",
+              "label": "B-Rank: psychic DR",
+              "effect": {
+                "name": "Fortress: psychic DR",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.dr",
+                    "value": "5",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              },
+              "text": "Against psychic damage only."
+            },
+            {
+              "id": "n5eN0oRoXzM6RJ7L",
+              "type": "damage",
+              "label": "Failure: psychic",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e1MlHUIDl5zKYG",
+              "type": "damage",
+              "label": "Critical failure: psychic",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d6",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "ampf3be661967e00",
+              "type": "effect",
+              "label": "Psionics: Fortress",
+              "effect": {
+                "name": "Psionics: Fortress",
+                "target": "self",
+                "amp": "jutsu-psionics-fortress"
+              },
+              "text": "Starts the jutsu's Amp at the rank it was cast at."
+            },
+            {
+              "id": "n5eYm5qkMK8PI0BQ",
+              "type": "save",
+              "label": "Feedback: hit by a melee weapon or Taijutsu attack",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: it falls Prone and drops its weapon (after the attack).",
+                  "critFailure": "Critical Failure: as a failure, and speed 0 until the end of its next turn."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eFeh4eoHQFCt5j",
+              "type": "effect",
+              "label": "S-Rank: psychic DR",
+              "effect": {
+                "name": "Fortress: psychic DR",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.dr",
+                    "value": "10",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              },
+              "text": "Against psychic damage only."
+            },
+            {
+              "id": "n5eN0oRoXzM6RJ7L",
+              "type": "damage",
+              "label": "Failure: psychic",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "4d6",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e1MlHUIDl5zKYG",
+              "type": "damage",
+              "label": "Critical failure: psychic",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "8d6",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "550eef5129fc0d02"

@@ -88,10 +88,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eOqhEbTKkCh1B3",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Illusory Bamboozlement",
         "save": {
           "abilities": [
             "wis"
@@ -100,43 +99,91 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature is able to see through this illusory trap, rendering it useless against them.",
-            "failure": "Failure: Affected creature believes the object contains a trap. If the creature then tries to disarm or otherwise interact with the trap in order to set it off, it must make a Dexterity (Sleight of hand) check vs your Genjutsu save DC. On a successful check, it creates a feedback dealing 2d10 psychic damage, and they realize that the trap was only an illusion, immediately ending this jutsu. On a failed check, the creature takes 5d10 psychic damage and is Stunned for 1 round, believing that it accidentally set off the trap and was injured by it. The illusion then resets as if the trap can trigger multiple times",
-            "critFailure": "Critical Failure: Affected creature suffers the same effect as a failure but the damage die becomes a d12."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: it sees through it; the jutsu ends.",
+            "failure": "Failure: it believes the trap is real; disarming or setting it off: Sleight of Hand against your Genjutsu save DC (success: 2d10 psychic and it ends; failure: 5d10 psychic and Stunned for 1 round; it resets).",
+            "critFailure": "Critical Failure: as a failure, with d12s."
+          }
         },
+        "inflicts": [],
+        "text": "Permanent: an illusory trap on an object or 5-foot square; a creature looking for traps that examines it.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d10",
-        "roll": {
-          "formula": "2d10",
-          "note": "On a successful check, it creates a feedback dealing 2d10 psychic damage, and they realize that the trap was only an illusion, immediately ending this jutsu. On a failed check, the creature takes 5d10 psychic damage and is Stunned for 1 round, believing that it accidentally set off the trap and was injured by it. The illusion then resets as if the trap can trigger multiple times"
+        "id": "n5eVcAKLrg0zuPfm",
+        "type": "damage",
+        "label": "Disarm success",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d10",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "5d10",
-        "roll": {
-          "formula": "5d10",
-          "note": "On a failed check, the creature takes 5d10 psychic damage and is Stunned for 1 round, believing that it accidentally set off the trap and was injured by it. The illusion then resets as if the trap can trigger multiple times"
+        "id": "n5eqmqA7eORUTufI",
+        "type": "damage",
+        "label": "Disarm failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d10",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "d12",
-        "roll": {
-          "formula": "d12",
-          "note": "Critical Failure: Affected creature suffers the same effect as a failure but the damage die becomes a d12."
+        "id": "n5e8DtD85YxcJeJa",
+        "type": "effect",
+        "label": "Disarm failure: Stunned",
+        "effect": {
+          "name": "Disarm failure: Stunned",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "stunned",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Stunned"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eA9G5DSyR9QOcE",
+        "type": "damage",
+        "label": "Critical failure: disarm success",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d12",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eq3hL6j0IX6DoG",
+        "type": "damage",
+        "label": "Critical failure: disarm failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d12",
+              "type": "psychic"
+            }
+          ]
         }
       }
     ],
@@ -223,7 +270,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "293cc8e640ba6c9d"

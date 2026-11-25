@@ -87,21 +87,76 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "3d8",
-        "roll": {
-          "formula": "3d8",
-          "note": "Creatures who are physically in Bright light at the beginning of their turns takes 3d8 psychic damage for the duration."
+        "id": "n5eaBOKw4gQj1SWy",
+        "type": "save",
+        "label": "Night: Painful Light",
+        "save": {
+          "abilities": [
+            "int"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: Dazzled until the end of its next turn (the effect).",
+            "failure": "Failure: bright light is dim and dim is darkness for it; 3d8 psychic when it starts a turn in bright light.",
+            "critFailure": "Critical Failure: bright light is darkness for it; 5d8 psychic instead."
+          }
+        },
+        "inflicts": [],
+        "text": "Concentration: a creature you can see within 60 feet (+1 per rank); Unaware if it wasn't in bright light. Resave at the end of each of its turns.",
+        "damage": {
+          "parts": []
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "5d8",
-        "roll": {
-          "formula": "5d8",
-          "note": "Critical Failure: Same as failure but affected creatures treat Bright Light as total darkness for the duration and takes 5d8 psychic damage if they are physically in Bright light at the beginning of their turns."
+        "id": "n5eZoHXoZcno8rcn",
+        "type": "effect",
+        "label": "Success: Dazzled",
+        "effect": {
+          "name": "Success: Dazzled",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e1YHDf4VI6NRVH",
+        "type": "damage",
+        "label": "Failure: starting a turn in bright light",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e0fI4qfKzWghZf",
+        "type": "damage",
+        "label": "Critical failure: starting a turn in bright light",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d8",
+              "type": "psychic"
+            }
+          ]
         }
       }
     ],
@@ -184,7 +239,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5ecbQOCtW8LIE7D"

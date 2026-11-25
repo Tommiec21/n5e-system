@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eFU1HvpzlZQgY8",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Night: Frigid Words",
         "save": {
           "abilities": [
             "int"
@@ -98,25 +97,35 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature is able to resist this jutsu’s effects.",
-            "failure": "failure, but affected creatures also gain a 1d4 penalty to all saving throws against Genjutsu with the Auditory keyword for the duration.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists.",
+            "failure": "Failure: Deafened to every sound but you.",
+            "critFailure": "Critical Failure: as a failure, and −1d4 on saves against Auditory Genjutsu."
+          }
         },
+        "inflicts": [
+          {
+            "key": "deafened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Deafened"
+          }
+        ],
+        "text": "Concentration: creatures you choose in a 20-foot cone.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
+        "id": "n5eksFSjUyTFR8Fb",
         "type": "roll",
-        "label": "1d4",
+        "label": "Critical failure: Auditory save penalty",
         "roll": {
           "formula": "1d4",
-          "note": "Critical Failure: Same as failure, but affected creatures also gain a 1d4 penalty to all saving throws against Genjutsu with the Auditory keyword for the duration."
+          "note": ""
         }
       }
     ],
@@ -191,7 +200,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5ecbQOCtW8LIE7D"

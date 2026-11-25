@@ -87,23 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eUA9c8n3Aw0iKl",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "prone",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Prone"
-          },
-          {
-            "key": "stunned",
-            "kind": "state",
-            "ranks": 1,
-            "label": "Stunned"
-          }
-        ],
+        "label": "Labyrinthine Howl",
         "save": {
           "abilities": [
             "wis"
@@ -112,15 +98,56 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
-          "tiers": {},
-          "resave": false
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists.",
+            "failure": "Failure: it believes it's in a labyrinth under attack by a beast.",
+            "critFailure": "Critical Failure: as a failure."
+          }
         },
+        "inflicts": [],
+        "text": "Hostile creatures that can hear you within 60 feet. On its turn a creature that failed faces the beast (the damage; the jutsu ends for it) or defends (Prone and Stunned until the start of its next turn; the effect).",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eR3L9AjbcTSLeP",
+        "type": "damage",
+        "label": "Faces the beast",
         "damage": {
           "parts": [
             {
               "formula": "8d6",
               "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5egDDKCvuIGY0O5",
+        "type": "effect",
+        "label": "Defends: Prone, Stunned",
+        "effect": {
+          "name": "Defends: Prone, Stunned",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "prone",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Prone"
+            },
+            {
+              "key": "stunned",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Stunned"
             }
           ]
         }
@@ -206,23 +233,9 @@
         "activitiesByRank": {
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eUA9c8n3Aw0iKl",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "prone",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Prone"
-                },
-                {
-                  "key": "stunned",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Stunned"
-                }
-              ],
+              "label": "Labyrinthine Howl",
               "save": {
                 "abilities": [
                   "wis"
@@ -231,10 +244,25 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
+                "resave": false,
                 "fourTier": true,
-                "tiers": {},
-                "resave": false
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: it believes it's in a labyrinth under attack by a beast.",
+                  "critFailure": "Critical Failure: as a failure."
+                }
               },
+              "inflicts": [],
+              "text": "Hostile creatures that can hear you within 60 feet. On its turn a creature that failed faces the beast (the damage; the jutsu ends for it) or defends (Prone and Stunned until the start of its next turn; the effect).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eR3L9AjbcTSLeP",
+              "type": "damage",
+              "label": "Faces the beast",
               "damage": {
                 "parts": [
                   {
@@ -243,27 +271,39 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5egDDKCvuIGY0O5",
+              "type": "effect",
+              "label": "Defends: Prone, Stunned",
+              "effect": {
+                "name": "Defends: Prone, Stunned",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "stunned",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Stunned"
+                  }
+                ]
+              }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eUA9c8n3Aw0iKl",
               "type": "save",
-              "label": "Save",
-              "inflicts": [
-                {
-                  "key": "prone",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Prone"
-                },
-                {
-                  "key": "stunned",
-                  "kind": "state",
-                  "ranks": 1,
-                  "label": "Stunned"
-                }
-              ],
+              "label": "Labyrinthine Howl",
               "save": {
                 "abilities": [
                   "wis"
@@ -272,10 +312,25 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
+                "resave": false,
                 "fourTier": true,
-                "tiers": {},
-                "resave": false
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: it believes it's in a labyrinth under attack by a beast.",
+                  "critFailure": "Critical Failure: as a failure."
+                }
               },
+              "inflicts": [],
+              "text": "Hostile creatures that can hear you within 60 feet. On its turn a creature that failed faces the beast (the damage; the jutsu ends for it) or defends (Prone and Stunned until the start of its next turn; the effect).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eR3L9AjbcTSLeP",
+              "type": "damage",
+              "label": "Faces the beast",
               "damage": {
                 "parts": [
                   {
@@ -284,11 +339,38 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "n5egDDKCvuIGY0O5",
+              "type": "effect",
+              "label": "Defends: Prone, Stunned",
+              "effect": {
+                "name": "Defends: Prone, Stunned",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "prone",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Prone"
+                  },
+                  {
+                    "key": "stunned",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Stunned"
+                  }
+                ]
+              }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "fae9e18fa9699f4f"

@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e7DbyTsgVmydym",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Fog of War",
         "save": {
           "abilities": [
             "wis"
@@ -98,26 +97,28 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this Jutsu's effects.",
-            "success": "Success: If the affected creature would attempt to make an attack or cast a jutsu that targets a creature before the end of their next turn, they must roll a d20. On a roll of 5 or lower they end up targeting the closest allied creature within 20-feet of their original target at random. This jutsu then ends.",
-            "failure": "Failure: For the duration, the first time each turn the affected creature would attempt to make an attack or cast a jutsu that targets a creature before the end of their next turn, they must roll a d20. On a roll of 8 or lower they end up targeting the closest allied creature within 20-feet of their original target at random.",
-            "critFailure": "Critical Failure: Same as failure but instead on a roll of 11 or lower the end up targeting the closest allied creature within 20-feet of their original target."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: before the end of its next turn, targeting a creature, it rolls a d20: 5 or lower, it targets the closest ally within 20 feet of the target; then this ends.",
+            "failure": "Failure: the first time each turn it targets a creature, a d20: 8 or lower.",
+            "critFailure": "Critical Failure: as a failure, 11 or lower."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: creatures you choose within 20 feet of you.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
+        "id": "n5exhDtLIKICrGJX",
         "type": "roll",
-        "label": "d20",
+        "label": "Targeting: d20",
         "roll": {
-          "formula": "d20",
-          "note": "Success: If the affected creature would attempt to make an attack or cast a jutsu that targets a creature before the end of their next turn, they must roll a d20. On a roll of 5 or lower they end up targeting the closest allied creature within 20-feet of their original target at random. This jutsu then ends."
+          "formula": "1d20",
+          "note": ""
         }
       }
     ],
@@ -198,7 +199,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "293cc8e640ba6c9d"

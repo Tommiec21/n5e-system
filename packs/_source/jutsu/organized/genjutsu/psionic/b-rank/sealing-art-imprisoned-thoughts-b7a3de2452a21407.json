@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e7XM9ylb2V1rwe",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Sealing Art: Imprisoned Thoughts",
         "save": {
           "abilities": [
             "cha"
@@ -99,14 +98,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature is able to resist this jutsu’s effects.",
-            "failure": "Failure, and they cannot cast any jutsu that both you and it have on its known jutsu list.",
-            "critFailure": "Critical Failure: Same as a"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists.",
+            "failure": "Failure: the last jutsu it cast fails when it tries to recast it (the chakra is spent).",
+            "critFailure": "Critical Failure: as a failure, and it can't cast any jutsu that you also know."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: a creature you can see within 60 feet (+1 per rank).",
         "damage": {
           "parts": []
         }
@@ -178,7 +180,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "66c252f59e0fc3c9"

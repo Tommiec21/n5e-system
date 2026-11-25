@@ -1,6 +1,6 @@
 # STD6f function spec: jutsu as data
 
-Status: **Approved by King 2026-11-22 (Q-J1 yes; Q-J2 fix and finish). F1 Taijutsu I (0.87.0-alpha.1) and F2 Taijutsu II (0.88.0-alpha.1) built: Taijutsu is done. F3 Bukijutsu I (0.89.0-alpha.1) F4 Bukijutsu II (0.90.0-alpha.1) and F5 Bukijutsu III (0.91.0-alpha.1) built: Bukijutsu is done. F6 Non-Elemental (0.92.0-alpha.1) F7 Medical (0.93.0-alpha.1) F8 Earth + Wind (0.94.0-alpha.1) F9 Fire + Water (0.95.0-alpha.1) and F10 Lightning (0.96.0-alpha.1) built: Ninjutsu is done. F11 Phantasm + Hallucinogenic (0.97.0-alpha.1) built. Next: F12 Psionic + Trickery.**
+Status: **Approved by King 2026-11-22 (Q-J1 yes; Q-J2 fix and finish). F1 Taijutsu I (0.87.0-alpha.1) and F2 Taijutsu II (0.88.0-alpha.1) built: Taijutsu is done. F3 Bukijutsu I (0.89.0-alpha.1) F4 Bukijutsu II (0.90.0-alpha.1) and F5 Bukijutsu III (0.91.0-alpha.1) built: Bukijutsu is done. F6 Non-Elemental (0.92.0-alpha.1) F7 Medical (0.93.0-alpha.1) F8 Earth + Wind (0.94.0-alpha.1) F9 Fire + Water (0.95.0-alpha.1) and F10 Lightning (0.96.0-alpha.1) built: Ninjutsu is done. F11 Phantasm + Hallucinogenic (0.97.0-alpha.1) and F12 Psionic + Trickery (0.98.0-alpha.1) built: every jutsu section (968 jutsu) is reviewed. STD6f is complete apart from King's open confirm items.**
 
 Plan: `docs/STD_SPEC.md` (STD6f: "Every jutsu's riders as Active Effects and elements, emitted by an upgraded importer where the pattern is regular; a review table per section for King"). Same method as the clan pass (`docs/STD6e_SPEC.md`).
 
@@ -366,6 +366,33 @@ Review tables: `docs/jutsu/genjutsu-phantasm-automation.md` (53 jutsu: 52 partly
 - Lotus jutsu: "a space you can within range", "saving throw to as the pollen", "who's failed".
 - Typos: Bane "feel deep seeded"; Bless "deep seeded Pride"; Cause Fear "incents"; Corruption: Mind Mist "Same a failure"; Frenzy: Black "all creatures in the turn initiative, is treated"; Heroism "All willing creatures in range is imbued"; Corruption: Alienation "communicated with"; Effortless Paralysis "Affected creatures mind"; Request of the Damned "who's name"; Shadow Monsters "The select creature"; Will Breaker "they tear the break"; Unlimited Pleasure "recouperation"; Snake Play "under the impression, they"; Medical Release: Healed Thoughts "compose a stimulant"; Chaotic World "Genjutsu’s effects and becomes aware"; Mind-Body recovery "C-Rank of lower".
 
+## F12 Genjutsu II: Psionic + Trickery (0.98.0-alpha.1)
+
+Review tables: `docs/jutsu/genjutsu-psionic-automation.md` (36 jutsu: 33 partly automated, 3 notes only) and `docs/jutsu/genjutsu-trickery-automation.md` (56 jutsu: 35 partly automated, 21 notes only).
+
+- **Kept** (Q-J2): the Psionics: Fortress, Psionics: Keen Meditation, Cloak of Shadows, Environmental Affinity and Misleading Duplicate Amps, and Glamor Tongue's effect. Fortress gains its feedback save; Keen Meditation its critical damage.
+- **Four-tier saves** as in F11: tier text on the button, failure conditions on the save, Success and Critical Failure conditions and per-tier damage as their own buttons.
+- **Fixed:** loose rolls turned into per-tier damage (Insinuation, Painful Voice, Drain!, Dark Psycho Pulse!, Shock!, Dark Daze!, Torment!, Psychic Blast, Mind Thrust, Bitter Feelings, Thought Rejection, Illusory Bamboozlement) and penalty or reduction rolls; Mind Sliver, Shadow Bite, Weapons of Darkness, Mind Crunch!, Crush!, Vipers of Darkness, Frigid Pain, Devil's Assault and Rabbit's Frenzy are attacks then saves; Night: Painful Light gets its missing save; Feeble Mind's 8d6 is a damage button before the save; Labyrinthine Howl's 8d6 and Prone/Stunned are the two choices, not the save; Maze and Neverending Dream apply Prone/Stunned and Unconscious; Invisibility, Black Sunshine apply Invisible.
+- **Effects:** True Strike +2 to the next attack; Mental Shield psychic DR (+4 per rank); Fortress psychic DR at B (5) and S (10); speed penalties (False Future, Shadow Bite, Detrimental Environment); AC penalties (Mind Crunch!).
+- **Upcasts:** Doubled Pain (2d6 at B, 3d6 at S), Weapons of Darkness (+Genjutsu modifier at C, 2 attacks at B, 3 at S), Keen Meditation (2d12 at C), Fortress damage, Vipers of Darkness (3d10 and 2 Demoralized at C), Color Spray (Dazzled +1 at B and S), Flower Petal Escape (−1 per rank), Outflank (2d8 at A), Devil's Assault (+1 attack per rank), and +1 die per rank where the text says so.
+- **Level scaling:** Mind Sliver's 2d6, 3d6 and 4d6 attacks appear at 5th, 11th and 17th level.
+- **Notes only:** Message, Release, Cursed Tongue Seal; Distant Echo, Minor Illusion, Voice Change, Encode Thoughts, Transform, Comprehend Languages, Detect Illusions, Distant Words, Illusory Script, Phantom Light, Illusory Image, Unglamorous Face, Blur, Chakra Shatter, Hallucinatory Terrain, Haze Clone, Innocuous Aspect, Eyes of Truth, Mental Schism, Programmed Illusions, Eagle's Eye.
+- **By hand:** transferred or bounced conditions (Hostile Transfer, Rubber Mind, Bitter Feelings), critical threat range, Clone Technique's level uses, Wolves' Companionship's six dice, area size changes.
+
+## Text issues found in F12
+
+- Built on a reading; confirm: plain saves built four-tier (Memory Domination, Seeming, Detect Intention, Feeble Mind, Labyrinthine Howl, Maze, Neverending Dream, Black Sunshine, Devil's Assault, Rabbit's Frenzy, Mind Sliver); Weapons of Darkness' B-Rank "two attacks" and S-Rank "three" read as attacks per Action; Fortress's B- and S-Rank damage replaces, not adds; Doubled Pain upcast "+1 creature" kept with the dice; Night: Bitter Darkness "+5 feet per rank" added to the 10-foot shrink.
+- Missing pieces: Night: Painful Light has no save button in the import (added); Night: Frigid Touch and Frigid Words have no Critical Success line; Psionics: False Future and Mind Thrust have no Critical Success; Psionics: Pause!, Rubber Mind and Imprisoned Thoughts have no Critical Success; Genjutsu Break says "For the duration of this hour" (duration is Instant; the stored Genjutsu lasts 10 minutes).
+- Weapons of Darkness: Critical Failure "1 rank of both Demoralized or Shaken".
+- Black Sunshine: "On a failed save you become invisible to them" then "becoming immune to their jutsu"; resave wording.
+- Feeble Mind: "The spell can also be ended".
+- Memory Domination: "Greater Restorative Jutsu" (no such jutsu named); Genjutsu Break "the Sealing tag".
+- Labyrinthine Howl: no Success/Failure tiers although Genjutsu.
+- Clone Technique: "are not immune by this jutsu" (should be "are immune"?).
+- Night jutsu: "Affected creatures jutsu", "reduce by an additional"; Bitter Light "who is casting a jutsu with range" in a single-target trigger.
+- Programmed Illusions: "Genjutsu (Wisdom) check" (should be Wisdom (Illusion)).
+- Typos: Psionics: Hostile Transfer "an ally's creature"; Painful Voice; Dark Psycho Pulse "manifest gauntlet of formed of"; Mind Thrust "creature's takes"; Mind Crunch "two ranks of concussion"; Crush "make a range Genjutsu attack", "falls Prone and find"; Torment "all who perceives it"; Illusionary reinforcement "granting them the chance to take ability to take"; Frigid Pain "attack again a creature"; Eyes of Truth "your glass"; Mental Schism "which is can only use"; Haze Clone "the user gain"; Flower Petal Escape "you immediately moving"; Battle Sense "This special action be used"; Black Sunshine "making attacks at disadvantage vs invisible creatures".
+
 ## Progress log
 
 - 2026-11-22 King: "Next batch" (after STD6e E8). Claude: spec proposed from a survey of the jutsu pack. Nothing built.
@@ -380,3 +407,4 @@ Review tables: `docs/jutsu/genjutsu-phantasm-automation.md` (53 jutsu: 52 partly
 - 2026-11-24 King: "Next Batch." Claude: F9 Fire + Water built (101 jutsu) with the Flame Spider, Water Shark, Medical Jellyfish and Supreme Water Lion; text issues logged in 10a; published 0.95.0-alpha.1. No new questions.
 - 2026-11-24 King: "Next batch." Claude: F10 Lightning built (44 jutsu) with the Lightning Beast and Lightning Dragon; text issues logged in 10a; published 0.96.0-alpha.1. No new questions.
 - 2026-11-24 King: "Next batch." Claude: F11 Phantasm + Hallucinogenic built (75 jutsu) with the Dark Phantasm; text issues logged in 10a; published 0.97.0-alpha.1. No new questions.
+- 2026-11-24 King: "Next batch." Claude: F12 Psionic + Trickery built (92 jutsu); every jutsu section reviewed; text issues logged in 10a; published 0.98.0-alpha.1. No new questions.

@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eu7w81QiFJ9C5v",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Psychic Blast",
         "save": {
           "abilities": [
             "wis"
@@ -98,44 +97,85 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
-            "success": "Success: Affected creature takes 4d8 psychic damage.",
-            "failure": "Failure: Affected creatures takes 7d8 psychic damage and is knocked Prone.",
-            "critFailure": "Critical Failure: Affected creatures take 10d8 psychic damage, is knocked Prone and Incapacitated until the end of their next turn."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: 4d8 psychic.",
+            "failure": "Failure: 7d8 psychic and Prone.",
+            "critFailure": "Critical Failure: 10d8 psychic, Prone and Incapacitated until the end of its next turn (the effect)."
+          }
         },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
+        "text": "A 30-foot cone.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "4d8",
-        "roll": {
-          "formula": "4d8",
-          "note": "Success: Affected creature takes 4d8 psychic damage."
+        "id": "n5eBy4wuPHBbY0R5",
+        "type": "damage",
+        "label": "Success",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "7d8",
-        "roll": {
-          "formula": "7d8",
-          "note": "Failure: Affected creatures takes 7d8 psychic damage and is knocked Prone."
+        "id": "n5eoL9bpVeMrSFQR",
+        "type": "damage",
+        "label": "Failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "7d8",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "10d8",
-        "roll": {
-          "formula": "10d8",
-          "note": "Critical Failure: Affected creatures take 10d8 psychic damage, is knocked Prone and Incapacitated until the end of their next turn."
+        "id": "n5eeomk0WoOQcR18",
+        "type": "damage",
+        "label": "Critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "10d8",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e7wkWSOneEZfrc",
+        "type": "effect",
+        "label": "Critical failure: Incapacitated",
+        "effect": {
+          "name": "Critical failure: Incapacitated",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "incapacitated",
+              "kind": "state",
+              "ranks": 1,
+              "label": "Incapacitated"
+            }
+          ]
         }
       }
     ],
@@ -228,9 +268,201 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eu7w81QiFJ9C5v",
+              "type": "save",
+              "label": "Psychic Blast",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 4d8 psychic.",
+                  "failure": "Failure: 7d8 psychic and Prone.",
+                  "critFailure": "Critical Failure: 10d8 psychic, Prone and Incapacitated until the end of its next turn (the effect)."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 30-foot cone.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eBy4wuPHBbY0R5",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (1d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eoL9bpVeMrSFQR",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(7d8) + (1d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eeomk0WoOQcR18",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(10d8) + (1d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e7wkWSOneEZfrc",
+              "type": "effect",
+              "label": "Critical failure: Incapacitated",
+              "effect": {
+                "name": "Critical failure: Incapacitated",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "incapacitated",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Incapacitated"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eu7w81QiFJ9C5v",
+              "type": "save",
+              "label": "Psychic Blast",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 4d8 psychic.",
+                  "failure": "Failure: 7d8 psychic and Prone.",
+                  "critFailure": "Critical Failure: 10d8 psychic, Prone and Incapacitated until the end of its next turn (the effect)."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "prone",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Prone"
+                }
+              ],
+              "text": "A 30-foot cone.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eBy4wuPHBbY0R5",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (2d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eoL9bpVeMrSFQR",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(7d8) + (2d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eeomk0WoOQcR18",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(10d8) + (2d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e7wkWSOneEZfrc",
+              "type": "effect",
+              "label": "Critical failure: Incapacitated",
+              "effect": {
+                "name": "Critical failure: Incapacitated",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "incapacitated",
+                    "kind": "state",
+                    "ranks": 1,
+                    "label": "Incapacitated"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "66c252f59e0fc3c9"

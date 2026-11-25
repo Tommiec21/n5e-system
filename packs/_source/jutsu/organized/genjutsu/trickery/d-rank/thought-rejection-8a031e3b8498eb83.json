@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eSHoKUWqcPd8os",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Thought Rejection",
         "save": {
           "abilities": [
             "wis"
@@ -99,35 +98,65 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
-            "success": "Success: Affected creature takes 2d6 psychic damage.",
-            "failure": "Failure: Affected creature takes 4d6 psychic damage.",
-            "critFailure": "Critical Failure: Affected creature gains 1 rank of Dazzled and takes 4d6 psychic damage."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: 2d6 psychic.",
+            "failure": "Failure: 4d6 psychic.",
+            "critFailure": "Critical Failure: 4d6 psychic and 1 Dazzled (the effect)."
+          }
         },
+        "inflicts": [],
+        "text": "Reaction to taking damage: creatures within 10 feet of a point within 90 feet.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "Success: Affected creature takes 2d6 psychic damage."
+        "id": "n5eRZEnIleqI6qL7",
+        "type": "damage",
+        "label": "Success",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "4d6",
-        "roll": {
-          "formula": "4d6",
-          "note": "Failure: Affected creature takes 4d6 psychic damage."
+        "id": "n5emKef4CVz7NZ3E",
+        "type": "damage",
+        "label": "Failure or critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ef3PVD72CnLbDY",
+        "type": "effect",
+        "label": "Critical failure: Dazzled",
+        "effect": {
+          "name": "Critical failure: Dazzled",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            }
+          ]
         }
       }
     ],
@@ -220,9 +249,311 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eSHoKUWqcPd8os",
+              "type": "save",
+              "label": "Thought Rejection",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 2d6 psychic.",
+                  "failure": "Failure: 4d6 psychic.",
+                  "critFailure": "Critical Failure: 4d6 psychic and 1 Dazzled (the effect)."
+                }
+              },
+              "inflicts": [],
+              "text": "Reaction to taking damage: creatures within 10 feet of a point within 90 feet.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eRZEnIleqI6qL7",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5emKef4CVz7NZ3E",
+              "type": "damage",
+              "label": "Failure or critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ef3PVD72CnLbDY",
+              "type": "effect",
+              "label": "Critical failure: Dazzled",
+              "effect": {
+                "name": "Critical failure: Dazzled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eSHoKUWqcPd8os",
+              "type": "save",
+              "label": "Thought Rejection",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 2d6 psychic.",
+                  "failure": "Failure: 4d6 psychic.",
+                  "critFailure": "Critical Failure: 4d6 psychic and 1 Dazzled (the effect)."
+                }
+              },
+              "inflicts": [],
+              "text": "Reaction to taking damage: creatures within 10 feet of a point within 90 feet.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eRZEnIleqI6qL7",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5emKef4CVz7NZ3E",
+              "type": "damage",
+              "label": "Failure or critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ef3PVD72CnLbDY",
+              "type": "effect",
+              "label": "Critical failure: Dazzled",
+              "effect": {
+                "name": "Critical failure: Dazzled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eSHoKUWqcPd8os",
+              "type": "save",
+              "label": "Thought Rejection",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 2d6 psychic.",
+                  "failure": "Failure: 4d6 psychic.",
+                  "critFailure": "Critical Failure: 4d6 psychic and 1 Dazzled (the effect)."
+                }
+              },
+              "inflicts": [],
+              "text": "Reaction to taking damage: creatures within 10 feet of a point within 90 feet.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eRZEnIleqI6qL7",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (3d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5emKef4CVz7NZ3E",
+              "type": "damage",
+              "label": "Failure or critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (3d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ef3PVD72CnLbDY",
+              "type": "effect",
+              "label": "Critical failure: Dazzled",
+              "effect": {
+                "name": "Critical failure: Dazzled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eSHoKUWqcPd8os",
+              "type": "save",
+              "label": "Thought Rejection",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 2d6 psychic.",
+                  "failure": "Failure: 4d6 psychic.",
+                  "critFailure": "Critical Failure: 4d6 psychic and 1 Dazzled (the effect)."
+                }
+              },
+              "inflicts": [],
+              "text": "Reaction to taking damage: creatures within 10 feet of a point within 90 feet.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eRZEnIleqI6qL7",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (4d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5emKef4CVz7NZ3E",
+              "type": "damage",
+              "label": "Failure or critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (4d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ef3PVD72CnLbDY",
+              "type": "effect",
+              "label": "Critical failure: Dazzled",
+              "effect": {
+                "name": "Critical failure: Dazzled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5ecbQOCtW8LIE7D"

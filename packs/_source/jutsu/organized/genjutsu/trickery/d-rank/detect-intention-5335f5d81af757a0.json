@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5et3viwGfnMEVyr",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Detect Intention",
         "save": {
           "abilities": [
             "wis"
@@ -99,10 +98,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
-          "tiers": {},
-          "resave": false
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: you can't discern it.",
+            "failure": "Failure: you learn its most immediate intention.",
+            "critFailure": "Critical Failure: as a failure."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: a creature you can see within 30 feet that is aware of you (unaware: your Illusion against its passive Deception instead). Intentions: Hostile, Antagonistic, Neutral, Helpful.",
         "damage": {
           "parts": []
         }
@@ -172,7 +178,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5ecbQOCtW8LIE7D"

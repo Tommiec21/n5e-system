@@ -88,14 +88,49 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eVGG7AzKA5Ji3L",
         "type": "attack",
-        "label": "Attack",
+        "label": "Neverending Dream",
         "attack": {
-          "discipline": "gen",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "1 hour, a custom seal, one creature at a time. On a hit: the save.",
+        "damage": {
+          "parts": []
+        }
+      },
+      {
+        "id": "n5eq9WhYFp9HKG4B",
+        "type": "save",
+        "label": "Neverending Dream: Wisdom",
+        "save": {
+          "abilities": [
+            "wis"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists.",
+            "failure": "Failure: asleep in the loop (Unconscious).",
+            "critFailure": "Critical Failure: as a failure."
+          }
+        },
+        "inflicts": [
+          {
+            "key": "unconscious",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Unconscious"
+          }
+        ],
+        "text": "Until dispelled. At the end of each day a Wisdom save at disadvantage; 5 successes in a row wakes it.",
         "damage": {
           "parts": []
         }
@@ -165,7 +200,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "b43e363ae1f523df"

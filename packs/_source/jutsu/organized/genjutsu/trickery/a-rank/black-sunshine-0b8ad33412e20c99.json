@@ -86,17 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ewr6IsyZsctmy7",
         "type": "save",
-        "label": "Save",
-        "inflicts": [
-          {
-            "key": "invisible",
-            "kind": "condition",
-            "ranks": 1,
-            "label": "Invisible"
-          }
-        ],
+        "label": "Black Sunshine",
         "save": {
           "abilities": [
             "wis"
@@ -105,13 +97,41 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
-          "tiers": {},
-          "resave": false
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists.",
+            "failure": "Failure: you, and creatures you designate within 60 feet in the orb's light, are Invisible to it (the effect on you and them).",
+            "critFailure": "Critical Failure: as a failure."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: creatures you choose starting their turn within 60 feet of you (+15 feet per rank). Resave at the end of each of its turns: success, immune until the end of its next turn. Finding the purple shadows: an Action and Perception against your Genjutsu save DC (attacks at disadvantage).",
         "damage": {
           "parts": []
         }
+      },
+      {
+        "id": "n5ezagqVcW0ELRQK",
+        "type": "effect",
+        "label": "You and designated allies: Invisible",
+        "effect": {
+          "name": "Black Sunshine",
+          "target": "self",
+          "changes": [],
+          "expires": "",
+          "seconds": 60,
+          "inflicts": [
+            {
+              "key": "invisible",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Invisible"
+            }
+          ]
+        },
+        "text": "To creatures that failed only."
       }
     ],
     "featureType": "active",
@@ -180,7 +200,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "bb4e5d99d4d4ee8e"

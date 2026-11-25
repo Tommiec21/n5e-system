@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e6jQVKDGDEYQrX",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Night: Bitter Light",
         "save": {
           "abilities": [
             "int"
@@ -99,15 +98,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s negative effects.",
-            "success": "Success: Affected creature cannot target a single creature and instead must randomly select their target, before the end of the current turn.",
-            "failure": "failure, the target must now select a creature allied to themselves, even if a creature hostile to it is also in range.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: it picks its target at random before the end of the turn.",
+            "failure": "Failure: it picks a new target, even an ally (not the same one).",
+            "critFailure": "Critical Failure: it must pick a creature allied to it."
+          }
         },
+        "inflicts": [],
+        "text": "Reaction to a hostile creature within 60 feet casting a single-target jutsu.",
         "damage": {
           "parts": []
         }
@@ -177,7 +178,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5ecbQOCtW8LIE7D"

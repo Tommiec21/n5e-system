@@ -87,14 +87,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ewPRkDQ2VTAzdQ",
         "type": "attack",
-        "label": "Attack",
+        "label": "Outflank: illusory double",
         "attack": {
-          "discipline": "gen",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Concentration: a creature within 60 feet (+1 per rank). When you or an ally hits it: a Genjutsu attack matching the triggering attack's type (melee or ranged).",
         "damage": {
           "parts": [
             {
@@ -182,10 +183,75 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5ewPRkDQ2VTAzdQ",
+              "type": "attack",
+              "label": "Outflank: illusory double",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration: a creature within 60 feet (+1 per rank). When you or an ally hits it: a Genjutsu attack matching the triggering attack's type (melee or ranged).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d8",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ewPRkDQ2VTAzdQ",
+              "type": "attack",
+              "label": "Outflank: illusory double",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration: a creature within 60 feet (+1 per rank). When you or an ally hits it: a Genjutsu attack matching the triggering attack's type (melee or ranged).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d8",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ewPRkDQ2VTAzdQ",
+              "type": "attack",
+              "label": "Outflank: illusory double",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration: a creature within 60 feet (+1 per rank). When you or an ally hits it: a Genjutsu attack matching the triggering attack's type (melee or ranged).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d8",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
       },
-      "notAmp": "It marks a foe (King, AMP1f batch 2)."
+      "notAmp": "It marks a foe (King, AMP1f batch 2).",
+      "reviewed": true
     }
   },
   "folder": "293cc8e640ba6c9d"

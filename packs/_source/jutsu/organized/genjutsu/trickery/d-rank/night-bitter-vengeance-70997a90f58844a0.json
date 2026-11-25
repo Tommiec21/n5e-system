@@ -87,10 +87,18 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eA6eFLwhg4xY0h",
+        "type": "roll",
+        "label": "Bitter Vengeance: +1d6",
+        "roll": {
+          "formula": "1d6",
+          "note": "Reaction to an ally (not you) within 30 feet taking damage: +1d6 to its attack and damage rolls until the end of its next turn; then the save."
+        }
+      },
+      {
+        "id": "n5efFXKLicMAVGD1",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "End of its next turn: Intelligence",
         "save": {
           "abilities": [
             "int"
@@ -99,34 +107,31 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature is able to resist this jutsu’s negative effects.",
-            "failure": "failure, but they also gain a 1d6 penalty to their attack and damage rolls until the end of their next turn.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists.",
+            "failure": "Failure: 2d6 psychic.",
+            "critFailure": "Critical Failure: as a failure, and −1d6 to attack and damage rolls until the end of its next turn."
+          }
         },
+        "inflicts": [],
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "1d6",
-        "roll": {
-          "formula": "1d6",
-          "note": "They gain a boost to their aggressiveness, increasing their bonus to attack and damage rolls by 1d6 until the end of their next turn."
-        }
-      },
-      {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "Failure: Affected creature suffers a small but painful feedback, taking 2d6 psychic damage."
+        "id": "n5edDbRo1GbQb37o",
+        "type": "damage",
+        "label": "Failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "psychic"
+            }
+          ]
         }
       }
     ],
@@ -213,7 +218,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5ecbQOCtW8LIE7D"

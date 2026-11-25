@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eOzIBOh51D2ost",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Psionics: Pause!",
         "save": {
           "abilities": [
             "int"
@@ -99,14 +98,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature is able to resist this jutsu’s effects.",
-            "failure": "Failure: Affected creature decides on their actions on their turn, but can only actively take them at the end of the next creatures turn. If the affected creature would target a creature who is no longer in range, their jutsu fails to cast.",
-            "critFailure": "Critical Failure: Affected creature decides on their actions on their turn, but they can only actively take them on initiative count 0."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists.",
+            "failure": "Failure: it decides its actions on its turn but takes them at the end of the next creature's turn (a target out of range: the jutsu fails).",
+            "critFailure": "Critical Failure: it takes them on initiative count 0."
+          }
         },
+        "inflicts": [],
+        "text": "A creature you can see within 60 feet (A-Rank: +1).",
         "damage": {
           "parts": []
         }
@@ -178,7 +180,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "6a663b31d79aed95"

@@ -88,10 +88,28 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5etUUqRbwPU9Cdg",
+        "type": "attack",
+        "label": "Psionics: Crush!",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "A creature you can see within 60 feet. On a hit: the save.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d10",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5exNxdWnaI4oQXn",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Crush: Wisdom",
         "save": {
           "abilities": [
             "wis"
@@ -100,21 +118,25 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature is able to resist this jutsu’s secondary effects.",
-            "failure": "Failure: Affected creatures falls Prone and find it difficult to stand. If they would attempt to stand, they must spend all of their movement.",
-            "critFailure": "Critical Failure: Affected creature falls Prone and cannot stand. They remain Prone until another creature assists them to help them stand. While Prone in this way, their movement speed is 0."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists the rest.",
+            "failure": "Failure: Prone; standing up takes all its movement.",
+            "critFailure": "Critical Failure: Prone and can't stand until another creature helps it; speed 0 while Prone."
+          }
         },
+        "inflicts": [
+          {
+            "key": "prone",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Prone"
+          }
+        ],
         "damage": {
-          "parts": [
-            {
-              "formula": "5d10",
-              "type": "psychic"
-            }
-          ]
+          "parts": []
         }
       }
     ],
@@ -189,7 +211,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "66c252f59e0fc3c9"

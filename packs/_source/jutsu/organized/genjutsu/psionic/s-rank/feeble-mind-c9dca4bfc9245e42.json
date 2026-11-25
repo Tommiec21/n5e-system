@@ -87,10 +87,23 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5edfnPNHhQ6on0v",
+        "type": "damage",
+        "label": "Feeble Mind",
+        "damage": {
+          "parts": [
+            {
+              "formula": "8d6",
+              "type": "psychic"
+            }
+          ]
+        },
+        "text": "A creature you can see within 150 feet; then the save."
+      },
+      {
+        "id": "n5eexo6BzxmDYh7W",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Feeble Mind: Intelligence",
         "save": {
           "abilities": [
             "int"
@@ -99,17 +112,19 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
-          "tiers": {},
-          "resave": false
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: no further effect.",
+            "failure": "Failure: Intelligence and Charisma become 1; it can't cast jutsu, activate chakra items, understand language or communicate intelligibly; it still knows, follows and protects its friends.",
+            "critFailure": "Critical Failure: as a failure."
+          }
         },
+        "inflicts": [],
+        "text": "Every 30 days it resaves; a success ends it. Also ended by an A-Rank Genjutsu Break, Restorative or Mind-Body Recovery.",
         "damage": {
-          "parts": [
-            {
-              "formula": "8d6",
-              "type": "psychic"
-            }
-          ]
+          "parts": []
         }
       }
     ],
@@ -184,7 +199,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "43f538b363ec0be6"

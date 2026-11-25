@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5elTAXlfQ0a4deA",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Painful Voice",
         "save": {
           "abilities": [
             "wis"
@@ -99,35 +98,65 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this Jutsu's effect.",
-            "success": "Success: Affected creature is able to resist most of this jutsu’s effects but becomes Deafened until the end of their next turn.",
-            "failure": "Failure: Affected creature takes 4d6 psychic damage and affected creature makes their Concentration check at disadvantage.",
-            "critFailure": "Critical Failure: Same as failure but affected creature takes 4d8 psychic damage."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: Deafened until the end of its next turn (the effect).",
+            "failure": "Failure: 4d6 psychic; its concentration checks at disadvantage.",
+            "critFailure": "Critical Failure: as a failure, 4d8 psychic instead."
+          }
         },
+        "inflicts": [],
+        "text": "Creatures that can hear you in a 30-foot cone (+5 feet per rank).",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "4d6",
-        "roll": {
-          "formula": "4d6",
-          "note": "Failure: Affected creature takes 4d6 psychic damage and affected creature makes their Concentration check at disadvantage."
+        "id": "n5enSzDyrJ2q3EEw",
+        "type": "effect",
+        "label": "Success: Deafened",
+        "effect": {
+          "name": "Success: Deafened",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "deafened",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Deafened"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "4d8",
-        "roll": {
-          "formula": "4d8",
-          "note": "Critical Failure: Same as failure but affected creature takes 4d8 psychic damage."
+        "id": "n5etbFy6221eaKoi",
+        "type": "damage",
+        "label": "Failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eqgmQoNQ2U4ssl",
+        "type": "damage",
+        "label": "Critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "psychic"
+            }
+          ]
         }
       }
     ],
@@ -220,9 +249,311 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5elTAXlfQ0a4deA",
+              "type": "save",
+              "label": "Painful Voice",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: Deafened until the end of its next turn (the effect).",
+                  "failure": "Failure: 4d6 psychic; its concentration checks at disadvantage.",
+                  "critFailure": "Critical Failure: as a failure, 4d8 psychic instead."
+                }
+              },
+              "inflicts": [],
+              "text": "Creatures that can hear you in a 30-foot cone (+5 feet per rank).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5enSzDyrJ2q3EEw",
+              "type": "effect",
+              "label": "Success: Deafened",
+              "effect": {
+                "name": "Success: Deafened",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "deafened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deafened"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5etbFy6221eaKoi",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (1d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eqgmQoNQ2U4ssl",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (1d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5elTAXlfQ0a4deA",
+              "type": "save",
+              "label": "Painful Voice",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: Deafened until the end of its next turn (the effect).",
+                  "failure": "Failure: 4d6 psychic; its concentration checks at disadvantage.",
+                  "critFailure": "Critical Failure: as a failure, 4d8 psychic instead."
+                }
+              },
+              "inflicts": [],
+              "text": "Creatures that can hear you in a 30-foot cone (+5 feet per rank).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5enSzDyrJ2q3EEw",
+              "type": "effect",
+              "label": "Success: Deafened",
+              "effect": {
+                "name": "Success: Deafened",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "deafened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deafened"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5etbFy6221eaKoi",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eqgmQoNQ2U4ssl",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (2d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5elTAXlfQ0a4deA",
+              "type": "save",
+              "label": "Painful Voice",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: Deafened until the end of its next turn (the effect).",
+                  "failure": "Failure: 4d6 psychic; its concentration checks at disadvantage.",
+                  "critFailure": "Critical Failure: as a failure, 4d8 psychic instead."
+                }
+              },
+              "inflicts": [],
+              "text": "Creatures that can hear you in a 30-foot cone (+5 feet per rank).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5enSzDyrJ2q3EEw",
+              "type": "effect",
+              "label": "Success: Deafened",
+              "effect": {
+                "name": "Success: Deafened",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "deafened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deafened"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5etbFy6221eaKoi",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (3d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eqgmQoNQ2U4ssl",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (3d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5elTAXlfQ0a4deA",
+              "type": "save",
+              "label": "Painful Voice",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: Deafened until the end of its next turn (the effect).",
+                  "failure": "Failure: 4d6 psychic; its concentration checks at disadvantage.",
+                  "critFailure": "Critical Failure: as a failure, 4d8 psychic instead."
+                }
+              },
+              "inflicts": [],
+              "text": "Creatures that can hear you in a 30-foot cone (+5 feet per rank).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5enSzDyrJ2q3EEw",
+              "type": "effect",
+              "label": "Success: Deafened",
+              "effect": {
+                "name": "Success: Deafened",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "deafened",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Deafened"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5etbFy6221eaKoi",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d6) + (4d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eqgmQoNQ2U4ssl",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d8) + (4d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "550eef5129fc0d02"

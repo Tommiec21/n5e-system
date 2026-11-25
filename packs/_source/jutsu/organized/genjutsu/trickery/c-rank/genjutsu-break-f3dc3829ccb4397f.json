@@ -85,14 +85,24 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eDHP9NGlxCAfZJ",
+        "type": "roll",
+        "label": "Higher-rank Genjutsu: check",
+        "roll": {
+          "formula": "1d20 + @mod.gen",
+          "note": "Touch: a creature, object or Genjutsu effect. Equal or lower rank Genjutsu move into the seal and end. Each higher-rank one: DC 12 + its rank (B 3, A 4, S 5)."
+        }
+      },
+      {
+        "id": "n5elIpbDZtDvsYQx",
         "type": "attack",
-        "label": "Attack",
+        "label": "Transfer the stored Genjutsu",
         "attack": {
-          "discipline": "gen",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "Within the hour, an Action: on a hit it gets the Sealing tag and saves at the start of its next turn against the original DC.",
         "damage": {
           "parts": []
         }
@@ -164,7 +174,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "293cc8e640ba6c9d"

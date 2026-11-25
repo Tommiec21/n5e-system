@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ehD5Cv7SLBGg5a",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Psionics: Shared Thoughts",
         "save": {
           "abilities": [
             "int"
@@ -98,15 +97,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects and they become aware someone tried to peer into their mind.",
-            "success": "Success: Affected creature blurts out their most immediate thoughts as a single sentence, then this jutsu ends.",
-            "failure": "Failure, but the target does not get to remake its saves until it becomes aware it is under the effects of this Genjutsu.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists, and knows someone tried.",
+            "success": "Success: it blurts out its most immediate thought as one sentence; the jutsu ends.",
+            "failure": "Failure: unknowingly it shares its turn's thoughts with you; when it casts or attacks you gain a successful Read the Enemy; resave at the end of each of its turns.",
+            "critFailure": "Critical Failure: as a failure; no resave until it becomes aware."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: a creature you can see within 60 feet.",
         "damage": {
           "parts": []
         }
@@ -176,7 +177,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "550eef5129fc0d02"

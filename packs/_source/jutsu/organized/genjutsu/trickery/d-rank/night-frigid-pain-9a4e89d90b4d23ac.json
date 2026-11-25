@@ -87,14 +87,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eQGZiWJGWTNNt5",
         "type": "attack",
-        "label": "Attack",
+        "label": "Night: Frigid Pain",
         "attack": {
-          "discipline": "gen",
+          "discipline": "discipline",
           "range": "melee",
           "count": 1
         },
+        "text": "A creature within 15 feet (+1 per rank). On a hit: the save.",
         "damage": {
           "parts": [
             {
@@ -105,10 +106,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eI477jtSGm09NG",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Frigid Pain: Intelligence",
         "save": {
           "abilities": [
             "int"
@@ -117,17 +117,65 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
-            "success": "Success: Affected creature is Dazzled and lose access to special senses they may have until the end of the current turn.",
-            "failure": "failure, but they instead gain 2 ranks of Concussed.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: Dazzled and no special senses until the end of the turn (the effect).",
+            "failure": "Failure: 1 Concussed and no special senses until the end of its next turn.",
+            "critFailure": "Critical Failure: as a failure, 2 Concussed."
+          }
         },
+        "inflicts": [
+          {
+            "key": "concussed",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Concussed"
+          }
+        ],
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5e8mlGrLZ3EMgcL",
+        "type": "effect",
+        "label": "Success: Dazzled",
+        "effect": {
+          "name": "Success: Dazzled",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5edT2EAdeObBvlj",
+        "type": "effect",
+        "label": "Critical failure: +1 Concussed",
+        "effect": {
+          "name": "Critical failure: +1 Concussed",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "concussed",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Concussed"
+            }
+          ]
         }
       }
     ],
@@ -211,14 +259,15 @@
         "activitiesByRank": {
           "C": [
             {
-              "id": "parsed1",
+              "id": "n5eQGZiWJGWTNNt5",
               "type": "attack",
-              "label": "Attack",
+              "label": "Night: Frigid Pain",
               "attack": {
-                "discipline": "gen",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "A creature within 15 feet (+1 per rank). On a hit: the save.",
               "damage": {
                 "parts": [
                   {
@@ -229,10 +278,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eI477jtSGm09NG",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Frigid Pain: Intelligence",
               "save": {
                 "abilities": [
                   "int"
@@ -241,30 +289,79 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
+                "resave": false,
                 "fourTier": true,
                 "tiers": {
-                  "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
-                  "success": "Success: Affected creature is Dazzled and lose access to special senses they may have until the end of the current turn.",
-                  "failure": "failure, but they instead gain 2 ranks of Concussed.",
-                  "critFailure": "Critical Failure: Same as"
-                },
-                "resave": false
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: Dazzled and no special senses until the end of the turn (the effect).",
+                  "failure": "Failure: 1 Concussed and no special senses until the end of its next turn.",
+                  "critFailure": "Critical Failure: as a failure, 2 Concussed."
+                }
               },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Concussed"
+                }
+              ],
               "damage": {
                 "parts": []
+              }
+            },
+            {
+              "id": "n5e8mlGrLZ3EMgcL",
+              "type": "effect",
+              "label": "Success: Dazzled",
+              "effect": {
+                "name": "Success: Dazzled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5edT2EAdeObBvlj",
+              "type": "effect",
+              "label": "Critical failure: +1 Concussed",
+              "effect": {
+                "name": "Critical failure: +1 Concussed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "concussed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Concussed"
+                  }
+                ]
               }
             }
           ],
           "B": [
             {
-              "id": "parsed1",
+              "id": "n5eQGZiWJGWTNNt5",
               "type": "attack",
-              "label": "Attack",
+              "label": "Night: Frigid Pain",
               "attack": {
-                "discipline": "gen",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "A creature within 15 feet (+1 per rank). On a hit: the save.",
               "damage": {
                 "parts": [
                   {
@@ -275,10 +372,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eI477jtSGm09NG",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Frigid Pain: Intelligence",
               "save": {
                 "abilities": [
                   "int"
@@ -287,30 +383,79 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
+                "resave": false,
                 "fourTier": true,
                 "tiers": {
-                  "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
-                  "success": "Success: Affected creature is Dazzled and lose access to special senses they may have until the end of the current turn.",
-                  "failure": "failure, but they instead gain 2 ranks of Concussed.",
-                  "critFailure": "Critical Failure: Same as"
-                },
-                "resave": false
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: Dazzled and no special senses until the end of the turn (the effect).",
+                  "failure": "Failure: 1 Concussed and no special senses until the end of its next turn.",
+                  "critFailure": "Critical Failure: as a failure, 2 Concussed."
+                }
               },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Concussed"
+                }
+              ],
               "damage": {
                 "parts": []
+              }
+            },
+            {
+              "id": "n5e8mlGrLZ3EMgcL",
+              "type": "effect",
+              "label": "Success: Dazzled",
+              "effect": {
+                "name": "Success: Dazzled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5edT2EAdeObBvlj",
+              "type": "effect",
+              "label": "Critical failure: +1 Concussed",
+              "effect": {
+                "name": "Critical failure: +1 Concussed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "concussed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Concussed"
+                  }
+                ]
               }
             }
           ],
           "A": [
             {
-              "id": "parsed1",
+              "id": "n5eQGZiWJGWTNNt5",
               "type": "attack",
-              "label": "Attack",
+              "label": "Night: Frigid Pain",
               "attack": {
-                "discipline": "gen",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "A creature within 15 feet (+1 per rank). On a hit: the save.",
               "damage": {
                 "parts": [
                   {
@@ -321,10 +466,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eI477jtSGm09NG",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Frigid Pain: Intelligence",
               "save": {
                 "abilities": [
                   "int"
@@ -333,30 +477,79 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
+                "resave": false,
                 "fourTier": true,
                 "tiers": {
-                  "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
-                  "success": "Success: Affected creature is Dazzled and lose access to special senses they may have until the end of the current turn.",
-                  "failure": "failure, but they instead gain 2 ranks of Concussed.",
-                  "critFailure": "Critical Failure: Same as"
-                },
-                "resave": false
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: Dazzled and no special senses until the end of the turn (the effect).",
+                  "failure": "Failure: 1 Concussed and no special senses until the end of its next turn.",
+                  "critFailure": "Critical Failure: as a failure, 2 Concussed."
+                }
               },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Concussed"
+                }
+              ],
               "damage": {
                 "parts": []
+              }
+            },
+            {
+              "id": "n5e8mlGrLZ3EMgcL",
+              "type": "effect",
+              "label": "Success: Dazzled",
+              "effect": {
+                "name": "Success: Dazzled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5edT2EAdeObBvlj",
+              "type": "effect",
+              "label": "Critical failure: +1 Concussed",
+              "effect": {
+                "name": "Critical failure: +1 Concussed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "concussed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Concussed"
+                  }
+                ]
               }
             }
           ],
           "S": [
             {
-              "id": "parsed1",
+              "id": "n5eQGZiWJGWTNNt5",
               "type": "attack",
-              "label": "Attack",
+              "label": "Night: Frigid Pain",
               "attack": {
-                "discipline": "gen",
+                "discipline": "discipline",
                 "range": "melee",
                 "count": 1
               },
+              "text": "A creature within 15 feet (+1 per rank). On a hit: the save.",
               "damage": {
                 "parts": [
                   {
@@ -367,10 +560,9 @@
               }
             },
             {
-              "id": "parsed2",
+              "id": "n5eI477jtSGm09NG",
               "type": "save",
-              "label": "Save",
-              "inflicts": [],
+              "label": "Frigid Pain: Intelligence",
               "save": {
                 "abilities": [
                   "int"
@@ -379,23 +571,72 @@
                   "source": "discipline"
                 },
                 "onSuccess": "none",
+                "resave": false,
                 "fourTier": true,
                 "tiers": {
-                  "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
-                  "success": "Success: Affected creature is Dazzled and lose access to special senses they may have until the end of the current turn.",
-                  "failure": "failure, but they instead gain 2 ranks of Concussed.",
-                  "critFailure": "Critical Failure: Same as"
-                },
-                "resave": false
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: Dazzled and no special senses until the end of the turn (the effect).",
+                  "failure": "Failure: 1 Concussed and no special senses until the end of its next turn.",
+                  "critFailure": "Critical Failure: as a failure, 2 Concussed."
+                }
               },
+              "inflicts": [
+                {
+                  "key": "concussed",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Concussed"
+                }
+              ],
               "damage": {
                 "parts": []
+              }
+            },
+            {
+              "id": "n5e8mlGrLZ3EMgcL",
+              "type": "effect",
+              "label": "Success: Dazzled",
+              "effect": {
+                "name": "Success: Dazzled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5edT2EAdeObBvlj",
+              "type": "effect",
+              "label": "Critical failure: +1 Concussed",
+              "effect": {
+                "name": "Critical failure: +1 Concussed",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "concussed",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Concussed"
+                  }
+                ]
               }
             }
           ]
         },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5ecbQOCtW8LIE7D"

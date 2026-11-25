@@ -87,14 +87,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eeiaBSvI20HSGx",
         "type": "attack",
-        "label": "Attack",
+        "label": "Night: Vipers of Darkness",
         "attack": {
-          "discipline": "gen",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "Concentration: when cast and as a Bonus Action later, a creature within 60 feet (+1 per rank). On a hit: the save.",
         "damage": {
           "parts": [
             {
@@ -105,10 +106,9 @@
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5e7ZXvgCICGx72Z",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Vipers: Intelligence",
         "save": {
           "abilities": [
             "int"
@@ -117,14 +117,29 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "on a success.",
-            "failure": "Failure: Affected creature becomes Demoralized and begin to see glimpses of snakes and other creatures converging on them as they are Restrained by the shadows until the end of their next turn.",
-            "critFailure": "Critical Failure: Same as failure but they are Restrained for the duration. Restrained creatures remake their saving throw at the end of each of their turns, ending the Restrained condition"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists.",
+            "failure": "Failure: Demoralized and Restrained until the end of its next turn.",
+            "critFailure": "Critical Failure: as a failure, Restrained for the duration (resave at the end of each of its turns)."
+          }
         },
+        "inflicts": [
+          {
+            "key": "demoralized",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Demoralized"
+          },
+          {
+            "key": "restrained",
+            "kind": "state",
+            "ranks": 1,
+            "label": "Restrained"
+          }
+        ],
         "damage": {
           "parts": []
         }
@@ -207,9 +222,251 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eeiaBSvI20HSGx",
+              "type": "attack",
+              "label": "Night: Vipers of Darkness",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Concentration: when cast and as a Bonus Action later, a creature within 60 feet (+1 per rank). On a hit: the save.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d10",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e7ZXvgCICGx72Z",
+              "type": "save",
+              "label": "Vipers: Intelligence",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: Demoralized and Restrained until the end of its next turn.",
+                  "critFailure": "Critical Failure: as a failure, Restrained for the duration (resave at the end of each of its turns)."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "demoralized",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Demoralized"
+                },
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eeiaBSvI20HSGx",
+              "type": "attack",
+              "label": "Night: Vipers of Darkness",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Concentration: when cast and as a Bonus Action later, a creature within 60 feet (+1 per rank). On a hit: the save. B-Rank: +1 critical threat range against a Demoralized creature (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d10",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e7ZXvgCICGx72Z",
+              "type": "save",
+              "label": "Vipers: Intelligence",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: Demoralized and Restrained until the end of its next turn.",
+                  "critFailure": "Critical Failure: as a failure, Restrained for the duration (resave at the end of each of its turns)."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "demoralized",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Demoralized"
+                },
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eeiaBSvI20HSGx",
+              "type": "attack",
+              "label": "Night: Vipers of Darkness",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Concentration: when cast and as a Bonus Action later, a creature within 60 feet (+1 per rank). On a hit: the save. B-Rank: +1 critical threat range against a Demoralized creature (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d10",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e7ZXvgCICGx72Z",
+              "type": "save",
+              "label": "Vipers: Intelligence",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: Demoralized and Restrained until the end of its next turn.",
+                  "critFailure": "Critical Failure: as a failure, Restrained for the duration (resave at the end of each of its turns)."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "demoralized",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Demoralized"
+                },
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "damage": {
+                "parts": []
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eeiaBSvI20HSGx",
+              "type": "attack",
+              "label": "Night: Vipers of Darkness",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "Concentration: when cast and as a Bonus Action later, a creature within 60 feet (+1 per rank). On a hit: the save. B-Rank: +1 critical threat range against a Demoralized creature (by hand).",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d10",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e7ZXvgCICGx72Z",
+              "type": "save",
+              "label": "Vipers: Intelligence",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: Demoralized and Restrained until the end of its next turn.",
+                  "critFailure": "Critical Failure: as a failure, Restrained for the duration (resave at the end of each of its turns)."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "demoralized",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Demoralized"
+                },
+                {
+                  "key": "restrained",
+                  "kind": "state",
+                  "ranks": 1,
+                  "label": "Restrained"
+                }
+              ],
+              "damage": {
+                "parts": []
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5ecbQOCtW8LIE7D"

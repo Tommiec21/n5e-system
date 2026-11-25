@@ -86,10 +86,23 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5eYsxeTB160QKIW",
+        "type": "effect",
+        "label": "Mental Shield: 6 psychic DR",
+        "effect": {
+          "name": "Mental Shield",
+          "target": "self",
+          "changes": [
+            {
+              "key": "n5e.dr",
+              "value": "6",
+              "mode": 2
+            }
+          ],
+          "expires": "",
+          "seconds": 60
+        },
+        "text": "Concentration: against psychic damage only (+4 per rank; B-Rank: another creature). Reduced to 0: ignore the jutsu's effects and conditions. A-Rank: its mind can't be detected or read. S-Rank: advantage on one save against a Genjutsu per round."
       }
     ],
     "featureType": "active",
@@ -156,9 +169,74 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5eYsxeTB160QKIW",
+              "type": "effect",
+              "label": "Mental Shield: 10 psychic DR",
+              "effect": {
+                "name": "Mental Shield",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.dr",
+                    "value": "10",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              },
+              "text": "Concentration: against psychic damage only (+4 per rank; B-Rank: another creature). Reduced to 0: ignore the jutsu's effects and conditions. A-Rank: its mind can't be detected or read. S-Rank: advantage on one save against a Genjutsu per round."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eYsxeTB160QKIW",
+              "type": "effect",
+              "label": "Mental Shield: 14 psychic DR",
+              "effect": {
+                "name": "Mental Shield",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.dr",
+                    "value": "14",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              },
+              "text": "Concentration: against psychic damage only (+4 per rank; B-Rank: another creature). Reduced to 0: ignore the jutsu's effects and conditions. A-Rank: its mind can't be detected or read. S-Rank: advantage on one save against a Genjutsu per round."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eYsxeTB160QKIW",
+              "type": "effect",
+              "label": "Mental Shield: 18 psychic DR",
+              "effect": {
+                "name": "Mental Shield",
+                "target": "self",
+                "changes": [
+                  {
+                    "key": "n5e.dr",
+                    "value": "18",
+                    "mode": 2
+                  }
+                ],
+                "expires": "",
+                "seconds": 60
+              },
+              "text": "Concentration: against psychic damage only (+4 per rank; B-Rank: another creature). Reduced to 0: ignore the jutsu's effects and conditions. A-Rank: its mind can't be detected or read. S-Rank: advantage on one save against a Genjutsu per round."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "6a663b31d79aed95"

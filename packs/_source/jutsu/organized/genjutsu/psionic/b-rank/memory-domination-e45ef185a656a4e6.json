@@ -85,9 +85,26 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5el8EDYb2czsrfL",
         "type": "save",
-        "label": "Save",
+        "label": "Memory Domination",
+        "save": {
+          "abilities": [
+            "int"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists.",
+            "failure": "Failure: Charmed by you and Incapacitated for 1 minute while you rewrite a memory (last 12 months, up to 1 day long).",
+            "critFailure": "Critical Failure: as a failure."
+          }
+        },
         "inflicts": [
           {
             "key": "charmed",
@@ -102,18 +119,7 @@
             "label": "Incapacitated"
           }
         ],
-        "save": {
-          "abilities": [
-            "int"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": true,
-          "tiers": {},
-          "resave": false
-        },
+        "text": "A creature you touch (advantage if you're fighting it). Damage or another jutsu ends it with no change.",
         "damage": {
           "parts": []
         }
@@ -184,7 +190,8 @@
         "activitiesByRank": {},
         "manualCost": false
       },
-      "notAmp": "It charms a foe (King, AMP1f batch 3)."
+      "notAmp": "It charms a foe (King, AMP1f batch 3).",
+      "reviewed": true
     }
   },
   "folder": "66c252f59e0fc3c9"

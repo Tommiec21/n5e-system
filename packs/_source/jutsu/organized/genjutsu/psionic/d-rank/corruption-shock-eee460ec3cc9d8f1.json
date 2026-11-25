@@ -88,10 +88,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eBH0MoPA1ODO3Y",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Corruption: Shock!",
         "save": {
           "abilities": [
             "int"
@@ -100,43 +99,84 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "on a success.",
-            "failure": "Failure: Affected creature takes 3d6 psychic damage and are marked with a seal of cruelty, corrupting and burning through their psyche. At the beginning of each of their turns, this seal forces their mind to discharge large chunks of chakra, dealing 3d6 chakra damage. Affected creatures remakes their saving throw at the end of each of their turns, ending this jutsu’s effects",
-            "critFailure": "Critical Failure: Same as failure but the affected creature takes 6d6 psychic damage and 6d6 chakra damage at the beginning of each of their turns."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: 2d6 psychic.",
+            "failure": "Failure: 3d6 psychic and a seal of cruelty: 3d6 chakra damage at the start of each of its turns.",
+            "critFailure": "Critical Failure: 6d6 psychic, 6d6 chakra damage each turn."
+          }
         },
+        "inflicts": [],
+        "text": "A creature you choose within 60 feet (+1d6, or +1 target, per rank); resave at the end of each of its turns.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "Success: Affected creature is able to resist this jutsu’s effects taking 2d6 psychic damage."
+        "id": "n5erC3QZUWm415rC",
+        "type": "damage",
+        "label": "Success",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "3d6",
-        "roll": {
-          "formula": "3d6",
-          "note": "Failure: Affected creature takes 3d6 psychic damage and are marked with a seal of cruelty, corrupting and burning through their psyche. At the beginning of each of their turns, this seal forces their mind to discharge large chunks of chakra, dealing 3d6 chakra damage. Affected creatures remakes their saving throw at the end of each of their turns, ending this jutsu’s effects on a success."
+        "id": "n5eKvKm4LxgEeZh8",
+        "type": "damage",
+        "label": "Failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll4",
-        "type": "roll",
-        "label": "6d6",
-        "roll": {
-          "formula": "6d6",
-          "note": "Critical Failure: Same as failure but the affected creature takes 6d6 psychic damage and 6d6 chakra damage at the beginning of each of their turns."
+        "id": "n5eIPUhmxl8OpOYV",
+        "type": "damage",
+        "label": "Critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5erJ7xLXDRMzgLR",
+        "type": "damage",
+        "label": "Seal: start of each turn",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "chakra"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ehCIffMwMpIyRO",
+        "type": "damage",
+        "label": "Critical failure seal: start of each turn",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": "chakra"
+            }
+          ]
         }
       }
     ],
@@ -241,9 +281,387 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eBH0MoPA1ODO3Y",
+              "type": "save",
+              "label": "Corruption: Shock!",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: 2d6 psychic.",
+                  "failure": "Failure: 3d6 psychic and a seal of cruelty: 3d6 chakra damage at the start of each of its turns.",
+                  "critFailure": "Critical Failure: 6d6 psychic, 6d6 chakra damage each turn."
+                }
+              },
+              "inflicts": [],
+              "text": "A creature you choose within 60 feet (+1d6, or +1 target, per rank); resave at the end of each of its turns.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5erC3QZUWm415rC",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eKvKm4LxgEeZh8",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eIPUhmxl8OpOYV",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (1d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5erJ7xLXDRMzgLR",
+              "type": "damage",
+              "label": "Seal: start of each turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ehCIffMwMpIyRO",
+              "type": "damage",
+              "label": "Critical failure seal: start of each turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "6d6",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eBH0MoPA1ODO3Y",
+              "type": "save",
+              "label": "Corruption: Shock!",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: 2d6 psychic.",
+                  "failure": "Failure: 3d6 psychic and a seal of cruelty: 3d6 chakra damage at the start of each of its turns.",
+                  "critFailure": "Critical Failure: 6d6 psychic, 6d6 chakra damage each turn."
+                }
+              },
+              "inflicts": [],
+              "text": "A creature you choose within 60 feet (+1d6, or +1 target, per rank); resave at the end of each of its turns.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5erC3QZUWm415rC",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eKvKm4LxgEeZh8",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eIPUhmxl8OpOYV",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5erJ7xLXDRMzgLR",
+              "type": "damage",
+              "label": "Seal: start of each turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ehCIffMwMpIyRO",
+              "type": "damage",
+              "label": "Critical failure seal: start of each turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "6d6",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eBH0MoPA1ODO3Y",
+              "type": "save",
+              "label": "Corruption: Shock!",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: 2d6 psychic.",
+                  "failure": "Failure: 3d6 psychic and a seal of cruelty: 3d6 chakra damage at the start of each of its turns.",
+                  "critFailure": "Critical Failure: 6d6 psychic, 6d6 chakra damage each turn."
+                }
+              },
+              "inflicts": [],
+              "text": "A creature you choose within 60 feet (+1d6, or +1 target, per rank); resave at the end of each of its turns.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5erC3QZUWm415rC",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (3d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eKvKm4LxgEeZh8",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (3d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eIPUhmxl8OpOYV",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (3d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5erJ7xLXDRMzgLR",
+              "type": "damage",
+              "label": "Seal: start of each turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ehCIffMwMpIyRO",
+              "type": "damage",
+              "label": "Critical failure seal: start of each turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "6d6",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eBH0MoPA1ODO3Y",
+              "type": "save",
+              "label": "Corruption: Shock!",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: 2d6 psychic.",
+                  "failure": "Failure: 3d6 psychic and a seal of cruelty: 3d6 chakra damage at the start of each of its turns.",
+                  "critFailure": "Critical Failure: 6d6 psychic, 6d6 chakra damage each turn."
+                }
+              },
+              "inflicts": [],
+              "text": "A creature you choose within 60 feet (+1d6, or +1 target, per rank); resave at the end of each of its turns.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5erC3QZUWm415rC",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (4d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eKvKm4LxgEeZh8",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (4d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eIPUhmxl8OpOYV",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (4d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5erJ7xLXDRMzgLR",
+              "type": "damage",
+              "label": "Seal: start of each turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ehCIffMwMpIyRO",
+              "type": "damage",
+              "label": "Critical failure seal: start of each turn",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "6d6",
+                    "type": "chakra"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "550eef5129fc0d02"

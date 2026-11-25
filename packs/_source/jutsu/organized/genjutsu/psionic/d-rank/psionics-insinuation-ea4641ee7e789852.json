@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eLhZQbBGAA8Vzr",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Psionics: Insinuation",
         "save": {
           "abilities": [
             "int"
@@ -99,43 +98,58 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature takes 1d12 Psychic damage.",
-            "failure": "Failure: Affected creature takes 2d12 psychic damage and makes their chakra control check to maintain concentration at disadvantage.",
-            "critFailure": "Critical Failure: Affected creatures takes 4d12 psychic damage and loses concentration on a jutsu with the lowest cost they are currently concentrating on."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: 1d12 psychic.",
+            "failure": "Failure: 2d12 psychic; its concentration checks at disadvantage.",
+            "critFailure": "Critical Failure: 4d12 psychic; it loses concentration on its lowest-cost jutsu."
+          }
         },
+        "inflicts": [],
+        "text": "A creature you can see within 60 feet (B-Rank: +1). C-Rank: if it casts a jutsu on its next turn, it takes the same damage again.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "1d12",
-        "roll": {
-          "formula": "1d12",
-          "note": "Success: Affected creature takes 1d12 Psychic damage."
+        "id": "n5e8YFNRaNF9RdU1",
+        "type": "damage",
+        "label": "Success",
+        "damage": {
+          "parts": [
+            {
+              "formula": "1d12",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "2d12",
-        "roll": {
-          "formula": "2d12",
-          "note": "Failure: Affected creature takes 2d12 psychic damage and makes their chakra control check to maintain concentration at disadvantage."
+        "id": "n5eHDwF2DtvcbB3p",
+        "type": "damage",
+        "label": "Failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d12",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "4d12",
-        "roll": {
-          "formula": "4d12",
-          "note": "Critical Failure: Affected creatures takes 4d12 psychic damage and loses concentration on a jutsu with the lowest cost they are currently concentrating on."
+        "id": "n5exNN7u6Xoeg3J3",
+        "type": "damage",
+        "label": "Critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d12",
+              "type": "psychic"
+            }
+          ]
         }
       }
     ],
@@ -228,9 +242,283 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eLhZQbBGAA8Vzr",
+              "type": "save",
+              "label": "Psionics: Insinuation",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: 1d12 psychic.",
+                  "failure": "Failure: 2d12 psychic; its concentration checks at disadvantage.",
+                  "critFailure": "Critical Failure: 4d12 psychic; it loses concentration on its lowest-cost jutsu."
+                }
+              },
+              "inflicts": [],
+              "text": "A creature you can see within 60 feet (B-Rank: +1). C-Rank: if it casts a jutsu on its next turn, it takes the same damage again.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e8YFNRaNF9RdU1",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d12) + (1d12)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eHDwF2DtvcbB3p",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (1d12)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5exNN7u6Xoeg3J3",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d12) + (1d12)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eLhZQbBGAA8Vzr",
+              "type": "save",
+              "label": "Psionics: Insinuation",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: 1d12 psychic.",
+                  "failure": "Failure: 2d12 psychic; its concentration checks at disadvantage.",
+                  "critFailure": "Critical Failure: 4d12 psychic; it loses concentration on its lowest-cost jutsu."
+                }
+              },
+              "inflicts": [],
+              "text": "A creature you can see within 60 feet (B-Rank: +1). C-Rank: if it casts a jutsu on its next turn, it takes the same damage again.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e8YFNRaNF9RdU1",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d12) + (2d12)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eHDwF2DtvcbB3p",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (2d12)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5exNN7u6Xoeg3J3",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d12) + (2d12)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eLhZQbBGAA8Vzr",
+              "type": "save",
+              "label": "Psionics: Insinuation",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: 1d12 psychic.",
+                  "failure": "Failure: 2d12 psychic; its concentration checks at disadvantage.",
+                  "critFailure": "Critical Failure: 4d12 psychic; it loses concentration on its lowest-cost jutsu."
+                }
+              },
+              "inflicts": [],
+              "text": "A creature you can see within 60 feet (B-Rank: +1). C-Rank: if it casts a jutsu on its next turn, it takes the same damage again.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e8YFNRaNF9RdU1",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d12) + (3d12)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eHDwF2DtvcbB3p",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (3d12)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5exNN7u6Xoeg3J3",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d12) + (3d12)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eLhZQbBGAA8Vzr",
+              "type": "save",
+              "label": "Psionics: Insinuation",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: 1d12 psychic.",
+                  "failure": "Failure: 2d12 psychic; its concentration checks at disadvantage.",
+                  "critFailure": "Critical Failure: 4d12 psychic; it loses concentration on its lowest-cost jutsu."
+                }
+              },
+              "inflicts": [],
+              "text": "A creature you can see within 60 feet (B-Rank: +1). C-Rank: if it casts a jutsu on its next turn, it takes the same damage again.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e8YFNRaNF9RdU1",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(1d12) + (4d12)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eHDwF2DtvcbB3p",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d12) + (4d12)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5exNN7u6Xoeg3J3",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(4d12) + (4d12)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "550eef5129fc0d02"

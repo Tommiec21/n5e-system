@@ -87,10 +87,47 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eUsMpCd6DYAdfP",
+        "type": "attack",
+        "label": "Shadow Blade: melee",
+        "attack": {
+          "discipline": "discipline",
+          "range": "melee",
+          "count": 1
+        },
+        "text": "Concentration, an Action each turn: +1 critical threat range (by hand). A critical hit: the Wisdom save.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eqaKZR0coAdagH",
+        "type": "attack",
+        "label": "Shadow Blade: ranged",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "text": "60 feet, +1 critical threat range (by hand). A critical hit: the Intelligence save.",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eClsshlfNAH23c",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Critical hit, melee: Wisdom",
         "save": {
           "abilities": [
             "wis"
@@ -99,34 +136,84 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature resists this Jutsu’s effect.",
-            "failure": "Failure: Affected creatures gains 1 rank of Demoralized or Shaken.",
-            "critFailure": "Critical Failure: Affect creatures gain 1 rank of both Demoralized or Shaken."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists.",
+            "failure": "Failure: 1 Demoralized or 1 Shaken (your choice; the effects).",
+            "critFailure": "Critical Failure: 1 Demoralized and 1 Shaken."
+          }
         },
+        "inflicts": [],
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "3d6",
-        "roll": {
-          "formula": "3d6",
-          "note": "Range of 5 feet, and on a hit, you deal 3d6 psychic damage. On a critical hit the affected creature must make a Wisdom saving throw."
+        "id": "n5eJGhlgwZm2rTUP",
+        "type": "save",
+        "label": "Critical hit, ranged: Intelligence",
+        "save": {
+          "abilities": [
+            "int"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists.",
+            "failure": "Failure: 1 Demoralized or 1 Shaken (your choice; the effects).",
+            "critFailure": "Critical Failure: 1 Demoralized and 1 Shaken."
+          }
+        },
+        "inflicts": [],
+        "damage": {
+          "parts": []
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "Range of 60 feet and on a hit, you deal 2d6 psychic damage.  On a critical hit the affected creature must make an Intelligence saving throw."
+        "id": "n5etP9j37bpwOxWT",
+        "type": "effect",
+        "label": "Demoralized",
+        "effect": {
+          "name": "Demoralized",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "demoralized",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Demoralized"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eH8UEbusdqH39x",
+        "type": "effect",
+        "label": "Shaken",
+        "effect": {
+          "name": "Shaken",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "shaken",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Shaken"
+            }
+          ]
         }
       }
     ],
@@ -208,9 +295,539 @@
           "Conditional/alternative damage: use individually labeled source rolls; do not add them together automatically.",
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eUsMpCd6DYAdfP",
+              "type": "attack",
+              "label": "Shadow Blade: melee",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 1
+              },
+              "text": "Concentration, an Action each turn: +1 critical threat range (by hand). A critical hit: the Wisdom save.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6 + @mod.gen",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eqaKZR0coAdagH",
+              "type": "attack",
+              "label": "Shadow Blade: ranged",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 1
+              },
+              "text": "60 feet, +1 critical threat range (by hand). A critical hit: the Intelligence save.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6 + @mod.gen",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eClsshlfNAH23c",
+              "type": "save",
+              "label": "Critical hit, melee: Wisdom",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: 1 Demoralized or 1 Shaken (your choice; the effects).",
+                  "critFailure": "Critical Failure: 1 Demoralized and 1 Shaken."
+                }
+              },
+              "inflicts": [],
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eJGhlgwZm2rTUP",
+              "type": "save",
+              "label": "Critical hit, ranged: Intelligence",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: 1 Demoralized or 1 Shaken (your choice; the effects).",
+                  "critFailure": "Critical Failure: 1 Demoralized and 1 Shaken."
+                }
+              },
+              "inflicts": [],
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5etP9j37bpwOxWT",
+              "type": "effect",
+              "label": "Demoralized",
+              "effect": {
+                "name": "Demoralized",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "demoralized",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Demoralized"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eH8UEbusdqH39x",
+              "type": "effect",
+              "label": "Shaken",
+              "effect": {
+                "name": "Shaken",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eUsMpCd6DYAdfP",
+              "type": "attack",
+              "label": "Shadow Blade: melee",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Concentration, an Action each turn: +1 critical threat range (by hand). A critical hit: the Wisdom save.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6 + @mod.gen",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eqaKZR0coAdagH",
+              "type": "attack",
+              "label": "Shadow Blade: ranged",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 2
+              },
+              "text": "60 feet, +1 critical threat range (by hand). A critical hit: the Intelligence save.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6 + @mod.gen",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eClsshlfNAH23c",
+              "type": "save",
+              "label": "Critical hit, melee: Wisdom",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: 1 Demoralized or 1 Shaken (your choice; the effects).",
+                  "critFailure": "Critical Failure: 1 Demoralized and 1 Shaken."
+                }
+              },
+              "inflicts": [],
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eJGhlgwZm2rTUP",
+              "type": "save",
+              "label": "Critical hit, ranged: Intelligence",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: 1 Demoralized or 1 Shaken (your choice; the effects).",
+                  "critFailure": "Critical Failure: 1 Demoralized and 1 Shaken."
+                }
+              },
+              "inflicts": [],
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5etP9j37bpwOxWT",
+              "type": "effect",
+              "label": "Demoralized",
+              "effect": {
+                "name": "Demoralized",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "demoralized",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Demoralized"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eH8UEbusdqH39x",
+              "type": "effect",
+              "label": "Shaken",
+              "effect": {
+                "name": "Shaken",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eUsMpCd6DYAdfP",
+              "type": "attack",
+              "label": "Shadow Blade: melee",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 2
+              },
+              "text": "Concentration, an Action each turn: +1 critical threat range (by hand). A critical hit: the Wisdom save. A-Rank: +2 critical threat range in all.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6 + @mod.gen",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eqaKZR0coAdagH",
+              "type": "attack",
+              "label": "Shadow Blade: ranged",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 2
+              },
+              "text": "60 feet, +1 critical threat range (by hand). A critical hit: the Intelligence save. A-Rank: +2 critical threat range in all.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6 + @mod.gen",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eClsshlfNAH23c",
+              "type": "save",
+              "label": "Critical hit, melee: Wisdom",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: 1 Demoralized or 1 Shaken (your choice; the effects).",
+                  "critFailure": "Critical Failure: 1 Demoralized and 1 Shaken."
+                }
+              },
+              "inflicts": [],
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eJGhlgwZm2rTUP",
+              "type": "save",
+              "label": "Critical hit, ranged: Intelligence",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: 1 Demoralized or 1 Shaken (your choice; the effects).",
+                  "critFailure": "Critical Failure: 1 Demoralized and 1 Shaken."
+                }
+              },
+              "inflicts": [],
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5etP9j37bpwOxWT",
+              "type": "effect",
+              "label": "Demoralized",
+              "effect": {
+                "name": "Demoralized",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "demoralized",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Demoralized"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eH8UEbusdqH39x",
+              "type": "effect",
+              "label": "Shaken",
+              "effect": {
+                "name": "Shaken",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eUsMpCd6DYAdfP",
+              "type": "attack",
+              "label": "Shadow Blade: melee",
+              "attack": {
+                "discipline": "discipline",
+                "range": "melee",
+                "count": 3
+              },
+              "text": "Concentration, an Action each turn: +1 critical threat range (by hand). A critical hit: the Wisdom save. A-Rank: +2 critical threat range in all.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6 + @mod.gen",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eqaKZR0coAdagH",
+              "type": "attack",
+              "label": "Shadow Blade: ranged",
+              "attack": {
+                "discipline": "discipline",
+                "range": "ranged",
+                "count": 3
+              },
+              "text": "60 feet, +1 critical threat range (by hand). A critical hit: the Intelligence save. A-Rank: +2 critical threat range in all.",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6 + @mod.gen",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eClsshlfNAH23c",
+              "type": "save",
+              "label": "Critical hit, melee: Wisdom",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: 1 Demoralized or 1 Shaken (your choice; the effects).",
+                  "critFailure": "Critical Failure: 1 Demoralized and 1 Shaken."
+                }
+              },
+              "inflicts": [],
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eJGhlgwZm2rTUP",
+              "type": "save",
+              "label": "Critical hit, ranged: Intelligence",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: resists.",
+                  "failure": "Failure: 1 Demoralized or 1 Shaken (your choice; the effects).",
+                  "critFailure": "Critical Failure: 1 Demoralized and 1 Shaken."
+                }
+              },
+              "inflicts": [],
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5etP9j37bpwOxWT",
+              "type": "effect",
+              "label": "Demoralized",
+              "effect": {
+                "name": "Demoralized",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "demoralized",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Demoralized"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eH8UEbusdqH39x",
+              "type": "effect",
+              "label": "Shaken",
+              "effect": {
+                "name": "Shaken",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "shaken",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Shaken"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "550eef5129fc0d02"

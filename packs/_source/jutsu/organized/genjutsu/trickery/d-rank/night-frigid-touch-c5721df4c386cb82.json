@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eCmFHdmrwpa8ms",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Night: Frigid Touch",
         "save": {
           "abilities": [
             "int"
@@ -99,25 +98,32 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "on a success.",
-            "failure": "failure, but they also take 3d6 psychic damage at the beginning of each of their turns for the duration. A creature who critically failed this jutsu’s saving throw remakes its save at the end of each of its turns, ending this jutsu’s critical failure damage",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists.",
+            "failure": "Failure: the next Genjutsu that would affect it gains the Unaware keyword; then this ends.",
+            "critFailure": "Critical Failure: as a failure, and 3d6 psychic at the start of each of its turns (resave at the end of each of its turns to end the damage)."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration: creatures you choose in a 30 by 5-foot line.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "3d6",
-        "roll": {
-          "formula": "3d6",
-          "note": "Critical Failure: Same as failure, but they also take 3d6 psychic damage at the beginning of each of their turns for the duration. A creature who critically failed this jutsu’s saving throw remakes its save at the end of each of its turns, ending this jutsu’s critical failure damage on a success."
+        "id": "n5ezLsoKffa7F4tm",
+        "type": "damage",
+        "label": "Critical failure: start of each turn",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "psychic"
+            }
+          ]
         }
       }
     ],
@@ -192,7 +198,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5ecbQOCtW8LIE7D"

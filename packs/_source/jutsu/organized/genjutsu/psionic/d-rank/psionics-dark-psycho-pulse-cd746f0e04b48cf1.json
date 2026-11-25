@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e5Qf4z6q4FiL8o",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Psionics: Dark Psycho Pulse!",
         "save": {
           "abilities": [
             "int"
@@ -99,43 +98,85 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature is able to resist this jutsu’s effects but still takes 2d6 psychic damage",
-            "failure": "Failure: Affected creature takes 3d6 Psychic damage and gains 1 rank of Confused.",
-            "critFailure": "Critical Failure: Affected creature takes 6d6 Psychic damage and 2 ranks of Confused."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: 2d6 psychic.",
+            "failure": "Failure: 3d6 psychic and 1 Confused.",
+            "critFailure": "Critical Failure: 6d6 psychic and 2 Confused."
+          }
         },
+        "inflicts": [
+          {
+            "key": "confused",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Confused"
+          }
+        ],
+        "text": "A 20-foot cone (+5 feet per rank). C-Rank: failing, pushed back 10 feet (critical failure 20). B-Rank: failing, Blinded until the end of its next turn (critical failure: 1 minute, resave each turn). A-Rank: failing, its next jutsu costs 6 more (critical failure 10). S-Rank: 2 temporary chakra per failure.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "Success: Affected creature is able to resist this jutsu’s effects but still takes 2d6 psychic damage"
+        "id": "n5ehHvLZLrkwB7v0",
+        "type": "damage",
+        "label": "Success",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "3d6",
-        "roll": {
-          "formula": "3d6",
-          "note": "Failure: Affected creature takes 3d6 Psychic damage and gains 1 rank of Confused."
+        "id": "n5eBXcBbHMiZpiXy",
+        "type": "damage",
+        "label": "Failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "6d6",
-        "roll": {
-          "formula": "6d6",
-          "note": "Critical Failure: Affected creature takes 6d6 Psychic damage and 2 ranks of Confused."
+        "id": "n5eVin5n7XCKZ5xi",
+        "type": "damage",
+        "label": "Critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5e0qxFxD4Pca7ha",
+        "type": "effect",
+        "label": "Critical failure: +1 Confused",
+        "effect": {
+          "name": "Critical failure: +1 Confused",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            }
+          ]
         }
       }
     ],
@@ -228,9 +269,454 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5e5Qf4z6q4FiL8o",
+              "type": "save",
+              "label": "Psionics: Dark Psycho Pulse!",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: 2d6 psychic.",
+                  "failure": "Failure: 3d6 psychic and 1 Confused.",
+                  "critFailure": "Critical Failure: 6d6 psychic and 2 Confused."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "confused",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Confused"
+                }
+              ],
+              "text": "A 20-foot cone (+5 feet per rank). C-Rank: failing, pushed back 10 feet (critical failure 20). B-Rank: failing, Blinded until the end of its next turn (critical failure: 1 minute, resave each turn). A-Rank: failing, its next jutsu costs 6 more (critical failure 10). S-Rank: 2 temporary chakra per failure.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ehHvLZLrkwB7v0",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eBXcBbHMiZpiXy",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eVin5n7XCKZ5xi",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (1d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e0qxFxD4Pca7ha",
+              "type": "effect",
+              "label": "Critical failure: +1 Confused",
+              "effect": {
+                "name": "Critical failure: +1 Confused",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "confused",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Confused"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5e5Qf4z6q4FiL8o",
+              "type": "save",
+              "label": "Psionics: Dark Psycho Pulse!",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: 2d6 psychic.",
+                  "failure": "Failure: 3d6 psychic and 1 Confused.",
+                  "critFailure": "Critical Failure: 6d6 psychic and 2 Confused."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "confused",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Confused"
+                }
+              ],
+              "text": "A 20-foot cone (+5 feet per rank). C-Rank: failing, pushed back 10 feet (critical failure 20). B-Rank: failing, Blinded until the end of its next turn (critical failure: 1 minute, resave each turn). A-Rank: failing, its next jutsu costs 6 more (critical failure 10). S-Rank: 2 temporary chakra per failure.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ehHvLZLrkwB7v0",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eBXcBbHMiZpiXy",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eVin5n7XCKZ5xi",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e0qxFxD4Pca7ha",
+              "type": "effect",
+              "label": "Critical failure: +1 Confused",
+              "effect": {
+                "name": "Critical failure: +1 Confused",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "confused",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Confused"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5enNxJTQuXyJvIt",
+              "type": "effect",
+              "label": "B-Rank: Blinded",
+              "effect": {
+                "name": "B-Rank: Blinded",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  }
+                ]
+              },
+              "text": "Creatures that failed."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e5Qf4z6q4FiL8o",
+              "type": "save",
+              "label": "Psionics: Dark Psycho Pulse!",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: 2d6 psychic.",
+                  "failure": "Failure: 3d6 psychic and 1 Confused.",
+                  "critFailure": "Critical Failure: 6d6 psychic and 2 Confused."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "confused",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Confused"
+                }
+              ],
+              "text": "A 20-foot cone (+5 feet per rank). C-Rank: failing, pushed back 10 feet (critical failure 20). B-Rank: failing, Blinded until the end of its next turn (critical failure: 1 minute, resave each turn). A-Rank: failing, its next jutsu costs 6 more (critical failure 10). S-Rank: 2 temporary chakra per failure.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ehHvLZLrkwB7v0",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (3d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eBXcBbHMiZpiXy",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (3d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eVin5n7XCKZ5xi",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (3d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e0qxFxD4Pca7ha",
+              "type": "effect",
+              "label": "Critical failure: +1 Confused",
+              "effect": {
+                "name": "Critical failure: +1 Confused",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "confused",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Confused"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5enNxJTQuXyJvIt",
+              "type": "effect",
+              "label": "B-Rank: Blinded",
+              "effect": {
+                "name": "B-Rank: Blinded",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  }
+                ]
+              },
+              "text": "Creatures that failed."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e5Qf4z6q4FiL8o",
+              "type": "save",
+              "label": "Psionics: Dark Psycho Pulse!",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: 2d6 psychic.",
+                  "failure": "Failure: 3d6 psychic and 1 Confused.",
+                  "critFailure": "Critical Failure: 6d6 psychic and 2 Confused."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "confused",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Confused"
+                }
+              ],
+              "text": "A 20-foot cone (+5 feet per rank). C-Rank: failing, pushed back 10 feet (critical failure 20). B-Rank: failing, Blinded until the end of its next turn (critical failure: 1 minute, resave each turn). A-Rank: failing, its next jutsu costs 6 more (critical failure 10). S-Rank: 2 temporary chakra per failure.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ehHvLZLrkwB7v0",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (4d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eBXcBbHMiZpiXy",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (4d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eVin5n7XCKZ5xi",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (4d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5e0qxFxD4Pca7ha",
+              "type": "effect",
+              "label": "Critical failure: +1 Confused",
+              "effect": {
+                "name": "Critical failure: +1 Confused",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "confused",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Confused"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5enNxJTQuXyJvIt",
+              "type": "effect",
+              "label": "B-Rank: Blinded",
+              "effect": {
+                "name": "B-Rank: Blinded",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  }
+                ]
+              },
+              "text": "Creatures that failed."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "550eef5129fc0d02"

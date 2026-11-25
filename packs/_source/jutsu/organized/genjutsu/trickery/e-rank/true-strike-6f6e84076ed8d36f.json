@@ -86,10 +86,23 @@
     },
     "activities": [
       {
-        "id": "sourceUtility",
-        "type": "utility",
-        "label": "Jutsu",
-        "text": "Resolve the jutsu’s source instructions."
+        "id": "n5eoVgq8azUEhrEf",
+        "type": "effect",
+        "label": "True Strike: +2 to the next attack",
+        "effect": {
+          "name": "True Strike",
+          "target": "self",
+          "changes": [
+            {
+              "key": "system.bonuses.attack",
+              "value": "2",
+              "mode": 2
+            }
+          ],
+          "expires": "turnEnd",
+          "seconds": 0
+        },
+        "text": "The next attack roll you make before the end of the turn."
       }
     ],
     "featureType": "active",
@@ -156,7 +169,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5eYVmSH40pmstdX"

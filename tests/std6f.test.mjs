@@ -363,3 +363,33 @@ test("STD6f F11 Phantasm and Hallucinogenic: every jutsu reviewed; four-tier Gen
   assert.equal(s.summon.count, 4);
   assert.deepEqual([SUMMONS.darkPhantasm.system.attributes.ac.flat, SUMMONS.darkPhantasm.system.hpMax], [20, 10]);
 });
+
+test("STD6f F12 Psionic and Trickery: every jutsu reviewed; four-tier saves; Amps kept; every jutsu section reviewed", () => {
+  for ( const [section, count] of [["genjutsu/psionic", 36], ["genjutsu/trickery", 56]] ) {
+    const t = table(section);
+    const items = sectionJutsu(section, t.ranks);
+    assert.equal(items.size, count, section);
+    for ( const [id, { doc }] of items ) {
+      assert.ok(t.features[id], id);
+      assert.equal(doc.flags.n5e.reviewed, true, id);
+    }
+  }
+  assert.deepEqual(tableProblems().filter(p => p.startsWith("jutsu/")), []);
+  const p = id => jutsu("genjutsu/psionic", id), t = id => jutsu("genjutsu/trickery", id);
+  for ( const [j, id] of [[p, "psionics-fortress"], [p, "psionics-keen-meditation"], [t, "cloak-of-shadows"], [t, "environmental-affinity"], [t, "misleading-duplicate"]] ) {
+    assert.ok(j(id).system.activities.some(a => a.effect?.amp === `jutsu-${id}`), id);
+  }
+  // Per-tier damage buttons replace the import's loose rolls.
+  assert.deepEqual(p("psychic-blast").system.activities.filter(a => a.type === "damage").map(a => a.damage.parts[0].formula), ["4d8", "7d8", "10d8"]);
+  assert.ok(!p("psychic-blast").system.activities.some(a => a.type === "roll"));
+  assert.equal(p("psionics-dark-daze").system.activities[0].save.fourTier, true);
+  // Psionics: Crush! is an attack, then the save; Devil's Assault is 3 attacks (+1 per rank).
+  assert.deepEqual(p("psionics-crush").system.activities.slice(0, 2).map(a => a.type), ["attack", "save"]);
+  assert.equal(p("devils-assault").system.activities[0].attack.count, 3);
+  assert.equal(p("devils-assault").flags.n5e.jutsuBookImport.activitiesByRank.S[0].attack.count, 4);
+  // Upcasts: Weapons of Darkness 2 attacks at B and adds the Genjutsu modifier from C-Rank.
+  const wod = p("psionics-weapons-of-darkness").flags.n5e.jutsuBookImport.activitiesByRank;
+  assert.deepEqual([wod.B[0].attack.count, wod.C[0].damage.parts[0].formula], [2, "3d6 + @mod.gen"]);
+  // Every jutsu section is now reviewed.
+  assert.equal(jutsuTables().length, 18);
+});

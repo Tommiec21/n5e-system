@@ -88,10 +88,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eXBT7tvEFNpDZH",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Detrimental Environment",
         "save": {
           "abilities": [
             "wis"
@@ -100,17 +99,38 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this Genjutsu’s effects.",
-            "success": "on a success.",
-            "failure": "failure, but affected creature instead loses the ability to move either hand.",
-            "critFailure": "Critical Failure: Same effect as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: −15 feet speed until the end of its next turn (the effect).",
+            "failure": "Failure: speed 0 and one hand can't move.",
+            "critFailure": "Critical Failure: as a failure, neither hand can move."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration, 10 minutes, no chakra to maintain: a 60-foot cube at a point within 90 feet; a creature starting its turn there or entering it the first time. Resave at the end of each of its turns.",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5e2wceCOoMKLrHx",
+        "type": "effect",
+        "label": "Success: −15 feet speed",
+        "effect": {
+          "name": "Detrimental Environment",
+          "target": "targets",
+          "changes": [
+            {
+              "key": "system.bonuses.speed",
+              "value": "-15",
+              "mode": 2
+            }
+          ],
+          "expires": "nextTurnEnd",
+          "seconds": 0,
+          "inflicts": []
         }
       }
     ],
@@ -178,7 +198,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "fae9e18fa9699f4f"

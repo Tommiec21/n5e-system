@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5efKdzoZHrZvV0w",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Night: Bitter Darkness",
         "save": {
           "abilities": [
             "int"
@@ -99,17 +98,39 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s negative effects.",
-            "success": "Success: Affected creature gains 1 rank of Dazzled until the end of the current turn.",
-            "failure": "failure, but the targets jutsu effect area size is reduce by an additional 10 feet.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: Dazzled until the end of the turn (the effect).",
+            "failure": "Failure: its area shrinks 10 feet (cylinder: 5 wide, 10 high; at least 5 feet); +5 feet per rank.",
+            "critFailure": "Critical Failure: 10 feet more."
+          }
         },
+        "inflicts": [],
+        "text": "Reaction to a hostile creature within 90 feet casting an area jutsu.",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5eaY8d6RorQLxh4",
+        "type": "effect",
+        "label": "Success: Dazzled",
+        "effect": {
+          "name": "Success: Dazzled",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            }
+          ]
         }
       }
     ],
@@ -179,7 +200,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5ecbQOCtW8LIE7D"

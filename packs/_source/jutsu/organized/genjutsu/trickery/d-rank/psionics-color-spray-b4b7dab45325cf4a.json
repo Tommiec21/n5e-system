@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eDhvA9fQbHF727",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Psionics: Color Spray",
         "save": {
           "abilities": [
             "int"
@@ -99,26 +98,79 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: This creature ignores the effects of this jutsu.",
-            "success": "Success: Affected creature gain 1 rank of Dazzled, until the end of their next turn.",
-            "failure": "Failure: Affected creatures takes 2d6 psychic damage and gain 1 rank of Dazzled.",
-            "critFailure": "Critical Failure: Affected creatures becomes Blinded and must remake their saving throw at the end of each of its turns to end this jutsu’s effects on them."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: ignores it.",
+            "success": "Success: 1 Dazzled until the end of its next turn (the effect).",
+            "failure": "Failure: 2d6 psychic and 1 Dazzled.",
+            "critFailure": "Critical Failure: Blinded (the effect); resave at the end of each of its turns."
+          }
         },
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Dazzled"
+          }
+        ],
+        "text": "A 15-foot cone (+5 feet per rank). Dazzled +1 at B-Rank and S-Rank.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "Failure: Affected creatures takes 2d6 psychic damage and gain 1 rank of Dazzled."
+        "id": "n5e7EzHAcCvbrWC8",
+        "type": "effect",
+        "label": "Success: Dazzled",
+        "effect": {
+          "name": "Success: Dazzled",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Dazzled"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eB9nVLAnxWlUUy",
+        "type": "damage",
+        "label": "Failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eeudT4uxgeM4Hg",
+        "type": "effect",
+        "label": "Critical failure: Blinded",
+        "effect": {
+          "name": "Critical failure: Blinded",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            }
+          ]
         }
       }
     ],
@@ -193,9 +245,367 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eDhvA9fQbHF727",
+              "type": "save",
+              "label": "Psionics: Color Spray",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: ignores it.",
+                  "success": "Success: 1 Dazzled until the end of its next turn (the effect).",
+                  "failure": "Failure: 2d6 psychic and 1 Dazzled.",
+                  "critFailure": "Critical Failure: Blinded (the effect); resave at the end of each of its turns."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 1,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "A 15-foot cone (+5 feet per rank). Dazzled +1 at B-Rank and S-Rank.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e7EzHAcCvbrWC8",
+              "type": "effect",
+              "label": "Success: Dazzled",
+              "effect": {
+                "name": "Success: Dazzled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eB9nVLAnxWlUUy",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eeudT4uxgeM4Hg",
+              "type": "effect",
+              "label": "Critical failure: Blinded",
+              "effect": {
+                "name": "Critical failure: Blinded",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eDhvA9fQbHF727",
+              "type": "save",
+              "label": "Psionics: Color Spray",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: ignores it.",
+                  "success": "Success: 1 Dazzled until the end of its next turn (the effect).",
+                  "failure": "Failure: 2d6 psychic and 1 Dazzled.",
+                  "critFailure": "Critical Failure: Blinded (the effect); resave at the end of each of its turns."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "A 15-foot cone (+5 feet per rank). Dazzled +1 at B-Rank and S-Rank.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e7EzHAcCvbrWC8",
+              "type": "effect",
+              "label": "Success: Dazzled",
+              "effect": {
+                "name": "Success: Dazzled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eB9nVLAnxWlUUy",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eeudT4uxgeM4Hg",
+              "type": "effect",
+              "label": "Critical failure: Blinded",
+              "effect": {
+                "name": "Critical failure: Blinded",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eDhvA9fQbHF727",
+              "type": "save",
+              "label": "Psionics: Color Spray",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: ignores it.",
+                  "success": "Success: 1 Dazzled until the end of its next turn (the effect).",
+                  "failure": "Failure: 2d6 psychic and 1 Dazzled.",
+                  "critFailure": "Critical Failure: Blinded (the effect); resave at the end of each of its turns."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "A 15-foot cone (+5 feet per rank). Dazzled +1 at B-Rank and S-Rank.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e7EzHAcCvbrWC8",
+              "type": "effect",
+              "label": "Success: Dazzled",
+              "effect": {
+                "name": "Success: Dazzled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eB9nVLAnxWlUUy",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eeudT4uxgeM4Hg",
+              "type": "effect",
+              "label": "Critical failure: Blinded",
+              "effect": {
+                "name": "Critical failure: Blinded",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eDhvA9fQbHF727",
+              "type": "save",
+              "label": "Psionics: Color Spray",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: ignores it.",
+                  "success": "Success: 1 Dazzled until the end of its next turn (the effect).",
+                  "failure": "Failure: 2d6 psychic and 1 Dazzled.",
+                  "critFailure": "Critical Failure: Blinded (the effect); resave at the end of each of its turns."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 3,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "A 15-foot cone (+5 feet per rank). Dazzled +1 at B-Rank and S-Rank.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5e7EzHAcCvbrWC8",
+              "type": "effect",
+              "label": "Success: Dazzled",
+              "effect": {
+                "name": "Success: Dazzled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Dazzled"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eB9nVLAnxWlUUy",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eeudT4uxgeM4Hg",
+              "type": "effect",
+              "label": "Critical failure: Blinded",
+              "effect": {
+                "name": "Critical failure: Blinded",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "blinded",
+                    "kind": "condition",
+                    "ranks": 1,
+                    "label": "Blinded"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5ecbQOCtW8LIE7D"

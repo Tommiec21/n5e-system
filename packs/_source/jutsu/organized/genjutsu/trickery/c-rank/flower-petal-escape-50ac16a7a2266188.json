@@ -87,12 +87,12 @@
     },
     "activities": [
       {
-        "id": "sourceRoll1",
+        "id": "n5ehydWWgMJqIIP8",
         "type": "roll",
-        "label": "1d4",
+        "label": "Flower Petal Escape: attack penalty",
         "roll": {
           "formula": "1d4",
-          "note": "When you are struck by an attack you may roll 1d4, reducing the triggering creatures attack bonus by the result, potentially causing the attack to miss, making any damage you took prior never actually happen."
+          "note": "Reaction to being hit: the attacker's bonus drops by the roll (+1 per rank). Then Stealth against its passive Perception: move your speed without provoking, hidden if you end in partial cover."
         }
       }
     ],
@@ -167,9 +167,44 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "B": [
+            {
+              "id": "n5ehydWWgMJqIIP8",
+              "type": "roll",
+              "label": "Flower Petal Escape: attack penalty",
+              "roll": {
+                "formula": "1d4 + 1",
+                "note": "Reaction to being hit: the attacker's bonus drops by the roll (+1 per rank). Then Stealth against its passive Perception: move your speed without provoking, hidden if you end in partial cover."
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5ehydWWgMJqIIP8",
+              "type": "roll",
+              "label": "Flower Petal Escape: attack penalty",
+              "roll": {
+                "formula": "1d4 + 2",
+                "note": "Reaction to being hit: the attacker's bonus drops by the roll (+1 per rank). Then Stealth against its passive Perception: move your speed without provoking, hidden if you end in partial cover."
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5ehydWWgMJqIIP8",
+              "type": "roll",
+              "label": "Flower Petal Escape: attack penalty",
+              "roll": {
+                "formula": "1d4 + 3",
+                "note": "Reaction to being hit: the attacker's bonus drops by the roll (+1 per rank). Then Stealth against its passive Perception: move your speed without provoking, hidden if you end in partial cover."
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "293cc8e640ba6c9d"

@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eNWEieVw6RbN7P",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Psionics: Torment!",
         "save": {
           "abilities": [
             "wis"
@@ -99,43 +98,85 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature takes 3d8 psychic damage",
-            "failure": "Failure: Affected creatures takes 6d8 psychic damage and gains 2 ranks of Dazzled.",
-            "critFailure": "Critical Failure: Affected creature takes 9d8 psychic damage, gains 4 ranks of Dazzled."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: 3d8 psychic.",
+            "failure": "Failure: 6d8 psychic and 2 Dazzled.",
+            "critFailure": "Critical Failure: 9d8 psychic and 4 Dazzled."
+          }
         },
+        "inflicts": [
+          {
+            "key": "dazzled",
+            "kind": "condition",
+            "ranks": 2,
+            "label": "Dazzled"
+          }
+        ],
+        "text": "Creatures you choose within 30 feet of you.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "3d8",
-        "roll": {
-          "formula": "3d8",
-          "note": "Success: Affected creature takes 3d8 psychic damage"
+        "id": "n5eu81PZpdAEsKHf",
+        "type": "damage",
+        "label": "Success",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d8",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "6d8",
-        "roll": {
-          "formula": "6d8",
-          "note": "Failure: Affected creatures takes 6d8 psychic damage and gains 2 ranks of Dazzled."
+        "id": "n5eCNipYBKkSLa7Z",
+        "type": "damage",
+        "label": "Failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d8",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "9d8",
-        "roll": {
-          "formula": "9d8",
-          "note": "Critical Failure: Affected creature takes 9d8 psychic damage, gains 4 ranks of Dazzled."
+        "id": "n5evZ4DeLaCWllqU",
+        "type": "damage",
+        "label": "Critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "9d8",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ehSN8VFI9R06An",
+        "type": "effect",
+        "label": "Critical failure: +2 Dazzled",
+        "effect": {
+          "name": "Critical failure: +2 Dazzled",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "dazzled",
+              "kind": "condition",
+              "ranks": 2,
+              "label": "Dazzled"
+            }
+          ]
         }
       }
     ],
@@ -228,9 +269,201 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "A": [
+            {
+              "id": "n5eNWEieVw6RbN7P",
+              "type": "save",
+              "label": "Psionics: Torment!",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: 3d8 psychic.",
+                  "failure": "Failure: 6d8 psychic and 2 Dazzled.",
+                  "critFailure": "Critical Failure: 9d8 psychic and 4 Dazzled."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "Creatures you choose within 30 feet of you.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eu81PZpdAEsKHf",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (1d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eCNipYBKkSLa7Z",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d8) + (1d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5evZ4DeLaCWllqU",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(9d8) + (1d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ehSN8VFI9R06An",
+              "type": "effect",
+              "label": "Critical failure: +2 Dazzled",
+              "effect": {
+                "name": "Critical failure: +2 Dazzled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Dazzled"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eNWEieVw6RbN7P",
+              "type": "save",
+              "label": "Psionics: Torment!",
+              "save": {
+                "abilities": [
+                  "wis"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: as a success.",
+                  "success": "Success: 3d8 psychic.",
+                  "failure": "Failure: 6d8 psychic and 2 Dazzled.",
+                  "critFailure": "Critical Failure: 9d8 psychic and 4 Dazzled."
+                }
+              },
+              "inflicts": [
+                {
+                  "key": "dazzled",
+                  "kind": "condition",
+                  "ranks": 2,
+                  "label": "Dazzled"
+                }
+              ],
+              "text": "Creatures you choose within 30 feet of you.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5eu81PZpdAEsKHf",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d8) + (2d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eCNipYBKkSLa7Z",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d8) + (2d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5evZ4DeLaCWllqU",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(9d8) + (2d8)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ehSN8VFI9R06An",
+              "type": "effect",
+              "label": "Critical failure: +2 Dazzled",
+              "effect": {
+                "name": "Critical failure: +2 Dazzled",
+                "target": "targets",
+                "changes": [],
+                "expires": "",
+                "seconds": 0,
+                "inflicts": [
+                  {
+                    "key": "dazzled",
+                    "kind": "condition",
+                    "ranks": 2,
+                    "label": "Dazzled"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "66c252f59e0fc3c9"

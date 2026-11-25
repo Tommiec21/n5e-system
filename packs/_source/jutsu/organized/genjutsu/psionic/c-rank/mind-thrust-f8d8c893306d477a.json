@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5enii5C5dpPx4h5",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Mind Thrust",
         "save": {
           "abilities": [
             "int"
@@ -99,34 +98,72 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature is able to resist this Genjutsu’s effects.",
-            "failure": "Failure: Affected creature’s takes 2d8 psychic damage, and it can’t take a reaction until the end of its next turn.",
-            "critFailure": "Critical Failure: Affected creature takes 4d8 psychic damage, it can’t take a reaction until the end of its next turn and At the beginning of the targets next turn, they must make an Intelligence saving throw. On a failed save, the target must choose to either move, take an action, or a bonus action. It can only do one of the three."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists.",
+            "failure": "Failure: 2d8 psychic; no reactions until the end of its next turn.",
+            "critFailure": "Critical Failure: 4d8 psychic; no reactions; at the start of its next turn an Intelligence save: on a failure it can only move, take an Action or take a Bonus Action."
+          }
         },
+        "inflicts": [],
+        "text": "A creature you can see within 30 feet (+1 per rank).",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d8",
-        "roll": {
-          "formula": "2d8",
-          "note": "Failure: Affected creature’s takes 2d8 psychic damage, and it can’t take a reaction until the end of its next turn."
+        "id": "n5eO8hZITEtjfvKD",
+        "type": "damage",
+        "label": "Failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d8",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "4d8",
-        "roll": {
-          "formula": "4d8",
-          "note": "Critical Failure: Affected creature takes 4d8 psychic damage, it can’t take a reaction until the end of its next turn and At the beginning of the targets next turn, they must make an Intelligence saving throw. On a failed save, the target must choose to either move, take an action, or a bonus action. It can only do one of the three."
+        "id": "n5ealyfdpZ4qmvNM",
+        "type": "damage",
+        "label": "Critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d8",
+              "type": "psychic"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5ep7AO6zD6jL1WV",
+        "type": "save",
+        "label": "Critical failure: start of its next turn",
+        "save": {
+          "abilities": [
+            "int"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: no effect.",
+            "failure": "Failure: only one of move, Action or Bonus Action.",
+            "critFailure": "Critical Failure: as a failure."
+          }
+        },
+        "inflicts": [],
+        "text": "Failure: only one of move, Action or Bonus Action.",
+        "damage": {
+          "parts": []
         }
       }
     ],
@@ -209,7 +246,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "6a663b31d79aed95"

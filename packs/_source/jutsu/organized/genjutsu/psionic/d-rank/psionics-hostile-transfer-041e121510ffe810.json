@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eJ8lqKBvvWMvVl",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Psionics: Hostile Transfer",
         "save": {
           "abilities": [
             "int"
@@ -98,14 +97,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature is able to resist this jutsu’s effects.",
-            "failure": "Failure: The Hostile creature gains one of the Mental conditions the allied creature has, (your choice)",
-            "critFailure": "Critical Failure: The hostile creature gains an equal number of ranks of each Mental condition the allied creature has, and the allied creature loses each mental condition the hostile creature gains."
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists.",
+            "failure": "Failure: it gains one of the ally's Mental conditions (your choice; apply it by hand).",
+            "critFailure": "Critical Failure: it gains the ally's Mental conditions, rank for rank, and the ally loses them (by hand)."
+          }
         },
+        "inflicts": [],
+        "text": "An ally you can see within 60 feet with ranks of a Mental condition, and a hostile creature you can see within 60 feet (+1 per rank).",
         "damage": {
           "parts": []
         }
@@ -177,7 +179,8 @@
         ],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "550eef5129fc0d02"

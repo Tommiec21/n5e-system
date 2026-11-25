@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eKK5vAiBiA7SMl",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Psionics: Drain!",
         "save": {
           "abilities": [
             "int"
@@ -99,44 +98,58 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
-            "success": "Success: Affected creature takes 2d6 psychic damage.",
-            "failure": "Failure, but damage is increased to 6d6.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: 2d6 psychic.",
+            "failure": "Failure: 3d6 psychic and −2 to Intelligence-based attacks, DCs and checks until the end of its next turn.",
+            "critFailure": "Critical Failure: as a failure, 6d6 psychic instead."
+          }
         },
+        "inflicts": [],
+        "text": "A hostile creature you can see within reach (touch).",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "Success: Affected creature takes 2d6 psychic damage."
+        "id": "n5evkc8a3Pks3vzQ",
+        "type": "damage",
+        "label": "Success",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "3d6",
-        "roll": {
-          "formula": "3d6",
-          "note": "Failure: Affected creature takes 3d6 psychic damage, and suffers a -2 penalty on all Intelligence based attacks, DC’s or checks until the end of their next turn."
+        "id": "n5exRraBgwDvEoMd",
+        "type": "damage",
+        "label": "Failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "6d6",
-        "roll": {
-          "formula": "6d6",
-          "note": "Critical Failure: Same as Failure, but damage is increased to 6d6."
+        "id": "n5ePFTmEf5Tc4ROd",
+        "type": "damage",
+        "label": "Critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "6d6",
+              "type": "psychic"
+            }
+          ]
         }
       }
     ],
@@ -229,9 +242,283 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eKK5vAiBiA7SMl",
+              "type": "save",
+              "label": "Psionics: Drain!",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 2d6 psychic.",
+                  "failure": "Failure: 3d6 psychic and −2 to Intelligence-based attacks, DCs and checks until the end of its next turn.",
+                  "critFailure": "Critical Failure: as a failure, 6d6 psychic instead."
+                }
+              },
+              "inflicts": [],
+              "text": "A hostile creature you can see within reach (touch).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5evkc8a3Pks3vzQ",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5exRraBgwDvEoMd",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ePFTmEf5Tc4ROd",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (1d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eKK5vAiBiA7SMl",
+              "type": "save",
+              "label": "Psionics: Drain!",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 2d6 psychic.",
+                  "failure": "Failure: 3d6 psychic and −2 to Intelligence-based attacks, DCs and checks until the end of its next turn.",
+                  "critFailure": "Critical Failure: as a failure, 6d6 psychic instead."
+                }
+              },
+              "inflicts": [],
+              "text": "A hostile creature you can see within reach (touch).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5evkc8a3Pks3vzQ",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5exRraBgwDvEoMd",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ePFTmEf5Tc4ROd",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eKK5vAiBiA7SMl",
+              "type": "save",
+              "label": "Psionics: Drain!",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 2d6 psychic.",
+                  "failure": "Failure: 3d6 psychic and −2 to Intelligence-based attacks, DCs and checks until the end of its next turn.",
+                  "critFailure": "Critical Failure: as a failure, 6d6 psychic instead."
+                }
+              },
+              "inflicts": [],
+              "text": "A hostile creature you can see within reach (touch).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5evkc8a3Pks3vzQ",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (3d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5exRraBgwDvEoMd",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (3d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ePFTmEf5Tc4ROd",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (3d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eKK5vAiBiA7SMl",
+              "type": "save",
+              "label": "Psionics: Drain!",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 2d6 psychic.",
+                  "failure": "Failure: 3d6 psychic and −2 to Intelligence-based attacks, DCs and checks until the end of its next turn.",
+                  "critFailure": "Critical Failure: as a failure, 6d6 psychic instead."
+                }
+              },
+              "inflicts": [],
+              "text": "A hostile creature you can see within reach (touch).",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5evkc8a3Pks3vzQ",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (4d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5exRraBgwDvEoMd",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (4d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5ePFTmEf5Tc4ROd",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(6d6) + (4d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "550eef5129fc0d02"

@@ -86,9 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eYAfcH3E6wP6Js",
         "type": "damage",
-        "label": "Damage",
+        "label": "Doubled Pain",
         "damage": {
           "parts": [
             {
@@ -96,7 +96,8 @@
               "type": "psychic"
             }
           ]
-        }
+        },
+        "text": "Concentration: a creature you can see within 60 feet (+1 per rank). Once per turn when you deal it damage with an attack (twice if that attack was a Genjutsu)."
       }
     ],
     "featureType": "active",
@@ -182,9 +183,75 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5eYAfcH3E6wP6Js",
+              "type": "damage",
+              "label": "Doubled Pain",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "1d6",
+                    "type": "psychic"
+                  }
+                ]
+              },
+              "text": "Concentration: a creature you can see within 60 feet (+1 per rank). Once per turn when you deal it damage with an attack (twice if that attack was a Genjutsu)."
+            }
+          ],
+          "B": [
+            {
+              "id": "n5eYAfcH3E6wP6Js",
+              "type": "damage",
+              "label": "Doubled Pain",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "psychic"
+                  }
+                ]
+              },
+              "text": "Concentration: a creature you can see within 60 feet (+1 per rank). Once per turn when you deal it damage with an attack (twice if that attack was a Genjutsu)."
+            }
+          ],
+          "A": [
+            {
+              "id": "n5eYAfcH3E6wP6Js",
+              "type": "damage",
+              "label": "Doubled Pain",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "2d6",
+                    "type": "psychic"
+                  }
+                ]
+              },
+              "text": "Concentration: a creature you can see within 60 feet (+1 per rank). Once per turn when you deal it damage with an attack (twice if that attack was a Genjutsu)."
+            }
+          ],
+          "S": [
+            {
+              "id": "n5eYAfcH3E6wP6Js",
+              "type": "damage",
+              "label": "Doubled Pain",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "3d6",
+                    "type": "psychic"
+                  }
+                ]
+              },
+              "text": "Concentration: a creature you can see within 60 feet (+1 per rank). Once per turn when you deal it damage with an attack (twice if that attack was a Genjutsu)."
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "550eef5129fc0d02"

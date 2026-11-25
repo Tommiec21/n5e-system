@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eLw0UkFCN2Uphn",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Rubber Mind",
         "save": {
           "abilities": [
             "int"
@@ -98,14 +97,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature is able to resist this jutsu’s effects.",
-            "failure": "Failure, and also cannot remove the condition themselves and instead must spend an action to remake this jutsu’s saving throw to end them.",
-            "critFailure": "Critical Failure: Affected creature suffers the same effects of a"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists.",
+            "failure": "Failure: it gains those conditions as if it failed its own save (apply them by hand).",
+            "critFailure": "Critical Failure: as a failure; it can't remove them itself, but can spend an Action to resave and end them."
+          }
         },
+        "inflicts": [],
+        "text": "Reaction to gaining a Mental or Sensory condition from a failed save against a Genjutsu: a hostile creature within 60 feet.",
         "damage": {
           "parts": []
         }
@@ -175,7 +177,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "66c252f59e0fc3c9"

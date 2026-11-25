@@ -87,14 +87,15 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eLB8ZHfYArBEQD",
         "type": "attack",
-        "label": "Attack",
+        "label": "Mind Sliver",
         "attack": {
-          "discipline": "gen",
+          "discipline": "discipline",
           "range": "ranged",
           "count": 1
         },
+        "text": "30 feet; then the save.",
         "damage": {
           "parts": [
             {
@@ -105,39 +106,95 @@
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "d4",
-        "roll": {
-          "formula": "d4",
-          "note": "On a failed save, until the end of its next turn, it must roll a d4 and subtract the number from the first saving throw they make for the duration."
+        "id": "n5e91AjSM5EzyTMp",
+        "type": "attack",
+        "label": "5th level: 2d6",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "psychic"
+            }
+          ]
+        },
+        "minLevel": 5
+      },
+      {
+        "id": "n5eFiHd6i1eOxAwd",
+        "type": "attack",
+        "label": "11th level: 3d6",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "psychic"
+            }
+          ]
+        },
+        "minLevel": 11
+      },
+      {
+        "id": "n5eZarkITYwUkVxz",
+        "type": "attack",
+        "label": "17th level: 4d6",
+        "attack": {
+          "discipline": "discipline",
+          "range": "ranged",
+          "count": 1
+        },
+        "damage": {
+          "parts": [
+            {
+              "formula": "4d6",
+              "type": "psychic"
+            }
+          ]
+        },
+        "minLevel": 17
+      },
+      {
+        "id": "n5efSboPqWsVn0Rw",
+        "type": "save",
+        "label": "Mind Sliver: Intelligence",
+        "save": {
+          "abilities": [
+            "int"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists.",
+            "failure": "Failure: until the end of its next turn, −1d4 on the first saving throw it makes.",
+            "critFailure": "Critical Failure: as a failure."
+          }
+        },
+        "inflicts": [],
+        "damage": {
+          "parts": []
         }
       },
       {
-        "id": "sourceRoll4",
+        "id": "n5eIaaEVT4xVcTZe",
         "type": "roll",
-        "label": "2d6",
+        "label": "Penalty: first save",
         "roll": {
-          "formula": "2d6",
-          "note": "At Higher Levels: This Jutsu’s proficiency increases as you increase in level rolling an additional 1d6 when you reach 5th level (2d6), 11th level (3d6), 17th level (4d6)"
-        }
-      },
-      {
-        "id": "sourceRoll5",
-        "type": "roll",
-        "label": "3d6",
-        "roll": {
-          "formula": "3d6",
-          "note": "At Higher Levels: This Jutsu’s proficiency increases as you increase in level rolling an additional 1d6 when you reach 5th level (2d6), 11th level (3d6), 17th level (4d6)"
-        }
-      },
-      {
-        "id": "sourceRoll6",
-        "type": "roll",
-        "label": "4d6",
-        "roll": {
-          "formula": "4d6",
-          "note": "At Higher Levels: This Jutsu’s proficiency increases as you increase in level rolling an additional 1d6 when you reach 5th level (2d6), 11th level (3d6), 17th level (4d6)"
+          "formula": "1d4",
+          "note": ""
         }
       }
     ],
@@ -242,7 +299,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "7ba0b480d2fe1d5b"

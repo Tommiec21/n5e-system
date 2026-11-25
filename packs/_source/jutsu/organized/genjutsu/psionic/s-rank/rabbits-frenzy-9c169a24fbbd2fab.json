@@ -88,22 +88,45 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5ewiVB2Uro6ZLFr",
         "type": "attack",
-        "label": "Attack",
+        "label": "Rabbit's Frenzy",
         "attack": {
-          "discipline": "gen",
+          "discipline": "discipline",
           "range": "melee",
-          "count": 1
+          "count": 4
         },
+        "text": "Concentration: an Action each turn, up to 4 creatures you can see within 60 feet. Against a Restrained creature, reroll 1s. On a hit: the save.",
         "damage": {
-          "parts": []
+          "parts": [
+            {
+              "formula": "27d4",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "parsed2",
+        "id": "n5eECkz280R0ZIiR",
         "type": "save",
-        "label": "Save",
+        "label": "Rabbit's Frenzy: Charisma",
+        "save": {
+          "abilities": [
+            "cha"
+          ],
+          "dc": {
+            "source": "discipline"
+          },
+          "onSuccess": "none",
+          "resave": false,
+          "fourTier": true,
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: resists.",
+            "failure": "Failure: 3 Demoralized against you for 1 minute and Restrained until the end of its next turn.",
+            "critFailure": "Critical Failure: as a failure."
+          }
+        },
         "inflicts": [
           {
             "key": "demoralized",
@@ -118,29 +141,8 @@
             "label": "Restrained"
           }
         ],
-        "save": {
-          "abilities": [
-            "cha"
-          ],
-          "dc": {
-            "source": "discipline"
-          },
-          "onSuccess": "none",
-          "fourTier": true,
-          "tiers": {},
-          "resave": false
-        },
         "damage": {
           "parts": []
-        }
-      },
-      {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "27d4",
-        "roll": {
-          "formula": "27d4",
-          "note": "You deal psychic damage equal to 27d4 and the target creature must make a Charisma saving throw."
         }
       }
     ],
@@ -215,7 +217,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "43f538b363ec0be6"

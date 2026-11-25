@@ -86,10 +86,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5eui6GjHNOfNiDU",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Seeming",
         "save": {
           "abilities": [
             "cha"
@@ -98,10 +97,17 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
-          "tiers": {},
-          "resave": false
+          "tiers": {
+            "critSuccess": "Critical Success: as a success.",
+            "success": "Success: unaffected.",
+            "failure": "Failure: disguised.",
+            "critFailure": "Critical Failure: as a failure."
+          }
         },
+        "inflicts": [],
+        "text": "Concentration, up to 1 hour: any number of creatures you can see within 30 feet get a new appearance; only an unwilling creature saves. An Action and an Investigation or Illusion check against your Genjutsu save DC notices it.",
         "damage": {
           "parts": []
         }
@@ -171,7 +177,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "fae9e18fa9699f4f"

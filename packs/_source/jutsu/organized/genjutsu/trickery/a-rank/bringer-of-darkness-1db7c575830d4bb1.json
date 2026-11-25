@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e40ktN9kCQK8F4",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Bringer of Darkness",
         "save": {
           "abilities": [
             "wis"
@@ -99,17 +98,72 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "success": "Success: Affected creature is Blinded until the end of their next turn..",
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s effects.",
-            "failure": "Failure, but they are also Confused for the duration.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: Blinded until the end of its next turn (the effect).",
+            "failure": "Failure: Blinded, Deafened and no sense of touch.",
+            "critFailure": "Critical Failure: as a failure, and Confused (the effect)."
+          }
         },
+        "inflicts": [
+          {
+            "key": "blinded",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Blinded"
+          },
+          {
+            "key": "deafened",
+            "kind": "condition",
+            "ranks": 1,
+            "label": "Deafened"
+          }
+        ],
+        "text": "Concentration, up to 10 minutes: creatures within 30 feet of you, or entering it the first time on a turn. Resave at the end of each of its turns.",
         "damage": {
           "parts": []
+        }
+      },
+      {
+        "id": "n5efimTfs8DoTPjs",
+        "type": "effect",
+        "label": "Success: Blinded",
+        "effect": {
+          "name": "Success: Blinded",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "blinded",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Blinded"
+            }
+          ]
+        }
+      },
+      {
+        "id": "n5eDu0jJVXLFAV8L",
+        "type": "effect",
+        "label": "Critical failure: Confused",
+        "effect": {
+          "name": "Critical failure: Confused",
+          "target": "targets",
+          "changes": [],
+          "expires": "",
+          "seconds": 0,
+          "inflicts": [
+            {
+              "key": "confused",
+              "kind": "condition",
+              "ranks": 1,
+              "label": "Confused"
+            }
+          ]
         }
       }
     ],
@@ -177,7 +231,8 @@
         "manual": [],
         "activitiesByRank": {},
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "bb4e5d99d4d4ee8e"

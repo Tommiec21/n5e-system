@@ -87,10 +87,9 @@
     },
     "activities": [
       {
-        "id": "parsed1",
+        "id": "n5e9ilZxepUwo5EU",
         "type": "save",
-        "label": "Save",
-        "inflicts": [],
+        "label": "Night: Bitter Feelings",
         "save": {
           "abilities": [
             "int"
@@ -99,44 +98,58 @@
             "source": "discipline"
           },
           "onSuccess": "none",
+          "resave": false,
           "fourTier": true,
           "tiers": {
-            "critSuccess": "Critical Success: Affected creature is able to resist this jutsu’s negative effects.",
-            "success": "Success: Affected creature is able to resist this jutsu’s negative effects but takes 2d6 psychic damage.",
-            "failure": "failure, but the target instead gains 2 additional ranks of the same condition and takes 5d6 psychic damage.",
-            "critFailure": "Critical Failure: Same as"
-          },
-          "resave": false
+            "critSuccess": "Critical Success: resists.",
+            "success": "Success: 2d6 psychic.",
+            "failure": "Failure: 3d6 psychic and 1 more rank of that condition (by hand).",
+            "critFailure": "Critical Failure: 5d6 psychic and 2 more ranks."
+          }
         },
+        "inflicts": [],
+        "text": "Reaction to a hostile creature within 60 feet gaining a rank of a Mental or Sensory condition that can have ranks. B-Rank: +1 rank.",
         "damage": {
           "parts": []
         }
       },
       {
-        "id": "sourceRoll1",
-        "type": "roll",
-        "label": "2d6",
-        "roll": {
-          "formula": "2d6",
-          "note": "Success: Affected creature is able to resist this jutsu’s negative effects but takes 2d6 psychic damage."
+        "id": "n5ebxP84SOEe1P0O",
+        "type": "damage",
+        "label": "Success",
+        "damage": {
+          "parts": [
+            {
+              "formula": "2d6",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll2",
-        "type": "roll",
-        "label": "3d6",
-        "roll": {
-          "formula": "3d6",
-          "note": "Failure: Affected creatures gains 1 additional rank of the same condition and takes 3d6 psychic damage."
+        "id": "n5eE0kkH6tlbxV4l",
+        "type": "damage",
+        "label": "Failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "3d6",
+              "type": "psychic"
+            }
+          ]
         }
       },
       {
-        "id": "sourceRoll3",
-        "type": "roll",
-        "label": "5d6",
-        "roll": {
-          "formula": "5d6",
-          "note": "Critical Failure: Same as failure, but the target instead gains 2 additional ranks of the same condition and takes 5d6 psychic damage."
+        "id": "n5erRwtmSjomVOXr",
+        "type": "damage",
+        "label": "Critical failure",
+        "damage": {
+          "parts": [
+            {
+              "formula": "5d6",
+              "type": "psychic"
+            }
+          ]
         }
       }
     ],
@@ -229,9 +242,283 @@
         "manual": [
           "Conditional rider instructions are preserved; choose the applicable source activity manually."
         ],
-        "activitiesByRank": {},
+        "activitiesByRank": {
+          "C": [
+            {
+              "id": "n5e9ilZxepUwo5EU",
+              "type": "save",
+              "label": "Night: Bitter Feelings",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 2d6 psychic.",
+                  "failure": "Failure: 3d6 psychic and 1 more rank of that condition (by hand).",
+                  "critFailure": "Critical Failure: 5d6 psychic and 2 more ranks."
+                }
+              },
+              "inflicts": [],
+              "text": "Reaction to a hostile creature within 60 feet gaining a rank of a Mental or Sensory condition that can have ranks. B-Rank: +1 rank.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ebxP84SOEe1P0O",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (1d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eE0kkH6tlbxV4l",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (1d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5erRwtmSjomVOXr",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (1d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "B": [
+            {
+              "id": "n5e9ilZxepUwo5EU",
+              "type": "save",
+              "label": "Night: Bitter Feelings",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 2d6 psychic.",
+                  "failure": "Failure: 3d6 psychic and 1 more rank of that condition (by hand).",
+                  "critFailure": "Critical Failure: 5d6 psychic and 2 more ranks."
+                }
+              },
+              "inflicts": [],
+              "text": "Reaction to a hostile creature within 60 feet gaining a rank of a Mental or Sensory condition that can have ranks. B-Rank: +1 rank.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ebxP84SOEe1P0O",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eE0kkH6tlbxV4l",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5erRwtmSjomVOXr",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (2d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "A": [
+            {
+              "id": "n5e9ilZxepUwo5EU",
+              "type": "save",
+              "label": "Night: Bitter Feelings",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 2d6 psychic.",
+                  "failure": "Failure: 3d6 psychic and 1 more rank of that condition (by hand).",
+                  "critFailure": "Critical Failure: 5d6 psychic and 2 more ranks."
+                }
+              },
+              "inflicts": [],
+              "text": "Reaction to a hostile creature within 60 feet gaining a rank of a Mental or Sensory condition that can have ranks. B-Rank: +1 rank.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ebxP84SOEe1P0O",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (3d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eE0kkH6tlbxV4l",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (3d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5erRwtmSjomVOXr",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (3d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ],
+          "S": [
+            {
+              "id": "n5e9ilZxepUwo5EU",
+              "type": "save",
+              "label": "Night: Bitter Feelings",
+              "save": {
+                "abilities": [
+                  "int"
+                ],
+                "dc": {
+                  "source": "discipline"
+                },
+                "onSuccess": "none",
+                "resave": false,
+                "fourTier": true,
+                "tiers": {
+                  "critSuccess": "Critical Success: resists.",
+                  "success": "Success: 2d6 psychic.",
+                  "failure": "Failure: 3d6 psychic and 1 more rank of that condition (by hand).",
+                  "critFailure": "Critical Failure: 5d6 psychic and 2 more ranks."
+                }
+              },
+              "inflicts": [],
+              "text": "Reaction to a hostile creature within 60 feet gaining a rank of a Mental or Sensory condition that can have ranks. B-Rank: +1 rank.",
+              "damage": {
+                "parts": []
+              }
+            },
+            {
+              "id": "n5ebxP84SOEe1P0O",
+              "type": "damage",
+              "label": "Success",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(2d6) + (4d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5eE0kkH6tlbxV4l",
+              "type": "damage",
+              "label": "Failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(3d6) + (4d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n5erRwtmSjomVOXr",
+              "type": "damage",
+              "label": "Critical failure",
+              "damage": {
+                "parts": [
+                  {
+                    "formula": "(5d6) + (4d6)",
+                    "type": "psychic"
+                  }
+                ]
+              }
+            }
+          ]
+        },
         "manualCost": false
-      }
+      },
+      "reviewed": true
     }
   },
   "folder": "n5ecbQOCtW8LIE7D"
