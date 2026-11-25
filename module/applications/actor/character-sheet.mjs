@@ -411,7 +411,11 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
       return created;
     }
 
+    // LVL1 L3: a conditional Bonus Jutsu grant is read against what the character had before this item.
+    const cond = item.type === "feat" ? item.system.bonusJutsu?.condition : "";
+    const had = cond ? (await import("../../rules/jutsu-slots.mjs")).conditionHolds(actor, cond) : null;
     const created = await super._onDropItem(event, item);
+    if ( cond ) for ( const c of [created].flat().filter(Boolean) ) await c.setFlag("n5e", "conditionMet", had);
     if ( created && event.target.closest?.("[data-pin-zone]") ) await this.#pin(created.id, true);
     // NT1: a feature, feat or trait that names jutsu grants them outright (Bonus Jutsu).
     const made = [created].flat().filter(i => i?.type === "feat");

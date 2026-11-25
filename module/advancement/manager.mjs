@@ -6,7 +6,7 @@
  */
 import { validateItemChoices } from "./eligibility.mjs";
 import { learningData, alertLearning, grantFeatureJutsu } from "../workflow/learn-jutsu.mjs";
-import { jutsuSlots, learnBlock, learnedMode } from "../rules/jutsu-slots.mjs";
+import { jutsuSlots, learnBlock, learnedMode, conditionHolds } from "../rules/jutsu-slots.mjs";
 
 /**
  * LVL1 L2: remove items switched out at this level (jutsu swaps, option swaps), recording them on the
@@ -106,6 +106,10 @@ function recordChoices(item, level, byAdvId) {
 export async function applyLevel(actor, cls, level, steps, sel) {
   const choiceErrors = await validateItemChoices(actor, level, steps, sel);
   if ( choiceErrors.length ) throw new Error(choiceErrors[0]);
+  // LVL1 L3: what the character had before this level, for conditional grants ("if you already have...").
+  const sys0 = actor.system ?? {};
+  const before = { name: actor.name, system: { grants: { affinities: [...(sys0.grants?.affinities ?? [])] },
+    skills: foundry.utils.deepClone(sys0.skills ?? {}), tools: foundry.utils.deepClone(sys0.tools ?? {}), saves: foundry.utils.deepClone(sys0.saves ?? {}) } };
   if ( (cls.system.levels ?? 0) < level ) await cls.update({ "system.levels": level });
   const create = [];
   const classChoices = {};
@@ -162,8 +166,11 @@ export async function applyLevel(actor, cls, level, steps, sel) {
         record(st, value ?? []);
         break;
       case "trait":
-        if ( st.id === "class:skills" ) await cls.update({ "system.skills.chosen": value ?? [] });
-        else if ( st.id === "class:tools" ) await cls.update({ "system.tools.chosen": value ?? [] });
+        if ( st.id === "class:skills" ) await cls.update({ "system.skills.chosen": [...(value ?? []), ...(sel["class:skills:dup"] ?? [])] });
+        else if ( st.id === "class:tools" ) await cls.update({ "system.tools.chosen": [...(value ?? []), ...(sel["class:tools:dup"] ?? [])] });
+        // LVL1 L3: a replacement for a duplicate fixed proficiency (merged above when the class also has a pick).
+        else if ( st.id === "class:skills:dup" ) { if ( !steps.some(x => x.id === "class:skills") ) await cls.update({ "system.skills.chosen": value ?? [] }); }
+        else if ( st.id === "class:tools:dup" ) { if ( !steps.some(x => x.id === "class:tools") ) await cls.update({ "system.tools.chosen": value ?? [] }); }
         else record(st, value ?? []);
         break;
       case "jutsu":
@@ -204,6 +211,10 @@ export async function applyLevel(actor, cls, level, steps, sel) {
   // FIN1: applying a level twice must not add the same compendium item again.
   const have = new Set(actor.items.map(i => i.flags?.core?.sourceId ?? i._stats?.compendiumSource).filter(Boolean));
   const add = create.filter(d => !have.has(d.flags?.core?.sourceId) || d.flags?.n5e?.repeatable);
+  for ( const d of add ) {
+    const cond = d.type === "feat" ? d.system?.bonusJutsu?.condition : "";
+    if ( cond ) foundry.utils.setProperty(d, "flags.n5e.conditionMet", conditionHolds(before, cond));
+  }
   const created = add.length ? await actor.createEmbeddedDocuments("Item", add) : [];
   if ( swapOut.length ) await swapOutItems(actor, cls, level, swapOut);
   // NT1: features gained this level that name specific jutsu grant them now (Bonus Jutsu).

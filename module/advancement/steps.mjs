@@ -82,6 +82,17 @@ export function stepsForLevel({ actor, cls, subclass = null, level }) {
 
   // 1st level: proficiencies the class asks you to pick.
   if ( level === 1 ) {
+    // LVL1 L3: a fixed class proficiency the character already has from elsewhere (clan, background,
+    // set by hand) becomes a pick of another one (any not already had).
+    const other = otherProficiencies(actor, cls);
+    const dupSkills = list(sys.skills?.fixed).filter(k => other.skills.has(k));
+    const dupTools = list(sys.tools?.fixed).filter(k => other.tools.has(k));
+    if ( dupSkills.length ) steps.push({ id: "class:skills:dup", type: "trait", key: "skills", title: "Replace duplicate skill proficiencies", count: dupSkills.length,
+      fixed: dupSkills.map(k => `${skills[k]?.label ?? k} (already proficient)`),
+      options: Object.keys(skills).filter(k => !other.skills.has(k) && !list(sys.skills?.fixed).includes(k)).map(k => ({ value: k, label: skills[k]?.label ?? k })) });
+    if ( dupTools.length ) steps.push({ id: "class:tools:dup", type: "trait", key: "tools", title: "Replace duplicate toolkit proficiencies", count: dupTools.length,
+      fixed: dupTools.map(k => `${toolkits[k]?.label ?? k} (already proficient)`),
+      options: Object.keys(toolkits).filter(k => !other.tools.has(k) && !list(sys.tools?.fixed).includes(k)).map(k => ({ value: k, label: toolkits[k]?.label ?? k })) });
     const fixedSkills = list(sys.skills?.fixed);
     if ( sys.skills?.choose ) {
       const from = list(sys.skills.from).length ? list(sys.skills.from) : Object.keys(skills);
@@ -132,6 +143,25 @@ export function stepsForLevel({ actor, cls, subclass = null, level }) {
       carried: Math.max(0, open - Math.max(0, gain)), maxRank: sys.maxRank?.[level - 1] || null, sourceName: `${cls.name} ${level}` });
   }
   return steps.filter(step => advancementAvailable(step, actor));
+}
+
+/** LVL1 L3: skill and toolkit proficiencies the character has from anything but this class. */
+export function otherProficiencies(actor, cls) {
+  const out = { skills: new Set(), tools: new Set() };
+  for ( const [k, v] of Object.entries(actor.system?.skills ?? {}) ) if ( v?.proficient ) out.skills.add(k);
+  for ( const [k, v] of Object.entries(actor.system?.tools ?? {}) ) if ( v?.proficient ) out.tools.add(k);
+  for ( const i of list(actor.items?.contents ?? actor.items) ) {
+    if ( i === cls || i.id && i.id === cls?.id ) continue;
+    const s = i.system ?? {};
+    if ( i.type === "clan" ) [...list(s.skills?.fixed), ...list(s.skills?.chosen)].forEach(k => out.skills.add(k));
+    if ( i.type === "background" ) { list(s.skills).forEach(k => out.skills.add(k)); if ( s.tool ) out.tools.add(s.tool); }
+    if ( i.type === "feat" ) for ( const p of list(s.grants?.proficiencies) ) {
+      const [kind, key] = String(p).split(".");
+      if ( kind === "skill" ) out.skills.add(key);
+      else if ( kind === "tool" ) out.tools.add(key);
+    }
+  }
+  return out;
 }
 
 /** Steps a subclass adds when it is picked during this same level-up. */

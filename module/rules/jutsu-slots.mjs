@@ -52,11 +52,14 @@ export function bonusSources(actor) {
   const out = [];
   for ( const i of items(actor).filter(x => x.type === "feat") ) {
     const key = sourceKey(i);
-    const count = i.system.bonusJutsu?.count ?? 0;
+    // LVL1 L3: conditional slots count only when the condition held when the item was gained.
+    const cond = i.system.bonusJutsu?.condition;
+    const count = cond && i.flags?.n5e?.conditionMet !== true ? 0 : (i.system.bonusJutsu?.count ?? 0);
     const fixed = list(i.system.grants?.jutsu);
     if ( count > 0 || fixed.length ) out.push({ id: i.id, uuid: key, keys: [i.id, i.uuid, key].filter(Boolean), name: i.name, count, fixed,
       filter: { maxRank: i.system.bonusJutsu?.maxRank ?? "", discipline: i.system.bonusJutsu?.discipline ?? "",
-        section: i.system.bonusJutsu?.section ?? "", keyword: i.system.bonusJutsu?.keyword ?? "" } });
+        section: i.system.bonusJutsu?.section ?? "", keyword: i.system.bonusJutsu?.keyword ?? "",
+        aboveMax: (i.system.bonusJutsu?.aboveMax?.count ?? 0) > 0 ? { count: i.system.bonusJutsu.aboveMax.count, maxRank: i.system.bonusJutsu.aboveMax.maxRank ?? "" } : null } });
     for ( const r of list(i.flags?.n5e?.replacementSlots) ) {
       const k = `${key}#${r.jutsu}`;
       out.push({ id: i.id, uuid: k, keys: [k, `${i.id}#${r.jutsu}`], name: `${i.name} (instead of ${r.name})`, count: 1, fixed: [], replaces: r.jutsu,
@@ -108,6 +111,12 @@ export function jutsuSlots(actor) {
     const fixedNames = new Set(s.fixed);
     const fixedHad = mine.filter(j => fixedNames.has(j._stats?.compendiumSource ?? j.flags?.core?.sourceId)).length;
     const picked = mine.length - fixedHad;
+    // LVL1 L3: how many of this source's "above your highest rank" picks are left.
+    if ( s.filter.aboveMax ) {
+      const top = actor?.system?.grants?.maxRank ?? "";
+      const above = top ? mine.filter(j => RANKS.indexOf(j.system.rank) > RANKS.indexOf(top)).length : 0;
+      s.filter.aboveMaxOpen = Math.max(0, s.filter.aboveMax.count - above);
+    }
     return { ...s, used: mine.length, max: s.count + s.fixed.length, picked, open: Math.max(0, s.count - picked) };
   });
   const assigned = sources.reduce((n, s) => n + s.used, 0);
@@ -129,7 +138,8 @@ export function jutsuDiscipline(jutsu) {
 /** Does a jutsu fit a bonus slot's limits? */
 export function matchesFilter(jutsu, f = {}) {
   const s = jutsu.system ?? {};
-  if ( f.maxRank && RANKS.indexOf(s.rank) > RANKS.indexOf(f.maxRank) ) return false;
+  const cap = f.aboveMax?.maxRank && f.maxRank && RANKS.indexOf(f.aboveMax.maxRank) > RANKS.indexOf(f.maxRank) ? f.aboveMax.maxRank : f.maxRank;
+  if ( cap && RANKS.indexOf(s.rank) > RANKS.indexOf(cap) ) return false;
   const discs = new Set([s.discipline, ...list(s.disciplines)]);
   if ( s.discipline === "tai" && list(s.keywords).includes("bukijutsu") ) discs.add("buki");
   if ( f.discipline && !discs.has(f.discipline) ) return false;
@@ -151,7 +161,9 @@ export function learnProblems(actor, jutsu, { maxRank = "", filter = null, keywo
   const s = jutsu.system ?? {};
   const out = [];
   const max = maxRank || actor?.system?.grants?.maxRank || "";
-  if ( max && RANKS.indexOf(s.rank) > RANKS.indexOf(max) ) out.push(`${s.rank}-Rank is above the highest rank ${actor?.name ?? "the character"} can learn (${max}-Rank).`);
+  // LVL1 L3: a slot may allow some picks above the highest rank (up to aboveMax.maxRank).
+  const above = filter?.aboveMax && (filter.aboveMaxOpen ?? filter.aboveMax.count) > 0 && RANKS.indexOf(s.rank) <= RANKS.indexOf(filter.aboveMax.maxRank);
+  if ( max && !above && RANKS.indexOf(s.rank) > RANKS.indexOf(max) ) out.push(`${s.rank}-Rank is above the highest rank ${actor?.name ?? "the character"} can learn (${max}-Rank).`);
   const clan = items(actor).find(i => i.type === "clan");
   const hijutsu = !!s.hijutsu?.clan || list(s.keywords).includes("hijutsu");
   if ( hijutsu && s.hijutsu?.clan && s.hijutsu.clan !== clan?.system?.identifier ) out.push(`Hijutsu of another clan (${s.hijutsu.clan}).`);
@@ -182,11 +194,27 @@ export function assignSlot(actor, jutsu, slots = jutsuSlots(actor)) {
 
 /** Filters to preset in the Jutsu Browser for a slot: ranks up to maxRank, plus the slot's limits. */
 export function browserFilters({ maxRank = "", filter = {} } = {}) {
-  const top = filter.maxRank || maxRank;
+  let top = filter.maxRank || maxRank;
+  if ( filter.aboveMax?.maxRank && RANKS.indexOf(filter.aboveMax.maxRank) > RANKS.indexOf(top || "E") ) top = filter.aboveMax.maxRank;
   const out = {};
   if ( top ) out.rank = RANKS.slice(0, RANKS.indexOf(top) + 1);
   if ( filter.discipline ) out.discipline = [filter.discipline];
   if ( filter.section ) out.section = [filter.section];
   if ( filter.keyword ) out.keywords = [filter.keyword];
   return out;
+}
+
+/**
+ * LVL1 L3: does the character already have this? "affinity:fire", "skill:ath", "tool:alchemist", "save:con".
+ * Read before the item that asks is gained (the grants it brings itself don't count).
+ */
+export function conditionHolds(actor, condition) {
+  if ( !condition ) return true;
+  const [kind, key] = String(condition).split(":");
+  const sys = actor?.system ?? {};
+  if ( kind === "affinity" ) return list(sys.grants?.affinities).includes(key);
+  if ( kind === "skill" ) return !!(sys.skills?.[key]?.isProficient ?? sys.skills?.[key]?.proficient);
+  if ( kind === "tool" ) return !!(sys.tools?.[key]?.isProficient ?? sys.tools?.[key]?.proficient);
+  if ( kind === "save" ) return !!sys.saves?.[key]?.proficient;
+  return false;
 }

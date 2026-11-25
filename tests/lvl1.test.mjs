@@ -73,3 +73,42 @@ test("LVL1 L2: Malleable Mirages is a swap choice; jutsu swaps keep the discipli
   assert.match(mgr, /await restoreSwaps\(actor, cls, level\)/);
   assert.match(fs.readFileSync(path.join(ROOT, "templates/apps/level-up.hbs"), "utf8"), /toggleReplace/);
 });
+
+test("LVL1 L3: the five Moldings give 2 conditional Bonus Jutsu (one may be C-Rank above the highest); duplicate class proficiencies become picks", async () => {
+  const { conditionHolds, jutsuSlots, learnProblems, browserFilters } = await import("../module/rules/jutsu-slots.mjs");
+  const { stepsForLevel } = await import("../module/advancement/steps.mjs");
+  const dir = path.join(ROOT, "packs/_source/features");
+  const files = fs.readdirSync(dir, { recursive: true }).filter(f => /(^|\/)(fire-release-blaze-walker|water-release-tsunami|wind-release-storm-terror|lightning-release-lightning-breaker|earth-release-stone-crusher)-[^/]*\.json$/.test(f));
+  assert.equal(files.length, 5);
+  for ( const f of files ) {
+    const b = JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")).system.bonusJutsu;
+    assert.deepEqual([b.count, b.discipline, b.condition.split(":")[0], b.aboveMax.count, b.aboveMax.maxRank], [2, "nin", "affinity", 1, "C"], f);
+    assert.equal(b.condition.split(":")[1], b.section, f);
+  }
+  const blaze = { type: "feat", id: "bw", name: "Fire Release (Blaze Walker)", uuid: "Actor.a.Item.bw", system: { grants: { jutsu: [] },
+    bonusJutsu: { count: 2, discipline: "nin", section: "fire", condition: "affinity:fire", aboveMax: { count: 1, maxRank: "C" } } }, flags: { n5e: {} } };
+  const cls = { type: "class", system: { levels: 2, jutsuKnownNow: 3 } };
+  const base = { name: "K", system: { grants: { classItem: cls, maxRank: "D", affinities: new Set(["fire"]) } } };
+  assert.equal(conditionHolds(base, "affinity:fire"), true);
+  assert.equal(conditionHolds(base, "affinity:water"), false);
+  assert.equal(jutsuSlots({ ...base, items: [cls, blaze] }).bonus.open, 0, "the condition wasn't met when it was gained (no flag)");
+  const met = { ...blaze, flags: { n5e: { conditionMet: true } } };
+  const s = jutsuSlots({ ...base, items: [cls, met] });
+  assert.equal(s.bonus.open, 2);
+  const f = s.bonus.sources[0].filter;
+  assert.equal(f.aboveMaxOpen, 1);
+  assert.deepEqual(learnProblems(base, jutsu("Fire C", { rank: "C", section: "fire" }), { filter: f }), [], "one may be C-Rank while the highest is D");
+  assert.match(learnProblems(base, jutsu("Fire B", { rank: "B", section: "fire" }), { filter: f })[0], /above the highest rank/);
+  const used = jutsuSlots({ ...base, items: [cls, met, jutsu("Fire C", { rank: "C", section: "fire", learned: { mode: "bonus", source: "Actor.a.Item.bw" } })] });
+  assert.equal(used.bonus.sources[0].filter.aboveMaxOpen, 0);
+  assert.match(learnProblems(base, jutsu("Fire C2", { rank: "C", section: "fire" }), { filter: used.bonus.sources[0].filter })[0], /above the highest rank/);
+  assert.deepEqual(browserFilters({ maxRank: "D", filter: f }).rank, ["E", "D", "C"]);
+  // Duplicate fixed class proficiencies (Medical-Nin: Medicine and Chakra Control).
+  const med = { type: "class", name: "Medical-Nin", id: "mn", system: { levels: 1, hitDie: "d8", chakraDie: "d8", skills: { fixed: ["med", "cha"], choose: 2, from: [] }, tools: { fixed: ["medicine"], choose: 0 }, jutsuKnown: Array(20).fill(0), advancement: [], subclasses: [] } };
+  const a = { system: { level: 1, abilities: { con: { mod: 0 } }, skills: {}, tools: {} }, items: [med, { type: "background", id: "bg", system: { skills: ["med"], tool: "medicine" } }] };
+  const steps = stepsForLevel({ actor: a, cls: med, level: 1 });
+  const dup = steps.find(x => x.id === "class:skills:dup");
+  assert.equal(dup.count, 1);
+  assert.ok(!dup.options.some(o => ["med", "cha"].includes(o.value)));
+  assert.equal(steps.find(x => x.id === "class:tools:dup").count, 1);
+});
