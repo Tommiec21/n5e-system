@@ -1,3 +1,13 @@
+## 0.109.0-alpha.1 — LEFT1 P1–P5: small leftovers
+
+King 2026-11-25 (docs/LEFT1_SPEC.md).
+
+- **Combat tab colors:** jutsu pills on the players' Combat tab use the NPC sheet's keyword colors, with a color key you can show or hide.
+- **Bloodied:** a red drop on a token at half its hit points or less. A world rule decides who sees it: every creature, player characters only (default), or off; the GM sees it on every creature unless it's off.
+- **Condition builder:** an effect's rule can have several conditions (Only when / Or when / Unless), each picked from a list; the rule's description reads them in words. A feature's Bonus Jutsu "Only if already" is a list.
+- **Free choices:** a feature's own picks come up when it's gained (Master of the Mundane's two toolkits, Absolute Authority's Mastery, Prime Nature Release's keyword). Weapon Focus now gives Exotic weapons of the chosen group.
+- **Sheet designs:** Glass accent color and blur settings; the design fonts work offline; Shinobi Scroll shows immunities, weaknesses and resistances; all five designs have their own layout for the other tabs.
+
 ## 0.108.1-alpha.1 — Clan setup in the level-up window's look; full Select buttons
 
 King 2026-11-25 (docs/CREATE1_SPEC.md).

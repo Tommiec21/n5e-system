@@ -2,7 +2,7 @@
 
 King 2026-11-25: "Start a plan for all Small leftovers." Found in the roadmap scan of the full context and the repo docs.
 
-Status: **approved (King 2026-11-25, Q-L1–Q-L6). Two fixes King raised the same day built (0.106.3-alpha.1); P6 built (0.107.0-alpha.1).**
+Status: **approved (King 2026-11-25, Q-L1–Q-L6). Two fixes King raised the same day built (0.106.3-alpha.1); P6 built (0.107.0-alpha.1); P1–P5 built (0.109.0-alpha.1).**
 
 ## Built now (King's two fixes)
 
@@ -60,6 +60,16 @@ P6 → P1 → P4 → P2 → P5 → P3 (smallest first; one release each, King te
 - **Q-L5 (P4):** is Bloodied a thing at the table (token marker at half HP), or drop the setting?
 - **Q-L6 (P5):** a pick when gained, as proposed, or a GM-set choice on the sheet?
 
+## Built: P1–P5 (0.109.0-alpha.1)
+
+- **P1:** jutsu pills on the players' Combat tab use the NPC sheet's keyword colors; a color key above them, shown or hidden per user.
+- **P4:** a red drop on a token at half its hit points or less (not at 0). World rule Bloodied marker on tokens: every creature / player characters only (default) / off; the GM sees it on every creature unless off.
+- **P2:** the effect editor's rules take several conditions (Only when / Or when / Unless, a fact from a list, its detail); rules describe them in words. A feature's Bonus Jutsu "Only if already" is a list. Activities and riders have no editor on the sheets (content tables only).
+- **P5:** a feature's own picks come up when it is gained (level up, clan setup; a missed one at the next level up); Remove level clears a pick made at that level. Wired: Master of the Mundane (two toolkits), Absolute Authority (Mastery: Deception, Intimidation or Persuasion), Prime Nature Release (a Nature Release keyword), Weapon Focus (Exotic weapons of the chosen group). Left as table play: Jūgo's save Mastery, Elite Focus, Asaemon Disciplines, Unreasonable Training, Shinobi's Prosthetic, per-use weapon and release picks.
+- **P3:** Glass accent color and blur settings (per user); design fonts bundled (assets/fonts, LICENSES/fonts); Shinobi Scroll's Immunities, Weaknesses and Resistances rows; each design's own layout for Combat, Jutsu, Inventory, Features, Effects and Biography. Scroll's initiative ability choice left out (no rule).
+- Verify: stopped twice (lint; ColorField stub), then the final run stopped (startup test; canvas read); King: "Push P1-5"; merged with 0.108.1, final run passed.
+
 ## Progress log
 - 2026-11-25 King: "Start a plan for all Small leftovers." Claude: plan written; the two fixes King raised (level-up card overflow, Classes compendium folders) built and published 0.106.3-alpha.1.
 - 2026-11-25 King: Q-L1 yes, Q-L2 yes, Q-L3 show them, Q-L4 all 5, Q-L5 it's used, Q-L6 auto gained. Claude: P6 built and published 0.107.0-alpha.1.
+- 2026-11-25 King: "Push P1-5". Claude: merged with 0.108.1, final run passed, published 0.109.0-alpha.1.
