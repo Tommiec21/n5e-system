@@ -1,43 +1,66 @@
-"""Scout-Nin subclasses, batch 1: Arbiter Scout and Assault Scout (King 2026-11-25).
-Scout palette and motifs (kunai, shuriken, headbands, energy, paths, momentum) plus each subclass's emblem:
-Arbiter = a command banner and the squad (three headbands); Assault = an impact burst."""
+"""Scout-Nin subclasses, batch 1 (King 2026-11-25). The Scout palette; kunai and headbands belong to the
+core class, not every subclass. Arbiter Scout: a leader, commander, squad captain (war fan, rank chevrons,
+a leader with his squad). Assault Scout: a battler, aggressive and combat-focused (fists, clashing blades,
+impacts, momentum)."""
 import math, os
 from common import *
 PAL = {"bg1": "#24465A", "bg2": "#0A1820", "acc": "#7FC4D8"}
-A, PLATE = PAL["acc"], "#173040"
+A = PAL["acc"]
 HERE = os.path.dirname(os.path.abspath(__file__))
 
-def banner(x, y, h=260, extra=""):
-    """A command banner on a kunai-tipped pole."""
-    return (f'<g {extra}><line x1="{x}" y1="{y}" x2="{x}" y2="{y-h}"/><path d="M{x-14} {y-h+6} L{x} {y-h-34} L{x+14} {y-h+6}"/>'
-            f'<path d="M{x} {y-h+20} H{x+130} L{x+104} {y-h+64} L{x+130} {y-h+108} H{x}"/></g>')
+def person(cx, cy, s=1.0, extra=""):
+    """A simple figure: head and shoulders."""
+    return (f'<g {extra}><circle cx="{cx}" cy="{cy - 46*s:.0f}" r="{26*s:.0f}"/>'
+            f'<path d="M{cx - 56*s:.0f} {cy + 54*s:.0f} Q{cx - 56*s:.0f} {cy - 4*s:.0f} {cx} {cy - 4*s:.0f} Q{cx + 56*s:.0f} {cy - 4*s:.0f} {cx + 56*s:.0f} {cy + 54*s:.0f}"/></g>')
+def warfan(cx, cy, s=1.0, extra=""):
+    """A commander's war fan (gunbai): a rounded paddle on a short handle."""
+    return (f'<g {extra} transform="translate({cx} {cy}) scale({s})"><path d="M0 -150 C90 -150 120 -60 70 20 L20 60 H-20 L-70 20 C-120 -60 -90 -150 0 -150 Z"/>'
+            '<line x1="0" y1="60" x2="0" y2="150"/><line x1="-20" y1="150" x2="20" y2="150"/>'
+            '<circle cx="0" cy="-60" r="34"/></g>')
+def nobori(x, y, h=330, w=120, extra="", emblem=True):
+    """A commander's tall war banner (nobori): a pole with a top bar and a long vertical flag."""
+    top = y - h
+    return (f'<g {extra}><line x1="{x}" y1="{y}" x2="{x}" y2="{top}"/><line x1="{x}" y1="{top + 14}" x2="{x + w + 10}" y2="{top + 14}"/>'
+            f'<path d="M{x + 14} {top + 14} V{top + h*.78:.0f} L{x + w/2 + 7:.0f} {top + h*.68:.0f} L{x + w} {top + h*.78:.0f} V{top + 14}"/>'
+            + (star(x + 7 + w/2, top + h*.36, w*.28, 5, .45) if emblem else "") + '</g>')
+def rank(cx, cy, n=3, w=110, gap=46, extra=""):
+    """Rank insignia: chevrons stacked upward."""
+    return "".join(f'<path d="M{cx - w} {cy - i*gap + 40} L{cx} {cy - i*gap - 20} L{cx + w} {cy - i*gap + 40}" {extra}/>' for i in range(n))
+def blade(x, y, angle, s=1.0, extra=""):
+    """A straight sword pointing up before rotation: blade, guard, hilt."""
+    return (f'<g transform="translate({x} {y}) rotate({angle}) scale({s})" {extra}>'
+            '<path d="M-14 0 V-170 L0 -196 L14 -170 V0"/><line x1="-44" y1="0" x2="44" y2="0"/><line x1="0" y1="0" x2="0" y2="70"/></g>')
+def fist(cx, cy, s=1.0, extra=""):
+    """A clenched fist seen from the front: four knuckles, a thumb, the wrist."""
+    return (f'<g {extra} transform="translate({cx} {cy}) scale({s})">'
+            + "".join(f'<rect x="{-104 + i*52}" y="-90" width="52" height="64" rx="24"/>' for i in range(4))
+            + '<path d="M-104 -40 V40 Q-104 80 -60 80 H60 Q104 80 104 40 V-40"/><path d="M-104 0 Q-40 -10 0 20"/>'
+            '<path d="M-60 80 V130 M60 80 V130"/></g>')
 def burst(cx, cy, r, extra=""):
     return star(cx, cy, r, 8, .5, extra)
-def squad(cx, cy, r, s=.36):
-    return "".join(headband(cx + r*math.cos(math.radians(a)), cy + r*math.sin(math.radians(a)), 110, s, 'stroke-width="10"', PLATE) for a in (-90, 30, 150))
+def squad_arc(cx, cy, r, s=.6, extra=""):
+    return "".join(person(cx + r*math.cos(math.radians(a)), cy + r*math.sin(math.radians(a)), s, extra) for a in (200, 270, 340))
 
 AR = {}
-AR["arbiter-scout"] = banner(200, 430, 300, f'stroke="{A}"') + headband(250, 380, 250, .9, "", PLATE)
-AR["superior-arbitration"] = banner(170, 430, 290, f'stroke="{A}"') + shuriken(340, 330, 70)
-AR["battlefield-judication"] = f'<circle cx="256" cy="270" r="150" stroke="{A}" stroke-dasharray="14 26"/>' + squad(256, 270, 96)
-AR["absolute-authority"] = headband(190, 280, 260, .9, "", PLATE) + "".join(f'<path d="M{380+i*28} {200-i*20} q{40+i*16} {80+i*20} 0 {160+i*40}" stroke="{A}" stroke-opacity="{1-i*.25}"/>' for i in range(3))
-AR["adaptive-orders"] = (dots([(130, 256)], 26, A) + "".join(f'<path d="M160 256 C240 256 260 {y} 330 {y}" stroke-dasharray="1 26" stroke-width="18"/>' for y in (130, 256, 382))
-    + "".join(headband(390, y, 100, .38, 'stroke-width="10"', PLATE) for y in (130, 256, 382)))
-AR["commanding-presence"] = banner(150, 440, 320, f'stroke="{A}"') + chevrons(250, 330, 3, 60, 52)
-AR["unbreakable-formation"] = f'<path d="M256 64 L420 120 Q422 330 256 452 Q90 330 92 120 Z" stroke="{A}"/>' + squad(256, 260, 80)
-# Who Decided That!?: a kunai as the "!" next to a "?", with an impact under it
-AR["who-decided-that"] = (kunai(190, 230, 180, .95) + f'<circle cx="190" cy="400" r="18" fill="{INK}" stroke="none"/>'
-    + f'<path d="M290 170 Q290 110 350 110 Q410 110 410 170 Q410 220 350 240 V300" stroke="{A}" stroke-width="22"/><circle cx="350" cy="380" r="18" fill="{A}" stroke="none"/>')
+AR["arbiter-scout"] = nobori(180, 450, 380, 150, f'stroke="{A}"')
+AR["superior-arbitration"] = rank(256, 290, 3, 120, 70) + star(256, 120, 40, 5, .45, f'stroke="{A}" fill="{A}" fill-opacity=".3"')
+AR["battlefield-judication"] = person(256, 330, 1.3, f'stroke="{A}"') + squad_arc(256, 250, 150, .62)
+AR["absolute-authority"] = person(190, 290, 1.5, f'stroke="{A}"') + "".join(f'<path d="M{320+i*34} {170-i*22} q{40+i*16} {86+i*22} 0 {172+i*44}" stroke-opacity="{1-i*.25}"/>' for i in range(3))
+AR["adaptive-orders"] = (person(120, 280, .9, f'stroke="{A}"') + "".join(f'<path d="M170 260 C250 260 270 {y} 330 {y}" stroke-dasharray="1 26" stroke-width="18"/>' for y in (130, 256, 382))
+    + "".join(person(400, y + 20, .55) for y in (130, 256, 382)))
+AR["commanding-presence"] = nobori(110, 440, 340, 110, f'stroke="{A}"') + chevrons(270, 300, 3, 60, 52)
+AR["unbreakable-formation"] = f'<path d="M256 64 L420 120 Q422 330 256 452 Q90 330 92 120 Z" stroke="{A}"/>' + person(256, 220, .7, f'stroke="{A}"') + person(186, 330, .6) + person(326, 330, .6)
+AR["who-decided-that"] = ('<path d="M190 110 V300" stroke-width="34"/><circle cx="190" cy="380" r="22" fill="' + INK + '" stroke="none"/>'
+    + f'<path d="M280 170 Q280 110 340 110 Q400 110 400 170 Q400 220 340 240 V300" stroke="{A}" stroke-width="28"/><circle cx="340" cy="380" r="22" fill="{A}" stroke="none"/>')
 
 AS = {}
-# one kunai driven through an impact burst (two crossed kunai read as scissors)
-AS["assault-scout"] = burst(256, 256, 170, f'stroke="{A}"') + kunai(256, 270, 40, .95)
-AS["superior-assault"] = burst(256, 256, 160, f'stroke="{A}" stroke-opacity=".7"') + shuriken(256, 256, 96)
+AS["assault-scout"] = burst(256, 240, 175, f'stroke="{A}"') + fist(256, 250, .95)
+AS["superior-assault"] = blade(150, 400, 40, 1.05) + blade(362, 400, -40, 1.05, f'stroke="{A}"') + burst(256, 268, 46, f'fill="{INK}" stroke="none"')
 AS["brutish-momentum"] = chevrons(70, 256, 3, 70, 60) + f'<circle cx="380" cy="256" r="70" stroke="{A}"/><circle cx="380" cy="256" r="24" fill="{A}" stroke="none"/>'
 AS["untapped-potential"] = energy(220, 290, 130, f'stroke="{A}"') + '<path d="M360 400 V140 M310 190 L360 140 L410 190"/>'
-AS["brutish-aggression"] = (kunai(190, 280, 90, .8) + f'<path d="M300 180 l60 76 l-60 76" stroke="{A}"/><path d="M350 180 l60 76 l-60 76" stroke="{A}" stroke-opacity=".6"/>')
-AS["remarkable-aggression"] = kunai(230, 290, 30, .9) + burst(330, 150, 70, f'stroke="{A}" fill="{A}" fill-opacity=".25"') + '<path d="M120 400 l40 -20 M110 340 l46 0"/>'
-AS["devastating-assault"] = kunai(256, 230, 180, 1.0) + "".join(f'<path d="M{256-r} 420 A{r} {r*.35:.0f} 0 0 1 {256+r} 420" stroke="{A}" stroke-opacity="{1-i*.28}"/>' for i, r in enumerate((80, 130, 180)))
+AS["brutish-aggression"] = fist(190, 256, .8) + f'<path d="M330 170 l70 86 l-70 86" stroke="{A}"/><path d="M380 170 l70 86 l-70 86" stroke="{A}" stroke-opacity=".6"/>'
+AS["remarkable-aggression"] = blade(210, 380, 40, .95) + burst(352, 160, 74, f'stroke="{A}" fill="{A}" fill-opacity=".25"')
+AS["devastating-assault"] = blade(256, 220, 180, 1.0) + "".join(f'<path d="M{256-r} 430 A{r} {r*.35:.0f} 0 0 1 {256+r} 430" stroke="{A}" stroke-opacity="{1-i*.28}"/>' for i, r in enumerate((80, 130, 180)))
 AS["relentless"] = chevrons(110, 180, 3, 60, 70) + chevrons(110, 340, 3, 60, 70, f'stroke="{A}"')
 
 print(write(os.path.join(HERE, "arbiter-scout"), AR, PAL), write(os.path.join(HERE, "assault-scout"), AS, PAL))
