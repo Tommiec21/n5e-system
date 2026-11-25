@@ -62,11 +62,38 @@ export default class CompendiumBrowser extends HandlebarsApplicationMixin(Applic
   }
 
   static #instance;
+  /** The open browser, if any (NT1 banner refresh). */
+  static get current() { return this.#instance?.rendered ? this.#instance : null; }
   /** Open (or bring forward) the browser, optionally on a tab. */
-  static open(tab) {
+  static open(tab, { filters = null, learning = null } = {}) {
     this.#instance ??= new CompendiumBrowser();
-    if ( tab && TABS[tab] ) this.#instance.state.tab = tab;
-    return this.#instance.render({ force: true });
+    const inst = this.#instance;
+    if ( tab && TABS[tab] ) inst.state.tab = tab;
+    // NT1: opened from a level-up or the Jutsu tab: preset the slot's filters (all removable) and show
+    // whose open jutsu slots the drops fill.
+    if ( filters ) {
+      inst.state.filters[inst.state.tab] = foundry.utils.deepClone(filters);
+      inst.state.limit = PAGE;
+    }
+    if ( learning !== null ) inst.learning = learning;
+    return inst.render({ force: true });
+  }
+
+  /** NT1: the actor whose jutsu slots the banner shows (an Actor), or null. */
+  learning = null;
+
+  /** NT1: banner text for the learning actor: open slots and where they come from. */
+  async learningBanner() {
+    const actor = this.learning;
+    if ( !actor || this.state.tab !== "jutsu" ) return null;
+    const { jutsuSlots, filterText } = await import("../../rules/jutsu-slots.mjs");
+    const s = jutsuSlots(actor);
+    const N = CONFIG.N5E;
+    const labels = { discipline: k => N.disciplines[k]?.label ?? k, section: k => N.jutsuSections?.[k]?.label ?? k, keyword: k => N.keywords?.[k]?.label ?? k };
+    const parts = [];
+    if ( s.class.open ) parts.push(`${s.class.open} class${s.class.maxRank ? ` (up to ${s.class.maxRank}-Rank)` : ""}`);
+    for ( const src of s.bonus.sources ) if ( src.open ) parts.push(`${src.open} bonus from ${src.name}${filterText(src.filter, labels) ? ` (${filterText(src.filter, labels)})` : ""}`);
+    return { name: actor.name, open: s.open, text: parts.join(" · ") || "no open slots (a drop is over the limit)" };
   }
 
   // ---------------------------------------------------------------------------------------------- //
@@ -118,7 +145,8 @@ export default class CompendiumBrowser extends HandlebarsApplicationMixin(Applic
       total: rows.length,
       rows: rows.slice(0, s.limit).map(r => ({ ...r, detail: this.detail(r, classNames) })),
       more: rows.length > s.limit,
-      canAdd: !!this.addTarget()
+      canAdd: !!this.addTarget(),
+      learning: await this.learningBanner()
     };
   }
 
@@ -146,7 +174,7 @@ export default class CompendiumBrowser extends HandlebarsApplicationMixin(Applic
 
   /** Who the Add button adds to: the selected token's actor, else the user's character (if owned). */
   addTarget() {
-    const a = canvas?.tokens?.controlled?.[0]?.actor ?? game.user.character;
+    const a = (this.learning?.isOwner ? this.learning : null) ?? canvas?.tokens?.controlled?.[0]?.actor ?? game.user.character;
     return a?.isOwner ? a : null;
   }
 
@@ -217,6 +245,12 @@ export default class CompendiumBrowser extends HandlebarsApplicationMixin(Applic
     // FIN1: features, feats, jutsu and stances an actor already has aren't added twice.
     const { existingCopy } = await import("../../rules/item-audit.mjs");
     if ( existingCopy([...actor.items], doc) ) return ui.notifications.warn(`${actor.name} already has ${doc.name}.`);
+    // NT1: a jutsu added to a character takes a slot and alerts what it breaks.
+    if ( doc.type === "jutsu" && actor.type === "character" ) {
+      const { learnJutsu } = await import("../../workflow/learn-jutsu.mjs");
+      await learnJutsu(actor, doc);
+      return ui.notifications.info(`${actor.name} learned ${doc.name}.`);
+    }
     await actor.createEmbeddedDocuments("Item", [doc.toObject()]);
     ui.notifications.info(`Added ${doc.name} to ${actor.name}.`);
   }
@@ -260,6 +294,8 @@ export function registerCompendiumBrowser() {
   Hooks.on("renderItemDirectory", addButton);
   for ( const hook of ["createItem", "updateItem", "deleteItem", "updateCompendium"] ) {
     Hooks.on(hook, doc => {
+      // NT1: the learning actor's jutsu changed: refresh the banner's open slots.
+      if ( doc?.parent && doc.parent === CompendiumBrowser.current?.learning ) return CompendiumBrowser.current.render({ parts: ["results"] });
       if ( hook !== "updateCompendium" && doc?.parent ) return;   // items on actors don't matter
       CompendiumBrowser.invalidate();
     });

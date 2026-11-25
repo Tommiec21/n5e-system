@@ -153,9 +153,11 @@ export class FeatData extends TDM() {
       grants: S.obj({
         mastery: S.set(),                               // mastery targets
         proficiencies: S.set(),
-        jutsu: S.arr(S.str()),                          // uuids
+        jutsu: S.arr(S.str()),                          // uuids: granted outright as Bonus Jutsu (NT1)
         keywords: S.set()
       }),
+      // NT1: Bonus Jutsu slots this feature/feat/trait gives (filled through the Jutsu Browser); limits optional.
+      bonusJutsu: S.obj({ count: S.int(0, { min: 0 }), maxRank: S.str(), discipline: S.str(), section: S.str(), keyword: S.str() }),
       resourcePools: poolDefinitions(),
       advancement: S.advancement()
     };

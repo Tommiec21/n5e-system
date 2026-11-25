@@ -1061,4 +1061,9 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 
 - Summons compendium: Genjutsu (Dark Phantasm). Linked to your Genjutsu attack bonus and save DC (`GEN` links, `genSave` four-tier save helper).
 
+### Jutsu slots (NT1)
 
+- Jutsu `system.learned`: `mode` `class` (counts toward the class's Jutsu Known) or `bonus`; old `known` = class, `granted` = bonus. `source`: for bonus, the granting item's id or compendium uuid; `grantedBy`: its name.
+- Feat-type items (features, feats, traits) `system.bonusJutsu` `{count, maxRank, discipline, section, keyword}`: Bonus Jutsu slots with optional limits; `system.grants.jutsu` (uuids): jutsu granted outright as Bonus Jutsu when the item is gained (level-up, clan, a sheet drop; workflow/learn-jutsu.mjs grantFeatureJutsu).
+- Slots are derived (rules/jutsu-slots.mjs `jutsuSlots`): class open = Jutsu Known − class jutsu; bonus open per source = count − picked. Learned jutsu carry `flags.n5e.advancement` (class and level) so Remove level takes them back.
+- `game.n5e.browser("jutsu", {filters, learning: actor})`: preset filters and the Learning banner.

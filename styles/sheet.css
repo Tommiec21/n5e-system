@@ -446,6 +446,11 @@
 .n5e-level-up .lu-card { display: flex; align-items: center; gap: 8px; height: auto; min-height: 44px; padding: 6px 8px; text-align: left; border-radius: 8px; background: #FFF; border: 1px solid var(--n5e-line); line-height: 1.2; }
 .n5e-level-up .lu-card span { display: flex; flex-direction: column; min-width: 0; }
 .n5e-level-up .lu-card b { font-weight: 600; }
+.n5e-level-up .lu-jutsu-drop { display: flex; flex-direction: column; gap: 6px; padding: 8px; border: 1px dashed var(--n5e-line); border-radius: 8px; }
+.n5e-level-up .lu-jutsu-drop > button { align-self: flex-start; }
+.n5e-level-up .lu-card .lu-x { margin-left: auto; flex: 0 0 auto; width: 24px; height: 24px; padding: 0; line-height: 1; }
+.n5e-level-up .lu-card.warn { border-color: #c0392b; }
+.n5e-level-up .lu-card .sub.warn { color: #c0392b; }
 .n5e-level-up .lu-card img { border: none; border-radius: 6px; flex-shrink: 0; }
 .n5e-level-up .lu-card.on { border: 2px solid var(--n5e-accent); background: #FBEDE9; }
 .n5e-level-up .lu-card.static { cursor: help; }
@@ -714,6 +719,7 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
 .n5e-browser .range input { width: 70px; }
 .n5e-browser .browser-main { display: flex; flex-direction: column; min-height: 0; }
 .n5e-browser .summary { opacity: 0.7; font-size: 0.9em; margin-bottom: 4px; }
+.n5e-browser .learning-banner { padding: 4px 8px; margin-bottom: 6px; border-radius: 4px; border: 1px solid var(--n5e-accent, #b5642b); background: color-mix(in srgb, var(--n5e-accent, #b5642b) 12%, transparent); font-size: 0.9em; }
 .n5e-browser .results { list-style: none; margin: 0; padding: 0; overflow-y: auto; flex: 1; }
 .n5e-browser .b-row { display: grid; grid-template-columns: 32px 1fr auto; gap: 8px; align-items: center; padding: 3px 4px; border-bottom: 1px solid #0002; cursor: grab; }
 .n5e-browser .b-name { display: flex; flex-direction: column; }

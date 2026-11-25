@@ -14,7 +14,9 @@
     </span>
   </div>
   <div class="strip">
-    <span><b>Known</b> {{vm.known}}{{#if vm.knownMax}} / {{vm.knownMax}}{{/if}}</span>
+    <span data-tooltip="Class jutsu: count toward your class's Jutsu Known"><b>Class</b> {{vm.known}}{{#if vm.knownMax}} / {{vm.knownMax}}{{/if}}</span>
+    {{#if vm.bonus.max}}<span data-tooltip="{{vm.bonus.tip}}"><b>Bonus</b> {{vm.bonus.used}} / {{vm.bonus.max}}</span>{{else if vm.bonus.used}}<span data-tooltip="Bonus Jutsu with no feature giving slots"><b>Bonus</b> {{vm.bonus.used}}</span>{{/if}}
+    {{#if vm.openSlots}}<button type="button" class="filter on" data-action="openBrowser" data-browser-tab="jutsu" data-learn="1" data-tooltip="Open the Jutsu Browser to fill your open slots"><i class="fa-solid fa-graduation-cap"></i> Jutsu to learn: {{vm.openSlots}}</button>{{/if}}
     <span><b>Highest rank</b> {{vm.maxRank}}</span>
     <span><b>Concentrating</b> {{#if vm.concentrating.length}}{{#each vm.concentrating}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}{{else}}nothing{{/if}} ({{vm.concentrating.length}} / {{vm.concentrationMax}})</span>
   </div>

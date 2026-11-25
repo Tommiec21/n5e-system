@@ -12,6 +12,7 @@ import { disciplineAllowed } from "../rules/cast-discipline.mjs";
 import { advancementAvailable } from "./eligibility.mjs";
 import { asiParts } from "../rules/progression.mjs";
 import { rule } from "../rules/settings.mjs";
+import { learnedMode } from "../rules/jutsu-slots.mjs";
 
 const dieMax = die => Number(String(die ?? "").replace(/^\D*/, "")) || 0;
 const list = v => (Array.isArray(v) ? v : [...(v ?? [])]);
@@ -120,12 +121,15 @@ export function stepsForLevel({ actor, cls, subclass = null, level }) {
         score: actor.system.abilities?.[k]?.value ?? 10, capped: (actor.system.abilities?.[k]?.value ?? 10) >= 20 })) });
   }
 
-  // Jutsu Known.
+  // Jutsu Known (NT1): the class slots open at the new level, counting any left open from earlier levels.
+  // Picked through the Jutsu Browser, never required to Apply.
   const known = list(sys.jutsuKnown);
   const gain = (known[level - 1] ?? 0) - (level > 1 ? known[level - 2] ?? 0 : 0);
-  if ( gain > 0 ) {
-    steps.push({ id: "class:jutsu", type: "jutsu", title: "Learn jutsu", count: gain,
-      maxRank: sys.maxRank?.[level - 1] || null });
+  const classUsed = list(actor.items?.contents ?? actor.items).filter(i => i.type === "jutsu" && learnedMode(i) === "class").length;
+  const open = Math.max(0, (known[level - 1] ?? 0) - classUsed);
+  if ( open > 0 ) {
+    steps.push({ id: "class:jutsu", type: "jutsu", title: "Learn jutsu", count: open, gain: Math.max(0, gain),
+      carried: Math.max(0, open - Math.max(0, gain)), maxRank: sys.maxRank?.[level - 1] || null, sourceName: `${cls.name} ${level}` });
   }
   return steps.filter(step => advancementAvailable(step, actor));
 }
@@ -202,7 +206,8 @@ export function validate(steps, sel, poolSizes = {}) {
   const problems = [];
   for ( const st of steps ) {
     const need = Math.min(st.count ?? 0, poolSizes[st.id] ?? Infinity);
-    if ( ["itemChoice", "featChoice", "option", "trait", "jutsu", "subclass", "masteryChoice"].includes(st.type) ) {
+    // NT1: jutsu slots never hold up Apply (open slots stay on the sheet).
+    if ( ["itemChoice", "featChoice", "option", "trait", "subclass", "masteryChoice"].includes(st.type) ) {
       const got = list(sel[st.id]).length;
       if ( got < need ) problems.push(`${st.title}: choose ${need - got} more`);
       if ( got > (st.count ?? 0) ) problems.push(`${st.title}: too many chosen`);

@@ -5,6 +5,8 @@
  * flags.n5e.asi.<level> on the class.
  */
 import { validateItemChoices } from "./eligibility.mjs";
+import { learningData, alertLearning, grantFeatureJutsu } from "../workflow/learn-jutsu.mjs";
+import { jutsuSlots } from "../rules/jutsu-slots.mjs";
 
 const FLAG = "advancement";
 
@@ -67,6 +69,7 @@ export async function applyLevel(actor, cls, level, steps, sel) {
   const record = (st, value) => { (st.origin === "clan" ? clanChoices : st.origin === "subclass" ? subChoices : classChoices)[st.advId] = value; };
 
   const updates = {};
+  const learnAlerts = [];
   for ( const st of steps ) {
     const stamp = { origin: originId(st), level, step: st.id };
     if ( st.origin === "clan" ) Object.assign(stamp, { classOrigin: cls.id, characterLevel: st.advLevel });
@@ -91,8 +94,22 @@ export async function applyLevel(actor, cls, level, steps, sel) {
         else record(st, value ?? []);
         break;
       case "jutsu":
-        create.push(...await itemData(value ?? [], stamp));
+      case "bonusJutsu": {
+        // NT1: jutsu dropped into the level-up window. Class slots count toward Jutsu Known; bonus slots
+        // belong to the feature that gives them. Over the slot count or breaking a rule only alerts.
+        const slots = jutsuSlots(actor);
+        for ( const [n, uuid] of (value ?? []).entries() ) {
+          const doc = await fromUuid(uuid);
+          if ( !doc ) continue;
+          const slot = st.type === "bonusJutsu"
+            ? { mode: "bonus", source: st.sourceUuid, grantedBy: st.sourceName, filter: st.filter }
+            : { mode: "class", source: "", grantedBy: "", filter: null, overLimit: n >= (st.count ?? 0) };
+          const { data, problems } = learningData(actor, doc, { slot, stamp: { ...stamp, step: st.id }, slots, maxRank: st.maxRank ?? "" });
+          create.push(data);
+          if ( problems.length ) learnAlerts.push([doc.name, problems]);
+        }
         break;
+      }
       case "asi": {
         const { ability, feat, mastery } = value ?? {};
         if ( ability ) updates[`system.abilities.${ability}.value`] = actor._source.system.abilities[ability].value + 1;
@@ -111,7 +128,10 @@ export async function applyLevel(actor, cls, level, steps, sel) {
   // FIN1: applying a level twice must not add the same compendium item again.
   const have = new Set(actor.items.map(i => i.flags?.core?.sourceId ?? i._stats?.compendiumSource).filter(Boolean));
   const add = create.filter(d => !have.has(d.flags?.core?.sourceId) || d.flags?.n5e?.repeatable);
-  if ( add.length ) await actor.createEmbeddedDocuments("Item", add);
+  const created = add.length ? await actor.createEmbeddedDocuments("Item", add) : [];
+  // NT1: features gained this level that name specific jutsu grant them now (Bonus Jutsu).
+  await grantFeatureJutsu(actor, created);
+  for ( const [name, problems] of learnAlerts ) await alertLearning(actor, name, problems);
   await recordChoices(cls, level, classChoices);
   await recordChoices(subclass, level, subChoices);
   await recordChoices(clan, steps.find(s => s.origin === "clan")?.advLevel ?? level, clanChoices);

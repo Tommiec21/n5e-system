@@ -99,7 +99,7 @@ Hooks.once("init", () => {
     migrations: MIGRATIONS,
     dice: { ...dice, d20 },
     // The Compendium Browser: game.n5e.browser() or game.n5e.browser("jutsu" | "features" | "stances" | "equipment" | "character").
-    browser: tab => CompendiumBrowser.open(tab)
+    browser: (tab, options) => CompendiumBrowser.open(tab, options)
   };
 
   // Documents and data models. The document classes add N5e behavior to Foundry's Actor, Item and

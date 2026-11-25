@@ -15,8 +15,8 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `clan.mjs` | 79 | Pure clan setup choices and grant planning. | `clanSetupFields`, `clanSetupPlan` |
 | `eligibility.mjs` | 53 | Structured class-option requirements. | `itemChoiceAllowed`, `advancementAvailable`, `validateItemChoices` |
-| `manager.mjs` | 187 | Applies and reverts one class level (Foundry side). | `applyLevel`, `revertLevel`, `removeClass`, `freshClassData` |
-| `steps.mjs` | 221 | Level-up steps (pure). | `advancementSteps`, `stepsForLevel`, `subclassSteps`, `learnableJutsu`, `eligibleFeats`, `masteryTargets`, `validate`, `castingDisciplines` |
+| `manager.mjs` | 207 | Applies and reverts one class level (Foundry side). | `applyLevel`, `revertLevel`, `removeClass`, `freshClassData` |
+| `steps.mjs` | 226 | Level-up steps (pure). | `advancementSteps`, `stepsForLevel`, `subclassSteps`, `learnableJutsu`, `eligibleFeats`, `masteryTargets`, `validate`, `castingDisciplines` |
 
 ## module
 
@@ -31,7 +31,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `character-designs.mjs` | 59 | Optional character sheet designs (SHEETS1; docs/SHEETS1_SPEC.md). | `designSheet`, `SHEET_DESIGNS`, `DESIGN_PARTS`, `DESIGN_TEMPLATE_PATHS` |
-| `character-sheet.mjs` | 857 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
+| `character-sheet.mjs` | 874 | N5e character sheet (Phase 2). | `CHARACTER_TEMPLATE_PATHS`, `CharacterSheet` |
 | `hazard-sheet.mjs` | 103 | Hazard and vehicle sheets (PRESTD1 Part D-ii): the NPC sheet with one more tab. | `HazardSheet`, `VehicleSheet` |
 | `loot-sheet.mjs` | 86 | Loot actor sheet (PRESTD1 Part C): a pile, a merchant or the party stash. | `LootSheet` |
 | `npc-sheet.mjs` | 345 | NPC sheet (NPCUI1; King 2026-11-15, design canvas "N5e NPC Sheet Redesign"). | `NPC_TEMPLATE_PATHS`, `NPCSheet` |
@@ -41,7 +41,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `compendium-browser.mjs` | 268 | N5e Compendium Browser: every Item compendium (plus world items) in one filterable window, with a tab per kind of item. | `CompendiumBrowser`, `registerCompendiumBrowser` |
+| `compendium-browser.mjs` | 304 | N5e Compendium Browser: every Item compendium (plus world items) in one filterable window, with a tab per kind of item. | `CompendiumBrowser`, `registerCompendiumBrowser` |
 
 ## module/applications/effect
 
@@ -55,7 +55,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `enrichers.mjs` | 180 | Shortcuts in text (Foundry side): turns [[/save ...]], [[/check ...]], [[/damage ...]], [[/heal ...]], @Condition[...] and @State[...] into clickable links w... | `registerEnrichers`, `onLinkClick` |
 | `helpers.mjs` | 17 | Handlebars helpers used by N5e templates (registered by the system so templates don't depend on which helpers core happens to ship). | `HELPERS`, `registerHelpers` |
-| `level-up.mjs` | 268 | Level-up dialog: one page listing what the new level grants, with a card for every choice (dnd5e's advancement flow, flattened). | `LevelUpDialog` |
+| `level-up.mjs` | 343 | Level-up dialog: one page listing what the new level grants, with a card for every choice (dnd5e's advancement flow, flattened). | `LevelUpDialog` |
 | `schema-form.mjs` | 76 | Builds simple form rows from a data model schema, so the Phase 1 placeholder sheets show and edit every stored field without hand-written templates. | `buildRows`, `collapseDuplicates`, `coerceListInputs` |
 | `sheets.mjs` | 207 | Phase 1 placeholder sheets (ApplicationV2). | `TEMPLATE_PATHS`, `N5eActorSheet`, `N5eItemSheet` |
 
@@ -79,7 +79,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `item-sheet.mjs` | 205 | N5e item sheet (all 13 item types). | `ITEM_TEMPLATE_PATHS`, `ItemSheet` |
+| `item-sheet.mjs` | 246 | N5e item sheet (all 13 item types). | `ITEM_TEMPLATE_PATHS`, `ItemSheet` |
 | `reaction-editor.mjs` | 36 |  | `editReaction` |
 
 ## module/applications/npc
@@ -180,10 +180,10 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `amp-card.mjs` | 78 | Amp cards (AMP1a; docs/AMP1_SPEC.md): a buff packaged once, applied by name. | `AmpCardData` |
-| `character-options.mjs` | 192 | Advancement item types: class, subclass, clan, background. | `ClassData`, `SubclassData`, `ClanData`, `BackgroundData`, `FeatData`, `StanceData` |
+| `character-options.mjs` | 194 | Advancement item types: class, subclass, clan, background. | `ClassData`, `SubclassData`, `ClanData`, `BackgroundData`, `FeatData`, `StanceData` |
 | `condition-card.mjs` | 60 | Condition cards (CCOND1; docs/CCOND1_SPEC.md): conditions unique to a class or a clan. | `ConditionCardData` |
 | `equipment.mjs` | 152 | Physical item types: weapon, armor, consumable, toolkit, container, loot (KB 08). | `WeaponData`, `ArmorData`, `ConsumableData`, `ToolkitData`, `ContainerData`, `LootData` |
-| `jutsu.mjs` | 216 | Jutsu (KB 11 schema, signed off in the Phase 1 plan). | `JutsuData` |
+| `jutsu.mjs` | 217 | Jutsu (KB 11 schema, signed off in the Phase 1 plan). | `JutsuData` |
 | `templates.mjs` | 80 | Item schema templates, composed into each item type's defineSchema(): base         every item: identifier, description, source physical     Bulk, price, rank... | `baseFields`, `physicalFields`, `activatableFields`, `sealFields`, `propertyMap`, `grantChoice`, `poolDefinitions` |
 
 ## module/data/region
@@ -276,6 +276,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `jutsu-colors.mjs` | 38 | Jutsu pill colors (NPCUI1; King 2026-11-15): a light left-to-right gradient through the colors of the jutsu's keywords, in the order the jutsu lists them. | `colorKeys`, `pillGradient`, `sheetGroup` |
 | `jutsu-defense.mjs` | 62 | Reading and countering jutsu (pure; FIN2b, Shinobi Handbook Ch3 and Ch5; KB 02 and 08). | `READ_ACTIONS`, `IDENTIFY_ACTIONS`, `defenseAction`, `identifyDC`, `READ_BONUS_CHANGES`, `readEnemyChoices`, `suppressionScore`, `tagsOn`, `suppressionBlocks`, `counterTagAbsorbs` |
 | `jutsu-facts.mjs` | 42 | Jutsu roll facts (STD6d; docs/STD6d_SPEC.md). | `jutsuFacts`, `resolveRankValues` |
+| `jutsu-slots.mjs` | 139 | NT1 (King 2026-11-24): jutsu slots, pure. | `RANKS`, `learnedMode`, `sourceMatches`, `filterText`, `bonusSources`, `jutsuSlots`, `matchesFilter`, `learnProblems`, `assignSlot`, `browserFilters` |
 | `keywords.mjs` | 95 | Keywords (pure; DATA1, King 2026-11-13). | `SPLIT_KEYWORDS`, `REMOVED_KEYWORDS`, `normalizeKeyword`, `canonicalKeywords`, `canonicalKeywordList`, `keywordKey`, `keywordValue`, `hasKeyword`, `isBukijutsu`, `jutsuGroup`, `FEAT_KEYWORDS`, `featKeywords`, `FEATURE_KINDS`, `featureKind`, `isFeatItem`, `featGroups` |
 | `loot.mjs` | 21 | PRESTD1 Part C: loot piles, merchants and the party stash (pure; King Q-F2, Q-P5). | `LOOT_MODES`, `priceOf`, `canTake`, `purchase`, `saleValue` |
 | `missions.mjs` | 46 | Mission budgets and payouts (PRESTD1 Part E; King Q-P9: the Bingo Book's Mission XP rules, verbatim, no per-player XP logic of our own). | `missionNumbers`, `encounterCost`, `spentOf`, `missionPayout` |
@@ -327,13 +328,13 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `adversary-builder.mjs` | 75 | The Adversary Builder's view model (pure; NPC2). | `STEPS`, `builderVM` |
-| `character.mjs` | 588 | Character sheet view models: actor in, plain data out. | `headerVM`, `resourcesVM`, `railVM`, `mainVM`, `jutsuVM`, `inventoryVM`, `OPTION_GROUPS`, `featuresVM`, `effectsVM`, `biographyVM`, `xpTable` |
+| `character.mjs` | 592 | Character sheet view models: actor in, plain data out. | `headerVM`, `resourcesVM`, `railVM`, `mainVM`, `jutsuVM`, `inventoryVM`, `OPTION_GROUPS`, `featuresVM`, `effectsVM`, `biographyVM`, `xpTable` |
 | `combat.mjs` | 437 | Combat tab view model: every option the character has in a fight, plus the trackers (Chain, concentration and upkeep, stance, Combo/Finisher). | `jutsuPill`, `ampsVM`, `combatVM` |
 | `common.mjs` | 152 | Shared view-model helpers: signed numbers, breakdown tooltips, action glyphs, rule chips. | `esc`, `breakdownTooltip`, `glyph`, `keywordChip`, `componentChips`, `propertyChips`, `conditionSummary`, `pips`, `signed` |
 | `damage-trace.mjs` | 24 | Minimal fallback for legacy roll data; normal cards use Foundry's Roll renderer. | `damageRollHTML`, `renderDamageRolls` |
 | `effect-editor.mjs` | 99 | Effect editor view model (UX1; docs/UX1_SPEC.md), pure. | `pickerGroups`, `normalizeModes`, `changeCards`, `ruleRows` |
 | `freeform.mjs` | 182 | The Freeform Strike and Freeform Jutsu windows (NPC3d): blank choices, form data -> choices, and the view models with the live numbers. | `blankStrike`, `strikeFromForm`, `strikeVM`, `blankJutsu`, `jutsuFromForm`, `jutsuVM` |
-| `item.mjs` | 548 | Item sheet view model (pure). | `advancementVM`, `itemVM`, `DETAILS`, `HTML_FIELDS` |
+| `item.mjs` | 582 | Item sheet view model (pure). | `advancementVM`, `itemVM`, `DETAILS`, `HTML_FIELDS` |
 | `npc-statblock.mjs` | 120 | NPC sheet view models (NPCUI1; King 2026-11-15, design canvas "N5e NPC Sheet Redesign"): npcSheetHeaderVM  identity line, HP and CP trackers, conditions npcS... | `npcSheetHeaderVM`, `npcJutsuGroups`, `jutsuLegendVM`, `npcStatBlockVM`, `npcPlayerVM` |
 | `npc.mjs` | 282 | NPC view models (NPC1b): the stat block in the Bingo Book's layout, and the Build tab. | `statBlockVM`, `npcHeaderVM`, `npcBuildVM`, `npcSimpleVM`, `npcDefensesVM`, `KNOWABLE_STATS`, `knowledgeEntryView`, `npcKnowledgeVM`, `learnedVM`, `attackLine` |
 | `party.mjs` | 33 | GM Party Overview rows (pure): HP, CP, conditions, concentration, Fury, open Gate, Amps. | `partyRowVM` |
@@ -359,7 +360,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `cast-plan.mjs` | 177 | Cast plan (pure): everything casting a jutsu will change, worked out before anything is spent, so the cast dialog can preview it and refuse what isn't allowed. | `castPlan` |
 | `cast.mjs` | 260 | Casting a jutsu (Foundry side): the cast dialog, spending, and the cast card. | `castJutsu`, `executeCast`, `postCastCard`, `spendsChakra`, `RANKS` |
 | `chat-appearance.mjs` | 41 | CHATUI1 (King 2026-11-16): chat font sizes and fonts, set globally (rules/chat-appearance.mjs). | `currentAppearance`, `applyChatAppearance`, `isN5eMessage`, `tagN5eMessage`, `availableFonts` |
-| `clan.mjs` | 90 | Explicit clan setup; source dependencies resolve before replacing any old origin. | `addClan` |
+| `clan.mjs` | 93 | Explicit clan setup; source dependencies resolve before replacing any old origin. | `addClan` |
 | `clash.mjs` | 222 | Jutsu Clash workflow (CLASH1). | `clashButton`, `clashRank`, `startClash`, `renderClash`, `rollClash`, `decideClash`, `dispelSide`, `endEffectsOf`, `applyClashLoss`, `registerClashHooks` |
 | `commands.mjs` | 31 | Shared execution boundary for actor mutations. | `withActorLock`, `withActorLocks`, `activityTurnStamp`, `resourceChange` |
 | `concentration.mjs` | 109 | Concentration lifecycle (CONC1; rules/concentration.mjs). | `breakConcentration`, `dropLostReadied`, `checkConcentration`, `expireReadied`, `releaseReadied`, `postReadyCard`, `onRenderReadyCard`, `registerConcentrationHooks` |
@@ -373,6 +374,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `freeform.mjs` | 32 | Freeform Jutsu follow the adversary (NPC3 C4): when an NPC's level, class or role (Striker) changes, each Freeform Jutsu is rebuilt from its choices. | `recalculateFreeform`, `registerFreeformHooks` |
 | `health.mjs` | 19 | Every HP/CP healing source uses the same rules and revival cleanup. | `applyHealing` |
 | `jutsu-defense.mjs` | 156 | Reading and countering jutsu (Foundry side; FIN2b). | `actingActor`, `castFacts`, `onDefenseClick`, `onReadChoiceClick`, `applySuppression`, `endSuppression`, `counteredOn`, `counterTagFor`, `onCounterTagClick` |
+| `learn-jutsu.mjs` | 86 | NT1 (King 2026-11-24): learning a jutsu onto a character (sheet drop, the Jutsu Browser's Add, the level-up window). | `alertLearning`, `learningData`, `learnJutsu`, `grantFeatureJutsu` |
 | `loot.mjs` | 163 | Loot piles, merchants and the party stash (PRESTD1 Part C; King 2026-11-15, Q-F2, Q-P5). | `receiverFor`, `takeFromLoot`, `buyFromMerchant`, `sellToMerchant`, `leaveLoot`, `registerLoot`, `priceOf`, `unitPrice` |
 | `npc-knowledge.mjs` | 95 | What the players can learn (NPC1c C5; King Q-N21-Q-N24). | `unknownEntries`, `learnSectionHTML`, `onLearnOffer`, `onLearnPick`, `learnEntry`, `registerNpcKnowledge` |
 | `npc-privacy.mjs` | 78 | What players see of NPCs (PRESTD1 Part A, King 2026-11-15): optional rules that keep NPC numbers, damage, condition messages and names for the GM. | `privateNpc`, `gmWhisper`, `nameShownToAll`, `hideNameFor`, `renderPrivacy`, `registerPrivacyHooks` |

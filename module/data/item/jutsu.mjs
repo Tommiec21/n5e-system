@@ -43,8 +43,9 @@ export default class JutsuData extends foundry.abstract.TypeDataModel {
       overcharge: S.obj({ text: S.html() }),
       hijutsu: S.obj({ clan: S.str(), branch: S.str() }),
       learned: S.obj({
-        mode: S.str({ initial: "known" }),        // known | granted (granted don't count against Jutsu Known)
-        grantedBy: S.str()
+        mode: S.str({ initial: "class" }),        // NT1: class (counts toward Jutsu Known) | bonus; old: known = class, granted = bonus
+        source: S.str(),                           // bonus: the granting item's id or compendium uuid (rules/jutsu-slots.mjs)
+        grantedBy: S.str()                         // its name, shown on the sheet
       })
     };
   }

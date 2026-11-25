@@ -404,10 +404,21 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
         ui.notifications.warn(`${actor.name} already knows ${item.name}.`);
         return null;
       }
+      // NT1: it takes a class or bonus slot and is stamped with this level; broken rules only alert.
+      const { learnJutsu } = await import("../../workflow/learn-jutsu.mjs");
+      const created = await learnJutsu(actor, item);
+      if ( created && event.target.closest?.("[data-pin-zone]") ) await this.#pin(created.id, true);
+      return created;
     }
 
     const created = await super._onDropItem(event, item);
     if ( created && event.target.closest?.("[data-pin-zone]") ) await this.#pin(created.id, true);
+    // NT1: a feature, feat or trait that names jutsu grants them outright (Bonus Jutsu).
+    const made = [created].flat().filter(i => i?.type === "feat");
+    if ( made.length ) {
+      const { grantFeatureJutsu } = await import("../../workflow/learn-jutsu.mjs");
+      await grantFeatureJutsu(actor, made);
+    }
     return created;
   }
 
@@ -485,6 +496,12 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
   /** Tab buttons: switch the visible tab part (Foundry's changeTab). */
   /** The Browse button (Jutsu tab): the Compendium Browser on that tab. */
   static #onOpenBrowser(event, target) {
+    // NT1: from the Jutsu tab, the browser learns for this character (banner) with the class's rank preset.
+    if ( target.dataset.browserTab === "jutsu" && this.actor.type === "character" ) {
+      const rank = this.actor.system.grants?.maxRank;
+      const R = ["E", "D", "C", "B", "A", "S"];
+      return game.n5e.browser("jutsu", { learning: this.actor, filters: target.dataset.learn && rank ? { rank: R.slice(0, R.indexOf(rank) + 1) } : null });
+    }
     game.n5e.browser(target.dataset.browserTab);
   }
 

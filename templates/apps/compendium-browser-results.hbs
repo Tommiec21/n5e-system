@@ -1,6 +1,7 @@
 {{!-- N5e Compendium Browser, results (applications/browser/compendium-browser.mjs).
-      Context: rows [{uuid, name, img, detail}], total, more, canAdd. Rows are draggable onto sheets. --}}
+      Context: rows [{uuid, name, img, detail}], total, more, canAdd, learning {name, open, text} (NT1). Rows are draggable onto sheets. --}}
 <div class="browser-main">
+  {{#if learning}}<div class="learning-banner" data-tooltip="Drag a jutsu onto {{learning.name}}'s sheet or level-up window, or press +"><i class="fa-solid fa-graduation-cap"></i> <b>Learning for {{learning.name}}:</b> {{learning.open}} open · {{learning.text}}</div>{{/if}}
   <div class="summary">{{total}} found{{#if more}} · showing the first {{rows.length}}{{/if}} · drag a row onto a sheet</div>
   <ol class="results">
     {{#each rows}}

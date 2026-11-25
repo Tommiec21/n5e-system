@@ -3,17 +3,20 @@
  * (dnd5e's advancement flow, flattened). Apply stays disabled until every choice is made.
  *
  * Flow: open(actor, classItem, level) → advancement/steps.mjs works out the steps for that level
- * (HP/CP, features granted, option picks, subclass, ASI, jutsu learning) → the player chooses →
+ * (HP/CP, features granted, option picks, subclass, ASI, jutsu slots) → the player chooses →
  * validate() → advancement/manager.mjs applyLevel() creates the items and records what this level
  * added (so "Remove level" can take exactly that back).
+ * NT1: jutsu are never listed here. Slot cards (class, and each feature's Bonus Jutsu) take drops from the
+ * Jutsu Browser (Open Jutsu Browser presets the slot's filters); open slots don't hold up Apply.
  * A new kind of choice: add a step type in steps.mjs (and its validation), a card for it in
  * templates/apps/level-up.hbs (classes are prefixed "lu-"), and its application in manager.mjs.
  */
 import {
-  stepsForLevel, subclassSteps, learnableJutsu, eligibleFeats, masteryTargets, validate
+  stepsForLevel, subclassSteps, eligibleFeats, masteryTargets, validate
 } from "../advancement/steps.mjs";
 import { applyLevel } from "../advancement/manager.mjs";
 import { itemChoiceAllowed, validateItemChoices } from "../advancement/eligibility.mjs";
+import { learnProblems, browserFilters, filterText, matchesFilter } from "../rules/jutsu-slots.mjs";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 const esc = s => foundry.utils.escapeHTML?.(String(s ?? "")) ?? String(s ?? "");
@@ -46,7 +49,8 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
     actions: {
       apply: LevelUpDialog.#onApply,
       cancel: LevelUpDialog.#onCancel,
-      pick: LevelUpDialog.#onPick
+      pick: LevelUpDialog.#onPick,
+      openJutsuBrowser: LevelUpDialog.#onOpenJutsuBrowser
     }
   };
 
@@ -108,7 +112,66 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
       const doc = await this.#doc(picked);
       if ( doc ) steps.push(...subclassSteps(doc, this.level));
     }
+    // NT1: features gained this level (granted, or picked here) that give Bonus Jutsu: a slot step each,
+    // and one card listing the jutsu they grant outright.
+    const gained = [];
+    for ( const st of steps ) {
+      if ( st.type === "feature" ) gained.push(...st.uuids);
+      else if ( ["itemChoice", "featChoice"].includes(st.type) ) gained.push(...(this.#sel[st.id] ?? []));
+      else if ( st.type === "asi" && this.#sel[st.id]?.feat ) gained.push(this.#sel[st.id].feat);
+    }
+    const granted = [];
+    for ( const uuid of new Set(gained) ) {
+      const doc = await this.#doc(uuid);
+      if ( doc?.type !== "feat" ) continue;
+      const b = doc.system.bonusJutsu ?? {};
+      if ( (b.count ?? 0) > 0 ) steps.push({ id: `bonus:${uuid}`, type: "bonusJutsu", title: `Bonus jutsu: ${doc.name}`, count: b.count,
+        sourceUuid: uuid, sourceName: doc.name, maxRank: b.maxRank || "",
+        filter: { maxRank: b.maxRank ?? "", discipline: b.discipline ?? "", section: b.section ?? "", keyword: b.keyword ?? "" } });
+      for ( const j of doc.system.grants?.jutsu ?? [] ) granted.push({ jutsu: j, from: doc.name });
+    }
+    if ( granted.length ) steps.push({ id: "granted:jutsu", type: "grantedJutsu", title: "Jutsu granted", granted });
     return steps;
+  }
+
+  /** NT1: a jutsu dropped on a jutsu card (or anywhere in the window): queue it in that step or the first with room. */
+  async #onDropJutsu(event) {
+    event.preventDefault();
+    let data;
+    try { data = JSON.parse(event.dataTransfer.getData("text/plain")); } catch { return; }
+    const doc = data?.uuid ? await fromUuid(data.uuid) : null;
+    if ( doc?.type !== "jutsu" ) return;
+    const known = this.actor.items.some(i => i.type === "jutsu" && (i.system.identifier || i.name) === (doc.system.identifier || doc.name));
+    if ( known ) return ui.notifications.warn(`${this.actor.name} already knows ${doc.name}.`);
+    const slotSteps = (this._steps ?? []).filter(s => s.type === "jutsu" || s.type === "bonusJutsu");
+    if ( slotSteps.some(s => (this.#sel[s.id] ?? []).includes(doc.uuid)) ) return;
+    const target = event.target.closest?.("[data-jutsu-step]")?.dataset.jutsuStep;
+    const room = s => (this.#sel[s.id] ?? []).length < (s.count ?? 0);
+    const st = slotSteps.find(s => s.id === target)
+      ?? slotSteps.find(s => s.type === "jutsu" && room(s))
+      ?? slotSteps.find(s => s.type === "bonusJutsu" && room(s) && matchesFilter(doc, s.filter))
+      ?? slotSteps.find(s => room(s))
+      ?? slotSteps.find(s => s.type === "jutsu") ?? slotSteps[0];
+    if ( !st ) return ui.notifications.info("No jutsu slots at this level: drop it on the character sheet instead.");
+    this.#sel[st.id] = [...(this.#sel[st.id] ?? []), doc.uuid];
+    this.#docs.set(doc.uuid, doc);
+    this.render();
+  }
+
+  /** NT1: open the Jutsu Browser with this slot's filters (all removable), learning for this character. */
+  static #onOpenJutsuBrowser(event, target) {
+    const st = this._steps?.find(s => s.id === target.dataset.step);
+    game.n5e.browser("jutsu", { filters: browserFilters({ maxRank: st?.maxRank ?? "", filter: st?.filter ?? {} }), learning: this.actor });
+  }
+
+  /** @override Jutsu cards accept drops from the browser or a compendium. */
+  async _onRender(context, options) {
+    await super._onRender?.(context, options);
+    const root = this.element;
+    if ( root.dataset.jutsuDrop ) return;
+    root.dataset.jutsuDrop = "1";
+    root.addEventListener("dragover", ev => { if ( ev.target.closest?.(".lu-jutsu, .lu-bonusJutsu") ) ev.preventDefault(); });
+    root.addEventListener("drop", ev => { if ( ev.target.closest?.(".lu-jutsu, .lu-bonusJutsu") ) this.#onDropJutsu(ev); });
   }
 
   /** @override */
@@ -182,23 +245,34 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
           poolSizes[`${st.id}:mastery`] = view.mastery.length;
           break;
         }
-        case "jutsu": {
-          const all = await this.#packDocs("jutsu", "jutsu");
-          const known = new Set(actor.items.filter(i => i.type === "jutsu").map(i => i.name.toLowerCase()));
-          const clan = actor.items.find(i => i.type === "clan");
-          const learnable = learnableJutsu(all, { maxRank: st.maxRank, affinities, known, keywords: CONFIG.N5E.keywords,
-            clan: clan?.system.identifier ?? "", branch: clan?.system.branch ?? "" });
-          const groups = {};
-          for ( const j of learnable ) {
-            const gk = j.system.group ?? j.system.discipline;
-            const g = groups[gk] ??= { label: CONFIG.N5E.disciplines[gk]?.label ?? gk, options: [] };
-            g.options.push({ value: j.uuid, name: j.name, img: j.img, rank: j.system.rank, selected: chosen.has(j.uuid),
-              sub: `${j.system.rank}-Rank · ${j.system.cost?.mode === "chakra" ? `${j.system.cost.value} CP` : "No cost"}`,
-              tip: this.#tip(j, `${j.system.rank}-Rank ${CONFIG.N5E.disciplines[j.system.group ?? j.system.discipline]?.label ?? ""}`) });
+        case "jutsu":
+        case "bonusJutsu": {
+          // NT1: no list here: the counts, where they come from, and the jutsu dropped in so far.
+          const N = CONFIG.N5E;
+          const labels = { discipline: k => N.disciplines[k]?.label ?? k, section: k => N.jutsuSections?.[k]?.label ?? k, keyword: k => N.keywords?.[k]?.label ?? k };
+          view.limits = st.type === "jutsu" ? (st.maxRank ? `up to ${st.maxRank}-Rank` : "") : filterText(st.filter, labels);
+          view.from = st.type === "jutsu"
+            ? `Level up (${st.sourceName}): ${st.gain ?? st.count} new${st.carried ? `, ${st.carried} still open from earlier levels` : ""}`
+            : `${st.sourceName}: ${st.count} bonus jutsu`;
+          const probe = { name: actor.name, items: actor.items, system: { grants: { ...actor.system.grants, affinities } } };
+          view.picks = [];
+          for ( const [n, u] of [...chosen].entries() ) {
+            const d = await this.#doc(u);
+            if ( !d ) continue;
+            const problems = learnProblems(probe, d, { maxRank: st.maxRank ?? "", filter: st.type === "bonusJutsu" ? st.filter : null, keywords: N.keywords });
+            if ( n >= st.count ) problems.push("Over this slot's count.");
+            view.picks.push({ value: u, name: d.name, img: d.img, rank: d.system.rank, warn: problems.join(" "),
+              tip: this.#tip(d, `${d.system.rank}-Rank ${N.disciplines[d.system.group ?? d.system.discipline]?.label ?? ""}`) });
           }
-          view.groups = ["nin", "gen", "tai", "buki"].filter(k => groups[k]).map(k => groups[k]);
-          poolSizes[st.id] = learnable.length;
-          view.short = learnable.length < st.count;
+          view.open = Math.max(0, st.count - view.picks.length);
+          break;
+        }
+        case "grantedJutsu": {
+          view.granted = [];
+          for ( const g of st.granted ) {
+            const d = await this.#doc(g.jutsu);
+            view.granted.push({ name: d?.name ?? g.jutsu, img: d?.img, from: g.from, tip: d ? this.#tip(d) : "" });
+          }
           break;
         }
         default:
@@ -206,6 +280,7 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
       }
       view.need = Math.min(st.count ?? 0, poolSizes[st.id] ?? Infinity);
       view.full = view.chosenCount >= view.need;
+      if ( st.type === "grantedJutsu" ) view.full = true;
       views.push(view);
     }
     this._steps = steps;

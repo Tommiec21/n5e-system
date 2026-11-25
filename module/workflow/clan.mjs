@@ -4,6 +4,7 @@ import { abilities } from "../config/core.mjs";
 import { clanSetupFields, clanSetupPlan } from "../advancement/clan.mjs";
 import { esc } from "../view-models/common.mjs";
 import { withActorLock } from "./commands.mjs";
+import { grantFeatureJutsu } from "./learn-jutsu.mjs";
 
 export async function addClan(actor, item) {
   if ( !actor.isOwner ) return null;
@@ -71,6 +72,8 @@ export async function addClan(actor, item) {
       const fresh = grantData.filter(d => !existingCopy(owned, d));
       if ( fresh.length < grantData.length ) console.info(`n5e | ${actor.name} already had ${grantData.length - fresh.length} of ${clan.name}'s grants; not added again.`);
       if ( fresh.length ) created.push(...await actor.createEmbeddedDocuments("Item", fresh));
+      // NT1: clan traits that name jutsu grant them outright (Bonus Jutsu, removed with the clan).
+      created.push(...await grantFeatureJutsu(actor, created));
       if ( Object.keys(updates).length ) { await actor.update(updates); appliedScores = true; }
       if ( old ) {
         const remove = actor.items.filter(i => i.id === old.id || i.flags?.n5e?.clanOrigin === old.id || i.flags?.n5e?.advancement?.origin === old.id).map(i => i.id);

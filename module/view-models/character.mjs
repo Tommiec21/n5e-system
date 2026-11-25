@@ -29,6 +29,7 @@ import {
   signed, breakdownTooltip, glyph, keywordChip, componentChips, propertyChips, conditionSummary, pips
 } from "./common.mjs";
 import { AC_FORMULAS } from "../rules/ac.mjs";
+import { jutsuSlots } from "../rules/jutsu-slots.mjs";
 
 // Small helpers shared by every part. `list` accepts arrays, Sets and Foundry Collections alike
 // (tests pass arrays; Foundry passes Collections).
@@ -356,9 +357,10 @@ export function jutsuVM(actor, { discipline = "", search = "", expanded = new Se
       ranks
     };
   }).filter(Boolean);
-  const known = all.filter(i => i.system.learned?.mode !== "granted").length;
-  const classItem = sys.grants?.classItem;
-  const knownMax = classItem?.system?.jutsuKnownNow ?? null;
+  // NT1: class slots (Jutsu Known) and Bonus Jutsu, each used / limit; open slots invite the browser.
+  const slots = jutsuSlots(actor);
+  const known = slots.class.used;
+  const knownMax = slots.class.max;
   return {
     groups,
     view, pills: view === "pills",
@@ -368,6 +370,8 @@ export function jutsuVM(actor, { discipline = "", search = "", expanded = new Se
       .map(f => ({ ...f, active: f.key === discipline })),
     search,
     known, knownMax,
+    bonus: { used: slots.bonus.used, max: slots.bonus.max, tip: slots.bonus.sources.map(x => `${x.name}: ${x.used}/${x.max}`).join("\n") },
+    openSlots: slots.open,
     maxRank: rankDefs[sys.grants?.maxRank ?? "D"]?.label ?? "",
     concentrating: (sys.combat?.concentrating ?? []).map(id => list(actor.items).find(i => i.id === id)?.name).filter(Boolean),
     concentrationMax: sys.concentration?.max ?? 2,

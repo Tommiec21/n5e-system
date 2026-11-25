@@ -11,6 +11,12 @@
               {{#if lines.length}}<ul class="plain-lines">{{#each lines}}<li>{{this}}</li>{{/each}}</ul>{{else}}<p class="muted small">{{empty}}</p>{{/if}}
               {{#if @root.editable}}<button type="button" data-action="{{action}}"><i class="fa-solid fa-pen"></i> {{actionLabel}}</button>{{/if}}
             </div>
+          {{else if (n5eEq kind "uuids")}}
+            <div class="field uuids-field wide" data-uuid-drop="{{path}}" data-accept="{{accept}}">
+              <span class="lbl">{{label}}</span>
+              {{#if items.length}}<ul class="plain-lines">{{#each items}}<li>{{name}}{{#if @root.editable}} <button type="button" class="icon-btn" data-action="removeUuid" data-path="{{../path}}" data-index="{{index}}" aria-label="Remove {{name}}"><i class="fa-solid fa-xmark"></i></button>{{/if}}</li>{{/each}}</ul>{{/if}}
+              {{#if hint}}<span class="field-hint">{{hint}}</span>{{/if}}
+            </div>
           {{else if (n5eEq kind "tags")}}
             <div class="field tags-field">{{#if label}}<span class="lbl">{{label}}</span>{{/if}}{{#if hint}}<span class="field-hint">{{hint}}</span>{{/if}}
               <div class="tag-picks">{{#each options}}<button type="button" class="chip pick {{#if selected}}on{{/if}}" data-action="toggleTag" data-path="{{../path}}" data-value="{{value}}" {{#unless @root.editable}}disabled{{/unless}}>{{label}}</button>{{/each}}</div>

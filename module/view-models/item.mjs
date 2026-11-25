@@ -53,6 +53,9 @@ const F = {
       options: [...Object.entries(choices).map(([k, v]) => ({ value: k, label: labelOf(v) || k, selected: have.has(k) })),
         ...extra.map(k => ({ value: k, label: k, selected: true }))] };
   },
+  /** NT1: a list of linked documents (uuids) the sheet fills by drag and drop, each with a remove button. */
+  uuids: (src, path, label, nameOf, more = {}) => ({ kind: "uuids", path: `system.${path}`, label, hint: more.hint ?? "", accept: more.accept ?? "",
+    items: list(get(src, path)).map((uuid, index) => ({ uuid, index, name: nameOf(uuid) })) }),
   /** Free list as comma-separated text. */
   list: (src, path, label) => ({ kind: "list", path: `system.${path}`, label, value: list(get(src, path)).join(", ") }),
   /** key -> rank map (weapon/armor properties). */
@@ -117,8 +120,33 @@ const abilityChoices = Object.fromEntries(Object.entries(abilities).map(([k, v])
  * Details tab fields per item type, as sections of fields. A type with no entry shows no Details tab.
  * Order here is the order on the sheet.
  */
+/**
+ * NT1: how a jutsu was learned: Class (counts toward Jutsu Known) or Bonus Jutsu from one of the owner's
+ * features, feats or traits (or anything else, typed in). Old data: known = Class, granted = Bonus.
+ */
+function learnedSection(src, item) {
+  const mode = ["granted", "bonus"].includes(src.learned?.mode) ? "bonus" : "class";
+  const fields = [{ kind: "select", path: "system.learned.mode", label: "Learned as",
+    options: [{ value: "class", label: "Class (counts toward Jutsu Known)", selected: mode === "class" },
+      { value: "bonus", label: "Bonus Jutsu (feat, feature, trait...)", selected: mode === "bonus" }] }];
+  if ( mode === "bonus" ) {
+    const owner = item?.actor;
+    const sources = owner ? list(owner.items?.contents ?? owner.items).filter(i => i.type === "feat" && i.id !== item.id) : [];
+    if ( sources.length ) {
+      const cur = src.learned?.source ?? "";
+      const value = s => s._stats?.compendiumSource ?? s.flags?.core?.sourceId ?? s.id;
+      const matched = sources.find(s => [s.id, value(s), s.uuid].includes(cur));
+      fields.push({ kind: "select", path: "system.learned.source", label: "From",
+        options: [{ value: "", label: "Other (type it below)", selected: !matched },
+          ...sources.map(s => ({ value: value(s), label: s.name, selected: s === matched }))] });
+    }
+    fields.push(F.text(src, "learned.grantedBy", "Granted by", { placeholder: "e.g. a GM reward" }));
+  }
+  return section("Learned", fields);
+}
+
 const DETAILS = {
-  jutsu: src => [
+  jutsu: (src, { item } = {}) => [
     section("Jutsu", [
       F.select(src, "rank", "Rank", rankChoices),
       F.select(src, "discipline", "Discipline", Object.fromEntries(Object.entries(disciplines).map(([k, v]) => [k, v.label]))),
@@ -143,10 +171,7 @@ const DETAILS = {
       F.check(src, "unaware", "Unaware")
     ]) : null,
     ...activatable(src, { uses: false }),
-    section("Learned", [
-      F.select(src, "learned.mode", "How", { known: "Known (counts toward Jutsu Known)", granted: "Granted (doesn't count)" }),
-      F.text(src, "learned.grantedBy", "Granted by")
-    ])
+    learnedSection(src, item)
   ],
   weapon: src => [
     section("Weapon", [
@@ -210,7 +235,7 @@ const DETAILS = {
     physical(src)
   ],
   loot: src => [physical(src)],
-  feat: src => [
+  feat: (src, { nameOf } = {}) => [
     section("Feature", [
       F.select(src, "category", "Kind", featureKinds),
       F.select(src, "featureType", "Kind", { active: "Active", passive: "Passive" }),
@@ -221,6 +246,15 @@ const DETAILS = {
     section("Prerequisites and tags", [F.list(src, "prerequisites", "Prerequisites"), F.list(src, "tags", "Tags")]),
     section("Ability Score Increase", [
       F.tags(src, "asi.options", "Choose from", abilityChoices), F.num(src, "asi.amount", "Amount", { small: true })
+    ]),
+    // NT1: Bonus Jutsu: slots the player fills (with optional limits), and jutsu granted outright.
+    section("Bonus Jutsu", [
+      F.num(src, "bonusJutsu.count", "Slots", { small: true, hint: "Bonus Jutsu the character picks; they don't use the class's Jutsu Known." }),
+      F.select(src, "bonusJutsu.maxRank", "Up to", { "": "Any rank", ...Object.fromEntries(rankOrder.map(r => [r, `${r}-Rank`])) }),
+      F.select(src, "bonusJutsu.discipline", "Discipline", { "": "Any", ...Object.fromEntries(Object.entries(disciplines).map(([k, v]) => [k, v.label])) }),
+      F.select(src, "bonusJutsu.section", "Section", { "": "Any", ...Object.fromEntries(Object.entries(jutsuSections).map(([k, v]) => [k, labelOf(v) || k])) }),
+      F.select(src, "bonusJutsu.keyword", "Keyword", { "": "Any", ...Object.fromEntries(Object.entries(keywords).map(([k, v]) => [k, labelOf(v) || k]).sort((a, b) => a[1].localeCompare(b[1]))) }),
+      F.uuids(src, "grants.jutsu", "Granted jutsu", nameOf ?? (u => u), { accept: "jutsu", hint: "Drag jutsu here: they are granted outright as Bonus Jutsu when this is gained." })
     ]),
     ...activatable(src)
   ],
@@ -508,7 +542,7 @@ export function advancementVM(item, nameOf = u => u.split(".").at(-1)) {
  */
 export function itemVM(item, { source = item._source?.system ?? item.system, nameOf } = {}) {
   const sum = summary(item);
-  const details = (DETAILS[item.type]?.(source) ?? []).filter(Boolean);
+  const details = (DETAILS[item.type]?.(source, { item, nameOf: nameOf ?? (u => u.split(".").at(-1)) }) ?? []).filter(Boolean);
   // UX1: an Amp card's buff in plain words, from its Changes, its effects and its roll rules.
   if ( item.type === "amp" ) details.splice(details.length - 1, 0, ampBuffSection(item, source));
   // Extra rich-text blocks show when they have text, or when the item's keywords call for them

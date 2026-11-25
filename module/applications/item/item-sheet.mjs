@@ -33,7 +33,8 @@ export default class ItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       editEffect: ItemSheet.#onEditEffect,
       deleteEffect: ItemSheet.#onDeleteEffect,
       toggleEffect: ItemSheet.#onToggleEffect,
-      editAmpBuff: ItemSheet.#onEditAmpBuff
+      editAmpBuff: ItemSheet.#onEditAmpBuff,
+      removeUuid: ItemSheet.#onRemoveUuid
     }
   };
 
@@ -118,7 +119,17 @@ export default class ItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     for ( const path of this.#listPaths ) {
       if ( path in flat ) flat[path] = String(flat[path] ?? "").split(",").map(s => s.trim()).filter(Boolean);
     }
-    return foundry.utils.expandObject(flat);
+    const out = foundry.utils.expandObject(flat);
+    // NT1: picking where a Bonus Jutsu came from names it; Class clears the source.
+    const learned = out.system?.learned;
+    if ( learned && this.document.type === "jutsu" ) {
+      if ( learned.mode === "class" ) Object.assign(learned, { source: "", grantedBy: "" });
+      else if ( learned.source && learned.source !== this.document._source.system.learned?.source ) {
+        const from = this.document.actor?.items.find(i => [i.id, i.uuid, i._stats?.compendiumSource, i.flags?.core?.sourceId].includes(learned.source));
+        if ( from ) learned.grantedBy = from.name;
+      }
+    }
+    return out;
   }
 
   /* -------------------------------------------- */
@@ -170,12 +181,42 @@ export default class ItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
   /** @override  UX1: a select with per-option definitions swaps its definition when the choice changes. */
   async _onRender(context, options) {
     await super._onRender(context, options);
+    // NT1: linked-document lists (a feature's Granted jutsu) take drops.
+    for ( const zone of this.element.querySelectorAll("[data-uuid-drop]") ) {
+      zone.addEventListener("dragover", ev => ev.preventDefault());
+      zone.addEventListener("drop", ev => this.#onDropUuid(ev, zone));
+    }
     for ( const select of this.element.querySelectorAll("select[data-hinted]") ) {
       select.addEventListener("change", () => {
         const hint = select.closest("label")?.querySelector("[data-hint-for]");
         if ( hint ) hint.textContent = select.selectedOptions[0]?.dataset.hint ?? "";
       });
     }
+  }
+
+  /** NT1: add a dropped document's uuid to a linked list (type-checked by data-accept). */
+  async #onDropUuid(event, zone) {
+    event.preventDefault();
+    event.stopPropagation();
+    if ( !this.isEditable ) return;
+    let data;
+    try { data = JSON.parse(event.dataTransfer.getData("text/plain")); } catch { return; }
+    const doc = data?.uuid ? await fromUuid(data.uuid) : null;
+    if ( !doc ) return;
+    if ( zone.dataset.accept && doc.type !== zone.dataset.accept ) return ui.notifications.warn(`Drop a ${zone.dataset.accept} here.`);
+    const path = zone.dataset.uuidDrop;
+    const uuid = doc._stats?.compendiumSource ?? doc.uuid;
+    const cur = [...(foundry.utils.getProperty(this.document._source, path) ?? [])];
+    if ( cur.includes(uuid) ) return;
+    await this.document.update({ [path]: [...cur, uuid] });
+  }
+
+  /** NT1: remove one entry from a linked list. */
+  static async #onRemoveUuid(event, target) {
+    const path = target.dataset.path;
+    const cur = [...(foundry.utils.getProperty(this.document._source, path) ?? [])];
+    cur.splice(Number(target.dataset.index), 1);
+    await this.document.update({ [path]: cur });
   }
 
   static async #onCreateEffect() {

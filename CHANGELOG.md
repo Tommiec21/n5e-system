@@ -1,3 +1,12 @@
+## 0.99.0-alpha.1 — NT1: learn jutsu through the Jutsu Browser; Class and Bonus Jutsu
+
+King 2026-11-24 (NT1, Q1–Q6 answered). Spec docs/NT1_SPEC.md.
+
+- **Level-up window:** no more full jutsu list. Cards say how many jutsu you can learn and from where (level up, each feature's Bonus Jutsu, jutsu granted outright), take drops, and open the Jutsu Browser with the slot's filters preset (all removable). Open slots don't hold up Apply; they stay on the sheet.
+- **Class and Bonus Jutsu:** the Jutsu tab shows Class used / Jutsu Known and Bonus used / limit; **Jutsu to learn** opens the browser for the character. A jutsu's Learned section sets Class or Bonus Jutsu and where it came from.
+- **Drops never block:** breaking a rule (rank, affinity, Hijutsu, Kinjutsu, a slot's limits) or having no open slot alerts the player and the GM.
+- **GM-authored Bonus Jutsu:** features, feats and traits get a Bonus Jutsu section (slots with optional rank, discipline, section and keyword limits, and Granted jutsu dragged in, granted outright when the item is gained).
+
 ## 0.98.0-alpha.1 — STD6f F12 Psionic and Trickery Genjutsu; every jutsu section reviewed
 
 King 2026-11-24: "Next batch." Psionic (36) and Trickery (56) Genjutsu reviewed at every rank (68 partly automated, 24 notes only). Review tables docs/jutsu/genjutsu-psionic-automation.md and genjutsu-trickery-automation.md; spec docs/STD6f_SPEC.md (F12). All 18 jutsu sections (968 jutsu) are now reviewed.
