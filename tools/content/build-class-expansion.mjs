@@ -90,7 +90,7 @@ function advancement(owner, level, type, title, docs = [], count = 1, key = "", 
   return a;
 }
 const classes = {
-  "Genjutsu Specialist": { group: "Genjutsu Pledges", late: { "Master of Illusion": 9, "The Prestige": 20 }, options: [["## Malleable Mirages", 4, "gen-mirage", "malleableMirages", 2], ["## Genjutsu Inception", 3, "gen-inception"]], mastery: [[7, "skill.ill"], [13, "skill.ill"]] },
+  "Genjutsu Specialist": { group: "Genjutsu Pledges", late: { "Master of Illusion": 9, "The Prestige": 20 }, options: [["## Malleable Mirages", 4, "gen-mirage", "malleableMirages", 2], ["## Genjutsu Inception", 3, "gen-inception"]], swaps: ["gen-mirage"], mastery: [[7, "skill.ill"], [13, "skill.ill"]] },
   "Hunter-Nin": { group: "Hunters Creeds", late: { "Hunted Target": 7, "Defensive Tactics": 11, "Elusive": 13, "Assassinate": 20 }, options: [["## Hunters Exploits", 4, "hunter-exploit", "exploits", 2]], mastery: [[10, ""], [15, ""]] },
   "Medical-Nin": { group: "Tenets of Medicine", late: { "Never on the Front Lines": 7, "Advanced Medical Research": 9, "Until their Heart Stops": 13, "Medical Perfection: Supreme Medic": 20 }, options: [], mastery: [[8, "skill.med"], [12, "skill.med"]] },
   "Ninjutsu Specialist": { group: "Ninjutsu Focus", late: { "Counter Seal": 7, "Perfected Surge": 9, "Ninjutsu Master": 20 }, options: [["### Refined Focus - Moldings", 4, "nin-molding", "moldingsKnown", 1]], mastery: [[7, "skill.nin"], [13, "skill.nin"]] },
@@ -145,6 +145,8 @@ for ( const [name, config] of Object.entries(classes) ) {
       }
     }
   }
+  // LVL1 L2: options the class text lets you switch when you gain one (Malleable Mirages).
+  for ( const adv of cls.system.advancement ) if ( (config.swaps ?? []).includes(adv.key) ) adv.swap = true;
   const subRegion = region(`## ${config.group}`, start);
   const subclasses = [];
   for ( let at = subRegion.at + 1; at < subRegion.end; at++ ) {

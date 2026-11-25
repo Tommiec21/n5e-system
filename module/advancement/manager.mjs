@@ -6,7 +6,53 @@
  */
 import { validateItemChoices } from "./eligibility.mjs";
 import { learningData, alertLearning, grantFeatureJutsu } from "../workflow/learn-jutsu.mjs";
-import { jutsuSlots, learnBlock } from "../rules/jutsu-slots.mjs";
+import { jutsuSlots, learnBlock, learnedMode } from "../rules/jutsu-slots.mjs";
+
+/**
+ * LVL1 L2: remove items switched out at this level (jutsu swaps, option swaps), recording them on the
+ * class (flags.n5e.levelSwaps.<level>: {removed: [item data], chosen: {ownerId: {advId: chosen}}}) so
+ * Remove level puts them back. An option switched out also leaves its advancement entry's `chosen`.
+ */
+async function swapOutItems(actor, cls, level, ids) {
+  const removed = [];
+  const chosen = {};
+  for ( const id of new Set(ids) ) {
+    const item = actor.items.get(id);
+    if ( !item ) continue;
+    removed.push(item.toObject());
+    const stamp = item.flags?.n5e?.advancement;
+    const owner = stamp && actor.items.get(stamp.origin);
+    const advId = stamp?.step?.split(":").slice(1).join(":");
+    const src = item._stats?.compendiumSource ?? item.flags?.core?.sourceId;
+    if ( owner && advId && src ) {
+      const adv = owner.system.toObject().advancement;
+      const a = adv.find(x => x.id === advId);
+      if ( a?.chosen?.includes(src) ) {
+        chosen[owner.id] ??= {};
+        chosen[owner.id][advId] ??= [...a.chosen];
+        a.chosen = a.chosen.filter(u => u !== src);
+        await owner.update({ "system.advancement": adv });
+      }
+    }
+  }
+  if ( !removed.length ) return;
+  await cls.setFlag("n5e", `levelSwaps.${level}`, { removed, chosen });
+  await actor.deleteEmbeddedDocuments("Item", removed.map(d => d._id));
+}
+
+/** LVL1 L2: Remove level puts back what that level switched out. */
+async function restoreSwaps(actor, cls, level) {
+  const rec = cls.getFlag("n5e", `levelSwaps.${level}`);
+  if ( !rec ) return;
+  const back = (rec.removed ?? []).filter(d => !actor.items.get(d._id));
+  if ( back.length ) await actor.createEmbeddedDocuments("Item", back, { keepId: true });
+  for ( const [ownerId, byAdv] of Object.entries(rec.chosen ?? {}) ) {
+    const owner = actor.items.get(ownerId);
+    if ( !owner ) continue;
+    await owner.update({ "system.advancement": owner.system.toObject().advancement.map(a => (a.id in byAdv ? { ...a, chosen: byAdv[a.id] } : a)) });
+  }
+  await cls.unsetFlag("n5e", `levelSwaps.${level}`);
+}
 
 /** The actor's abilities after this level's ASI (+1), for the jutsu ability requirement (LVL1 L1). */
 function probeAfterAsi(actor, steps, sel) {
@@ -79,6 +125,7 @@ export async function applyLevel(actor, cls, level, steps, sel) {
 
   const updates = {};
   const learnAlerts = [];
+  const swapOut = [];
   for ( const st of steps ) {
     const stamp = { origin: originId(st), level, step: st.id };
     if ( st.origin === "clan" ) Object.assign(stamp, { classOrigin: cls.id, characterLevel: st.advLevel });
@@ -91,7 +138,24 @@ export async function applyLevel(actor, cls, level, steps, sel) {
       case "featChoice":
         create.push(...await itemData(value ?? [], stamp));
         record(st, value ?? []);
+        // LVL1 L2: earlier picks switched out leave (restored by Remove level).
+        for ( const id of st.replace ?? [] ) swapOut.push(id);
         break;
+      case "swapJutsu": {
+        // LVL1 L2: forget the known jutsu only when a replacement was dropped.
+        const uuid = (value ?? [])[0];
+        const old = actor.items.get(st.forget);
+        const doc = uuid ? await fromUuid(uuid) : null;
+        if ( !doc || !old ) break;
+        const block = learnBlock(probeAfterAsi(actor, steps, sel), doc);
+        if ( block ) { ui.notifications?.error(block); break; }
+        const { data, problems } = learningData(actor, doc, { slot: { mode: learnedMode(old), source: old.system.learned?.source ?? "", grantedBy: old.system.learned?.grantedBy ?? "", filter: st.filter },
+          stamp: { ...stamp, step: st.id }, maxRank: st.maxRank ?? "" });
+        create.push(data);
+        if ( problems.length ) learnAlerts.push([doc.name, problems]);
+        swapOut.push(old.id);
+        break;
+      }
       case "option":
       case "masteryChoice":
         // Stored as the advancement's chosen values; the actor pipeline reads them (Mastery: creature.mjs).
@@ -141,6 +205,7 @@ export async function applyLevel(actor, cls, level, steps, sel) {
   const have = new Set(actor.items.map(i => i.flags?.core?.sourceId ?? i._stats?.compendiumSource).filter(Boolean));
   const add = create.filter(d => !have.has(d.flags?.core?.sourceId) || d.flags?.n5e?.repeatable);
   const created = add.length ? await actor.createEmbeddedDocuments("Item", add) : [];
+  if ( swapOut.length ) await swapOutItems(actor, cls, level, swapOut);
   // NT1: features gained this level that name specific jutsu grant them now (Bonus Jutsu).
   await grantFeatureJutsu(actor, created);
   for ( const [name, problems] of learnAlerts ) await alertLearning(actor, name, problems);
@@ -183,6 +248,7 @@ export async function revertLevel(actor, cls) {
   const clear = item => item?.update({ "system.advancement": item.system.toObject().advancement
     .map(a => (a.level === level ? { ...a, chosen: [] } : a)) });
   if ( ids.length ) await actor.deleteEmbeddedDocuments("Item", ids);
+  await restoreSwaps(actor, cls, level);
   const sub = actor.items.get(subclass?.id);
   if ( sub ) await clear(sub);
   if ( clan ) {

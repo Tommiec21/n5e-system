@@ -1071,3 +1071,7 @@ is a GM). Handlers: `spendRations {amount}`, `createEffects {actorUuid, effects}
 ### LVL1 L1
 
 - Feat-type item `flags.n5e.replacementSlots`: `[{jutsu, name, discipline, section, maxRank}]`, one Bonus Jutsu slot per granted jutsu already known; jutsu learned into it carry `learned.source` "<feature source>#<granted jutsu uuid>". `rules/jutsu-slots.mjs learnBlock` (ability requirement), `replacementFor`.
+
+### LVL1 L2
+
+- Advancement entry `swap` (bool): when the choice is gained, earlier picks with the same `key` can be switched out (each adds a pick). Class `flags.n5e.levelSwaps.<level>`: `{removed: [item data], chosen: {ownerId: {advId: chosen}}}`, restored by Remove level.

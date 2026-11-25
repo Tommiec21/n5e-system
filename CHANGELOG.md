@@ -1,3 +1,11 @@
+## 0.101.0-alpha.1 — LVL1 L2: jutsu swaps and option swaps at level up
+
+King 2026-11-24 (docs/LVL1_SPEC.md, L2).
+
+- **Jutsu swaps:** at a level that learns a new jutsu, the level-up window lists your known class jutsu (granted jutsu can't be swapped). Pick any number to forget; each gets a card that takes a jutsu of the same discipline within your highest rank (Open Jutsu Browser presets both). Another discipline alerts the player and GM; if nothing is dropped the old jutsu stays.
+- **Option swaps:** a choice marked swap (Malleable Mirages) lists the ones you already know; switch any out and pick that many more.
+- **Remove level** puts back whatever that level switched out.
+
 ## 0.100.0-alpha.1 — LVL1 L1: jutsu learning rules (ability requirement, granted jutsu)
 
 King 2026-11-24: the level-up update's remaining gaps (spec docs/LVL1_SPEC.md, Q1–Q13 answered); L1 first.

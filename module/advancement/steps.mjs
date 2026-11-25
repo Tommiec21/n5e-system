@@ -31,7 +31,7 @@ export function advancementSteps(item, level, origin) {
         out.push({ ...base, type: "feature", uuids: list(adv.uuids) });
         break;
       case "itemChoice":
-        out.push({ ...base, type: "itemChoice", uuids: list(adv.uuids), count: adv.count || 1, key: adv.key });
+        out.push({ ...base, type: "itemChoice", uuids: list(adv.uuids), count: adv.count || 1, key: adv.key, swap: !!adv.swap });
         break;
       case "featChoice":
         out.push({ ...base, type: "featChoice", uuids: [], count: adv.count || 1, key: "free-feat" });
@@ -208,6 +208,7 @@ export function validate(steps, sel, poolSizes = {}) {
     const need = Math.min(st.count ?? 0, poolSizes[st.id] ?? Infinity);
     // NT1: jutsu slots never hold up Apply (open slots stay on the sheet).
     if ( ["itemChoice", "featChoice", "option", "trait", "subclass", "masteryChoice"].includes(st.type) ) {
+      // LVL1 L2: each earlier pick switched out adds one pick (already counted in st.count by the window).
       const got = list(sel[st.id]).length;
       if ( got < need ) problems.push(`${st.title}: choose ${need - got} more`);
       if ( got > (st.count ?? 0) ) problems.push(`${st.title}: too many chosen`);

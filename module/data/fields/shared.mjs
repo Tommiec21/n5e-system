@@ -309,7 +309,9 @@ export function advancementFields() {
     value: formula(),
     branch: str(),
     /** What the player picked (uuids or keys); filled during level-up. */
-    chosen: arr(str())
+    chosen: arr(str()),
+    /** LVL1 L2: when you gain this choice you may switch any earlier picks with the same key (Malleable Mirages). */
+    swap: bool()
   };
 }
 export const advancement = () => arr(obj(advancementFields()));

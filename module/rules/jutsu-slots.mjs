@@ -120,6 +120,12 @@ export function jutsuSlots(actor) {
   return out;
 }
 
+/** A jutsu's discipline for swaps and slot limits (Bukijutsu = Taijutsu with the bukijutsu keyword). */
+export function jutsuDiscipline(jutsu) {
+  const s = jutsu.system ?? {};
+  return s.discipline === "tai" && list(s.keywords).includes("bukijutsu") ? "buki" : s.discipline ?? "";
+}
+
 /** Does a jutsu fit a bonus slot's limits? */
 export function matchesFilter(jutsu, f = {}) {
   const s = jutsu.system ?? {};

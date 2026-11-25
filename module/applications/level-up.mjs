@@ -16,7 +16,8 @@ import {
 } from "../advancement/steps.mjs";
 import { applyLevel } from "../advancement/manager.mjs";
 import { itemChoiceAllowed, validateItemChoices } from "../advancement/eligibility.mjs";
-import { learnProblems, learnBlock, browserFilters, filterText, matchesFilter, replacementFor } from "../rules/jutsu-slots.mjs";
+import { learnProblems, learnBlock, browserFilters, filterText, matchesFilter, replacementFor, learnedMode, jutsuDiscipline } from "../rules/jutsu-slots.mjs";
+import { grantedBy } from "../workflow/learn-jutsu.mjs";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 const esc = s => foundry.utils.escapeHTML?.(String(s ?? "")) ?? String(s ?? "");
@@ -50,6 +51,7 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
       apply: LevelUpDialog.#onApply,
       cancel: LevelUpDialog.#onCancel,
       pick: LevelUpDialog.#onPick,
+      toggleReplace: LevelUpDialog.#onToggleReplace,
       openJutsuBrowser: LevelUpDialog.#onOpenJutsuBrowser
     }
   };
@@ -142,7 +144,49 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
       }
     }
     if ( granted.length ) steps.push({ id: "granted:jutsu", type: "grantedJutsu", title: "Jutsu granted", granted });
+
+    // LVL1 L2: option swaps. A choice marked swap (Malleable Mirages) lists the earlier picks with the same
+    // key; each one switched out adds a pick.
+    const owners = { class: this.cls, subclass, clan: this.actor.items.find(i => i.type === "clan") };
+    for ( const st of steps.filter(x => x.type === "itemChoice" && x.swap) ) {
+      const owner = owners[st.origin];
+      const ids = new Set((owner?.system.advancement ?? []).filter(a => a.key === st.key && a.id !== st.advId).map(a => `${st.origin}:${a.id}`));
+      st.known = this.actor.items.filter(i => ids.has(i.flags?.n5e?.advancement?.step)).map(i => ({ id: i.id, name: i.name, img: i.img }));
+      st.replace = (this.#sel[`${st.id}:replace`] ?? []).filter(id => st.known.some(k => k.id === id));
+      st.baseCount = st.count;
+      st.count += st.replace.length;
+    }
+
+    // LVL1 L2 (KB 04, King): learning a new jutsu at level up, swap any number of known class jutsu for
+    // jutsu of the same discipline within the highest rank. Granted jutsu can't be swapped.
+    const jst = steps.find(x => x.type === "jutsu");
+    if ( jst?.gain > 0 ) {
+      const N = CONFIG.N5E;
+      const known = this.actor.items.filter(i => i.type === "jutsu" && learnedMode(i) === "class" && !grantedBy(this.actor, i))
+        .sort((a, b) => RANK_ORDER.indexOf(a.system.rank) - RANK_ORDER.indexOf(b.system.rank) || a.name.localeCompare(b.name));
+      if ( known.length ) {
+        steps.push({ id: "class:swap", type: "swapPick", title: "Swap jutsu", count: known.length,
+          known: known.map(i => ({ id: i.id, name: i.name, rank: i.system.rank, disc: N.disciplines[jutsuDiscipline(i)]?.label ?? "" })) });
+        for ( const id of this.#sel["class:swap"] ?? [] ) {
+          const j = this.actor.items.get(id);
+          if ( !j ) continue;
+          const disc = jutsuDiscipline(j);
+          steps.push({ id: `swap:${id}`, type: "swapJutsu", title: `Swap: replace ${j.name}`, count: 1, forget: id, forgetName: j.name,
+            maxRank: jst.maxRank ?? "", filter: { maxRank: jst.maxRank ?? "", discipline: disc, section: "", keyword: "" }, discLabel: N.disciplines[disc]?.label ?? disc });
+        }
+      }
+    }
     return steps;
+  }
+
+  /** LVL1 L2: switch an earlier pick out (or back in) for a swap choice. */
+  static #onToggleReplace(event, target) {
+    const key = `${target.dataset.step}:replace`;
+    const cur = new Set(this.#sel[key] ?? []);
+    if ( cur.has(target.dataset.value) ) cur.delete(target.dataset.value);
+    else cur.add(target.dataset.value);
+    this.#sel[key] = [...cur];
+    this.render();
   }
 
   /** NT1: a jutsu dropped on a jutsu card (or anywhere in the window): queue it in that step or the first with room. */
@@ -157,13 +201,14 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
     // LVL1 L1 (King): below the ability requirement it can't be learned (this level's ASI counts).
     const block = learnBlock(this.#probe(), doc);
     if ( block ) return ui.notifications.error(block);
-    const slotSteps = (this._steps ?? []).filter(s => s.type === "jutsu" || s.type === "bonusJutsu");
+    const slotSteps = (this._steps ?? []).filter(s => ["jutsu", "bonusJutsu", "swapJutsu"].includes(s.type));
     if ( slotSteps.some(s => (this.#sel[s.id] ?? []).includes(doc.uuid)) ) return;
     const target = event.target.closest?.("[data-jutsu-step]")?.dataset.jutsuStep;
     const room = s => (this.#sel[s.id] ?? []).length < (s.count ?? 0);
     const st = slotSteps.find(s => s.id === target)
       ?? slotSteps.find(s => s.type === "jutsu" && room(s))
       ?? slotSteps.find(s => s.type === "bonusJutsu" && room(s) && matchesFilter(doc, s.filter))
+      ?? slotSteps.find(s => s.type === "swapJutsu" && room(s) && matchesFilter(doc, s.filter))
       ?? slotSteps.find(s => room(s))
       ?? slotSteps.find(s => s.type === "jutsu") ?? slotSteps[0];
     if ( !st ) return ui.notifications.info("No jutsu slots at this level: drop it on the character sheet instead.");
@@ -194,8 +239,9 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
     const root = this.element;
     if ( root.dataset.jutsuDrop ) return;
     root.dataset.jutsuDrop = "1";
-    root.addEventListener("dragover", ev => { if ( ev.target.closest?.(".lu-jutsu, .lu-bonusJutsu") ) ev.preventDefault(); });
-    root.addEventListener("drop", ev => { if ( ev.target.closest?.(".lu-jutsu, .lu-bonusJutsu") ) this.#onDropJutsu(ev); });
+    const zones = ".lu-jutsu, .lu-bonusJutsu, .lu-swapJutsu";
+    root.addEventListener("dragover", ev => { if ( ev.target.closest?.(zones) ) ev.preventDefault(); });
+    root.addEventListener("drop", ev => { if ( ev.target.closest?.(zones) ) this.#onDropJutsu(ev); });
   }
 
   /** @override */
@@ -239,7 +285,8 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
               sub: [typeof req === "string" ? req : req?.level > 1 ? `Level ${req.level}` : "", ...(d.system.prerequisites ?? [])].filter(Boolean).join("; "),
               tip: this.#tip(d, (d.system.prerequisites ?? []).join("; ")) });
           }
-          poolSizes[st.id] = view.options.filter(o => !o.owned).length;
+          poolSizes[st.id] = view.options.filter(o => !o.owned).length + (st.replace?.length ?? 0);
+          if ( st.swap ) view.swapKnown = (st.known ?? []).map(k => ({ ...k, replaced: st.replace.includes(k.id) }));
           break;
         }
         case "option":
@@ -270,21 +317,27 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
           poolSizes[`${st.id}:mastery`] = view.mastery.length;
           break;
         }
+        case "swapPick":
+          view.options = st.known.map(k => ({ ...k, selected: chosen.has(k.id) }));
+          view.need = 0;
+          break;
         case "jutsu":
-        case "bonusJutsu": {
+        case "bonusJutsu":
+        case "swapJutsu": {
           // NT1: no list here: the counts, where they come from, and the jutsu dropped in so far.
           const N = CONFIG.N5E;
           const labels = { discipline: k => N.disciplines[k]?.label ?? k, section: k => N.jutsuSections?.[k]?.label ?? k, keyword: k => N.keywords?.[k]?.label ?? k };
           view.limits = st.type === "jutsu" ? (st.maxRank ? `up to ${st.maxRank}-Rank` : "") : filterText(st.filter, labels);
           view.from = st.type === "jutsu"
             ? `Level up (${st.sourceName}): ${st.gain ?? st.count} new${st.carried ? `, ${st.carried} still open from earlier levels` : ""}`
+            : st.type === "swapJutsu" ? `Forget ${st.forgetName}; learn a ${st.discLabel} jutsu instead (if none is dropped, ${st.forgetName} stays)`
             : `${st.sourceName}: ${st.count} bonus jutsu`;
           const probe = { name: actor.name, items: actor.items, system: { grants: { ...actor.system.grants, affinities } } };
           view.picks = [];
           for ( const [n, u] of [...chosen].entries() ) {
             const d = await this.#doc(u);
             if ( !d ) continue;
-            const problems = learnProblems(probe, d, { maxRank: st.maxRank ?? "", filter: st.type === "bonusJutsu" ? st.filter : null, keywords: N.keywords });
+            const problems = learnProblems(probe, d, { maxRank: st.maxRank ?? "", filter: st.type === "jutsu" ? null : st.filter, keywords: N.keywords });
             if ( n >= st.count ) problems.push("Over this slot's count.");
             const block = learnBlock(this.#probe(), d);
             if ( block ) problems.unshift(`Blocked: ${block}`);
@@ -307,7 +360,7 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
       }
       view.need = Math.min(st.count ?? 0, poolSizes[st.id] ?? Infinity);
       view.full = view.chosenCount >= view.need;
-      if ( st.type === "grantedJutsu" ) view.full = true;
+      if ( st.type === "grantedJutsu" || st.type === "swapPick" ) view.full = true;
       views.push(view);
     }
     this._steps = steps;

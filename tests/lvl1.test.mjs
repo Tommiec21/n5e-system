@@ -53,3 +53,23 @@ test("LVL1 L1: learning, the level-up window and the sheet wire the block, the r
   assert.match(fs.readFileSync(path.join(ROOT, "module/advancement/manager.mjs"), "utf8"), /learnBlock\(probeAfterAsi/);
   assert.match(fs.readFileSync(path.join(ROOT, "module/applications/actor/character-sheet.mjs"), "utf8"), /can't be voluntarily unlearned/);
 });
+
+test("LVL1 L2: Malleable Mirages is a swap choice; jutsu swaps keep the discipline; Remove level restores what was switched out", async () => {
+  const { advancementSteps } = await import("../module/advancement/steps.mjs");
+  const { jutsuDiscipline } = await import("../module/rules/jutsu-slots.mjs");
+  const gs = JSON.parse(fs.readFileSync(path.join(ROOT, "packs/_source/classes/genjutsu-specialist-n5eAIBk617CG9k7w.json"), "utf8"));
+  const mirages = gs.system.advancement.filter(a => a.key === "gen-mirage");
+  assert.equal(mirages.length, 6);
+  assert.ok(mirages.every(a => a.swap === true));
+  const st = advancementSteps({ name: gs.name, system: gs.system, flags: gs.flags }, 4, "class").find(s => s.key === "gen-mirage");
+  assert.equal(st.swap, true);
+  assert.equal(jutsuDiscipline(jutsu("Cut", { discipline: "tai", keywords: ["bukijutsu"] })), "buki");
+  assert.equal(jutsuDiscipline(jutsu("Kick", { discipline: "tai" })), "tai");
+  const lu = fs.readFileSync(path.join(ROOT, "module/applications/level-up.mjs"), "utf8");
+  assert.match(lu, /jst\?\.gain > 0/, "jutsu swaps only when learning a new jutsu at level up");
+  assert.match(lu, /!grantedBy\(this\.actor, i\)/, "granted jutsu can't be swapped");
+  const mgr = fs.readFileSync(path.join(ROOT, "module/advancement/manager.mjs"), "utf8");
+  assert.match(mgr, /levelSwaps/);
+  assert.match(mgr, /await restoreSwaps\(actor, cls, level\)/);
+  assert.match(fs.readFileSync(path.join(ROOT, "templates/apps/level-up.hbs"), "utf8"), /toggleReplace/);
+});

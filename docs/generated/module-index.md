@@ -15,8 +15,8 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `clan.mjs` | 79 | Pure clan setup choices and grant planning. | `clanSetupFields`, `clanSetupPlan` |
 | `eligibility.mjs` | 53 | Structured class-option requirements. | `itemChoiceAllowed`, `advancementAvailable`, `validateItemChoices` |
-| `manager.mjs` | 219 | Applies and reverts one class level (Foundry side). | `applyLevel`, `revertLevel`, `removeClass`, `freshClassData` |
-| `steps.mjs` | 226 | Level-up steps (pure). | `advancementSteps`, `stepsForLevel`, `subclassSteps`, `learnableJutsu`, `eligibleFeats`, `masteryTargets`, `validate`, `castingDisciplines` |
+| `manager.mjs` | 285 | Applies and reverts one class level (Foundry side). | `applyLevel`, `revertLevel`, `removeClass`, `freshClassData` |
+| `steps.mjs` | 227 | Level-up steps (pure). | `advancementSteps`, `stepsForLevel`, `subclassSteps`, `learnableJutsu`, `eligibleFeats`, `masteryTargets`, `validate`, `castingDisciplines` |
 
 ## module
 
@@ -55,7 +55,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `enrichers.mjs` | 180 | Shortcuts in text (Foundry side): turns [[/save ...]], [[/check ...]], [[/damage ...]], [[/heal ...]], @Condition[...] and @State[...] into clickable links w... | `registerEnrichers`, `onLinkClick` |
 | `helpers.mjs` | 17 | Handlebars helpers used by N5e templates (registered by the system so templates don't depend on which helpers core happens to ship). | `HELPERS`, `registerHelpers` |
-| `level-up.mjs` | 370 | Level-up dialog: one page listing what the new level grants, with a card for every choice (dnd5e's advancement flow, flattened). | `LevelUpDialog` |
+| `level-up.mjs` | 423 | Level-up dialog: one page listing what the new level grants, with a card for every choice (dnd5e's advancement flow, flattened). | `LevelUpDialog` |
 | `schema-form.mjs` | 76 | Builds simple form rows from a data model schema, so the Phase 1 placeholder sheets show and edit every stored field without hand-written templates. | `buildRows`, `collapseDuplicates`, `coerceListInputs` |
 | `sheets.mjs` | 207 | Phase 1 placeholder sheets (ApplicationV2). | `TEMPLATE_PATHS`, `N5eActorSheet`, `N5eItemSheet` |
 
@@ -173,7 +173,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `shared.mjs` | 326 | Reusable schema fields. | `str`, `int`, `num`, `bool`, `html`, `set`, `arr`, `obj`, `choice`, `formula`, `rank`, `resourcePoolFields`, `resourcePool`, `activation`, `rangeArea`, `duration`, `uses`, `components`, `riderFields`, `activityFields`, `activities`, `advancementFields`, `advancement`, `masterySources`, `source` |
+| `shared.mjs` | 328 | Reusable schema fields. | `str`, `int`, `num`, `bool`, `html`, `set`, `arr`, `obj`, `choice`, `formula`, `rank`, `resourcePoolFields`, `resourcePool`, `activation`, `rangeArea`, `duration`, `uses`, `components`, `riderFields`, `activityFields`, `activities`, `advancementFields`, `advancement`, `masterySources`, `source` |
 
 ## module/data/item
 
@@ -276,7 +276,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `jutsu-colors.mjs` | 38 | Jutsu pill colors (NPCUI1; King 2026-11-15): a light left-to-right gradient through the colors of the jutsu's keywords, in the order the jutsu lists them. | `colorKeys`, `pillGradient`, `sheetGroup` |
 | `jutsu-defense.mjs` | 62 | Reading and countering jutsu (pure; FIN2b, Shinobi Handbook Ch3 and Ch5; KB 02 and 08). | `READ_ACTIONS`, `IDENTIFY_ACTIONS`, `defenseAction`, `identifyDC`, `READ_BONUS_CHANGES`, `readEnemyChoices`, `suppressionScore`, `tagsOn`, `suppressionBlocks`, `counterTagAbsorbs` |
 | `jutsu-facts.mjs` | 42 | Jutsu roll facts (STD6d; docs/STD6d_SPEC.md). | `jutsuFacts`, `resolveRankValues` |
-| `jutsu-slots.mjs` | 187 | NT1 (King 2026-11-24): jutsu slots, pure. | `RANKS`, `learnedMode`, `sourceMatches`, `filterText`, `sourceKey`, `bonusSources`, `replacementFor`, `learnBlock`, `jutsuSlots`, `matchesFilter`, `learnProblems`, `assignSlot`, `browserFilters` |
+| `jutsu-slots.mjs` | 193 | NT1 (King 2026-11-24): jutsu slots, pure. | `RANKS`, `learnedMode`, `sourceMatches`, `filterText`, `sourceKey`, `bonusSources`, `replacementFor`, `learnBlock`, `jutsuSlots`, `jutsuDiscipline`, `matchesFilter`, `learnProblems`, `assignSlot`, `browserFilters` |
 | `keywords.mjs` | 95 | Keywords (pure; DATA1, King 2026-11-13). | `SPLIT_KEYWORDS`, `REMOVED_KEYWORDS`, `normalizeKeyword`, `canonicalKeywords`, `canonicalKeywordList`, `keywordKey`, `keywordValue`, `hasKeyword`, `isBukijutsu`, `jutsuGroup`, `FEAT_KEYWORDS`, `featKeywords`, `FEATURE_KINDS`, `featureKind`, `isFeatItem`, `featGroups` |
 | `loot.mjs` | 21 | PRESTD1 Part C: loot piles, merchants and the party stash (pure; King Q-F2, Q-P5). | `LOOT_MODES`, `priceOf`, `canTake`, `purchase`, `saleValue` |
 | `missions.mjs` | 46 | Mission budgets and payouts (PRESTD1 Part E; King Q-P9: the Bingo Book's Mission XP rules, verbatim, no per-player XP logic of our own). | `missionNumbers`, `encounterCost`, `spentOf`, `missionPayout` |

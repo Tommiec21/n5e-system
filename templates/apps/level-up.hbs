@@ -41,6 +41,12 @@
         {{#if fixed.length}}<p class="sub">Already granted: {{#each fixed}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}</p>{{/if}}
 
         {{#if (n5eEq type "itemChoice")}}
+          {{#if swapKnown.length}}
+            <p class="sub">You may switch any you already know: each one switched out gives one more pick.</p>
+            <div class="lu-chips">{{#each swapKnown}}
+              <button type="button" class="chip {{#if replaced}}on{{/if}}" data-action="toggleReplace" data-step="{{../id}}" data-value="{{id}}">{{#if replaced}}<i class="fa-solid fa-right-left"></i> Switch out {{name}}{{else}}{{name}}{{/if}}</button>
+            {{/each}}</div>
+          {{/if}}
           <div class="lu-cards">{{#each options}}
             <button type="button" class="lu-card {{#if selected}}on{{/if}}" data-action="pick" data-step="{{../id}}" data-value="{{value}}"
               data-tooltip-html="{{tip}}" {{#if owned}}disabled{{/if}}>
@@ -96,7 +102,14 @@
           {{/if}}
         {{/if}}
 
+        {{#if (n5eEq type "swapPick")}}
+          <p class="sub">Optional: pick known class jutsu to forget; each gets a card below to learn a jutsu of the same discipline instead. Granted jutsu can't be swapped.</p>
+          <div class="lu-chips">{{#each options}}
+            <button type="button" class="chip {{#if selected}}on{{/if}}" data-action="pick" data-step="{{../id}}" data-value="{{id}}">{{#if selected}}<i class="fa-solid fa-right-left"></i> {{/if}}{{rank}} · {{name}} <span class="muted">{{disc}}</span></button>
+          {{/each}}</div>
+        {{/if}}
         {{#if (n5eEq type "jutsu")}}{{> lujutsu}}{{/if}}
+        {{#if (n5eEq type "swapJutsu")}}{{> lujutsu}}{{/if}}
         {{#if (n5eEq type "bonusJutsu")}}{{> lujutsu}}{{/if}}
         {{#if (n5eEq type "grantedJutsu")}}
           <p class="sub">Granted automatically when you Apply. Bonus Jutsu: they don't use your class's Jutsu Known.</p>

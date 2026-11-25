@@ -1,6 +1,6 @@
 # LVL1: Level-up update, remaining gaps (King 2026-11-24)
 
-**Status: L1 built, published 0.100.0-alpha.1.** Order: L1 → L2 → L3 → L5 → L6 → L4, one release each, King tests before the next. Follows NT1 (docs/NT1_SPEC.md).
+**Status: L1 (0.100.0-alpha.1) and L2 (0.101.0-alpha.1) built.** Order: L1 → L2 → L3 → L5 → L6 → L4, one release each, King tests before the next. Follows NT1 (docs/NT1_SPEC.md).
 
 ## King's answers
 
@@ -21,7 +21,7 @@
 ## Parts
 
 - **L1 Jutsu learning rules** (built 0.100.0-alpha.1): the ability requirement blocks learning (sheet drop, browser +, level-up window; this level's ASI counts); a feature's outright grant is still given below the requirement, with an alert (it can't be cast until then); a granted jutsu already known adds a replacement Bonus Jutsu slot on that feature (level-up window: a "Bonus jutsu: <feature> (instead of <jutsu>)" card); deleting a granted jutsu from the sheet alerts the player and the GM.
-- **L2 Swaps:** at level up, any number of known class jutsu swapped for jutsu of the same discipline within the highest rank; option swaps (advancement `swap` setting; Malleable Mirages).
+- **L2 Swaps** (built 0.101.0-alpha.1): at a level that learns a new jutsu, a **Swap jutsu** card lists the known class jutsu (granted ones excluded); each one picked gets a **Swap: replace <jutsu>** card that takes a drop of the same discipline within the highest rank (another discipline alerts; nothing dropped: the old jutsu stays). Option swaps: advancement entries have a `swap` setting (Malleable Mirages' six entries); the choice card lists the earlier picks with the same key, and each one switched out adds a pick. What a level switched out is kept on the class (`flags.n5e.levelSwaps.<level>`) and Remove level puts it back.
 - **L3 Conditional grants:** "if you already have X, instead Y" on advancement grants (the five ultimate Moldings: 2 Bonus Jutsu of that release, one may be up to C-Rank above the highest rank; Mind Body Augmentation and Phantom Vapors: Mastery instead); a duplicate skill or toolkit proficiency becomes "choose another" for classes and backgrounds too.
 - **L5 Review and history:** a review step before Apply; Level History on the sheet; change a past level's choices (owner; GM alerted).
 - **L6 XP and GM control:** leveling mode XP / Milestone / both; GM toggle for who can level (standard: with the required XP); applying takes the XP and keeps the leftover; Party Overview Award XP and Grant level.
@@ -30,4 +30,4 @@
 ## Progress log
 
 - 2026-11-24 King: spec answers Q1–Q13. Claude: L1 built and published 0.100.0-alpha.1.
-
+- 2026-11-24 King: "Next batch." Claude: L2 built and published 0.101.0-alpha.1.
