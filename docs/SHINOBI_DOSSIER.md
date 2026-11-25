@@ -37,3 +37,7 @@ All 15 existing sheet-design parity checks passed once, including Dossier play/e
 Secondary-tab specification: retain shared rows and actions, apply Dossier typography and compact dividers; never replace gameplay handlers for appearance. Inventory keeps numeric columns aligned; Jutsu keeps filters/costs/casts/learning; Effects keeps management; Biography retains native editor. No feature is intentionally removed.
 
 Current minimum width: 740px; default 1180x900. Main content scrolls; resources remain in their own rail. Complete all seven tab styling batches before claiming the full approved design is finished.
+
+Font steering: user supplied Ninja Naruto ZIP. Original njnaruto.ttf and readme bundled unchanged; its readme permits free unmodified distribution and prohibits selling the font alone or with a product. Dossier-scoped headings, jutsu/feature names and stat labels use it; numbers/body text retain ordinary fonts. No other sheet design is restyled. SD03–SD05 still cover detailed secondary-tab layouts.
+
+PR CI attempt 2 failed one startup test because it hard-coded five optional designs (13 sheets total). Replaced that count with base-sheet count plus the design registry and an explicit Dossier assertion. No gameplay failure found. All 15 parity checks had passed. A revised PR check would be parity attempt 3; main release verification would require one additional authorized run. No further checks run yet.
