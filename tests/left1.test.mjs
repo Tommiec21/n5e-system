@@ -34,3 +34,21 @@ test("LEFT1: level-up cards grow with their text (no fixed button height)", () =
   assert.match(css, /\.n5e-level-up \.lu-card \{ height: auto !important; max-height: none !important;/);
   assert.match(css, /\.n5e-level-up \.lu-card span\.sub \{[^}]*line-clamp: 3/);
 });
+
+test("LEFT1 P6: the item sheet edits jutsu granted at a level", async () => {
+  const { itemVM } = await import("../module/view-models/item.mjs").catch(() => ({}));
+  const vm = fs.readFileSync(path.join(ROOT, "module/view-models/item.mjs"), "utf8");
+  assert.match(vm, /F\.levelUuids\(src, "grants\.jutsuByLevel", "Granted at level"/);
+  const tpl = fs.readFileSync(path.join(ROOT, "templates/item/details.hbs"), "utf8");
+  assert.match(tpl, /n5eEq kind "levelUuids"/);
+  assert.match(tpl, /data-level-path="\{\{\.\.\/path\}\}"/);
+  const sheet = fs.readFileSync(path.join(ROOT, "module/applications/item/item-sheet.mjs"), "utf8");
+  assert.match(sheet, /"levelList" in zone\.dataset/);
+  assert.match(sheet, /input\[data-level-path\]/);
+  if ( itemVM ) {
+    const item = { type: "feat", name: "Reaper", system: { grants: { jutsu: [], jutsuByLevel: [{ uuid: "Compendium.n5e.jutsu.Item.m", level: 6 }] }, bonusJutsu: {}, requirement: {} } };
+    const fields = itemVM(item, { source: item.system, nameOf: u => `name:${u.split(".").pop()}` }).details?.flatMap(s => s.fields) ?? [];
+    const f = fields.find(x => x.kind === "levelUuids");
+    if ( f ) assert.deepEqual(f.items.map(i => [i.name, i.level]), [["name:m", 6]]);
+  }
+});

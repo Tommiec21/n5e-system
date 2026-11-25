@@ -17,6 +17,14 @@
               {{#if items.length}}<ul class="plain-lines">{{#each items}}<li>{{name}}{{#if @root.editable}} <button type="button" class="icon-btn" data-action="removeUuid" data-path="{{../path}}" data-index="{{index}}" aria-label="Remove {{name}}"><i class="fa-solid fa-xmark"></i></button>{{/if}}</li>{{/each}}</ul>{{/if}}
               {{#if hint}}<span class="field-hint">{{hint}}</span>{{/if}}
             </div>
+          {{else if (n5eEq kind "levelUuids")}}
+            <div class="field uuids-field level-uuids wide" data-uuid-drop="{{path}}" data-accept="{{accept}}" data-level-list>
+              <span class="lbl">{{label}}</span>
+              {{#if items.length}}<ul class="plain-lines">{{#each items}}<li>{{name}}
+                <label class="lvl">Level <input type="number" min="1" max="20" value="{{level}}" data-level-path="{{../path}}" data-index="{{index}}" aria-label="{{name}} level" {{#unless @root.editable}}disabled{{/unless}}></label>
+                {{#if @root.editable}}<button type="button" class="icon-btn" data-action="removeUuid" data-path="{{../path}}" data-index="{{index}}" aria-label="Remove {{name}}"><i class="fa-solid fa-xmark"></i></button>{{/if}}</li>{{/each}}</ul>{{/if}}
+              {{#if hint}}<span class="field-hint">{{hint}}</span>{{/if}}
+            </div>
           {{else if (n5eEq kind "tags")}}
             <div class="field tags-field">{{#if label}}<span class="lbl">{{label}}</span>{{/if}}{{#if hint}}<span class="field-hint">{{hint}}</span>{{/if}}
               <div class="tag-picks">{{#each options}}<button type="button" class="chip pick {{#if selected}}on{{/if}}" data-action="toggleTag" data-path="{{../path}}" data-value="{{value}}" {{#unless @root.editable}}disabled{{/unless}}>{{label}}</button>{{/each}}</div>

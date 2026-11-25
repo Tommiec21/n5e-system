@@ -186,6 +186,18 @@ export default class ItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
       zone.addEventListener("dragover", ev => ev.preventDefault());
       zone.addEventListener("drop", ev => this.#onDropUuid(ev, zone));
     }
+    // LEFT1 P6: a level-granted entry's level.
+    for ( const input of this.element.querySelectorAll("input[data-level-path]") ) {
+      input.addEventListener("change", ev => {
+        ev.stopPropagation();
+        const path = input.dataset.levelPath;
+        const cur = foundry.utils.deepClone(foundry.utils.getProperty(this.document._source, path) ?? []);
+        const e = cur[Number(input.dataset.index)];
+        if ( !e ) return;
+        e.level = Math.clamp(Math.round(Number(input.value) || 1), 1, 20);
+        this.document.update({ [path]: cur });
+      });
+    }
     for ( const select of this.element.querySelectorAll("select[data-hinted]") ) {
       select.addEventListener("change", () => {
         const hint = select.closest("label")?.querySelector("[data-hint-for]");
@@ -207,6 +219,12 @@ export default class ItemSheet extends HandlebarsApplicationMixin(ItemSheetV2) {
     const path = zone.dataset.uuidDrop;
     const uuid = doc._stats?.compendiumSource ?? doc.uuid;
     const cur = [...(foundry.utils.getProperty(this.document._source, path) ?? [])];
+    // LEFT1 P6: a level list holds {uuid, level}; a new entry starts at the item's required level (or 1st).
+    if ( "levelList" in zone.dataset ) {
+      if ( cur.some(e => e?.uuid === uuid) ) return;
+      const level = Math.max(1, Number(this.document.system.requirement?.level) || 1);
+      return this.document.update({ [path]: [...cur, { uuid, level }] });
+    }
     if ( cur.includes(uuid) ) return;
     await this.document.update({ [path]: [...cur, uuid] });
   }

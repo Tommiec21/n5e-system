@@ -56,6 +56,9 @@ const F = {
   /** NT1: a list of linked documents (uuids) the sheet fills by drag and drop, each with a remove button. */
   uuids: (src, path, label, nameOf, more = {}) => ({ kind: "uuids", path: `system.${path}`, label, hint: more.hint ?? "", accept: more.accept ?? "",
     items: list(get(src, path)).map((uuid, index) => ({ uuid, index, name: nameOf(uuid) })) }),
+  /** LEFT1 P6: linked documents each granted at a level ([{uuid, level}]), by drag and drop. */
+  levelUuids: (src, path, label, nameOf, more = {}) => ({ kind: "levelUuids", path: `system.${path}`, label, hint: more.hint ?? "", accept: more.accept ?? "",
+    items: list(get(src, path)).map((e, index) => ({ uuid: e?.uuid ?? "", level: e?.level ?? 1, index, name: nameOf(e?.uuid ?? "") })) }),
   /** Free list as comma-separated text. */
   list: (src, path, label) => ({ kind: "list", path: `system.${path}`, label, value: list(get(src, path)).join(", ") }),
   /** key -> rank map (weapon/armor properties). */
@@ -272,7 +275,8 @@ const DETAILS = {
       F.num(src, "bonusJutsu.aboveMax.count", "Above highest rank", { small: true, hint: "How many of the slots may be above the character's highest rank, up to:" }),
       F.select(src, "bonusJutsu.aboveMax.maxRank", "Up to (above)", { "": "—", ...Object.fromEntries(rankOrder.map(r => [r, `${r}-Rank`])) }),
       F.select(src, "bonusJutsu.keyword", "Keyword", { "": "Any", ...Object.fromEntries(Object.entries(keywords).map(([k, v]) => [k, labelOf(v) || k]).sort((a, b) => a[1].localeCompare(b[1]))) }),
-      F.uuids(src, "grants.jutsu", "Granted jutsu", nameOf ?? (u => u), { accept: "jutsu", hint: "Drag jutsu here: they are granted outright as Bonus Jutsu when this is gained." })
+      F.uuids(src, "grants.jutsu", "Granted jutsu", nameOf ?? (u => u), { accept: "jutsu", hint: "Drag jutsu here: they are granted outright as Bonus Jutsu when this is gained." }),
+      F.levelUuids(src, "grants.jutsuByLevel", "Granted at level", nameOf ?? (u => u), { accept: "jutsu", hint: "Drag jutsu here and set the character level each is granted at (as Bonus Jutsu; Remove level takes it back)." })
     ]),
     ...activatable(src)
   ],

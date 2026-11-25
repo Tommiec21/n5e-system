@@ -2,7 +2,7 @@
 
 King 2026-11-25: "Start a plan for all Small leftovers." Found in the roadmap scan of the full context and the repo docs.
 
-Status: **plan; waiting on King's answers. Two fixes King raised the same day are built (0.106.3-alpha.1).**
+Status: **approved (King 2026-11-25, Q-L1–Q-L6). Two fixes King raised the same day built (0.106.3-alpha.1); P6 built (0.107.0-alpha.1).**
 
 ## Built now (King's two fixes)
 
@@ -35,8 +35,17 @@ Status: **plan; waiting on King's answers. Two fixes King raised the same day ar
 - Each becomes a pick when the feature is gained (level up, clan or background), using the existing choice cards.
 - An audit table first for King's review, then the data.
 
-### P6 Sheet editor for jutsu granted at a level (sweep, 0.106)
+### P6 Sheet editor for jutsu granted at a level (sweep, 0.106) (built 0.107.0-alpha.1)
 - The item sheet's Bonus Jutsu section gets a "Granted at level" list: drop a jutsu, set its level, remove.
+
+## King's answers (2026-11-25)
+
+- **Q-L1:** yes, the NPC sheet's key and colors.
+- **Q-L2:** yes: the builder on every condition field (effects, riders, activities).
+- **Q-L3:** show them (condition immunities, damage resistances and weaknesses from the existing data).
+- **Q-L4:** all 5 designs get their own layouts for the other tabs.
+- **Q-L5:** Bloodied is used: build the token marker and the setting.
+- **Q-L6:** auto gained: the pick comes up when the feature is gained.
 
 ## Order
 
@@ -53,3 +62,4 @@ P6 → P1 → P4 → P2 → P5 → P3 (smallest first; one release each, King te
 
 ## Progress log
 - 2026-11-25 King: "Start a plan for all Small leftovers." Claude: plan written; the two fixes King raised (level-up card overflow, Classes compendium folders) built and published 0.106.3-alpha.1.
+- 2026-11-25 King: Q-L1 yes, Q-L2 yes, Q-L3 show them, Q-L4 all 5, Q-L5 it's used, Q-L6 auto gained. Claude: P6 built and published 0.107.0-alpha.1.

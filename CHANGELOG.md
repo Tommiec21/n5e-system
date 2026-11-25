@@ -1,3 +1,11 @@
+## 0.107.0-alpha.1 — LEFT1 P6: jutsu granted at a level, on the item sheet
+
+King 2026-11-25 (docs/LEFT1_SPEC.md, P6; Q-L1–Q-L6 answered).
+
+- **Granted at level:** a feature's Bonus Jutsu section has a new list. Drag a jutsu in, set the character level it's granted at, or remove it.
+- A new entry starts at the feature's required level (or 1st).
+- These jutsu are granted as Bonus Jutsu at that level up (or at once if the character is already past it), and Remove level takes them back.
+
 ## 0.106.4-alpha.1 — Journal Desk access and Leaf emblem
 
 Adds the Hidden Leaf emblem to the desk header and a GM-only Journal Desk shortcut in the native Journal sidebar. Existing journals, sidebar controls and gameplay remain unchanged.

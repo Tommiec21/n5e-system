@@ -81,7 +81,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `item-sheet.mjs` | 246 | N5e item sheet (all 13 item types). | `ITEM_TEMPLATE_PATHS`, `ItemSheet` |
+| `item-sheet.mjs` | 264 | N5e item sheet (all 13 item types). | `ITEM_TEMPLATE_PATHS`, `ItemSheet` |
 | `reaction-editor.mjs` | 36 |  | `editReaction` |
 
 ## module/applications/npc
@@ -338,7 +338,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `damage-trace.mjs` | 24 | Minimal fallback for legacy roll data; normal cards use Foundry's Roll renderer. | `damageRollHTML`, `renderDamageRolls` |
 | `effect-editor.mjs` | 99 | Effect editor view model (UX1; docs/UX1_SPEC.md), pure. | `pickerGroups`, `normalizeModes`, `changeCards`, `ruleRows` |
 | `freeform.mjs` | 182 | The Freeform Strike and Freeform Jutsu windows (NPC3d): blank choices, form data -> choices, and the view models with the live numbers. | `blankStrike`, `strikeFromForm`, `strikeVM`, `blankJutsu`, `jutsuFromForm`, `jutsuVM` |
-| `item.mjs` | 600 | Item sheet view model (pure). | `advancementVM`, `itemVM`, `DETAILS`, `HTML_FIELDS` |
+| `item.mjs` | 604 | Item sheet view model (pure). | `advancementVM`, `itemVM`, `DETAILS`, `HTML_FIELDS` |
 | `npc-statblock.mjs` | 120 | NPC sheet view models (NPCUI1; King 2026-11-15, design canvas "N5e NPC Sheet Redesign"): npcSheetHeaderVM  identity line, HP and CP trackers, conditions npcS... | `npcSheetHeaderVM`, `npcJutsuGroups`, `jutsuLegendVM`, `npcStatBlockVM`, `npcPlayerVM` |
 | `npc.mjs` | 282 | NPC view models (NPC1b): the stat block in the Bingo Book's layout, and the Build tab. | `statBlockVM`, `npcHeaderVM`, `npcBuildVM`, `npcSimpleVM`, `npcDefensesVM`, `KNOWABLE_STATS`, `knowledgeEntryView`, `npcKnowledgeVM`, `learnedVM`, `attackLine` |
 | `party.mjs` | 37 | GM Party Overview rows (pure): HP, CP, conditions, concentration, Fury, open Gate, Amps. | `partyRowVM` |
