@@ -44,7 +44,8 @@ export default class ClanSetupWindow extends HandlebarsApplicationMixin(Applicat
   mode = "choose";
   applyASI = null;
 
-  get nonClan() { return this.o.clan.system.identifier === "non-clan"; }
+  /** The "+1 to three" pattern is offered when the clan setup says so (workflow/clan.mjs: threeOption). */
+  get nonClan() { return !!this.o.threeOption; }
 
   /** Fields the current branch shows. */
   #fields() {

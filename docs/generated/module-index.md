@@ -47,7 +47,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
-| `clan-setup.mjs` | 174 | Clan setup window (King 2026-11-25): the same look as the level-up window. | `ClanSetupWindow` |
+| `clan-setup.mjs` | 175 | Clan setup window (King 2026-11-25): the same look as the level-up window. | `ClanSetupWindow` |
 | `enrichers.mjs` | 180 | Shortcuts in text (Foundry side): turns [[/save ...]], [[/check ...]], [[/damage ...]], [[/heal ...]], @Condition[...] and @State[...] into clickable links w... | `registerEnrichers`, `onLinkClick` |
 | `helpers.mjs` | 17 | Handlebars helpers used by N5e templates (registered by the system so templates don't depend on which helpers core happens to ship). | `HELPERS`, `registerHelpers` |
 | `level-history.mjs` | 68 | LVL1 L5 (King 2026-11-24): Level History. | `levelHistory`, `LevelHistory` |

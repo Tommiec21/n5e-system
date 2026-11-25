@@ -61,5 +61,11 @@ Status: **approved (King 2026-11-25, Q-C1–Q-C4); built 0.108.0-alpha.1.**
 - **C2:** Add Class / Add Clan / Add Background buttons (header bubbles, every design's header, the Features tab); a replace button beside each filled origin in edit mode. Each opens a separate browser window locked to that type (classes without subclasses) with a Select button per row; selecting runs what dropping does.
 - **C3:** clan setup's ability part is a table: each ability, its score now (without an old clan's increases), the clan increase (—, +1, +2) and the result, updating as picks change.
 
+## Follow-up (0.108.1-alpha.1)
+
+- King: Select buttons too compact; the clan setup should use the same UI as the other creation screens; +2 row of six pills, +1 row of the rest; skill pills as the class screen (the clan's, or every remaining skill to replace one already had).
+- Built: clan setup window (applications/clan-setup.mjs, templates/apps/clan-setup.hbs) in the level-up's style; the browser's Select column sized to its label.
+
 ## Progress log
 - 2026-11-25 King: Q-C1 toggles (Point Buy with points, Standard Array, Roll by GM; GM arrays, one on), Q-C2 both, Q-C3 Select per row, Q-C4 one window. Claude: C1–C3 built and published 0.108.0-alpha.1.
+- 2026-11-25 King: standardize the clan setup, pill rows, skill pills; Select too compact. Claude: verify stopped twice (old test; content-name gate), King: "Apply fix and do final run"; passed, published 0.108.1-alpha.1.

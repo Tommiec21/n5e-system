@@ -1,3 +1,12 @@
+## 0.108.1-alpha.1 — Clan setup in the level-up window's look; full Select buttons
+
+King 2026-11-25 (docs/CREATE1_SPEC.md).
+
+- **Clan setup** now looks like the level-up window: one card per choice with its count, and a footer with what's left, Cancel and Apply clan.
+- **Ability increases:** a +2 row of six ability pills, then a +1 row with the rest; each score shows what it becomes. Non-Clan switches between "+2 and +1" and "+1 to three".
+- **Skills as pills:** the clan's skills show as granted pills; a skill you already have gets a card with every remaining skill to replace it. Affinity, branch and feature picks are pills; starting options are cards with their text on hover. No dropdowns.
+- **Compendium picker:** the Select buttons show their full label.
+
 ## 0.108.0-alpha.1 — CREATE1: character creation like dnd5e
 
 King 2026-11-25 (docs/CREATE1_SPEC.md).

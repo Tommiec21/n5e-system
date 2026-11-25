@@ -20,7 +20,7 @@ export async function addClan(actor, item, { ask = null } = {}) {
     const askFn = ask ?? (async (...args) => (await import("../applications/clan-setup.mjs")).default.wait(...args));
     let selection, plan, error = "";
     while ( true ) {
-      selection = await askFn({ actor, clan: item, old, fields, docs, baseScore, error });
+      selection = await askFn({ actor, clan: item, old, fields, docs, baseScore, error, threeOption: item.system.identifier === "non-clan" });
       if ( !selection || selection === "cancel" ) return null;
       plan = clanSetupPlan(actor, item, fields, selection, docs);
       if ( !plan.errors.length ) break;
