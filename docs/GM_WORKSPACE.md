@@ -130,3 +130,9 @@ Static preview uses the shipped Handlebars template/CSS with sample records and 
 
 Saved preview: N5e System/Reports/GM Workspace Layouts/GM06-correction-preview.html and GM06-correction-wide.png in Codex reports. Further acceptance corrections remain GM06b; GM04d, GM05b and GM07–GM10 remain separate batches.
 Local verification: four focused tests and lint passed once. Static wide preview inspected; no claim of live Foundry parity.
+
+## GM06b Leaf emblem and Journal entry point — Codex, 2026-11-25
+
+Based on a12e7c90; Claude subclass-folder changes retained. Added a local Hidden Leaf SVG in the desk header and a GM-only Journal Desk button in the native Journal directory header (including its popout). Reuses game.n5e.api.journalDesk; does not replace directory controls, change ownership, or add a dependency. Button insertion is guarded against duplicates. Existing settings/API access remains.
+
+Version 0.106.4-alpha.1. Focused local shortcut check/lint allocated attempt 1; PR/main CI attempts 2/3. No live Foundry testing or local installation.

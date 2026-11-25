@@ -61,6 +61,7 @@ import { registerEffectApplication } from "./module/workflow/effect-application.
 import { registerReactionWindows } from "./module/workflow/reactions.mjs";
 import { registerPartyOverview } from "./module/applications/gm/party-overview.mjs";
 import { registerItemIntegrity } from "./module/applications/gm/item-integrity.mjs";
+import { addJournalDeskButton } from "./module/applications/gm/journal-desk-entry.mjs";
 import * as d20 from "./module/dice/d20.mjs";
 import { checkMigrations, MIGRATIONS } from "./module/migration/runner.mjs";
 import api from "./module/api.mjs";
@@ -75,6 +76,7 @@ import * as elements from "./module/rules/elements.mjs";
 import { applyChatAppearance, tagN5eMessage } from "./module/workflow/chat-appearance.mjs";
 
 registerAutomationHooks();
+Hooks.on("renderJournalDirectory", addJournalDeskButton);
 registerFreeformHooks();
 registerEnvironmentHooks();
 registerAuraHooks();
