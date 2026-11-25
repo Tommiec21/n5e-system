@@ -112,3 +112,38 @@ test("LVL1 L3: the five Moldings give 2 conditional Bonus Jutsu (one may be C-Ra
   assert.ok(!dup.options.some(o => ["med", "cha"].includes(o.value)));
   assert.equal(steps.find(x => x.id === "class:tools:dup").count, 1);
 });
+
+test("LVL1 L5: Level History rows, the editable steps and a past level's selections; changing an ASI and an option", async () => {
+  const { levelHistory } = await import("../module/applications/level-history.mjs").catch(() => ({}));
+  const { levelSelections, editLevel, EDITABLE_STEPS } = await import("../module/advancement/manager.mjs");
+  assert.deepEqual([...EDITABLE_STEPS].sort(), ["asi", "featChoice", "itemChoice", "masteryChoice", "option", "trait"]);
+  const flags = {};
+  const cls = { id: "c1", type: "class", name: "Scout-Nin", flags: { n5e: { asi: { 4: { ability: "dex", feat: "", mastery: "" } }, levelSwaps: { 4: { removed: [{ name: "Old Path" }] } } } },
+    system: { levels: 4, skills: { chosen: ["ste"] }, tools: { chosen: [] }, identifier: "scout",
+      advancement: [{ id: "a1", level: 1, type: "option", key: "path", chosen: ["swift"] }], toObject() { return { advancement: structuredClone(this.advancement) }; } },
+    getFlag: (s, k) => k.split(".").reduce((o, p) => o?.[p], cls.flags.n5e),
+    setFlag: async (s, k, v) => { flags[k] = v; },
+    update: async ch => { if ( ch["system.advancement"] ) cls.system.advancement = ch["system.advancement"]; } };
+  const items = [cls, { type: "feat", name: "Assault Maneuver", system: {}, flags: { n5e: { advancement: { level: 4, step: "class:x", origin: "c1" } } } },
+    { type: "jutsu", name: "Clone", system: { identifier: "clone" }, flags: { n5e: { advancement: { level: 1, step: "class:jutsu", origin: "c1" } } } }];
+  let updated = null;
+  const actor = { name: "Kenji", items, isOwner: true, _source: { system: { abilities: { dex: { value: 17 }, wis: { value: 12 } }, mastery: { sources: [] } } },
+    update: async u => { updated = u; }, createEmbeddedDocuments: async () => [], deleteEmbeddedDocuments: async () => [] };
+  items.find = Array.prototype.find.bind(items); items.filter = Array.prototype.filter.bind(items);
+  if ( levelHistory ) {
+    const rows = levelHistory(actor, cls);
+    assert.deepEqual(rows.map(r => r.level), [4, 3, 2, 1]);
+    assert.ok(rows[0].lines.some(l => l.label === "Ability Score Increase" && /\+1/.test(l.text)));
+    assert.ok(rows[0].lines.some(l => l.label === "Switched out" && l.text === "Old Path"));
+    assert.ok(rows[3].lines.some(l => l.label === "Jutsu" && l.text === "Clone"));
+  }
+  const steps = [{ id: "class:asi", type: "asi", title: "ASI" }, { id: "class:a1", type: "option", advId: "a1", origin: "class", title: "Shinobi's Path" }];
+  assert.deepEqual(levelSelections(actor, cls, 4, steps), { "class:asi": { ability: "dex", feat: "", mastery: "" }, "class:a1": ["swift"] });
+  globalThis.game = { users: [] }; globalThis.ui = { notifications: { warn() {}, info() {} } };
+  globalThis.ChatMessage = { implementation: { create: async () => null }, getSpeaker: () => ({}) };
+  const changes = await editLevel(actor, cls, 4, steps, { "class:asi": { ability: "wis", feat: "", mastery: "" }, "class:a1": ["rogue"] });
+  assert.equal(changes.length, 2);
+  assert.deepEqual(updated, { "system.abilities.dex.value": 16, "system.abilities.wis.value": 13 });
+  assert.deepEqual(flags["asi.4"], { ability: "wis", feat: "", mastery: "" });
+  assert.deepEqual(cls.system.advancement[0].chosen, ["rogue"]);
+});
