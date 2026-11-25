@@ -94,9 +94,21 @@ test("CREATE1 C2/C3: Add Class / Clan / Background open the browser in select mo
   const sheet = fs.readFileSync(path.join(ROOT, "module/applications/actor/character-sheet.mjs"), "utf8");
   assert.match(sheet, /CompendiumBrowser\.pick\(\{ type: kind, actor: this\.actor \}\)/);
   assert.match(sheet, /this\._onDropItem\(null, doc\)/);
-  assert.match(fs.readFileSync(path.join(ROOT, "module/workflow/clan.mjs"), "utf8"), /n5e-clan-asi/);
+  assert.match(fs.readFileSync(path.join(ROOT, "templates/apps/clan-setup.hbs"), "utf8"), /lu-asi-results/);
   assert.deepEqual(clanIncreasePreview({ str: 10, dex: 14 }, { dex: 2 }).slice(0, 2).map(r => r.result), [10, 16]);
   const prompts = fs.readFileSync(path.join(ROOT, "module/workflow/ability-scores.mjs"), "utf8");
   assert.match(prompts, /Hooks\.on\("createActor"/);
   assert.match(prompts, /abilityPrompted/);
+});
+
+test("Clan setup: the level-up window's look, +2 and +1 pill rows, skill pills; Select buttons fit", () => {
+  const win = fs.readFileSync(path.join(ROOT, "module/applications/clan-setup.mjs"), "utf8");
+  assert.match(win, /classes: \["n5e", "n5e-v2", "n5e-level-up", "n5e-clan-setup"\]/);
+  const tpl = fs.readFileSync(path.join(ROOT, "templates/apps/clan-setup.hbs"), "utf8");
+  assert.match(tpl, /data-action="plus2"/);
+  assert.match(tpl, /data-action="plus1"/);
+  assert.match(tpl, /data-action="pick" data-field="\{\{\.\.\/id\}\}"/);
+  assert.ok(!/<select/.test(tpl), "no dropdowns");
+  assert.match(fs.readFileSync(path.join(ROOT, "module/workflow/clan.mjs"), "utf8"), /clan-setup\.mjs"\)\)\.default\.wait/);
+  assert.match(fs.readFileSync(path.join(ROOT, "styles/sheet.css"), "utf8"), /\.n5e-browser \.b-row \.b-select \{ width: auto !important; min-width: 86px;/);
 });

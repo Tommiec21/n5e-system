@@ -2,11 +2,10 @@
 import { existingCopy } from "../rules/item-audit.mjs";
 import { abilities } from "../config/core.mjs";
 import { clanSetupFields, clanSetupPlan } from "../advancement/clan.mjs";
-import { esc } from "../view-models/common.mjs";
 import { withActorLock } from "./commands.mjs";
 import { grantFeatureJutsu } from "./learn-jutsu.mjs";
 
-export async function addClan(actor, item) {
+export async function addClan(actor, item, { ask = null } = {}) {
   if ( !actor.isOwner ) return null;
   return withActorLock(actor, async () => {
     const old = actor.items.find(i => i.type === "clan");
@@ -14,51 +13,19 @@ export async function addClan(actor, item) {
     const pack = game.packs.get("n5e.clans");
     const docs = [...(pack ? await pack.getDocuments() : []), ...await game.packs.get("n5e.feats")?.getDocuments() ?? [], ...game.items.filter(i => i.type === "feat")];
     const fields = clanSetupFields(actor, item, docs);
-    const select = (name, label, options) => `<label>${esc(label)}<select name="${esc(name)}"><option value="">Choose…</option>${options.map(o => `<option value="${esc(o.value)}">${esc(o.label)}</option>`).join("")}</select></label>`;
     // CREATE1 C3: the score before this clan's increases (an old clan's applied increases taken off).
     const oldInc = old?.flags?.n5e?.clanAbilityIncreases ?? {};
     const baseScore = k => (actor._source?.system?.abilities?.[k]?.value ?? actor.system?.abilities?.[k]?.value ?? 10) - (Number(oldInc[k]) || 0);
-    const content = `<p>${old ? `Replaces ${esc(old.name)} and its linked grants. ` : ""}Choose the clan's traits and starting features. Mutation replacements and contextual rules require GM review.</p>`
-      + `<label><input type="checkbox" name="applyASI" ${!old || Object.keys(old.flags?.n5e?.clanAbilityIncreases ?? {}).length ? "checked" : ""}> Apply ability increases now (uncheck if already included in your scores)</label>`
-      + `<label>Ability increase pattern<select name="mode"><option value="choose">+2 to one, +1 to another</option>${item.system.identifier === "non-clan" ? '<option value="three">+1 to three different abilities</option>' : ""}</select></label>`
-      // CREATE1 C3 (King): the six abilities with the current score, the clan's increase and the result (as dnd5e).
-      + `<table class="n5e-clan-asi"><thead><tr><th>Ability</th><th>Now</th><th>Clan</th><th>Result</th></tr></thead><tbody>`
-      + Object.entries(abilities).map(([k, d]) => `<tr data-ability="${k}"><td>${esc(d.label)}</td><td class="now">${baseScore(k)}</td>`
-        + `<td><select name="asi-${k}" aria-label="${esc(d.label)} increase"><option value="0">—</option><option value="1">+1</option><option value="2">+2</option></select></td>`
-        + `<td class="res">${baseScore(k)}</td></tr>`).join("")
-      + `</tbody></table><p class="hint asi-hint">+2 to one ability and +1 to another${item.system.identifier === "non-clan" ? ", or +1 to three (Non-Clan)" : ""}.</p>`
-      + fields.map(f => `<fieldset><legend>${esc(f.label)}${f.branch ? ` — ${esc(f.branch)} branch only` : ""}</legend>` + Array.from({ length: f.count }, (_, i) => select(`${f.id}-${i}`, f.count > 1 ? `Choice ${i + 1}` : "Choice", f.options)).join("") + "</fieldset>").join("");
-    let selection, plan;
+    // King 2026-11-25: the clan setup is a window in the level-up's style (applications/clan-setup.mjs).
+    const askFn = ask ?? (async (...args) => (await import("../applications/clan-setup.mjs")).default.wait(...args));
+    let selection, plan, error = "";
     while ( true ) {
-      selection = await foundry.applications.api.DialogV2.wait({ window: { title: `${actor.name}: ${item.name} clan setup`, resizable: true }, position: { width: 700, height: 760 }, content,
-        render: (event, dialog) => {
-          // Live result column.
-          try {
-            const root = dialog?.element ?? (dialog instanceof HTMLElement ? dialog : null) ?? event?.target?.element;
-            const upd = () => { for ( const row of root.querySelectorAll(".n5e-clan-asi tr[data-ability]") ) {
-              const k = row.dataset.ability;
-              const plus = Number(row.querySelector("select")?.value) || 0;
-              row.querySelector(".res").textContent = `${baseScore(k) + plus}`;
-              row.classList.toggle("up", plus > 0);
-            } };
-            root?.addEventListener("change", upd);
-            upd();
-          } catch { /* the result column is a convenience */ }
-        },
-        buttons: [{ action: "apply", label: old ? "Replace clan" : "Apply clan", default: true, callback: (event, button) => {
-          const f = button.form.elements;
-          // +2 first, then the +1s (the order clanSetupPlan reads).
-          const picks = Object.keys(abilities).map(k => [k, Number(f[`asi-${k}`].value) || 0]).filter(([, n]) => n > 0);
-          const ordered = [...picks.filter(([, n]) => n === 2), ...picks.filter(([, n]) => n === 1)].map(([k]) => k);
-          const mode = picks.length === 3 && picks.every(([, n]) => n === 1) ? "three" : f.mode.value;
-          const bad = mode === "three" ? picks.length !== 3 : !(picks.length === 2 && picks.some(([, n]) => n === 2) && picks.some(([, n]) => n === 1));
-          return { mode, applyASI: f.applyASI.checked, abilities: bad ? [] : ordered,
-            choices: Object.fromEntries(fields.map(field => [field.id, Array.from({ length: field.count }, (_, i) => f[`${field.id}-${i}`].value).filter(Boolean)])) };
-        } }, { action: "cancel", label: "Cancel" }], rejectClose: false });
+      selection = await askFn({ actor, clan: item, old, fields, docs, baseScore, error });
       if ( !selection || selection === "cancel" ) return null;
       plan = clanSetupPlan(actor, item, fields, selection, docs);
       if ( !plan.errors.length ) break;
-      ui.notifications.warn(plan.errors[0]);
+      error = plan.errors[0];
+      ui.notifications.warn(error);
     }
     const oldIncreases = old?.flags?.n5e?.clanAbilityIncreases ?? {};
     const updates = {}, rollback = {};

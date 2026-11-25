@@ -193,7 +193,7 @@ test("cancelling clan setup makes no actor or origin writes", async () => {
     const actor = makeActor({ items: [taiSpec()] }); actor.isOwner = true;
     actor.createEmbeddedDocuments = async () => { writes++; };
     actor.deleteEmbeddedDocuments = async () => { writes++; };
-    assert.equal(await addClan(actor, byName("Aburame")), null);
+    assert.equal(await addClan(actor, byName("Aburame"), { ask: async () => null }), null);
     assert.equal(writes, 0);
   } finally { globalThis.game = oldGame; globalThis.ui = oldUi; foundry.applications = oldApps; }
 });
@@ -224,7 +224,7 @@ test("a replacement failure restores the old clan and scores instead of leaving 
   globalThis.ui = { notifications: { info() {}, warn() {} } };
   foundry.applications = { api: { DialogV2: { wait: async () => selection } } };
   try {
-    await assert.rejects(addClan(actor, target), /simulated/);
+    await assert.rejects(addClan(actor, target, { ask: async () => selection }), /simulated/);
     assert.ok(actor.items.get(old.id));
     assert.equal(actor.items.some(i => i.type === "clan" && i.name === "Hatake"), false);
     assert.equal(actor._source.system.abilities.str.value, 10);

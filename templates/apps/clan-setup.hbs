@@ -1,0 +1,56 @@
+{{!-- Clan setup (applications/clan-setup.mjs; King 2026-11-25): the level-up window's look. Pills: data-action pick/plus2/plus1. --}}
+<div class="lu">
+  <header class="lu-head">
+    <h2>{{clan}} <span>Clan setup</span></h2>
+    <p class="sub">{{#if replaces}}Replaces {{replaces}} and its linked grants. {{/if}}Make each choice below, then Apply. Hover a card for its full text.</p>
+  </header>
+  <div class="lu-steps">
+    {{#if error}}<p class="warn small">{{error}}</p>{{/if}}
+    <section class="lu-step {{#if asiFull}}done{{/if}}">
+      <div class="lu-step-head"><h3>Ability increases</h3><span class="count {{#if asiFull}}ok{{/if}}">{{#if asi.three}}{{asi.have1}} / 3{{else}}{{#if asiFull}}2 / 2{{else}}…{{/if}}{{/if}}</span></div>
+      <label class="lu-check"><input type="checkbox" data-action="applyAsi" {{#if applyASI}}checked{{/if}}> Apply them now (untick if your scores already include them)</label>
+      {{#if nonClan}}
+        <div class="lu-chips lu-pattern">
+          <button type="button" class="chip {{#unless asi.three}}on{{/unless}}" data-action="pattern" data-mode="choose">+2 and +1</button>
+          <button type="button" class="chip {{#if asi.three}}on{{/if}}" data-action="pattern" data-mode="three">+1 to three</button>
+        </div>
+      {{/if}}
+      {{#unless asi.three}}
+        <h4>+2</h4>
+        <div class="lu-chips">{{#each asi.plus2}}<button type="button" class="chip {{#if on}}on{{/if}}" data-action="plus2" data-key="{{key}}">{{label}}</button>{{/each}}</div>
+      {{/unless}}
+      <h4>{{#if asi.three}}+1 (three){{else}}+1{{/if}}</h4>
+      <div class="lu-chips">{{#each asi.plus1}}<button type="button" class="chip {{#if on}}on{{/if}}" data-action="plus1" data-key="{{key}}">{{label}}</button>{{/each}}</div>
+      <div class="lu-asi-results">{{#each asi.results}}
+        <span class="r {{#if plus}}up{{/if}}"><b>{{abbr}}</b> {{now}}{{#if plus}} → <b>{{result}}</b>{{/if}}</span>
+      {{/each}}</div>
+    </section>
+    {{#if granted.length}}
+      <section class="lu-step lu-grant done">
+        <div class="lu-step-head"><h3>Skill proficiencies</h3></div>
+        <div class="lu-chips">{{#each granted}}<span class="chip on static" data-tooltip="Granted by the clan">{{this}}</span>{{/each}}</div>
+      </section>
+    {{/if}}
+    {{#each fields}}
+      <section class="lu-step {{#if full}}done{{/if}}">
+        <div class="lu-step-head"><h3>{{label}}</h3><span class="count {{#if full}}ok{{/if}}">{{have}} / {{count}}</span>{{#if branchNote}}<span class="sub">{{branchNote}} only</span>{{/if}}</div>
+        {{#if cards}}
+          <div class="lu-cards">{{#each options}}
+            <button type="button" class="lu-card {{#if on}}on{{/if}}" data-action="pick" data-field="{{../id}}" data-value="{{value}}" data-tooltip-html="{{tip}}">
+              {{#if img}}<img src="{{img}}" alt="" width="32" height="32">{{/if}}<span><b>{{label}}</b></span>
+            </button>
+          {{/each}}</div>
+        {{else}}
+          <div class="lu-chips">{{#each options}}
+            <button type="button" class="chip {{#if on}}on{{/if}}" data-action="pick" data-field="{{../id}}" data-value="{{value}}">{{label}}</button>
+          {{/each}}</div>
+        {{/if}}
+      </section>
+    {{/each}}
+  </div>
+  <footer class="lu-foot">
+    {{#if problems.length}}<span class="warn small">{{problems.[0]}}{{#if (n5eGt problems.length 1)}} (+{{problems.length}} more){{/if}}</span>{{else}}<span class="ok small">Ready.</span>{{/if}}
+    <button type="button" data-action="cancel">Cancel</button>
+    <button type="button" class="primary" data-action="apply" {{#unless ready}}disabled{{/unless}}>Apply clan</button>
+  </footer>
+</div>
