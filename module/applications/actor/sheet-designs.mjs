@@ -5,6 +5,7 @@
 
 /** The designs: id → {label, size}. The order is the order in the Sheet menu. */
 export const SHEET_DESIGNS = {
+  dossier: { label: "N5E.SheetDesignDossier", width: 1180, height: 900 },
   classic: { label: "N5E.SheetDesignClassic", width: 1000, height: 960 },
   glass: { label: "N5E.SheetDesignGlass", width: 980, height: 960 },
   ink: { label: "N5E.SheetDesignInk", width: 960, height: 960 },

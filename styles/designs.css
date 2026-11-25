@@ -684,3 +684,97 @@
 .n5e-design-oneui .rank-head { color: var(--n5e-accent); font-size: 12px; }
 .n5e-design-scroll :is(.combat, .jutsu, .inventory, .features, .effects, .biography) .section-head :is(span, label, .muted, small) { color: #E9D6B0; }
 .n5e-design-classic :is(.combat, .jutsu, .inventory, .features, .effects, .biography) .section-head :is(span, label, .muted, small) { color: #D8C9B0; }
+
+/* SD02: Dossier changes presentation only; all selectors are confined to this optional sheet. */
+.n5e-v2.n5e-design-dossier {
+ --n5e-ink:#292d24; --n5e-ink-2:#394433; --n5e-paper:#f5f0e3; --n5e-paper-2:#eee8d8; --n5e-card:#faf6eacc;
+ --n5e-line:#bdb298; --n5e-line-soft:#dbd2bf; --n5e-muted:#535b4b; --n5e-faint:#656354;
+ --n5e-accent:#923d2d; --n5e-accent-ink:#763025; --n5e-accent-soft:#eee0cf; --n5e-gold:#8f744a;
+ --n5e-hp:#a43f32; --n5e-chakra:#28777a; --n5e-head:Georgia,serif; --n5e-body:Georgia,serif;
+ min-width:740px;
+}
+.n5e-v2.character.n5e-design-dossier .window-content {
+ grid-template-columns:225px minmax(0,1fr); grid-template-rows:auto auto minmax(0,1fr);
+ grid-template-areas:"rail head" "rail tabs" "rail body";
+ background:#f5f0e3 url('../assets/journal/paper.svg') repeat; container-type:inline-size;
+}
+.n5e-design-dossier .window-header { background:#243d30; color:#f6eed6; }
+.n5e-design-dossier .d-head { padding:0 14px 10px; background:transparent; color:var(--n5e-ink); border-bottom:0; }
+.n5e-design-dossier .ds-brand { display:flex; gap:9px; align-items:center; margin:0 -14px 10px; padding:7px 14px; background:#243d30 url('../assets/journal/branches.svg') right center/150px auto no-repeat; color:#f7efd8; font:700 21px Georgia,serif; }
+.n5e-design-dossier .ds-brand img { width:33px; height:28px; border:0; }
+.n5e-design-dossier .ds-brand b { margin-left:auto; font:14px Georgia,serif; }
+.n5e-design-dossier .ds-identity-row { display:flex; gap:12px; align-items:flex-start; }
+.n5e-design-dossier .d-name { font:700 29px/1.15 Georgia,serif; color:var(--n5e-ink); white-space:normal; overflow-wrap:anywhere; }
+.n5e-design-dossier .d-origin { background:#eee7d4; border:1px solid var(--n5e-line); border-radius:4px; font-size:12px; }
+.n5e-design-dossier .d-head-buttons { max-width:350px; justify-content:flex-end; gap:4px; }
+.n5e-design-dossier .window-content .d-btn { min-height:28px; height:auto; padding:4px 7px; font:12px Georgia,serif; color:var(--n5e-ink); background:#fbf6e9; border:1px solid var(--n5e-line); border-radius:4px; }
+.n5e-design-dossier .window-content .d-btn.level-up { background:var(--n5e-accent); color:white; }
+.n5e-design-dossier .d-xp { margin:9px 0; grid-template-columns:auto auto minmax(0,1fr); }
+.n5e-design-dossier .d-xp .bar { grid-column:3; grid-row:1; height:6px; background:#e0d9c6; border:1px solid var(--n5e-line); }
+.n5e-design-dossier .d-xp .fill { background:var(--n5e-accent); }
+.n5e-design-dossier .d-xp .val { grid-column:2; grid-row:1; }
+.n5e-design-dossier .d-abilities { gap:9px; }
+.n5e-design-dossier .d-ab { border:1px solid #ae9d7c; border-radius:4px; background:#f7eedc70; padding:6px; }
+.n5e-design-dossier .d-ab .abbr { font:700 14px Georgia,serif; color:var(--n5e-ink); }
+.n5e-design-dossier .d-ab .mod { font:700 25px Georgia,serif; }
+.n5e-design-dossier .d-ab .score { background:#e7d9bd; border-radius:3px; padding:0 7px; font-size:12px; }
+.n5e-design-dossier .d-rail { padding:10px; gap:10px; background:transparent url('../assets/journal/mountains.svg') bottom left/100% auto no-repeat; padding-bottom:55px; }
+.n5e-design-dossier .d-portrait { display:block; width:100%; height:190px; object-fit:cover; object-position:top; border:1px solid #a69576; border-radius:3px; cursor:pointer; }
+.n5e-design-dossier .d-stats { grid-template-columns:repeat(5,minmax(0,1fr)); gap:0; border:1px solid var(--n5e-line); }
+.n5e-design-dossier .d-stat { padding:5px 1px; border-right:1px solid var(--n5e-line); flex-direction:column-reverse; }
+.n5e-design-dossier .d-stat:last-child { border:0; }
+.n5e-design-dossier .d-stat b { font-size:19px; }
+.n5e-design-dossier .d-stat .lbl { font-size:8px; white-space:normal; }
+.n5e-design-dossier .d-meters { gap:13px; }
+.n5e-design-dossier .d-meter .track { border:1px solid #aaa086; background:#e9dfc9; height:11px; }
+.n5e-design-dossier .d-meter .fill { border-radius:0; }
+.n5e-design-dossier .d-die { border:1px solid var(--n5e-line); border-radius:3px; background:#f8f0df80; }
+.n5e-design-dossier .d-section-title { text-transform:none; letter-spacing:0; font:700 17px Georgia,serif; border:0; color:var(--n5e-ink); }
+.n5e-design-dossier .d-resources,.n5e-design-dossier .d-conditions { border-top:1px solid var(--n5e-line); padding-top:8px; }
+.n5e-design-dossier .d-death { border-top:1px solid var(--n5e-line); padding-top:7px; }
+.n5e-design-dossier .n5e-tabs { padding:0 10px; gap:2px; background:transparent; border-bottom:1px solid var(--n5e-line); overflow-x:auto; }
+.n5e-design-dossier .n5e-tabs .item { flex:1; justify-content:center; white-space:nowrap; padding:8px 7px; font:700 15px Georgia,serif; border:1px solid var(--n5e-line); border-bottom:3px solid transparent; border-radius:4px 4px 0 0; color:var(--n5e-ink); background:#f5edda; }
+.n5e-design-dossier .n5e-tabs .item.active { color:var(--n5e-ink); background:#fff8e8; border-bottom-color:var(--n5e-accent); }
+.n5e-design-dossier .n5e-tabs .item:hover { color:var(--n5e-accent); }
+.n5e-design-dossier .d-main { padding:10px 14px; background:url('../assets/journal/branches.svg') bottom right/150px auto no-repeat; }
+.n5e-design-dossier .ds-main-top { display:grid; grid-template-columns:1fr 1.15fr; gap:18px; margin:12px 0; }
+.n5e-design-dossier .ds-section { min-width:0; }
+.n5e-design-dossier .ds-section h2 { margin:0 0 8px; padding:5px 26px 6px 12px; width:fit-content; min-width:155px; background:url('../assets/journal/brush.svg') center/100% 100% no-repeat; color:#fff8e8; border:0; font:700 19px Georgia,serif; }
+.n5e-design-dossier .ds-section-heading { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.n5e-design-dossier .ds-section-heading > span { color:var(--n5e-muted); font-size:11px; }
+.n5e-design-dossier .d-saves,.n5e-design-dossier .d-disciplines { border:1px solid var(--n5e-line); border-radius:4px; padding:3px 8px; }
+.n5e-design-dossier .d-save { padding:3px 0; border-bottom:1px solid var(--n5e-line-soft); }
+.n5e-design-dossier .d-save .prof-badge { display:none; }
+.n5e-design-dossier .d-save .label { flex:1; }
+.n5e-design-dossier .d-discipline { padding:10px 0; border-bottom:1px solid var(--n5e-line-soft); }
+.n5e-design-dossier .d-disc-name .title { font:700 17px Georgia,serif; }
+.n5e-design-dossier .d-pins { flex-direction:row; flex-wrap:wrap; align-items:center; gap:5px; min-height:30px; border-bottom:1px solid var(--n5e-line); padding-bottom:8px; }
+.n5e-design-dossier .d-pins .d-section-title { font-size:14px; }
+.n5e-design-dossier .d-pin { min-height:26px; border-radius:3px; font-size:12px; max-width:240px; }
+.n5e-design-dossier .d-skills { columns:2; column-gap:22px; display:block; list-style:none; padding:0; margin:0; }
+.n5e-design-dossier .d-skill { break-inside:avoid; display:flex; align-items:center; gap:7px; min-height:28px; padding:3px 5px; border-bottom:1px solid var(--n5e-line); font-size:14px; }
+.n5e-design-dossier .d-skill .label { flex:1; min-width:0; }
+.n5e-design-dossier .d-skill .ab { order:2; font-size:10px; color:var(--n5e-muted); }
+.n5e-design-dossier .d-skill .mastery { order:3; }
+.n5e-design-dossier .d-skill > b { order:4; min-width:24px; text-align:right; }
+.n5e-design-dossier .d-passives { margin-top:10px; padding:8px; border:1px solid var(--n5e-line); font-size:12px; }
+.n5e-design-dossier .d-toolkits { margin-top:8px; font-size:12px; }
+.n5e-design-dossier .window-content :is(input,select,textarea) { background:#fff9ec; color:var(--n5e-ink); border-color:var(--n5e-line); }
+.n5e-design-dossier .window-content :is(button,a,input,select):focus-visible { outline:2px solid var(--n5e-accent); outline-offset:2px; }
+.n5e-design-dossier .window-content ::selection { background:#d6dfc3; color:#243d30; }
+@container (max-width:900px) {
+ .n5e-design-dossier .ds-identity-row { flex-direction:column; }
+ .n5e-design-dossier .d-head-buttons { max-width:none; justify-content:flex-start; }
+ .n5e-design-dossier .ds-main-top { gap:10px; }
+ .n5e-design-dossier .d-skills { columns:1; }
+ .n5e-design-dossier .n5e-tabs .item { font-size:12px; padding:7px 4px; }
+}
+/* Keep six saves and three disciplines balanced without clipping longer condition names. */
+.n5e-design-dossier .d-saves { grid-template-columns:minmax(0,1fr); }
+.n5e-design-dossier .d-save { min-height:26px; }
+.n5e-design-dossier .d-disciplines { gap:0; }
+.n5e-design-dossier .d-discipline { min-height:52px; border:0; border-bottom:1px solid var(--n5e-line-soft); border-radius:0; background:transparent; padding:5px 0; }
+.n5e-design-dossier .d-discipline:last-child { border:0; }
+.n5e-design-dossier .d-conditions .condition { flex-wrap:wrap; }
+.n5e-design-dossier .d-conditions .condition .name { flex-basis:65%; white-space:normal; overflow:visible; text-overflow:clip; }
+.n5e-design-dossier .d-conditions .ranks { margin-left:auto; }

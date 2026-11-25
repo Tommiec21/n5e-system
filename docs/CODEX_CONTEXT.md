@@ -601,3 +601,7 @@ Saved preview: N5e System/Reports/GM Workspace Layouts/GM06-correction-preview.h
 Based on a12e7c90; Claude subclass-folder changes retained. Added a local Hidden Leaf SVG in the desk header and a GM-only Journal Desk button in the native Journal directory header (including its popout). Reuses game.n5e.api.journalDesk; does not replace directory controls, change ownership, or add a dependency. Button insertion is guarded against duplicates. Existing settings/API access remains.
 
 Version 0.106.4-alpha.1. Focused local shortcut check/lint allocated attempt 1; PR/main CI attempts 2/3. No live Foundry testing or local installation.
+
+## SD01/SD02 — Codex, 2026-11-25
+
+Based on 328af7b2; new optional Shinobi Dossier design only. Four new templates reuse current shared controls, with scoped styling and additive registry/localization. No CharacterSheet logic, shared partials, gameplay or imported content changed. All 15 parity checks passed once; PR/main attempts 2/3 reserved. Static preview completed within three attempts (one harness failure). No live verification or local installation. docs/SHINOBI_DOSSIER.md records control map, scope and remaining SD03–SD06. Target 0.109.1-alpha.1; publication pending. GM04d/GM05b plans remain on hold.

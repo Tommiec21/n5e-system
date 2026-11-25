@@ -1,3 +1,7 @@
+## 0.109.1-alpha.1 — Shinobi Dossier Main sheet
+
+Adds optional Shinobi Dossier: parchment, Leaf imagery, forest-green headers, resource rail and compact Main layout using existing sheet actions and data. Other tabs remain shared; their detailed styling is scheduled in SD03–SD05. No gameplay changes or live verification.
+
 ## 0.109.0-alpha.1 — LEFT1 P1–P5: small leftovers
 
 King 2026-11-25 (docs/LEFT1_SPEC.md).

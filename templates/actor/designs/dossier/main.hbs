@@ -1,0 +1,10 @@
+{{!-- Main arranges existing roll controls; it does not calculate or store statistics. --}}
+<section class="tab n5e-tab main d-main {{tab.cssClass}}" data-tab="main" data-group="primary">
+  {{> "systems/n5e/templates/actor/designs/shared/pins.hbs" m=d.main}}
+  <div class="ds-main-top">
+    <section class="ds-section"><h2>Saving Throws</h2>{{> "systems/n5e/templates/actor/designs/shared/saves.hbs" m=d.main}}</section>
+    <section class="ds-section"><h2>Disciplines</h2>{{> "systems/n5e/templates/actor/designs/shared/disciplines.hbs" m=d.main}}</section>
+  </div>
+  <section class="ds-section ds-skills"><div class="ds-section-heading"><h2>Skills</h2><span>● Proficient · ◆ Mastery</span></div>{{> "systems/n5e/templates/actor/designs/shared/skills.hbs" m=d.main}}</section>
+  {{> "systems/n5e/templates/actor/designs/shared/extras.hbs" m=d.main}}
+</section>
