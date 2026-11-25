@@ -20,5 +20,10 @@ King 2026-11-25 (playtest with his wife, a Hyuga):
 - Rolls are posted to chat and kept on the character (no rerolls).
 - Increases already gained are kept: the first time, recorded clan increases and level-up ASIs go on top; later changes keep the difference from the old starting scores.
 
+### Browser tabs and title (0.107.2-alpha.1)
+- King: "the current N5e Browser only has Jutsu. And header text which is impossible to read via dark mode."
+- The tab links used Foundry's "tab" class, which Foundry hides unless active: renamed (b-tab). The window title (an h1) took our heading's dark ink: it now inherits the header's color.
+
 ## Progress log
 - 2026-11-25 King: playtest issues (Hijutsu from other clans; no starting ability scores). Claude: built and published 0.107.1-alpha.1.
+- 2026-11-25 King: browser shows only Jutsu; dark-mode title unreadable. Claude: fixed, published 0.107.2-alpha.1.

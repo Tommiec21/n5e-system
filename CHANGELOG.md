@@ -1,3 +1,10 @@
+## 0.107.2-alpha.1 — Compendium Browser: every tab shows; readable title
+
+King 2026-11-25.
+
+- **All tabs are back:** the N5e Browser showed only its Jutsu tab. Features & Feats, Stances, Equipment and Classes & Origins are listed again (Foundry hides any inactive element named "tab", which our tab links were).
+- **Window titles:** the title of N5e windows (the Browser and others) was dark on Foundry's dark header; it now uses the header's own color.
+
 ## 0.107.1-alpha.1 — Playtest fixes: Hijutsu by clan, starting ability scores
 
 King 2026-11-25 (docs/PLAY1_SPEC.md).

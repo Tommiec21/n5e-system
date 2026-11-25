@@ -721,9 +721,10 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
 /* N5e Compendium Browser (applications/browser/compendium-browser.mjs) */
 .n5e-browser .window-content { display: grid; grid-template-columns: 270px 1fr; gap: 8px; padding: 6px; overflow: hidden; }
 .n5e-browser .browser-side { display: flex; flex-direction: column; min-height: 0; }
-.n5e-browser .tabs { display: flex; flex-direction: column; gap: 2px; margin-bottom: 6px; }
-.n5e-browser .tabs .tab { padding: 3px 6px; border-radius: 4px; cursor: pointer; }
-.n5e-browser .tabs .tab.active { background: rgba(255, 100, 0, 0.2); font-weight: bold; }
+.n5e-browser .b-tabs { display: flex; flex-direction: column; gap: 2px; margin-bottom: 6px; }
+.n5e-browser .b-tabs .b-tab { display: flex; justify-content: space-between; padding: 4px 8px; border-radius: 4px; cursor: pointer; }
+.n5e-browser .b-tabs .b-tab:hover { background: rgba(255, 100, 0, 0.1); }
+.n5e-browser .b-tabs .b-tab.active { background: rgba(255, 100, 0, 0.2); font-weight: bold; }
 .n5e-browser .count { opacity: 0.6; font-size: 0.85em; }
 .n5e-browser .filters { overflow-y: auto; display: flex; flex-direction: column; gap: 4px; min-height: 0; }
 .n5e-browser .filter { border: 1px solid #0003; border-radius: 4px; padding: 2px 6px 4px; }
@@ -1099,3 +1100,6 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
 .n5e-ability-setup .ab-pick { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-weight: 600; }
 .n5e-ability-setup .ab-pick :is(input, select) { width: 5.5em; }
 .n5e .ability-scores.ready { box-shadow: 0 0 0 2px var(--n5e-accent, #b5642b), 0 0 8px var(--n5e-accent, #b5642b); }
+
+/* The window title is an h1: our heading colour (dark ink) made it unreadable on Foundry's dark header. */
+.n5e-v2 .window-header h1.window-title { color: inherit; font-family: inherit; font-size: inherit; font-weight: inherit; }

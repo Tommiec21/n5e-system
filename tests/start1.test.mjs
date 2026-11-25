@@ -57,3 +57,11 @@ test("Starting scores: the sheet offers them first; the world rule picks the met
   }
   assert.match(fs.readFileSync(path.join(ROOT, "module/config/rules.mjs"), "utf8"), /abilityGeneration: \{ group: "character", type: "choice", default: "any"/);
 });
+
+test("Browser: every tab shows (not Foundry's .tab, which it hides when inactive); readable window title", () => {
+  const tpl = fs.readFileSync(path.join(ROOT, "templates/apps/compendium-browser.hbs"), "utf8");
+  assert.match(tpl, /<nav class="b-tabs"/);
+  assert.match(tpl, /class="b-tab\{\{#if active\}\} active\{\{\/if\}\}"/);
+  assert.ok(!/class="tab[ "{]/.test(tpl));
+  assert.match(fs.readFileSync(path.join(ROOT, "styles/sheet.css"), "utf8"), /\.n5e-v2 \.window-header h1\.window-title \{ color: inherit;/);
+});

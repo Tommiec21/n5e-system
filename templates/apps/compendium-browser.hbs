@@ -2,8 +2,9 @@
       Context: tabs [{key, label, active, count}], filters (rules/browser.mjs TABS + options), search,
       inText, sorts. Controls carry data-multi / data-range / data-max / data-bool = the filter field. --}}
 <div class="browser-side">
-  <nav class="tabs">
-    {{#each tabs}}<a class="tab{{#if active}} active{{/if}}" data-action="tab" data-tab="{{key}}">{{label}} <span class="count">{{count}}</span></a>{{/each}}
+  {{!-- b-tabs / b-tab, not Foundry's tabs / tab: Foundry hides every inactive ".tab" in a window. --}}
+  <nav class="b-tabs" aria-label="Browser tabs">
+    {{#each tabs}}<a class="b-tab{{#if active}} active{{/if}}" data-action="tab" data-tab="{{key}}" aria-pressed="{{active}}">{{label}} <span class="count">{{count}}</span></a>{{/each}}
   </nav>
   <div class="filters">
     <input type="search" name="search" value="{{search}}" placeholder="Search names…" aria-label="Search" autocomplete="off">
