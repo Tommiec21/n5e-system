@@ -1227,3 +1227,12 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
 .n5e-level-up .lu-detail-text p { margin: 0 0 8px; }
 .n5e-level-up .lu-card.lu-has-detail { cursor: pointer; }
 .n5e-level-up .lu-card.lu-reading { box-shadow: 0 0 0 2px var(--n5e-gold); }
+
+/* Item sheet description (King 2026-11-25): the text box filled only its 220px minimum and scrolled inside
+   itself. Now the text grows to its full length (the tab scrolls when it's longer than the sheet) and the
+   main box fills the empty space when it's shorter. */
+.n5e-v2.n5e-item .n5e-item-tab.description.active { display: flex; flex-direction: column; }
+.n5e-v2.n5e-item .desc-block.main { flex: 1 0 auto; display: flex; flex-direction: column; }
+.n5e-v2.n5e-item .desc-block prose-mirror { height: auto; max-height: none; }
+.n5e-v2.n5e-item .desc-block.main prose-mirror { flex: 1 0 auto; }
+.n5e-v2.n5e-item .desc-block prose-mirror .editor-content { height: auto; max-height: none; overflow: visible; }

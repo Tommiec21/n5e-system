@@ -21,8 +21,13 @@ Status: **built (0.110.1-alpha.1).**
 - Clicking a choice card still picks it; clicking another card shows that one; the card being read has a gold ring. The × closes the panel and the window returns to its width.
 - The long hover on those cards is gone; the header says "Click any card to read its full text."
 
+## Item sheet description height (King 2026-11-25, 0.111.3-alpha.1)
+
+- The editable Description box stayed at its 220px minimum and scrolled inside itself, leaving the rest of the card empty. It now grows with its text (the tab scrolls) and fills the card when the text is short.
+
 ## Progress log
 - 2026-11-25 King: four playtest fixes. Claude: built and published 0.110.1-alpha.1.
 - 2026-11-25 King: the jutsu window should use the item sheet's design. Claude: rebuilt in the item sheet's look, published 0.110.2-alpha.1.
 - 2026-11-25 King: sidebar labels look 3D. Claude: Foundry's text shadow removed in N5e windows, published 0.110.3-alpha.1.
 - 2026-11-25 King: level-up hover boxes too long; test a details panel that widens the window. Claude: built, published 0.111.2-alpha.1.
+- 2026-11-25 King: feature text uses ~40% of the card and scrolls. Claude: description box fills the card, published 0.111.3-alpha.1.

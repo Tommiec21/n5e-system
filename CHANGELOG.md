@@ -1,3 +1,7 @@
+## 0.111.3-alpha.1
+
+- **Item sheet text:** the Description text uses the whole card instead of a small box that scrolled inside itself; long text scrolls with the tab.
+
 ## 0.111.2-alpha.1
 
 - **Level-up details panel:** clicking a card in the level-up window widens it to the right and shows that feature's full text and keywords in the window's own style, instead of a long hover box. The × closes it.
