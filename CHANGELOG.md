@@ -1,3 +1,7 @@
+## 0.111.2-alpha.1
+
+- **Level-up details panel:** clicking a card in the level-up window widens it to the right and shows that feature's full text and keywords in the window's own style, instead of a long hover box. The × closes it.
+
 ## 0.111.1-alpha.1
 
 - **Defenses text:** Weak is now **Vulnerable** (and the Shinobi Scroll's Weaknesses row is Vulnerabilities). Hover text is King's: damage Halved / Nullified / Doubled; conditions and states Adv on / Cannot gain / Disadvantage on.

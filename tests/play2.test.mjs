@@ -41,3 +41,13 @@ test("PLAY2: Jutsu tab uses the Combat tab's card and opens the jutsu window", (
   assert.match(cast, /jutsuWindowParts/, "the jutsu window is built like the item sheet");
   assert.match(cast, /"n5e-jutsu-window"/);
 });
+
+test("PLAY2: level-up details panel: cards open their text on click, the window widens", () => {
+  const app = read("module/applications/level-up.mjs");
+  assert.match(app, /closeDetail: LevelUpDialog\.#onCloseDetail/);
+  assert.match(app, /this\.#baseWidth \* 1\.6/);
+  assert.match(app, /data-detail-key=/);
+  const tpl = read("templates/apps/level-up.hbs");
+  assert.match(tpl, /class="lu-detail"/);
+  assert.match(tpl, /Click any card to read its full text/);
+});

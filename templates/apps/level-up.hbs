@@ -12,10 +12,11 @@
     <button type="button" data-action="openJutsuBrowser" data-step="{{id}}"><i class="fa-solid fa-book-open"></i> Open Jutsu Browser{{#if open}} ({{open}} open){{/if}}</button>
   </div>
 {{/inline}}
+<div class="lu-shell {{#if detail}}with-detail{{/if}}">
 <div class="lu">
   <header class="lu-head">
     <h2>{{cls}} <span>Level {{level}}</span></h2>
-    <p class="sub">Make each choice below, then Apply. Hover any card for its full text.</p>
+    <p class="sub">Make each choice below, then Apply. Click any card to read its full text.</p>
   </header>
   <div class="lu-steps">
     {{#each steps}}
@@ -131,4 +132,18 @@
     <button type="button" data-action="cancel">Cancel</button>
     <button type="button" class="primary" data-action="apply" {{#unless ready}}disabled{{/unless}}>{{#if edit}}Apply changes to level {{level}}{{else}}Apply level {{level}}{{/if}}</button>
   </footer>
+</div>
+{{#if detail}}
+  <aside class="lu-detail">
+    <header class="lu-detail-head">
+      {{#if detail.img}}<img src="{{detail.img}}" alt="" width="48" height="48">{{/if}}
+      <div><span class="type">{{detail.type}}{{#if detail.level}} · Level {{detail.level}}{{/if}}</span><h2>{{detail.name}}</h2>{{#if detail.extra}}<span class="sub">{{detail.extra}}</span>{{/if}}</div>
+      <button type="button" class="lu-detail-close" data-action="closeDetail" aria-label="Close the details" data-tooltip="Close"><i class="fa-solid fa-xmark"></i></button>
+    </header>
+    <div class="lu-detail-body">
+      {{#if detail.keywords.length}}<div class="lu-detail-keys">{{#each detail.keywords}}<span class="chip">{{this}}</span>{{/each}}</div>{{/if}}
+      <div class="lu-detail-text">{{{detail.text}}}</div>
+    </div>
+  </aside>
+{{/if}}
 </div>

@@ -51,7 +51,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `enrichers.mjs` | 180 | Shortcuts in text (Foundry side): turns [[/save ...]], [[/check ...]], [[/damage ...]], [[/heal ...]], @Condition[...] and @State[...] into clickable links w... | `registerEnrichers`, `onLinkClick` |
 | `helpers.mjs` | 17 | Handlebars helpers used by N5e templates (registered by the system so templates don't depend on which helpers core happens to ship). | `HELPERS`, `registerHelpers` |
 | `level-history.mjs` | 68 | LVL1 L5 (King 2026-11-24): Level History. | `levelHistory`, `LevelHistory` |
-| `level-up.mjs` | 589 | Level-up dialog: one page listing what the new level grants, with a card for every choice (dnd5e's advancement flow, flattened). | `LevelUpDialog` |
+| `level-up.mjs` | 655 | Level-up dialog: one page listing what the new level grants, with a card for every choice (dnd5e's advancement flow, flattened). | `LevelUpDialog` |
 | `schema-form.mjs` | 76 | Builds simple form rows from a data model schema, so the Phase 1 placeholder sheets show and edit every stored field without hand-written templates. | `buildRows`, `collapseDuplicates`, `coerceListInputs` |
 | `sheets.mjs` | 207 | Phase 1 placeholder sheets (ApplicationV2). | `TEMPLATE_PATHS`, `N5eActorSheet`, `N5eItemSheet` |
 

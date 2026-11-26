@@ -59,7 +59,8 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
       cancel: LevelUpDialog.#onCancel,
       pick: LevelUpDialog.#onPick,
       toggleReplace: LevelUpDialog.#onToggleReplace,
-      openJutsuBrowser: LevelUpDialog.#onOpenJutsuBrowser
+      openJutsuBrowser: LevelUpDialog.#onOpenJutsuBrowser,
+      closeDetail: LevelUpDialog.#onCloseDetail
     }
   };
 
@@ -75,6 +76,14 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
 
   /** uuid -> document cache. */
   #docs = new Map();
+
+  /**
+   * Details panel (King 2026-11-25): clicking a card widens the window ~60% to the right and shows the
+   * feature's full text and keywords there, in place of a long hover. key -> {doc, extra}; #detail = open key.
+   */
+  #details = new Map();
+  #detail = null;
+  #baseWidth = null;
 
   /** Open the dialog; resolves true when applied, false when closed. */
   static async open(actor, cls, level) {
@@ -131,7 +140,10 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
   /** Tooltip card for an item. */
   #tip(doc, extra = "") {
     const desc = doc.system?.description ?? "";
-    return `<div class="n5e-tip"><b class="tt">${esc(doc.name)}</b>${extra ? `<div class="tm">${esc(extra)}</div>` : ""}`
+    // The card carries this key (copied off the tip in _onRender) so a click opens the details panel.
+    const key = doc.uuid ?? doc.id ?? doc.name;
+    this.#details.set(key, { doc, extra });
+    return `<div class="n5e-tip" data-detail-key="${esc(key)}"><b class="tt">${esc(doc.name)}</b>${extra ? `<div class="tm">${esc(extra)}</div>` : ""}`
       + `<div class="tb">${desc}</div></div>`;
   }
 
@@ -335,6 +347,23 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
   async _onRender(context, options) {
     await super._onRender?.(context, options);
     const root = this.element;
+    // Cards with a full text open it in the details panel on click (the long hover is dropped).
+    for ( const el of root.querySelectorAll("[data-tooltip-html]") ) {
+      const key = /data-detail-key="([^"]+)"/.exec(el.dataset.tooltipHtml ?? "")?.[1];
+      if ( !key ) continue;
+      el.dataset.detailKey = foundry.utils.unescapeHTML?.(key) ?? key.replace(/&amp;/g, "&").replace(/&quot;/g, '"');
+      delete el.dataset.tooltipHtml;
+      el.classList.add("lu-has-detail");
+      el.classList.toggle("lu-reading", el.dataset.detailKey === this.#detail);
+    }
+    if ( !root.dataset.detailClicks ) {
+      root.dataset.detailClicks = "1";
+      root.addEventListener("click", ev => {
+        if ( ev.target.closest?.(".lu-x, [data-action='closeDetail']") ) return;
+        const card = ev.target.closest?.("[data-detail-key]");
+        if ( card ) this.#showDetail(card.dataset.detailKey);
+      });
+    }
     if ( root.dataset.jutsuDrop ) return;
     root.dataset.jutsuDrop = "1";
     const zones = ".lu-jutsu, .lu-bonusJutsu, .lu-swapJutsu";
@@ -478,7 +507,44 @@ export default class LevelUpDialog extends HandlebarsApplicationMixin(Applicatio
     const problems = validate(steps, this.#sel, poolSizes);
     problems.push(...await validateItemChoices(this.#ownedView(), this.level, steps, this.#sel, uuid => this.#doc(uuid)));
     return { steps: views, problems, ready: problems.length === 0, level: this.level, cls: this.cls.name,
-      rankOrder: RANK_ORDER, edit: this.edit, review: this.#review(views) };
+      rankOrder: RANK_ORDER, edit: this.edit, review: this.#review(views), detail: await this.#detailView() };
+  }
+
+  /** Open the details panel on a card's feature, widening the window the first time. */
+  #showDetail(key) {
+    if ( !this.#details.has(key) ) return;
+    const reRender = this.#detail !== key;
+    this.#detail = key;
+    if ( this.#baseWidth === null ) {
+      this.#baseWidth = this.position.width;
+      const width = Math.round(this.#baseWidth * 1.6);
+      const left = Math.max(0, Math.min(this.position.left, window.innerWidth - width - 10));
+      this.setPosition({ width, left });
+    }
+    if ( reRender ) this.render();
+  }
+
+  static #onCloseDetail() {
+    this.#detail = null;
+    if ( this.#baseWidth !== null ) this.setPosition({ width: this.#baseWidth });
+    this.#baseWidth = null;
+    this.render();
+  }
+
+  /** The details panel's view: name, image, what kind of item, the extra line, keywords, the enriched text. */
+  async #detailView() {
+    const entry = this.#detail ? this.#details.get(this.#detail) : null;
+    if ( !entry ) return null;
+    const { doc, extra } = entry;
+    const N = CONFIG.N5E;
+    const s = doc.system ?? {};
+    const keyword = k => N.keywords?.[k]?.label ?? N.featureTags?.[k]?.label;
+    const keywords = [...new Set([...(s.keywords ?? []), ...(s.tags ?? [])])].map(keyword).filter(Boolean);
+    const TE = foundry.applications.ux.TextEditor.implementation;
+    const text = await TE.enrichHTML(s.description ?? "", { relativeTo: doc, rollData: this.actor.getRollData?.() ?? {} });
+    const type = game.i18n.localize(CONFIG.Item.typeLabels?.[doc.type] ?? doc.type);
+    const level = s.level ?? doc.flags?.n5e?.advancement?.level;
+    return { name: doc.name, img: doc.img, type, extra, level, keywords, text };
   }
 
   /** Toggle a choice. data-step, data-value, data-field (asi sub-field) on the clicked element. */
