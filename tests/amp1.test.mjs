@@ -195,7 +195,7 @@ import { validateConditionalRules as validateCardRules } from "../module/rules/e
 test("AMP1c: every Amp card is valid, and every Amp button names an existing card", () => {
   const dir = path.join(import.meta.dirname, "..", "packs/_source/amps");
   const cards = fs.readdirSync(dir).filter(f => !f.startsWith("_folder")).map(f => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")));
-  assert.equal(cards.filter(c => !c.system.level && c.system.owner?.kind !== "jutsu").length, 60, "20 cards for the Amp buttons (AMP1c), 33 clan and 5 class cards (AMP1d; Combat Coordinated is a condition, King Q-E4), DYNAMIC FORM! and Flawless (AMP1e); the rest are AMP1g versions");
+  assert.equal(cards.filter(c => !c.system.level && c.system.owner?.kind !== "jutsu").length, 61, "20 cards for the Amp buttons (AMP1c), 33 clan and 5 class cards (AMP1d; Combat Coordinated is a condition, King Q-E4), DYNAMIC FORM! and Flawless (AMP1e), Chakra Barrier (CARDS1); the rest are AMP1g versions");
   const keys = new Set(cards.map(c => c.system.identifier));
   for ( const c of cards ) {
     validateCardRules(c.flags.n5e.rules ?? []);
@@ -215,7 +215,7 @@ test("AMP1c: every Amp card is valid, and every Amp button names an existing car
       if ( a.effect?.amp ) { buttons++; assert.ok(keys.has(a.effect.amp), `${f}: unknown card ${a.effect.amp}`); }
     }
   }
-  assert.equal(buttons, 28, "25, plus DYNAMIC FORM! and Flawless (AMP1e), plus Battle Trance entered again for more Discipline (STD6d Weapon Specialist)");
+  assert.equal(buttons, 29, "25, plus DYNAMIC FORM! and Flawless (AMP1e), plus Battle Trance entered again for more Discipline (STD6d Weapon Specialist), plus Create Chakra Barrier (CARDS1)");
 });
 
 test("AMP1c: checks and saves know the ability they use (Battle Trance: your Taijutsu ability)", async () => {

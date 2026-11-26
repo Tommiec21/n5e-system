@@ -58,6 +58,7 @@ export function itemAudit(actor) {
     const ranked = [...group].sort((a, b) => weight(b) - weight(a) || (a._stats?.createdTime ?? 0) - (b._stats?.createdTime ?? 0));
     duplicates.push({ key, name: ranked[0].name, keep: ranked[0]._id, remove: ranked.slice(1).map(i => i._id) });
   }
-  const creature = ["character", "npc"].includes(actor?.type);
+  // A summon fights with its own strikes and has no Unarmed Strike (King 2026-11-25).
+  const creature = ["character", "npc"].includes(actor?.type) && !actor?.flags?.n5e?.fromSummoner;
   return { duplicates, missingUnarmed: creature && !list(actor?.items).some(isUnarmed) };
 }

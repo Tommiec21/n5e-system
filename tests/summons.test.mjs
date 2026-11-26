@@ -45,8 +45,9 @@ test("Bunshin: 1 HP, 30 ft., AC your Ninjutsu DC, Bunshin Strike 1d6, Bunshins C
   assert.deepEqual([b.type, b.system.hpMax, b.system.traits.speed.walk, b.system.attributes.ac.calc, b.system.details.template], ["npc", 1, 30, "flat", "clone"]);
   const linked = summonerDelta(b.flags.n5e.fromSummoner, caster);
   assert.equal(linked.attributes.ac.flat, 15);
-  assert.equal(linked.bonuses.attack.nin, 3, "its proficiency (4, at your level) plus 3 is your +7");
-  assert.equal(linked.bonuses.saveDC.nin, 3, "8 + 4 + 3 is your DC 15");
+  // King 2026-11-25: its totals are yours (an override of the total, whatever its own abilities).
+  assert.equal(linked.override.attack.nin, 7, "your +7");
+  assert.equal(linked.override.dc.nin, 15, "your DC 15");
   assert.equal(linked.skills.ste.bonus, 9);
   assert.equal(linked.traits.senses.darkvision, 60);
   const strike = b.items.find(i => i.name === "Bunshin Strike").system.activities[0];
@@ -65,10 +66,10 @@ test("Void Soul: Medium Construct, AC 8 + Dex + Con + Prof, immune to Charmed, d
   assert.deepEqual([strike.damage.parts[0].formula, strike.damage.parts[0].type], ["1d6 + @str", "bludgeoning"]);
 });
 
-test("a summoned token carries its links and its summoner", () => {
+test("a summoned token carries its links and its summoner (and, SUMM1, the cast rank)", () => {
   const [t] = alliedTokenData({ name: "Bunshin", delta: { system: { details: { blurb: "x" } } } },
     { count: 1, positions: [{ x: 0, y: 0 }], ownerId: "u1", casterUuid: "Actor.me", itemId: "i", itemUuid: "Actor.me.Item.i", expires: 60, linked: { attributes: { ac: { flat: 15 } } } });
-  assert.deepEqual(t.delta.system, { details: { blurb: "x", summoner: "Actor.me" }, attributes: { ac: { flat: 15 } }, allied: true });
+  assert.deepEqual(t.delta.system, { details: { blurb: "x", summoner: "Actor.me", summonRank: "" }, attributes: { ac: { flat: 15 } }, allied: true });
 });
 
 test("Tajū Kage Bunshin, Superior Clones and Void Heart Mask place the summons", () => {

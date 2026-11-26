@@ -2,7 +2,8 @@
  * Summoner-linked statistics (King 2026-11-21: the Bunshin and the Void Soul). An Allied NPC template
  * names, in flags.n5e.fromSummoner, the numbers it takes from whoever summons it:
  *   { "attributes.ac.flat": "@dc.nin", "details.level": "@level", "traits.speed.walk": "@speed" }
- * Keys are paths under the summon's `system`; values are formulas over the summoner's numbers
+ * Keys are paths under the summon's `system` (or `override.attack.<d>` / `override.dc.<d>`: the summon's
+ * total attack bonus or save DC for that discipline is the formula's value, King 2026-11-25); values are formulas over the summoner's numbers
  * (summonerData). A formula that is a single reference keeps that value as it is (a save's
  * proficiency stays true or false); anything else is arithmetic (max, min, floor, ceil allowed).
  * workflow/allied.mjs writes the results into the token's actor delta when it is summoned.
@@ -73,6 +74,59 @@ export function summonerDelta(links, data) {
     for ( const k of keys.slice(0, -1) ) o = (o[k] ??= {});
     o[keys.at(-1)] = v;
   }
+  return out;
+}
+
+/**
+ * King 2026-11-25: "uses your attack bonus / save DC" means the summon's total is yours, whatever its own
+ * ability scores (the Blood Dragon's Intelligence 1 made its Ninjutsu attack −2 when the link was a
+ * bonus). A "<your number> − @prof" bonus link reads as an override of the total. Applied when links are
+ * read, so summons imported into a world before 0.112.1 work too.
+ */
+export function totalLinks(links) {
+  const out = {};
+  for ( const [path, f] of Object.entries(links ?? {}) ) {
+    const atk = path.match(/^bonuses\.attack\.(nin|tai|gen)$/);
+    const dc = path.match(/^bonuses\.saveDC\.(nin|tai|gen)$/);
+    const s = String(f).replace(/\s+/g, " ").trim();
+    if ( atk && / - @prof$/.test(s) ) out[`override.attack.${atk[1]}`] = s.replace(/ - @prof$/, "");
+    else if ( dc && / - 8 - @prof$/.test(s) ) out[`override.dc.${dc[1]}`] = s.replace(/ - 8 - @prof$/, "");
+    else out[path] = f;
+  }
+  return out;
+}
+
+/** SUMM1: a plain name for each linked number (for the sheet's "Summoned by" line). */
+const LINK_NAMES = { "override.attack": "attack bonus", "override.dc": "save DC", "details.level": "level", "attributes.ac.flat": "AC", "attributes.ac.formula": "AC", "traits.speed": "speed",
+  "traits.size": "size", "bonuses.saveDC": "save DC", "bonuses.attack": "attack bonus", "hp": "hit points", "cp": "chakra", "saves": "saving throws",
+  "skills": "skills", "traits.senses": "senses", "abilities": "ability scores" };
+export function linkLabels(links) {
+  const out = [];
+  for ( const path of Object.keys(totalLinks(links)) ) {
+    const key = Object.keys(LINK_NAMES).filter(k => path === k || path.startsWith(`${k}.`)).sort((a, b) => b.length - a.length)[0];
+    const name = key ? LINK_NAMES[key] : path.split(".").at(-1);
+    if ( !out.includes(name) ) out.push(name);
+  }
+  return out;
+}
+
+/** SUMM1: does a summon's link depend on the rank its jutsu was cast at? */
+export const linksNeedRank = links => Object.values(links ?? {}).some(f => String(f).includes("@rankValue"));
+
+/**
+ * SUMM1 (King 2026-11-25, Q-SU2 live): the summon's linked values, worked out again from its summoner
+ * every time its data is prepared, as [path, value] pairs to set on the summon's system data.
+ */
+export function liveLinks(links, summonerSystem, rank = "") {
+  const out = [];
+  const walk = (o, pre) => {
+    for ( const [k, v] of Object.entries(o) ) {
+      const path = pre ? `${pre}.${k}` : k;
+      if ( v && typeof v === "object" && !Array.isArray(v) ) walk(v, path);
+      else out.push([path, v]);
+    }
+  };
+  walk(summonerDelta(totalLinks(links), summonerData(summonerSystem, { rank })), "");
   return out;
 }
 

@@ -3,7 +3,7 @@
   {{#each m.skillColumns}}{{#each this}}
     <li class="d-skill rollable {{#if proficient}}prof{{/if}}" data-tooltip-html="{{tip}}" {{#unless @root.editMode}}data-action="roll" data-roll="skill" data-key="{{key}}"{{/unless}}>
       {{#if @root.editMode}}
-        <input type="checkbox" name="system.skills.{{key}}.proficient" {{#if ownProficient}}checked{{/if}} aria-label="{{label}} proficiency">
+        <input type="checkbox" name="system.skills.{{key}}.proficient" {{#if ownProficient}}checked{{/if}} aria-label="{{label}} proficiency">{{> "systems/n5e/templates/parts/mastery-boxes.hbs" manualMastery}}
       {{else}}
         <span class="dot {{#if proficient}}on{{/if}}"></span>
       {{/if}}

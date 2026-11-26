@@ -1,6 +1,62 @@
-## 0.109.2-alpha.1 — Dossier readability
+## 0.112.3-alpha.1 — Dossier readability
 
 Shortens Dossier rail labels to Init, SPD and Prof. Ninja Naruto is limited to section headings and the Dossier title; stat, feature and jutsu names return to ordinary readable fonts. No gameplay or other-design changes.
+
+## 0.112.2-alpha.1
+
+- **Summons already in your world** get your attack bonus and save DC totals too (no re-import needed): old links are converted when read.
+- **No Unarmed Strike on summons:** a summon fights with its stat block's strikes (the Blood Dragon's Bite and Hydra Bullet). New summons don't get one; one a summon already has isn't shown on its Stat Block or Combat tab.
+
+## 0.112.1-alpha.1
+
+- **Summons use your attack bonus and save DC exactly:** a summon that "uses your attack bonus / save DC" now has your total, whatever its own ability scores (the Blood Dragon's Bite rolled −2 for a summoner with a +4 best attack; now +4). Its own effects, Mastery and conditions still apply on top. All 34 summons updated.
+
+## 0.112.0-alpha.1
+
+- **Class cards from the book's boxes (CARDS1):**
+  - **Transfiguration** lists the Chimeric Mutation (Aberration, Demonic, Monstrosity) and Transmogrified Biology (Sage Beast) penalty options.
+  - **Tidal Draw** is a condition card; Surging Maelstrom (and Abyss) have a Tidal Draw button.
+  - **Chakra Barrier** is an Amp card (Unique Amp; 9th and 17th versions), started from the feature's Create Chakra Barrier button.
+  - **Primal Chain**'s box is on Primal Strikes.
+- **Summon strikes and the summoner link (SUMM1):**
+  - Every NPC's Stat Block lists its "NPC Strikes" features (a summon's Bite and Hydra Bullet, Freeform Strikes) under **Strikes** with their attack bonus and an Attack button, no longer under Features.
+  - A summon shows **Summoned by** its summoner (click to open), with what it takes from them. **Link summoner** (or drop a character on that line) sets it for a summon placed by hand; the GM or the summon's owner can link or unlink.
+  - The link is **live**: the summon's linked numbers (level, attack bonus, save DC, AC...) follow the summoner's current ones, so level-ups and effects reach summons already on the map. Summons that grow by rank ask the rank when linked by hand.
+
+## 0.111.3-alpha.1
+
+- **Item sheet text:** the Description text uses the whole card instead of a small box that scrolled inside itself; long text scrolls with the tab.
+
+## 0.111.2-alpha.1
+
+- **Level-up details panel:** clicking a card in the level-up window widens it to the right and shows that feature's full text and keywords in the window's own style, instead of a long hover box. The × closes it.
+
+## 0.111.1-alpha.1
+
+- **Defenses text:** Weak is now **Vulnerable** (and the Shinobi Scroll's Weaknesses row is Vulnerabilities). Hover text is King's: damage Halved / Nullified / Doubled; conditions and states Adv on / Cannot gain / Disadvantage on.
+- **Condition and State Vulnerability:** new effect changes (Condition Vulnerability, State Vulnerability); saves against a condition or state you are Vulnerable to are made with disadvantage.
+
+## 0.111.0-alpha.1
+
+- **Defenses on the rail (DEF1):** a Defenses box after Hit Dice and Chakra Dice lists what the character resists, is immune to and is weak to (damage types, conditions and states as chips; hover for the rule). Hidden when there are none. On the default sheet and every design (Shinobi Scroll keeps its own rows).
+
+## 0.110.3-alpha.1
+
+- **Flat labels:** sidebar labels (Cost, Time, Range...) and other form labels in N5e windows no longer pick up Foundry's text shadow, which made them look embossed on the parchment.
+
+## 0.110.2-alpha.1
+
+- **Jutsu window:** now in the item sheet's look: the header (icon, type, name, rank and discipline), the sidebar of keywords and facts (cost, time, range, duration, attack, save DC), the text on parchment, then the cast options and a Cast / Cancel footer.
+
+## 0.110.1-alpha.1
+
+- **Disciplines:** "also Bukijutsu" removed from Taijutsu.
+- **Mastery by hand:** in edit mode, three small boxes beside the proficiency box on skills, saving throws and disciplines set Mastery ranks by hand (stored as "Manual" sources; the level cap applies). Saves and disciplines show their Mastery.
+- **Jutsu tab:** hovering a jutsu shows the Combat tab's card; clicking one opens its window (full text, cast options and toggles, Cast) instead of casting at once.
+
+## 0.110.0-alpha.1
+
+- **Feature icons (ICONS1):** the approved icons are on their items: Aburame (the clan, its features and the Symbiotic Hive options), Scout-Nin (the class and its core features), and Arbiter, Assault, Barrier and Cloning Scout (each subclass and its features). 62 icons.
 
 ## 0.109.1-alpha.1 — Shinobi Dossier Main sheet
 

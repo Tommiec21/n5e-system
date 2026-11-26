@@ -16,6 +16,7 @@
 import CreatureData from "./creature.mjs";
 import * as S from "../fields/shared.mjs";
 import { poolMax } from "../../rules/progression.mjs";
+import { liveLinks, linkLabels } from "../../rules/summoner-links.mjs";
 import { dieFaces } from "../../rules/formula.mjs";
 import { Breakdown } from "../../rules/breakdown.mjs";
 import { rule } from "../../rules/settings.mjs";
@@ -53,6 +54,7 @@ export default class NPCData extends CreatureData {
       epic: S.bool(false),
       template: S.str({ initial: "none" }),       // none|summon|clone|companion
       summoner: S.str(),                          // actor uuid
+      summonRank: S.str(),                        // SUMM1: the rank its jutsu was cast at (links that grow by rank)
       summonRole: S.str(),
       tribe: S.str(),
       creatureType: S.str({ initial: "humanoid" })
@@ -141,6 +143,7 @@ export default class NPCData extends CreatureData {
    * half proficient by level. Runs before Active Effects, so effects still change these.
    */
   prepareBaseData() {
+    this._applySummonerLinks();
     super.prepareBaseData();
     this.autoFailSaves = false;
     this.adversaryBuild = null;
@@ -158,6 +161,34 @@ export default class NPCData extends CreatureData {
       suggested: suggestedCounts(p), warnings: adversaryWarnings(p), baselines: {}, freeform: null };
   }
 
+  /**
+   * SUMM1 (King 2026-11-25): a summon takes some numbers from its summoner (flags.n5e.fromSummoner), live:
+   * worked out from the summoner's current data each time this one is prepared (Q-SU2), so the summoner's
+   * level-ups and effects reach summons already on the map. summonerLink: what the sheet shows.
+   */
+  _applySummonerLinks() {
+    this.summonerLink = null;
+    this._linkOverrides = {};
+    const uuid = this.details?.summoner;
+    const links = this.parent?.flags?.n5e?.fromSummoner;
+    if ( !uuid || !links || typeof globalThis.fromUuidSync !== "function" ) return;
+    let summoner = null;
+    try { summoner = globalThis.fromUuidSync(uuid); } catch { summoner = null; }
+    if ( !summoner?.system || summoner === this.parent ) {
+      this.summonerLink = { uuid, name: "", missing: true, linked: linkLabels(links) };
+      return;
+    }
+    // Without a known cast rank (summons placed before SUMM1), links that grow by rank keep their placed values.
+    const use = this.details.summonRank ? links : Object.fromEntries(Object.entries(links).filter(([, f]) => !String(f).includes("@rankValue")));
+    this._linkOverrides = {};
+    for ( const [path, value] of liveLinks(use, summoner.system, this.details.summonRank) ) {
+      // "override.attack.nin": the summon's Ninjutsu attack total is this value (its own abilities don't count).
+      if ( path.startsWith("override.") ) this._linkOverrides[path.slice(9)] = value;
+      else foundry.utils.setProperty(this, path, value);
+    }
+    this.summonerLink = { uuid, name: summoner.name, missing: false, linked: linkLabels(links), rank: this.details.summonRank };
+  }
+
   /** @override  Equipped armor, Reinforced and Blocking don't change an adversary's AC or DR (King Q-N8). */
   _collectItemGrants(items) {
     const g = super._collectItemGrants(items);
@@ -172,8 +203,9 @@ export default class NPCData extends CreatureData {
     return adversaryParts(kind, this.adversaryProfile);
   }
 
-  /** @override */
+  /** @override  SUMM1: a summon's attack bonus or save DC that is its summoner's ("attack.nin", "dc.gen") wins. */
   _statOverride(key) {
+    if ( this._linkOverrides?.[key] != null ) return this._linkOverrides[key];
     if ( !this.isAdversary ) return null;
     const o = this.adversary.overrides;
     const [group, id] = key.split(".");

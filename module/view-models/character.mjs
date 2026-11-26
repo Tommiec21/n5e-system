@@ -21,6 +21,7 @@ import {
 import { conditions as coreConditions, states } from "../config/conditions.mjs";
 import { removalOptions, CONDITION_GROUPS } from "../rules/condition-lifecycle.mjs";
 import { damageTypes } from "../config/combat.mjs";
+import { tipHTML, jutsuTipParts } from "./combat.mjs";
 import { usesStamina } from "../rules/trackers.mjs";
 import { jutsuSections } from "../config/jutsu.mjs";
 import { containerTypes, consumableTypes } from "../config/equipment.mjs";
@@ -164,6 +165,7 @@ export function railVM(actor, registry = coreConditions) {
     level: sys.level,
     prof: signed(sys.prof),
     resources: resourcesVM(actor),
+    defenses: defenseChipsVM(actor),
     deathSaves: rule("deathSaves") && (sys.hp?.value ?? 1) <= 0 && actor.type === "character" ? {
       success: pips(sys.deathSaves?.success ?? 0, 3), failure: pips(sys.deathSaves?.failure ?? 0, 3),
       stable: !!actor.statuses?.has?.("stabilized"), dead: !!actor.statuses?.has?.("dead") } : null,
@@ -199,23 +201,39 @@ export function railVM(actor, registry = coreConditions) {
 /*  Main tab                                    */
 /* -------------------------------------------- */
 
+/**
+ * Mastery set by hand: the stored sources with `target`'s "Manual" ranks set to n (clicking the box that
+ * is already the last one on lowers it by one). Other sources are kept as they are. Pure.
+ */
+export function setManualMastery(sources, target, n) {
+  const list = [...(sources ?? [])];
+  const isManual = m => m.target === target && /^Manual\b/.test(m.source ?? "");
+  const current = list.filter(isManual).length;
+  const next = Math.max(0, Math.min(3, n === current ? n - 1 : n));
+  return [...list.filter(m => !isManual(m)), ...Array.from({ length: next }, (_, i) => ({ target, source: `Manual ${i + 1}` }))];
+}
+
 /** Main tab: saving throws, skills (with tier and Mastery), toolkits, discipline attack/DC panels. */
 export function mainVM(actor) {
   const sys = actor.system;
+  // Mastery set by hand (King 2026-11-25): up to three "Manual" sources per target, toggled in edit mode.
+  const manual = target => (sys.mastery?.sources ?? []).filter(m => m.target === target && /^Manual\b/.test(m.source ?? "")).length;
+  const boxes = target => ({ target, boxes: [1, 2, 3].map(n => ({ n, on: n <= manual(target) })) });
   const abilityCards = Object.entries(abilities).map(([key, cfg]) => ({
     key, abbr: cfg.abbr.toUpperCase(), label: cfg.label,
     value: sys.abilities[key].value,
     mod: signed(sys.abilities[key].mod),
     save: signed(sys.saves[key].total),
     saveProficient: !!sys.saves[key].isProficient,
-    saveTip: bd(actor, `save.${key}`)
+    saveTip: bd(actor, `save.${key}`),
+    saveMastery: sys.saves[key].mastery ?? 0, manualMastery: boxes(`save.${key}`)
   }));
   const disciplineCards = castingDisciplines.map(key => ({
     key, label: disciplines[key].label,
     ability: abilities[sys.disciplines[key].ability]?.abbr ?? sys.disciplines[key].ability,
     attack: signed(sys.disciplines[key].attack), dc: sys.disciplines[key].dc,
     attackTip: bd(actor, `${key}.attack`), dcTip: bd(actor, `${key}.dc`, { signedTotal: false }),
-    note: key === "tai" ? "also Bukijutsu" : ""
+    mastery: actor.system.masteryFor?.(`attack.${key}`)?.rank ?? 0, manualMastery: boxes(`attack.${key}`)
   }));
   const skillRows = Object.entries(skills).map(([key, cfg]) => {
     const s = sys.skills[key];
@@ -223,7 +241,7 @@ export function mainVM(actor) {
       key, label: cfg.label, ability: abilities[s.ability]?.abbr ?? s.ability,
       total: signed(s.total), passive: s.passive,
       proficient: !!s.isProficient, ownProficient: !!s.proficient, granted: !!s.isProficient && !s.proficient,
-      mastery: s.mastery, masteryPips: pips(s.mastery, 3), tip: bd(actor, `skill.${key}`)
+      mastery: s.mastery, masteryPips: pips(s.mastery, 3), tip: bd(actor, `skill.${key}`), manualMastery: boxes(`skill.${key}`)
     };
   });
   const half = Math.ceil(skillRows.length / 2);
@@ -329,15 +347,8 @@ export function jutsuVM(actor, { discipline = "", search = "", expanded = new Se
           })(),
           upcastTo: live.upcastRanks?.length ? live.upcastRanks.at(-1) : null,
           // King 2026-11-16: the pill view shows the name and cost; everything else is on hover.
-          pillTip: (() => {
-            const esc2 = t => String(t ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-            const kws = [...s.keywords].filter(k => !["ninjutsu", "taijutsu", "genjutsu", "bukijutsu"].includes(k)).map(k => keywordChip(k).label);
-            const comps = componentChips(s.components).map(c => c.label).join(" · ");
-            const hitText = types.has("attack") ? `Attack ${signed(live.attack ?? 0)}` : types.has("save") ? `DC ${live.dc}` : "";
-            return [`<b>${esc2(i.name)}</b> (${esc2(s.rank)}-Rank)`, [range, area, s.cost.mode === "none" ? "" : `${costAt(chosen)} CP`, hitText].filter(Boolean).map(esc2).join(" · "),
-              kws.length ? esc2(kws.join(", ")) : "", comps ? `Components: ${esc2(comps)}` : "", s.duration?.concentration ? "Concentration" : "",
-              live.castable === false ? "No affinity" : ""].filter(Boolean).map(l => `<div>${l}</div>`).join("");
-          })(),
+          // King 2026-11-25: the same hover card as the Combat tab.
+          pillTip: tipHTML(jutsuTipParts(actor, i)),
           missingAccess: live.castable === false,
           unmetRequirement: live.meetsRequirement === false ? `Needs ${abilities[live.ability]?.abbr ?? live.ability} ${live.requirement}` : "",
           open,
@@ -597,9 +608,37 @@ export function biographyVM(actor) {
 export const xpTable = progression.xpToLevel;
 
 /**
- * LEFT1 P3 (King Q-L3): the Shinobi Scroll's Immunities, Weaknesses and Resistances rows, from the
+ * LEFT1 P3 (King Q-L3): the Shinobi Scroll's Immunities, Vulnerabilities and Resistances rows, from the
  * character's own traits and its effects (damage types, conditions and states). Empty rows say "None".
  */
+/**
+ * Rail "Defenses" box (King 2026-11-25, Option A): a row each for Resist, Immune and Vulnerable, damage
+ * types, conditions and states as chips (conditions in italics). Rows with nothing are left out; no rows:
+ * null. Hover text is King's (2026-11-25), word for word.
+ */
+export const DEFENSE_TEXT = {
+  damage: { resist: "{x} Damage is Halved.", immune: "{x} Damage is Nullified.", vuln: "{x} Damage is Doubled." },
+  condition: { resist: "Adv on {x} Saving throws or Checks.", immune: "Cannot gain {x} Condition.", vuln: "Disadvantage on {x} Saving throws or Checks." },
+  state: { resist: "Adv on {x} Saving throws or Checks.", immune: "Cannot gain {x} State.", vuln: "Disadvantage on {x} Saving throws or Checks." }
+};
+
+export function defenseChipsVM(actor) {
+  const t = actor.system?.traits ?? {};
+  const cond = { ...Object.fromEntries(Object.entries(CONDITION_GROUPS).map(([k, v]) => [`group:${k}`, v])), ...coreConditions };
+  const name = (labels, k) => { const d = labels[k]; return (typeof d === "object" ? d?.label : d) ?? k; };
+  const chips = (set, kind, labels, row) => [...(set ?? [])].map(k => {
+    const label = name(labels, k);
+    // A condition group ("group:mental") shows as "All Mental"; the text names the group ("Mental").
+    return { label: k.startsWith("group:") ? `All ${label}` : label, tip: DEFENSE_TEXT[kind][row].replace("{x}", label), condition: kind !== "damage" };
+  });
+  const rows = ["resist", "immune", "vuln"].map(row => {
+    const field = { resist: "Resist", immune: "Immune", vuln: "Vuln" }[row];
+    return { key: row, label: { resist: "Resist", immune: "Immune", vuln: "Vulnerable" }[row],
+      chips: [...chips(t[row], "damage", damageTypes, row), ...chips(t[`condition${field}`], "condition", cond, row), ...chips(t[`state${field}`], "state", states, row)] };
+  }).filter(r => r.chips.length);
+  return rows.length ? { rows } : null;
+}
+
 export function defenseRowsVM(actor) {
   const t = actor.system?.traits ?? {};
   const cond = { ...Object.fromEntries(Object.entries(CONDITION_GROUPS).map(([k, v]) => [`group:${k}`, `All ${v} conditions`])), ...coreConditions, ...states };
@@ -608,7 +647,7 @@ export function defenseRowsVM(actor) {
   const row = (label, items) => ({ label, value: items.length ? items.join(", ") : "None", none: !items.length });
   return [
     row("Immunities", [...of(t.immune, damageTypes), ...of(t.conditionImmune, cond), ...of(t.stateImmune, cond)]),
-    row("Weaknesses", of(t.vuln, damageTypes)),
+    row("Vulnerabilities", [...of(t.vuln, damageTypes), ...of(t.conditionVuln, cond), ...of(t.stateVuln, cond)]),
     row("Resistances", [...of(t.resist, damageTypes), ...of(t.conditionResist, cond), ...of(t.stateResist, cond)])
   ];
 }

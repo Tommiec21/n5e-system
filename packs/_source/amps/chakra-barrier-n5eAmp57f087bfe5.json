@@ -1,0 +1,100 @@
+{
+  "_id": "n5eAmp57f087bfe5",
+  "name": "Chakra Barrier",
+  "type": "amp",
+  "img": "icons/svg/upgrade.svg",
+  "folder": "n5eAmpFoldClass1",
+  "sort": 2300,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "chakra-barrier",
+    "description": "<p><b>Unique Amp</b></p><p>You have a special barrier with its own hit points that always intercepts damage you would take until the barrier itself has no more hit points remaining. It shares and resistances or immunities you have.</p><p>Your barrier has a number of hit points equal to twice your level, and its hit points cannot exceed that value.</p><p>You gain a Rank of Mastery to Chakra Control Checks.</p><p>Your barrier can regain hit points by doing one of the following;</p><p>Transferring Temporary hit points, you have to it, granting it 1 hit point for every 1 temporary hit point you transfer.</p><p>Sacrifice the DR (Damage Reduction) you would gain from jutsu, granting it 2 hit points for every 1 DR you sacrifice.</p><p>While your barrier has 0 hit points, you lose the benefits of this Amp.</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "ampType": "",
+    "namedType": "Unique Amp",
+    "owner": {
+      "kind": "feat",
+      "id": "chakra-barrier-barrier-scout",
+      "subclass": ""
+    },
+    "summary": "A barrier with its own hit points (twice your level) that intercepts your damage first, and a rank of Mastery on Chakra Control checks. Ends when the barrier has 0 hit points.",
+    "activation": "trigger",
+    "giveable": false,
+    "startOnInitiative": "",
+    "duration": {
+      "seconds": 0,
+      "until": "dismissed",
+      "concentration": false
+    },
+    "uses": {
+      "max": "",
+      "per": ""
+    },
+    "cooldown": 0,
+    "exclusive": "",
+    "state": "",
+    "tempHp": "",
+    "endsOn": [],
+    "changes": [
+      {
+        "key": "n5e.mastery.skill.cha",
+        "value": "Chakra Barrier",
+        "mode": 2
+      }
+    ],
+    "aura": {},
+    "series": "chakra-barrier",
+    "level": 0
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "Start: when you finish a short or long rest (Create Chakra Barrier on the feature)."
+        },
+        {
+          "key": "note",
+          "text": "Its hit points are the Chakra Barrier pool on the feature: it intercepts damage you would take, sharing your resistances and immunities; it regains 1 hit point per temporary hit point you transfer, or 2 per DR you sacrifice from jutsu. At 0 hit points, end this Amp."
+        }
+      ],
+      "amp1c": true,
+      "versionSource": {
+        "description": "<p><b>Unique Amp</b></p><p>You have a special barrier with its own hit points that always intercepts damage you would take until the barrier itself has no more hit points remaining. It shares and resistances or immunities you have.</p><p>Your barrier has a number of hit points equal to twice your level, and its hit points cannot exceed that value.</p><p>You gain a Rank of Mastery to Chakra Control Checks. This increases to 2 Ranks of mastery at 9th level and 3 ranks at 17th level.</p><p>Your barrier can regain hit points by doing one of the following;</p><p>Transferring Temporary hit points, you have to it, granting it 1 hit point for every 1 temporary hit point you transfer.</p><p>Sacrifice the DR (Damage Reduction) you would gain from jutsu, granting it 2 hit points for every 1 DR you sacrifice.</p><p>While your barrier has 0 hit points, you lose the benefits of this Amp.</p>",
+        "summary": "A barrier with its own hit points (twice your level) that intercepts your damage first, and a rank of Mastery on Chakra Control checks (2 at 9th, 3 at 17th). Ends when the barrier has 0 hit points.",
+        "changes": [
+          {
+            "key": "n5e.mastery.skill.cha",
+            "value": "Chakra Barrier",
+            "mode": 2
+          }
+        ],
+        "rules": [
+          {
+            "key": "note",
+            "text": "Start: when you finish a short or long rest (Create Chakra Barrier on the feature)."
+          },
+          {
+            "key": "note",
+            "text": "Its hit points are the Chakra Barrier pool on the feature: it intercepts damage you would take, sharing your resistances and immunities; it regains 1 hit point per temporary hit point you transfer, or 2 per DR you sacrifice from jutsu. At 0 hit points, end this Amp."
+          }
+        ],
+        "name": "Chakra Barrier"
+      }
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.61.0"
+  },
+  "_key": "!items!n5eAmp57f087bfe5"
+}

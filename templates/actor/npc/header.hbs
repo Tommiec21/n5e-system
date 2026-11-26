@@ -5,6 +5,17 @@
     <div class="npc-names">
       <div class="npc-title"><h1 class="name">{{head.name}}</h1><span class="npc-summary">{{head.summary}}</span></div>
       {{#if head.blurb}}<div class="npc-blurb">{{head.blurb}}</div>{{/if}}
+      {{#if head.summon}}
+        <div class="npc-summoner" data-summoner-drop>
+          {{#if head.summon.uuid}}
+            <i class="fa-solid fa-link"></i> Summoned by {{#if head.summon.missing}}<span class="warn">a creature that can't be found</span>{{else}}<a data-action="npcOpenSummoner">{{head.summon.name}}</a>{{/if}}{{#if head.summon.rank}} ({{head.summon.rank}}-Rank){{/if}}{{#if head.summon.linked}}<span class="sub"> · takes its {{head.summon.linked}}</span>{{/if}}
+            {{#if editable}}<a class="ctl" data-action="npcLinkSummoner" data-tooltip="Change the summoner"><i class="fa-solid fa-pen"></i></a><a class="ctl" data-action="npcUnlinkSummoner" data-tooltip="Unlink"><i class="fa-solid fa-link-slash"></i></a>{{/if}}
+          {{else}}
+            <i class="fa-solid fa-link-slash"></i> No summoner linked{{#if head.summon.linked}}<span class="sub"> (it takes its summoner's {{head.summon.linked}})</span>{{/if}}
+            {{#if editable}}<button type="button" class="link" data-action="npcLinkSummoner">Link summoner</button><span class="sub"> or drop a character here</span>{{/if}}
+          {{/if}}
+        </div>
+      {{/if}}
     </div>
     {{#if editable}}
       <div class="buttons">

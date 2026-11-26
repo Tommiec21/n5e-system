@@ -45,7 +45,10 @@ export default class NPCSheet extends CharacterSheet {
       npcToggleLearned: NPCSheet.#onToggleLearned,
       npcOpenBuilder: NPCSheet.#onOpenBuilder,
       npcNewFreeform: NPCSheet.#onNewFreeform,
-      npcLeaveLoot: NPCSheet.#onLeaveLoot
+      npcLeaveLoot: NPCSheet.#onLeaveLoot,
+      npcLinkSummoner: NPCSheet.#onLinkSummoner,
+      npcUnlinkSummoner: NPCSheet.#onUnlinkSummoner,
+      npcOpenSummoner: NPCSheet.#onOpenSummoner
     }
   };
 
@@ -220,6 +223,21 @@ export default class NPCSheet extends CharacterSheet {
   /** @override  The learnable list takes items dragged from this sheet (NPC1c C4). */
   async _onRender(context, options) {
     await super._onRender(context, options);
+    // SUMM1: drop a character on the "Summoned by" line to link it (the GM or the summon's owner, Q-SU3).
+    const sz = this.element.querySelector("[data-summoner-drop]");
+    if ( sz && this.isEditable ) {
+      sz.addEventListener("dragover", ev => { ev.preventDefault(); sz.classList.add("over"); });
+      sz.addEventListener("dragleave", () => sz.classList.remove("over"));
+      sz.addEventListener("drop", async ev => {
+        ev.preventDefault();
+        ev.stopPropagation();
+        sz.classList.remove("over");
+        const data = foundry.applications.ux.TextEditor.implementation.getDragEventData(ev);
+        const actor = data?.type === "Actor" && data.uuid ? await fromUuid(data.uuid) : null;
+        if ( !actor || actor === this.actor ) return ui.notifications.warn("Drop a character (or another creature) from the Actors directory.");
+        await this.#linkSummoner(actor);
+      });
+    }
     const zone = this.element.querySelector("[data-n5e-learn-drop]");
     if ( !zone || !this.isEditable ) return;
     zone.addEventListener("dragover", ev => { ev.preventDefault(); zone.classList.add("over"); });
@@ -233,6 +251,42 @@ export default class NPCSheet extends CharacterSheet {
       if ( !item || item.parent !== this.actor ) return ui.notifications.warn("Drag a feature, trait, jutsu or item from this NPC's own sheet.");
       await this.#addKnowledge({ kind: "item", ref: item.id, label: item.name });
     });
+  }
+
+  /**
+   * SUMM1 (King 2026-11-25): link this summon to its summoner (live numbers). Asks the rank its jutsu
+   * was cast at when its links grow by rank.
+   */
+  async #linkSummoner(summoner, rank) {
+    const { linksNeedRank } = await import("../../rules/summoner-links.mjs");
+    if ( rank === undefined && linksNeedRank(this.actor.flags?.n5e?.fromSummoner) ) {
+      rank = await foundry.applications.api.DialogV2.prompt({ window: { title: `${this.actor.name}: summoned at which rank?` },
+        content: `<label>Rank its jutsu was cast at <select name="rank">${["D", "C", "B", "A", "S"].map(r => `<option value="${r}" ${r === (this.actor.system.details.summonRank || "C") ? "selected" : ""}>${r}-Rank</option>`).join("")}</select></label>`,
+        ok: { label: "Link", callback: (e, b) => b.form.elements.rank.value }, rejectClose: false });
+      if ( !rank ) return;
+    }
+    await this.actor.update({ "system.details.summoner": summoner.uuid, "system.details.summonRank": String(rank ?? this.actor.system.details.summonRank ?? "") });
+  }
+
+  static async #onLinkSummoner() {
+    const pool = game.actors.filter(a => a.type === "character" && (game.user.isGM || a.isOwner));
+    if ( !pool.length ) return ui.notifications.warn("You have no characters to link. Drop a creature on the line instead.");
+    const current = this.actor.system.details.summoner;
+    const esc = s => foundry.utils.escapeHTML(String(s));
+    const uuid = await foundry.applications.api.DialogV2.prompt({ window: { title: `${this.actor.name}: link summoner` },
+      content: `<label>Summoner <select name="who">${pool.map(a => `<option value="${a.uuid}" ${a.uuid === current ? "selected" : ""}>${esc(a.name)}</option>`).join("")}</select></label>`,
+      ok: { label: "Next", callback: (e, b) => b.form.elements.who.value }, rejectClose: false });
+    const actor = uuid ? await fromUuid(uuid) : null;
+    if ( actor ) await this.#linkSummoner(actor);
+  }
+
+  static async #onUnlinkSummoner() {
+    await this.actor.update({ "system.details.summoner": "", "system.details.summonRank": "" });
+  }
+
+  static async #onOpenSummoner() {
+    const actor = await fromUuid(this.actor.system.details.summoner);
+    actor?.sheet?.render(true);
   }
 
   /** Add one learnable entry (no duplicates). */

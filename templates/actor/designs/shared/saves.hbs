@@ -3,11 +3,12 @@
   {{#each m.abilities}}
     <div class="d-save rollable {{#if saveProficient}}prof{{/if}}" data-tooltip-html="{{saveTip}}" {{#unless @root.editMode}}data-action="roll" data-roll="save" data-key="{{key}}"{{/unless}}>
       {{#if @root.editMode}}
-        <input type="checkbox" name="system.saves.{{key}}.proficient" {{#if saveProficient}}checked{{/if}} aria-label="{{label}} save proficiency">
+        <input type="checkbox" name="system.saves.{{key}}.proficient" {{#if saveProficient}}checked{{/if}} aria-label="{{label}} save proficiency">{{> "systems/n5e/templates/parts/mastery-boxes.hbs" manualMastery}}
       {{else}}
         <span class="dot {{#if saveProficient}}on{{/if}}"></span>
       {{/if}}
       <span class="label" data-abbr="{{abbr}}">{{label}}</span>
+      {{#if saveMastery}}<span class="mastery" data-tooltip="Mastery {{saveMastery}}">◆{{saveMastery}}</span>{{/if}}
       <span class="prof-badge">{{#if saveProficient}}Proficient{{else}}Untrained{{/if}}</span>
       <b>{{save}}</b>
     </div>

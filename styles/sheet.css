@@ -1150,3 +1150,98 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
 .n5e-cond select, .n5e-cond input { flex: 1 1 140px; min-width: 0; }
 .n5e-cond .icon-btn { flex: 0 0 auto; }
 .n5e-cond.blank select { opacity: .8; }
+
+/* Mastery set by hand (King 2026-11-25): three small boxes beside the proficiency box in edit mode. */
+.n5e .m-boxes { display: inline-flex; gap: 2px; margin: 0 4px; vertical-align: middle; flex: none; }
+.n5e .m-boxes .m-box { width: 9px; height: 9px; border: 1.5px solid currentColor; border-radius: 2px; opacity: .55; cursor: pointer; transform: rotate(45deg); }
+.n5e .m-boxes .m-box:hover { opacity: 1; }
+.n5e .m-boxes .m-box.on { background: #E0912F; border-color: #E0912F; opacity: 1; }
+.n5e .disciplines .m-boxes, .n5e .d-disciplines .m-boxes { margin-left: 6px; }
+
+/* Jutsu window (King 2026-11-25): the item sheet's look (header, sidebar, parchment body), cast options below the text. */
+.n5e-jutsu-window .window-content { padding: 0; background: var(--n5e-paper); color: var(--n5e-ink); font-family: var(--n5e-body); font-size: 13px; overflow: hidden; }
+.n5e-jutsu-window .window-content > form { display: flex; flex-direction: column; height: 100%; gap: 0; }
+.n5e-jutsu-window .dialog-content { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 0; }
+.n5e-jutsu-window .n5e-item-head { display: flex; gap: 12px; align-items: center; padding: 10px 16px; background: var(--n5e-ink); color: var(--n5e-paper); border-bottom: 3px solid var(--n5e-accent); }
+.n5e-jutsu-window .item-img { width: 56px; height: 56px; object-fit: cover; border-radius: 8px; border: 2px solid var(--n5e-accent); background: var(--n5e-ink-2); flex-shrink: 0; }
+.n5e-jutsu-window .identity { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+.n5e-jutsu-window .identity .type { font-size: 10px; text-transform: uppercase; letter-spacing: .08em; color: var(--n5e-gold); font-weight: 700; }
+.n5e-jutsu-window .identity h1 { font-family: var(--n5e-head); font-size: 22px; margin: 0; color: var(--n5e-paper); border: none; }
+.n5e-jutsu-window .identity .subtitle { color: #D9CFBF; font-size: 12px; }
+.n5e-jutsu-window .jw-main { flex: 1; min-height: 0; display: grid; grid-template-columns: 200px minmax(0, 1fr); }
+.n5e-jutsu-window .n5e-item-side { overflow-y: auto; padding: 12px; border-right: 1px solid var(--n5e-line); background: var(--n5e-paper-2); display: flex; flex-direction: column; gap: 10px; }
+.n5e-jutsu-window .n5e-item-side .chips { display: flex; flex-wrap: wrap; gap: 3px; }
+.n5e-jutsu-window .facts { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 8px; font-size: 12px; }
+.n5e-jutsu-window .facts dt { color: var(--n5e-muted); font-size: 10px; text-transform: uppercase; letter-spacing: .05em; padding-top: 2px; }
+.n5e-jutsu-window .facts dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+.n5e-jutsu-window .jw-body { overflow-y: auto; padding: 12px 16px; }
+.n5e-jutsu-window .desc-block { margin-bottom: 12px; }
+.n5e-jutsu-window .desc-block h3, .n5e-jutsu-window .jw-cast-head { font-family: var(--n5e-head); font-size: 15px; border-bottom: 1px solid var(--n5e-line); margin: 0 0 4px; text-transform: none; letter-spacing: 0; color: var(--n5e-ink); }
+.n5e-jutsu-window .rich p { margin: 0 0 6px; }
+.n5e-jutsu-window .n5e-cast fieldset { border: 1px solid var(--n5e-line); border-radius: 8px; padding: 6px 10px 8px; margin: 0; background: var(--n5e-card); color: var(--n5e-ink); }
+.n5e-jutsu-window .n5e-cast legend { font-family: var(--n5e-head); font-size: 14px; padding: 0 4px; color: var(--n5e-ink); }
+.n5e-jutsu-window .n5e-cast label { color: var(--n5e-ink); }
+.n5e-jutsu-window .n5e-cast input[type="text"], .n5e-jutsu-window .n5e-cast input[type="number"], .n5e-jutsu-window .n5e-cast select { background: #FFF; color: var(--n5e-ink); border: 1px solid var(--n5e-line); }
+.n5e-jutsu-window .n5e-cast .preview { background: var(--n5e-accent-soft, rgba(47, 111, 176, .08)); color: var(--n5e-ink); }
+.n5e-jutsu-window .form-footer { padding: 8px 16px; border-top: 1px solid var(--n5e-line); background: var(--n5e-paper-2); margin: 0; }
+.n5e-jutsu-window .form-footer button { background: #FFF; color: var(--n5e-ink); border: 1px solid var(--n5e-line); font-weight: 600; }
+.n5e-jutsu-window .form-footer button[data-action="cast"] { background: var(--n5e-accent); color: #FFF; border-color: var(--n5e-accent); }
+.n5e-jutsu-window .form-footer button:disabled { opacity: .5; }
+
+/* King 2026-11-25: Foundry's core theme gives some form text a shadow meant for light text on its dark
+   windows; on our parchment it makes dark labels look embossed ("3D"). Our windows draw flat text. */
+.n5e-v2 .window-content :is(dt, dd, label, legend, th) { text-shadow: none; }
+.n5e-v2 .facts dt, .n5e-jutsu-window .facts dt { font-family: var(--n5e-body); font-weight: 600; text-shadow: none; }
+
+/* Rail "Defenses" box (King 2026-11-25, Option A): after HD/CD, before Resources; hidden when empty. */
+.n5e-v2 .n5e-defenses { display: flex; flex-direction: column; gap: 4px; margin: 6px 0 2px; }
+.n5e-v2 .n5e-defenses .def-title { margin: 0; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--n5e-muted); border-bottom: 1px solid var(--n5e-line); padding-bottom: 3px; }
+.n5e-v2 .n5e-defenses .def-box { display: flex; flex-direction: column; gap: 4px; padding: 6px 8px; border: 1px solid var(--n5e-line); border-radius: 6px; background: var(--n5e-card); }
+.n5e-v2 .n5e-defenses .def-row { display: flex; gap: 6px; align-items: flex-start; }
+.n5e-v2 .n5e-defenses .def-tag { flex: none; width: 70px; font-size: 10px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; padding-top: 2px; }
+.n5e-v2 .n5e-defenses .resist .def-tag { color: #4E8A4A; }
+.n5e-v2 .n5e-defenses .immune .def-tag { color: #B08A1E; }
+.n5e-v2 .n5e-defenses .vuln .def-tag { color: #C3422B; }
+.n5e-v2 .n5e-defenses .def-chips { display: flex; flex-wrap: wrap; gap: 3px; min-width: 0; }
+.n5e-v2 .n5e-defenses .def-chip { font-size: 11px; font-weight: 600; line-height: 16px; padding: 0 7px; border-radius: 9px; border: 1px solid; white-space: nowrap; cursor: help; }
+.n5e-v2 .n5e-defenses .def-chip.cond { font-style: italic; }
+.n5e-v2 .n5e-defenses .def-chip.resist { background: #E6F1E4; border-color: #9CC39A; color: #2E5E2C; }
+.n5e-v2 .n5e-defenses .def-chip.immune { background: #FBF0D6; border-color: #E0BE6A; color: #7A5A10; }
+.n5e-v2 .n5e-defenses .def-chip.vuln { background: #F8E0DA; border-color: #E39C8D; color: #8A2A1A; }
+
+/* Level-up details panel (King 2026-11-25): click a card; the window widens ~60% and the text shows here. */
+.n5e-level-up .lu-shell { display: flex; height: 100%; min-height: 0; }
+.n5e-level-up .lu-shell > .lu { flex: 1 1 0; min-width: 0; }
+.n5e-level-up .lu-detail { flex: 0 0 37.5%; min-width: 0; display: flex; flex-direction: column; border-left: 3px solid var(--n5e-accent); background: var(--n5e-paper); }
+.n5e-level-up .lu-detail-head { display: flex; gap: 10px; align-items: center; padding: 12px 14px; background: var(--n5e-ink); color: var(--n5e-paper); }
+.n5e-level-up .lu-detail-head img { border: 2px solid var(--n5e-accent); border-radius: 8px; flex-shrink: 0; object-fit: cover; }
+.n5e-level-up .lu-detail-head > div { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+.n5e-level-up .lu-detail-head .type { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--n5e-gold); }
+.n5e-level-up .lu-detail-head h2 { margin: 0; border: none; font-family: var(--n5e-head); font-size: 20px; color: var(--n5e-paper); }
+.n5e-level-up .lu-detail-head .sub { color: #D9CFBF; font-size: 12px; }
+.n5e-level-up button.lu-detail-close { flex: 0 0 auto; width: 28px; height: 28px; padding: 0; background: transparent; color: var(--n5e-paper); border: 1px solid #5A514A; border-radius: 6px; }
+.n5e-level-up .lu-detail-body { flex: 1; overflow-y: auto; padding: 12px 16px; display: flex; flex-direction: column; gap: 10px; }
+.n5e-level-up .lu-detail-keys { display: flex; flex-wrap: wrap; gap: 4px; }
+.n5e-level-up .lu-detail-keys .chip { height: 22px; line-height: 20px; padding: 0 9px; border-radius: 11px; border: 1px solid var(--n5e-line); background: var(--n5e-card); font-size: 11px; font-weight: 600; }
+.n5e-level-up .lu-detail-text { font-size: 13px; line-height: 1.5; }
+.n5e-level-up .lu-detail-text p { margin: 0 0 8px; }
+.n5e-level-up .lu-card.lu-has-detail { cursor: pointer; }
+.n5e-level-up .lu-card.lu-reading { box-shadow: 0 0 0 2px var(--n5e-gold); }
+
+/* Item sheet description (King 2026-11-25): the text box filled only its 220px minimum and scrolled inside
+   itself. Now the text grows to its full length (the tab scrolls when it's longer than the sheet) and the
+   main box fills the empty space when it's shorter. */
+.n5e-v2.n5e-item .n5e-item-tab.description.active { display: flex; flex-direction: column; }
+.n5e-v2.n5e-item .desc-block.main { flex: 1 0 auto; display: flex; flex-direction: column; }
+.n5e-v2.n5e-item .desc-block prose-mirror { height: auto; max-height: none; }
+.n5e-v2.n5e-item .desc-block.main prose-mirror { flex: 1 0 auto; }
+.n5e-v2.n5e-item .desc-block prose-mirror .editor-content { height: auto; max-height: none; overflow: visible; }
+
+/* SUMM1: the "Summoned by" line on a summon's sheet (drop a character on it to link). */
+.n5e-v2 .npc-summoner { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; margin-top: 3px; font-size: 12px; color: inherit; padding: 2px 6px; border: 1px dashed transparent; border-radius: 6px; }
+.n5e-v2 .npc-summoner.over { border-color: var(--n5e-accent); background: rgba(195, 66, 43, .12); }
+.n5e-v2 .npc-summoner a[data-action="npcOpenSummoner"] { font-weight: 700; text-decoration: underline; cursor: pointer; }
+.n5e-v2 .npc-summoner .sub { opacity: .75; }
+.n5e-v2 .npc-summoner .warn { color: #E39C8D; }
+.n5e-v2 .npc-summoner .ctl { cursor: pointer; opacity: .8; }
+.n5e-v2 .npc-summoner button.link { width: auto; height: auto; padding: 0 4px; }

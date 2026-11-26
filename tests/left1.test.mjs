@@ -142,7 +142,7 @@ test("LEFT1 P3: Glass accent and blur, bundled fonts, Scroll defenses, layouts f
   await import("./helpers/foundry-stub.mjs");
   const { defenseRowsVM } = await import("../module/view-models/character.mjs");
   const rows = defenseRowsVM({ system: { traits: { immune: new Set(["poison"]), vuln: new Set(), resist: new Set(["fire"]), conditionImmune: new Set(["prone"]) } } });
-  assert.deepEqual(rows.map(r => r.label), ["Immunities", "Weaknesses", "Resistances"]);
+  assert.deepEqual(rows.map(r => r.label), ["Immunities", "Vulnerabilities", "Resistances"]);
   assert.match(rows[0].value, /Prone/);
   assert.equal(rows[1].value, "None");
 });

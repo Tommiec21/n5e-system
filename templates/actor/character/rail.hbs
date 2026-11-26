@@ -42,6 +42,8 @@
       <span class="lbl">CD</span> <b>{{vm.chakraDice.value}}/{{vm.chakraDice.max}}</b> <span class="sub">{{vm.chakraDice.die}}</span></span>
   </div>
 
+  {{> "systems/n5e/templates/actor/designs/shared/defenses.hbs" r=vm}}
+
   <div class="block resources">
     <h3>Resources</h3>
     {{#each vm.resources}}

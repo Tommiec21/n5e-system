@@ -18,6 +18,7 @@ import { CHANGE_KEY_PREFIX } from "../rules/change-keys.mjs";
 import { isV31Actor, migrateV31Actor } from "../migration/v31.mjs";
 import { defaultDuration, immuneTo } from "../rules/condition-lifecycle.mjs";
 import { rule } from "../rules-settings.mjs";
+import { getsUnarmedStrike } from "../rules/unarmed.mjs";
 import { immuneVia } from "../rules/condition-cards.mjs";
 
 export default class N5eActor extends Actor {
@@ -25,7 +26,7 @@ export default class N5eActor extends Actor {
   /** @override  Every character and NPC gets the Unarmed Strike item when created (DATA2). */
   async _preCreate(data, options, user) {
     if ( (await super._preCreate(data, options, user)) === false ) return false;
-    if ( !["character", "npc"].includes(this.type) ) return;
+    if ( !getsUnarmedStrike({ type: this.type, flags: this._source.flags }) ) return;
     const items = this._source.items ?? [];
     if ( items.some(i => i.type === "weapon" && (i.system?.identifier === "unarmedStrike" || i.flags?.n5e?.unarmedStrike)) ) return;
     this.updateSource({ items: [...items, foundry.utils.deepClone(CONFIG.N5E.unarmedStrike)] });

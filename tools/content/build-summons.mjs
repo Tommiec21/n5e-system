@@ -12,6 +12,7 @@
  * Duplicity (Beguiling Duplicity) and the Phantasm stat block (Phantasm, Illusionist) from the
  * imported Genjutsu Specialist features. Non-Elemental Ninjutsu summons and the Clone: the Summon Stat Blocks section (STD6f F6).
  */
+import { totalLinks } from "../../module/rules/summoner-links.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
@@ -45,7 +46,7 @@ function actor(seed, name, folderId, system, items, links, img) {
   const _id = stableId(`summons:actor:${seed}`);
   return { _id, _key: `!actors!${_id}`, name, type: "npc", img,
     system, items: items(_id), effects: [], folder: folderId, sort: 0, ownership: { default: 0 },
-    flags: { n5e: { generated: true, fromSummoner: links } },
+    flags: { n5e: { generated: true, fromSummoner: totalLinks(links) } },
     prototypeToken: { name, actorLink: false, disposition: 1, displayName: 20, displayBars: 20, bar1: { attribute: "hp" }, bar2: { attribute: "cp" },
       texture: { src: img }, width: 1, height: 1 },
     _stats: STATS };
