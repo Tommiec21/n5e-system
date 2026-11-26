@@ -58,7 +58,7 @@ const COMBAT_ACTIVATIONS = new Set(["action", "fullTurn", "bonus", "reaction", "
 const economyOf = type => ECONOMY.find(e => e.types.includes(type))?.key ?? "other";
 
 /** Tooltip card: title, meta line, body. Body may be item HTML (trusted document content). */
-function tipHTML({ title, meta = [], body = "", footer = "" }) {
+export function tipHTML({ title, meta = [], body = "", footer = "" }) {
   const metaLine = meta.filter(Boolean).map(esc).join(" · ");
   return `<div class="n5e-tip"><b class="tt">${esc(title)}</b>${metaLine ? `<div class="tm">${metaLine}</div>` : ""}`
     + `${body ? `<div class="tb">${body}</div>` : ""}${footer ? `<div class="tf">${footer}</div>` : ""}</div>`;
@@ -233,10 +233,6 @@ export function jutsuPill(actor, i, { comboReady } = {}) {
   if ( s.duration?.concentration ) badges.push({ key: "conc", label: "Conc." });
   const cp = actor.system.cp?.value ?? 0;
   const affordable = s.cost?.mode !== "chakra" || cost <= cp;
-  const disc = disciplines[s.group ?? s.discipline]?.label ?? s.discipline;
-  const hit = live.attack != null ? `${signed(live.attack)} hit · DC ${live.dc}` : "";
-  const rider = (label, html) => (html ? `<p><b>${esc(label)}.</b></p>${html}` : "");
-  const chainHTML = [1, 2, 3].map(n => rider(`Chain ${n}`, s.chainEffects?.[n])).join("");
   // LEFT1 P1 (King Q-L1): the NPC sheet's keyword gradient on every jutsu pill.
   const keys = colorKeys(s);
   return pill({
@@ -247,14 +243,30 @@ export function jutsuPill(actor, i, { comboReady } = {}) {
     warn: !affordable ? "Not enough chakra" : (live.castable === false ? "Missing affinity" : ""),
     concentration: !!s.duration?.concentration,
     concentrating: list(actor.system.combat?.concentrating).includes(i.id),
-    tip: tipHTML({
-      title: i.name,
-      meta: [`${s.rank}-Rank ${disc}`, activationTypes[s.activation?.type], s.cost?.mode === "chakra" ? `${cost} CP` : s.cost?.text,
-        s.duration?.concentration ? "Concentration" : "", hit],
-      body: (s.description ?? "") + chainHTML + rider("Finisher", s.finisher?.text) + rider("Overcharge", s.overcharge?.text),
-      footer: [...kw].map(k => esc(globalThis.CONFIG?.N5E?.keywords?.[k]?.label ?? k)).join(", ")
-    })
+    tip: tipHTML(jutsuTipParts(actor, i))
   });
+}
+
+/**
+ * A jutsu's hover card parts (title, meta line, text with Chain/Finisher/Overcharge, keywords). The
+ * Combat tab, the Jutsu tab and the jutsu window (workflow/cast.mjs) all use it.
+ */
+export function jutsuTipParts(actor, i) {
+  const s = i.system;
+  const live = s.live ?? {};
+  const kw = s.keywords instanceof Set ? s.keywords : new Set(s.keywords ?? []);
+  const cost = live.cost ?? s.cost?.value ?? 0;
+  const disc = disciplines[s.group ?? s.discipline]?.label ?? s.discipline;
+  const hit = live.attack != null ? `${signed(live.attack)} hit · DC ${live.dc}` : "";
+  const rider = (label, html) => (html ? `<p><b>${esc(label)}.</b></p>${html}` : "");
+  const chainHTML = [1, 2, 3].map(n => rider(`Chain ${n}`, s.chainEffects?.[n])).join("");
+  return {
+    title: i.name,
+    meta: [`${s.rank}-Rank ${disc}`, activationTypes[s.activation?.type], s.cost?.mode === "chakra" ? `${cost} CP` : s.cost?.text,
+      s.duration?.concentration ? "Concentration" : "", hit],
+    body: (s.description ?? "") + chainHTML + rider("Finisher", s.finisher?.text) + rider("Overcharge", s.overcharge?.text),
+    footer: [...kw].map(k => esc(globalThis.CONFIG?.N5E?.keywords?.[k]?.label ?? k)).join(", ")
+  };
 }
 
 /**

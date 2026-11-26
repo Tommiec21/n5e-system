@@ -37,7 +37,7 @@
           <div class="jutsu-pills">
             {{#each rows}}
               <span class="act-pill jutsu-pill n5e-row draggable {{#if missingAccess}}dim{{/if}}" data-item-id="{{id}}" draggable="true" data-tooltip-html="{{pillTip}}" data-tooltip-direction="UP">
-                <a class="pill-main" data-action="useItem">{{{glyph}}}<span class="nm">{{name}}</span>{{#unless (n5eEq costMode "none")}}<span class="cost">{{cost}} CP</span>{{/unless}}{{#if hit}}<span class="sub">{{hit}}</span>{{else if dc}}<span class="sub">DC {{dc}}</span>{{/if}}</a>
+                <a class="pill-main" data-action="jutsuDetails">{{{glyph}}}<span class="nm">{{name}}</span>{{#unless (n5eEq costMode "none")}}<span class="cost">{{cost}} CP</span>{{/unless}}{{#if hit}}<span class="sub">{{hit}}</span>{{else if dc}}<span class="sub">DC {{dc}}</span>{{/if}}</a>
               </span>
             {{/each}}
           </div>
@@ -60,7 +60,7 @@
                   <span class="cost" data-tooltip="Chakra cost">{{#if (n5eEq costMode "none")}}—{{else}}{{cost}} CP{{/if}}</span>
                   <span class="hit" data-tooltip="Attack or save DC">{{#if hit}}{{hit}}{{else if dc}}DC {{dc}}{{else}}—{{/if}}</span>
                   <span class="use">
-                    <button type="button" data-action="useItem">Use</button>
+                    <button type="button" data-action="jutsuDetails">Use</button>
                     {{> "systems/n5e/templates/parts/item-controls.hbs"}}
                   </span>
                 </div>

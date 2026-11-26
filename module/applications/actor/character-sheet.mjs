@@ -23,7 +23,7 @@
 import { scrollContextOptions } from "../../workflow/scrolls.mjs";
 import { wandContextOptions } from "../../workflow/wands.mjs";
 import {
-  headerVM, railVM, mainVM, jutsuVM, inventoryVM, featuresVM, effectsVM, biographyVM
+  headerVM, railVM, mainVM, jutsuVM, inventoryVM, featuresVM, effectsVM, biographyVM, setManualMastery
 } from "../../view-models/character.mjs";
 import { combatVM } from "../../view-models/combat.mjs";
 import { buildRows, coerceListInputs, collapseDuplicates } from "../schema-form.mjs";
@@ -58,6 +58,7 @@ export const CHARACTER_TEMPLATE_PATHS = [
   "systems/n5e/templates/parts/chips.hbs",
   "systems/n5e/templates/parts/item-controls.hbs",
   "systems/n5e/templates/parts/action-pill.hbs",
+  "systems/n5e/templates/parts/mastery-boxes.hbs",
   "systems/n5e/templates/apps/level-up.hbs"
 ];
 
@@ -110,6 +111,8 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
       toggleEconomy: CharacterSheet.#onToggleEconomy,
       toggleEquip: CharacterSheet.#onToggleEquip,
       togglePin: CharacterSheet.#onTogglePin,
+      manualMastery: CharacterSheet.#onManualMastery,
+      jutsuDetails: CharacterSheet.#onJutsuDetails,
       toggleExpand: CharacterSheet.#onToggleExpand,
       castRank: CharacterSheet.#onCastRank,
       jutsuFilter: CharacterSheet.#onJutsuFilter,
@@ -681,6 +684,21 @@ export default class CharacterSheet extends HandlebarsApplicationMixin(ActorShee
   static async #onToggleEquip(event, target) {
     const item = CharacterSheet.#itemFrom.call(this, target);
     if ( item && "equipped" in item.system ) await item.update({ "system.equipped": !item.system.equipped });
+  }
+
+  /** Edit mode: set a skill's, save's or discipline's Mastery by hand (King 2026-11-25). */
+  static async #onManualMastery(event, target) {
+    event.preventDefault();
+    event.stopPropagation();
+    if ( !this.isEditable ) return;
+    const sources = setManualMastery(this.actor._source.system.mastery?.sources, target.dataset.target, Number(target.dataset.n));
+    await this.actor.update({ "system.mastery.sources": sources });
+  }
+
+  /** Jutsu tab: open the jutsu's window (its text, the cast options and Cast) instead of casting at once. */
+  static async #onJutsuDetails(event, target) {
+    const item = CharacterSheet.#itemFrom.call(this, target);
+    if ( item?.type === "jutsu" ) return castJutsu(this.actor, item, { details: true });
   }
 
   /** Pin or unpin an item on the Main tab. */

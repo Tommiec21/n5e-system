@@ -1150,3 +1150,17 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
 .n5e-cond select, .n5e-cond input { flex: 1 1 140px; min-width: 0; }
 .n5e-cond .icon-btn { flex: 0 0 auto; }
 .n5e-cond.blank select { opacity: .8; }
+
+/* Mastery set by hand (King 2026-11-25): three small boxes beside the proficiency box in edit mode. */
+.n5e .m-boxes { display: inline-flex; gap: 2px; margin: 0 4px; vertical-align: middle; flex: none; }
+.n5e .m-boxes .m-box { width: 9px; height: 9px; border: 1.5px solid currentColor; border-radius: 2px; opacity: .55; cursor: pointer; transform: rotate(45deg); }
+.n5e .m-boxes .m-box:hover { opacity: 1; }
+.n5e .m-boxes .m-box.on { background: #E0912F; border-color: #E0912F; opacity: 1; }
+.n5e .disciplines .m-boxes, .n5e .d-disciplines .m-boxes { margin-left: 6px; }
+
+/* Jutsu window (King 2026-11-25): the jutsu's text above the cast options. */
+.n5e-cast .n5e-cast-details { max-height: 320px; overflow-y: auto; padding: 8px 10px; border-radius: 6px; background: rgba(0, 0, 0, .04); font-size: 13px; line-height: 1.45; }
+.n5e-cast .n5e-cast-details .tt { display: block; font-size: 15px; }
+.n5e-cast .n5e-cast-details .tm { opacity: .8; font-size: 12px; margin: 2px 0 6px; }
+.n5e-cast .n5e-cast-details .tb p { margin: 0 0 6px; }
+.n5e-cast .n5e-cast-details .tf { opacity: .8; font-size: 10px; text-transform: uppercase; letter-spacing: .04em; border-top: 1px solid rgba(127, 127, 127, .3); padding-top: 4px; }

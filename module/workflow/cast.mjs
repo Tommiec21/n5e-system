@@ -14,6 +14,7 @@ import { castPlan } from "./cast-plan.mjs";
 import { effectiveActivities } from "../rules/activity-parse.mjs";
 import { activityButtons, damageButtons } from "./activity-buttons.mjs";
 import { esc } from "../view-models/common.mjs";
+import { tipHTML, jutsuTipParts } from "../view-models/combat.mjs";
 import { areaButton, placeArea } from "./areas.mjs";
 import { areaOf } from "../rules/area.mjs";
 import { withActorLock } from "./commands.mjs";
@@ -45,7 +46,7 @@ function castOptions(actor, item) {
 }
 
 /** The cast dialog's form. Every control's name is read back by readSelection(). */
-function dialogContent(actor, item, plan) {
+function dialogContent(actor, item, plan, details = "") {
   const j = item.system;
   const ranks = [j.rank, ...(j.live?.upcastRanks ?? [])].filter((r, i, a) => a.indexOf(r) === i);
   const opts = castOptions(actor, item);
@@ -58,6 +59,7 @@ function dialogContent(actor, item, plan) {
   const locked = (actor.system.combat?.concentrating ?? []).includes(item.id) && !!actor.flags?.n5e?.castDiscipline?.[item.id];
   const label = d => CONFIG.N5E.disciplines?.[d]?.label ?? d;
   return `<div class="n5e-cast">
+    ${details ? `<div class="n5e-cast-details">${details}</div>` : ""}
     ${discs.length > 1 ? `<label>Cast as <select name="discipline" ${locked ? "disabled" : ""}>${discs.map(d => `<option value="${d}" ${d === current ? "selected" : ""}>${esc(label(d))}</option>`).join("")}</select>${locked ? ' <span class="sub">(locked while concentrating)</span>' : ""}</label>` : ""}
     ${ranks.length > 1 ? `<label>Cast at <select name="rank">${ranks.map(r => `<option value="${r}">${r}-Rank${r === j.rank ? " (base)" : ""}</option>`).join("")}</select></label>` : ""}
     ${plan.choices?.multipliers ? choice("Cost multiplier (pick one)", "multiplierChoice", plan.choices.multipliers) : ""}
@@ -110,17 +112,26 @@ function previewHTML(plan) {
  * @param {Item} item       a jutsu owned by the actor
  * @param {object} [o]
  * @param {boolean} [o.skipDialog]  cast at base rank with defaults (API and tests only; the sheet always opens the dialog)
+ * @param {boolean} [o.details]     the jutsu window (Jutsu tab, King 2026-11-25): the jutsu's full text above the options
  */
-export async function castJutsu(actor, item, { skipDialog = false } = {}) {
+export async function castJutsu(actor, item, { skipDialog = false, details = false } = {}) {
   let sel = { now: nowTurn() };
   const initial = castPlan(actor, item, sel);
   const needsDialog = !skipDialog || !initial.ok;
   if ( needsDialog ) {
     const { DialogV2 } = foundry.applications.api;
+    let text = "";
+    if ( details ) {
+      const parts = jutsuTipParts(actor, item);
+      const TE = foundry.applications?.ux?.TextEditor?.implementation ?? globalThis.TextEditor;
+      parts.body = await TE.enrichHTML(parts.body, { relativeTo: item, rollData: actor.getRollData?.() });
+      text = tipHTML(parts);
+    }
     sel = await DialogV2.wait({
-      window: { title: `Cast ${item.name}`, icon: "fa-solid fa-hand-sparkles" },
+      window: { title: details ? item.name : `Cast ${item.name}`, icon: "fa-solid fa-hand-sparkles" },
       classes: ["n5e-cast-dialog"],
-      content: dialogContent(actor, item, initial),
+      ...(details ? { position: { width: 520 } } : {}),
+      content: dialogContent(actor, item, initial, text),
       buttons: [{ action: "cast", label: "Cast", default: true, callback: (event, button) => readSelection(button.form) },
         { action: "cancel", label: "Cancel", callback: () => null }],
       render: (event, dialog) => {

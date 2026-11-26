@@ -22,11 +22,12 @@
         {{#each vm.abilities}}
           <div class="save-row rollable {{#if saveProficient}}prof{{/if}}" data-tooltip-html="{{saveTip}}" {{#unless @root.editMode}}data-action="roll" data-roll="save" data-key="{{key}}"{{/unless}}>
             {{#if @root.editMode}}
-              <input type="checkbox" name="system.saves.{{key}}.proficient" {{#if saveProficient}}checked{{/if}} aria-label="{{label}} save proficiency">
+              <input type="checkbox" name="system.saves.{{key}}.proficient" {{#if saveProficient}}checked{{/if}} aria-label="{{label}} save proficiency">{{> "systems/n5e/templates/parts/mastery-boxes.hbs" manualMastery}}
             {{else}}
               <span class="dot {{#if saveProficient}}on{{/if}}"></span>
             {{/if}}
             <span class="label">{{label}}</span>
+            {{#if saveMastery}}<span class="mastery" data-tooltip="Mastery {{saveMastery}}">◆{{saveMastery}}</span>{{/if}}
             <b>{{save}}</b>
           </div>
         {{/each}}
@@ -36,7 +37,7 @@
       <h3>Disciplines</h3>
       {{#each vm.disciplines}}
         <div class="discipline {{key}}">
-          <div><b class="title">{{label}}</b><span class="sub">{{ability}}{{#if note}} · {{note}}{{/if}}</span></div>
+          <div><b class="title">{{label}}</b><span class="sub">{{ability}}{{#if mastery}} · ◆{{mastery}}{{/if}}</span>{{> "systems/n5e/templates/parts/mastery-boxes.hbs" manualMastery}}</div>
           <div class="nums"><b class="rollable" data-action="roll" data-roll="attack" data-key="{{key}}" data-tooltip-html="{{attackTip}}">{{attack}}</b><span data-tooltip-html="{{dcTip}}">DC {{dc}}</span></div>
         </div>
       {{/each}}
@@ -63,7 +64,7 @@
           {{#each this}}
             <li class="skill rollable {{#if proficient}}prof{{/if}}" data-tooltip-html="{{tip}}" {{#unless @root.editMode}}data-action="roll" data-roll="skill" data-key="{{key}}"{{/unless}}>
               {{#if @root.editMode}}
-                <input type="checkbox" name="system.skills.{{key}}.proficient" {{#if ownProficient}}checked{{/if}} aria-label="{{label}} proficiency">
+                <input type="checkbox" name="system.skills.{{key}}.proficient" {{#if ownProficient}}checked{{/if}} aria-label="{{label}} proficiency">{{> "systems/n5e/templates/parts/mastery-boxes.hbs" manualMastery}}
               {{else}}
                 <span class="dot {{#if proficient}}on{{/if}}"></span>
               {{/if}}

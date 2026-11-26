@@ -2,7 +2,7 @@
 <div class="d-disciplines">
   {{#each m.disciplines}}
     <div class="d-discipline {{key}}">
-      <div class="d-disc-name"><b class="title">{{label}}</b><span class="sub">{{ability}}{{#if note}} · {{note}}{{/if}}</span></div>
+      <div class="d-disc-name"><b class="title">{{label}}</b><span class="sub">{{ability}}{{#if mastery}} · ◆{{mastery}}{{/if}}</span>{{> "systems/n5e/templates/parts/mastery-boxes.hbs" manualMastery}}</div>
       <div class="nums"><b class="rollable" data-action="roll" data-roll="attack" data-key="{{key}}" data-tooltip-html="{{attackTip}}">{{attack}}</b><span data-tooltip-html="{{dcTip}}">DC {{dc}}</span></div>
     </div>
   {{/each}}

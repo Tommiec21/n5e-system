@@ -1,3 +1,9 @@
+## 0.110.1-alpha.1
+
+- **Disciplines:** "also Bukijutsu" removed from Taijutsu.
+- **Mastery by hand:** in edit mode, three small boxes beside the proficiency box on skills, saving throws and disciplines set Mastery ranks by hand (stored as "Manual" sources; the level cap applies). Saves and disciplines show their Mastery.
+- **Jutsu tab:** hovering a jutsu shows the Combat tab's card; clicking one opens its window (full text, cast options and toggles, Cast) instead of casting at once.
+
 ## 0.110.0-alpha.1
 
 - **Feature icons (ICONS1):** the approved icons are on their items: Aburame (the clan, its features and the Symbiotic Hive options), Scout-Nin (the class and its core features), and Arbiter, Assault, Barrier and Cloning Scout (each subclass and its features). 62 icons.

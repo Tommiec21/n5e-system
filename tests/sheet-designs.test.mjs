@@ -21,6 +21,8 @@ const file = p => path.join(ROOT, p.replace(/^systems\/n5e\//, ""));
 const hbs = Handlebars.create();
 registerHelpers(hbs);
 for ( const p of DESIGN_TEMPLATE_PATHS ) hbs.registerPartial(p, fs.readFileSync(file(p), "utf8"));
+// PLAY2: the shared design partials use the Mastery boxes partial (loaded at init with the character parts).
+hbs.registerPartial("systems/n5e/templates/parts/mastery-boxes.hbs", fs.readFileSync(file("templates/parts/mastery-boxes.hbs"), "utf8"));
 const base = name => `templates/actor/character/${name}.hbs`;
 const design = (id, name) => `templates/actor/designs/${id}/${name}.hbs`;
 const render = (p, ctx) => hbs.compile(fs.readFileSync(path.join(ROOT, p), "utf8"))(ctx);

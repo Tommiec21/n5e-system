@@ -1,0 +1,2 @@
+{{!-- Edit mode: Mastery set by hand (King 2026-11-25). Context: {target, boxes: [{n, on}]}. A click sets that many Manual ranks; clicking the last lit box lowers it by one. --}}
+{{#if @root.editMode}}<span class="m-boxes" data-tooltip="Mastery set by hand (click to add or remove a rank)">{{#each boxes}}<a class="m-box {{#if on}}on{{/if}}" data-action="manualMastery" data-target="{{../target}}" data-n="{{n}}" role="checkbox" aria-checked="{{#if on}}true{{else}}false{{/if}}" aria-label="Mastery rank {{n}}"></a>{{/each}}</span>{{/if}}
