@@ -60,6 +60,17 @@
     "advancement": [],
     "activities": [
       {
+        "id": "n5ef41ebb5d8cbba",
+        "type": "effect",
+        "label": "Create Chakra Barrier",
+        "activation": "special",
+        "effect": {
+          "name": "Chakra Barrier",
+          "target": "self",
+          "amp": "chakra-barrier"
+        }
+      },
+      {
         "id": "n5eISc1faMM6i2dz",
         "type": "roll",
         "label": "Barrier: transfer temporary hit points",
@@ -89,40 +100,7 @@
       }
     ]
   },
-  "effects": [
-    {
-      "_id": "n5egYeF4qm0d5Vqr",
-      "name": "Chakra Barrier: Mastery",
-      "type": "generic",
-      "img": "systems/n5e/assets/icons/classes/scout-nin/barrier-scout/chakra-barrier.svg",
-      "transfer": true,
-      "disabled": false,
-      "system": {
-        "category": "feature"
-      },
-      "changes": [
-        {
-          "key": "n5e.mastery.skill.cha",
-          "value": "Chakra Barrier ×lvl(3:1,9:2,17:3)",
-          "mode": 2,
-          "priority": null
-        }
-      ],
-      "duration": {},
-      "description": "",
-      "origin": null,
-      "tint": "#ffffff",
-      "statuses": [],
-      "flags": {
-        "n5e": {
-          "automation": true,
-          "std6d": true
-        }
-      },
-      "sort": 0,
-      "_key": "!items.effects!945fa348762a36a8.n5egYeF4qm0d5Vqr"
-    }
-  ],
+  "effects": [],
   "flags": {
     "n5e": {
       "generated": true,
@@ -131,7 +109,7 @@
       "rules": [
         {
           "key": "note",
-          "text": "The Chakra Barrier pool is its hit points (twice your level), full after any rest. At the table: it intercepts damage before you, with your resistances and immunities; spend the pool for it. At 0 hit points you lose the Mastery (disable its effect)."
+          "text": "Create Chakra Barrier after each short or long rest: it starts the Chakra Barrier Amp (Mastery on Chakra Control checks). The Chakra Barrier pool is its hit points (twice your level), full after any rest. At the table: it intercepts damage before you, with your resistances and immunities; spend the pool for it. At 0 hit points the Amp ends (end it on the Amps panel)."
         }
       ]
     }

@@ -1,0 +1,74 @@
+{
+  "_id": "n5eCondTidalDraw",
+  "name": "Tidal Draw",
+  "type": "condition",
+  "img": "icons/svg/downgrade.svg",
+  "folder": "n5eCondNinSpec01",
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "system": {
+    "identifier": "tidal-draw",
+    "description": "<p><strong>Surging Maelstrom – Tidal Draw</strong></p><p>This special condition is treated as an <strong>Elemental Condition.</strong></p><p>A creature afflicted with <strong><em>Tidal Draw</em></strong> can feel their chakra network being siphoned while kneading chakra. When a <strong><em>Tidal Drawn</em></strong> creature casts a jutsu that requires CM (Chakra Molding), the Ninjutsu specialist that inflicted this condition gains temporary chakra equal to the rank of the jutsu cast. (D-Rank/ C-Rank: 1d4, B-Rank/A-Rank: 1d8, S-Rank: 1d12).</p>",
+    "source": {
+      "book": "Orochimaru's Observation Compendium",
+      "page": "",
+      "version": "4.0",
+      "custom": ""
+    },
+    "owner": {
+      "kind": "class",
+      "id": "ninjutsu-specialist",
+      "subclass": "tsunami"
+    },
+    "summary": "When it casts a jutsu with CM, the Ninjutsu Specialist who inflicted it gains temporary chakra (D/C 1d4, B/A 1d8, S 1d12). Lasts until the beginning of the inflicter's next turn.",
+    "tags": [
+      "elemental"
+    ],
+    "maxRanks": null,
+    "endsAt": "",
+    "persists": false,
+    "initiativeShift": 0,
+    "seconds": 0,
+    "immunityFrom": [],
+    "changes": [],
+    "decay": {
+      "when": "",
+      "amount": 1
+    },
+    "removal": [],
+    "resave": {
+      "ability": "",
+      "source": "",
+      "dc": null
+    },
+    "turnStartDamage": {
+      "die": "",
+      "type": "",
+      "perRank": false
+    },
+    "perRank": {},
+    "flat": {},
+    "flags": {},
+    "cast": {}
+  },
+  "effects": [],
+  "flags": {
+    "n5e": {
+      "rules": [
+        {
+          "key": "note",
+          "text": "When it casts a jutsu that requires CM, its inflicter gains temporary chakra by the jutsu's rank (D-Rank/C-Rank 1d4, B-Rank/A-Rank 1d8, S-Rank 1d12): roll and add it at the table. Surging Maelstrom inflicts it until the beginning of your next turn."
+        }
+      ],
+      "ccond1": true
+    }
+  },
+  "_stats": {
+    "coreVersion": "13.351",
+    "systemId": "n5e",
+    "systemVersion": "0.58.0"
+  },
+  "_key": "!items!n5eCondTidalDraw"
+}

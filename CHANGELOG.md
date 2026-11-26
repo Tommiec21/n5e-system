@@ -1,3 +1,11 @@
+## 0.112.0-alpha.1
+
+- **Class cards from the book's boxes (CARDS1):**
+  - **Transfiguration** lists the Chimeric Mutation (Aberration, Demonic, Monstrosity) and Transmogrified Biology (Sage Beast) penalty options.
+  - **Tidal Draw** is a condition card; Surging Maelstrom (and Abyss) have a Tidal Draw button.
+  - **Chakra Barrier** is an Amp card (Unique Amp; 9th and 17th versions), started from the feature's Create Chakra Barrier button.
+  - **Primal Chain**'s box is on Primal Strikes.
+
 ## 0.111.3-alpha.1
 
 - **Item sheet text:** the Description text uses the whole card instead of a small box that scrolled inside itself; long text scrolls with the tab.

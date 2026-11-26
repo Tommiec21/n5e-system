@@ -91,6 +91,10 @@ VERSIONS = {
         ("You gain a +1 bonus to your Dexterity saving throws and your AC. This increases to +2 at 9th level.",
          ["You gain a +1 bonus to your Dexterity saving throws and your AC.", "You gain a +2 bonus to your Dexterity saving throws and your AC."]),
         ("+1 to Dexterity saves and AC (+2 at 9th)", ["+1 to Dexterity saves and AC", "+2 to Dexterity saves and AC"])]),
+    "chakra-barrier": dict(tiers=[1, 9, 17], add={9: [mastery("skill.cha", "Chakra Barrier (2nd rank)")], 17: [mastery("skill.cha", "Chakra Barrier (2nd rank)"), mastery("skill.cha", "Chakra Barrier (3rd rank)")]}, subs=[
+        ("You gain a Rank of Mastery to Chakra Control Checks. This increases to 2 Ranks of mastery at 9th level and 3 ranks at 17th level.",
+         ["You gain a Rank of Mastery to Chakra Control Checks.", "You gain 2 Ranks of Mastery to Chakra Control Checks.", "You gain 3 Ranks of Mastery to Chakra Control Checks."]),
+        ("a rank of Mastery on Chakra Control checks (2 at 9th, 3 at 17th)", ["a rank of Mastery on Chakra Control checks", "2 ranks of Mastery on Chakra Control checks", "3 ranks of Mastery on Chakra Control checks"])]),
     "elemental-cloak": dict(tiers=[1, 10, 17], subs=[
         ("^Earth Release: You gain +4 DR.", ["Earth Release: You gain +4 DR. This DR cannot be reduced by any means.",
          "Earth Release: You gain +4 DR. This DR cannot be reduced by any means. You gain 30 feet of tremor sense.",
