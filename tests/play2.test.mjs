@@ -37,5 +37,7 @@ test("PLAY2: Jutsu tab uses the Combat tab's card and opens the jutsu window", (
   const tpl = read("templates/actor/character/jutsu.hbs");
   assert.doesNotMatch(tpl, /data-action="useItem"/);
   assert.match(tpl, /data-action="jutsuDetails"/);
-  assert.match(read("module/workflow/cast.mjs"), /details \? `<div class="n5e-cast-details">/);
+  const cast = read("module/workflow/cast.mjs");
+  assert.match(cast, /jutsuWindowParts/, "the jutsu window is built like the item sheet");
+  assert.match(cast, /"n5e-jutsu-window"/);
 });

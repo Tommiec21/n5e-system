@@ -1,3 +1,7 @@
+## 0.110.2-alpha.1
+
+- **Jutsu window:** now in the item sheet's look: the header (icon, type, name, rank and discipline), the sidebar of keywords and facts (cost, time, range, duration, attack, save DC), the text on parchment, then the cast options and a Cast / Cancel footer.
+
 ## 0.110.1-alpha.1
 
 - **Disciplines:** "also Bukijutsu" removed from Taijutsu.

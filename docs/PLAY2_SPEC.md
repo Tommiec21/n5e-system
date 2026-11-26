@@ -13,7 +13,8 @@ Status: **built (0.110.1-alpha.1).**
    - A discipline's Mastery adds to its attack (the engine's `attack.<discipline>` target; no rule gives Mastery to a DC).
    - Saves and disciplines now show their Mastery (◆n) like skills.
 3. **Jutsu tab hover:** the same card as the Combat tab (rank, discipline, action, cost, concentration, hit/DC, full text, Chain/Finisher/Overcharge, keywords).
-4. **Clicking a jutsu on the Jutsu tab** (pill or Use) opens the jutsu's window: its full text, then the cast options (rank, cast as, multipliers, Moldings and Maneuvers, feature toggles, concentration, Ready), the cost preview, and Cast / Cancel. The Combat tab and pins still go straight to the cast dialog.
+4. **Clicking a jutsu on the Jutsu tab** (pill or Use) opens the jutsu's window, in the item sheet's look (0.110.2: header with icon, type and name; sidebar of chips and facts; parchment body): its full text, then the cast options (rank, cast as, multipliers, Moldings and Maneuvers, feature toggles, concentration, Ready), the cost preview, and Cast / Cancel. The Combat tab and pins still go straight to the cast dialog.
 
 ## Progress log
 - 2026-11-25 King: four playtest fixes. Claude: built and published 0.110.1-alpha.1.
+- 2026-11-25 King: the jutsu window should use the item sheet's design. Claude: rebuilt in the item sheet's look, published 0.110.2-alpha.1.
