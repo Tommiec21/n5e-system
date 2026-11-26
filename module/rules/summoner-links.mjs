@@ -64,9 +64,27 @@ export function linkValue(formula, data) {
  * The system values a summon takes from its summoner, as a nested object for the token's actor
  * delta (merge it into delta.system).
  */
+/**
+ * Links as flat "path": formula pairs. Foundry expands dotted keys when a document is created, so a summon
+ * imported into a world (or placed from the compendium) holds them nested ({details: {level: "@level"}});
+ * the pack source holds them flat. Both read the same.
+ */
+export function flatLinks(links) {
+  const out = {};
+  const walk = (o, pre) => {
+    for ( const [k, v] of Object.entries(o ?? {}) ) {
+      const path = pre ? `${pre}.${k}` : k;
+      if ( v && typeof v === "object" && !Array.isArray(v) ) walk(v, path);
+      else out[path] = v;
+    }
+  };
+  walk(links, "");
+  return out;
+}
+
 export function summonerDelta(links, data) {
   const out = {};
-  for ( const [path, formula] of Object.entries(links ?? {}) ) {
+  for ( const [path, formula] of Object.entries(flatLinks(links)) ) {
     const v = linkValue(formula, data);
     if ( v === undefined ) continue;
     const keys = path.split(".");
@@ -85,7 +103,7 @@ export function summonerDelta(links, data) {
  */
 export function totalLinks(links) {
   const out = {};
-  for ( const [path, f] of Object.entries(links ?? {}) ) {
+  for ( const [path, f] of Object.entries(flatLinks(links)) ) {
     const atk = path.match(/^bonuses\.attack\.(nin|tai|gen)$/);
     const dc = path.match(/^bonuses\.saveDC\.(nin|tai|gen)$/);
     const s = String(f).replace(/\s+/g, " ").trim();
@@ -97,7 +115,7 @@ export function totalLinks(links) {
 }
 
 /** SUMM1: a plain name for each linked number (for the sheet's "Summoned by" line). */
-const LINK_NAMES = { "override.attack": "attack bonus", "override.dc": "save DC", "details.level": "level", "attributes.ac.flat": "AC", "attributes.ac.formula": "AC", "traits.speed": "speed",
+const LINK_NAMES = { "hpMax": "hit points", "override.attack": "attack bonus", "override.dc": "save DC", "details.level": "level", "attributes.ac.flat": "AC", "attributes.ac.formula": "AC", "traits.speed": "speed",
   "traits.size": "size", "bonuses.saveDC": "save DC", "bonuses.attack": "attack bonus", "hp": "hit points", "cp": "chakra", "saves": "saving throws",
   "skills": "skills", "traits.senses": "senses", "abilities": "ability scores" };
 export function linkLabels(links) {
@@ -111,7 +129,7 @@ export function linkLabels(links) {
 }
 
 /** SUMM1: does a summon's link depend on the rank its jutsu was cast at? */
-export const linksNeedRank = links => Object.values(links ?? {}).some(f => String(f).includes("@rankValue"));
+export const linksNeedRank = links => Object.values(flatLinks(links)).some(f => String(f).includes("@rankValue"));
 
 /**
  * SUMM1 (King 2026-11-25, Q-SU2 live): the summon's linked values, worked out again from its summoner

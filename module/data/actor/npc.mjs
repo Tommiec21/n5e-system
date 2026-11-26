@@ -16,7 +16,7 @@
 import CreatureData from "./creature.mjs";
 import * as S from "../fields/shared.mjs";
 import { poolMax } from "../../rules/progression.mjs";
-import { liveLinks, linkLabels } from "../../rules/summoner-links.mjs";
+import { liveLinks, linkLabels, flatLinks } from "../../rules/summoner-links.mjs";
 import { dieFaces } from "../../rules/formula.mjs";
 import { Breakdown } from "../../rules/breakdown.mjs";
 import { rule } from "../../rules/settings.mjs";
@@ -179,7 +179,8 @@ export default class NPCData extends CreatureData {
       return;
     }
     // Without a known cast rank (summons placed before SUMM1), links that grow by rank keep their placed values.
-    const use = this.details.summonRank ? links : Object.fromEntries(Object.entries(links).filter(([, f]) => !String(f).includes("@rankValue")));
+    const flat = flatLinks(links);
+    const use = this.details.summonRank ? flat : Object.fromEntries(Object.entries(flat).filter(([, f]) => !String(f).includes("@rankValue")));
     this._linkOverrides = {};
     for ( const [path, value] of liveLinks(use, summoner.system, this.details.summonRank) ) {
       // "override.attack.nin": the summon's Ninjutsu attack total is this value (its own abilities don't count).

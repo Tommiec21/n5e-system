@@ -49,8 +49,13 @@ Status: **approved (King 2026-11-25: Q-SU1 all NPCs and adversaries, Q-SU2 live,
 - The Bite still rolled −2: summons imported into a world before 0.112.1 keep the old bonus-style links (the Summon button reuses that world copy). Links are now converted when read (`totalLinks` in rules/summoner-links.mjs, used by the live link, the sheet line and placement), so old copies work without re-importing.
 - The Blood Dragon had an Unarmed Strike (+9, its Strength): every NPC got one (DATA2). Summons (NPCs with summoner links) no longer get one (creation, migration, Item Integrity), and the Stat Block and Combat tab don't show one a summon already has.
 
+## Follow-up 2 (King 2026-11-26, 0.112.4-alpha.1)
+
+- Stone Dragon: Level 1, Bite −2, "takes its details, override, attributes, hpMax". Cause: Foundry expands dotted keys when a document is created, so a summon in a world holds its links nested; the code read them flat, so no link applied (in tests the pack's flat form passed). Fix: `flatLinks` reads both forms everywhere (live link, labels, rank check, placement).
+
 ## Progress log
 - 2026-11-25 King: Blood Dragon strikes in Features; no summoner link. Claude: plan written.
 - 2026-11-25 King: Q-SU1 all NPCs, Q-SU2 live, Q-SU3 both. Claude: built with CARDS1, published 0.112.0-alpha.1.
 - 2026-11-25 King: Blood Dragon Bite −2 with a +4 summoner. Claude: links set totals, published 0.112.1-alpha.1.
 - 2026-11-25 King: Bite still −2; Unarmed Strike +9 on the dragon. Claude: links converted when read; no Unarmed Strike on summons; published 0.112.2-alpha.1.
+- 2026-11-26 King: Stone Dragon same problem. Claude: nested links read, published 0.112.4-alpha.1.

@@ -1,3 +1,7 @@
+## 0.112.4-alpha.1
+
+- **Summoner links work in worlds:** Foundry stores a summon's links nested once it's in a world, and they were read flat, so none applied (Level 1, its own attack bonus). They're read in both forms now: summons take your level, attack bonus, save DC, AC and hit points as their stat blocks say. The "Summoned by" line names them plainly.
+
 ## 0.112.3-alpha.1 — Dossier readability
 
 Shortens Dossier rail labels to Init, SPD and Prof. Ninja Naruto is limited to section headings and the Dossier title; stat, feature and jutsu names return to ordinary readable fonts. No gameplay or other-design changes.

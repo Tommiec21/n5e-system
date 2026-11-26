@@ -71,3 +71,23 @@ test("SUMM1: summons imported before 0.112.1 (bonus-style links) still get the s
   const { itemAudit } = await import("../module/rules/item-audit.mjs");
   assert.equal(itemAudit({ type: "npc", items: [], flags: { n5e: { fromSummoner: old } } }).missingUnarmed, false);
 });
+
+test("SUMM1: links read the same nested (as Foundry stores them in a world) or flat (pack source)", async () => {
+  const { flatLinks, linkLabels: labels, linksNeedRank: needRank } = await import("../module/rules/summoner-links.mjs");
+  const flat = JSON.parse(read("packs/_source/summons/ninjutsu/earth-release/stone-dragon-n5eB04AbOJC1Hp4V.json")).flags.n5e.fromSummoner;
+  // Foundry's expandObject on create: dotted keys become nested objects.
+  const nested = {};
+  for ( const [k, v] of Object.entries(flat) ) {
+    const keys = k.split(".");
+    let o = nested;
+    for ( const p of keys.slice(0, -1) ) o = (o[p] ??= {});
+    o[keys.at(-1)] = v;
+  }
+  assert.deepEqual(flatLinks(nested), flat);
+  const pc = { level: 9, prof: 4, disciplines: { nin: { attack: 3, dc: 11 }, tai: { attack: 3, dc: 12 }, gen: { attack: 4, dc: 12 } } };
+  assert.deepEqual(Object.fromEntries(liveLinks(nested, pc, "A")), Object.fromEntries(liveLinks(flat, pc, "A")));
+  assert.equal(Object.fromEntries(liveLinks(nested, pc, "A"))["details.level"], 9);
+  assert.deepEqual(labels(nested), labels(flat));
+  assert.ok(!labels(nested).includes("override") && !labels(nested).includes("details"));
+  assert.equal(needRank(nested), needRank(flat));
+});
