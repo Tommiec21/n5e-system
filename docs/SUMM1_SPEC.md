@@ -2,7 +2,7 @@
 
 King 2026-11-25 (Blood Dragon): "The Strike abilities that make sense, such as Bite and Hydra Bullet, are in the Feature section. Also, I notice there is no system to tie a summoned creature, to a summoner, in order to fulfill the rule of the summoned creature using a statistic from the summoner to determine some of its own statistics." Applies to every summon in Class & Clan Summons and the jutsu summons.
 
-Status: **plan, waiting on King's approval.**
+Status: **approved (King 2026-11-25: Q-SU1 all NPCs and adversaries, Q-SU2 live, Q-SU3 both); built (0.112.0-alpha.1).**
 
 ## What's there now
 
@@ -27,5 +27,18 @@ Status: **plan, waiting on King's approval.**
 - **Q-SU2 (S2):** live link (follows the summoner), or a copy taken when linked (re-link to refresh)?
 - **Q-SU3 (S2):** who can set or clear the summoner: the GM and the summon's owner, or the GM only?
 
+## King's answers (2026-11-25)
+
+- **Q-SU1:** all NPCs and adversaries.
+- **Q-SU2:** live.
+- **Q-SU3:** both (the GM and the summon's owner).
+
+## Built
+
+- **S1:** NPC Stat Block Strikes = weapons + "NPC Strikes" features (attack bonus from the activity's discipline: highest, freeform line or a discipline, plus its bonus; ×N for multiattack), each with Attack (the feature's card). Features lists the rest.
+- **S2:** `details.summonRank` (new); the data model applies `flags.n5e.fromSummoner` from the summoner's current data before level and proficiency (`_applySummonerLinks`, `rules/summoner-links.mjs liveLinks`). A summoner's data, item or effect change re-prepares its summons (world NPCs and scene tokens) and redraws their open sheets (`registerSummonerRefresh`, local only). Summon buttons store the cast rank. Header line: Summoned by (open), what it takes, rank; Link summoner (characters the user owns, or all for the GM; rank asked when links use @rankValue), drop a creature, Unlink.
+- Built on a reading: a summon placed before SUMM1 has no stored rank; its rank-based numbers keep their placed values until it's linked again.
+
 ## Progress log
 - 2026-11-25 King: Blood Dragon strikes in Features; no summoner link. Claude: plan written.
+- 2026-11-25 King: Q-SU1 all NPCs, Q-SU2 live, Q-SU3 both. Claude: built with CARDS1, published 0.112.0-alpha.1.

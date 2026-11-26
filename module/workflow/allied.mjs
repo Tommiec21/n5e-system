@@ -21,7 +21,7 @@ export function canSummonAllied(user) {
  * Token data for Allied NPCs (pure; tested in Node). `base` is the template's token source.
  * @returns {object[]} token sources ready for createEmbeddedDocuments
  */
-export function alliedTokenData(base, { count, positions, ownerId, casterUuid, itemId, itemUuid, concentration, expires, linked = {}, look = null }) {
+export function alliedTokenData(base, { count, positions, ownerId, casterUuid, itemId, itemUuid, concentration, expires, linked = {}, look = null, rank = "" }) {
   const out = [];
   for ( let i = 0; i < count; i++ ) {
     const source = structuredClone(base);
@@ -34,7 +34,7 @@ export function alliedTokenData(base, { count, positions, ownerId, casterUuid, i
     source.delta ??= {};
     source.delta.ownership = { ...(source.delta.ownership ?? {}), [ownerId]: 3 };
     // King 2026-11-21 (Bunshin, Void Soul): the numbers it takes from its summoner (rules/summoner-links.mjs).
-    source.delta.system = mergeDeep(source.delta.system ?? {}, { ...linked, allied: true, details: { ...(linked.details ?? {}), summoner: casterUuid } });
+    source.delta.system = mergeDeep(source.delta.system ?? {}, { ...linked, allied: true, details: { ...(linked.details ?? {}), summoner: casterUuid, summonRank: String(rank ?? "") } });
     source.flags ??= {};
     source.flags.n5e = { ...source.flags.n5e,
       summon: { casterUuid, itemId, itemUuid, concentration: !!concentration, expires },
@@ -78,7 +78,7 @@ export async function placeAllied({ caster, item, templateUuid, count = 1, x = n
   const linked = summonerDelta(template.flags?.n5e?.fromSummoner, summonerData(caster.system, { rank }));
   const look = template.flags?.n5e?.summonerLook ? summonerLook(origin, caster) : null;
   const data = alliedTokenData(base, { count, positions, ownerId, casterUuid: caster.uuid, itemId: item.id, itemUuid: item.uuid,
-    concentration, expires: game.time.worldTime + seconds, linked, look });
+    concentration, expires: game.time.worldTime + seconds, linked, look, rank });
   const tokens = await scene.createEmbeddedDocuments("Token", data);
   await addAlliedCombatants(caster, tokens, initiative);
   Hooks.callAll("n5e.summoned", caster, item, tokens);
@@ -153,3 +153,50 @@ export function registerAlliedIntents() {
   });
   registerIntentHandler("dismissAllied", async (caster, data) => removeAllied(caster, data.itemId).then(() => true));
 }
+
+/* -------------------------------------------- */
+/*  SUMM1: live summoner links                  */
+/* -------------------------------------------- */
+
+/** Every summon (world NPC or token on a scene) whose summoner is this actor. */
+export function summonsOf(actor) {
+  if ( !actor?.uuid ) return [];
+  const out = new Set();
+  for ( const a of game.actors ?? [] ) if ( a.system?.details?.summoner === actor.uuid ) out.add(a);
+  for ( const scene of game.scenes ?? [] ) {
+    for ( const t of scene.tokens ) if ( !t.actorLink && t.actor?.system?.details?.summoner === actor.uuid ) out.add(t.actor);
+  }
+  return [...out];
+}
+
+/** Prepare a summoner's summons again (their linked numbers follow it) and redraw their open sheets. */
+function refreshSummons(actor) {
+  for ( const s of summonsOf(actor) ) {
+    s.reset();
+    if ( s.sheet?.rendered ) s.sheet.render();
+  }
+}
+
+/**
+ * Call at "ready". SUMM1 (King 2026-11-25, Q-SU2 live): when a character or NPC changes (its data, items or effects),
+ * the summons linked to it are prepared again. Local only: nothing is written.
+ */
+export function registerSummonerRefresh() {
+  const pending = new Map();
+  const queue = actor => {
+    if ( !actor?.uuid ) return;
+    clearTimeout(pending.get(actor.uuid));
+    pending.set(actor.uuid, setTimeout(() => { pending.delete(actor.uuid); refreshSummons(actor); }, 50));
+  };
+  const owner = doc => (doc?.parent?.documentName === "Actor" ? doc.parent : null);
+  Hooks.on("updateActor", actor => queue(actor));
+  for ( const h of ["createItem", "updateItem", "deleteItem", "createActiveEffect", "updateActiveEffect", "deleteActiveEffect"] ) {
+    Hooks.on(h, doc => queue(owner(doc)));
+  }
+  // Called at "ready": summoners may have been prepared after their summons; prepare every linked summon once more.
+  for ( const a of game.actors ?? [] ) if ( a.system?.details?.summoner ) a.reset();
+  Hooks.on("canvasReady", () => {
+    for ( const t of canvas.scene?.tokens ?? [] ) if ( !t.actorLink && t.actor?.system?.details?.summoner ) t.actor.reset();
+  });
+}
+

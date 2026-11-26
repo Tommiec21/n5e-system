@@ -5,6 +5,10 @@
   - **Tidal Draw** is a condition card; Surging Maelstrom (and Abyss) have a Tidal Draw button.
   - **Chakra Barrier** is an Amp card (Unique Amp; 9th and 17th versions), started from the feature's Create Chakra Barrier button.
   - **Primal Chain**'s box is on Primal Strikes.
+- **Summon strikes and the summoner link (SUMM1):**
+  - Every NPC's Stat Block lists its "NPC Strikes" features (a summon's Bite and Hydra Bullet, Freeform Strikes) under **Strikes** with their attack bonus and an Attack button, no longer under Features.
+  - A summon shows **Summoned by** its summoner (click to open), with what it takes from them. **Link summoner** (or drop a character on that line) sets it for a summon placed by hand; the GM or the summon's owner can link or unlink.
+  - The link is **live**: the summon's linked numbers (level, attack bonus, save DC, AC...) follow the summoner's current ones, so level-ups and effects reach summons already on the map. Summons that grow by rank ask the rank when linked by hand.
 
 ## 0.111.3-alpha.1
 

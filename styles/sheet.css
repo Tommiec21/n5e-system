@@ -1236,3 +1236,12 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
 .n5e-v2.n5e-item .desc-block prose-mirror { height: auto; max-height: none; }
 .n5e-v2.n5e-item .desc-block.main prose-mirror { flex: 1 0 auto; }
 .n5e-v2.n5e-item .desc-block prose-mirror .editor-content { height: auto; max-height: none; overflow: visible; }
+
+/* SUMM1: the "Summoned by" line on a summon's sheet (drop a character on it to link). */
+.n5e-v2 .npc-summoner { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; margin-top: 3px; font-size: 12px; color: inherit; padding: 2px 6px; border: 1px dashed transparent; border-radius: 6px; }
+.n5e-v2 .npc-summoner.over { border-color: var(--n5e-accent); background: rgba(195, 66, 43, .12); }
+.n5e-v2 .npc-summoner a[data-action="npcOpenSummoner"] { font-weight: 700; text-decoration: underline; cursor: pointer; }
+.n5e-v2 .npc-summoner .sub { opacity: .75; }
+.n5e-v2 .npc-summoner .warn { color: #E39C8D; }
+.n5e-v2 .npc-summoner .ctl { cursor: pointer; opacity: .8; }
+.n5e-v2 .npc-summoner button.link { width: auto; height: auto; padding: 0 4px; }

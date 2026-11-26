@@ -76,6 +76,40 @@ export function summonerDelta(links, data) {
   return out;
 }
 
+/** SUMM1: a plain name for each linked number (for the sheet's "Summoned by" line). */
+const LINK_NAMES = { "details.level": "level", "attributes.ac.flat": "AC", "attributes.ac.formula": "AC", "traits.speed": "speed",
+  "traits.size": "size", "bonuses.saveDC": "save DC", "bonuses.attack": "attack bonus", "hp": "hit points", "cp": "chakra", "saves": "saving throws",
+  "skills": "skills", "traits.senses": "senses", "abilities": "ability scores" };
+export function linkLabels(links) {
+  const out = [];
+  for ( const path of Object.keys(links ?? {}) ) {
+    const key = Object.keys(LINK_NAMES).filter(k => path === k || path.startsWith(`${k}.`)).sort((a, b) => b.length - a.length)[0];
+    const name = key ? LINK_NAMES[key] : path.split(".").at(-1);
+    if ( !out.includes(name) ) out.push(name);
+  }
+  return out;
+}
+
+/** SUMM1: does a summon's link depend on the rank its jutsu was cast at? */
+export const linksNeedRank = links => Object.values(links ?? {}).some(f => String(f).includes("@rankValue"));
+
+/**
+ * SUMM1 (King 2026-11-25, Q-SU2 live): the summon's linked values, worked out again from its summoner
+ * every time its data is prepared, as [path, value] pairs to set on the summon's system data.
+ */
+export function liveLinks(links, summonerSystem, rank = "") {
+  const out = [];
+  const walk = (o, pre) => {
+    for ( const [k, v] of Object.entries(o) ) {
+      const path = pre ? `${pre}.${k}` : k;
+      if ( v && typeof v === "object" && !Array.isArray(v) ) walk(v, path);
+      else out.push([path, v]);
+    }
+  };
+  walk(summonerDelta(links, summonerData(summonerSystem, { rank })), "");
+  return out;
+}
+
 /** Deep-merge plain objects (b wins). */
 export function mergeDeep(a = {}, b = {}) {
   const out = { ...a };

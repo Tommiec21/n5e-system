@@ -215,7 +215,7 @@ test("AMP1c: every Amp card is valid, and every Amp button names an existing car
       if ( a.effect?.amp ) { buttons++; assert.ok(keys.has(a.effect.amp), `${f}: unknown card ${a.effect.amp}`); }
     }
   }
-  assert.equal(buttons, 28, "25, plus DYNAMIC FORM! and Flawless (AMP1e), plus Battle Trance entered again for more Discipline (STD6d Weapon Specialist)");
+  assert.equal(buttons, 29, "25, plus DYNAMIC FORM! and Flawless (AMP1e), plus Battle Trance entered again for more Discipline (STD6d Weapon Specialist), plus Create Chakra Barrier (CARDS1)");
 });
 
 test("AMP1c: checks and saves know the ability they use (Battle Trance: your Taijutsu ability)", async () => {

@@ -34,8 +34,37 @@ export function npcSheetHeaderVM(actor, conditionRegistry) {
       [adv ? adversaryClasses[d.class] : "", role].filter(Boolean).join(" ")].filter(Boolean).join(" · "),
     blurb: [d.blurb, d.template && d.template !== "none" ? npcTemplates[d.template] : "", sizes[sys.traits?.size]?.label ?? cap(sys.traits?.size),
       d.clan].filter(Boolean).join(" · "),
-    hp: rail.hp, cp: rail.cp, noChakra: adv && !sys.cp.max, conditions: rail.conditions
+    hp: rail.hp, cp: rail.cp, noChakra: adv && !sys.cp.max, conditions: rail.conditions,
+    summon: summonVM(actor)
   };
+}
+
+/**
+ * SUMM1 (King 2026-11-25): the "Summoned by" line on a summon (an NPC that takes numbers from its
+ * summoner, flags.n5e.fromSummoner, or has one set): who, what it takes, and the rank it was cast at.
+ */
+export function summonVM(actor) {
+  const links = actor.flags?.n5e?.fromSummoner;
+  const link = actor.system?.summonerLink;
+  if ( !links && !actor.system?.details?.summoner ) return null;
+  return { name: link?.name ?? "", uuid: actor.system.details.summoner ?? "", missing: !!link?.missing, linked: (link?.linked ?? []).join(", "),
+    rank: actor.system.details.summonRank ?? "", hasLinks: !!links };
+}
+
+/** SUMM1 Q-SU1: a strike that is a feature ("NPC Strikes": a summon's Bite, a Freeform Strike): its attack line and text. */
+export function featureStrike(actor, item) {
+  const strip = h => String(h ?? "").replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
+  const a = (item.system.activities ?? []).find(x => x.type === "attack");
+  if ( !a ) return { id: item.id, name: item.name, text: strip(item.system.description), freeform: !!item.flags?.n5e?.freeform };
+  const disc = a.attack?.discipline;
+  const discs = actor.system.disciplines ?? {};
+  const own = disc === "highest" ? Math.max(...["nin", "tai", "gen"].map(k => Number(discs[k]?.attack) || 0))
+    : disc === "freeform" ? actor.system.adversaryBuild?.freeform?.attack ?? 0
+      : Number(discs[disc === "buki" ? "tai" : disc]?.attack) || 0;
+  const bonus = own + (Number(a.attack?.bonus) || 0);
+  const kind = a.attack?.range === "ranged" ? "Ranged" : "Melee";
+  return { id: item.id, name: item.name, freeform: !!item.flags?.n5e?.freeform,
+    text: `${kind} attack ${bonus >= 0 ? "+" : ""}${bonus}${a.attack?.count > 1 ? ` (×${a.attack.count})` : ""}. ${strip(item.system.description)}` };
 }
 
 /** One jutsu pill: the Combat tab's pill (glyph, cost, tooltip) plus its keyword gradient. */
@@ -75,10 +104,12 @@ export function npcStatBlockVM(actor, view = {}) {
   const block = statBlockVM(actor);
   const items = list(actor.items);
   const byName = (a, b) => a.name.localeCompare(b.name);
-  const strikes = items.filter(i => i.type === "weapon").sort(byName).map(w => {
+  // SUMM1 Q-SU1 (King 2026-11-25: all NPCs and adversaries): weapons and "NPC Strikes" features.
+  const isStrike = i => i.type === "feat" && i.system.category === "npcStrikes";
+  const strikes = [...items.filter(i => i.type === "weapon").sort(byName).map(w => {
     try { return { ...attackLine(actor, w), freeform: !!w.flags?.n5e?.freeform }; } catch { return { id: w.id, name: w.name, text: "" }; }
-  });
-  const feats = items.filter(i => i.type === "feat").sort(byName).map(i => {
+  }), ...items.filter(isStrike).sort(byName).map(i => featureStrike(actor, i))];
+  const feats = items.filter(i => i.type === "feat" && !isStrike(i)).sort(byName).map(i => {
     const type = i.system.activation?.type ?? "";
     return { id: i.id, name: i.name, text: i.system.description ?? "", reaction: type === "reaction",
       usable: !!type && !["", "none", "passive"].includes(type), glyph: glyph(i.system.activation)?.svg ?? "" };

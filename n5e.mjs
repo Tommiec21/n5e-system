@@ -56,6 +56,7 @@ import * as dice from "./module/dice/roll.mjs";
 import { registerTurnHooks, onRenderTurnCard } from "./module/workflow/turn.mjs";
 import { registerOwnerIntents } from "./module/automation/owner-intents.mjs";
 import { registerAlliedIntents } from "./module/workflow/allied.mjs";
+import { registerSummonerRefresh } from "./module/workflow/allied.mjs";
 import { registerRestIntents } from "./module/workflow/rest.mjs";
 import { registerEffectApplication } from "./module/workflow/effect-application.mjs";
 import { registerReactionWindows } from "./module/workflow/reactions.mjs";
@@ -205,6 +206,7 @@ Hooks.once("ready", async () => {
   // (Allied NPCs, rations, reaction choices) on the GM's client (module/automation/owner-intents.mjs).
   registerOwnerIntents();
   registerAlliedIntents();
+  registerSummonerRefresh();
   void import("./module/workflow/transfer.mjs").then(m => m.registerTransfer());
   void import("./module/workflow/loot.mjs").then(m => m.registerLoot());
   void import("./module/workflow/social.mjs").then(m => m.registerSocial());
