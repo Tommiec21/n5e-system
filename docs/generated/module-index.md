@@ -35,7 +35,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `hazard-sheet.mjs` | 103 | Hazard and vehicle sheets (PRESTD1 Part D-ii): the NPC sheet with one more tab. | `HazardSheet`, `VehicleSheet` |
 | `loot-sheet.mjs` | 86 | Loot actor sheet (PRESTD1 Part C): a pile, a merchant or the party stash. | `LootSheet` |
 | `npc-sheet.mjs` | 345 | NPC sheet (NPCUI1; King 2026-11-15, design canvas "N5e NPC Sheet Redesign"). | `NPC_TEMPLATE_PATHS`, `NPCSheet` |
-| `sheet-designs.mjs` | 22 | The optional character sheet designs (SHEETS1), as data: no Foundry imports, so tests can read it. | `SHEET_DESIGNS`, `DESIGN_PARTS`, `DESIGN_TEMPLATE_PATHS` |
+| `sheet-designs.mjs` | 23 | The optional character sheet designs (SHEETS1), as data: no Foundry imports, so tests can read it. | `SHEET_DESIGNS`, `DESIGN_PARTS`, `DESIGN_TEMPLATE_PATHS` |
 
 ## module/applications/browser
 

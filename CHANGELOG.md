@@ -1,3 +1,7 @@
+## 0.110.0-alpha.1
+
+- **Feature icons (ICONS1):** the approved icons are on their items: Aburame (the clan, its features and the Symbiotic Hive options), Scout-Nin (the class and its core features), and Arbiter, Assault, Barrier and Cloning Scout (each subclass and its features). 62 icons.
+
 ## 0.109.1-alpha.1 — Shinobi Dossier Main sheet
 
 Adds optional Shinobi Dossier: parchment, Leaf imagery, forest-green headers, resource rail and compact Main layout using existing sheet actions and data. Other tabs remain shared; their detailed styling is scheduled in SD03–SD05. No gameplay changes or live verification.
