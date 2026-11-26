@@ -1,3 +1,7 @@
+## 0.112.1-alpha.1
+
+- **Summons use your attack bonus and save DC exactly:** a summon that "uses your attack bonus / save DC" now has your total, whatever its own ability scores (the Blood Dragon's Bite rolled −2 for a summoner with a +4 best attack; now +4). Its own effects, Mastery and conditions still apply on top. All 34 summons updated.
+
 ## 0.112.0-alpha.1
 
 - **Class cards from the book's boxes (CARDS1):**

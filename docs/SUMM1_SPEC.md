@@ -39,6 +39,12 @@ Status: **approved (King 2026-11-25: Q-SU1 all NPCs and adversaries, Q-SU2 live,
 - **S2:** `details.summonRank` (new); the data model applies `flags.n5e.fromSummoner` from the summoner's current data before level and proficiency (`_applySummonerLinks`, `rules/summoner-links.mjs liveLinks`). A summoner's data, item or effect change re-prepares its summons (world NPCs and scene tokens) and redraws their open sheets (`registerSummonerRefresh`, local only). Summon buttons store the cast rank. Header line: Summoned by (open), what it takes, rank; Link summoner (characters the user owns, or all for the GM; rank asked when links use @rankValue), drop a creature, Unlink.
 - Built on a reading: a summon placed before SUMM1 has no stored rank; its rank-based numbers keep their placed values until it's linked again.
 
+## Fix (King 2026-11-25, 0.112.1-alpha.1)
+
+- The Blood Dragon linked to a character with Ninjutsu +3, Taijutsu +3, Genjutsu +4 rolled its Bite at −2. Cause: every "uses your attack bonus / save DC" link was a bonus ("your number − its proficiency"), which assumed the summon's ability modifier for that discipline is +0; the Blood Dragon's Ninjutsu uses its Intelligence 1 (−5).
+- Fix: those links set the summon's total (`override.attack.<d>`, `override.dc.<d>`: Breakdown override; its own effects, Mastery and conditions still apply on top). All 34 summons rebuilt (build-summons.mjs `totalLinks`).
+
 ## Progress log
 - 2026-11-25 King: Blood Dragon strikes in Features; no summoner link. Claude: plan written.
 - 2026-11-25 King: Q-SU1 all NPCs, Q-SU2 live, Q-SU3 both. Claude: built with CARDS1, published 0.112.0-alpha.1.
+- 2026-11-25 King: Blood Dragon Bite −2 with a +4 summoner. Claude: links set totals, published 0.112.1-alpha.1.

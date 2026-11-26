@@ -76,6 +76,7 @@ export async function placeAllied({ caster, item, templateUuid, count = 1, x = n
   const positions = rowPositions({ x: Number.isFinite(x) ? x : origin.x + origin.width * size,
     y: Number.isFinite(y) ? y : origin.y, width: template.prototypeToken?.width ?? 1, size, count });
   const linked = summonerDelta(template.flags?.n5e?.fromSummoner, summonerData(caster.system, { rank }));
+  delete linked.override; // totals that replace the summon's own (live, NPCData._applySummonerLinks)
   const look = template.flags?.n5e?.summonerLook ? summonerLook(origin, caster) : null;
   const data = alliedTokenData(base, { count, positions, ownerId, casterUuid: caster.uuid, itemId: item.id, itemUuid: item.uuid,
     concentration, expires: game.time.worldTime + seconds, linked, look, rank });

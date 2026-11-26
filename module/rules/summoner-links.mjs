@@ -2,7 +2,8 @@
  * Summoner-linked statistics (King 2026-11-21: the Bunshin and the Void Soul). An Allied NPC template
  * names, in flags.n5e.fromSummoner, the numbers it takes from whoever summons it:
  *   { "attributes.ac.flat": "@dc.nin", "details.level": "@level", "traits.speed.walk": "@speed" }
- * Keys are paths under the summon's `system`; values are formulas over the summoner's numbers
+ * Keys are paths under the summon's `system` (or `override.attack.<d>` / `override.dc.<d>`: the summon's
+ * total attack bonus or save DC for that discipline is the formula's value, King 2026-11-25); values are formulas over the summoner's numbers
  * (summonerData). A formula that is a single reference keeps that value as it is (a save's
  * proficiency stays true or false); anything else is arithmetic (max, min, floor, ceil allowed).
  * workflow/allied.mjs writes the results into the token's actor delta when it is summoned.
@@ -77,7 +78,7 @@ export function summonerDelta(links, data) {
 }
 
 /** SUMM1: a plain name for each linked number (for the sheet's "Summoned by" line). */
-const LINK_NAMES = { "details.level": "level", "attributes.ac.flat": "AC", "attributes.ac.formula": "AC", "traits.speed": "speed",
+const LINK_NAMES = { "override.attack": "attack bonus", "override.dc": "save DC", "details.level": "level", "attributes.ac.flat": "AC", "attributes.ac.formula": "AC", "traits.speed": "speed",
   "traits.size": "size", "bonuses.saveDC": "save DC", "bonuses.attack": "attack bonus", "hp": "hit points", "cp": "chakra", "saves": "saving throws",
   "skills": "skills", "traits.senses": "senses", "abilities": "ability scores" };
 export function linkLabels(links) {

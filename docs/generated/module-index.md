@@ -165,7 +165,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `creature.mjs` | 681 | Shared creature model for characters and NPCs: stored schema + the fixed derived-data pipeline. | `CreatureData` |
 | `hazard.mjs` | 33 | Hazards (PRESTD1 Part D-ii, PF2e emulation; King Q-P8: their own actor type). | `HazardData` |
 | `loot.mjs` | 20 | Loot actors (PRESTD1 Part C; King 2026-11-15, Q-F2, Q-P5): a pile anyone may take from, a merchant players buy from and sell to, or the party stash every pla... | `LootActorData` |
-| `npc.mjs` | 284 | NPCs: adversaries, allies, summons, clones and companions. | `NPCData` |
+| `npc.mjs` | 289 | NPCs: adversaries, allies, summons, clones and companions. | `NPCData` |
 | `vehicle.mjs` | 31 | Vehicles (PRESTD1 Part D-ii, PF2e emulation; King Q-P8: their own actor type). | `VehicleData` |
 
 ## module/data/effect
@@ -315,7 +315,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `social.mjs` | 60 | Social encounters (PRESTD1 Part F; the Bingo Book). | `socialSetup`, `standardDC`, `argumentResult`, `primaryPoints`, `socialScore`, `socialOutcome`, `actionDC`, `patienceSpent` |
 | `stance-weapons.mjs` | 38 | Stance weapons (STD6b E1; docs/STD6b_SPEC.md). | `qualifiesForStance`, `weaponFacts` |
 | `stimuli.mjs` | 62 | Genjutsu Stimuli immunity (pure; GEN1, KB 04, KB 10; King 2026-11-14). | `creatureFacts`, `immuneToStimulus`, `genjutsuImmunity` |
-| `summoner-links.mjs` | 121 | Summoner-linked statistics (King 2026-11-21: the Bunshin and the Void Soul). | `summonerData`, `linkValue`, `summonerDelta`, `linkLabels`, `linksNeedRank`, `liveLinks`, `mergeDeep` |
+| `summoner-links.mjs` | 122 | Summoner-linked statistics (King 2026-11-21: the Bunshin and the Void Soul). | `summonerData`, `linkValue`, `summonerDelta`, `linkLabels`, `linksNeedRank`, `liveLinks`, `mergeDeep` |
 | `target-formula.mjs` | 18 | Formulas that read the target (ENG1a; docs/ENG1_SPEC.md): "@target.ranks.<condition>" is the target's ranks of that condition, "@target.state.<state>" is 1 w... | `conditionRanksOn`, `targetFormula` |
 | `token-size.mjs` | 22 | PRESTD1 A11 (optional rule scaleTokens): token size in grid units by creature size (PF2e's token autoscale, on N5e's sizes). | `TOKEN_SIZES`, `tokenSizeFor`, `isDefeated`, `encumbranceChange` |
 | `trackers.mjs` | 236 | Phase 6 trackers (pure): Stamina, Chilled movement, Fury, Marks, Branded, Amps, 8-Inner Gates, end-of-turn resaves. | `staminaPool`, `usesStamina`, `chilledMove`, `furyMax`, `gainFury`, `spendFury`, `furyTurnEnd`, `jutsuTrackers`, `trackerEffectData`, `marksToExpire`, `ampsToDisable`, `gateLimit`, `gateChanges`, `nextGate`, `closeGatesPlan`, `hasResave`, `resavesDue`, `expiringEffects` |
@@ -358,7 +358,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `action-effects.mjs` | 25 | Action effects on cards (STD2; rules/action-effects.mjs). | `consumedOn`, `cardActionContext` |
 | `activity-buttons.mjs` | 594 | Chat card buttons for activities, and what happens when they're clicked. | `damageButtons`, `applyButtons`, `activityButtons`, `onActivityClick`, `highestDiscipline`, `payPoolCost` |
 | `activity-execution.mjs` | 52 | Serialize actor activities and enforce declared turn limits before any resource is spent. | `executeActivity` |
-| `allied.mjs` | 203 | Allied NPCs (King 2026-11-13): summons, clones and companions from jutsu or class features. | `canSummonAllied`, `alliedTokenData`, `summonerLook`, `rowPositions`, `placeAllied`, `summonAllied`, `removeAllied`, `dismissAllied`, `deleteSummonTokens`, `registerAlliedIntents`, `summonsOf`, `registerSummonerRefresh` |
+| `allied.mjs` | 204 | Allied NPCs (King 2026-11-13): summons, clones and companions from jutsu or class features. | `canSummonAllied`, `alliedTokenData`, `summonerLook`, `rowPositions`, `placeAllied`, `summonAllied`, `removeAllied`, `dismissAllied`, `deleteSummonTokens`, `registerAlliedIntents`, `summonsOf`, `registerSummonerRefresh` |
 | `ammo.mjs` | 40 | Ammunition Die (KB 03): d8 > d6 > d4 > 1 > 0. | `stepAmmo`, `rollAmmo` |
 | `amp-cards.mjs` | 409 | Amp cards, Foundry side (AMP1a; docs/AMP1_SPEC.md). | `AMP_PACK`, `registerAmp`, `refreshAmpLimits`, `loadAmpCards`, `keyForAmp`, `isResponsible`, `applyAmp`, `pickAmpOption`, `changeAmpChoice`, `useAmpButton`, `placeAmp`, `endAmp`, `onAmpCreated`, `endAmpsOn`, `startOnInitiative`, `registerAmpCards` |
 | `apply-damage.mjs` | 350 | Applying damage and healing to tokens (Foundry side); the rules are in rules/damage.mjs. | `successfulHitReaction`, `applyToSelected`, `rollDeathSave`, `onApplyClick`, `resolveDamageReaction` |

@@ -168,6 +168,7 @@ export default class NPCData extends CreatureData {
    */
   _applySummonerLinks() {
     this.summonerLink = null;
+    this._linkOverrides = {};
     const uuid = this.details?.summoner;
     const links = this.parent?.flags?.n5e?.fromSummoner;
     if ( !uuid || !links || typeof globalThis.fromUuidSync !== "function" ) return;
@@ -179,8 +180,11 @@ export default class NPCData extends CreatureData {
     }
     // Without a known cast rank (summons placed before SUMM1), links that grow by rank keep their placed values.
     const use = this.details.summonRank ? links : Object.fromEntries(Object.entries(links).filter(([, f]) => !String(f).includes("@rankValue")));
+    this._linkOverrides = {};
     for ( const [path, value] of liveLinks(use, summoner.system, this.details.summonRank) ) {
-      foundry.utils.setProperty(this, path, value);
+      // "override.attack.nin": the summon's Ninjutsu attack total is this value (its own abilities don't count).
+      if ( path.startsWith("override.") ) this._linkOverrides[path.slice(9)] = value;
+      else foundry.utils.setProperty(this, path, value);
     }
     this.summonerLink = { uuid, name: summoner.name, missing: false, linked: linkLabels(links), rank: this.details.summonRank };
   }
@@ -199,8 +203,9 @@ export default class NPCData extends CreatureData {
     return adversaryParts(kind, this.adversaryProfile);
   }
 
-  /** @override */
+  /** @override  SUMM1: a summon's attack bonus or save DC that is its summoner's ("attack.nin", "dc.gen") wins. */
   _statOverride(key) {
+    if ( this._linkOverrides?.[key] != null ) return this._linkOverrides[key];
     if ( !this.isAdversary ) return null;
     const o = this.adversary.overrides;
     const [group, id] = key.split(".");

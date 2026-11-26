@@ -41,11 +41,29 @@ function item(actorId, name, category, description, activities = [], extra = {})
     effects: [], folder: null, sort: 0, ownership: { default: 0 }, flags: { n5e: { generated: true } }, _stats: STATS };
 }
 
+/**
+ * King 2026-11-25: "uses your attack bonus / save DC" means the summon's total is yours, whatever its own
+ * ability scores (the Blood Dragon's Intelligence 1 made its Ninjutsu attack −2 when the link was a
+ * bonus). A "<your number> − @prof" bonus link becomes an override of the total (rules/summoner-links.mjs).
+ */
+export function totalLinks(links) {
+  const out = {};
+  for ( const [path, f] of Object.entries(links ?? {}) ) {
+    const atk = path.match(/^bonuses\.attack\.(nin|tai|gen)$/);
+    const dc = path.match(/^bonuses\.saveDC\.(nin|tai|gen)$/);
+    const s = String(f).replace(/\s+/g, " ").trim();
+    if ( atk && / - @prof$/.test(s) ) out[`override.attack.${atk[1]}`] = s.replace(/ - @prof$/, "");
+    else if ( dc && / - 8 - @prof$/.test(s) ) out[`override.dc.${dc[1]}`] = s.replace(/ - 8 - @prof$/, "");
+    else out[path] = f;
+  }
+  return out;
+}
+
 function actor(seed, name, folderId, system, items, links, img) {
   const _id = stableId(`summons:actor:${seed}`);
   return { _id, _key: `!actors!${_id}`, name, type: "npc", img,
     system, items: items(_id), effects: [], folder: folderId, sort: 0, ownership: { default: 0 },
-    flags: { n5e: { generated: true, fromSummoner: links } },
+    flags: { n5e: { generated: true, fromSummoner: totalLinks(links) } },
     prototypeToken: { name, actorLink: false, disposition: 1, displayName: 20, displayBars: 20, bar1: { attribute: "hp" }, bar2: { attribute: "cp" },
       texture: { src: img }, width: 1, height: 1 },
     _stats: STATS };

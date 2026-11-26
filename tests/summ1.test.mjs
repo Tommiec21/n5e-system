@@ -40,3 +40,18 @@ test("SUMM1: Strikes lists NPC Strikes features with their attack; Features does
   assert.match(vm, /items\.filter\(i => i\.type === "feat" && !isStrike\(i\)\)/);
   assert.match(read("templates/actor/npc/header.hbs"), /npcLinkSummoner/);
 });
+
+test("SUMM1: the Blood Dragon's attack and DC are the summoner's highest totals, not a bonus on its own abilities", () => {
+  const dragon = JSON.parse(read("packs/_source/summons/chinoike/blood-dragon-n5e6xblImso76jRj.json"));
+  const links = dragon.flags.n5e.fromSummoner;
+  assert.equal(links["override.attack.nin"], "max(@attack.nin, @attack.tai, @attack.gen)");
+  assert.equal(links["override.dc.nin"], "max(@dc.nin, @dc.tai, @dc.gen)");
+  assert.equal(links["bonuses.attack.nin"], undefined);
+  // King's character: Ninjutsu +3 DC 11, Taijutsu +3 DC 12, Genjutsu +4 DC 12.
+  const pc = { level: 2, prof: 2, disciplines: { nin: { attack: 3, dc: 11 }, tai: { attack: 3, dc: 12 }, gen: { attack: 4, dc: 12 } } };
+  const got = Object.fromEntries(liveLinks(links, pc));
+  assert.equal(got["override.attack.nin"], 4);
+  assert.equal(got["override.dc.nin"], 12);
+  assert.ok(read("module/data/actor/npc.mjs").includes("if ( this._linkOverrides?.[key] != null ) return this._linkOverrides[key];"));
+});
+

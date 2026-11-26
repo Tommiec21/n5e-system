@@ -45,8 +45,9 @@ test("Bunshin: 1 HP, 30 ft., AC your Ninjutsu DC, Bunshin Strike 1d6, Bunshins C
   assert.deepEqual([b.type, b.system.hpMax, b.system.traits.speed.walk, b.system.attributes.ac.calc, b.system.details.template], ["npc", 1, 30, "flat", "clone"]);
   const linked = summonerDelta(b.flags.n5e.fromSummoner, caster);
   assert.equal(linked.attributes.ac.flat, 15);
-  assert.equal(linked.bonuses.attack.nin, 3, "its proficiency (4, at your level) plus 3 is your +7");
-  assert.equal(linked.bonuses.saveDC.nin, 3, "8 + 4 + 3 is your DC 15");
+  // King 2026-11-25: its totals are yours (an override of the total, whatever its own abilities).
+  assert.equal(linked.override.attack.nin, 7, "your +7");
+  assert.equal(linked.override.dc.nin, 15, "your DC 15");
   assert.equal(linked.skills.ste.bonus, 9);
   assert.equal(linked.traits.senses.darkvision, 60);
   const strike = b.items.find(i => i.name === "Bunshin Strike").system.activities[0];

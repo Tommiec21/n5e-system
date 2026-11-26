@@ -90,7 +90,7 @@
       },
       "_stats": {
         "systemId": "n5e",
-        "systemVersion": "0.98.0-alpha.1",
+        "systemVersion": "0.112.0-alpha.1",
         "coreVersion": "13"
       }
     },
@@ -124,7 +124,7 @@
       },
       "_stats": {
         "systemId": "n5e",
-        "systemVersion": "0.98.0-alpha.1",
+        "systemVersion": "0.112.0-alpha.1",
         "coreVersion": "13"
       }
     },
@@ -158,7 +158,7 @@
       },
       "_stats": {
         "systemId": "n5e",
-        "systemVersion": "0.98.0-alpha.1",
+        "systemVersion": "0.112.0-alpha.1",
         "coreVersion": "13"
       }
     },
@@ -192,7 +192,7 @@
       },
       "_stats": {
         "systemId": "n5e",
-        "systemVersion": "0.98.0-alpha.1",
+        "systemVersion": "0.112.0-alpha.1",
         "coreVersion": "13"
       }
     },
@@ -226,7 +226,7 @@
       },
       "_stats": {
         "systemId": "n5e",
-        "systemVersion": "0.98.0-alpha.1",
+        "systemVersion": "0.112.0-alpha.1",
         "coreVersion": "13"
       }
     },
@@ -280,7 +280,7 @@
       },
       "_stats": {
         "systemId": "n5e",
-        "systemVersion": "0.98.0-alpha.1",
+        "systemVersion": "0.112.0-alpha.1",
         "coreVersion": "13"
       }
     },
@@ -385,7 +385,7 @@
       },
       "_stats": {
         "systemId": "n5e",
-        "systemVersion": "0.98.0-alpha.1",
+        "systemVersion": "0.112.0-alpha.1",
         "coreVersion": "13"
       }
     }
@@ -403,11 +403,11 @@
         "details.level": "@level",
         "attributes.ac.flat": "@dc.nin",
         "bonuses.attack.tai": "max(@str, @dex) + @bonuses.attack.weapon",
-        "bonuses.attack.nin": "@attack.nin - @prof",
-        "bonuses.attack.gen": "@attack.gen - @prof",
-        "bonuses.saveDC.nin": "@dc.nin - 8 - @prof",
-        "bonuses.saveDC.gen": "@dc.gen - 8 - @prof",
-        "bonuses.saveDC.tai": "@dc.tai - 8 - @prof",
+        "override.attack.nin": "@attack.nin",
+        "override.attack.gen": "@attack.gen",
+        "override.dc.nin": "@dc.nin",
+        "override.dc.gen": "@dc.gen",
+        "override.dc.tai": "@dc.tai",
         "bonuses.save": "0 - floor(@prof / 2)",
         "skills.acr.bonus": "@skills.acr.total",
         "skills.ani.bonus": "@skills.ani.total",
@@ -460,7 +460,7 @@
   },
   "_stats": {
     "systemId": "n5e",
-    "systemVersion": "0.98.0-alpha.1",
+    "systemVersion": "0.112.0-alpha.1",
     "coreVersion": "13"
   }
 }
