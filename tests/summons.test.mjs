@@ -65,10 +65,10 @@ test("Void Soul: Medium Construct, AC 8 + Dex + Con + Prof, immune to Charmed, d
   assert.deepEqual([strike.damage.parts[0].formula, strike.damage.parts[0].type], ["1d6 + @str", "bludgeoning"]);
 });
 
-test("a summoned token carries its links and its summoner", () => {
+test("a summoned token carries its links and its summoner (and, SUMM1, the cast rank)", () => {
   const [t] = alliedTokenData({ name: "Bunshin", delta: { system: { details: { blurb: "x" } } } },
     { count: 1, positions: [{ x: 0, y: 0 }], ownerId: "u1", casterUuid: "Actor.me", itemId: "i", itemUuid: "Actor.me.Item.i", expires: 60, linked: { attributes: { ac: { flat: 15 } } } });
-  assert.deepEqual(t.delta.system, { details: { blurb: "x", summoner: "Actor.me" }, attributes: { ac: { flat: 15 } }, allied: true });
+  assert.deepEqual(t.delta.system, { details: { blurb: "x", summoner: "Actor.me", summonRank: "" }, attributes: { ac: { flat: 15 } }, allied: true });
 });
 
 test("Tajū Kage Bunshin, Superior Clones and Void Heart Mask place the summons", () => {

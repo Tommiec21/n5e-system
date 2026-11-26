@@ -162,8 +162,8 @@ export function registerAlliedIntents() {
 export function summonsOf(actor) {
   if ( !actor?.uuid ) return [];
   const out = new Set();
-  for ( const a of game.actors ?? [] ) if ( a.system?.details?.summoner === actor.uuid ) out.add(a);
-  for ( const scene of game.scenes ?? [] ) {
+  for ( const a of game.actors?.contents ?? [] ) if ( a.system?.details?.summoner === actor.uuid ) out.add(a);
+  for ( const scene of game.scenes?.contents ?? [] ) {
     for ( const t of scene.tokens ) if ( !t.actorLink && t.actor?.system?.details?.summoner === actor.uuid ) out.add(t.actor);
   }
   return [...out];
@@ -194,7 +194,7 @@ export function registerSummonerRefresh() {
     Hooks.on(h, doc => queue(owner(doc)));
   }
   // Called at "ready": summoners may have been prepared after their summons; prepare every linked summon once more.
-  for ( const a of game.actors ?? [] ) if ( a.system?.details?.summoner ) a.reset();
+  for ( const a of game.actors?.contents ?? [] ) if ( a.system?.details?.summoner ) a.reset();
   Hooks.on("canvasReady", () => {
     for ( const t of canvas.scene?.tokens ?? [] ) if ( !t.actorLink && t.actor?.system?.details?.summoner ) t.actor.reset();
   });
