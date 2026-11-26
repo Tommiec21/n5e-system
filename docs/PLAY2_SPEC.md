@@ -18,3 +18,4 @@ Status: **built (0.110.1-alpha.1).**
 ## Progress log
 - 2026-11-25 King: four playtest fixes. Claude: built and published 0.110.1-alpha.1.
 - 2026-11-25 King: the jutsu window should use the item sheet's design. Claude: rebuilt in the item sheet's look, published 0.110.2-alpha.1.
+- 2026-11-25 King: sidebar labels look 3D. Claude: Foundry's text shadow removed in N5e windows, published 0.110.3-alpha.1.

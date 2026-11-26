@@ -1187,3 +1187,8 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
 .n5e-jutsu-window .form-footer button { background: #FFF; color: var(--n5e-ink); border: 1px solid var(--n5e-line); font-weight: 600; }
 .n5e-jutsu-window .form-footer button[data-action="cast"] { background: var(--n5e-accent); color: #FFF; border-color: var(--n5e-accent); }
 .n5e-jutsu-window .form-footer button:disabled { opacity: .5; }
+
+/* King 2026-11-25: Foundry's core theme gives some form text a shadow meant for light text on its dark
+   windows; on our parchment it makes dark labels look embossed ("3D"). Our windows draw flat text. */
+.n5e-v2 .window-content :is(dt, dd, label, legend, th) { text-shadow: none; }
+.n5e-v2 .facts dt, .n5e-jutsu-window .facts dt { font-family: var(--n5e-body); font-weight: 600; text-shadow: none; }
