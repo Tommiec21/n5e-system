@@ -108,7 +108,8 @@ function basicCombat(actor) {
   const u = unarmedSpec(actor);
   const attacks = attacksPerAction(actor);
   const strMod = u.mod; // Str, or Dex when Taijutsu use Dex (ATK1)
-  const strikes = [pill({ kind: "core", key: "unarmed", name: "Unarmed Strike", activation: "action",
+  // A summon fights with its stat block's strikes, not an Unarmed Strike (King 2026-11-25).
+  const strikes = actor.flags?.n5e?.fromSummoner ? [] : [pill({ kind: "core", key: "unarmed", name: "Unarmed Strike", activation: "action",
     sub: `${u.die}${u.extra.map(d => `+${d}`).join("")} ${signed(strMod)}${attacks.base > 1 ? ` · ×${attacks.base}` : ""}`,
     tip: tipHTML({ title: "Unarmed Strike", meta: ["Attack", "Always proficient"],
       body: esc(`${u.formula} ${u.type}${u.source ? ` (${u.source})` : ""}. Counts as finesse for features; may use Dex if you can cast all Taijutsu with Dex.${attacks.text ? ` ${attacks.text}` : ""}`) }) })];

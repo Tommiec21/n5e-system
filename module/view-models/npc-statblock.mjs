@@ -106,7 +106,9 @@ export function npcStatBlockVM(actor, view = {}) {
   const byName = (a, b) => a.name.localeCompare(b.name);
   // SUMM1 Q-SU1 (King 2026-11-25: all NPCs and adversaries): weapons and "NPC Strikes" features.
   const isStrike = i => i.type === "feat" && i.system.category === "npcStrikes";
-  const strikes = [...items.filter(i => i.type === "weapon").sort(byName).map(w => {
+  // A summon fights with its stat block's strikes; an Unarmed Strike it got before 0.112.2 isn't listed.
+  const summon = !!actor.flags?.n5e?.fromSummoner;
+  const strikes = [...items.filter(i => i.type === "weapon" && !(summon && (i.system?.identifier === "unarmedStrike" || i.flags?.n5e?.unarmedStrike))).sort(byName).map(w => {
     try { return { ...attackLine(actor, w), freeform: !!w.flags?.n5e?.freeform }; } catch { return { id: w.id, name: w.name, text: "" }; }
   }), ...items.filter(isStrike).sort(byName).map(i => featureStrike(actor, i))];
   const feats = items.filter(i => i.type === "feat" && !isStrike(i)).sort(byName).map(i => {

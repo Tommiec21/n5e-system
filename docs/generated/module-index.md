@@ -212,7 +212,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | File | Lines | Purpose | Exports |
 | --- | ---: | --- | --- |
 | `active-effect.mjs` | 101 | N5e ActiveEffect document. | `N5eActiveEffect` |
-| `actor.mjs` | 233 | N5e Actor document. | `N5eActor` |
+| `actor.mjs` | 234 | N5e Actor document. | `N5eActor` |
 | `combat.mjs` | 73 | N5e Combat (TURN1). | `N5eCombat` |
 | `item.mjs` | 67 | N5e Item document. | `N5eItem` |
 | `token.mjs` | 27 | Token document: senses from the actor become vision and detection modes every prepare (nothing saved; the rule is module/rules/senses.mjs). | `N5eTokenDocument` |
@@ -280,7 +280,7 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `freeform.mjs` | 354 | Freeform Strikes and Freeform Jutsu (pure; the Bingo Book, "Adversary Combat"; NPC3). | `stepValue`, `strikeDamage`, `combineAttacks`, `riderDC`, `freeformRanks`, `freeformCostFor`, `effectiveLevel`, `splitDamage`, `jutsuDamage`, `defensiveValue`, `supportValue`, `effectActivity`, `buildStrike`, `buildJutsu`, `averageOf`, `recalculate`, `adversaryOf` |
 | `hazards.mjs` | 77 | Hazards and vehicles (PRESTD1 Part D-ii; King Q-PF4: PF2e emulation, Q-P8: their own actor types). | `NPC_TYPES`, `isNpcLike`, `HAZARD_KINDS`, `checkShortcut`, `saveShortcut`, `damageShortcut`, `checkChoices`, `hazardLines`, `hasSeat`, `board`, `leave`, `vehicleLines` |
 | `host.mjs` | 24 | Host hooks for the shared core (SHARED1). | `setHost`, `n5eConfig` |
-| `item-audit.mjs` | 64 | Item integrity (pure; FIN1, King 2026-11-14). | `SINGLE_TYPES`, `identityKey`, `existingCopy`, `itemAudit` |
+| `item-audit.mjs` | 65 | Item integrity (pure; FIN1, King 2026-11-14). | `SINGLE_TYPES`, `identityKey`, `existingCopy`, `itemAudit` |
 | `jutsu-colors.mjs` | 38 | Jutsu pill colors (NPCUI1; King 2026-11-15): a light left-to-right gradient through the colors of the jutsu's keywords, in the order the jutsu lists them. | `colorKeys`, `pillGradient`, `sheetGroup` |
 | `jutsu-defense.mjs` | 62 | Reading and countering jutsu (pure; FIN2b, Shinobi Handbook Ch3 and Ch5; KB 02 and 08). | `READ_ACTIONS`, `IDENTIFY_ACTIONS`, `defenseAction`, `identifyDC`, `READ_BONUS_CHANGES`, `readEnemyChoices`, `suppressionScore`, `tagsOn`, `suppressionBlocks`, `counterTagAbsorbs` |
 | `jutsu-facts.mjs` | 42 | Jutsu roll facts (STD6d; docs/STD6d_SPEC.md). | `jutsuFacts`, `resolveRankValues` |
@@ -315,14 +315,14 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | `social.mjs` | 60 | Social encounters (PRESTD1 Part F; the Bingo Book). | `socialSetup`, `standardDC`, `argumentResult`, `primaryPoints`, `socialScore`, `socialOutcome`, `actionDC`, `patienceSpent` |
 | `stance-weapons.mjs` | 38 | Stance weapons (STD6b E1; docs/STD6b_SPEC.md). | `qualifiesForStance`, `weaponFacts` |
 | `stimuli.mjs` | 62 | Genjutsu Stimuli immunity (pure; GEN1, KB 04, KB 10; King 2026-11-14). | `creatureFacts`, `immuneToStimulus`, `genjutsuImmunity` |
-| `summoner-links.mjs` | 122 | Summoner-linked statistics (King 2026-11-21: the Bunshin and the Void Soul). | `summonerData`, `linkValue`, `summonerDelta`, `linkLabels`, `linksNeedRank`, `liveLinks`, `mergeDeep` |
+| `summoner-links.mjs` | 141 | Summoner-linked statistics (King 2026-11-21: the Bunshin and the Void Soul). | `summonerData`, `linkValue`, `summonerDelta`, `totalLinks`, `linkLabels`, `linksNeedRank`, `liveLinks`, `mergeDeep` |
 | `target-formula.mjs` | 18 | Formulas that read the target (ENG1a; docs/ENG1_SPEC.md): "@target.ranks.<condition>" is the target's ranks of that condition, "@target.state.<state>" is 1 w... | `conditionRanksOn`, `targetFormula` |
 | `token-size.mjs` | 22 | PRESTD1 A11 (optional rule scaleTokens): token size in grid units by creature size (PF2e's token autoscale, on N5e's sizes). | `TOKEN_SIZES`, `tokenSizeFor`, `isDefeated`, `encumbranceChange` |
 | `trackers.mjs` | 236 | Phase 6 trackers (pure): Stamina, Chilled movement, Fury, Marks, Branded, Amps, 8-Inner Gates, end-of-turn resaves. | `staminaPool`, `usesStamina`, `chilledMove`, `furyMax`, `gainFury`, `spendFury`, `furyTurnEnd`, `jutsuTrackers`, `trackerEffectData`, `marksToExpire`, `ampsToDisable`, `gateLimit`, `gateChanges`, `nextGate`, `closeGatesPlan`, `hasResave`, `resavesDue`, `expiringEffects` |
 | `transfer.mjs` | 84 | Item transfer between actors (pure; FIN1, King 2026-11-14; PF2e parity, no dialogs beyond "how many"). | `PHYSICAL_TYPES`, `transferRefusal`, `canReceive`, `ryoPlan`, `transferPlan` |
 | `triggers.mjs` | 56 | Trigger elements (STD4; docs/STD4_SPEC.md). | `triggersFor`, `triggerOutcomes` |
 | `turn-start.mjs` | 64 | Start of a combatant's turn (pure). | `parseRecharge`, `turnStartPlan`, `economySlot` |
-| `unarmed.mjs` | 106 | Unarmed damage (pure). | `isUnarmedStrike`, `unarmedAbility`, `hasFinesse`, `equippedWeapons`, `activeStance`, `unarmedSpec`, `stepUnarmed`, `stepDie`, `resolveFormula` |
+| `unarmed.mjs` | 113 | Unarmed damage (pure). | `getsUnarmedStrike`, `isUnarmedStrike`, `unarmedAbility`, `hasFinesse`, `equippedWeapons`, `activeStance`, `unarmedSpec`, `stepUnarmed`, `stepDie`, `resolveFormula` |
 | `upkeep.mjs` | 57 | Concentration upkeep choice (pure). | `upkeepOptions`, `validateUpkeepChoice`, `upkeepMode`, `autoKeep` |
 | `variants.mjs` | 52 | PRESTD1 A-iv (King 2026-11-15): pure parts of the homebrew elements and the world clock. | `parseHomebrew`, `mergeHomebrew`, `worldTimeParts`, `CLOCK_STEPS`, `tableFor` |
 | `weapon-properties.mjs` | 179 | Weapon properties in attacks (pure; ATK1, Chapter 5 "Weapon Properties" and Chapter 8 "Making an Attack"). | `weaponCritBonus`, `deadlyDice`, `heavyPenalty`, `heavyDamage`, `volatileRank`, `backfires`, `reachOf`, `attackMode`, `attackRange`, `rangeSources`, `rollsAmmo`, `thrownAmmo`, `canDualWieldLight`, `lightAttackBlock`, `matchingWeapons`, `needText`, `evocationDice`, `evocationDie`, `evocationEcho` |
@@ -339,13 +339,13 @@ Regenerate after adding or renaming exports; do not edit by hand.
 | --- | ---: | --- | --- |
 | `adversary-builder.mjs` | 75 | The Adversary Builder's view model (pure; NPC2). | `STEPS`, `builderVM` |
 | `character.mjs` | 654 | Character sheet view models: actor in, plain data out. | `headerVM`, `resourcesVM`, `railVM`, `setManualMastery`, `mainVM`, `jutsuVM`, `inventoryVM`, `OPTION_GROUPS`, `featuresVM`, `effectsVM`, `biographyVM`, `xpTable`, `DEFENSE_TEXT`, `defenseChipsVM`, `defenseRowsVM` |
-| `combat.mjs` | 464 | Combat tab view model: every option the character has in a fight, plus the trackers (Chain, concentration and upkeep, stance, Combo/Finisher). | `jutsuLegend`, `tipHTML`, `jutsuPill`, `jutsuTipParts`, `ampsVM`, `combatVM` |
+| `combat.mjs` | 465 | Combat tab view model: every option the character has in a fight, plus the trackers (Chain, concentration and upkeep, stance, Combo/Finisher). | `jutsuLegend`, `tipHTML`, `jutsuPill`, `jutsuTipParts`, `ampsVM`, `combatVM` |
 | `common.mjs` | 152 | Shared view-model helpers: signed numbers, breakdown tooltips, action glyphs, rule chips. | `esc`, `breakdownTooltip`, `glyph`, `keywordChip`, `componentChips`, `propertyChips`, `conditionSummary`, `pips`, `signed` |
 | `damage-trace.mjs` | 24 | Minimal fallback for legacy roll data; normal cards use Foundry's Roll renderer. | `damageRollHTML`, `renderDamageRolls` |
 | `effect-editor.mjs` | 102 | Effect editor view model (UX1; docs/UX1_SPEC.md), pure. | `pickerGroups`, `normalizeModes`, `changeCards`, `ruleRows` |
 | `freeform.mjs` | 182 | The Freeform Strike and Freeform Jutsu windows (NPC3d): blank choices, form data -> choices, and the view models with the live numbers. | `blankStrike`, `strikeFromForm`, `strikeVM`, `blankJutsu`, `jutsuFromForm`, `jutsuVM` |
 | `item.mjs` | 612 | Item sheet view model (pure). | `advancementVM`, `itemVM`, `DETAILS`, `HTML_FIELDS` |
-| `npc-statblock.mjs` | 146 | NPC sheet view models (NPCUI1; King 2026-11-15, design canvas "N5e NPC Sheet Redesign"): npcSheetHeaderVM  identity line, HP and CP trackers, conditions npcS... | `npcSheetHeaderVM`, `summonVM`, `featureStrike`, `npcJutsuGroups`, `jutsuLegendVM`, `npcStatBlockVM`, `npcPlayerVM` |
+| `npc-statblock.mjs` | 148 | NPC sheet view models (NPCUI1; King 2026-11-15, design canvas "N5e NPC Sheet Redesign"): npcSheetHeaderVM  identity line, HP and CP trackers, conditions npcS... | `npcSheetHeaderVM`, `summonVM`, `featureStrike`, `npcJutsuGroups`, `jutsuLegendVM`, `npcStatBlockVM`, `npcPlayerVM` |
 | `npc.mjs` | 282 | NPC view models (NPC1b): the stat block in the Bingo Book's layout, and the Build tab. | `statBlockVM`, `npcHeaderVM`, `npcBuildVM`, `npcSimpleVM`, `npcDefensesVM`, `KNOWABLE_STATS`, `knowledgeEntryView`, `npcKnowledgeVM`, `learnedVM`, `attackLine` |
 | `party.mjs` | 37 | GM Party Overview rows (pure): HP, CP, conditions, concentration, Fury, open Gate, Amps. | `partyRowVM` |
 

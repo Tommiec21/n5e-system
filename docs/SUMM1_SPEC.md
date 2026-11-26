@@ -44,7 +44,13 @@ Status: **approved (King 2026-11-25: Q-SU1 all NPCs and adversaries, Q-SU2 live,
 - The Blood Dragon linked to a character with Ninjutsu +3, Taijutsu +3, Genjutsu +4 rolled its Bite at −2. Cause: every "uses your attack bonus / save DC" link was a bonus ("your number − its proficiency"), which assumed the summon's ability modifier for that discipline is +0; the Blood Dragon's Ninjutsu uses its Intelligence 1 (−5).
 - Fix: those links set the summon's total (`override.attack.<d>`, `override.dc.<d>`: Breakdown override; its own effects, Mastery and conditions still apply on top). All 34 summons rebuilt (build-summons.mjs `totalLinks`).
 
+## Follow-up (King 2026-11-25, 0.112.2-alpha.1)
+
+- The Bite still rolled −2: summons imported into a world before 0.112.1 keep the old bonus-style links (the Summon button reuses that world copy). Links are now converted when read (`totalLinks` in rules/summoner-links.mjs, used by the live link, the sheet line and placement), so old copies work without re-importing.
+- The Blood Dragon had an Unarmed Strike (+9, its Strength): every NPC got one (DATA2). Summons (NPCs with summoner links) no longer get one (creation, migration, Item Integrity), and the Stat Block and Combat tab don't show one a summon already has.
+
 ## Progress log
 - 2026-11-25 King: Blood Dragon strikes in Features; no summoner link. Claude: plan written.
 - 2026-11-25 King: Q-SU1 all NPCs, Q-SU2 live, Q-SU3 both. Claude: built with CARDS1, published 0.112.0-alpha.1.
 - 2026-11-25 King: Blood Dragon Bite −2 with a +4 summoner. Claude: links set totals, published 0.112.1-alpha.1.
+- 2026-11-25 King: Bite still −2; Unarmed Strike +9 on the dragon. Claude: links converted when read; no Unarmed Strike on summons; published 0.112.2-alpha.1.

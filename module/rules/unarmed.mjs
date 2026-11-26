@@ -5,6 +5,13 @@
  * Claws). Effects add dice (n5e.unarmed.dice, e.g. the Inner Gates).
  */
 /** True for the built-in Unarmed Strike item (DATA2). */
+/**
+ * King 2026-11-25: a summon fights with its stat block's own strikes (the Blood Dragon's Bite and Hydra
+ * Bullet), so it gets no Unarmed Strike. A summon is an NPC that takes numbers from its summoner
+ * (flags.n5e.fromSummoner). Every other character and NPC has one (DATA2).
+ */
+export const getsUnarmedStrike = actor => ["character", "npc"].includes(actor?.type) && !actor?.flags?.n5e?.fromSummoner;
+
 export const isUnarmedStrike = item => item?.type === "weapon" && (item.system?.identifier === "unarmedStrike" || !!item.flags?.n5e?.unarmedStrike);
 
 /**

@@ -15,7 +15,8 @@ test("SUMM1: live links follow the summoner's current numbers", () => {
   const links = { "details.level": "@level", "bonuses.attack.nin": "max(@attack.nin, @attack.tai, @attack.gen) - @prof",
     "hp.bonus": "10 * max(0, @rankValue - 2)" };
   const sys = lvl => ({ level: lvl, prof: 3, disciplines: { nin: { attack: 7, dc: 15 }, tai: { attack: 5 }, gen: { attack: 4 } } });
-  assert.deepEqual(Object.fromEntries(liveLinks(links, sys(5), "A")), { "details.level": 5, "bonuses.attack.nin": 4, "hp.bonus": 20 });
+  // A bonus-style link ("your number − @prof") reads as the total (0.112.2): your best +7.
+  assert.deepEqual(Object.fromEntries(liveLinks(links, sys(5), "A")), { "details.level": 5, "override.attack.nin": 7, "hp.bonus": 20 });
   assert.equal(Object.fromEntries(liveLinks(links, sys(9), "A"))["details.level"], 9, "a level-up reaches the summon");
   assert.deepEqual(linkLabels(links), ["level", "attack bonus", "hit points"]);
   assert.equal(linksNeedRank(links), true);
@@ -55,3 +56,18 @@ test("SUMM1: the Blood Dragon's attack and DC are the summoner's highest totals,
   assert.ok(read("module/data/actor/npc.mjs").includes("if ( this._linkOverrides?.[key] != null ) return this._linkOverrides[key];"));
 });
 
+
+test("SUMM1: summons imported before 0.112.1 (bonus-style links) still get the summoner's totals; summons get no Unarmed Strike", async () => {
+  const old = { "details.level": "@level", "bonuses.attack.nin": "max(@attack.nin, @attack.tai, @attack.gen) - @prof", "bonuses.saveDC.nin": "max(@dc.nin, @dc.tai, @dc.gen) - 8 - @prof" };
+  const pc = { level: 5, prof: 3, disciplines: { nin: { attack: 3, dc: 11 }, tai: { attack: 3, dc: 12 }, gen: { attack: 4, dc: 12 } } };
+  const got = Object.fromEntries(liveLinks(old, pc));
+  assert.equal(got["override.attack.nin"], 4);
+  assert.equal(got["override.dc.nin"], 12);
+  assert.equal(got["bonuses.attack.nin"], undefined);
+  const { getsUnarmedStrike } = await import("../module/rules/unarmed.mjs");
+  assert.equal(getsUnarmedStrike({ type: "npc", flags: { n5e: { fromSummoner: old } } }), false);
+  assert.equal(getsUnarmedStrike({ type: "npc", flags: {} }), true);
+  assert.equal(getsUnarmedStrike({ type: "character" }), true);
+  const { itemAudit } = await import("../module/rules/item-audit.mjs");
+  assert.equal(itemAudit({ type: "npc", items: [], flags: { n5e: { fromSummoner: old } } }).missingUnarmed, false);
+});

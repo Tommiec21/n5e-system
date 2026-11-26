@@ -77,13 +77,32 @@ export function summonerDelta(links, data) {
   return out;
 }
 
+/**
+ * King 2026-11-25: "uses your attack bonus / save DC" means the summon's total is yours, whatever its own
+ * ability scores (the Blood Dragon's Intelligence 1 made its Ninjutsu attack −2 when the link was a
+ * bonus). A "<your number> − @prof" bonus link reads as an override of the total. Applied when links are
+ * read, so summons imported into a world before 0.112.1 work too.
+ */
+export function totalLinks(links) {
+  const out = {};
+  for ( const [path, f] of Object.entries(links ?? {}) ) {
+    const atk = path.match(/^bonuses\.attack\.(nin|tai|gen)$/);
+    const dc = path.match(/^bonuses\.saveDC\.(nin|tai|gen)$/);
+    const s = String(f).replace(/\s+/g, " ").trim();
+    if ( atk && / - @prof$/.test(s) ) out[`override.attack.${atk[1]}`] = s.replace(/ - @prof$/, "");
+    else if ( dc && / - 8 - @prof$/.test(s) ) out[`override.dc.${dc[1]}`] = s.replace(/ - 8 - @prof$/, "");
+    else out[path] = f;
+  }
+  return out;
+}
+
 /** SUMM1: a plain name for each linked number (for the sheet's "Summoned by" line). */
 const LINK_NAMES = { "override.attack": "attack bonus", "override.dc": "save DC", "details.level": "level", "attributes.ac.flat": "AC", "attributes.ac.formula": "AC", "traits.speed": "speed",
   "traits.size": "size", "bonuses.saveDC": "save DC", "bonuses.attack": "attack bonus", "hp": "hit points", "cp": "chakra", "saves": "saving throws",
   "skills": "skills", "traits.senses": "senses", "abilities": "ability scores" };
 export function linkLabels(links) {
   const out = [];
-  for ( const path of Object.keys(links ?? {}) ) {
+  for ( const path of Object.keys(totalLinks(links)) ) {
     const key = Object.keys(LINK_NAMES).filter(k => path === k || path.startsWith(`${k}.`)).sort((a, b) => b.length - a.length)[0];
     const name = key ? LINK_NAMES[key] : path.split(".").at(-1);
     if ( !out.includes(name) ) out.push(name);
@@ -107,7 +126,7 @@ export function liveLinks(links, summonerSystem, rank = "") {
       else out.push([path, v]);
     }
   };
-  walk(summonerDelta(links, summonerData(summonerSystem, { rank })), "");
+  walk(summonerDelta(totalLinks(links), summonerData(summonerSystem, { rank })), "");
   return out;
 }
 

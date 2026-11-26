@@ -1,3 +1,8 @@
+## 0.112.2-alpha.1
+
+- **Summons already in your world** get your attack bonus and save DC totals too (no re-import needed): old links are converted when read.
+- **No Unarmed Strike on summons:** a summon fights with its stat block's strikes (the Blood Dragon's Bite and Hydra Bullet). New summons don't get one; one a summon already has isn't shown on its Stat Block or Combat tab.
+
 ## 0.112.1-alpha.1
 
 - **Summons use your attack bonus and save DC exactly:** a summon that "uses your attack bonus / save DC" now has your total, whatever its own ability scores (the Blood Dragon's Bite rolled −2 for a summoner with a +4 best attack; now +4). Its own effects, Mastery and conditions still apply on top. All 34 summons updated.
