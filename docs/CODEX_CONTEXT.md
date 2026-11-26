@@ -607,3 +607,9 @@ Version 0.106.4-alpha.1. Focused local shortcut check/lint allocated attempt 1; 
 Based on 328af7b2; new optional Shinobi Dossier design only. Four new templates reuse current shared controls, with scoped styling and additive registry/localization. No CharacterSheet logic, shared partials, gameplay or imported content changed. All 15 parity checks passed once; PR/main attempts 2/3 reserved. Static preview completed within three attempts (one harness failure). No live verification or local installation. docs/SHINOBI_DOSSIER.md records control map, scope and remaining SD03–SD06. Target 0.109.1-alpha.1; publication pending. GM04d/GM05b plans remain on hold.
 
 SD02 pending: PR #10 startup test expected five designs; Dossier makes six. Test expectation corrected to registry count plus explicit Dossier assertion; no runtime change. User-requested Ninja Naruto font imported unchanged with original readme, scoped to Dossier headings/names. Check budget now requires approval for an additional main release run after revised PR CI; do not merge or silently bypass checks.
+
+## Dossier readability correction — 2026-11-25
+
+User screenshot showed rail text overflow. Dossier-only rail labels now use Init, SPD and Prof, with original values/actions/tooltips retained; shared stats partial and other designs are unchanged. Ninja Naruto now applies only to section headings and Dossier title; stat/skill/resource/condition names and jutsu/feature names use existing readable typography. Version 0.109.2-alpha.1. No local test reruns for this presentation fix; PR/main CI reserved as runs 1/2. No live verification or local installation.
+
+2026-11-26 reconciliation: PR #11 original CI passed (run 1). Merged latest main 83bb9f0b, retaining Claude's defenses rail addition and all newer gameplay/content. Only release metadata conflicts required resolution. Version superseded by 0.112.3-alpha.1. Revised PR/main CI reserved as runs 2/3; no local repeats or live tests.

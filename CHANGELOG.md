@@ -1,3 +1,7 @@
+## 0.112.3-alpha.1 — Dossier readability
+
+Shortens Dossier rail labels to Init, SPD and Prof. Ninja Naruto is limited to section headings and the Dossier title; stat, feature and jutsu names return to ordinary readable fonts. No gameplay or other-design changes.
+
 ## 0.112.2-alpha.1
 
 - **Summons already in your world** get your attack bonus and save DC totals too (no re-import needed): old links are converted when read.
