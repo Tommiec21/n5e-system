@@ -1192,3 +1192,19 @@ a.n5e-link-condition, a.n5e-link-state { border-style: dashed; }
    windows; on our parchment it makes dark labels look embossed ("3D"). Our windows draw flat text. */
 .n5e-v2 .window-content :is(dt, dd, label, legend, th) { text-shadow: none; }
 .n5e-v2 .facts dt, .n5e-jutsu-window .facts dt { font-family: var(--n5e-body); font-weight: 600; text-shadow: none; }
+
+/* Rail "Defenses" box (King 2026-11-25, Option A): after HD/CD, before Resources; hidden when empty. */
+.n5e-v2 .n5e-defenses { display: flex; flex-direction: column; gap: 4px; margin: 6px 0 2px; }
+.n5e-v2 .n5e-defenses .def-title { margin: 0; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--n5e-muted); border-bottom: 1px solid var(--n5e-line); padding-bottom: 3px; }
+.n5e-v2 .n5e-defenses .def-box { display: flex; flex-direction: column; gap: 4px; padding: 6px 8px; border: 1px solid var(--n5e-line); border-radius: 6px; background: var(--n5e-card); }
+.n5e-v2 .n5e-defenses .def-row { display: flex; gap: 6px; align-items: flex-start; }
+.n5e-v2 .n5e-defenses .def-tag { flex: none; width: 46px; font-size: 10px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; padding-top: 2px; }
+.n5e-v2 .n5e-defenses .resist .def-tag { color: #4E8A4A; }
+.n5e-v2 .n5e-defenses .immune .def-tag { color: #B08A1E; }
+.n5e-v2 .n5e-defenses .weak .def-tag { color: #C3422B; }
+.n5e-v2 .n5e-defenses .def-chips { display: flex; flex-wrap: wrap; gap: 3px; min-width: 0; }
+.n5e-v2 .n5e-defenses .def-chip { font-size: 11px; font-weight: 600; line-height: 16px; padding: 0 7px; border-radius: 9px; border: 1px solid; white-space: nowrap; cursor: help; }
+.n5e-v2 .n5e-defenses .def-chip.cond { font-style: italic; }
+.n5e-v2 .n5e-defenses .def-chip.resist { background: #E6F1E4; border-color: #9CC39A; color: #2E5E2C; }
+.n5e-v2 .n5e-defenses .def-chip.immune { background: #FBF0D6; border-color: #E0BE6A; color: #7A5A10; }
+.n5e-v2 .n5e-defenses .def-chip.weak { background: #F8E0DA; border-color: #E39C8D; color: #8A2A1A; }

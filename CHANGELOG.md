@@ -1,3 +1,7 @@
+## 0.111.0-alpha.1
+
+- **Defenses on the rail (DEF1):** a Defenses box after Hit Dice and Chakra Dice lists what the character resists, is immune to and is weak to (damage types, conditions and states as chips; hover for the rule). Hidden when there are none. On the default sheet and every design (Shinobi Scroll keeps its own rows).
+
 ## 0.110.3-alpha.1
 
 - **Flat labels:** sidebar labels (Cost, Time, Range...) and other form labels in N5e windows no longer pick up Foundry's text shadow, which made them look embossed on the parchment.

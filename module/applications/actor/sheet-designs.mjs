@@ -17,6 +17,6 @@ export const SHEET_DESIGNS = {
 export const DESIGN_PARTS = ["header", "tabs", "rail", "main"];
 
 /** Shared pieces the designs place in their own layouts (registered as partials at init). */
-export const DESIGN_TEMPLATE_PATHS = ["identity", "xp", "abilities", "tabs", "meters", "stats", "header-buttons", "pins", "saves", "disciplines", "skills", "extras", "resources", "conditions", "death-saves", "dice"]
+export const DESIGN_TEMPLATE_PATHS = ["identity", "xp", "abilities", "tabs", "meters", "stats", "header-buttons", "pins", "saves", "disciplines", "skills", "extras", "resources", "conditions", "death-saves", "dice", "defenses"]
   .map(n => `systems/n5e/templates/actor/designs/shared/${n}.hbs`);
 

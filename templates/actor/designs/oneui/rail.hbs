@@ -6,6 +6,7 @@
   </div>
   <div class="d-card">
     {{> "systems/n5e/templates/actor/designs/shared/dice.hbs" r=d.rail}}
+    {{> "systems/n5e/templates/actor/designs/shared/defenses.hbs" r=d.rail}}
     {{> "systems/n5e/templates/actor/designs/shared/death-saves.hbs" r=d.rail}}
   </div>
   {{#if d.rail.resources.length}}<div class="d-card"><h2>Resources</h2>{{> "systems/n5e/templates/actor/designs/shared/resources.hbs" r=d.rail}}</div>{{/if}}

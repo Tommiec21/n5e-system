@@ -165,6 +165,7 @@ export function railVM(actor, registry = coreConditions) {
     level: sys.level,
     prof: signed(sys.prof),
     resources: resourcesVM(actor),
+    defenses: defenseChipsVM(actor),
     deathSaves: rule("deathSaves") && (sys.hp?.value ?? 1) <= 0 && actor.type === "character" ? {
       success: pips(sys.deathSaves?.success ?? 0, 3), failure: pips(sys.deathSaves?.failure ?? 0, 3),
       stable: !!actor.statuses?.has?.("stabilized"), dead: !!actor.statuses?.has?.("dead") } : null,
@@ -610,6 +611,28 @@ export const xpTable = progression.xpToLevel;
  * LEFT1 P3 (King Q-L3): the Shinobi Scroll's Immunities, Weaknesses and Resistances rows, from the
  * character's own traits and its effects (damage types, conditions and states). Empty rows say "None".
  */
+/**
+ * Rail "Defenses" box (King 2026-11-25, Option A): a row each for Resist, Immune and Weak, damage types
+ * and conditions/states as chips (conditions in italics). Rows with nothing are left out; no rows: null.
+ * Hover text is the rule (KB 03): damage half/none/double; condition resistance = advantage on saves,
+ * immunity = can't gain it and saves against it succeed.
+ */
+export function defenseChipsVM(actor) {
+  const t = actor.system?.traits ?? {};
+  const cond = { ...Object.fromEntries(Object.entries(CONDITION_GROUPS).map(([k, v]) => [`group:${k}`, `All ${v} conditions`])), ...coreConditions, ...states };
+  const name = (labels, k) => { const d = labels[k]; return (typeof d === "object" ? d?.label : d) ?? k; };
+  const dmg = (set, tip) => [...(set ?? [])].map(k => ({ label: name(damageTypes, k), tip: `${name(damageTypes, k)} damage: ${tip}`, condition: false }));
+  const cnd = (set, tip) => [...(set ?? [])].map(k => ({ label: name(cond, k), tip: `${name(cond, k)}: ${tip}`, condition: true }));
+  const rows = [
+    { key: "resist", label: "Resist", chips: [...dmg(t.resist, "half damage"),
+      ...cnd(t.conditionResist, "advantage on saves against it"), ...cnd(t.stateResist, "advantage on saves against it")] },
+    { key: "immune", label: "Immune", chips: [...dmg(t.immune, "no damage"),
+      ...cnd(t.conditionImmune, "can't gain it; saves against it succeed"), ...cnd(t.stateImmune, "can't gain it; saves against it succeed")] },
+    { key: "weak", label: "Weak", chips: dmg(t.vuln, "double damage") }
+  ].filter(r => r.chips.length);
+  return rows.length ? { rows } : null;
+}
+
 export function defenseRowsVM(actor) {
   const t = actor.system?.traits ?? {};
   const cond = { ...Object.fromEntries(Object.entries(CONDITION_GROUPS).map(([k, v]) => [`group:${k}`, `All ${v} conditions`])), ...coreConditions, ...states };

@@ -1,0 +1,12 @@
+{{!-- Rail "Defenses" box (King 2026-11-25, Option A): Resist / Immune / Weak rows of chips; hidden when empty. r = railVM. --}}
+{{#if r.defenses}}
+  <div class="n5e-defenses">
+    <h3 class="def-title">Defenses</h3>
+    <div class="def-box">
+      {{#each r.defenses.rows}}
+        <div class="def-row {{key}}"><span class="def-tag">{{label}}</span>
+          <span class="def-chips">{{#each chips}}<span class="def-chip {{../key}} {{#if condition}}cond{{/if}}" data-tooltip="{{tip}}">{{label}}</span>{{/each}}</span></div>
+      {{/each}}
+    </div>
+  </div>
+{{/if}}
