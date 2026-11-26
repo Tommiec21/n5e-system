@@ -111,11 +111,17 @@ export function resistsAny(actor, keys) {
   return list(keys).some(k => traitCovers(actor, "Resist", k));
 }
 
+/** Disadvantage on a save against conditions or states the saver is Vulnerable to (King 2026-11-25). */
+export function vulnerableToAny(actor, keys) {
+  if ( !rule("conditionResistance") ) return false;
+  return list(keys).some(k => traitCovers(actor, "Vuln", k));
+}
+
 /** States a creature can be put into, for State Resistance and Immunity (not bookkeeping states). */
 export const RESISTIBLE_STATES = ["prone", "grappled", "restrained", "incapacitated", "stunned", "unconscious", "suffocating", "surprised", "drained", "hidden", "undetected"];
 
 /**
- * Does a creature's Resist or Immune trait cover this condition or state? Conditions: the key or a
+ * Does a creature's Resist, Immune or Vuln trait cover this condition or state? Conditions: the key or a
  * group it belongs to (conditionResist / conditionImmune); states: the key (stateResist / stateImmune).
  */
 export function traitCovers(actor, kind, key) {

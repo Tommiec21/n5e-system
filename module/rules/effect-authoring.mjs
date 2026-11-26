@@ -20,8 +20,8 @@ export function effectFieldCatalog(config) {
     else if ( ["n5e.resist", "n5e.immune", "n5e.vulnerable"].includes(field.key) ) { type = "damageType"; choices = Object.keys(config?.damageTypes ?? {}); example = "fire"; }
     else if ( field.key.startsWith("n5e.rankCost.") ) { type = "text"; example = "D:3,C:5,B:9,A:14,S:20"; }
     else if ( /^n5e\.(attack\.\w+|save\.\w+|check\.\w+|initiative)$/.test(field.key) ) { type = "bonus"; example = "1d4"; }
-    else if ( ["n5e.conditionResist", "n5e.conditionImmune"].includes(field.key) ) { type = "condition"; example = "group:physical"; }
-    else if ( ["n5e.stateResist", "n5e.stateImmune"].includes(field.key) ) { type = "state"; choices = RESISTIBLE_STATES; example = "grappled"; }
+    else if ( ["n5e.conditionResist", "n5e.conditionImmune", "n5e.conditionVuln"].includes(field.key) ) { type = "condition"; example = "group:physical"; }
+    else if ( ["n5e.stateResist", "n5e.stateImmune", "n5e.stateVuln"].includes(field.key) ) { type = "state"; choices = RESISTIBLE_STATES; example = "grappled"; }
     const custom = field.key.startsWith("n5e.");
     const info = fieldInfo(field.key, config) ?? { name: field.label, category: "Other", what: field.label, enter: "", example, stacks: "", words: "" };
     return { ...field, type, example: info.example ?? example, choices, modes: custom ? [0, 2] : [1, 2, 3, 4, 5], custom,

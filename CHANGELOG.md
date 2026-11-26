@@ -1,3 +1,8 @@
+## 0.111.1-alpha.1
+
+- **Defenses text:** Weak is now **Vulnerable** (and the Shinobi Scroll's Weaknesses row is Vulnerabilities). Hover text is King's: damage Halved / Nullified / Doubled; conditions and states Adv on / Cannot gain / Disadvantage on.
+- **Condition and State Vulnerability:** new effect changes (Condition Vulnerability, State Vulnerability); saves against a condition or state you are Vulnerable to are made with disadvantage.
+
 ## 0.111.0-alpha.1
 
 - **Defenses on the rail (DEF1):** a Defenses box after Hit Dice and Chakra Dice lists what the character resists, is immune to and is weak to (damage types, conditions and states as chips; hover for the rule). Hidden when there are none. On the default sheet and every design (Shinobi Scroll keeps its own rows).

@@ -53,7 +53,7 @@ import { rule } from "../rules/settings.mjs";
 import { rollWithSpec, groupRollChoice } from "../dice/roll.mjs";
 import { rollSpec } from "../dice/d20.mjs";
 import { abilities } from "../config/core.mjs";
-import { resistsAny } from "../rules/condition-lifecycle.mjs";
+import { resistsAny, vulnerableToAny } from "../rules/condition-lifecycle.mjs";
 import { isBukijutsu } from "../rules/keywords.mjs";
 import { dealtDamagePenalty, exhaustedRollTotal } from "../rules/damage.mjs";
 import { resolveFormula, unarmedSpec, activeStance } from "../rules/unarmed.mjs";
@@ -516,6 +516,9 @@ async function executeActivityClick(message, button, event, { healingTargets = n
         // Resisting the condition is one more advantage source; disadvantage from the action (an action
         // effect "imposed" on its targets' saves, STD2) cancels it in the advantage engine.
         if ( resisted ) spec.advantageSources = [...(spec.advantageSources ?? []), "Resists the condition"];
+        if ( vulnerableToAny(t, inflicts.filter(i => i.kind === "condition" || i.kind === "state").map(i => i.key)) ) {
+          spec.disadvantageSources = [...(spec.disadvantageSources ?? []), "Vulnerable to the condition"];
+        }
         await rollWithSpec(t, spec, { event, dc, fourTier: !!d.four, onFail, target: caster, tiers: JSON.parse(d.tiers || "{}"),
           source: message?.id ?? "", onSuccess: d.onSuccess || "", prepared: prepared ?? null, effect: d.effect ?? "" });
         rolled++;

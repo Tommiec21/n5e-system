@@ -608,28 +608,34 @@ export function biographyVM(actor) {
 export const xpTable = progression.xpToLevel;
 
 /**
- * LEFT1 P3 (King Q-L3): the Shinobi Scroll's Immunities, Weaknesses and Resistances rows, from the
+ * LEFT1 P3 (King Q-L3): the Shinobi Scroll's Immunities, Vulnerabilities and Resistances rows, from the
  * character's own traits and its effects (damage types, conditions and states). Empty rows say "None".
  */
 /**
- * Rail "Defenses" box (King 2026-11-25, Option A): a row each for Resist, Immune and Weak, damage types
- * and conditions/states as chips (conditions in italics). Rows with nothing are left out; no rows: null.
- * Hover text is the rule (KB 03): damage half/none/double; condition resistance = advantage on saves,
- * immunity = can't gain it and saves against it succeed.
+ * Rail "Defenses" box (King 2026-11-25, Option A): a row each for Resist, Immune and Vulnerable, damage
+ * types, conditions and states as chips (conditions in italics). Rows with nothing are left out; no rows:
+ * null. Hover text is King's (2026-11-25), word for word.
  */
+export const DEFENSE_TEXT = {
+  damage: { resist: "{x} Damage is Halved.", immune: "{x} Damage is Nullified.", vuln: "{x} Damage is Doubled." },
+  condition: { resist: "Adv on {x} Saving throws or Checks.", immune: "Cannot gain {x} Condition.", vuln: "Disadvantage on {x} Saving throws or Checks." },
+  state: { resist: "Adv on {x} Saving throws or Checks.", immune: "Cannot gain {x} State.", vuln: "Disadvantage on {x} Saving throws or Checks." }
+};
+
 export function defenseChipsVM(actor) {
   const t = actor.system?.traits ?? {};
-  const cond = { ...Object.fromEntries(Object.entries(CONDITION_GROUPS).map(([k, v]) => [`group:${k}`, `All ${v} conditions`])), ...coreConditions, ...states };
+  const cond = { ...Object.fromEntries(Object.entries(CONDITION_GROUPS).map(([k, v]) => [`group:${k}`, v])), ...coreConditions };
   const name = (labels, k) => { const d = labels[k]; return (typeof d === "object" ? d?.label : d) ?? k; };
-  const dmg = (set, tip) => [...(set ?? [])].map(k => ({ label: name(damageTypes, k), tip: `${name(damageTypes, k)} damage: ${tip}`, condition: false }));
-  const cnd = (set, tip) => [...(set ?? [])].map(k => ({ label: name(cond, k), tip: `${name(cond, k)}: ${tip}`, condition: true }));
-  const rows = [
-    { key: "resist", label: "Resist", chips: [...dmg(t.resist, "half damage"),
-      ...cnd(t.conditionResist, "advantage on saves against it"), ...cnd(t.stateResist, "advantage on saves against it")] },
-    { key: "immune", label: "Immune", chips: [...dmg(t.immune, "no damage"),
-      ...cnd(t.conditionImmune, "can't gain it; saves against it succeed"), ...cnd(t.stateImmune, "can't gain it; saves against it succeed")] },
-    { key: "weak", label: "Weak", chips: dmg(t.vuln, "double damage") }
-  ].filter(r => r.chips.length);
+  const chips = (set, kind, labels, row) => [...(set ?? [])].map(k => {
+    const label = name(labels, k);
+    // A condition group ("group:mental") shows as "All Mental"; the text names the group ("Mental").
+    return { label: k.startsWith("group:") ? `All ${label}` : label, tip: DEFENSE_TEXT[kind][row].replace("{x}", label), condition: kind !== "damage" };
+  });
+  const rows = ["resist", "immune", "vuln"].map(row => {
+    const field = { resist: "Resist", immune: "Immune", vuln: "Vuln" }[row];
+    return { key: row, label: { resist: "Resist", immune: "Immune", vuln: "Vulnerable" }[row],
+      chips: [...chips(t[row], "damage", damageTypes, row), ...chips(t[`condition${field}`], "condition", cond, row), ...chips(t[`state${field}`], "state", states, row)] };
+  }).filter(r => r.chips.length);
   return rows.length ? { rows } : null;
 }
 
@@ -641,7 +647,7 @@ export function defenseRowsVM(actor) {
   const row = (label, items) => ({ label, value: items.length ? items.join(", ") : "None", none: !items.length });
   return [
     row("Immunities", [...of(t.immune, damageTypes), ...of(t.conditionImmune, cond), ...of(t.stateImmune, cond)]),
-    row("Weaknesses", of(t.vuln, damageTypes)),
+    row("Vulnerabilities", [...of(t.vuln, damageTypes), ...of(t.conditionVuln, cond), ...of(t.stateVuln, cond)]),
     row("Resistances", [...of(t.resist, damageTypes), ...of(t.conditionResist, cond), ...of(t.stateResist, cond)])
   ];
 }

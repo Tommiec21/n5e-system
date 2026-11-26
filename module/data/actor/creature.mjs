@@ -109,6 +109,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
         conditionResist: S.set(), conditionImmune: S.set(),
         // King 2026-11-16: states (Grappled, Restrained, Prone...) can be resisted or ignored too.
         stateResist: S.set(), stateImmune: S.set(),
+        // King 2026-11-25: condition and state Vulnerability (disadvantage on saves and checks against it).
+        conditionVuln: S.set(), stateVuln: S.set(),
         senses: S.obj(senseFields),
         speed: S.obj({ walk: S.int(30, { min: 0 }), climb: S.int(0, { min: 0 }), swim: S.int(0, { min: 0 }),
           fly: S.int(0, { min: 0 }), burrow: S.int(0, { min: 0 }), hover: S.bool() }),
@@ -203,7 +205,8 @@ export default class CreatureData extends foundry.abstract.TypeDataModel {
     // n5e.resist / n5e.immune (NPC3): resistances and immunities from effects join the creature's own.
     // n5e.conditionResist: condition resistances (a condition key or group:<tag>) join traits.conditionResist.
     for ( const [field, list] of [["resist", mods.resist], ["immune", mods.immune], ["vuln", mods.vulnerable ?? []], ["conditionResist", mods.conditionResist ?? []],
-      ["conditionImmune", mods.conditionImmune ?? []], ["stateResist", mods.stateResist ?? []], ["stateImmune", mods.stateImmune ?? []]] ) {
+      ["conditionImmune", mods.conditionImmune ?? []], ["stateResist", mods.stateResist ?? []], ["stateImmune", mods.stateImmune ?? []],
+      ["conditionVuln", mods.conditionVuln ?? []], ["stateVuln", mods.stateVuln ?? []]] ) {
       if ( !list.length ) continue;
       const set = this.traits[field] instanceof Set ? this.traits[field] : new Set(this.traits[field] ?? []);
       for ( const type of list ) set.add(type);
